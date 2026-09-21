@@ -147,7 +147,7 @@ pub mod owed {
     /// (sha256(0x01 ++ l ++ r), odd trailing node hashed with itself).
     pub fn snapshot_holders(
         ctx: Context<SnapshotHolders>,
-        holders: Vec<(Pubkey, u64)>,
+        holders: Vec<HolderEntry>,
     ) -> Result<()> {
         let action = &mut ctx.accounts.action;
         require!(action.status == STATUS_DECLARED, OwedError::WrongStatus);
@@ -155,14 +155,14 @@ pub mod owed {
 
         // Sorted + unique by owner (mirrors Register::new in core).
         for w in holders.windows(2) {
-            require!(w[0].0 < w[1].0, OwedError::RegisterNotSorted);
+            require!(w[0].owner < w[1].owner, OwedError::RegisterNotSorted);
         }
 
         // Supply conservation: sum(holders) == mint.supply.
         let mut sum: u128 = 0;
-        for (_, amount) in &holders {
+        for h in &holders {
             sum = sum
-                .checked_add(*amount as u128)
+                .checked_add(h.amount as u128)
                 .ok_or(OwedError::Overflow)?;
         }
         let supply = ctx.accounts.mint.supply as u128;
@@ -261,6 +261,23 @@ pub mod owed {
 }
 
 // ---------------------------------------------------------------------------
+// Instruction argument types
+// ---------------------------------------------------------------------------
+
+/// One row of the holder register, as passed to `snapshot_holders`.
+///
+/// This exists because `Vec<(Pubkey, u64)>` — the obvious way to write it — is
+/// NOT a supported Anchor instruction argument. The IDL has no notion of a Rust
+/// tuple, so the build fails with a bare "Unsupported type". A named struct with
+/// `AnchorSerialize`/`AnchorDeserialize` is the supported form, and it maps 1:1
+/// onto `RegisterEntry` in core/register.rs.
+#[derive(AnchorSerialize, AnchorDeserialize, Clone, Debug, PartialEq, Eq)]
+pub struct HolderEntry {
+    pub owner: Pubkey,
+    pub amount: u64,
+}
+
+// ---------------------------------------------------------------------------
 // Merkle helpers — byte-identical conventions to core/src/merkle.rs.
 // ---------------------------------------------------------------------------
 
@@ -306,13 +323,13 @@ fn verify_proof(leaf: &[u8; 32], proof: &[([u8; 32], u8)], root: &[u8; 32]) -> b
 /// hashed with itself. On-chain register sizes are bounded by the
 /// transaction size limit; the concurrent-Merkle-tree upgrade for
 /// large registers is tracked in the roadmap.
-fn compute_register_root(holders: &[(Pubkey, u64)]) -> Result<[u8; 32]> {
+fn compute_register_root(holders: &[HolderEntry]) -> Result<[u8; 32]> {
     let mut leaves: Vec<[u8; 32]> = holders
         .iter()
-        .map(|(owner, amount)| {
+        .map(|h| {
             let mut data = [0u8; 40];
-            data[..32].copy_from_slice(owner.as_ref());
-            data[32..].copy_from_slice(&amount.to_le_bytes());
+            data[..32].copy_from_slice(h.owner.as_ref());
+            data[32..].copy_from_slice(&h.amount.to_le_bytes());
             hash_leaf(&data)
         })
         .collect();

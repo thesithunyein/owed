@@ -168,7 +168,7 @@ describe("owed — settle a 4:1 split on devnet", () => {
     let rejected = false;
     try {
       await program.methods
-        .snapshotHolders([[ownerA.publicKey, new anchor.BN(1)]])
+        .snapshotHolders([{ owner: ownerA.publicKey, amount: new anchor.BN(1) }])
         .accounts({
           asset: assetPda,
           action: actionPda,
@@ -181,9 +181,11 @@ describe("owed — settle a 4:1 split on devnet", () => {
     }
     expect(rejected, "supply conservation must reject a short register").to.equal(true);
 
+    // HolderEntry, not a tuple: Anchor's IDL cannot express `(Pubkey, u64)`,
+    // which is why the program declares a named struct.
     const sig = await program.methods
       .snapshotHolders(
-        sorted.map((h) => [h.owner, new anchor.BN(h.amount)]),
+        sorted.map((h) => ({ owner: h.owner, amount: new anchor.BN(h.amount) })),
       )
       .accounts({
         asset: assetPda,
