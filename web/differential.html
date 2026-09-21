@@ -88,6 +88,10 @@
   tbody tr:nth-child(even) { background: #fafaf8; }
   tbody tr:nth-child(even):hover { background: #e9e9e3; }
   .scroll { max-height: 460px; overflow: auto; border: 1px solid var(--line); border-radius: 10px; }
+  /* On phones the six columns scroll horizontally instead of crushing. */
+  .scroll table { min-width: 640px; }
+  /* iOS Safari zooms the page when a focused control is below 16px. */
+  @media (max-width: 640px) { select, input { font-size: 16px; } }
   code { background: #e8e8e2; border: 1px solid var(--line); border-radius: 5px; padding: 1px 5px; font-size: 12.5px; }
   .foot { color: var(--dim); font-size: 13px; margin-top: 40px; border-top: 1px solid var(--line); padding-top: 20px; line-height: 1.6; }
   .foot p { margin: 0 0 10px; max-width: 72ch; }
@@ -107,8 +111,8 @@
   .nav-badge { display: flex; align-items: center; justify-content: center; border-radius: 9999px; width: 40px; height: 40px; flex-shrink: 0; background: #ededed; text-decoration: none; }
   @media (min-width: 640px) { .nav-badge { width: 44px; height: 44px; } }
   .nav-pill { display: flex; align-items: center; gap: 16px; border-radius: 12px; padding: 10px 16px; background: #ededed; flex-wrap: wrap; justify-content: center; }
-  @media (min-width: 640px) { .nav-pill { gap: 40px; padding: 12px 32px; flex-wrap: nowrap; } }
-  .nav-pill a { font-size: 12px; font-weight: 500; color: #374151; text-decoration: none; transition: color 0.2s; }
+  @media (min-width: 640px) { .nav-pill { gap: 40px; padding: 12px 32px; flex-wrap: nowrap; } }  .nav-pill a { font-size: 12px; font-weight: 500; color: #374151;
+    text-decoration: none; transition: color 0.2s; padding: 8px 2px; }
   .nav-pill a:hover { color: #111827; }
   @media (min-width: 640px) { .nav-pill a { font-size: 14px; } }
   .hero-content { flex: 1; display: flex; align-items: flex-end; padding: 0 24px 40px; }
