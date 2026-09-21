@@ -49,20 +49,38 @@ test("substituted payloads parse as JSON", () => {
   assert.ok(found >= 1, "at least one payload was injected");
 });
 
-test("both pages load no external resources", () => {
+test("both pages load no EXTERNAL resources (relative site assets are fine)", () => {
   for (const p of PAGES) {
     const src = readFileSync(join(WEB, p), "utf8");
 
-    // Anything the page *loads* must be absent: scripts, images, stylesheets,
-    // fonts. A plain <a href="https://..."> is navigation, not a dependency,
-    // and is allowed because it does not affect offline rendering.
+    // Anything the page *loads* must not point at another origin: scripts,
+    // images, stylesheets, fonts. Relative assets (favicon, og image) are part
+    // of the site and ship alongside the page; a plain <a href> is navigation,
+    // not a dependency, and does not affect rendering.
     const loads = [
       ...(src.match(/<script[^>]*\bsrc\s*=\s*["']([^"']+)["']/g) ?? []),
       ...(src.match(/<img[^>]*\bsrc\s*=\s*["']([^"']+)["']/g) ?? []),
       ...(src.match(/<link[^>]*\bhref\s*=\s*["']([^"']+)["']/g) ?? []),
       ...(src.match(/@import\s+["']([^"']+)["']/g) ?? []),
-    ];
-    assert.deepEqual(loads, [], `${p} loads external resources: ${loads.join(", ")}`);
+    ].filter((u) => /^(?:[a-z]+:)?\/\//i.test(u) && !u.startsWith("//"));
+    assert.deepEqual(
+      loads,
+      [],
+      `${p} loads cross-origin resources: ${loads.join(", ")}`,
+    );
+
+    // Relative loads must be assets the site actually ships.
+    const rel = [
+      ...(src.match(/<link[^>]*\bhref\s*=\s*["']([^"':]+)["']/g) ?? []),
+      ...(src.match(/<img[^>]*\bsrc\s*=\s*["']([^"':]+)["']/g) ?? []),
+    ].filter((u) => !u.includes("https://") && !u.startsWith("<"));
+    for (const asset of rel) {
+      const path = asset.replace(/^assets\//, "");
+      assert.ok(
+        existsSync(join(WEB, "assets", path)),
+        `${p} references ${asset} but web/assets/${path} does not exist`,
+      );
+    }
 
     // And it must not depend on a sibling data file existing next to it.
     assert.ok(

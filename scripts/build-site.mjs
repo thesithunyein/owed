@@ -56,6 +56,11 @@ const board = read("web", "board.html");
 assertDeployable("differential.html", harm);
 assertDeployable("board.html", board);
 
+// Static assets (og image, favicon) are copied verbatim.
+mkdirSync(join(SITE, "assets"), { recursive: true });
+writeFileSync(join(SITE, "assets", "og.png"), readFileSync(join(ROOT, "web", "assets", "og.png")));
+writeFileSync(join(SITE, "assets", "favicon.png"), readFileSync(join(ROOT, "web", "assets", "favicon.png")));
+
 const feedPath = join(ROOT, "feed", "owed-risk.json");
 const schemaPath = join(ROOT, "feed", "schema.json");
 if (!existsSync(feedPath) || !existsSync(schemaPath)) {
@@ -121,6 +126,6 @@ console.log(`site/ assembled from generated artifacts:`);
 for (const [name, len] of Object.entries(sizes)) {
   console.log(`  ${name.padEnd(26)} ${(len / 1024).toFixed(0)}KB`);
 }
-console.log(`  vercel.json + feed/index.json`);
+console.log(`  vercel.json + feed/index.json + assets/ (og, favicon)`);
 console.log(`\nfeed: ${feed.tokens.length} tokens, generated ${feed.generatedAt}`);
 console.log(`deploy: cd site && vercel deploy --prod --yes --project owed`);

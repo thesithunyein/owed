@@ -3,7 +3,21 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Owed — naive vs chain-correct</title>
+<title>Owed — what a naive reader gets wrong on Solana tokenized stocks</title>
+<meta name="description" content="379 of 925 official xStocks have a stale on-chain multiplier right now. Two are off by 10x. Verified against the Token-2022 runtime; computed from the raw state we publish." />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Owed" />
+<meta property="og:title" content="Owed — 379 of 925 tokenized stocks are misquoted by any naive reader" />
+<meta property="og:description" content="The stored Token-2022 multiplier field is stale on 379 official xStocks. Two are off by a full 10x. Pick a token, enter a position, see the gap in money." />
+<meta property="og:url" content="https://owed.sithunyein.com/" />
+<meta property="og:image" content="https://owed.sithunyein.com/assets/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Owed — 379 of 925 tokenized stocks misquoted by naive readers" />
+<meta name="twitter:description" content="Stale Token-2022 multipliers on Solana xStocks, measured, not estimated. Two are off by 10x." />
+<meta name="twitter:image" content="https://owed.sithunyein.com/assets/og.png" />
 <style>
   :root {
     --bg: #0b0e14; --panel: #12161f; --panel2: #171c27; --line: #232a38;
@@ -20,6 +34,8 @@
   h2 { font-size: 17px; margin: 36px 0 4px; letter-spacing: -0.01em; }
   h2 .n { color: var(--faint); font-weight: 500; }
   .sub { color: var(--dim); margin: 0 0 22px; }
+  .lead { max-width: 860px; color: var(--text); font-size: 15.5px; margin: 0 0 10px; }
+  .lead strong { color: var(--green); }
   .nav { margin: 0 0 14px; font-size: 13px; color: var(--faint); }
   .nav a { color: var(--blue); text-decoration: none; }
   .nav a:hover { text-decoration: underline; }
@@ -72,6 +88,12 @@
 <div class="wrap">
 
   <h1>What a naive reader says vs what the chain applies</h1>
+  <p class="lead">
+    <strong>Owed is a correctness layer for tokenized equities.</strong> Issuers rebase
+    dividends and splits through a Token-2022 multiplier; the on-chain field keeps the old
+    value after each activation, and anything reading it computes the wrong balance. Every
+    number here is measured from mainnet and reproducible from the repo in one command.
+  </p>
   <p class="nav">
     <a href="board.html">Risk board — all 925 mints</a>
     <span>·</span>
