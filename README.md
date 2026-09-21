@@ -1,7 +1,8 @@
 # Owed — the corporate-actions risk layer for tokenized equities on Solana
 
-> **379 of 925 official xStocks are mispriced right now by any app that reads the
-> on-chain multiplier field naively.** Not in theory — we scanned every mint.
+> **379 of 925 official xStocks have a stale on-chain multiplier field right now,
+> and 5 of them are off by 100% or more — two by a full 10x.** Not in theory: we
+> scanned every mint and verified the effective value against the chain.
 
 ## What we found (all verified live on mainnet, 2026-09-21)
 
@@ -22,16 +23,41 @@ wrong price for every affected token. Our full scan of the official mint list:
 |---|---|
 | Official xStocks Solana mints scanned | **925** |
 | **Reader traps** (activation passed, stored field stale) | **379** |
+| … off by **10x** (10-for-1 splits) | **2** (`PPLTx`, `NFLXx`) |
+| … off by **≥100%** | **5** |
+| … off by **≥1%** | **29** |
+| … off by **≥0.5%** | **111** |
+| Median magnitude of the gap | **0.32%** |
+| Median time already stale | **28 days** |
+| Longest stale | **348 days** (`GMEx`) |
 | Mints with a **permanent delegate** (issuer can move anyone's tokens) | **925 / 925** |
 | Mints with a **pause authority** (issuer can freeze all transfers) | **925 / 925** |
 | Currently paused | 0 |
 
-Example — `AAPLx` (`XsbEhL…zJp`), read from mainnet: stored `multiplier` is
-`1.00266…`, but the pending `newMultiplier` `1.00327…` activated on
-**2026-08-07**. Every balance display, price feed, and DeFi position computed from
-the stored field is off by ~0.06% *today*, and the gap compounds with every
-dividend. `WMSx` is worse: the stored field says `1.0`, effective is `1.00103…`
-since 2026-09-01.
+Most gaps are small — and saying so is the point. `AAPLx` (`XsbEhL…zJp`) has
+stored `1.00266…` while `1.00327…` took effect on **2026-08-07**, a 0.06% error.
+But the tail is not small: `NFLXx` still carries a stored `1.0` while the chain
+applies **10**, 309 days after the split activated. Anyone valuing an `NFLXx`
+position from that field is wrong by an order of magnitude, and it has been wrong
+since November 2025.
+
+**Precise scope of the claim** (it is falsifiable, so state it precisely): this
+traps apps that read `scaledUiAmountConfig.multiplier` from the mint account — the
+obvious integration when you cache token config, build an indexer, or value
+collateral. Apps that call `getTokenSupply` / `amountToUiAmount` get the correct
+effective value from the runtime and are unaffected.
+
+**How the assumption was verified, not assumed.** The whole thesis depends on
+Token-2022 applying the pending multiplier automatically once its timestamp
+passes. `scripts/verify-trap.mjs` tests that against mainnet instead of reasoning
+about it: `getTokenSupply` reports the runtime's effective scaled amount, so the
+ratio `uiAmount / rawAmount` is ground truth. Result: **8 of 8 sampled traps match
+the pending multiplier, not the stored one** — including `NFLXx` at exactly `10`.
+
+```
+node scripts/verify-trap.mjs            # worst offenders, auto-selected
+node scripts/verify-trap.mjs AAPLx NFLXx
+```
 
 And the security surface nobody markets: **every official xStock carries a
 permanent delegate and a pause authority.** One compromised issuer key can
@@ -44,8 +70,8 @@ visible in a wallet UI.
 **1. The risk board** — `web/board.html`, a single self-contained file (open it,
 no server, no build):
 
-- All 925 mints with stored vs **time-correct effective** multiplier, Δ%, state,
-  activation time, and issuer-control flags.
+- All 925 mints with stored vs **time-correct effective** multiplier, Δ%, how long
+  it has been stale, and issuer-control flags.
 - The snapshot is embedded at build time and **re-classified against your local
   clock on every render** — rows flip from SCHEDULED to READER TRAP the moment an
   activation passes, with no server and no API key.
