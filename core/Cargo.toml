@@ -1,0 +1,13 @@
+[package]
+name = "owed-core"
+version = "0.1.0"
+edition = "2021"
+description = "Owed — corporate-actions registry for tokenized equities: Merkle register and action math"
+license = "MIT"
+
+[lib]
+name = "owed_core"
+path = "src/lib.rs"
+
+[dependencies]
+# Intentionally empty: this crate must build and test fully offline.
