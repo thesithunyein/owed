@@ -1,0 +1,7407 @@
+{
+ "fetchedAt": "2026-09-21T11:05:23.882Z",
+ "source": "api.xstocks.fi/api/v1/quotes/assets",
+ "count": 925,
+ "assets": [
+  {
+   "symbol": "PCTx",
+   "mint": "XsyQipBmDKeSy78zCSMp4BY91Cd46Dx3q4eBoSqbBDX",
+   "bid": 565.151,
+   "ask": 605.9075,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WYFIx",
+   "mint": "XsLkMYrJVUPJv23tH3PB167BV6kpdubPe5F3KfVvSFN",
+   "bid": 1940.0855,
+   "ask": 1963.9415,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "QUBTx",
+   "mint": "XsRJiWgqGJrDaidERfWfdZkaxdA4VPjVEqN6XFctpp3",
+   "bid": 887.6665,
+   "ask": 891.335,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "INDIx",
+   "mint": "XsHYm9cRdEJoogpxDSZVDa4g19fKqUFXWxKisLpEuVm",
+   "bid": 309.535,
+   "ask": 317.4755,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FLNCx",
+   "mint": "Xsc5BxL1ucvrQNXZqW3CT8M9gWTko1LPSLLkSVzGe9h",
+   "bid": 738.89,
+   "ask": 743.113,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "XRXx",
+   "mint": "XsensupeZBdHxZtdnLptf1UfWpVyancWcit7qWFYZrJ",
+   "bid": 329.505,
+   "ask": 342.513,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BETRx",
+   "mint": "Xsv3MnH24RsSJwcBvkPUMsDAZqszgmxnbWcUDbfzaYW",
+   "bid": 1218.17,
+   "ask": 1248.8705,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WGSx",
+   "mint": "XsmPveq9vFqqCBfhBfDyfACu1W7bLVABkqaL3u8uFyy",
+   "bid": 10095.8335,
+   "ask": 10415.6,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WRLDx",
+   "mint": "XsmjCXMpgsWWchGjczHfWz2aGKdYF7WiwPPurUd6c7W",
+   "bid": 13180.2,
+   "ask": 22633.9,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "METCx",
+   "mint": "Xs2UKGPTD9S19rXkSqwJ6ufxAtuCU9Ww3wQumk9MvCn",
+   "bid": 920.617,
+   "ask": 946.4175,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AIx",
+   "mint": "Xs7QhN79WzM4hjfHbu2W46ZRkdyumim3ooJHhPxenoU",
+   "bid": 1054.416,
+   "ask": 1078.6155,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MPx",
+   "mint": "XsFARXCfXKCdu6BxV2WACBt3Dk88nxLujoqPzyyBib9",
+   "bid": 4867.6875,
+   "ask": 4897.335,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SAILx",
+   "mint": "XscePZ4mjiXqyEVv9ZZPGbT6L86LqnYPEBE4ViKSt3T",
+   "bid": 1956.0615,
+   "ask": 2003,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SCIx",
+   "mint": "XsC3icNzi6x7cRA6hodAZQT5GAsxwGrTxWL5awu4gsn",
+   "bid": 7548.66,
+   "ask": 7912.8515,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DRSx",
+   "mint": "Xsf3NfLggzL9WXy4yaxJB3866ehq7y7sQxohwAkNiEu",
+   "bid": 3713.4215,
+   "ask": 3778.6595,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BSYx",
+   "mint": "XsMJnAApxALiWrwPBkAqm2FebHRmMLQVyjv9xVckzyk",
+   "bid": 3255.11,
+   "ask": 3316.968,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DCIx",
+   "mint": "Xs1n717k7fpA1edvo1xndLzPGYnkF81MPFsW3CC8jiZ",
+   "bid": 8631.034,
+   "ask": 9101.632,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DVAx",
+   "mint": "XsS3GWSysqkDJZYFSuMDFZ2ELSjQAWwMH28vxLThnb4",
+   "bid": 17773.3,
+   "ask": 19028.5,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AXSMx",
+   "mint": "XsYa1w57EZDEiryphKCD8AJf33f4ewr2BHUW4RcjSuE",
+   "bid": 20619.025,
+   "ask": 21031.5,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WMSx",
+   "mint": "Xs6debZjNw2y4JX8ryFWUhZgXCSjfbWdWe9r72jNjU1",
+   "bid": 12637.016,
+   "ask": 14874.278,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RYANx",
+   "mint": "Xsgyj7QR8RoPrkCCS2ebXwiASE69q2EvK5B7ppeKgBt",
+   "bid": 3495.7485,
+   "ask": 4093.1305,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AMx",
+   "mint": "XsLLmMhRTib24GrQd3wfrgh3rBWF6NHeVx6hox2eZXH",
+   "bid": 2096.85,
+   "ask": 2136.1995,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ALSNx",
+   "mint": "XsZLnz25FKoaHSjhGDYtv2E7sgKwP3g5XeC7eSWLVnm",
+   "bid": 11728.381,
+   "ask": 14309.432,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GSATx",
+   "mint": "XsNB1EjXVMUXGEC5X55DBG1ekMajZZvt9yAKzNmFhk4",
+   "bid": 8007.97,
+   "ask": 8345.4995,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GDDYx",
+   "mint": "XsZLNUcjAVzNSbU5Z198ngop2mmoinZnw5ijBeMgWhW",
+   "bid": 9734.3765,
+   "ask": 10015,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BXPx",
+   "mint": "Xsc3DUGC7diNKyYkKTagzj4R42EuM8KHBgFnLmXA12y",
+   "bid": 6020.955,
+   "ask": 6411.603,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DYx",
+   "mint": "XsHsqDrvsU85aJXNNmPBkxU4STbELJUeTV7zT4cJQD5",
+   "bid": 29455.75,
+   "ask": 29933.8335,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FRHCx",
+   "mint": "XsCKGVtLBwZ4Z264jSPgPxzm3w6Sm3UkKv5WgHd3ike",
+   "bid": 10097.8305,
+   "ask": 19273.8675,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SFx",
+   "mint": "XsHfvLEUbto797whYCNiqoEGWSpWaRYoZWXJEBGgmsm",
+   "bid": 7508.72,
+   "ask": 7691.52,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SMTCx",
+   "mint": "Xs9bdUnLdSWjQWeEsy8cde6t2L7d3adDRKcH8H51Uwr",
+   "bid": 19071.35,
+   "ask": 19228.8,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DPZx",
+   "mint": "Xs6z8AmfhiHTGmfdcX6hG7hho5P7xnbE21ChtJ94oVj",
+   "bid": 29375.87,
+   "ask": 29969.8875,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FDSx",
+   "mint": "XsMQfkLnhK1ERGibdgGDHFaSHB8ETDtMiC5TtVZKMAv",
+   "bid": 26166.691,
+   "ask": 29343.95,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PAGx",
+   "mint": "Xs7waUdcn1ZQDsuFmHRerWEEazRHoWWzWSa6aB7QjHG",
+   "bid": 19801.2535,
+   "ask": 33780.595,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EGPx",
+   "mint": "XsuAyd21vBFvAJfpzYQgmTi3A9Qwb6feHmNVsU6Z5vM",
+   "bid": 8174.7195,
+   "ask": 22233.3,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BPOPx",
+   "mint": "Xs75Z8HFGHFnTubABp1CZSLvzCPepWsYhtHYLAFYEa7",
+   "bid": 14977.5,
+   "ask": 16624.9,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TTMIx",
+   "mint": "Xs1PSc6DL1cdDPTbyJevgYYU7uA1wiJQESzrpWM7JRv",
+   "bid": 12081.85,
+   "ask": 12317.4485,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EHCx",
+   "mint": "XsM3qqkARr8UMejnZUU3gBs7hz2fUdxDP35Dhxx9z94",
+   "bid": 9985,
+   "ask": 19387.037,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AEISx",
+   "mint": "XsiXtK4niZXG2MFkDmgRcZskNYoetURTV9XhgRf1ESL",
+   "bid": 26461.2485,
+   "ask": 27394.0295,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "KTOSx",
+   "mint": "XsssrKt95uWKWRbDdbCeMubD7iiD74NqiXeNL1p3Gaj",
+   "bid": 4792.8,
+   "ask": 4832.2375,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GMEDx",
+   "mint": "XsMkiaVUP5GkFCSJJGcun75edh1FSsLkCtDC3piGK2j",
+   "bid": 7289.05,
+   "ask": 7561.325,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ARx",
+   "mint": "Xscms1jQDud7fsxLTKibMVxSTSQz3JFeJ1HDshRkPwc",
+   "bid": 3451.8145,
+   "ask": 3482.2155,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SEICx",
+   "mint": "XstGFYNtBmWaCk3MfbEeqMYYbUf2o3PTLJm7R7iYfGS",
+   "bid": 8786.8,
+   "ask": 11705.532,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MGMx",
+   "mint": "Xs2hW1n8cBJAKUtDxZjJtFZBaxqTwczJY6n6XY8eV4o",
+   "bid": 3755.3585,
+   "ask": 3805.7,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HALOx",
+   "mint": "XsLaYaQLQfc9Z2Qis9gh6zebLbEoG1MLCrxD2wAmBBY",
+   "bid": 11263.08,
+   "ask": 11364.0205,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HIIx",
+   "mint": "XsqxvS2n4fRh41imCC68Z6NmDHk2SPXkGXrekg9o9kd",
+   "bid": 26959.5,
+   "ask": 28359.4755,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GFLx",
+   "mint": "Xs7pKrTAgPBaXjiZbGm8QQK36GRRX1Vsh7pTndjhxng",
+   "bid": 4246.6205,
+   "ask": 4354.522,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HRLx",
+   "mint": "XsQMbNzqcJURkmjzmh7DMfhjPf7Effu5QS3fpBLtazr",
+   "bid": 2075.8815,
+   "ask": 2122.1785,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "IESCx",
+   "mint": "XsepazYXhizTmBmiZWfGwFnyUUSepwzQkLRgQyBp2Zg",
+   "bid": 32251.55,
+   "ask": 33850.7,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CRx",
+   "mint": "XskkJXTNFU8cFstbYCAtxTa18tLkuRFe1AWHQhiBLy7",
+   "bid": 19770.3,
+   "ask": 31666.4285,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AMKRx",
+   "mint": "Xsqbg1tmAvNT5332hhX4hMSznqf2NJ1tz2cNWmAkRD3",
+   "bid": 5151.2615,
+   "ask": 5207.8,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BMRNx",
+   "mint": "XsF6swLUV7mDXkG39Ywmgouktp1PXaJ3oyGnCDvYs9G",
+   "bid": 6362.442,
+   "ask": 6459.675,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HUBSx",
+   "mint": "Xs8sK7KXi6tWULhBq4a8197Ydz4zDdLxtKjK6gBF59x",
+   "bid": 21717.375,
+   "ask": 22033,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AFGx",
+   "mint": "XsEv23PPmUAxWJ8VMyN84tyJzEnUg4Yg3636Mvyw4Pk",
+   "bid": 5712.4185,
+   "ask": 14671.975,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AMHx",
+   "mint": "XsFUCDYcyPbbYKFXaNUU661ZGip7mwjUEEk3W1YPCrK",
+   "bid": 3105.335,
+   "ask": 3153.7235,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DOCUx",
+   "mint": "XszH3SckdYS1Kbyj9wcmjttt9Lp8jMgU39rGL8b9Wcp",
+   "bid": 6896.6395,
+   "ask": 7135.6875,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "OCx",
+   "mint": "XseGSSi5kLz8eR539iXZ6tLz6r75UaHTQ6CHYkPjs9F",
+   "bid": 12421.34,
+   "ask": 12586.852,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "JKHYx",
+   "mint": "XsQpEG5WPyZ5Pkno8mHrDXNfYNdeCUkgUEQcaHAQQ9g",
+   "bid": 14028.925,
+   "ask": 15923.85,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WTRGx",
+   "mint": "XsR9n59W439iWymAe3x5qnjdnaRXQmbvPE2uC9efzjE",
+   "bid": 3894.15,
+   "ask": 4305.4485,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VNOMx",
+   "mint": "XsW8ts3iGPo8pxif5eFMv1Rnx6xE5Yw57Zhz2xYdhYL",
+   "bid": 4150.7645,
+   "ask": 4233.3405,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FIVEx",
+   "mint": "Xs7zvvE6QUtYmpMBrz4oWJexS7WSJPwJs7vQsvMCpaG",
+   "bid": 22765.8,
+   "ask": 23884.7735,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "IVZx",
+   "mint": "XsM5qDSyGiTVyHoi2VixmaEacByd3UCUoWtNhEqsyoH",
+   "bid": 3053.413,
+   "ask": 3169.7475,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MDGLx",
+   "mint": "Xs6hbDwJ8wr1zoxLusdhY2Vxjfz5C2doLVgZdZGRqvz",
+   "bid": 51522.6,
+   "ask": 55082.5,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "JEFx",
+   "mint": "XsWiS1zCUByB7TkvLQcxbHW4wLQ45vm1Uqg9tkk81ur",
+   "bid": 4667.9875,
+   "ask": 5007.5,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AHRx",
+   "mint": "XsLEJJP8FpnaSP17ETzVfkTQFHBP4i4hRvmz3RKX7B8",
+   "bid": 5112.32,
+   "ask": 5307.95,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "Hx",
+   "mint": "Xs5d6SH8HCeyBRkXNfoLWVnqgBT6tz8HnBoyJES3Fi4",
+   "bid": 14854.6845,
+   "ask": 16024,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CORTx",
+   "mint": "Xs7YhGRdqb6nzTTPqViWue7TT3EXbmWwmD4XdrnW3Ux",
+   "bid": 11036.4205,
+   "ask": 11174.737,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ITx",
+   "mint": "XsfNvqLMCuDnxbtV3BhTm7ckCra1NpCVmokKHpvF9j3",
+   "bid": 18472.25,
+   "ask": 19929.85,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "UHALx",
+   "mint": "XssRPrQZPGjgViEH2wVDAvDnFkiL9aFEE3dZ6Egbry6",
+   "bid": 5763.342,
+   "ask": 7911.85,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TXRHx",
+   "mint": "XsWFY8Ems96uFPnZJ1NwXsqeH6bczLQDDvvvab14crQ",
+   "bid": 16525.175,
+   "ask": 16915.335,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "STRLx",
+   "mint": "XsHLmetWDLLqs613YVRnkUsEZP4V1FSA3gTt33Dc66Y",
+   "bid": 52501.13,
+   "ask": 53579.2485,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AURx",
+   "mint": "Xs7x2HYEazWDXpYQYPBiRYh6o2AbkYrdrFwaBfBxyaU",
+   "bid": 634.0475,
+   "ask": 637.9555,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CACIx",
+   "mint": "Xs7wD8JEF2KoED55Re7W6GDoHwA5QPGJvLwQYHYw5wr",
+   "bid": 59910,
+   "ask": 68502.6,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NWSx",
+   "mint": "XsbsXGj6Y3jVNh4MYH7khsonL14iYBUHukSReovZoQP",
+   "bid": 3247.122,
+   "ask": 3355.025,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BAXx",
+   "mint": "XsFo6dYyRQwVtxbfdGs3zwyyQ1QBkh8D4ANjWXN3zTo",
+   "bid": 2276.58,
+   "ask": 2302.4485,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ARWRx",
+   "mint": "Xszh2XpEww4ndD8CyFzD5DcmqXpw7HMkEdSU1Ngunbe",
+   "bid": 6689.95,
+   "ask": 6810.2,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NWSAx",
+   "mint": "XsGXehA4smaWwx8yKTgdY1PQvaUxNQyT9gEt1Ly2B5f",
+   "bid": 2765.845,
+   "ask": 3221.8255,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GWREx",
+   "mint": "Xs6w8aJhwu1d5jKbmScXoitaDEE7HWhyujhkELeh4B5",
+   "bid": 13979.9985,
+   "ask": 14521.75,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MANHx",
+   "mint": "XsvSL6VixgcGgaPDBuHEyTfmR798Q4tdg2sCtwvev4M",
+   "bid": 18519.1795,
+   "ask": 23034.5,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "Wx",
+   "mint": "XsAdZrnayY88RC9cMEEaYnnKyBCALCwz6a4mmPTGUMT",
+   "bid": 10259.5875,
+   "ask": 10461.669,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BBIOx",
+   "mint": "XsbJzb2V963yBoCKjRJqSLbNUeBsqy6uV4dVnCnNp4q",
+   "bid": 6590.1,
+   "ask": 6759.1235,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CNAx",
+   "mint": "XsKfL6LbQaqnUfz3QZrBVwS3RqP34NKR3cmvbRu3doJ",
+   "bid": 4393.4,
+   "ask": 4873.299,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WTSx",
+   "mint": "XsMcyEj7KpLQyVXQ4GpSVERstPHrHzVqDG36myTJzjQ",
+   "bid": 34727.83,
+   "ask": 37556.25,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MEDPx",
+   "mint": "XsPdH3m4B33ZaRS5saL1XGQnUVYsx1yyEyAxmNfcpCb",
+   "bid": 53419.75,
+   "ask": 64997.35,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FNx",
+   "mint": "XsJ6W21MaWMQCqhRLbLTD82427vcMVzxULkomGRg4gJ",
+   "bid": 39690.375,
+   "ask": 40009.925,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DOCNx",
+   "mint": "XsKJGRCayh5LQ6bsET8ZVip8BaRZbWmj9fjSnCcy9P6",
+   "bid": 13275.0575,
+   "ask": 13520.25,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RVTYx",
+   "mint": "XsVbwfq869bWTKpW95shx8woTpzVSmsbCEE7xsMqWQ6",
+   "bid": 14178.7,
+   "ask": 14521.75,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DINOx",
+   "mint": "XsVuEGU83SBvgQiuynK2qtinyPVyKukoTCACdJg2767",
+   "bid": 11183.2,
+   "ask": 11467.175,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AGNCx",
+   "mint": "XsycyYwi9Kekp26jyGg3x5Fo1JDRr3XnTJmVaf5CRUb",
+   "bid": 990.512,
+   "ask": 994.4895,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "Ux",
+   "mint": "XsZygGhZ5GWq1TMrbBAibrH5Par33cKxrtZAuTQ9r9o",
+   "bid": 4133.79,
+   "ask": 4197.2865,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CRBGx",
+   "mint": "XswAx2kd4aKQtTszJ4zuA4nAY49hHzT82Vn8DqNcktY",
+   "bid": 3458.804,
+   "ask": 3702.5455,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HLx",
+   "mint": "Xsp5pDV28HxQDLcoC24G6G2yCNBvVpPJ3DZCjhs7YNR",
+   "bid": 1881.174,
+   "ask": 1892.835,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NVRx",
+   "mint": "Xso5KNztULjrQZQGzJQEwGcwBLSneMDpunzSu243URw",
+   "bid": 613087.9865,
+   "ask": 630945,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BENx",
+   "mint": "XsHXhZf6yLqBvcbuswpbio7m6yNTMrMiQWWN7csQMAr",
+   "bid": 3256.1085,
+   "ask": 3390.0775,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "OWLx",
+   "mint": "Xsnb4PjGtFsvTyp7HJNWfJLEbK6MoSZV8o7xMo3PuBn",
+   "bid": 989.5135,
+   "ask": 1001.5,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RBRKx",
+   "mint": "XsJRuk3Mn8wSkc3aTkG2oqxFJiZqC3YU3gmNZSFbLvb",
+   "bid": 10665.977,
+   "ask": 10759.1145,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CCKx",
+   "mint": "XsHjSQhp7Eac5azSKy7cZbZGCrpEUAA3RseKh2X7c8C",
+   "bid": 10084.85,
+   "ask": 11617.4,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CDEx",
+   "mint": "Xst5zttaWoyT8Td5jNhxwVQ1ku4bSRv8EVJe3SHoGdc",
+   "bid": 1963.051,
+   "ask": 1993.9865,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ULSx",
+   "mint": "Xspg7dCVnegasgemg56htgBWpemdffjvY9joWyNvJww",
+   "bid": 6286.556,
+   "ask": 6620.9165,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ASx",
+   "mint": "XsoxUeZzk47VGpqwE9wLi3DM9xuHSSmnsfXmvZH2bxw",
+   "bid": 2695.95,
+   "ask": 2754.125,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AFRMx",
+   "mint": "XsKfV36es7HHpJFKrDqaaXSFC1dwsrwLit4N67JH5LV",
+   "bid": 7258.0965,
+   "ask": 7288.917,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GFSx",
+   "mint": "XsrTYnfAtuMDpQQgZtpQZreJWtjaRnRCTBeekcQi8AS",
+   "bid": 4902.635,
+   "ask": 4924.3755,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TOSTx",
+   "mint": "XsXWXoWAzEo22ggADuXQeauMWxwgMS3em44tRBX2Vsx",
+   "bid": 2978.5255,
+   "ask": 3052.572,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "IOTx",
+   "mint": "XsriZ58QT8GfKLep8Vof8oMGq3P9qPhowG8NfyLrLzQ",
+   "bid": 3960.051,
+   "ask": 4006,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "UIx",
+   "mint": "XsLzbFA47Tm3Bs7MnSJrGbi6RnfbtCGA6pD3NHSzp6P",
+   "bid": 54118.7,
+   "ask": 62920.239,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GHx",
+   "mint": "XsJwJiZkwUTaZE1q2J1hX6YTGv3xRdZGtqan9a2VsYW",
+   "bid": 17673.45,
+   "ask": 18327.45,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "IONQx",
+   "mint": "XsqFgFeprZEpayi92MTQGheZiNFmTi2TRJRmrHjCzMx",
+   "bid": 3996.9955,
+   "ask": 4013.0105,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TEFx",
+   "mint": "XsUShG8vjDVvpduyiY3jDbVif8ivGeAu3dB6RtmXJZ3",
+   "bid": 408.794780659,
+   "ask": 410.1379885545,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "AXTIx",
+   "mint": "XswiwGt897dzZU8eHoojgUu2ka34brmPGvWeVHcHho9",
+   "bid": 7301.032,
+   "ask": 7357.019,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "INTWx",
+   "mint": "Xs7zs57saNfGWUn3h5d2rFxxs43uVqzAY7iQVPHFbwE",
+   "bid": 2894.6515,
+   "ask": 2913.3635,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DRAMx",
+   "mint": "XsESMQjWyDczCfiJ3QDjZEiaKwp1uXYp3TMZ6viuLcm",
+   "bid": 6120.805,
+   "ask": 6141.198,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SOXSx",
+   "mint": "XsCucuUESBi3ZjRxmjwUzGYuf6ZrtZDUvK6XhRA4RR3",
+   "bid": 3875.1785,
+   "ask": 3887.823,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SNXXx",
+   "mint": "Xs3EFHHyP27EsAw3ftS8UFsN8kwkhFvbppji6bbkkPn",
+   "bid": 1846.2265,
+   "ask": 1852.775,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MUUx",
+   "mint": "XsjZG9MgLMECjzSSxq3G7rabDceoaDqhN4C4zwce4i8",
+   "bid": 3512.723,
+   "ask": 3526.2815,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MVLLx",
+   "mint": "XsVEdRV17tPdXHamAi6TVFjyeSRHnCjdY5GXqAaevuk",
+   "bid": 3241.131,
+   "ask": 3257.8795,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DJTx",
+   "mint": "XscR1RVZydyrL6Wn7WqbW2k6EmkLuS8SqDzuyptwxoj",
+   "bid": 901.6455,
+   "ask": 906.3575,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "KORUx",
+   "mint": "Xs2LakxmT2YycpcxRDCJ7crPbFf91JKdAAWnfzANFmt",
+   "bid": 2161.7525,
+   "ask": 2169.249,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SHEINx",
+   "mint": "Xs8w8HvDjT1DxYeHzhSkRT8wYUahJB9kRC7Fuiic2Hf",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "VOW3x",
+   "mint": "XsLuVRftATQL3DgdBDYLqTAym468XKgrn27KUQdjbwT",
+   "bid": 8666.5410594,
+   "ask": 8697.17898914,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "WULFx",
+   "mint": "XsuwUbQSzCJN2wZabD1Gxf1MER2Ypa7hMzVMYB2WawJ",
+   "bid": 1752.3675,
+   "ask": 1762.64,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WBDx",
+   "mint": "XsZUSqxAXKJkEimvD4CoVvEb4WUC92TFgj5zRtBxFeL",
+   "bid": 2963.64785,
+   "ask": 2978.461,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VXUSx",
+   "mint": "XsLT5v4DAd1kwViPQh3SZiT5kzJfNLxzJxJN1dySZTe",
+   "bid": 8602.0775,
+   "ask": 8693.02,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VRTx",
+   "mint": "XsLUiVEwYeoneKpgR1C2Q4DBUZhX4xDktSCfQqq8zmn",
+   "bid": 25511.675,
+   "ask": 25628.385,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TONXx",
+   "mint": "XscE4GUcsYhcyZu5ATiGUMmhxYa1D5fwbpJw4K6K4dp",
+   "bid": 340.4885,
+   "ask": 355.5325,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TERx",
+   "mint": "Xsbe4fwmjVQEWEPkzfyxqNdPUUK7X9dKfTJrZdDbNgx",
+   "bid": 37893.075,
+   "ask": 38157.15,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SPCEx",
+   "mint": "Xsgrm4D6VBTfDx5bs7GNdjtmWDgZ8V79r3YpsYwf5py",
+   "bid": 306.5395,
+   "ask": 308.462,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SMRx",
+   "mint": "XsrwdnwLHjVnyy7fgE2Pdwjp3czEm73jPjkSC5xzUBw",
+   "bid": 850.722,
+   "ask": 854.2795,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SLMTx",
+   "mint": "XsPHkGBbztHCCe1RMhiAs7CxVqoghmyd6zDUfrbfVWG",
+   "bid": 344.4825,
+   "ask": 380.57,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SGOVx",
+   "mint": "XsYD72ntjj7ZwoFDZCDmN2gamTcLpnywqvG7PQN5vCN",
+   "bid": 10043.9115,
+   "ask": 10075.09,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PWRx",
+   "mint": "XsLR2VCGNzYVLfJGEwwNZsRYDZBGyBnoQH5rPGvwodA",
+   "bid": 64403.25,
+   "ask": 65297.8,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SCHFx",
+   "mint": "XsWAnFM77x6YvpdaZoos79R12o4Yj4r7EVkaTWddzhU",
+   "bid": 2771.836,
+   "ask": 2804.2,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PLx",
+   "mint": "XsMJtFbb8BwzQtck3oRXyAfs7SAPRuTXnSEDNd7BAVz",
+   "bid": 1664.4995,
+   "ask": 1676.511,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PANWx",
+   "mint": "XsQ6NfzzLH8nspjrB9X8R2K64Zz7Tnxqu12juDiMPMW",
+   "bid": 36429.274,
+   "ask": 36629.8625,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "OPENx",
+   "mint": "XsGtpmjhmC8kyjVSWL4VicGu36ceq9u55PTgF8bhGv6",
+   "bid": 261.607,
+   "ask": 263.3945,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "OKLOx",
+   "mint": "XsJb1p4Ks6VFggq68JyMz7S3kdRfkqh4wA6EMyxi4DD",
+   "bid": 3887.1605,
+   "ask": 3910.8575,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MDTx",
+   "mint": "XsDgw22qRLTv5Uwuzn6T63cW69exG41T6gwQhEK22u2",
+   "bid": 9151.2525,
+   "ask": 9245.848,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LRCXx",
+   "mint": "XsSN912SN4Whn2xn59vWZHt1uLbw9WnoNGp5MigmHFf",
+   "bid": 29366.8835,
+   "ask": 29568.286,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LITEx",
+   "mint": "XsexQ9qqNbDkLE6XwCN9ceVhLo8Lxc7UheVR6eBkKyo",
+   "bid": 94857.5,
+   "ask": 95342.8,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "KRAQx",
+   "mint": "XsAiRejKuvLAdq9KtedrMSrabz7SWdzKoVK6Qgac1Ki",
+   "bid": 987.5165,
+   "ask": 1595.3895,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "KLACx",
+   "mint": "Xsw2uU1i8tHjbgstUbtt3m6kg7BS7AgG5aj8z7ddmmN",
+   "bid": 18090.823,
+   "ask": 18187.24,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HUTx",
+   "mint": "XsG5QyZTQnVSpsXRpD92K5ZGoxXjsmfTyx7fW7r18DV",
+   "bid": 10284.55,
+   "ask": 10412.5955,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GEVx",
+   "mint": "XswXzAsMV9kebQjCVtr1btvrQgQ7C4C9kKgH4QYAVzw",
+   "bid": 95565.93575,
+   "ask": 96036.8395,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ETNx",
+   "mint": "Xs8S5L4HkJpeBWF1J4oyUX6rVwGHmG7GZ7PiChPt7nY",
+   "bid": 42935.5,
+   "ask": 43455.085,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DFDVx",
+   "mint": "Xs2yquAgsHByNzx68WJC55WHjHBvG9JsMB7CWjTLyPy",
+   "bid": 670.992,
+   "ask": 676.0125,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CORZx",
+   "mint": "XsBGEXxbBcuu8Nrokj14G8v4ezT3JYWWLneTzXK8t6Z",
+   "bid": 1857.21,
+   "ask": 1875.8095,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CLSKx",
+   "mint": "Xsn3H7ACEpSF2ULxeiD6kW4jRZXpurh8ZPttyfoS56W",
+   "bid": 1503.741,
+   "ask": 1519.2755,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ASTSx",
+   "mint": "XsR4LAtaBgTKTRUhiijY1ba13nx4bepeEcag2Pr4dZ1",
+   "bid": 5943.072,
+   "ask": 5971.9445,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "APLDx",
+   "mint": "Xs2ZEuDVSQkNnXHqfqEYKVShLHpecyKfdfpEYwiHtQE",
+   "bid": 2885.665,
+   "ask": 2908.356,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ANETx",
+   "mint": "XsrsM2RgtYxXqxmy4iWgxQJUkkHG1U5wzi74sVNUW8m",
+   "bid": 20269.55,
+   "ask": 20396.549,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AMBRx",
+   "mint": "XsaQTCgebC2KPbf27KUhdv5JFvHhQ4GDAPURwrEhAzb",
+   "bid": 196.7045,
+   "ask": 200.3,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AMATx",
+   "mint": "XsQZdaWUAGC4R3fgD2N1fupKvJfJq6YM51ccnsLUWFA",
+   "bid": 45381.825,
+   "ask": 45668.4,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ACNx",
+   "mint": "Xs5UJzmCRQ8DWZjskExdSQDnbE6iLkRu2jjrRAB1JSU",
+   "bid": 19116.2825,
+   "ask": 19268.86,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DRXx",
+   "mint": "XsTf4WyqGhigiQC8mg3RHresyrwT5M9hmWKnvrnZ7wm",
+   "bid": 1111.72894144,
+   "ask": 1117.079479555,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "QQ.GBx",
+   "mint": "XsTzDSVHNfFRcbXY8LVnkDgg54FGrpDGzgR1exVf9Cu",
+   "bid": 666.502879796,
+   "ask": 669.577574068,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "BWYx",
+   "mint": "Xs8NtGgTwwHAjdDvdhjcDBDYbEoF39ggi5QKKAwWu97",
+   "bid": 2744.58082418,
+   "ask": 2755.50739048,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "ULVRx",
+   "mint": "XsNrNxXBab5oRAUnN9u2YzJzhJjLCo6YeJVcCEttL7V",
+   "bid": 6174.63874807,
+   "ask": 6194.53071926,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "RS1.GBx",
+   "mint": "XsTkvkzwuaCi712NQXeHB2xMQYwVTX8F7bFPVD2ZEcA",
+   "bid": 1008.172459515,
+   "ask": 1012.541747815,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "AJBx",
+   "mint": "XsKU1nPbnBTpVegUrMaapscL7thNmQTq365eLYidPZa",
+   "bid": 815.0897287,
+   "ask": 818.87889863,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "SCT.GBx",
+   "mint": "Xsb8yBrDit2zkPSgWQtddBZPJz5Mzi4fWqjd1k6Vhq5",
+   "bid": 2644.36487393,
+   "ask": 2654.99034073,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "MNDIx",
+   "mint": "XswrDgJ2NABYfT7TZzvkVG3XqSFRDkq2weMxeCURFxh",
+   "bid": 1128.030736014,
+   "ask": 1131.956002918,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "SN.GBx",
+   "mint": "XsWYNagePVR7FDVei6E5xirRMKnRCxhUvKzDYwVzPzM",
+   "bid": 1378.97147544,
+   "ask": 1384.45483189,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "WEIRx",
+   "mint": "XsGWxUfzgE1Qq7eXjpeQwHC2TsgKzTXo5tXcsg9KRRd",
+   "bid": 3581.0633355,
+   "ask": 3597.18359385,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "TW.GBx",
+   "mint": "XsJAv8xheV7udiAeM8DNduVAe4bg1s1SLp3uzJsCCvG",
+   "bid": 105.16033003875,
+   "ask": 105.610308195,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "WTBx",
+   "mint": "XsPrcE2hM5cZP97YfxxEbtwHSyFGNtA8QmDCoiYsBNL",
+   "bid": 3110.7147183,
+   "ask": 3122.741346375,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "STANx",
+   "mint": "Xs48goZtbChFs5wZtcypPZQHh9WmTRqzkqante4qSB5",
+   "bid": 3113.387153625,
+   "ask": 3124.0815787125,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "STJ.GBx",
+   "mint": "XsfTAA7bScmYWJS3eCJ7exrDqUNtD9TjtZkKXWWSyZK",
+   "bid": 1495.89567316875,
+   "ask": 1501.060218,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "SMIN.GBx",
+   "mint": "XspAgeHZ7DAtDP9Y3t56sTpuhCFY1GafqstYjcu13f7",
+   "bid": 3419.3809983375,
+   "ask": 3430.994784,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "SVTx",
+   "mint": "Xs1V7BHojsDUQiNhsSm8TKpEyYrmox2gCzFUJ7b4t4q",
+   "bid": 4096.843353225,
+   "ask": 4114.513276125,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "EMGx",
+   "mint": "XshcRvneh6GUWeFNREY6bKRGHZvPK7C44TQyykaoaTf",
+   "bid": 454.31400525,
+   "ask": 456.215087685,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "SPX.GBx",
+   "mint": "XsiMJ43LZ4dLS1G6SSdeW7aDQnoECuKBQkobnheRrdV",
+   "bid": 9507.1886686875,
+   "ask": 9542.454243,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "SSEx",
+   "mint": "XshHCWPTRVkNuNc7bqfdw9PzBZzrted9u8YQwdkw49e",
+   "bid": 3291.1041027375,
+   "ask": 3303.6727119375,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "HILSx",
+   "mint": "XsNdESrkPBsGBunmPxvjkwfxLmBHn2yFukbLQpNzDBx",
+   "bid": 4135.5936654375,
+   "ask": 4161.4214079375,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "MROx",
+   "mint": "Xs8gEF9vKesfaRWz47hTQdiwi6DP55cQwbmZhmF5mYa",
+   "bid": 647.5310792475,
+   "ask": 649.87866045375,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "CURYx",
+   "mint": "XsmG4XcqGRyjuk6j6mAwT7QeVPom76GbXipBZ5TkirK",
+   "bid": 192.81620869875,
+   "ask": 193.529549535,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "UU.GBx",
+   "mint": "XsSZEaqC9B6ac1aAYnNSXWUS1moV2MCYQMTFo6Cv7s9",
+   "bid": 1850.6614625625,
+   "ask": 1858.9022521125,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "INCHx",
+   "mint": "XsdWpVSHxm4AZShvAkLBRa5PCaJq3LCdaamJGxgJLrd",
+   "bid": 1079.6638713,
+   "ask": 1084.2479610375,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "BKG.GBx",
+   "mint": "XseXMu35TstUhDHfyQZJjt8Gk3k1Ki7sNgJ7zyr5CNA",
+   "bid": 4406.845850925,
+   "ask": 4422.76671375,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "SBRYx",
+   "mint": "Xsy7nzWTjrfA9NBHBBPL6Hs3mQfKWXX6fk2mUPQEjpR",
+   "bid": 445.09410337875,
+   "ask": 446.69943808875,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "HIK.GBx",
+   "mint": "XsFWXQ48hsQxeYdoJg1tGsfANfFHPs8kbJZL8kkFgj6",
+   "bid": 2131.2671716875,
+   "ask": 2140.3510429875,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "GRG.GBx",
+   "mint": "Xs1D8Yx8LY1gvRSXQZgyoapZDE6Yt8uM5QZDtunbQ4F",
+   "bid": 2395.8382688625,
+   "ask": 2405.7170458125,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "MNGx",
+   "mint": "XsBdWEWbrhQn3JUJA9UtmfatyQfWHtsczb6kaCFbPAF",
+   "bid": 448.03378223625,
+   "ask": 449.64794923125,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "REL.GBx",
+   "mint": "XsBs8gVk5onjugkDigC45ixK3FadqH5kAxjGHEvfSdE",
+   "bid": 3335.21174688,
+   "ask": 3347.91288781,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "RR.GBx",
+   "mint": "XsAUxvbWEvvdgVnXs1LRbk17Bgjfv2Y6cskPTGu6zrU",
+   "bid": 1989.635533295,
+   "ask": 1996.149501643,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "PSONx",
+   "mint": "Xsama45PWCDWjND9x92h7C7uNLbqX76VubnyvYBvku1",
+   "bid": 1586.7644028125,
+   "ask": 1592.20196586,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "LSEGx",
+   "mint": "Xsgqwc7TpDNsYD8j4MLTzwqJuECdAcvW4jB9S62FDfX",
+   "bid": 11128.06227084,
+   "ask": 11166.85755854,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "HBR.GBx",
+   "mint": "XsCb3TJrQb5f84KcDPsJSFf27aXfZkjK13J7v2T5zXG",
+   "bid": 372.538876214,
+   "ask": 374.462314193,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "MKS.GBx",
+   "mint": "XsGy52e7g5whVEwDxXoN7JNxyfffh4Rr8QYvsXRgyNU",
+   "bid": 479.436688614,
+   "ask": 481.2792305895,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "LGENx",
+   "mint": "Xs15uYmUhCJzemqtBvfVEfMW5KTPsuKMZg2MDL1rwxm",
+   "bid": 398.3279734555,
+   "ask": 399.658776279,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "TCAPx",
+   "mint": "XsreDw9sQZQzvMUbgAkdGvk9JD1A4q8Sbfb1pq8Zxcr",
+   "bid": 458.858859727,
+   "ask": 460.773599211,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "SGE.GBx",
+   "mint": "XsnVJZpyWBoxhzVAqNgXdaqDuyBCUffdoPrUgrfaT9S",
+   "bid": 1354.92977217,
+   "ask": 1359.6707865025,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "RMVx",
+   "mint": "Xsm7Xcc4TtVQKdgEs7KBUVMimkWpMhqMwjaJ24G2sdn",
+   "bid": 664.637148597,
+   "ask": 667.43819781,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "NG.GBx",
+   "mint": "Xsa4x5GF2utijLC8uY1DmPYKRpeHk9BT2QXkQD2ZRyz",
+   "bid": 1533.3154966125,
+   "ask": 1538.59247206,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "IMIx",
+   "mint": "Xsyi8wDoaaArbZKnyFAVz9LJhed9iLeNxT586QwPwR6",
+   "bid": 4144.96267581,
+   "ask": 4162.77719357,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "HWDNx",
+   "mint": "XsderJhLTce957LZDcv8xkuRmjSU3AoaSbAWmf8BYHw",
+   "bid": 1016.1973291275,
+   "ask": 1020.5907382175,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "IGGx",
+   "mint": "Xs5Fz9gcBsdz4NnLeTfcMNtE3qgFeXWugY1NctAmEGh",
+   "bid": 1850.668377175,
+   "ask": 1860.24943486,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "INVPx",
+   "mint": "Xs2Ejy1fMZtHrC4yb9nM4XzsVHVKnJEENi9PZmPqo1L",
+   "bid": 875.8939503525,
+   "ask": 879.19569832,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "KGFx",
+   "mint": "XsN6LCaYcQq8Gn1awaCdMge96gHyGaqFBmHmv8Zj2FW",
+   "bid": 404.4745976685,
+   "ask": 405.9578918005,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "LLOYx",
+   "mint": "XskhwomYHra5YRCmeH3PtiCZY9Lx9QprrxvREdk1YEQ",
+   "bid": 147.85303677575,
+   "ask": 148.3642740915,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "HSXx",
+   "mint": "XspeLbZhQF4oGcAPPJXhtfAToSMh273TBFSh77B47dv",
+   "bid": 2598.953063975,
+   "ask": 2609.442110715,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "INF.GBx",
+   "mint": "XsM8Hrm1jMh4yAH3DpoVR66YNDV1a4xf5k2mmHv6Wqk",
+   "bid": 1184.160516861,
+   "ask": 1188.254430077,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "IMBx",
+   "mint": "XsQCHobH4od9Yx67dDShF2YG34XYqApCeHVuvj9kchM",
+   "bid": 3328.530633605,
+   "ask": 3339.87146374,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "JD.GBx",
+   "mint": "Xsm81A6dr8mgCUBWPXSV47M2m8BkzFkkcq81vTMGqCL",
+   "bid": 98.96028008475,
+   "ask": 99.36482550225,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "GLENx",
+   "mint": "Xsz31C1hLJRXCxcaw84pMhkUHdF54B5MSFdTWYLZ4Rh",
+   "bid": 752.15692222125,
+   "ask": 754.5508060125,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "GAWx",
+   "mint": "XsmZTCZ66HMRvK87zwbicJ9sthjqvu5GVbRV57mgTpc",
+   "bid": 23731.225686,
+   "ask": 23829.33096075,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "HLMAx",
+   "mint": "XsaX2uNTuVMLS9suc8XfPmUqgjtatcJKgdfRtnXJ4pf",
+   "bid": 4807.711149675,
+   "ask": 4827.516879675,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "CRDAx",
+   "mint": "XshoX6qy11Q4HHcaJKU6h7JVmVqXiAXPLACiGLqLTxZ",
+   "bid": 4299.948437925,
+   "ask": 4316.8883590875,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "EDV.GBx",
+   "mint": "Xs3qTSWcLp9WP4BH8ihLcFsRLzv8CRw2tWHymhEfyTx",
+   "bid": 6258.84353115,
+   "ask": 6283.0091982,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "FRESx",
+   "mint": "XsLQMGy9R2u9nHvh3G7qbtRyREEXvXpUfjjmdLaxGcd",
+   "bid": 4084.8173942625,
+   "ask": 4101.11095275,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "BTRWx",
+   "mint": "Xs7Lv15gA3Rjf5W7jVjcLAnjce7LKHSknMRHBVAyNzT",
+   "bid": 402.60238171125,
+   "ask": 404.08004975625,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "CTEC.GBx",
+   "mint": "Xsftt2xCow4ZccztK3ai3tV8qjfNvMbiUMYmQUknLNV",
+   "bid": 286.2178233075,
+   "ask": 287.34581316,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "ENTx",
+   "mint": "XsSZgwA3SCj5n6TEtkpfUweKXUuZWFgAJtn7SmkBBMV",
+   "bid": 619.60413010125,
+   "ask": 622.1358510675,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "BRBYx",
+   "mint": "XsijAxbQkBewsynCHDdEgHWavY3pwuRkJfGi8jNdAnL",
+   "bid": 1364.94634224375,
+   "ask": 1369.717448925,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "EXPNx",
+   "mint": "XscBXwj1Xq7g5ayDwJCFUGF3UDxxsVVCnZuwpxMxSQ6",
+   "bid": 3642.529347975,
+   "ask": 3654.8135843625,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "HSBAx",
+   "mint": "XsiABbf6PQ8oPyZhqWg9LFTh8K3xMbZWp3ybjhyhE9d",
+   "bid": 2060.7148791075,
+   "ask": 2067.17435736,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "BPx",
+   "mint": "Xsdj6kUSZo4jUq1bpJ5bh9z4deR1fVY6Fn8e2ySvrkJ",
+   "bid": 739.32923266125,
+   "ask": 741.6845755725,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "DPLMx",
+   "mint": "XsF4YQ8jUR5rRPoGdwSCEmJ9xrfJ2vorWoMxyzFCJp2",
+   "bid": 10014.9513804375,
+   "ask": 10051.74253125,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "BNZLx",
+   "mint": "XsV7rBpwfAQVkKK1NmNTCMzJQvsVwXYxFciVYXeA9nV",
+   "bid": 3498.217840425,
+   "ask": 3511.40872425,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "BT.Ax",
+   "mint": "XskY8Q5ZHvhVJuBBor4iVjCbztSfBV4hsmEtoa9vPnT",
+   "bid": 266.57542366875,
+   "ask": 267.510374565,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "BATSx",
+   "mint": "XsnHFPDQiWVbmZobbRvneRpvY5BL7AGKcJ9kMJGvUgk",
+   "bid": 5612.1141825,
+   "ask": 5631.656282175,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "BGEOx",
+   "mint": "XsbAuLnxt5JVLzcLC3nCo4h3jnRiFqxXzauVe4bHvDp",
+   "bid": 18894.11774775,
+   "ask": 18977.689899,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "BEZ.GBx",
+   "mint": "Xs4gTbX4XBcHxQq5qFSn56zhuoe6NKwsSqKk3LoX226",
+   "bid": 1743.09594073125,
+   "ask": 1749.0032004375,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "DGEx",
+   "mint": "Xskk9MXXX59dgwbj8hSZZUCc6RCyVVE2jLk7AsAQhyw",
+   "bid": 2138.61636883125,
+   "ask": 2146.38208850625,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "AV.GBx",
+   "mint": "XsRUVKNpti3iMz5pU7nUTrfGHLVuLUKuh3qxXSsE9wZ",
+   "bid": 958.0680640125,
+   "ask": 961.4826789225,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "AUTO.GBx",
+   "mint": "Xsuq2i3pPWHHM8o8i2jgvD9uAU6Kkzosi335iKRa1my",
+   "bid": 658.35444231375,
+   "ask": 660.86856562125,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "BARCx",
+   "mint": "Xsj83vfdGZqBQ6pTHJ7PRqWQBnm9UgUzWqT2fUztwme",
+   "bid": 633.76803732375,
+   "ask": 635.739209293125,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "BA.GBx",
+   "mint": "XsnpBvWb5ZUcVb9MhDUt8Jir8RyaFADjVujpF3REcME",
+   "bid": 2713.8580725375,
+   "ask": 2723.3521098,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "BAB.GBx",
+   "mint": "XsPJ7qgHgLGn78JVNuoMGsCXQsThJQmxcp3yGK86X5X",
+   "bid": 1332.7434965775,
+   "ask": 1338.624058695,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "ICG.GBx",
+   "mint": "XsWbh78UsRczCGeJz2xAojo918D13ks9dst83AbscyS",
+   "bid": 2540.1497764125,
+   "ask": 2550.4621382625,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "CWK.GBx",
+   "mint": "XsESJA8L13skRorjkG6pMxKk2cPLthCeXoDsThiLhzc",
+   "bid": 6814.71007875,
+   "ask": 6861.989568,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "CNA.GBx",
+   "mint": "XsNZhxqPhitSup6kZr8NUZZnhGzZy4JiYsPwJUCwuCu",
+   "bid": 196.82486168625,
+   "ask": 197.5502465475,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "ANTOx",
+   "mint": "Xs1HiAY2BitDiQVebt2EJ6TFueRLia5ujSGqnh3vp3w",
+   "bid": 5097.6703824375,
+   "ask": 5115.6668322375,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "CCC.GBx",
+   "mint": "Xsox8WPr1nuUYChxKKzXbwAdAUdtD3B62RBQHrwB2ws",
+   "bid": 7369.2404086875,
+   "ask": 7404.7836646875,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "ABDNx",
+   "mint": "XsubSc7YfpRsK6PbLVnK3XCZRJkQEkkiRhvG9f2JQan",
+   "bid": 328.709544975,
+   "ask": 329.9652014925,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "NXT.GBx",
+   "mint": "Xs6MKSza8obeoELdtqLfdr68QerhhQsYkEaqe56Wzez",
+   "bid": 19168.0423685625,
+   "ask": 19232.334043125,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "AAFx",
+   "mint": "XskX5tputmVo1uUb7uSg27iuEpyQ1SFn53y9YR3Y6WX",
+   "bid": 407.27914353,
+   "ask": 409.038909405,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "BBY.GBx",
+   "mint": "Xs6aBbsUaqRPpA1dCW5VTr3nytceSMFqf126ZixvFPk",
+   "bid": 1248.027296775,
+   "ask": 1253.1172355625,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "GNS.GBx",
+   "mint": "XsXXe4iwbJv1PkEgKzGL1oSrVtWT6QDD1qtuahFTfs7",
+   "bid": 2835.453879825,
+   "ask": 2849.333949525,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "ABFx",
+   "mint": "XsWsRPQPNCtZj5G5k8bWRdAfd1x55Ct7qkHUiSzXZNH",
+   "bid": 2419.8901867875,
+   "ask": 2428.50099555,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "IAG.GBx",
+   "mint": "Xs1Y89cAPbtcPfkwmKY5E4EaET1SsLxwQ63pa6MR2YZ",
+   "bid": 569.228724225,
+   "ask": 571.2070222425,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "PSN.GBx",
+   "mint": "XsJJviVjnT7MjnkPierCHLBTUHrhG7yj8Drscvb5x4Z",
+   "bid": 1527.96489706875,
+   "ask": 1533.2257941,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "WPPx",
+   "mint": "Xs2ZYqqYG6xgBsRBw8Rhn9rCVggLitQMnW8KFKgxAVB",
+   "bid": 508.0299552825,
+   "ask": 509.95840441875,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "RTOx",
+   "mint": "XswGtwn9kLnkHMih5HCmDg1Z2yYEfdP3YbFzwNKNY1Y",
+   "bid": 424.209479875,
+   "ask": 425.61803084,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "SHELx",
+   "mint": "XsZY1Ta5ubY2ohQT94HNDNADiHUvyeSQX1RkTV8omx8",
+   "bid": 4717.075806925,
+   "ask": 4732.588400225,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "VODx",
+   "mint": "XsPfiLnSyYwDLytKxdp5N8PsEPV3jV6GCPuhacgz5it",
+   "bid": 169.015745525,
+   "ask": 169.5905598325,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "BANKCx",
+   "mint": "Xs3uhDYpQGfkeZ7rrzQgmozWQHC5uDLUa6iAN65qHM1",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "MMGx",
+   "mint": "XsfLyKBQbxGQu7jQk37Ev55Sb9hxfbiHxX7X3msqHTs",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "SUOPTx",
+   "mint": "XsVpajrhXA4CffEm652abYSS2iDiKnLnarPYxaokYis",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "TNGYIx",
+   "mint": "XsMMFdkb82bRyNcwXxWZQqkurJuzdqZ5Wf6ydd5exBe",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "ZHAOMx",
+   "mint": "XsPRsZhqX1Ef1n7bwLtyA6hZPP96Gp99H11MHHA9UQ5",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "JDLOGx",
+   "mint": "XsrGQPAF78mZRdnYK9U7m9wR93h3zpToVGv9yAuQUzf",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "LAOPGx",
+   "mint": "XscTQ6FeMPkhTuhFsrCZRn4fBmGsvqnFmPKfbC9B24g",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CTINSx",
+   "mint": "Xst1K519UWCXvw2nKW6qHWfiUmFA3ybvvYpifzYhTWF",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "HAIDLx",
+   "mint": "XssLkiDcsHvkTi2BXDLnXszTktNnTPBXFMVTvMBvVtb",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "HRZRBx",
+   "mint": "XskaoJotEKofUeTnxQfvoQuW2kbL53uvnDJqVXj7Gf7",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CRESBx",
+   "mint": "XsptDxuTbpFNx9vic5CMDRiGzPDhNDcVp2i9bUdTktn",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "SNBIOx",
+   "mint": "XsyeAGJ5CS1uDtDcnFaHTW3QCF5eL2CAt8vcrRBeAs5",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "KUNLx",
+   "mint": "XsxnZRxni2PYV3KTmfqJmZHFK1z55DV4pigWDuMZH8i",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "SZIGHx",
+   "mint": "XsvkFi5zMUCQ9Ynzjsu2d5wcpTEZBW5ZRggHhDBUwRC",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "SMOIHx",
+   "mint": "XswbKzrwuU9XaDu5w5xLXFwSwr9AbyusuP8SMYirr49",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "ENNHLx",
+   "mint": "XsfTYmMC73C6xJsc5k92ZWBdQtEtmnRsVtkN9s5RPQZ",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "WRFHDx",
+   "mint": "XsQqWNfMfAVg8hSfGMFzSvEfqwhid5qcZVmm6ny6g3a",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CMERPx",
+   "mint": "Xsa8uVzPAfd1FwuHEhVXKFj9Nn2Bprn4DAzUw7Hz7SR",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "BDWAPx",
+   "mint": "XscpBVm2popZi9D3rPNEV5fyxonLfJeTZ8iFeowZQ9b",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "ASMPTx",
+   "mint": "XscQZXWUx2vw2cP1oQSBgRVJaky1pV6anaAKomxoFYn",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "JTGEXx",
+   "mint": "XsMotTTUju1CZRh88eCRM1Pm6f91qHh1kbmaBYdS85b",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CRESMx",
+   "mint": "XsKFSq4aTzj9L2g1rqbdcewZH3bZNE2WwWBZKcGNxsX",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "WHRFRx",
+   "mint": "XsXQY2nH5bKDLEHwigMzqnmicscdXei1MhduRZeF4F3",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CMENDx",
+   "mint": "XsD87ikehM9bu4pEdyT32TdMP2J5ph3F1uBCwEFdLUo",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CSPCx",
+   "mint": "Xs5hnQoLHnA2xeHaaxYGkCV2Kp12SwCEeCKBK7BW3gr",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "MIXUx",
+   "mint": "Xs85byjTdWv5Z3YpUqyJjeRaZsxQDz81skYjQKdPDZc",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "WXXDCx",
+   "mint": "XsakKPtdcDAk78qkX3vqdJucecauLw6tcL6BJhG5nA8",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "SITCx",
+   "mint": "XsLwAZXq8MyrkrdsfmPoRxrdQMvGjwveSK9Ug33uRku",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "SINOx",
+   "mint": "XsUtvf2GurvELy5dM2cHVZHZ4ufkviBv6gjQFfKKHeL",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "PRADx",
+   "mint": "Xsb9LAiNr8LAGa8G9Uo1UxoWKs43adKvhXTdTtFt7mo",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CTPCAx",
+   "mint": "Xs9ZqDkZpNZ62FMdQeAQhz5a9fNQ7hXy2XCWDvEnpKn",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "JDHLTx",
+   "mint": "Xsaax31N2dJnKtkDbbJfvdYgz1zWmgx3xaYf6yjNuWx",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CLONPx",
+   "mint": "XsyGQnVqV2XoDzSGsHoemfpvpctbEMtqdBvRk1nGnLZ",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "SNDSCx",
+   "mint": "XsFRth3iT4KjYSzVvWpdeFhFjzdguCFiv3zMWJEodsF",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "SINOTx",
+   "mint": "XsgiiLos4YromwpmshTMTN6z3PSbD51HSn9k9xysujp",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CTFJWx",
+   "mint": "XsWgkRwEBBWSzUTXX8CU84LpRheciMF8o6ZdSMR3Gny",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "WHGROx",
+   "mint": "XsQDsbd6nqERiTZY2TkBheUG53QsewgCa2eaCSS4PYe",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CRESPx",
+   "mint": "Xs22M1UvnSTzoiVopRbsYxcSFX4caT93eQgx27R8Xu7",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "PWAHLx",
+   "mint": "XsQqMhANWwSjKHAV2rEN1yGaBRxSBRbFGxwzmfjJcBh",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "GENTEx",
+   "mint": "Xs8q9nMs3HPqxpGqxRXaSrnVcMXPKkXzR9f9XT9doXG",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CLPHDx",
+   "mint": "XsC1MeKZhxG5mv1h6oen9YVT2Skfxa3GMVkXymkTF8N",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CRAUTx",
+   "mint": "XsN23gnUFVBFR2RL9pQicMG1NNy56okJ9eTTQUSNubA",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "WUXIBx",
+   "mint": "Xsza1ZaAjp3SfM5ejn7BPdNCJePtSh7iLK58rqF4i1z",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CKINFx",
+   "mint": "XsgYr5PbwmUuQTDFwVDAx2M4KzZKwz2zvYMzg4Nuwym",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "KUAIx",
+   "mint": "XsD9Zgip86m52ob2c9MNTtDVoin1KmgdCNUCCDwsEPF",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CKAHx",
+   "mint": "XsEV5rBKdRtbmVLXmCxTm6Dox3467drekVVwpupVLrP",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "SWPRPx",
+   "mint": "Xsxr7Bmw3Sj4ib4RziMw3CZuFVfCUgFuXi4W5bbmrV4",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "HKCGAx",
+   "mint": "XsgLierNGzsEw1eziSPaKANRPfxXadZ6syo4WdGz2S7",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "MEITx",
+   "mint": "XsLvCfSnXJjoVaAJENHxKRzCZaWJpyVQQfJgkHp9oXM",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "GEELx",
+   "mint": "XsxsXLryvGn9xUBvkzcjNLR9C1krKy8YEySN7yVEyme",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "NONGx",
+   "mint": "XsZHUEeic6QiGEadqCje2zBoTxNX1B3857CjYkMEfuw",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "COSCx",
+   "mint": "Xsq94yaNbSREX4vckv2jKRaZziduQMQX3nwDm4eJNet",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "MTRCPx",
+   "mint": "Xs1myeXT9eHk3aAX2xa6LZ5AWBJzsDLc5RxT9zYqWAm",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "COVELx",
+   "mint": "XsSWT1Cw3vemPuy82ATtfT8R347jctHVri1m2NzfD2G",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CHONGx",
+   "mint": "Xs1Pd2VsTd1MBDnnBNtH2V68Z5WPNtMmYmE9cuMoBcT",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "HKEXCx",
+   "mint": "XsZQt7qW9vH5SWXZPsn1ZAybCSkq5MW2r6HGo891u1X",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "HNDLDx",
+   "mint": "XsXQAtNjEzXfEotjKz6QQ9WHBdhbzMbPJDQfsc3UR7D",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "PICCx",
+   "mint": "XsFRjWSNaDPz9nVYUsSky5dJKjN6W5JupHCHbNwg4mE",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CKHUTx",
+   "mint": "XsjMBmvjeERTrf2odjQKQKFgBVWsiC5J9Mhe9eCNyfW",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "ANTASx",
+   "mint": "XsdP2Pc9F6UsUujiydSsBGZGNYpDMivEjNfQ1ytHD1P",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "BOCOMx",
+   "mint": "XscjyoChdmwiZwDzQZQXEVFsyYTc6Bhfn9TzyfufjVd",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "HAIERx",
+   "mint": "XsW6LqAt4tGLAWu31ya4BQ9DLdpXeVEDSNZSqzbkYRC",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "POPMTx",
+   "mint": "XsyQU594M51pbhveG89CPanCJHPJt1tjLJroKMeHrmm",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CITICx",
+   "mint": "XsdSGGAQyFiEuCVyV5ZQgB79pXXpr7vZPm3nhvHwKzK",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CRESLx",
+   "mint": "XsbsVbQ24JD4HKnrz4eLktPBgZEMX3cooqiFapFjUtB",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CPETCx",
+   "mint": "Xsk88vf8LbRSVFTd9nu7kBsC2hNpQt4UckiV7eLSct4",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "BOCHKx",
+   "mint": "XsdyyYJSCDVHBdAujSoWnQEDBQi9Y85YxoGVueJNf1j",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "ZJGLDx",
+   "mint": "Xs64245JybP9rgXJZJZcxKKRwqJnRpGKzoKtVNcyhoS",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "PSBOCx",
+   "mint": "XsZDpnjZWLY4yN5FMgTg2GZSdH7ZpWuHPYsooTKXH6u",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "XIAOx",
+   "mint": "XsvP4b65AoC8f2hEuXj3yAKzRCLtW4aCQupZcuK1vAe",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CSHEEx",
+   "mint": "XspgPmoq1m39tGMLmourzxXgGmSLbjfxiytABBwGA2u",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "PICOx",
+   "mint": "XsioL5whfekeqi92geGL9hqkDWJ2XuDbXDcmBkJktro",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "BYDCOx",
+   "mint": "Xsbcv5nSVTc5A7jRZNe2Sg6VtgCyyb32SC2nnaPK5MZ",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CLINSx",
+   "mint": "XsoHpcJS91HhgMCe9ApwgpXbXFjV4ZoYATsZ5WQM4RB",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "AIAGRx",
+   "mint": "XsQk7zRMNmbgSr4ZnvANH4enGH7zkUAtahKuckYy7x7",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "ICBCx",
+   "mint": "XswoSyxJ3NayixJFM4y7JUNL8CFDrL68oUw7nr3Kbnz",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CCONBx",
+   "mint": "XsvPonyU9dZWsZsT2rJ1MBRAmPw8gMtS7M3ERko8XkK",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "TCENTx",
+   "mint": "XsXb7KCxcxTi6hqWfYyEe1kpTwtiCeU5TJbEz8N7RWn",
+   "bid": null,
+   "ask": null,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "ARMx",
+   "mint": "XswUFSYE5CWsZM3X3yo6e2pZvxcAzx912DonGvgUFka",
+   "bid": 28706.875,
+   "ask": 28852.2135,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SHAZx",
+   "mint": "XshjhoEnkjn6T6f2oyzVrAnMFgixpvFoBp7KepdByJ7",
+   "bid": 5846.2175,
+   "ask": 5908.85,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "CBRSx",
+   "mint": "Xstq9oUsBPd8LSyivHhnt8P8t9xK5RYoM9P6izLczvm",
+   "bid": 20119.775,
+   "ask": 20220.285,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TEx",
+   "mint": "XsEn37JjZxj3m9YayAyCCJFaQKBPZc6aUEiLEus5igu",
+   "bid": 427.358,
+   "ask": 429.6435,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AAOIx",
+   "mint": "XsGHwSbPaUJu6r5dtJLHXkXenPgCQf4Sx2hb4e2sbCZ",
+   "bid": 10807.764,
+   "ask": 10866.275,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CRWVx",
+   "mint": "Xs3trfdPXSZuxBJsgau6HRfu8SdrCirkwHpPNgSpJz9",
+   "bid": 8267.58,
+   "ask": 8299.93125,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TWSTx",
+   "mint": "XsMAsw5BADYr3m19HhYeXrG1qAieeP75DT8tKn42DFA",
+   "bid": 16995.4685,
+   "ask": 17225.8,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NBISx",
+   "mint": "Xsii5eERa2sKFyTHQqdYxpxL5xoUSLVurzHeqBEMBho",
+   "bid": 22616.025,
+   "ask": 22743.0635,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "QUREx",
+   "mint": "XsuE5LvQcc9P67iWVqsysQ84DBDRWssbiKnwY8JtwpL",
+   "bid": 4403.385,
+   "ask": 4554.822,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BEx",
+   "mint": "XsmGSEqT6VXpVis3aVBDxaNwPgHNXbkjkVUCncsLkNB",
+   "bid": 27313.9675,
+   "ask": 27416.0625,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "JMKEx",
+   "mint": "XsBeB5z2oA2fvaVim3rRbqHV4Cxxz9nNCjqoUtFooXY",
+   "bid": 1928.1035,
+   "ask": 1990.982,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SKHYx",
+   "mint": "XsnhgGRQwhExfS2bmWzR6EYddKGPRGDEjeJsatkmKqU",
+   "bid": 18986.4775,
+   "ask": 19053.03675,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BKRx",
+   "mint": "XsBE7iAzaJEBpSwG5JZ7zQTWNgTaerweBy7nJCachaJ",
+   "bid": 5691.45,
+   "ask": 5718.565,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VIKx",
+   "mint": "XsEWryPA68Tddfrw31uSv18aysuZ6gb4vszk856hqQ6",
+   "bid": 8436.3265,
+   "ask": 8543.7965,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BJx",
+   "mint": "XsAGAMqiAySqkUDf5ZXCTR4v6hSgcBj7mQQy7w3Nja7",
+   "bid": 8986.5,
+   "ask": 9545.2965,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MKCx",
+   "mint": "XscRMWo5xvLxenVLxmodRqZC3UJwACXoxAEEGQzrzKd",
+   "bid": 4837.7325,
+   "ask": 4911.356,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FDXFx",
+   "mint": "XsVT5d6jAm7dTcwz9o5jCUVrpdd1t86WLf4U7wb9mxs",
+   "bid": 12031.925,
+   "ask": 12338.48,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BNYx",
+   "mint": "Xs2hXX5B6aYUn1Nf8RkspKQbBTjbsa1Co9SjpwgZbNr",
+   "bid": 15376.9,
+   "ask": 15598.3625,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NYTx",
+   "mint": "Xsfyi9JrpUDKaBZxgAAFS7wWV5xeTUkYoQLs3SUiYdg",
+   "bid": 6950.5585,
+   "ask": 7185.7625,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TLNx",
+   "mint": "Xs8yLZVjsYmQ5Tu4e5JDVQeo4cbRRDCVERgtSGJFn3q",
+   "bid": 29256.05,
+   "ask": 30145.15,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RNRx",
+   "mint": "Xs5m7mD1sRUu3ryXiYNDqCTd67hQVZRSro2zxxWqTtn",
+   "bid": 23024.4115,
+   "ask": 39959.85,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PENx",
+   "mint": "Xsbd5DQzyAjsjzZiLP3NYztwkapYQpPLBvYsnzyHscq",
+   "bid": 31402.825,
+   "ask": 34551.75,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ELANx",
+   "mint": "XsKLqYX4dXLxZhM7bXyNsQdf5P1wFAuwLYaSPqt3j1q",
+   "bid": 2224.658,
+   "ask": 2263.39,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CLXx",
+   "mint": "XshmkFbMrRMtVb2HoJw1nc9jGMKNjTWcutT86YpMbKi",
+   "bid": 8316.5065,
+   "ask": 8362.525,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SJMx",
+   "mint": "XsqtzaHCKV2zsgRYitGJtcecfmBkdJsdrpSXZgQryHE",
+   "bid": 11682.45,
+   "ask": 12889.305,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EGx",
+   "mint": "XsvYonMjAxFXYW6PKBz9jFEuvX6xAhm9BifzxgLzurb",
+   "bid": 36795.7235,
+   "ask": 38307.375,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "QSRx",
+   "mint": "XsG3eLvLbHwYQP3r7tSznE6bEvcA2Ko1TpYwbyD6RQk",
+   "bid": 7189.2,
+   "ask": 7340.995,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CDWx",
+   "mint": "XsMmhKdFMiFdNFBcznYHx2zAU1SLtMnUL2G6bRzPpaY",
+   "bid": 14592.57825,
+   "ask": 15543.28,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "APGx",
+   "mint": "XsNKyNtZCbtcCFtJHSeKTGqNQ9gCEaAaKrZBzPH5LLS",
+   "bid": 3745.3735,
+   "ask": 4000.9925,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RBAx",
+   "mint": "XsTCwtofQgx1SLYkouHvVg22beYhn1dmj1vtC3TUp6M",
+   "bid": 8026.9415,
+   "ask": 8645.9495,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VLTOx",
+   "mint": "Xs6mp36rvKSo7vTM588J1HUZF1sbNjK3KSz12fNM7P5",
+   "bid": 9136.275,
+   "ask": 9814.7,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ROIVx",
+   "mint": "XsR5eHL5sXTwUckUcenkZyBdAkShFBcNDiYeecBMaCu",
+   "bid": 3963.0465,
+   "ask": 4022.024,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FHNx",
+   "mint": "XsD9pjJdLHkbvk3hGF13Mq9nY5ELLeGbQAoeDLZcRY8",
+   "bid": 2320.514,
+   "ask": 2412.6135,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HASx",
+   "mint": "XsRgwrznvMYsZ1i7ckfxjk6RWR4npsmZT3kqHuRfrva",
+   "bid": 8429.337,
+   "ask": 9646.448,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TWx",
+   "mint": "Xs1vPiv1k4jph8JkwRfnCjog6pXKuYzVVpdRVSt3hWA",
+   "bid": 10097.8305,
+   "ask": 10614.8985,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PNWx",
+   "mint": "XsaZESJuX1EC73t54PmbirdQ5JHPHQsPnMB54bgZLp4",
+   "bid": 8487.25,
+   "ask": 9514.25,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CHTRx",
+   "mint": "XstvDoqmcKjMHZP8FoWy3Ee2EkCf4KZgqNtg21WFW3X",
+   "bid": 12810.755,
+   "ask": 13019.5,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AITx",
+   "mint": "XsvJzDTuRrc3cWVwPXVcaXaFJFVtGcpDsfCA56z868Q",
+   "bid": 32135.724,
+   "ask": 34251.3,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TRMBx",
+   "mint": "XsJ8MXED4y4NCxfX6ZE9XJiXLXLgBNzEYDtmnx2hbZ1",
+   "bid": 5721.405,
+   "ask": 5858.775,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "KNXx",
+   "mint": "XsUyRqfxY2XtFvP99Lkn2DDWtxNNAY6w5CVDu1F68G1",
+   "bid": 6410.37,
+   "ask": 6897.3305,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CPTx",
+   "mint": "XsvoRXtZZfwvkLhp4qKPR9B9mcbuWakDUWnPszYw2BT",
+   "bid": 9935.075,
+   "ask": 11804.6805,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "APAx",
+   "mint": "Xs5b8FFins32GgTH2FURV3Y873yA85jc4kZ6r8H9YyR",
+   "bid": 4400.3895,
+   "ask": 4436.645,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GGGx",
+   "mint": "XseQK4PEeLfxY7HgvuSiawFUL5gfveK2maPMV9Ma8qv",
+   "bid": 7488.75,
+   "ask": 7811.7,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TYLx",
+   "mint": "XsiSQ5MUFoAwjrGB1x3FsXTthfwJnJgHVXj9tDKuvr8",
+   "bid": 33250.05,
+   "ask": 34466.6225,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ALLYx",
+   "mint": "XsRifLZvp2XvCpPFQNK6XGTjHSL7sTZmmGyEs4NLAV2",
+   "bid": 3984.015,
+   "ask": 4054.072,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SAIAx",
+   "mint": "XsdzBn1wxCibSdDZgaaWqGtdvo2JSFueo2CwHnA69Lf",
+   "bid": 32278.5095,
+   "ask": 38057,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CGx",
+   "mint": "XsaLeEQ2RtXLwLYBtJv1wT7CXk4paWCvKxNWMNk4mbZ",
+   "bid": 4013.97,
+   "ask": 4218.318,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ZBRAx",
+   "mint": "Xsxe5ypvCfynj9q9bJgB2Y88sZNCnxtEb9icgdbsPFT",
+   "bid": 34714.8495,
+   "ask": 38057,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DTx",
+   "mint": "Xs8Jb7S3qqWbgkRGvwKmT62MD7gt1qYU7oUaR9oDC11",
+   "bid": 5445.819,
+   "ask": 5631.4345,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ELSx",
+   "mint": "XsMPKfVuLeJ4mSahPcSgVGHEVGt41QU41CfgfvRzvBG",
+   "bid": 5891.15,
+   "ask": 6049.06,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ALGNx",
+   "mint": "XsmMYEkQRXZ9CodFfqGEwNvtqVZdsDLHoYqPVm2EpHX",
+   "bid": 14544.151,
+   "ask": 15050.542,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ARWx",
+   "mint": "XscZvQvu7gYS4yuF3NcCeDbQjQynZ823xGCk9uUVePN",
+   "bid": 22007.9385,
+   "ask": 22854.23,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AIZx",
+   "mint": "Xs7U7QD6amUpjuEZ1VM3rx5TSrKtJ3r7xU1aRcTHhw8",
+   "bid": 22543.1345,
+   "ask": 30145.15,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AVYx",
+   "mint": "XsAfpyk9U7qUZKq9STpXyzDaoQjGRe6Yqo7TYebpxkx",
+   "bid": 16774.8,
+   "ask": 18527.75,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NTNXx",
+   "mint": "XsLsExw7d7cjbN65GwQzS7HaDxCtyE3rjywcNXqEtxL",
+   "bid": 6979.515,
+   "ask": 7049.5585,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PRx",
+   "mint": "XsXh1W6QRHJBYdzVrngAxn4t4JQnJBYk7iM2S1hwqdT",
+   "bid": 2248.622,
+   "ask": 2278.4125,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PINSx",
+   "mint": "XswgfhwvyLQ6ZdNsrwBGkBVpqXzQPpDykCDBmiti1o5",
+   "bid": 1870.1905,
+   "ask": 1891.8335,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RIVNx",
+   "mint": "XsoxDMY8s3ZV7zD4Yd87wAvURyxA8VXkd7w6HNuQkzj",
+   "bid": 1510.7305,
+   "ask": 1516.271,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GLPIx",
+   "mint": "XsbohnBoBBbXg2scrDy9yzBqeXhNN53F5dcjwFF8XFR",
+   "bid": 3954.06,
+   "ask": 4011.0075,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ZSx",
+   "mint": "Xsb1a2VbaT6rLLq48qcgMQ1iPbs5fW2JZZURBxKfhY6",
+   "bid": 19820.225,
+   "ask": 19929.85,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TRUx",
+   "mint": "XsyvvjANUH1LpSQkRr3xgCyfxJLcNtpEVyFFNpJcDsb",
+   "bid": 5991,
+   "ask": 7911.85,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "UDRx",
+   "mint": "XstJ29hJ96UCddwezTPe9mXLiamEApRt85ChkTSRh5f",
+   "bid": 3354.96,
+   "ask": 3573.9529,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SWKx",
+   "mint": "XsNotS1p6BsTADzMaZVu14SJbuH9V4CYYyRZ8mn6WAQ",
+   "bid": 8980.509,
+   "ask": 9212.7985,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DOCx",
+   "mint": "XsgtMhyQgTevrWQNyLpHxwQeRAeaxQEtoiV1pNyxmfy",
+   "bid": 2029.9505,
+   "ask": 2052.0735,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SOLSx",
+   "mint": "XszuTk3Rr5HXpV7Nrfpg7KAZJfDccPAYLKBsRbLYRx4",
+   "bid": 5665.489,
+   "ask": 5980.958,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PTCx",
+   "mint": "Xs25CGQuYuoXrMMWUSxo9WmvnQZyFzBChaHbUPXzm6b",
+   "bid": 12980.5,
+   "ask": 13768.622,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "JLLx",
+   "mint": "Xs8YQm9hLMTcTVSdPwBDLTFLpbcyxYBG4SGPXRp5s2y",
+   "bid": 32961.4835,
+   "ask": 35052.5,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BRx",
+   "mint": "XsvEMALzsRVnPED4KEAd7pivT5ho9vgqzqZxQxNBkWW",
+   "bid": 16200.6625,
+   "ask": 16524.75,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "COOx",
+   "mint": "XsWetupD7QGe8e5fXsJAPHYFXFTUdYVjT44hJMsVDtY",
+   "bid": 5491.75,
+   "ask": 5588.37,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WRBx",
+   "mint": "XsnARtma2bEi2x1JuKuznZa1QzQkLaedxHW6KeUCz8J",
+   "bid": 6590.1,
+   "ask": 6999.4835,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LECOx",
+   "mint": "Xs7wdJdbcu1oR36AvumDgFLPiHmhpF9GEHQT6h16zAf",
+   "bid": 25759.303,
+   "ask": 26540.7515,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MAAx",
+   "mint": "XsUGoD9Dik1iNBgsjSzdjt7psrGgWpQ29DQr825e8Le",
+   "bid": 11857.1875,
+   "ask": 12076.087,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WSOx",
+   "mint": "Xsgefxs1R4c5pYqhijeA3QLT42i38J7QpBtnt4GGk1f",
+   "bid": 31130.2345,
+   "ask": 32048,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ROLx",
+   "mint": "XsY112rrZJhJE1J1Z8BTSk135spPGHuGRCfnvr5pSdQ",
+   "bid": 3237.137,
+   "ask": 3254.875,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EQHx",
+   "mint": "Xsf8f6sqb9p6JK9oR8UHXk7CmFDvofc1nxeink7AoGA",
+   "bid": 5042.425,
+   "ask": 5461.1795,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CSGPx",
+   "mint": "XsJH1qPyJgbJiYo2KZXNirCQxC3QqQgYE1iNHY3Ecm2",
+   "bid": 2889.659,
+   "ask": 2945.4115,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "THCx",
+   "mint": "XsBYWM8wgvSJfvNybgc6qxGxkD584FSycCWRiCvwZHk",
+   "bid": 25661.45,
+   "ask": 29736.538,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RGAx",
+   "mint": "XsFvsyP8i3Qpat1BK78Yjq3PsTNhD3SV5FHryJrWbHs",
+   "bid": 21967,
+   "ask": 39121.5945,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SUIx",
+   "mint": "XsWaSDd1S6YhQfsnTquL5ht2TGHe3mabeZ2Kvfpjsnc",
+   "bid": 11355.9405,
+   "ask": 12118.15,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FNFx",
+   "mint": "XsPH7DxK5rGBdoFSSCpU6HgJZp1mKpRTVnsKQUN1j8B",
+   "bid": 4243.625,
+   "ask": 4314.462,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "OHIx",
+   "mint": "XsAeqdosiRKYKtYRLoao2TQDB16yLRP82MCwd7ibVuH",
+   "bid": 4643.025,
+   "ask": 4699.038,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EXELx",
+   "mint": "XsAPSDzHwPr2UX83cY4KCHSdyvfighyeTPLaPXq1m3o",
+   "bid": 5791.3,
+   "ask": 5958.925,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "REGx",
+   "mint": "XsJzAzVt6H498zDafSaWj3htVDYQPmh23jUAM2Rt2qn",
+   "bid": 6913.614,
+   "ask": 7699.532,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GLx",
+   "mint": "Xs2yt21rb2HpuMxE2EBHpcfd8mGdDPDysgWjVaDDR5w",
+   "bid": 6926.5945,
+   "ask": 17725.5485,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NBIXx",
+   "mint": "XsCNTvYMAHYPuHc5r9WWhnYfvAZMLLsguv2NBLs8wrx",
+   "bid": 14532.169,
+   "ask": 14822.2,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "UNMx",
+   "mint": "XsAhRsoTzG6cpxTxvH9qSze3Kwg2gmYbABi5xqrGm7G",
+   "bid": 9415.855,
+   "ask": 9691.5155,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DKSx",
+   "mint": "Xs9aEtZqQDzTtb1PLVJ2W2d6NGJSSaJepTsQ2CZAjhn",
+   "bid": 12126.7825,
+   "ask": 12208.285,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LDOSx",
+   "mint": "Xs5VFGqt7aQ3Dykyk7A4NFL9K2z3x2BAnEDzvokY9Us",
+   "bid": 12581.1,
+   "ask": 12819.2,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SGIx",
+   "mint": "XsU3RZd5ufTcCJneLjDhTrU47ma9ypnhXyvJACRZrTv",
+   "bid": 6220.655,
+   "ask": 6710.05,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DECKx",
+   "mint": "XsbahiFKw3f3pgsAwREvQZAdERbV1NGUjWnkzUaBz91",
+   "bid": 7858.195,
+   "ask": 7966.9325,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "Jx",
+   "mint": "Xs2ry2jjmvy67pYFweVbdeoPPRdUjnbBEubtXguWbXK",
+   "bid": 13044.404,
+   "ask": 15022.5,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EVRx",
+   "mint": "XsmTgboNTsssYV1VZrS4u1YMkcNWTKVMzUjghkXa3RF",
+   "bid": 25822.2085,
+   "ask": 29245.803,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PFGCx",
+   "mint": "XsTnXvRqrDisLoYpLDUowPx2HLhd6p44ZAbEKyGsL3g",
+   "bid": 9036.425,
+   "ask": 9823.7135,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RPMx",
+   "mint": "XsBGGtLnNqa87iTENkgtBV4itt6LNxz7osKS1nmnqTD",
+   "bid": 9385.9,
+   "ask": 10463.672,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BWAx",
+   "mint": "Xs34rXKEs63rPs3qWZeAubRmSVJNG5hSy6Ubt7Qag2F",
+   "bid": 6324.99825,
+   "ask": 6475.699,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LAMRx",
+   "mint": "XsqZyeL1GGWZzMQ5hh3KckQnXNt3Yt96QHBUdiJSoFS",
+   "bid": 14478.25,
+   "ask": 16624.9,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ROKUx",
+   "mint": "Xss4k5HDz8CwyNnbZixMs3XgaXvnMoWtpxeqzFK6wvA",
+   "bid": 15267.065,
+   "ask": 15668.4675,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PNFPx",
+   "mint": "Xs9pFT45PF5PH1hgwQ5fknXYWVZassVSq4spNswnVtR",
+   "bid": 8487.25,
+   "ask": 9994.97,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RRXx",
+   "mint": "XszxuQCqE72vU4ABTFDFwhs28AeSUHqzbWWVWDkhfYZ",
+   "bid": 14858.6785,
+   "ask": 17044.5285,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GENx",
+   "mint": "Xso2H7vbDS6HVokLUecSG5GvWAZXjH7PEHAH9rAYXUP",
+   "bid": 2856.7085,
+   "ask": 2929.9884,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BALLx",
+   "mint": "Xsy9RdWC26fp8c84BB2SD4eE74vG1478YKjxAwjRRQY",
+   "bid": 5888.1545,
+   "ask": 6208.2985,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "XYZx",
+   "mint": "XsDP3d7dBNMVVZT6W5abD9jxZPGbrenPaj322sWn9Ct",
+   "bid": 7678.465,
+   "ask": 7751.61,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AAx",
+   "mint": "Xs2XDRGh6AhivmYgaVa8woDGKGccR1WnnGnw9vqSWD9",
+   "bid": 4462.2965,
+   "ask": 4490.726,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CLHx",
+   "mint": "XsRwkmMcYT1jEJ9cnUsnWkUitWJRufu2qCmd6fbRRYj",
+   "bid": 31153.2,
+   "ask": 32648.9,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ARMKx",
+   "mint": "XsVhUJLbtEhVSPHFcyjZYYXJqmK8j8kfD553wZ8of6W",
+   "bid": 4593.1,
+   "ask": 6209.3,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CBREx",
+   "mint": "XsTJV8FFx22kv41kMcuHawx8eoDybUnLxiiEscw317x",
+   "bid": 13313.0005,
+   "ask": 14726.056,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SSNCx",
+   "mint": "Xsq4wQVyggsJXzrjQK51M8bxK3duFaRegcX5Vxdbfcx",
+   "bid": 7589.5985,
+   "ask": 8825.218,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RDDTx",
+   "mint": "XsXEEJX7WoXfre8ZqYx1M1yXnEwd1Ww3YhvfESA2DzE",
+   "bid": 15237.11,
+   "ask": 15312.935,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DKNGx",
+   "mint": "XscCMVe1Qu2rk1YoCDJGwMLZkfVnd69xcPER4DJ8tpB",
+   "bid": 2181.7225,
+   "ask": 2194.0862,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GPCx",
+   "mint": "XsAB7oiJL94kURXya1i35Rv9ZoY9EoJSWM3dQ9mZp7t",
+   "bid": 11982,
+   "ask": 13520.25,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RLx",
+   "mint": "XstJ1deKwoZVAzj1oF14s7g8ZPLumJKyiQXysym5duM",
+   "bid": 32953.4955,
+   "ask": 35152.65,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SCCOx",
+   "mint": "XsQD8itHh5CdrWMiH8cZPB55KSATjdXsxcSJJ14YCFD",
+   "bid": 19609.5415,
+   "ask": 19929.85,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CSLx",
+   "mint": "XsATdqpeobhFEM71r5MgZe4E5BcHuWk6jSnYnHLYTwS",
+   "bid": 31548.606,
+   "ask": 35185.6995,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "KMIx",
+   "mint": "XsQxeWjN2M3Spr5YHRQiM1oQ8fgpJWtdBdg1E2ZrjFg",
+   "bid": 3158.2555,
+   "ask": 3188.776,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NDAQx",
+   "mint": "XsLSwcujLXXgCPZWPZKRsksbZrWupPMNKmg6A71g2Ba",
+   "bid": 9343.963,
+   "ask": 9459.1675,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TOLx",
+   "mint": "XsnbxjqAYHWuP4Fro7GnJ3kkUh6g9B2xWUMwaVeVgyL",
+   "bid": 13286.041,
+   "ask": 14021,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CVNAx",
+   "mint": "Xs8YT2AdFmjuG2HFjcvVTpXPwneiKNHMrR49muHY7z9",
+   "bid": 6604.079,
+   "ask": 6634.9375,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HEIx",
+   "mint": "XsjZ8V6qPBNbhXeFawPssBPUW8f7Sv39uxEnzxCboTq",
+   "bid": 29777.267,
+   "ask": 30645.9,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BBYx",
+   "mint": "Xsac5qkc4B254kpnb2qneeu6qsNX1fPtACeuNEiXWMR",
+   "bid": 9261.0875,
+   "ask": 9401.58125,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LVSx",
+   "mint": "Xs9bwo2tkrKRJxr9787rKj2bKcQUMFNtbzruYTrxdst",
+   "bid": 3994.9985,
+   "ask": 4027.0315,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TEAMx",
+   "mint": "XsLhefHBtc8r9nStXgXtu9tHeEWYRXxSXrpbnfwTJ7v",
+   "bid": 19223.122,
+   "ask": 19429.1,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "Px",
+   "mint": "XsqSsaDYsEAFwRwcwchPc9J1zX21VtHiXGJjFt5Ph5t",
+   "bid": 10510.211,
+   "ask": 10815.1985,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WPCx",
+   "mint": "Xs3jL3WdD8YSqLeiy7Tt7dGEeBZziFMYboyUMSr38AE",
+   "bid": 6594.094,
+   "ask": 6830.23,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "OKTAx",
+   "mint": "XsHXJXdfTGnrfygPVvnzb7xdsUiunEQZew7teAyvosL",
+   "bid": 18337.4525,
+   "ask": 18492.6975,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GNRCx",
+   "mint": "XsAiJ9xc1eBoVEz4npaJqySHLrpCoyo1oFfJJpYSXPW",
+   "bid": 20968.5,
+   "ask": 21198.7505,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MASx",
+   "mint": "XsNZFvmZv6zEeAxgF5L72Nt6A2K8Uo6u7aRDLm7Smvc",
+   "bid": 6816.7595,
+   "ask": 7561.325,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "OVVx",
+   "mint": "Xs1b4xMzH16fHZuFUoXxni8THVafJ9t5dFL6kPUyG4k",
+   "bid": 5991,
+   "ask": 6201.288,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MLIx",
+   "mint": "XsikuTgNGjzibezDk9u22QGW8zQaGWyK61vN4gQE4Dc",
+   "bid": 6016.961,
+   "ask": 6443.651,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ITTx",
+   "mint": "Xsva3qbt1TDUgQPnU3vVDasaPoUHXPU9FjYXzEUYY8G",
+   "bid": 20416.3295,
+   "ask": 22533.75,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TSNx",
+   "mint": "XsWV8voFNehNEbuBW8cEAMWwjicXCYskUT4616PFZ6a",
+   "bid": 5240.128,
+   "ask": 5363.0325,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NLYx",
+   "mint": "XsFzP3jXofHQ3GKPYoGfFNQQKyWrNcPR5Xgg8gbk9op",
+   "bid": 2116.82,
+   "ask": 2125.183,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ONTOx",
+   "mint": "Xsu33VJj7s2tMUZfAQ8bbGgpDEnfXdCsKHSC4p6C5tS",
+   "bid": 26759.8,
+   "ask": 27330.935,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ELx",
+   "mint": "XsTisPuTVM8VVHagEyeGR7CBt6TUD93AEhptETHWMsd",
+   "bid": 9328.9855,
+   "ask": 9487.2095,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NDSNx",
+   "mint": "Xsgfrh1tHEuCADVTuQDZiG5LRcVYeEU1wKT3YKuucbA",
+   "bid": 31110.2645,
+   "ask": 31647.4,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ARESx",
+   "mint": "Xsm7SVTuyeaeD5fwaWD1RFKX7Rr8WmNGz5j35r5npth",
+   "bid": 12401.37,
+   "ask": 12808.1835,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TWLOx",
+   "mint": "XsQVYwNXBY7UNaLonk5qTbr3RzFC87CECGXWWfJomt2",
+   "bid": 24364.3985,
+   "ask": 24601.8475,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CPNGx",
+   "mint": "XsoVbMATH8hMemisZZvGCc9YEkve3Yiirr2VtinKTuw",
+   "bid": 1440.8355,
+   "ask": 1447.1675,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GPNx",
+   "mint": "XsKbuY5Wyzz7Zzz6uxi69hHdxhrE53d746Sb1jBZyD1",
+   "bid": 8232.6325,
+   "ask": 9013.5,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CFx",
+   "mint": "XsH9yfX7GuRbCDnNvD4A7x8gvMc8sc8Htz1fQd7VYWw",
+   "bid": 12531.175,
+   "ask": 12694.0125,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DASHx",
+   "mint": "XsuW1yxtbifjEYojFLmoavTWBT7hsuUXXeReAWK9X91",
+   "bid": 19171.2,
+   "ask": 19479.175,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "IBKRx",
+   "mint": "XsTS8D9tBV6oQRqkixzNCThctMwFzxScetp4BA9ByTK",
+   "bid": 9142.266,
+   "ask": 9203.785,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MDBx",
+   "mint": "Xs12gqhuCeC9gpUdN6uDJQfpyKNf9Y4uK2TKY6c7NrZ",
+   "bid": 38392.325,
+   "ask": 38753.0425,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "STZx",
+   "mint": "Xs6eATub8cqKdztx4asCRFMSzMwtNqAUWiDaUPXxUtD",
+   "bid": 11882.15,
+   "ask": 11986.9535,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "INCYx",
+   "mint": "XspemH4yD2PcDuZP4g8whQEeve3jrGbX331ksyaR9G3",
+   "bid": 12511.205,
+   "ask": 12969.425,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LENx",
+   "mint": "XsHjfVcciZyPmujpSYXKGyQZ3k4yyzxnUXE6CYdZ3AD",
+   "bid": 7648.51,
+   "ask": 7737.589,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CTSHx",
+   "mint": "XsMNmV7wVizphwXgMtXTVhLDpqmKPdfoYPK3JTXXnYW",
+   "bid": 5981.015,
+   "ask": 6146.2055,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BAMx",
+   "mint": "XsLdXScusw7mCSATbp7bWKfyBR1RVWEEayKgRcmJ8dZ",
+   "bid": 4598.0925,
+   "ask": 4697.035,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ZTSx",
+   "mint": "XsRPgsEQ3dFR84DhMv18jtob5D77FivAsTTsv1jCYmv",
+   "bid": 7159.245,
+   "ask": 7210.8,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ABNBx",
+   "mint": "XscSc1zjbVizEnhCzzehJ9fzztm3WRKdn9pjmriKDuN",
+   "bid": 16600.56175,
+   "ask": 16749.086,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FCNCAx",
+   "mint": "XsccgtwEgwSxTh553v8iVLxNUrbHJfdnaJUjxgZfr48",
+   "bid": 187508.315,
+   "ask": 338408.853,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "UPSx",
+   "mint": "XsnqNkeDhvaK8C5B3Z4D1ciCupVAgkw1AdS3U2uEn26",
+   "bid": 9930.0825,
+   "ask": 9992.967,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TSCOx",
+   "mint": "XsYMTZRVKs9he9redAPMhaBbCbmZvUxMTApsfCZsKzt",
+   "bid": 3215.17,
+   "ask": 3286.923,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CMEx",
+   "mint": "Xsx234fZF5KMZ5catYi7m9P682Pk9TWWHF5jAfYGZJk",
+   "bid": 27458.75,
+   "ask": 28005.946,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VEEVx",
+   "mint": "XspuRH5i611hbZjGtYsiaLmhnGya23UU4jnwADWr9yV",
+   "bid": 25461.75,
+   "ask": 26093.58175,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MDLZx",
+   "mint": "Xs3hGRD2NSyUUC1fjK5gKe8hXQgLoqxjR5WtYL1NBbg",
+   "bid": 6034.934,
+   "ask": 6091.123,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DDOGx",
+   "mint": "XsQJQHNMLiZCBHgJfq2yK95BFraouUdSspv1aD8jCgQ",
+   "bid": 22890.6125,
+   "ask": 23084.575,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SBACx",
+   "mint": "Xs3BuKwwLLSgKCKPBeSN5Wje5gP8McsHrt6pnqWzjhs",
+   "bid": 16784.785,
+   "ask": 20368.507,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NKEx",
+   "mint": "XsGYpMvKbVt6ViHqRd7cF3s746dAMFBQWcC49hB9VVP",
+   "bid": 3549.6675,
+   "ask": 3563.337,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MARx",
+   "mint": "Xs85zRMSv4KTRqSNjZSFWgEXEyb3esxUBzhTj377DH8",
+   "bid": 32839.6665,
+   "ask": 34351.45,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TXTx",
+   "mint": "XsjWGbe4McmJXNRd6hQYsS8dEsPKTfT38fxSebugRbn",
+   "bid": 7838.225,
+   "ask": 8111.1485,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WDAYx",
+   "mint": "XsDa7zkFPXdu1wz29JLEV2XtWvrLdb16s4yH1LcKQ5r",
+   "bid": 19272.0485,
+   "ask": 19539.265,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "APHx",
+   "mint": "XsvqNba1k4wF5ZEZ6Nrx8AXUDkKzAFuj4HaVDEemyYH",
+   "bid": 7858.195,
+   "ask": 7906.8425,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ASMLx",
+   "mint": "XshuHQ6o6SVpUNawvnnTMxsZ4tacZsNgVCLorv7TkFq",
+   "bid": 170556.7805,
+   "ask": 171159.65495,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CHDx",
+   "mint": "Xs712gQLCYkFSYJwdu3pE5itNfyKwsXQ1HEGZF8Esc5",
+   "bid": 9437.822,
+   "ask": 9514.25,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ALBx",
+   "mint": "XsGea4488p7ydWQTQMYxtvCXDJiAJwgt4HsoKiKrGa3",
+   "bid": 11248.1025,
+   "ask": 11301.9275,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FISx",
+   "mint": "XsTdkPyDNVtJYUjV7VhyZwtqQmA2Lg4DdTkRjYPD2gQ",
+   "bid": 3559.6525,
+   "ask": 3597.388,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SYFx",
+   "mint": "XsWMBE3QzwuS7pJET8GUyaGzjNJG49RToPBYWdGHUTG",
+   "bid": 7313.014,
+   "ask": 7657.469,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PFGx",
+   "mint": "XsChiU9gDeWj7HYrqioNUn8C81jaHZwegfGQdQXHnhd",
+   "bid": 9785.3,
+   "ask": 12418.6,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "KEYx",
+   "mint": "Xs5GgkWgze4XgU7NC5iXJqvbGufxQBJKH5JRN2MSPWQ",
+   "bid": 2067.8935,
+   "ask": 2098.1425,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FTVx",
+   "mint": "XsvL1QcWfqpUM7CQzcNsicatBTZK2dgJRTor3SHUXdD",
+   "bid": 5079.3695,
+   "ask": 6092.1245,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FISVx",
+   "mint": "XsXU2DbkVLWPRBG3QEpEXCTKS8Jv8VCxkB7e7ThdyLC",
+   "bid": 4717.9125,
+   "ask": 4762.1325,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DGXx",
+   "mint": "XsFyCPFNa7os3PvzuYQJcpws9WQS6bci2W8zqesHwPN",
+   "bid": 23225.11,
+   "ask": 39491.148,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DRIx",
+   "mint": "XsTNaRrDQtFJi56TAQbmk6tHzWQvihWGoafKSJzbJdY",
+   "bid": 20893.6125,
+   "ask": 21301.905,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TROWx",
+   "mint": "Xs8urJdzBSFLaKqxZiMackbXDkyZbwPeAwz7PepQ1eD",
+   "bid": 10184.7,
+   "ask": 10605.885,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WWDx",
+   "mint": "Xs1xSyecLzT2u188qGFs1JTBXeE9RmBX1pc11o5X6U2",
+   "bid": 32254.5455,
+   "ask": 36554.75,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "UTHRx",
+   "mint": "XsrazTRfp2iGrUcZkkoB8PpM9qApe77RbohmknHh9XJ",
+   "bid": 46929.5,
+   "ask": 53029.425,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RFx",
+   "mint": "Xsk2PGWHCQweEwYWNqA72KbuUdNz518MBzHSaBDLowq",
+   "bid": 2845.82485,
+   "ask": 2872.302,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "OMCx",
+   "mint": "XscmXyJYjYbGNhxQsPjjRYsEwscg6uPFJzR6Af7Qi18",
+   "bid": 7413.8625,
+   "ask": 7823.718,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WSTx",
+   "mint": "XsptQPquxvzKZ7pZTXNhvtXRxFP8vvC6BmS6QL1PALe",
+   "bid": 28940.524,
+   "ask": 39739.52,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DGx",
+   "mint": "Xsuex5gGigmPKMs6hsYpHbcg8HwBbBdWkGKub9MQbea",
+   "bid": 12085.844,
+   "ask": 12418.6,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WCCx",
+   "mint": "Xspj4rFiCCXJyymfNgkwBG9AXZbyp69HGyHwfz6WHTE",
+   "bid": 33299.975,
+   "ask": 36454.6,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EVRGx",
+   "mint": "XswxMcsrN9WpDhX7wDf53ZFGWNhcWYKSa6UY26AgpET",
+   "bid": 7738.375,
+   "ask": 8227.3225,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EWBCx",
+   "mint": "XsitAUXgChdnHHVx2qa1Fhw6xe5ZPog1XrEGg4Pp5XW",
+   "bid": 12351.445,
+   "ask": 13658.457,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PKGx",
+   "mint": "Xstq2wirnUgqHdMvvWafGVbdtg9y845zxAy7iVixkRU",
+   "bid": 23813.72575,
+   "ask": 24225.2835,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EXEx",
+   "mint": "XsodbeGRpfyAzq1MMqZu7u1vCYNKNDuYrCtofaT1PJK",
+   "bid": 8687.9485,
+   "ask": 8762.1235,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "IPx",
+   "mint": "XsS6AVyq5YpDA5yCUYuwxvkk5hvKvFxAt5tUJik9Y5H",
+   "bid": 3542.77785,
+   "ask": 3575.355,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ZBHx",
+   "mint": "XsE48wmot6dKRcCGVQUXFSrpnRZ4U4yC762ZktjkoGW",
+   "bid": 9181.2075,
+   "ask": 9697.5245,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BROx",
+   "mint": "Xs9hw3a4acJr629NUzDbEC376rv3AhfmwvXm9BNnD9G",
+   "bid": 6390.4,
+   "ask": 6631.933,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "Lx",
+   "mint": "XsUn5iqqryPGjArLc1FWnzaquVsCjTPciXQGkRyWfho",
+   "bid": 10578.109,
+   "ask": 11156.71,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ESSx",
+   "mint": "XsZsYW1U5exCzHqwsxwjTDABR2SW9MzKccXSkAgx47N",
+   "bid": 26610.025,
+   "ask": 30045,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "JBHTx",
+   "mint": "Xs5CSFf663gjowEA7ANX8ZhPe4AkLWMqLbriVu1JmUV",
+   "bid": 23349.9225,
+   "ask": 23815.67,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ILMNx",
+   "mint": "XsahzH43C2rZpZmYX6eCm2avkeYCzntC168xPdqrDzi",
+   "bid": 23969.991,
+   "ask": 24389.5295,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BURLx",
+   "mint": "Xszn8sMqeBqfLDXAsDa9uEYo6WT3LYSD4jje2pGK6k5",
+   "bid": 23674.435,
+   "ask": 24401.5475,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HPQx",
+   "mint": "Xs23PmjqLoJvcLJ2LyMzi17HmkFua1yZsmcxWd4q8Zz",
+   "bid": 3396.897,
+   "ask": 3435.145,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "INVHx",
+   "mint": "XsQFmCYjvPGgqYYAth5zNhW8NSCabdamgM1kXMorJs7",
+   "bid": 2700.9425,
+   "ask": 2749.1175,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "IEXx",
+   "mint": "XsYoSPpGDGNwgn5HDxgwFxbcrsf8Xjr4Lc62j33JjfK",
+   "bid": 22338.442,
+   "ask": 24435.5985,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MRNAx",
+   "mint": "XsViHjyRbiSBskjizb1gszGTmZqtAH8TuqwJ7sB5AcP",
+   "bid": 15654.483,
+   "ask": 15723.55,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "KHCx",
+   "mint": "XszMPpjvc5nyynUGktkn7JkqkfFYxunE29Rxi4Vo8C5",
+   "bid": 2421.3625,
+   "ask": 2445.663,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FFIVx",
+   "mint": "XspZSVf3tmPqV7QXqNzCjmvv11nnAtQ4n4YwPxykt3U",
+   "bid": 42950.4775,
+   "ask": 44867.2,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LSCCx",
+   "mint": "XsjaZAWtPNA1ZWqbPZxaDWtx1h9L23ucmRquwuSHQuf",
+   "bid": 11257.089,
+   "ask": 11417.1,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DOWx",
+   "mint": "XsKWMeTN8wmhrkoWKy6tXAj6476Guj8zonzQu7jivqP",
+   "bid": 2835.74,
+   "ask": 2859.2825,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EXPDx",
+   "mint": "XsJB61YjcXkEf114fDGMMnWhhFf8a1x12Z6hARUUeAM",
+   "bid": 15252.0875,
+   "ask": 20731.05,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LUVx",
+   "mint": "XseRUafvQDXZSddDFpsXQPBNggurszyztkh4TEnvEuM",
+   "bid": 4113.82,
+   "ask": 4171.2475,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ZMx",
+   "mint": "XsgDPEr2Zk1YkWnw1Mm77APoZpeTj8BQZeGSMVtBZGd",
+   "bid": 8896.635,
+   "ask": 8994.4715,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ESx",
+   "mint": "XsgPX8MYf23yPRv9DrT5ofHn4mThBZgkhboLHz5uSx7",
+   "bid": 6581.1135,
+   "ask": 6795.1775,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CHRWx",
+   "mint": "Xsm5zBfHeiGWjraGLwT8DwJhYGjUfhESs7QANcYVp8E",
+   "bid": 15162.2225,
+   "ask": 16700.0125,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MTDx",
+   "mint": "XsXb7oGeK1N5Jk9mm9VD4ZQrXsu9NULWP3C3n7hhDWp",
+   "bid": 111680.228,
+   "ask": 148722.75,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VRSNx",
+   "mint": "Xsy4NX4cCf4YjN6iwypnQ8crXtNkyA2K3jypAX5NfQ6",
+   "bid": 28756.8,
+   "ask": 30846.2,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VRSKx",
+   "mint": "XsBDavbmVc22RNAgsHwUDEeC8f8VVCKLCcxFbfFUEzW",
+   "bid": 17384.8835,
+   "ask": 17823.6955,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SNXx",
+   "mint": "Xsh64eWgeLab2YtKPRy15Zj7tXrUncjVwszGW9F5tWG",
+   "bid": 26577.0745,
+   "ask": 29744.55,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NIx",
+   "mint": "XsC3CiuRAFKN99m2ye6q7xrYMx4NuBdr1JR2gVWgFLD",
+   "bid": 4013.97,
+   "ask": 4217.3165,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "INSMx",
+   "mint": "XsR6i1PnDGCbiV1KHsiMBdKz4MuDgpWHr3QSwC7zNMz",
+   "bid": 11982,
+   "ask": 12744.0875,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MKSIx",
+   "mint": "XsVDmkYEQ3wwLkXKdkRmic3HroSbReejAcnY9eNmrRW",
+   "bid": 25761.3,
+   "ask": 26239.3,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BWXTx",
+   "mint": "XsVpsBVdjW8SWAu4jAjqJ9qnGYzBmUzNDRcG6uiZ9xo",
+   "bid": 14804.7595,
+   "ask": 15017.4925,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "USFDx",
+   "mint": "Xspjr5y1bLtPTeSg13NBzxcE3JKZjYQrdpHKxAGsQYs",
+   "bid": 9286.05,
+   "ask": 9628.421,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AWKx",
+   "mint": "XsUQA7YBvJyBXDrQy23WNydKWdhVCPRVMxEF6MgXytd",
+   "bid": 13288.038,
+   "ask": 13728.562,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MTZx",
+   "mint": "XsvBVwk5d7eU6prsSxHJPu2adEm5q6wx55mbhov2UnF",
+   "bid": 21617.525,
+   "ask": 21996.946,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VTRSx",
+   "mint": "Xs9uh84WXf2F4P4UVRLvNGwv753ArA69kUk6r4GKVoA",
+   "bid": 1692.4575,
+   "ask": 1707.5575,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CPAYx",
+   "mint": "XsPtqd1RVDcZzSmeVwY253J4EHVUqMSrR9FcFmjZjqq",
+   "bid": 38516.139,
+   "ask": 42924.29,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CMSx",
+   "mint": "Xs6Udev3M1atxRjjXCjAg24BdjYuLs6Qj7eTh7XjEjW",
+   "bid": 6490.25,
+   "ask": 6626.9255,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MKLx",
+   "mint": "XsE44zHnRJVdk5vRpy2YvUPbbg4caoxihL8EKDatiCn",
+   "bid": 176834.35,
+   "ask": 178767.75,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HSTx",
+   "mint": "XsYbh3CsZ4qCMcfPKEtHAYbePTywhwCkFvdN7Hx3bHA",
+   "bid": 2175.7315,
+   "ask": 2214.3165,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ATIx",
+   "mint": "Xs7jmdBozN4RTu3YgSZeLcimiHJcsovXjvRtHhJbafT",
+   "bid": 19141.74425,
+   "ask": 19815.679,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CINFx",
+   "mint": "XsNufzbQz3zzhuGTSBi73Rds6wo1ghjn74ooK7ZbLVX",
+   "bid": 15876.15,
+   "ask": 17344.9785,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EFXx",
+   "mint": "Xs3dfAaDSQMVrDcEVbxypK4UeXhCbDBK2AgAWCHwqmq",
+   "bid": 15864.168,
+   "ask": 16424.6,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FWONKx",
+   "mint": "XsDum7DWP825ChLAhSN5NYBpoCUsHJJdRKTPseA9VxR",
+   "bid": 8936.575,
+   "ask": 9713.5485,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LNTx",
+   "mint": "Xs1WFZQyEwCZwEyZHRxTzd2KoEoa6MVfv2aZeAc2HXK",
+   "bid": 6530.19,
+   "ask": 6623.921,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RSx",
+   "mint": "XskVwPpXzyc9Fc4vqvHJ5v4ojMDWyjzcdPYTK8vFrUy",
+   "bid": 38745.69415,
+   "ask": 61863.6565,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "KIMx",
+   "mint": "XseurSPz9hnmd6k1eQT52a8QC53QcoCoD4qVbPmWzCC",
+   "bid": 2249.6205,
+   "ask": 2284.4215,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WYx",
+   "mint": "XsrTDXGz8cxi4s4vQrX63NhrtZZmPEFkgbsJQG7UERR",
+   "bid": 2118.817,
+   "ask": 2159.234,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SOFIx",
+   "mint": "Xsipo31rLh5EqPMR2cArn6kVPAD83C6rxbmCrT9Wu5u",
+   "bid": 1724.4095,
+   "ask": 1731.09275,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TPLx",
+   "mint": "XsNpiekiQLb87S2VqmaYjez6sNSrjoK78nCPAF8uaCF",
+   "bid": 34768.7685,
+   "ask": 35352.95,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DLTRx",
+   "mint": "XsPWGRNQF1Thif9qaadTNtF8xfHTb8sjvw1NC46hkED",
+   "bid": 10983.5,
+   "ask": 11402.0775,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AKAMx",
+   "mint": "XsJW9EhZBVQawVj1aGFweU2LwQjZCvyHVYb3vXq8s99",
+   "bid": 10496.232,
+   "ask": 10630.9225,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "XPOx",
+   "mint": "XsJF1CN5uFwF5eD7b8htZDeYzY9o4kdepkvBdsa32ZT",
+   "bid": 17148.239,
+   "ask": 20027.997,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RGLDx",
+   "mint": "XsgiYbKzzyYzuxRj1R4E6rvfVccASCGepmWEMpJdFG2",
+   "bid": 24608.0325,
+   "ask": 25137.65,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "XYLx",
+   "mint": "XsqFzD9CqfpnmTiFH631bcvQcDReVTMFZMSjk5aXQZL",
+   "bid": 10745.857,
+   "ask": 10991.4625,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WSMx",
+   "mint": "XsxjGDiXTcvRjbHgAkngyJgix766hJHKB3XLzNiRSro",
+   "bid": 22386.37,
+   "ask": 22834.2,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GISx",
+   "mint": "XsKfQxVh7wasRmzPQEs4qvnmayt5KTX1CqvQdJ8XcSJ",
+   "bid": 3605.5835,
+   "ask": 3641.454,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ULTAx",
+   "mint": "Xse5GAs99zAj5bzMAbwjooLn4AHn1Ny6nUcN6vt5vrR",
+   "bid": 54091.7405,
+   "ask": 56084,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "IFFx",
+   "mint": "XsXhUW1Mcpff3vCZWb7v3USU5Zpg1nvFPyfzF3XD6NP",
+   "bid": 8046.9115,
+   "ask": 8417.6075,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MTSIx",
+   "mint": "XsGkSoEbLmqH2GCixj1MdGYHDbRaJdgnnDPrYhMuLxA",
+   "bid": 28327.94425,
+   "ask": 28743.05,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ENTGx",
+   "mint": "XsD6kFBZCYumf4awQ9tgFFh8m2HGJBtTFdLYt7HcwRr",
+   "bid": 14518.19,
+   "ask": 14619.897,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CPRTx",
+   "mint": "XshHba6o5aAUPJFL19gmvSn4KRk6N44JVgiFt6UoRsB",
+   "bid": 2911.626,
+   "ask": 2934.395,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PPLx",
+   "mint": "Xs12SMK4MA7sLVS8eTged2pXns736u3qe2a1a9io6he",
+   "bid": 3315.02,
+   "ask": 3352.0205,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FEx",
+   "mint": "XsLpCFJxUb43H6da8YzrS4j79wuddw8Z4GETup7hKMc",
+   "bid": 4511.223,
+   "ask": 4589.8745,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HSYx",
+   "mint": "XscEuBenD5X7CMVdh6MKzTSBQLsKNqmsoLiXHrQMitH",
+   "bid": 16924.575,
+   "ask": 17145.68,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SNAx",
+   "mint": "XsKxGKYM3RsRvdgzAZXAh7HZiReynB5pxvoTLRMJiF9",
+   "bid": 36385.34,
+   "ask": 38940.323,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RJFx",
+   "mint": "XsgQwodongKCYRux621fuQzxQRv3fyXQKyPzc2CJ7Ys",
+   "bid": 16375.4,
+   "ask": 17125.65,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LPLAx",
+   "mint": "Xsk7doh3Qsz51GJdGFUdXcW4PFSKgfj1KGMy6jjbk6J",
+   "bid": 27428.795,
+   "ask": 35453.1,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ATOx",
+   "mint": "Xsz1UqWKSjB4X7zcvXV6XVL5eBA2YaRqEjXZVP6GXwZ",
+   "bid": 15581.5925,
+   "ask": 16954.3935,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FICOx",
+   "mint": "XsiZh3X1uThVm4bNh8PzyXVNe3v11oS6v2DCGdkboUL",
+   "bid": 94807.575,
+   "ask": 95442.95,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PPGx",
+   "mint": "XsoCb51izF2MpU5XghroQDRxtJ2vtcMY9v5Mk1pqaBr",
+   "bid": 10440.316,
+   "ask": 11146.695,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FSLRx",
+   "mint": "XsSbcq8MZso4DLAMgtRKjzCvgozdh4sje8PLj45kxJZ",
+   "bid": 19792.267,
+   "ask": 19929.85,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LIIx",
+   "mint": "Xs4MEQwg4mtEjAbtBzKsmrDccxX64Y4emF2yJptPJ3q",
+   "bid": 35546.6,
+   "ask": 37255.8,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CRSx",
+   "mint": "Xs8FjYWcxTREaUj5hv77f4M2UCreGfP7HegLvqzX56X",
+   "bid": 40873.5975,
+   "ask": 41489.1405,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FTAIx",
+   "mint": "XsX857TxHhoS3CbRt58me2xx8zcAn6n5kMJScZKrHJa",
+   "bid": 19289.023,
+   "ask": 19889.79,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NRGx",
+   "mint": "XsZ9qtReiaokaUfW3bEUx2AU4Zmcjk9Y95nEtFMqEXn",
+   "bid": 10444.31,
+   "ask": 10515.75,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EIXx",
+   "mint": "Xsm4TwT5UtCCjkcrj2eMZDPNCTdBeJacMmRCrxoXpZ8",
+   "bid": 5495.744,
+   "ask": 5543.3025,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HUBBx",
+   "mint": "XsCz2AUyFUuadE9zxfs7ywkbMvaQNeVTeNBK15L43Qc",
+   "bid": 43723.3165,
+   "ask": 48961.332,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LYVx",
+   "mint": "XsFU9pEZTmFTwGowKZkVtagbF5ivCJ4WTyPEZrzVFzY",
+   "bid": 16466.2635,
+   "ask": 17431.1075,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BSPx",
+   "mint": "XsYMHtwJcWon5GkPHzdDbCCztKtKzEurJnbydxgjsqS",
+   "bid": 3844.225,
+   "ask": 3935.895,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RKLBx",
+   "mint": "XsKSh3QDynp6oms9yHjZXbZo3pKzUBoqUFKPHS2g9Bh",
+   "bid": 6532.187,
+   "ask": 6557.822,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LULUx",
+   "mint": "XsDmtC5EpfzJoCzDN2SJP98xpCsSR2CqdZauJSvHNXT",
+   "bid": 9815.255,
+   "ask": 9874.79,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WENx",
+   "mint": "Xs4uNhvBDAcp2mz3g9XR5q3vzLgmF1ANWxJgWk2d5u3",
+   "bid": 670.992,
+   "ask": 675.011,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MLMx",
+   "mint": "Xsvi61uutcLdAsa5NxJ2c9geLgzUFM3tMtpJ44eoegt",
+   "bid": 48763.7445,
+   "ask": 49702.442,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CNPx",
+   "mint": "Xsx9i1A6e4xc9r5Gxxy4uZV4YSmwAXBJScvGLRv4nH2",
+   "bid": 3779.3225,
+   "ask": 3830.7375,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EQTx",
+   "mint": "XsvS1ZY358vAjNJ7s3fz13s64ZqYF36rgUDR8yVJkuA",
+   "bid": 4971.5315,
+   "ask": 5007.5,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NTRSx",
+   "mint": "XsRx9hY5BQWniDRahLNtV4uyyvQcnaRgrqw5ops842R",
+   "bid": 16325.475,
+   "ask": 19829.7,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DXCMx",
+   "mint": "Xsspestq9YiZofYG2pvuHgYM1aKdRNocveBodzrGjbg",
+   "bid": 8931.5825,
+   "ask": 9013.5,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "KVUEx",
+   "mint": "XsDDkXqF1sr1ixW4Y93Geqfd2LbrWxokCjQf9poGN3c",
+   "bid": 1755.363,
+   "ask": 1773.6565,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "Ax",
+   "mint": "Xs5drDwMFxkcChq5cU49EX2oTQUVWQ64qsSL5bVQoS3",
+   "bid": 15426.825,
+   "ask": 16003.97,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MSCIx",
+   "mint": "Xs4BPW5YU7RsXMmCt6CyDphWH3YLtyaXDXEzZDmj33G",
+   "bid": 55204.0695,
+   "ask": 56274.285,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CASYx",
+   "mint": "XsDBYWqoxayY5cqFWs6jNJn4wv5vbP3RkTNqceEQRGW",
+   "bid": 59710.3,
+   "ask": 60997.359,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RVMDx",
+   "mint": "XsCRJ3YusYCZ8ihZbmdao46y3ddSibxPK29UsitD9J9",
+   "bid": 18874.6455,
+   "ask": 19278.875,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WECx",
+   "mint": "Xsxq7WqXpiNFrdWSd6CA27LXmCsCrGyC9C3uaebmaqU",
+   "bid": 10275.5635,
+   "ask": 10565.825,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TDYx",
+   "mint": "XsBKXQehs7BBCZ8YbJ8X5B37BE1ymf9KyMJwbj6Jpoy",
+   "bid": 60255.481,
+   "ask": 61126.5525,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "IQVx",
+   "mint": "Xstzb2X8HbtJVUephHsF7XknnwiBRYMxWoLyfUBWaoC",
+   "bid": 26026.901,
+   "ask": 27928.8305,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NTRAx",
+   "mint": "Xsw75QJKjhyvcSFDnqrtXn7amNhCVgeoaoo3rp3sDak",
+   "bid": 36884.68985,
+   "ask": 37255.8,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AEEx",
+   "mint": "XssLKajmwH79hK14cqp65fFg2Eyteh23nmSaJpKRmzx",
+   "bid": 9657.492,
+   "ask": 10786.155,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PAYXx",
+   "mint": "Xsuo3Vd8T7MVAx3miKJ1beX4sGutzdL3GJsjk1yFbxA",
+   "bid": 11448.801,
+   "ask": 11817.7,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VICIx",
+   "mint": "XsN9HmM3TqbY317obKz1fYbRvR81MT9qbL5eUSiGto3",
+   "bid": 2375.4315,
+   "ask": 2393.585,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PCGx",
+   "mint": "XsPq3VY73br4wpgi2a4b3jAdvuhstpknXVJ2fA4vNmk",
+   "bid": 1318.02,
+   "ask": 1326.9875,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "OTISx",
+   "mint": "XszGT2Jo6bZz2SZBmhPstvo2xSs37q67nUJS7gtAfvx",
+   "bid": 6814.7625,
+   "ask": 6996.479,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DOVx",
+   "mint": "XsXG3ytqNM8wMwxbZnbZjY3wFua4nU58ZR6Lwr5wSDp",
+   "bid": 18770.8015,
+   "ask": 19429.1,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CFGx",
+   "mint": "Xsp9avBowUQeip8NfLXcwfw5VT74kc72BafgYPXN74a",
+   "bid": 6689.95,
+   "ask": 6845.2525,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EMEx",
+   "mint": "XsHsi7FvQo4T7AkmtyszYkhNdKDCVgrJFS7CWGeaeM8",
+   "bid": 75271.9225,
+   "ask": 77616.25,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "Qx",
+   "mint": "XsqUtYxpP7o3b2yupu7WZ2bi9u68W7VHQTFNR36mz96",
+   "bid": 12166.7225,
+   "ask": 12318.45,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "STLDx",
+   "mint": "Xsw7mKDicsyZ7dgSMfFxhX5nbgat3uG9V1nCxDy6Gvp",
+   "bid": 23464.75,
+   "ask": 24596.84,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RMDx",
+   "mint": "XsjsQvjH8BEXCjrgNiVhmhFiYPcNRXGj262fDupfV1A",
+   "bid": 21978.982,
+   "ask": 24483.6705,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FERGx",
+   "mint": "XsfdW27Z6gk5otDjYw5R2ad7PP1dKoR1Qx2ayurRBGc",
+   "bid": 21410.8355,
+   "ask": 24887.275,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FANGx",
+   "mint": "XsdLjeamzdsWW5aBhsGVAaQFcZtCL6yF9nhtWfszGT3",
+   "bid": 18971.5,
+   "ask": 19165.7055,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "KMBx",
+   "mint": "XsNnfg6KXzaRsH8PE9T9YEahq3MQpSZ3dQAa4hcL1SN",
+   "bid": 9780.3075,
+   "ask": 9886.808,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "IRx",
+   "mint": "XsWx5RzivC8d5XwnLiMcgQqqhXiDnrTDwFCDap1o6NW",
+   "bid": 7194.1925,
+   "ask": 7851.76,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HIGx",
+   "mint": "XsLw8Pw975zbR4QPQkAorVYM6qQq21jSztyDoskVz5x",
+   "bid": 12921.5885,
+   "ask": 13490.205,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "OXYx",
+   "mint": "XsRNiTxDeRvxTEMTV5BC98N7cTZXxjNdLnudR8YeB2b",
+   "bid": 5811.27,
+   "ask": 5848.76,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EXCx",
+   "mint": "XswJRi3vQhng81dGRXnaUjpyCzM89pwvYyHveT2xzEB",
+   "bid": 4193.7,
+   "ask": 4223.3255,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TTWOx",
+   "mint": "XssvmC28hqLgtT5kf8R8eAv3mejy4XftJ6MXB8QywTa",
+   "bid": 20642.989,
+   "ask": 20738.0605,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "KRx",
+   "mint": "XsHyXCSuYHca6SxpSLb2taKiWkoJA48pVcnqyFguHf5",
+   "bid": 5941.075,
+   "ask": 6101.138,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "IRMx",
+   "mint": "XssP4Vb5pahDsdKUXy74gD34DzotHCYKGXegd1KHdiA",
+   "bid": 10984.4985,
+   "ask": 11567.325,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DTEx",
+   "mint": "XsVK4gk4X1ANBSKF9DGjy9WseKhBfMUuEmP8v7J8u2G",
+   "bid": 12581.1,
+   "ask": 12858.2585,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GEHCx",
+   "mint": "XsQoxoLVogLGYRRRcFwjdcFQVLxFpCuYfDtvh3vJ2Ft",
+   "bid": 6415.3625,
+   "ask": 6509.75,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EXRx",
+   "mint": "XseFccApcVhrqASiXFM97ZkX7a2uDWbUWjC4T82LgAT",
+   "bid": 13380.8985,
+   "ask": 14671.975,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CNCx",
+   "mint": "XsegJtRFtvC3qqhNYdN2QXxumd2fjvWQmithQZ33ehS",
+   "bid": 6494.244,
+   "ask": 6529.78,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EDx",
+   "mint": "XsESyqE7kRmE1RVQDmo4aiMGMXogeY1Sdo8FQKwAmco",
+   "bid": 10481.2545,
+   "ask": 10540.7875,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BIIBx",
+   "mint": "Xsv9aoiWTdvBzVpvetL7LBkuS9xvceDdbLkfqMbTVDx",
+   "bid": 20968.5,
+   "ask": 22333.45,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NTAPx",
+   "mint": "XsjLc87ewHkMhsxhNRLy4TZFG64ycoZb23hLc2WW7iZ",
+   "bid": 19870.15,
+   "ask": 20030,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WATx",
+   "mint": "XsGmxpiwpg9oBuRoyczLkXs7j82v9Rb4BTHwTkvXnNA",
+   "bid": 41994.913,
+   "ask": 43124.59,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PRUx",
+   "mint": "XsPhDoJMMgARN4eB8apaPNFUjVBKqx3WtRS4ddBwKVw",
+   "bid": 11511.7065,
+   "ask": 12417.5985,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HALx",
+   "mint": "XsYq2q3UxkwdHmhxJf5wbuXfDWuy5mYP5xsDBVEDK8Q",
+   "bid": 3325.005,
+   "ask": 3356.0265,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CWx",
+   "mint": "XsWCYadcnfTLH3W8sBbJZepwotUkfV1qg7QQmzVo8M8",
+   "bid": 56969.4175,
+   "ask": 60602.768,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "IDXXx",
+   "mint": "Xs2AVjDnFK6ShEvX6QfSFodHpy8znSBhimB4kvTFTa1",
+   "bid": 50623.95,
+   "ask": 54232.2265,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AXONx",
+   "mint": "Xshh7vNfHqyqbnfuvhn8o53wXcuUbBYKASPq8DEHPbx",
+   "bid": 44932.5,
+   "ask": 45161.641,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CMGx",
+   "mint": "XsR1ktNCRYDoDNxhaSxF6NX2HyT4ACSQBgPRLpXTWmm",
+   "bid": 3345.9735,
+   "ask": 3366.0415,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VMCx",
+   "mint": "XsAtnoftgxL6kJErDeCL8m2e364mAYgEbSfSKxi4ctJ",
+   "bid": 24119.766,
+   "ask": 24937.35,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HUMx",
+   "mint": "XseFxRyaaJixiAzKBrSZAAKSLMQKVYceUGadwUAsQ7L",
+   "bid": 37943,
+   "ask": 38861.2045,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CCIx",
+   "mint": "XsbPN4VFi14geuC8D2Tb2u37kQM83VSkfMUyvXsWWoC",
+   "bid": 7236.1295,
+   "ask": 7410.0985,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DHIx",
+   "mint": "XsiNAvTHpvygKjMqb8Hz5Nqeo8NTAsWzT6DYLH287FA",
+   "bid": 13579.6,
+   "ask": 14246.3375,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ALNYx",
+   "mint": "Xs1asXCeRWVFLE3mun2UZhaY9VEDYfyjUhp5mjkjX7b",
+   "bid": 23961.0045,
+   "ask": 24125.1335,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PSAx",
+   "mint": "XsBLm8wotoJMHjonHcr1btz9RwLa3EWjhtbs3DbQphg",
+   "bid": 28956.5,
+   "ask": 30795.1235,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ROPx",
+   "mint": "XsCbNmXqgaDVDTpXaATSrki9ATKwu1wzfhcYwPriMns",
+   "bid": 36445.25,
+   "ask": 37865.7135,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BDXx",
+   "mint": "Xs3yrczxLidKAArdTKepU5NV8KUmwFM11NMyYbGqWDZ",
+   "bid": 17523.675,
+   "ask": 18372.5175,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ADMx",
+   "mint": "XsK6kBQe7QDQVmW1PupBZCc4oBpPbsRdPgvqCqvfCXX",
+   "bid": 8443.316,
+   "ask": 8532.78,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FASTx",
+   "mint": "Xs58AdBQTkqkejRvfMrGMQMML1m5xMQKVfKgPmqNhwg",
+   "bid": 4843.7235,
+   "ask": 5057.575,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MTBx",
+   "mint": "XsMXtu6uQkfvxCYURytUcQvhFCoqvphtoezVBh42CfZ",
+   "bid": 21022.419,
+   "ask": 23133.6485,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TPRx",
+   "mint": "Xs2zWfkYjSCCW4fdC1L36rz77YzTcQtji7ewjWPvuWW",
+   "bid": 11517.6975,
+   "ask": 12013.994,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CORx",
+   "mint": "Xsst4VThLi3nvYTsNCVwJi1z23LfXrdyKmhArkrSn1n",
+   "bid": 29455.75,
+   "ask": 31246.8,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SYYx",
+   "mint": "XszobR4az4oYsssmwsFov326662q84g7UPXzRgrGvfS",
+   "bid": 7802.279,
+   "ask": 8028.024,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HBANx",
+   "mint": "XsuFbhEyBaWikFEfA3QM92rr9VVYm79Lip4cC5rnSp5",
+   "bid": 1577.63,
+   "ask": 1596.391,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "XELx",
+   "mint": "Xsr6MgLKmoEmN4aL78MQ2q98R8wJnZ3FaCZUMwkNbNU",
+   "bid": 7181.212,
+   "ask": 7435.136,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AMPx",
+   "mint": "XsqWwT9y8ajA8LXQEy7msQmM6ExkP8Va3XYcr7oVhXg",
+   "bid": 52021.85,
+   "ask": 55421.007,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VTRx",
+   "mint": "XsEvH8WR4t5FU5GT1cfsmPnvrmEknd4UXA68uJ1F25L",
+   "bid": 8597.085,
+   "ask": 8722.0635,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AFLx",
+   "mint": "XsQ2JJPzG5EMvkRPSshA1mmpVvGPKBNYQmvuEnzpJhZ",
+   "bid": 11433.8235,
+   "ask": 11717.55,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MCHPx",
+   "mint": "Xs9GioXYhWaR1Pt7HLiNRgkHynWdPPWcdZWdUCHkZNj",
+   "bid": 7448.81,
+   "ask": 7511.25,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "UALx",
+   "mint": "XsKq6Ac27X857u18jH8MrWQ3bEA5ZfUSGriawpyu8xw",
+   "bid": 11033.425,
+   "ask": 11125.6635,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PEGx",
+   "mint": "XsUytoK53kCKfXC61Dn3ZM8sjyVBUpScF111pfMG69U",
+   "bid": 6922.6005,
+   "ask": 7055.5675,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "JBLx",
+   "mint": "XsnZQ49Abxr3RJgRSxYd4azhUg4MQVT3amiyaq84oA1",
+   "bid": 30314.46,
+   "ask": 30796.125,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "YUMx",
+   "mint": "XsNor8pbicnexAYvgvq3p8EXwyRj9UzjYu92ZnrJLqC",
+   "bid": 13474.7575,
+   "ask": 13879.7885,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ODFLx",
+   "mint": "XsuEQKUzuiMTMwFTm6MHBeTvknFU585gwu9u4CNKjQD",
+   "bid": 17045.3935,
+   "ask": 17526.25,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CTVAx",
+   "mint": "XsJXYLby91CWhGhTXds9oxjoc8EdsLy2iuxmq55U1Y3",
+   "bid": 8008.9685,
+   "ask": 8105.1395,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ETRx",
+   "mint": "XssZsJPrzg7n9Sc1stfPcB4vygcVeMfz5uZK2gPwNdv",
+   "bid": 9985,
+   "ask": 10554.8085,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ONx",
+   "mint": "XsTzZxvfNdVESw8oEn7cNPnfQ4SGk7ncBSezfU6dxa7",
+   "bid": 7111.317,
+   "ask": 7158.722,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RSGx",
+   "mint": "XsUkTUDE9hCG9GLEpw3STiGuf58hYmpymiF3z1nPh3A",
+   "bid": 21568.5985,
+   "ask": 22033,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AIGx",
+   "mint": "XsTg4SHooxeYYvQK5Q2wdKBKY46UdtZkF2LfNwbHEtu",
+   "bid": 7425.8445,
+   "ask": 7691.52,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CAHx",
+   "mint": "XsrstNGy7STAR22txNru2ahbEwdBadFJwYRCBNEQYBS",
+   "bid": 22266.55,
+   "ask": 23284.875,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "METx",
+   "mint": "XsGhGG2TNXuJLFL5q7pAomKtMVc2YvVqs4G1hyBZLfw",
+   "bid": 9666.4785,
+   "ask": 10015,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "OKEx",
+   "mint": "XspDMNC416uCcUbngqyAwzk1phuRYdmm6AMsWo3EHd4",
+   "bid": 9186.2,
+   "ask": 9515.2515,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WABx",
+   "mint": "XsGFoZFgiRxDk49QCAQUArX84V88t7Bz3fsExp7HLuX",
+   "bid": 27962.49325,
+   "ask": 29855.7165,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CARRx",
+   "mint": "XsvQh2FdVWMpbNsnYAbDNg38GtAWBEjcweJR42yRTgy",
+   "bid": 5406.8775,
+   "ask": 5493.2275,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EWx",
+   "mint": "XsSfT8eYeR2NqYFwCNLRNfDARHUTXvLeSnGbw2UKqrA",
+   "bid": 8768.827,
+   "ask": 9013.5,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "STTx",
+   "mint": "Xs6QWdM8Lgdf3gUfmhZfZDu8DKcoMyxjgyU46R28RUR",
+   "bid": 17990.973,
+   "ask": 18798.155,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "KDPx",
+   "mint": "XsdvuTpWkg6TSzpGJrdEwUwtWT7UrUzMxYTLhUZs9s9",
+   "bid": 3065.395,
+   "ask": 3154.725,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FITBx",
+   "mint": "XsVsC5yPcJKdeuZDejjymo2KJTuE3zdXZoSVuTXA7qv",
+   "bid": 5267.0875,
+   "ask": 5322.9725,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DALx",
+   "mint": "XsQVuhV5fBEb3b8TauFuRimcXSJdVrKqFgQTVqLZiq9",
+   "bid": 8063.886,
+   "ask": 8162.225,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AJGx",
+   "mint": "XsYka4UhXnzoqmdPCfqX8EZBQcN2MkrG4gJt4SxGvsN",
+   "bid": 23694.405,
+   "ask": 25538.25,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TRGPx",
+   "mint": "XsmhtZrbnheSvztwRW82ZqZqMjaRnAQqyWERFh1A4Kr",
+   "bid": 27409.8235,
+   "ask": 29844.7,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ALABx",
+   "mint": "XsuJLDjTibUFnh1gNgnXeDSjQTVffnaWFKzUht5rVvc",
+   "bid": 31033.38,
+   "ask": 31321.9125,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AMEx",
+   "mint": "XsVNxwvuQghf6TYBmCck75ddYD3KiWozujR8C67bPXC",
+   "bid": 23775.2835,
+   "ask": 24223.2805,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ADSKx",
+   "mint": "Xs2jBYo5VxMmuNjpBnMShsLB26dtK75bt42ag93ZdHU",
+   "bid": 21569.597,
+   "ask": 22423.585,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AZOx",
+   "mint": "XsfLtqmidw4ouMrdWvH5usSs3r77Usm6rXGygxhRTjz",
+   "bid": 283074.75,
+   "ask": 287729.9485,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DVNx",
+   "mint": "Xs8WNVWbYNsHsqEu9WTb9AazMfG7wFxFat11V6mVK1x",
+   "bid": 4792.8,
+   "ask": 4848.2615,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ROKx",
+   "mint": "XsnR8Rtrd8yFDGP3g2HwLdGiw58UcXjggXzgkL3pNYz",
+   "bid": 41666.4065,
+   "ask": 43063.4985,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "Ox",
+   "mint": "XsyMphR2LaL2YBiorsZYFhdN96xKTSi64L3pmiAHLc3",
+   "bid": 5722.4035,
+   "ask": 5746.607,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SPGx",
+   "mint": "XsUXFEjcDYrp7NuzHtC88JLyirmnLpA8nde1e8eRxEn",
+   "bid": 20369.4,
+   "ask": 20831.2,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MCOx",
+   "mint": "XseTVygt2sUPQsfYbYVMXzV1AeMRE6Usj9DEWwStMe3",
+   "bid": 45830.1515,
+   "ask": 47270.8,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LHXx",
+   "mint": "XssE4tb3kc3f5V5cRL6dsuffP9wDm915W4bAsyNf62A",
+   "bid": 24687.9125,
+   "ask": 25023.479,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CIENx",
+   "mint": "XsE5qZhg6oL1ypWwtwXPQtW1EpFSvRmLXk9ceX9TtZx",
+   "bid": 36394.82575,
+   "ask": 36649.8925,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "Dx",
+   "mint": "XsiYzgRPqPjAaJjpDMo2CaQ7c9khuCwD7Hj1po2dxSj",
+   "bid": 6295.5425,
+   "ask": 6474.6975,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EOGx",
+   "mint": "XsfBx5h3LBhypgy7goD4i8nAfLU8ZZ5QBSQUtASRVox",
+   "bid": 14233.6175,
+   "ask": 14506.7275,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TRVx",
+   "mint": "Xsxd1sqLaPsmmmYTZHr2GnNufXXiH5rZcahP99TyeDr",
+   "bid": 36762.773,
+   "ask": 37956.85,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SREx",
+   "mint": "XsbicvsCUHE9ja8gTsjzruDxQTKeyij94i3phx3NuNf",
+   "bid": 7998.9835,
+   "ask": 8262.375,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "REGNx",
+   "mint": "XsWkTtvUXJgrvxvgGuHRRqk6iwDuviEQZw4uJFUUGgX",
+   "bid": 77553.495,
+   "ask": 80120,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "APOx",
+   "mint": "XsosRSUc3n5pod3YNNyQ7go6811xWYd3YME2uEQohEx",
+   "bid": 12204.6655,
+   "ask": 12763.116,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SHWx",
+   "mint": "XsfgitU15HiJX9UJN2fhcpbfRr5P8XJXvC1nuJs3jAr",
+   "bid": 32040.8665,
+   "ask": 32949.35,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NOCx",
+   "mint": "Xs1eyZcwrzzYW3hDjfpm7PiJrC9RyFszsHpqfTeUTCE",
+   "bid": 52045.814,
+   "ask": 52979.35,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MPCx",
+   "mint": "XsyqGLaBLmGCZstuUrvo7iWhJkZgg4KEBtcxVFBsYSg",
+   "bid": 41637.45,
+   "ask": 42063,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GWWx",
+   "mint": "XsSuZjygy7yrbyZJNzBj78ysrKDFMv11HrPPwBUE2Dn",
+   "bid": 124133.52,
+   "ask": 132196.9985,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "KKRx",
+   "mint": "XsTd1xJRAwAddguKdxYPGoS3qhctGsJb1ue4Rm6URFa",
+   "bid": 9785.3,
+   "ask": 10208.2895,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FIXx",
+   "mint": "XsPTVwrSE3MMZF1bt15vxM7NuuRHdsBJ7mtGW4cttHX",
+   "bid": 166849.35,
+   "ask": 169253.5,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "Fx",
+   "mint": "XsBNJXGu68cBH5hgFxdqZkeh8cMQv32jeEtZtYTYvfS",
+   "bid": 1326.008,
+   "ask": 1330.9935,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "APDx",
+   "mint": "XsdeDQyocwoXYq4rvm3eAxN4uDUqww78i9nKLABhp6h",
+   "bid": 28088.8035,
+   "ask": 28730.0305,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MPWRx",
+   "mint": "Xs9YEeNWvRwWK4wPHPaitx9mFyfU6hbUY539BLJSHCN",
+   "bid": 123814,
+   "ask": 124742.834,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TFCx",
+   "mint": "XspgPjzWCN6w4b8xHyfN8NRXrgdNMYx5nsWgiGGeK4R",
+   "bid": 4790.803,
+   "ask": 4951.416,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CTASx",
+   "mint": "XszBTLtg8oMmEWsZHbJJwViiB6unNh2ei1e6miArqps",
+   "bid": 19336.951,
+   "ask": 20030,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DLRx",
+   "mint": "Xstp4CYu1181rhhi7w32Lj6wQZ2VDjFhQNKZwZARk5G",
+   "bid": 17973,
+   "ask": 18477.675,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ALLx",
+   "mint": "Xs1kbMkmahb44LPLLdjscSYZ4c2HUu4WNfgk8P7ndQf",
+   "bid": 24213.625,
+   "ask": 25064.5405,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HCAx",
+   "mint": "XsJ5MSaKx3Y6bKEfmrRmovGEdRM53KWqEEHuaNUsQpD",
+   "bid": 42443.2395,
+   "ask": 43565.25,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AEPx",
+   "mint": "XsP8GpS93XjmDg5oVVCVqZsffkWadVCqZYp4BFFJnJm",
+   "bid": 11948.051,
+   "ask": 12153.2025,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "KEYSx",
+   "mint": "XsXzXSMoSdF3gczdPhECXHN3TwfkUpNkthUvpEJVbDn",
+   "bid": 33449.75,
+   "ask": 34481.645,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NUEx",
+   "mint": "XsvdeDvbEfZkvfEUixS9SydEfJopFFD6NJjXZN1haYr",
+   "bid": 24762.8,
+   "ask": 24976.4085,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PCARx",
+   "mint": "Xs1rnpzumX77Zz3nVrRGbDYzTM4PM7vgvS4BLTG6ckQ",
+   "bid": 11382.9,
+   "ask": 12616.897,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "COHRx",
+   "mint": "XsipFyePxrgwZJrX4s26RJ25cqwpkfn6ec8JLy26w5b",
+   "bid": 32750.8,
+   "ask": 32929.32,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "URIx",
+   "mint": "XsLR9avpksMgLqB5Mw3jBNjzdvSDUKGw4onApxDGE6x",
+   "bid": 98651.8,
+   "ask": 105057.35,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TDGx",
+   "mint": "XsaY4eSxkNswy2kg8j7CWS7v154y5kkxYRiqX2ffpVZ",
+   "bid": 108451.079,
+   "ask": 110289.186,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NSCx",
+   "mint": "Xs4UsCDQKKJqHjidgoZBHUW9emLD4njpLPsYesp4ZpZ",
+   "bid": 29972.973,
+   "ask": 31462.1225,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CLx",
+   "mint": "XsWzjAeMsR9pMX1aKkq7uDKpr11daUHkmjXya15yCqd",
+   "bid": 8678.962,
+   "ask": 8798.1775,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BSXx",
+   "mint": "Xs7vm4sZj1LiNLvnxUCyUTuxRMTt4WGJfdbCASTYhN9",
+   "bid": 4345.0726,
+   "ask": 4375.5535,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MSIx",
+   "mint": "Xsa1gZ38panjmJwh6cr9QQ1YpRBEzVfxrykWSsiWvJe",
+   "bid": 43934,
+   "ask": 48372.45,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FDXx",
+   "mint": "XsEmsxmtT12GBiqtvTxoNaipTBNEdUs6oq7pwHFHTb7",
+   "bid": 30054.85,
+   "ask": 30585.81,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VLOx",
+   "mint": "XsmMjZH2ex52ecoCqBN1sMADoWQziXpe9j6z6QVmafF",
+   "bid": 40738.8,
+   "ask": 41060.4985,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ECLx",
+   "mint": "XsPPAW5wuUa1ALN1NstEkUAajbwycXTRxtWoLfFriy4",
+   "bid": 26511.1735,
+   "ask": 27440.0985,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HPEx",
+   "mint": "Xszp97B7zgeyNUFkymHdxXp3Y5KTZ1rzd2bAL9TW34t",
+   "bid": 6196.691,
+   "ask": 6234.3375,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HLTx",
+   "mint": "Xs66hB4NftAJmu73aeBc6RXQC4DX4LwU4xvnfsz581r",
+   "bid": 30054.85,
+   "ask": 31214.752,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PSXx",
+   "mint": "XsYvZVxiNdjuHQQzdCmf4TMSTBgvarV2gLi2akooV8V",
+   "bid": 26759.8,
+   "ask": 26930.335,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ITWx",
+   "mint": "Xs7NEcjqek7SN135xwSafr721njNVyenBdd7NDG2cYo",
+   "bid": 26741.827,
+   "ask": 27474.1495,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SNOWx",
+   "mint": "Xs3QCTNpPWTFYRQ9yPv9gsvWKNJGk45UQ1bb1w7xznc",
+   "bid": 33349.9,
+   "ask": 33649.3985,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "INTUx",
+   "mint": "XsfodJMz7SyMNsSgATVDcbuMiQDqQoAiRTL1xuyHNUn",
+   "bid": 30304.475,
+   "ask": 30445.6,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ORLYx",
+   "mint": "XsZCRtj2wRfksr19c4Bf4L2WBB5EYPmr1nBQS1yXApD",
+   "bid": 8318.5035,
+   "ask": 8577.8475,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ROSTx",
+   "mint": "XsPYJyoTnjc471VCHEERVBVrJ7xuQhDYWddPw6koNVV",
+   "bid": 22467.2485,
+   "ask": 23400.0475,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GMx",
+   "mint": "XsSFgHPgZgYNSuz1ttNHNp8zUBBMZGngFcMMfKPK6JQ",
+   "bid": 8247.61,
+   "ask": 8333.4815,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CIx",
+   "mint": "XsGfYyioN9bfk6M6RGKvucDq8grQehqkBz8ziEtT124",
+   "bid": 27407.8265,
+   "ask": 27741.55,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ICEx",
+   "mint": "XsG6o69zE7mQCeFf6utyMx9Q89cJjGV4vTwi3wFHrkN",
+   "bid": 15078.3485,
+   "ask": 15923.85,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WMx",
+   "mint": "XscZ13Vr2dH9GV8vxVAgFsXz2YMoDCAz3QanuCcwsr5",
+   "bid": 21045.3845,
+   "ask": 21173.713,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EMRx",
+   "mint": "Xskqq9tKh2gc1PBJHf2q6jMgBpt3AojT3HVkWhjoY5h",
+   "bid": 15029.422,
+   "ask": 16024,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ELVx",
+   "mint": "XsJbC4TFupSLpxNwsfq9o1BB5tdTT7eZ3YNerVvE49H",
+   "bid": 39940,
+   "ask": 41336.9125,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MMMx",
+   "mint": "XsTEo8W2L8JprN57bmJgatDT84z57ReJYizr5f32BfP",
+   "bid": 16576.0985,
+   "ask": 16764.1085,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CSXx",
+   "mint": "XskJzVZDKvqm999PGat2ifznPVmmDXn4Zi1LZ7Y5CVr",
+   "bid": 4667.9875,
+   "ask": 4757.125,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FTNTx",
+   "mint": "XsWrVR5F8eUgoienkVAQLwjvtzEAUoWWcwhcDzu3qRX",
+   "bid": 16875.6485,
+   "ask": 17125.65,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BXx",
+   "mint": "XsYtTeabUTJnkxWrHZUChwcKpNq6BbqPbWs9ZgLk4Xa",
+   "bid": 12532.1735,
+   "ask": 12645.9405,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WMBx",
+   "mint": "Xso4umc25VxszLT64SYNT7TMeZudAC75xwNo7qFjJFu",
+   "bid": 7139.275,
+   "ask": 7215.8075,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CMIx",
+   "mint": "XsqZ16VmoeszDniTfGTnwPBMv7j7uSDArddziagHWit",
+   "bid": 53409.765,
+   "ask": 53980.85,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AMTx",
+   "mint": "XsvYPZkrDDg7259oDv5E76HSmeLWgHPgNEQ44KVbJJU",
+   "bid": 17232.113,
+   "ask": 17576.325,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SNPSx",
+   "mint": "XsfGN1hFHbigfAzUY1nLRjrECm3ohGzVcim5pMqgp9d",
+   "bid": 38641.95,
+   "ask": 38857.1985,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MRSHx",
+   "mint": "Xso2JLSTXQjpDXw1r7ZxbC2JCbB6iLGw65kUzQvgTwH",
+   "bid": 17074.35,
+   "ask": 17926.85,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FCXx",
+   "mint": "XsT9Z9BYM5Bp2JAuKVgw1XLdENGyvQwC5C2gAuzeKyY",
+   "bid": 7239.125,
+   "ask": 7268.887,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ADPx",
+   "mint": "XsCBDrb61PyQqTJp7uHhD4vj1MkD5UK6jpxUBbgG7i1",
+   "bid": 26759.8,
+   "ask": 27641.4,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PNCx",
+   "mint": "Xss1A59GFZcvyuTXLXMyYdJ7e9kpHq6AFKNjcVZ1rjA",
+   "bid": 22866.6485,
+   "ask": 24733.044,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "USBx",
+   "mint": "Xsieiissncd7uzAW2kwNJPDKBfWcyvdibgxSMQindKF",
+   "bid": 6008.973,
+   "ask": 6065.084,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MCKx",
+   "mint": "XsnoiYFyBemVokJpx3ddt6mPB3v2HepSevRLXSfj3Y5",
+   "bid": 86170.55,
+   "ask": 88132,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SYKx",
+   "mint": "XshACd866qcdJYTotipkEHNKKnjDHJJkUciUxKVenE3",
+   "bid": 27458.75,
+   "ask": 27841.7,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SOx",
+   "mint": "Xs5nNLYnMuwBTMQ7KnfCgfsDBa9WehDa1EZqzicarZm",
+   "bid": 8537.175,
+   "ask": 8587.8625,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CDNSx",
+   "mint": "XsrB8RyBpbMWm8zCQutdT2n95BgNj4rJFfxuhHFjk2v",
+   "bid": 28335.433,
+   "ask": 28572.795,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NOWx",
+   "mint": "XsBnEFd2EtpwBRNVfN8qLZcVUnuqXRaGCSEEFChLfxL",
+   "bid": 13603.564,
+   "ask": 13660.46,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DUKx",
+   "mint": "XswU7kXY6dGgMqpiWW2jKSYVZMsCWv5LKcLaFBgYzPv",
+   "bid": 11702.42,
+   "ask": 11867.775,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EQIXx",
+   "mint": "XsBo6pg8N9kk7YnL69NnBBSZBWDkF1gHWjTAXpYuAVo",
+   "bid": 98471.0715,
+   "ask": 105157.5,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GDx",
+   "mint": "Xsgk6nv6V81zQms4mcvUiEtLDdVueXfWPRCaxayqkSN",
+   "bid": 35147.2,
+   "ask": 35608.3325,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HWMx",
+   "mint": "XsCX8NnXq3qx6zUxXxWwjV2yQnGc9C5y6UyXvE6RG7r",
+   "bid": 22995.455,
+   "ask": 23234.8,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LMTx",
+   "mint": "XssULacY8D3z3a8HoQuLid8wdJHcZLGpSST9MkNFzox",
+   "bid": 53354.8475,
+   "ask": 53750.505,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NEMx",
+   "mint": "XssuE11NLek5vAeHNS2Jm8PFvT4PE7dtnpZwasWTGDT",
+   "bid": 12237.616,
+   "ask": 12313.4425,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VRTXx",
+   "mint": "XsgCWpLUC3pv6JmNAFtkYmuwSaikShy8QZRuripgBzn",
+   "bid": 50440.226,
+   "ask": 51290.821,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "COFx",
+   "mint": "Xstd4ems8vhfGwTngpXCzgnSvJ4oD7E5gExUue2KEZX",
+   "bid": 20073.844,
+   "ask": 20680.975,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SBUXx",
+   "mint": "Xs9gd8SGbYQn9kkUYQayn46BdqQbvvUshEF6ZpRAzM7",
+   "bid": 9542.6645,
+   "ask": 9621.4105,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MOx",
+   "mint": "XsztStxbbGZE63p8DyD8YCpzyWFJwwy2PNcyaf3cZz8",
+   "bid": 6914.6125,
+   "ask": 6950.41,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WELLx",
+   "mint": "XsuKHFvcZLWvhk8XcprK4tiAZRefQ4nfTyNs6b9BArz",
+   "bid": 22467.2485,
+   "ask": 23022.482,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PHx",
+   "mint": "XskVc7XiWmSqvzbjhA2LqGHQhvBdBNfatfeTpNru6KP",
+   "bid": 94213.4675,
+   "ask": 96776.948,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PGRx",
+   "mint": "XsGDHfnSNxofQ2qXzcty9r4HB5HFszUCrQhjN7mbEcw",
+   "bid": 21180.182,
+   "ask": 21632.4,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BMYx",
+   "mint": "Xsa3dm4UT6TdzPJV75UiuGUeGywYUnfSNhsV5nHPZEu",
+   "bid": 6269.5815,
+   "ask": 6314.4575,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PLDx",
+   "mint": "XsnXCL5FtHLHH1jW5Nknd5BjuazxnnkCAGR6fWPwPJL",
+   "bid": 13333.969,
+   "ask": 13489.2035,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DEx",
+   "mint": "Xsh3Lt6pLpH65udstiFuZThJ6gyQTL6ryVXtNwEy5zd",
+   "bid": 68272.4375,
+   "ask": 69115.518,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LOWx",
+   "mint": "XsixDLxXcKZBcRBddYiPZjB9FJcKMTLd4B7VBeKo3pB",
+   "bid": 19270.0515,
+   "ask": 19392.0445,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "COPx",
+   "mint": "Xs58CxmUcgT17reeVV64se747XuRfjsJQnpb8DX9TDq",
+   "bid": 12985.4925,
+   "ask": 13119.65,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CVSx",
+   "mint": "XsKWyokwxJfb5aVBfDJYGte4wk2NPMNFo6SivouPeSy",
+   "bid": 8866.68,
+   "ask": 8922.3635,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "UNPx",
+   "mint": "Xsehrw5hHiQ16Vfxxctj8ewUhtRCzbCrBYS278ctAAy",
+   "bid": 27633.4875,
+   "ask": 27978.9055,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SCHWx",
+   "mint": "XsK5U9qwT9ErPXnpgDzV9voTGASZbZnNTYTGVxCqPii",
+   "bid": 10484.25,
+   "ask": 10550.8025,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ISRGx",
+   "mint": "XsgBcHP3frsQGHr5EoDdoPZMANk52Y4JPg5BYx98NwL",
+   "bid": 39202.1085,
+   "ask": 39549.235,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GLWx",
+   "mint": "Xsg3UgvjxpUgV3WZx9Wt9deLx7qvKYp6ZLY6xMY2Dfq",
+   "bid": 15417.8385,
+   "ask": 15513.235,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NEEx",
+   "mint": "Xs4f5EbxL1bB89N7ADF7smF8fXxifJa3t6SexZufBWA",
+   "bid": 8039.922,
+   "ask": 8112.15,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TJXx",
+   "mint": "XsPWZN3FYcrvpEnxrQqogbVZtxpRX9tFomymKw2dWJS",
+   "bid": 12710.905,
+   "ask": 12859.26,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BAx",
+   "mint": "XsBcnKnZMsPaerLiUQ4eMFy4Fjysot4RugYXYDjiqCP",
+   "bid": 19999.955,
+   "ask": 20080.075,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DISx",
+   "mint": "Xsg93jDV656ULQ5u9yT2x5DS9b4xGD8aDCtfESSW6Bb",
+   "bid": 10310.511,
+   "ask": 10384.5535,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GILDx",
+   "mint": "XsmAFboVqfDwGPgXfd7oCunvYAYSzzkuKE2BDRzwjGy",
+   "bid": 14877.65,
+   "ask": 15022.5,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AMGNx",
+   "mint": "XsgKwBMbv8LDzEYRgbKtyqsub6QB56PQVzgTGbiGaNe",
+   "bid": 38492.175,
+   "ask": 38726.002,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VZx",
+   "mint": "Xs4VKGG8TTan8UN3mC1ufsDMamBtBLE4Ahfkyv2tfuy",
+   "bid": 4802.785,
+   "ask": 4819.71875,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "QCOMx",
+   "mint": "XsUUG8bjFN2KvzLTpzavvEKdAjMAeLTZiTeAQJ9uhvB",
+   "bid": 17992.97,
+   "ask": 18060.0495,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WDCx",
+   "mint": "XsmopJuh6C6uNFJa3KaVoYqEtrf3Y7M5LYwRLKLER3h",
+   "bid": 45338.8895,
+   "ask": 45618.325,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RTXx",
+   "mint": "XsN53tgjZA4QU8iuedPNHxxCbDqKcJqbrT1f8jBXzdC",
+   "bid": 19390.87,
+   "ask": 19546.2755,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WFCx",
+   "mint": "XspHXejQ3A4VeimAqR1mAkvgTWgpmmoNR5CUhwCqzqr",
+   "bid": 8619.052,
+   "ask": 8688.0125,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MSx",
+   "mint": "XsUucbjDLYbER4WNNffn1eQ9cDnAcFVfLgSZeLHPDZS",
+   "bid": 20319.57485,
+   "ask": 20529.7485,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GEx",
+   "mint": "XsfsBjSZoXXKJsxoSt8TyLYsjhBAKFaDPZTCQbFRirP",
+   "bid": 31576.564,
+   "ask": 31697.475,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ADIx",
+   "mint": "Xs3CytsvJshAYy1TQjq2o2yVWCyEGinNpvkB6f3Qs31",
+   "bid": 37743.3,
+   "ask": 38057,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "Cx",
+   "mint": "XsM1FstDXh1pA4uNXzvJdAop9SRJnnRdWt2o8A2mLpN",
+   "bid": 13244.104,
+   "ask": 13319.95,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TXNx",
+   "mint": "XsU4fHhJEFcrwNh4RYuHmWdaoCfsrWKEm4UEs3zTJwH",
+   "bid": 26661.947,
+   "ask": 27030.485,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CATx",
+   "mint": "XsRvd1meWQ9kW1SrZPa1jokQqmBoPWWjd6wGTgdp5E6",
+   "bid": 82126.625,
+   "ask": 82523.6,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BOTx",
+   "mint": "Xsi8P9r7ZWDBBnBj9JTfnKWqyKNV19X2CQPWQsGdjnS",
+   "bid": 3040.4325,
+   "ask": 3082.617,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "SPCXx",
+   "mint": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+   "bid": 15366.618,
+   "ask": 15400.5852,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MDLNx",
+   "mint": "XsxaiepK535fVqavwRvJVTC64KaCLTtCgQT5jpR3rJt",
+   "bid": 3161.251,
+   "ask": 3281.9155,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "VOOx",
+   "mint": "Xsd7TduTbjuYCFL7Uoujb8SbkZLmUsuYNLn7KdvX21x",
+   "bid": 70548.019,
+   "ask": 70770.89735,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "JAAAx",
+   "mint": "XsEYQJtVa51Ww3y28jV1FwheMgmDj8BpxYiCPThcLWW",
+   "bid": 5058.401,
+   "ask": 5075.602,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "BITXx",
+   "mint": "XsraCsjDB8cYn672MZSxCzZBhrodEPXD7pWd5EiRUhm",
+   "bid": 2017.9685,
+   "ask": 2025.53375,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FLBLx",
+   "mint": "XsCZJYnCmjs5cYZDMLVxVzvMy5AK2oqsWpobS6SYno8",
+   "bid": 2219.6655,
+   "ask": 2311.462,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "RCATx",
+   "mint": "Xs6yCfUGbkjcvivWr4crLR7pJGxEXspsuuUMhxNEEUw",
+   "bid": 689.9635,
+   "ask": 694.0395,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LNGx",
+   "mint": "XsYLZdcMYST418xZhTV6KaHqr8BWqaKS3J45ywqigF9",
+   "bid": 26590.055,
+   "ask": 26830.185,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "IQMx",
+   "mint": "XsGqU2JhofxjZBBhuXAroJGdiyZdvbx64tPx1Mu6DVK",
+   "bid": 4341.478,
+   "ask": 17042.5255,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "FAAAx",
+   "mint": "Xs8rb8QG9mEuQ41g2cUzuJLZt3xEPQFhvgb9s4obXSn",
+   "bid": 5017.4625,
+   "ask": 5057.575,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "ONDSx",
+   "mint": "Xsgc9YTqdAH1GzDLBGQcScCMgkKsVBn4hBmqtNRospY",
+   "bid": 745.8795,
+   "ask": 749.122,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "USPXx",
+   "mint": "XsBNz5UKYqcALjS5Xnm7HesMapyKLxkmfWPGHBek36x",
+   "bid": 5791.3,
+   "ask": 10613.897,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "ENHAx",
+   "mint": "XsGAnis8BY5TLxEGdPY1LeeqY1DHPcUkkBQWRyQaJya",
+   "bid": 144.7825,
+   "ask": 153.2295,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "YLDEx",
+   "mint": "Xs4uZnG2mzZQKgnmuYboj1PRBtascAvWh5NdVMfz2aW",
+   "bid": 5238.131,
+   "ask": 8863.275,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "VIDAx",
+   "mint": "XsfCC9VL4DamVGNgdJpfLXB3sBVa158Gbx8sh7NzmTk",
+   "bid": 185.442,
+   "ask": 195.585,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "NETx",
+   "mint": "XsR3LAMkzuPP8DnfYaiB2grTWqkBVy286gjJVErK1bi",
+   "bid": 32501.175,
+   "ask": 32939.335,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "IRENx",
+   "mint": "Xshh1dRsnxatP45yBfrzU9MrvrFCvxHQGTrWjgdA81E",
+   "bid": 4811.7715,
+   "ask": 4833.239,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DAXx",
+   "mint": "XsKbKZ6e1BtERDn2cF11WkpVwvzSWCrf83AMafgnMQT",
+   "bid": 4473.28,
+   "ask": 4603.8955,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HIMSx",
+   "mint": "XsprHSJzwz3qmHcEf7j7WcUk6hMUL4sPLuAdWaSY1oh",
+   "bid": 2820.7625,
+   "ask": 2834.245,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FLQMx",
+   "mint": "XsZdwvwEAn7KH8bCCo8AkxJmSm4MbaRxcDeh9Gt2VTF",
+   "bid": 2362.451,
+   "ask": 9371.0355,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "JPSTx",
+   "mint": "XsCAXu7xTaZMG9b9KJhNWYapuvNjxPuE4SysZq8uvMq",
+   "bid": 5029.4445,
+   "ask": 5045.557,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "EWUx",
+   "mint": "XsbWCMXPzLdZMLpPtiiWE7M99fySmsnK5eFCWGWfDQ8",
+   "bid": 4500.2395,
+   "ask": 5207.8,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FSMLx",
+   "mint": "Xs9nAeuqjogYHy2UfL6jYqGmM5MPrRjuz6UYk8H79mZ",
+   "bid": 1178.23,
+   "ask": 3204.8,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "EWYx",
+   "mint": "XswenHXJtDWYMh89uRYx2tZcABxwXSn7j3jidDPS1Yo",
+   "bid": 18609.0445,
+   "ask": 18675.972,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "FEZx",
+   "mint": "XsbZDdYJKxEBQASz4KBj23NRgymXw2NK6mbNQ6PYhC7",
+   "bid": 6837.728,
+   "ask": 6942.398,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "EWGx",
+   "mint": "XsM51PKxDNQBZR65VRxRjNqcMWUBoYwHeVn2FR6WXi9",
+   "bid": 4194.6985,
+   "ask": 4306.45,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GDXx",
+   "mint": "XsVRhRg9eRE9PrsoPsAt5Mifa8mfjm9R3vdw6orp54j",
+   "bid": 9524.6915,
+   "ask": 9572.337,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "SOXLx",
+   "mint": "XsdZDkoMdUb6iKDAKKappuM7C1Q2HmTqC8jNujbfmCu",
+   "bid": 13150.245,
+   "ask": 13216.1946,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "EWQx",
+   "mint": "Xs1neEMHNaDDSHqE9nvDGkmuX73ZASKcLtQqwmVAQde",
+   "bid": 1766.3465,
+   "ask": 4450.666,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SOXXx",
+   "mint": "XsEsHeiNZf88sABxu74TPuXbQThdaQGdzPVZUBicjtQ",
+   "bid": 54368.325,
+   "ask": 54581.04895,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NLRx",
+   "mint": "XsTSfxoQry8okZoGMN5t6mExibDq3gA2NDLJeLztX7E",
+   "bid": 10820.7445,
+   "ask": 11016.5,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "SATAx",
+   "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
+   "bid": 9983.003,
+   "ask": 10013.9985,
+   "halted": false,
+   "tradingHours": "Regular"
+  },
+  {
+   "symbol": "COPXx",
+   "mint": "XsybfiKkD4UmjkAGT2uR8X2sq9AWFtvGJM2KTffoALZ",
+   "bid": 8786.8,
+   "ask": 8874.2915,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SMCIx",
+   "mint": "XsMxAoJP47FQGLsVUvSS2QfBaHdNsd7DRU6nWRL8RSa",
+   "bid": 4023.955,
+   "ask": 4041.0525,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ITAx",
+   "mint": "XsXoAR52Q2NYFkYiNqhCq4FauvyA1tdRsrmEYNf9fuh",
+   "bid": 21447.78,
+   "ask": 21847.7225,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MOOx",
+   "mint": "Xs72K1Ta1D5ccNy3RzSyQWGgZywWvphX78pL8WBk1Bo",
+   "bid": 8451.304,
+   "ask": 8612.9,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "UUUUx",
+   "mint": "XsYHvpLWfTfqdLkPbCc4eUT21eH521BRTXBypgzpEDH",
+   "bid": 1208.185,
+   "ask": 1215.32025,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VCXx",
+   "mint": "Xs7UsqobM3EJgMeHwdAbmDBCZH1G5WTCjatpeYcCr8x",
+   "bid": 3177.227,
+   "ask": 3204.8,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DELLx",
+   "mint": "Xsu7Tc5J2fVUE4H5vYAiSr34cvLJeCsYPMjAYnayQn6",
+   "bid": 58112.7,
+   "ask": 58387.45,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PYPLx",
+   "mint": "XshWQWYVp5ff8CrAEsGmLVKD47nBWi3Ygn5v8wXK27G",
+   "bid": 5243.1235,
+   "ask": 5271.896,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VUGx",
+   "mint": "XsNVBwVGqtDqmA2Waoiux5mfykH8nepLK74z3ZoQWK2",
+   "bid": 8898.632,
+   "ask": 8967.33085,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "UBERx",
+   "mint": "XsAsZLF4MmsvS1sDxRMrUz7REjHfwbC9UAMXSRBqgEB",
+   "bid": 7076.3695,
+   "ask": 7110.65,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SMHx",
+   "mint": "XstuBvLo7soZzj3beCCPonHpR3eUfPNSeQzw35Swons",
+   "bid": 58173.6085,
+   "ask": 58387.45,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CEGx",
+   "mint": "Xssu2cDLdZXZYrq17frTVrb3meumRCAzEf7pXyxoWVN",
+   "bid": 25688.4095,
+   "ask": 25838.7,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TMUSx",
+   "mint": "XswCi2U1G6Ppbw1QhG45yKb8UKuR1FKLJrquv2FZSD4",
+   "bid": 16667.9605,
+   "ask": 16872.2705,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RBLXx",
+   "mint": "Xss5RAku5EH6UViFdvW7ss9xQjwQLsrs2opPMhb3k43",
+   "bid": 4921.6065,
+   "ask": 4953.419,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PPLTx",
+   "mint": "Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme",
+   "bid": 1623.561,
+   "ask": 1631.4435,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SBETx",
+   "mint": "XsEoih2x6nZuUjFwzGoba6MFmtzCkzW2c4YAm6baQbq",
+   "bid": 969.5435,
+   "ask": 980.4685,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TSMx",
+   "mint": "XsafvsGtzFqqHgTnA3aPC83EAMkacU5mcGtcSayhpVV",
+   "bid": 43891.0645,
+   "ask": 44052.9805,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SNDKx",
+   "mint": "Xswbpc8UqU6e1j9QZEWCjBMjyvz4twqD7PCy6j2e7jj",
+   "bid": 181227.75,
+   "ask": 182070.2964,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BTGOx",
+   "mint": "XsvHMmbDcd14DHHW16PkxPGW7ks77ehxUv1E9Zmxgj4",
+   "bid": 768.845,
+   "ask": 781.17,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "URAx",
+   "mint": "Xsq9sEQjYiUTSZ55RrbHAzVfz8HotwFGrqgxkgiv4LB",
+   "bid": 4246.6205,
+   "ask": 4283.4155,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "XOPx",
+   "mint": "XsAk6BoV4kBXUM6WXodKyM21CN92G9jArwAzFvbh3LX",
+   "bid": 18752.8285,
+   "ask": 18868.26,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "RIOTx",
+   "mint": "Xs31mE5EiqjSHEaiX9QDKCN6NvSGCqpJ6f1FNq2wri5",
+   "bid": 2461.3025,
+   "ask": 2498.7425,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PALLx",
+   "mint": "XsTTtPA5V19YwHKDv4xeVXNM6kdsQNJvg3MyWkRUckt",
+   "bid": 2348.472,
+   "ask": 2372.5535,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "USARx",
+   "mint": "XsJJneENiaBPqqcdK1gMsfwi9cbw111azigzRYHoctX",
+   "bid": 1612.5775,
+   "ask": 1622.43,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "XLEx",
+   "mint": "Xs54CrhmpVp6uxZXwgSTegrRH2kShh88XFPzgf4BExu",
+   "bid": 6328.493,
+   "ask": 6358.5235,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VGKx",
+   "mint": "XsosCAu1L8Ebpr4SdBDV1EboYDRTWCH8j79UnHYzvbN",
+   "bid": 8836.725,
+   "ask": 9013.5,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MUx",
+   "mint": "XsQLZycSZ7QnBBdBXQaTbQdiUcbRqjNJgyBGAMzhHav",
+   "bid": 103544.45,
+   "ask": 103956.40105,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MARAx",
+   "mint": "XsguBZPkM9BDmxspmWe29EmrYZBv21ENcC27Pqh7grB",
+   "bid": 1383.921,
+   "ask": 1390.082,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GLXYx",
+   "mint": "Xs3c2aZenyRQwXjki5MDxJEJ2km27ef2rWQMFWx7QKJ",
+   "bid": 2571.3372,
+   "ask": 2598.8925,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ADBEx",
+   "mint": "XsDZMGEU8zadWFCkTtPBoPWYcUX3JHVmghnwf2Mve2q",
+   "bid": 24879.6245,
+   "ask": 24964.3905,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HDx",
+   "mint": "XszjVtyhowGjSC5odCqBpW1CtXXwXjYokymrk7fGKD3",
+   "bid": 30054.85,
+   "ask": 30203.237,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BMNRx",
+   "mint": "XsrBCwaH8c46xiqXBChzobgufRKxQxAWUWbndgBNzFn",
+   "bid": 2723.908,
+   "ask": 2733.2938,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TMOx",
+   "mint": "Xs8drBWy3Sd5QY3aifG9kt9KFs2K3PGZmx7jWrsrk57",
+   "bid": 65102.2,
+   "ask": 65998.85,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "IWMx",
+   "mint": "XsbELVbLGBkn7xfMfyYuUipKGt1iRUc2B7pYRvFTFu3",
+   "bid": 28572.0775,
+   "ask": 28659.9255,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "IJRx",
+   "mint": "XsyZcb97BzETAqi9BoP2C9D196MiMNBisGMVNje2Thz",
+   "bid": 13939.06,
+   "ask": 14021,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "STRKx",
+   "mint": "XsaQGz41BEQkS9xAB44uvUtuXcdLJAXEU1dogEzWMZ8",
+   "bid": 7488.75,
+   "ask": 7710.5485,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GMEx",
+   "mint": "Xsf9mBktVB9BSU5kf4nHxPq5hCBJ2j2ui3ecFGxPRGc",
+   "bid": 2280.574,
+   "ask": 2291.432,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AZNx",
+   "mint": "Xs3ZFkPYT2BN7qBMqf1j1bfTeTm1rFzEFSsQ1z3wAKU",
+   "bid": 16671.45525,
+   "ask": 16736.0665,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AMDx",
+   "mint": "XsXcJ6GZ9kVnjqGsjBnktRcuwMBmvKWh8S93RefZ1rF",
+   "bid": 57393.78,
+   "ask": 57613.8914,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MAx",
+   "mint": "XsApJFV9MAktqnAc6jqzsHVujxkGm9xcSUffaBoYLKC",
+   "bid": 56465.175,
+   "ask": 56684.9,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ABTx",
+   "mint": "XsHtf5RpxsQ7jeJ9ivNewouZKJHbPxhPoEy6yYvULr7",
+   "bid": 10220.646,
+   "ask": 10337.483,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "DHRx",
+   "mint": "Xseo8tgCZfkHxWS9xbFYeKFyMSbWEvZGFV1Gh53GtCV",
+   "bid": 20968.5,
+   "ask": 21279.872,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CRMx",
+   "mint": "XsczbcQ3zfcgAEt9qHQES8pxKAVG5rujPSHQEXi4kaN",
+   "bid": 23862.153,
+   "ask": 23985.925,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LINx",
+   "mint": "XsSr8anD1hkvNMu8XQiVcmiaTP7XGvYu7Q58LdmtE8Z",
+   "bid": 45913.027,
+   "ask": 46311.363,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "IEMGx",
+   "mint": "XsFnZawJdLdXfBSEt5Vw29K5vdBiHotdPLjUPafpfHs",
+   "bid": 8284.5545,
+   "ask": 8332.48,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CRWDx",
+   "mint": "Xs7xXqkcK7K8urEqGg52SECi79dRp2cEKKuYjUePYDw",
+   "bid": 23708.384,
+   "ask": 23800.6475,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "IBMx",
+   "mint": "XspwhyYPdWVM8XBHZnpS9hgyag9MKjLRyE3tVfmCbSr",
+   "bid": 23069.344,
+   "ask": 23164.695,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "WMTx",
+   "mint": "Xs151QeqTCiuKtinzfRATnUESM2xTU6V9Wy8Vy538ci",
+   "bid": 10643.51075,
+   "ask": 10679.996,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MRVLx",
+   "mint": "XsuxRGDzbLjnJ72v74b7p9VY6N66uYgTCyfwwRjVCJA",
+   "bid": 24971.4865,
+   "ask": 25083.46885,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BACx",
+   "mint": "XswsQk4duEQmCbGzfqUUWYmi7pV7xpJ9eEmLHXCaEQP",
+   "bid": 5791.3,
+   "ask": 5813.7075,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ABBVx",
+   "mint": "XswbinNKyPmzTa5CskMbCPvMW6G5CMnZXZEeQSSQoie",
+   "bid": 26060.85,
+   "ask": 26306.4005,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PMx",
+   "mint": "Xsba6tUnSjDae2VcopDB6FGGDaxRrewFCDa5hKn5vT3",
+   "bid": 18771.8,
+   "ask": 19162.701,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HONx",
+   "mint": "XsRbLZthfABAPAfumWNEJhPyiKDW6TvDVeAeW7oKqA2",
+   "bid": 20597.058,
+   "ask": 20950.3785,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MRKx",
+   "mint": "XsnQnU7AdbRZYe2akqqpibDdXjkieGFfSkbkjX1Sd1X",
+   "bid": 14655.983,
+   "ask": 14806.176,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CMCSAx",
+   "mint": "XsvKCaNsxg2GN8jjUmq71qukMJr7Q1c5R2Mk9P8kcS8",
+   "bid": 2267.5935,
+   "ask": 2279.414,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "Vx",
+   "mint": "XsqgsbXwWogGJsNcVZ3TyVouy2MbTkfCFhCGGGcQZ2p",
+   "bid": 36869.6125,
+   "ask": 37025.455,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PEPx",
+   "mint": "Xsv99frTRUeornyvCfvhnDesQDWuvns1M852Pez91vF",
+   "bid": 12966.521,
+   "ask": 13014.4925,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "JPMx",
+   "mint": "XsMAqkcKsUewDrzVkait4e5u4y8REgtyS7jWgCpLV2C",
+   "bid": 35068.3185,
+   "ask": 35250.797,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "JNJx",
+   "mint": "XsGVi5eo1Dh2zUpic4qACcjuWGjNv8GCt3dm5XcX6Dn",
+   "bid": 26944.5225,
+   "ask": 27112.10725,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GSx",
+   "mint": "XsgaUyp4jd1fNBCxgtTKkW64xnnhQcvgaxzsbAq5ZD1",
+   "bid": 95256.9,
+   "ask": 95840.5455,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "APPx",
+   "mint": "XsPdAVBi8Zc1xvv53k4JcMrQaEDTgkGqKYeh7AYgPHV",
+   "bid": 30973.47,
+   "ask": 31096.575,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "LLYx",
+   "mint": "Xsnuv4omNoHozR6EEW5mXkw8Nrny5rB3jVfLqi6gKMH",
+   "bid": 114228.4,
+   "ask": 114922.125,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "KOx",
+   "mint": "XsaBXg8dU5cPM6ehmVctMkVqoiRG2ZjMo1cyBJ3AykQ",
+   "bid": 8789.7955,
+   "ask": 8828.2225,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PGx",
+   "mint": "XsYdjDjNUygZ7yGKfQaB6TxLh2gC6RRjzLtLAGJrhzV",
+   "bid": 14533.1675,
+   "ask": 14695.0095,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "UNHx",
+   "mint": "XszvaiXGPwvk2nwb3o9C1CX4K6zH8sez11E6uyup6fe",
+   "bid": 37743.3,
+   "ask": 38017.9415,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "XOMx",
+   "mint": "XsaHND8sHyfMfsWPj6kSdd5VwvCayZvjYgKmmcNL5qh",
+   "bid": 16155.73,
+   "ask": 16245.3315,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PFEx",
+   "mint": "XsAtbqkAP1HJxy7hFDeq7ok6yM43DQ9mQ1Rh861X8rw",
+   "bid": 2758.8555,
+   "ask": 2768.146,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NFLXx",
+   "mint": "XsEH7wWfJJu2ZT3UCFeVfALnVA6CP5ur7Ee11KmzVpL",
+   "bid": 7147.263,
+   "ask": 7177.7505,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AVGOx",
+   "mint": "XsgSaSvNSqLTtFuyWPBhK9196Xb9Bbdyjj4fH3cPJGo",
+   "bid": 36245.55,
+   "ask": 36389.5025,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NVOx",
+   "mint": "XsfAzPzYrYjd4Dpa9BU3cusBsvWfVB9gBcyGC87S57n",
+   "bid": 4113.82,
+   "ask": 4130.7869,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BRK.Bx",
+   "mint": "Xs6B6zawENwAbWVi7w92rjazLuAr5Az59qgWKcNb45x",
+   "bid": 50657.899,
+   "ask": 50856.17,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MCDx",
+   "mint": "XsqE9cRRpzxcGKDXj1BJ7Xmg4GRhZoyY1KpmGSxAWT2",
+   "bid": 24891.6065,
+   "ask": 24991.0304,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "PLTRx",
+   "mint": "XsoBhf2ufR8fTyNSjqfU71DYGaE6Z3SUGAidpzriAA4",
+   "bid": 17853.18,
+   "ask": 17929.8545,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "STRCx",
+   "mint": "Xs78JED6PFZxWc2wCEPspZW9kL3Se5J7L5TChKgsidH",
+   "bid": 9865.125,
+   "ask": 9893.884,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "ORCLx",
+   "mint": "XsjFwUPiLofddX5cWFHW35GCbXcSu1BCUGfxoQAQjeL",
+   "bid": 14902.6125,
+   "ask": 14952.395,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TBLLx",
+   "mint": "XsqBC5tcVQLYt8wqGCHRnAUUecbRYXoJCReD6w7QEKp",
+   "bid": 10514.475,
+   "ask": 10586.576,
+   "halted": false,
+   "tradingHours": "MarketHours"
+  },
+  {
+   "symbol": "CVXx",
+   "mint": "XsNNMt7WTNA2sV3jrb1NNfNgapxRF5i4i6GcnTRRHts",
+   "bid": 20759.22,
+   "ask": 20862.3415,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "INTCx",
+   "mint": "XshPgPdXFRWB8tP1j82rebb2Q9rPgGX37RuqzohmArM",
+   "bid": 11428.56,
+   "ask": 11463.0516,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TQQQx",
+   "mint": "XsjQP3iMAaQ3kQScQKthQpx9ALRbjKAjQtHg6TFomoc",
+   "bid": 7484.508,
+   "ask": 7504.497,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "COINx",
+   "mint": "Xs7ZdzSHLU9ftNJsii5fCeJhoRWSC32SQGzGQtePxNu",
+   "bid": 20288.95,
+   "ask": 20436.125,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CSCOx",
+   "mint": "Xsr3pdLQyXvDJBFgpR5nexCEZwXvigb8wbPYp4YoNFf",
+   "bid": 10967.524,
+   "ask": 11021.5075,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GOOGLx",
+   "mint": "XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN",
+   "bid": 35164.8,
+   "ask": 35249.8146,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AAPLx",
+   "mint": "XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp",
+   "bid": 33502.464,
+   "ask": 33582.549,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MSTRx",
+   "mint": "XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ",
+   "bid": 16196.4075,
+   "ask": 16296.64,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "MSFTx",
+   "mint": "XspzcW1PRtgf6Wj92HCiZdjzKCyFekVD8P5Ueh3dRMX",
+   "bid": 49568.382,
+   "ask": 49690.641,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VTx",
+   "mint": "XsEdDDTcVGJU6nvdRdVnj53eKTrsCkvtrVfXGmUK68V",
+   "bid": 15944.04,
+   "ask": 15999.984,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "VTIx",
+   "mint": "XsssYEQjzxBCFgvYFFNuhJFBeHNdLWYeUSP8F45cDr9",
+   "bid": 37747.215,
+   "ask": 37837.8,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SLVx",
+   "mint": "XsxAd6okt8y1RRK6gNg7iJaqiWNiq5Md5EDf3ZrF2dm",
+   "bid": 5940.8753,
+   "ask": 5959.9265,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "HOODx",
+   "mint": "XsvNBAYkrDRNhA7wPHQfX3ZUXZyZLdnCQDfHZ56bzpg",
+   "bid": 12448.539,
+   "ask": 12492.2798,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "METAx",
+   "mint": "Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu",
+   "bid": 68191.74,
+   "ask": 68356.288,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "GLDx",
+   "mint": "Xsv9hRk1z5ystj9MhnA7Lq4vjSsLwzL2nxrwmwtD3re",
+   "bid": 39793.4667,
+   "ask": 39884.845,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "QQQx",
+   "mint": "Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ",
+   "bid": 72744.183,
+   "ask": 72906.3335,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "CRCLx",
+   "mint": "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1",
+   "bid": 9601.11,
+   "ask": 9678.95,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "AMZNx",
+   "mint": "Xs3eBt7uRfJX8QUs4suhyU8p2M6DoUDrJyWBa8LLZsg",
+   "bid": 25539.435,
+   "ask": 25604.579,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "SPYx",
+   "mint": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
+   "bid": 76592.331,
+   "ask": 76756.3797,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "NVDAx",
+   "mint": "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh",
+   "bid": 22372.605,
+   "ask": 22427.1047,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "TSLAx",
+   "mint": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB",
+   "bid": 36840.123,
+   "ask": 36930.894,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  },
+  {
+   "symbol": "BTBTx",
+   "mint": "XsPLBFy59Q3hY59KLAJur8QyvziMF4xUxGTxXqXE7cT",
+   "bid": 176.115,
+   "ask": 178.89,
+   "halted": false,
+   "tradingHours": "TwentyFourFive"
+  }
+ ]
+}
