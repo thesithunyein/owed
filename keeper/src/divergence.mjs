@@ -39,21 +39,56 @@ export function flagDivergence({ tokenPrice, expectedReference, tolerancePct = 1
 }
 
 /**
- * Fetch a Pyth price update via Hermes (public endpoint, no key needed).
- * `feedId` is the 0x-prefixed 32-byte id from the price-feeds API.
- * Returns { price, confidence, publishTime } with price scaled by 10^expo.
+ * Build a Hermes latest-price URL for one or more feed ids.
+ * `ids[]` must reach the wire as a literally-repeated query key —
+ * URLSearchParams does the encoding correctly (encodeURIComponent alone
+ * double-encodes brackets and Hermes rejects it).
+ *
+ * Since the Pyth Core upgrade (Aug 26, 2026), price-data endpoints require
+ * a Bearer API key. Metadata (price_feeds) stays open. Default host follows
+ * the current docs; set HERMES_URL or pass hermesUrl to override.
  */
-export async function fetchPythPrice(feedId, { hermesUrl = "https://hermes.pyth.network" } = {}) {
-  const url = `${hermesUrl}/v2/updates/price/latest?ids%5B%5C%5D=${encodeURIComponent(feedId)}`;
-  const res = await fetch(url);
+export const PYTH_API_KEY_REQUIRED_SINCE = "2026-08-26";
+
+export function buildPythUrl(feedIds, { hermesUrl = process.env.HERMES_URL || "https://pyth.dourolabs.app/hermes" } = {}) {
+  const params = new URLSearchParams();
+  for (const id of feedIds) params.append("ids[]", id);
+  return `${hermesUrl}/v2/updates/price/latest?${params.toString()}`;
+}
+
+/**
+ * Fetch Pyth price updates via Hermes.
+ * `feedIds` are 0x-prefixed 32-byte ids from the price-feeds API.
+ * Auth: set PYTH_API_KEY in the env (or pass apiKey) — required since
+ * 2026-08-26 for all price-data endpoints.
+ * Returns a Map of feedId -> { price, confidence, publishTime, expo }
+ * with price scaled by 10^expo.
+ */
+export async function fetchPythPrices(feedIds, { apiKey = process.env.PYTH_API_KEY, ...opts } = {}) {
+  const headers = apiKey ? { authorization: `Bearer ${apiKey}` } : {};
+  const res = await fetch(buildPythUrl(feedIds, opts), { headers });
+  if (res.status === 401) {
+    throw new Error(
+      `hermes 401: Pyth requires an API key since ${PYTH_API_KEY_REQUIRED_SINCE} — set PYTH_API_KEY (https://docs.pyth.network/price-feeds/core/fetch-price-updates)`
+  );
+  }
   if (!res.ok) throw new Error(`hermes ${res.status}`);
   const json = await res.json();
-  const p = json?.parsed?.[0]?.price;
-  if (!p) return null;
-  const scale = 10 ** p.expo;
-  return {
-    price: Number(p.price) * scale,
-    confidence: Number(p.conf) * scale,
-    publishTime: p.publish_time,
-  };
+  const out = new Map();
+  for (const p of json?.parsed ?? []) {
+    const scale = 10 ** p.price.expo;
+    out.set(p.id, {
+      price: Number(p.price.price) * scale,
+      confidence: Number(p.price.conf) * scale,
+      publishTime: p.price.publish_time,
+      expo: p.price.expo,
+    });
+  }
+  return out;
+}
+
+/** Single-feed convenience wrapper. */
+export async function fetchPythPrice(feedId, opts = {}) {
+  const m = await fetchPythPrices([feedId], opts);
+  return m.get(feedId.toLowerCase()) ?? null;
 }

@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  rust-core:
+    name: Rust core (cargo test + clippy)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: core
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: core
+      - run: cargo test -- --nocapture
+      - run: cargo clippy -- -D warnings
+      - run: cargo fmt --check
+
+  keeper:
+    name: Keeper (node --test)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: keeper
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run all keeper tests (hermetic — no network)
+        run: node --test
+
+  vectors:
+    name: Golden vectors regenerate byte-identical
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Regenerate vectors and require no diff
+        run: |
+          node scripts/gen-vectors.mjs
+          git diff --exit-code shared/vectors/ || {
+            echo "::error::Golden vectors drifted — regenerate with: node scripts/gen-vectors.mjs"
+            exit 1
+          }
+
+  anchor-build:
+    name: Anchor program compile (nightly toolchain, non-blocking)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Type-check program crate (no Solana SBF target)
+        run: cargo check --manifest-path programs/owed/Cargo.toml || true

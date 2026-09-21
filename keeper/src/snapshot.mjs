@@ -8,6 +8,9 @@
  * validates, and only then is a Merkle root published.
  */
 
+/** SPL Token program (classic). Token-2022 mints need their own pass. */
+export const TOKEN_PROGRAM_ID = "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA";
+
 /** Tiny JSON-RPC wrapper over a standard Solana endpoint. */
 export class SolanaRpc {
   constructor(url = "https://api.devnet.solana.com") {
@@ -38,13 +41,24 @@ export class SolanaRpc {
     return { amount: BigInt(r.value.amount), decimals: r.value.decimals };
   }
 
-  /** All token accounts for a mint: [{ owner, amount (BigInt) }]. */
-  async tokenAccounts(mint) {
-    const r = await this.call("getTokenAccountsBySupply", [
-      mint,
+  /**
+   * All token accounts for a mint: [{ owner, amount (BigInt) }].
+   *
+   * Uses getProgramAccounts with a dataSize + memcmp(mint) filter — the
+   * canonical way to enumerate holders of a mint. Note: on mainnet-beta a
+   * popular mint can exceed the gPA response budget; production keepers
+   * should use a geyser stream or paginated data slices. Devnet and
+   * hackathon-scale registers are fine.
+   */
+  async tokenAccounts(mint, programId = TOKEN_PROGRAM_ID) {
+    const r = await this.call("getProgramAccounts", [
+      programId,
       {
-        programId: "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
         encoding: "jsonParsed",
+        filters: [
+          { dataSize: 165 }, // classic SPL token account layout
+          { memcmp: { offset: 0, bytes: mint } }, // mint field is first
+        ],
       },
     ]);
     return r.value.map((acc) => ({
@@ -83,13 +97,16 @@ export async function fetchSnapshot(rpc, mint) {
   return { holders, supply };
 }
 
-/**
- * Base58 encode 32-byte pubkeys without dependencies (Bitcoin-style
- * alphabet, no '0OIl'). Enough for devnet tooling and tests.
- */
+// ---------------------------------------------------------------------------
+// Base58 — encode + decode, Bitcoin-style alphabet, no '0OIl'.
+// ---------------------------------------------------------------------------
+
 const B58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+const B58_MAP = new Map([...B58_ALPHABET].map((c, i) => [c, i]));
+
 export function base58Encode(bytes) {
   const bytesArr = bytes instanceof Uint8Array ? bytes : Uint8Array.from(bytes);
+  if (bytesArr.length === 0) return "";
   let num = 0n;
   for (const b of bytesArr) num = (num << 8n) | BigInt(b);
   let out = "";
@@ -103,4 +120,37 @@ export function base58Encode(bytes) {
     out = "1" + out;
   }
   return out || "1";
+}
+
+export function base58Decode(str) {
+  if (str.length === 0) return new Uint8Array(0);
+  let num = 0n;
+  for (const c of str) {
+    const v = B58_MAP.get(c);
+    if (v === undefined) throw new Error(`invalid base58 character: ${JSON.stringify(c)}`);
+    num = num * 58n + BigInt(v);
+  }
+  // Count leading '1's -> leading zero bytes.
+  let zeros = 0;
+  for (const c of str) {
+    if (c === "1") zeros++;
+    else break;
+  }
+  const bytes = [];
+  while (num > 0n) {
+    bytes.unshift(Number(num & 0xffn));
+    num >>= 8n;
+  }
+  const out = new Uint8Array(zeros + bytes.length);
+  out.set(bytes, zeros);
+  return out;
+}
+
+/** Assert the input decodes back to exactly `len` bytes (pubkey check). */
+export function decodePubkey(str, len = 32) {
+  const bytes = base58Decode(str);
+  if (bytes.length !== len) {
+    throw new Error(`expected ${len}-byte pubkey, decoded ${bytes.length}`);
+  }
+  return bytes;
 }

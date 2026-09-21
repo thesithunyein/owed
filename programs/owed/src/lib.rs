@@ -5,18 +5,19 @@
 //! `core/` (cargo test) and mirrored byte-for-byte by `keeper/` (node --test),
 //! including cross-language golden vectors in `shared/vectors/`.
 //!
-//! Design notes:
-//! * `declare_action` is issuer-only; dividends must fund escrow at
-//!   declaration (token transfer CPI, elided here).
-//! * `snapshot_holders` enforces supply conservation on-chain: the submitted
-//!   register must sum to the mint supply at the record slot.
-//! * `claim` verifies a Merkle proof against the stored root and pays from
-//!   escrow (dividends) or mints the split delta; `ClaimReceipt` PDAs make
-//!   double claims impossible at the account level.
-//! * Merkle leaf layout MUST match core/src/register.rs:
+//! Instructions:
+//! * `initialize_asset` — issuer registers a tokenized-equity mint
+//! * `set_registrar`    — issuer delegates snapshot rights to a keeper key
+//! * `declare_action`   — issuer declares dividend/split/merger/ticker
+//! * `snapshot_holders` — registrar freezes the holder set at the record slot
+//! * `claim`            — holder proves entitlement against the Merkle root
+//! * `settle_action`    — registrar finalizes once the claim window closes
+//!
+//! Merkle leaf layout MUST match core/src/register.rs:
 //!   leaf = sha256(0x00 ++ owner(32) ++ amount_u64_le(8))
 
 use anchor_lang::prelude::*;
+use anchor_spl::token::{Mint, Token, TokenAccount};
 
 declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
 
@@ -35,11 +36,42 @@ pub const STATUS_SETTLED: u8 = 2;
 pub mod owed {
     use super::*;
 
+    /// Issuer registers a tokenized-equity mint with the registry.
+    pub fn initialize_asset(ctx: Context<InitializeAsset>, registrar: Pubkey) -> Result<()> {
+        let asset = &mut ctx.accounts.asset;
+        asset.mint = ctx.accounts.mint.key();
+        asset.issuer_authority = ctx.accounts.issuer.key();
+        asset.registrar = registrar;
+        asset.action_count = 0;
+        asset.bump = ctx.bumps.asset;
+
+        emit!(AssetInitialized {
+            asset: asset.key(),
+            mint: asset.mint,
+            issuer: asset.issuer_authority,
+            registrar,
+        });
+        Ok(())
+    }
+
+    /// Issuer re-delegates the registrar key (keeper rotation).
+    pub fn set_registrar(ctx: Context<SetRegistrar>, new_registrar: Pubkey) -> Result<()> {
+        let asset = &mut ctx.accounts.asset;
+        let old = asset.registrar;
+        asset.registrar = new_registrar;
+        emit!(RegistrarChanged {
+            asset: asset.key(),
+            old,
+            new: new_registrar,
+        });
+        Ok(())
+    }
+
     /// Issuer declares a corporate action.
     ///
-    /// For dividends (`action_type == ACTION_DIVIDEND`), the caller must also
-    /// fund `escrow` with the full `amount_per_token * supply` before or in
-    /// the same transaction — enforced off this skeleton via a CPI.
+    /// For dividends (`action_type == ACTION_DIVIDEND`), the escrow token
+    /// account must already hold `amount_per_token * supply` — checked here
+    /// against the mint supply read from the real Mint account.
     pub fn declare_action(
         ctx: Context<DeclareAction>,
         action_type: u8,
@@ -50,16 +82,28 @@ pub mod owed {
         source_hash: [u8; 32], // sha256 of the filing / board resolution
     ) -> Result<()> {
         require!(action_type <= ACTION_TICKER, OwedError::InvalidActionType);
+        let is_dividend = action_type == ACTION_DIVIDEND;
         require!(
-            action_type == ACTION_DIVIDEND || (ratio_num > 0 && ratio_den > 0),
+            is_dividend || (ratio_num > 0 && ratio_den > 0),
             OwedError::InvalidRatio
         );
+
+        // Dividends must be fully funded at declaration.
+        if is_dividend {
+            let supply = ctx.accounts.mint.supply;
+            let required = (amount_per_token as u128)
+                .checked_mul(supply as u128)
+                .ok_or(OwedError::Overflow)?;
+            let escrow_balance = ctx.accounts.escrow.amount as u128;
+            require!(escrow_balance >= required, OwedError::EscrowUnderfunded);
+        }
 
         let asset = &mut ctx.accounts.asset;
         let action = &mut ctx.accounts.action;
 
         action.asset = asset.key();
         action.action_type = action_type;
+        action.status = STATUS_DECLARED;
         action.effective_ts = effective_ts;
         action.ratio_num = ratio_num;
         action.ratio_den = ratio_den;
@@ -67,12 +111,15 @@ pub mod owed {
         action.record_slot = 0;
         action.merkle_root = [0u8; 32];
         action.holder_count = 0;
-        action.status = STATUS_DECLARED;
+        action.total_claimed = 0;
         action.escrow = ctx.accounts.escrow.key();
         action.source_hash = source_hash;
         action.bump = ctx.bumps.action;
 
-        asset.action_count = asset.action_count.checked_add(1).ok_or(OwedError::Overflow)?;
+        asset.action_count = asset
+            .action_count
+            .checked_add(1)
+            .ok_or(OwedError::Overflow)?;
 
         emit!(ActionDeclared {
             asset: asset.key(),
@@ -89,7 +136,7 @@ pub mod owed {
     /// Registrar snapshots the holder set at (or after) the record slot.
     ///
     /// `holders` is the sorted register [(owner, amount)]. The program
-    /// enforces the same invariant the Rust core and TS keeper test for:
+    /// enforces the same invariants the Rust core and TS keeper test for:
     /// entries must be sorted, unique by owner, and sum exactly to the mint
     /// supply. The Merkle root is computed on-chain over
     /// `sha256(0x00 ++ owner ++ amount_u64_le)` with sorted-pairing nodes
@@ -98,13 +145,8 @@ pub mod owed {
         ctx: Context<SnapshotHolders>,
         holders: Vec<(Pubkey, u64)>,
     ) -> Result<()> {
-        let asset = &ctx.accounts.asset;
         let action = &mut ctx.accounts.action;
-
-        require!(
-            action.status == STATUS_DECLARED,
-            OwedError::WrongStatus
-        );
+        require!(action.status == STATUS_DECLARED, OwedError::WrongStatus);
         require!(!holders.is_empty(), OwedError::EmptyRegister);
 
         // Sorted + unique by owner (mirrors Register::new in core).
@@ -115,16 +157,15 @@ pub mod owed {
         // Supply conservation: sum(holders) == mint.supply.
         let mut sum: u128 = 0;
         for (_, amount) in &holders {
-            sum = sum.checked_add(*amount as u128).ok_or(OwedError::Overflow)?;
+            sum = sum
+                .checked_add(*amount as u128)
+                .ok_or(OwedError::Overflow)?;
         }
         let supply = ctx.accounts.mint.supply as u128;
         require!(sum == supply, OwedError::SupplyMismatch);
 
-        // Root computation delegates to the same conventions as core/keeper;
-        // a compact on-chain builder over the (small) devnet register set.
         let root = compute_register_root(&holders)?;
-        let clock = Clock::get()?;
-        action.record_slot = clock.slot;
+        action.record_slot = Clock::get()?.slot;
         action.merkle_root = root;
         action.holder_count = holders.len() as u32;
         action.status = STATUS_SNAPSHOTTED;
@@ -140,10 +181,11 @@ pub mod owed {
 
     /// Holder claims an entitlement with a Merkle proof.
     ///
-    /// Dividends pay pro-rata from escrow (CPI elided). Splits mint/adjust
-    /// the delta (CPI elided). `ClaimReceipt` PDA makes double claims
-    /// impossible: it is `init`'d in this instruction, so a second claim for
-    /// the same (action, holder) fails at account-creation time.
+    /// The `ClaimReceipt` PDA is `init`'d here, so a second claim for the
+    /// same (action, holder) fails at account-creation time — the account
+    /// model itself blocks double claims. Payout CPIs (escrow transfer for
+    /// dividends, mint-to for split deltas) are the one mechanical piece
+    /// left to wire; the amounts are computed in core/ and verified there.
     pub fn claim(
         ctx: Context<Claim>,
         leaf_index: u32,
@@ -166,16 +208,45 @@ pub mod owed {
             OwedError::BadProof
         );
 
+        // Payout math (CPI wiring is the remaining mechanical step):
+        //   dividend: payout = amount * amount_per_token (u128 math in core)
+        //   split:    delta  = floor(amount * num / den) - amount  (mint-to)
+        let clock = Clock::get()?;
+        let receipt = &mut ctx.accounts.claim_receipt;
+        receipt.action = action.key();
+        receipt.holder = ctx.accounts.holder.key();
+        receipt.amount = amount;
+        receipt.leaf_index = leaf_index;
+        receipt.claimed_at = clock.unix_timestamp;
+        receipt.bump = ctx.bumps.claim_receipt;
+
+        action.total_claimed = action
+            .total_claimed
+            .checked_add(amount as u128)
+            .ok_or(OwedError::Overflow)?;
+
         emit!(Claimed {
             action: action.key(),
             holder: ctx.accounts.holder.key(),
             leaf_index,
             amount,
         });
+        Ok(())
+    }
 
-        // Payout CPIs (escrow transfer for dividends, mint for splits) are
-        // intentionally elided in this reference; the math is in core/.
-        // The ClaimReceipt account init (below) already blocks re-claims.
+    /// Registrar finalizes the action once the claim window closes.
+    /// Idempotent-safe: only moves Snapshotted -> Settled.
+    pub fn settle_action(ctx: Context<SettleAction>) -> Result<()> {
+        let action = &mut ctx.accounts.action;
+        require!(action.status == STATUS_SNAPSHOTTED, OwedError::WrongStatus);
+        let now = Clock::get()?.unix_timestamp;
+        require!(now >= action.effective_ts, OwedError::BeforeEffective);
+        action.status = STATUS_SETTLED;
+
+        emit!(ActionSettled {
+            action: action.key(),
+            total_claimed: action.total_claimed,
+        });
         Ok(())
     }
 }
@@ -217,6 +288,11 @@ fn verify_proof(leaf: &[u8; 32], proof: &[([u8; 32], u8)], root: &[u8; 32]) -> b
     &cur == root
 }
 
+/// Compute the register root exactly as core/src/merkle.rs `build`:
+/// sort hashes lexicographically at each level; odd trailing hash is
+/// hashed with itself. On-chain register sizes are bounded by the
+/// transaction size limit; the concurrent-Merkle-tree upgrade for
+/// large registers is tracked in the roadmap.
 fn compute_register_root(holders: &[(Pubkey, u64)]) -> Result<[u8; 32]> {
     let mut leaves: Vec<[u8; 32]> = holders
         .iter()
@@ -231,12 +307,12 @@ fn compute_register_root(holders: &[(Pubkey, u64)]) -> Result<[u8; 32]> {
         return Ok(hash_leaf(&[]));
     }
     while leaves.len() > 1 {
-        leaves.sort();
-        let mut next = Vec::with_capacity((leaves.len() + 1) / 2);
+        leaves.sort_unstable();
+        let mut next = Vec::with_capacity(leaves.len().div_ceil(2));
         let mut i = 0;
         while i < leaves.len() {
             let right = if i + 1 >= leaves.len() {
-                leaves[i]
+                leaves[i] // odd trailing: hash with itself
             } else {
                 leaves[i + 1]
             };
@@ -253,6 +329,47 @@ fn compute_register_root(holders: &[(Pubkey, u64)]) -> Result<[u8; 32]> {
 // ---------------------------------------------------------------------------
 
 #[derive(Accounts)]
+pub struct InitializeAsset<'info> {
+    #[account(
+        init,
+        payer = issuer,
+        space = 8 + Asset::LEN,
+        seeds = [b"asset", mint.key().as_ref()],
+        bump
+    )]
+    pub asset: Account<'info, Asset>,
+
+    /// The tokenized-equity mint being registered.
+    pub mint: Account<'info, Mint>,
+
+    #[account(mut)]
+    pub issuer: Signer<'info>,
+
+    /// Mint authority must match the issuer — only the entity that controls
+    /// the mint may register it.
+    #[account(constraint = mint.mint_authority == COption::Some(issuer.key()) @ OwedError::NotMintAuthority)]
+    pub mint_authority_check: Account<'info, Mint>,
+
+    pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+pub struct SetRegistrar<'info> {
+    #[account(
+        mut,
+        has_one = issuer_authority,
+        seeds = [b"asset", mint.key().as_ref()],
+        bump
+    )]
+    pub asset: Account<'info, Asset>,
+
+    /// CHECK: seed reference only.
+    pub mint: UncheckedAccount<'info>,
+
+    pub issuer_authority: Signer<'info>,
+}
+
+#[derive(Accounts)]
 pub struct DeclareAction<'info> {
     #[account(
         mut,
@@ -262,16 +379,15 @@ pub struct DeclareAction<'info> {
     )]
     pub asset: Account<'info, Asset>,
 
-    /// SPL mint of the tokenized equity.
-    /// CHECK: read-only reference for the PDA seed.
-    pub mint: UncheckedAccount<'info>,
+    pub mint: Account<'info, Mint>,
 
     #[account(mut)]
     pub issuer_authority: Signer<'info>,
 
-    /// Escrow token account for dividends.
-    /// CHECK: validated by CPI in the full implementation.
-    pub escrow: UncheckedAccount<'info>,
+    /// Escrow token account funding the dividend. Verified owned by the
+    /// program's asset PDA in the full wiring; typed here for balance reads.
+    #[account(token::mint = mint)]
+    pub escrow: Account<'info, TokenAccount>,
 
     #[account(
         init,
@@ -282,6 +398,7 @@ pub struct DeclareAction<'info> {
     )]
     pub action: Account<'info, Action>,
 
+    pub token_program: Program<'info, Token>,
     pub system_program: Program<'info, System>,
 }
 
@@ -290,8 +407,7 @@ pub struct SnapshotHolders<'info> {
     #[account(seeds = [b"asset", mint.key().as_ref()], bump)]
     pub asset: Account<'info, Asset>,
 
-    /// CHECK: supply read for the conservation check.
-    pub mint: UncheckedAccount<'info>,
+    pub mint: Account<'info, Mint>,
 
     #[account(
         mut,
@@ -301,7 +417,6 @@ pub struct SnapshotHolders<'info> {
     pub action: Account<'info, Action>,
 
     /// Registrar — must match the key the issuer delegated snapshot rights to.
-    /// CHECK: compared against `asset.registrar` below.
     #[account(
         constraint = registrar.key() == asset.registrar @ OwedError::UnauthorizedRegistrar
     )]
@@ -320,13 +435,13 @@ pub struct Claim<'info> {
     #[account(seeds = [b"asset", mint.key().as_ref()], bump)]
     pub asset: Account<'info, Asset>,
 
-    /// CHECK: referenced for seeds only.
+    /// CHECK: seed reference only.
     pub mint: UncheckedAccount<'info>,
 
     #[account(mut)]
     pub holder: Signer<'info>,
 
-    /// Payer funds the receipt; normally the holder themself.
+    /// Pays rent for the receipt; normally the holder themself.
     #[account(mut)]
     pub payer: Signer<'info>,
 
@@ -340,6 +455,27 @@ pub struct Claim<'info> {
     pub claim_receipt: Account<'info, ClaimReceipt>,
 
     pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+pub struct SettleAction<'info> {
+    #[account(seeds = [b"asset", mint.key().as_ref()], bump)]
+    pub asset: Account<'info, Asset>,
+
+    /// CHECK: seed reference only.
+    pub mint: UncheckedAccount<'info>,
+
+    #[account(
+        mut,
+        has_one = asset,
+        constraint = action.status == STATUS_SNAPSHOTTED @ OwedError::WrongStatus
+    )]
+    pub action: Account<'info, Action>,
+
+    #[account(
+        constraint = registrar.key() == asset.registrar @ OwedError::UnauthorizedRegistrar
+    )]
+    pub registrar: Signer<'info>,
 }
 
 // ---------------------------------------------------------------------------
@@ -356,6 +492,10 @@ pub struct Asset {
     pub bump: u8,
 }
 
+impl Asset {
+    pub const LEN: usize = 32 + 32 + 32 + 1 + 1;
+}
+
 #[account]
 pub struct Action {
     pub asset: Pubkey,
@@ -368,13 +508,14 @@ pub struct Action {
     pub amount_per_token: u64,
     pub merkle_root: [u8; 32],
     pub holder_count: u32,
+    pub total_claimed: u128,
     pub escrow: Pubkey,
     pub source_hash: [u8; 32],
     pub bump: u8,
 }
 
 impl Action {
-    pub const LEN: usize = 32 + 1 + 1 + 8 + 8 + 8 + 8 + 8 + 32 + 4 + 32 + 32 + 1;
+    pub const LEN: usize = 32 + 1 + 1 + 8 + 8 + 8 + 8 + 8 + 32 + 4 + 16 + 32 + 32 + 1;
 }
 
 #[account]
@@ -382,17 +523,33 @@ pub struct ClaimReceipt {
     pub action: Pubkey,
     pub holder: Pubkey,
     pub amount: u64,
+    pub leaf_index: u32,
     pub claimed_at: i64,
     pub bump: u8,
 }
 
 impl ClaimReceipt {
-    pub const LEN: usize = 32 + 32 + 8 + 8 + 1;
+    pub const LEN: usize = 32 + 32 + 8 + 4 + 8 + 1;
 }
 
 // ---------------------------------------------------------------------------
 // Events & errors
 // ---------------------------------------------------------------------------
+
+#[event]
+pub struct AssetInitialized {
+    pub asset: Pubkey,
+    pub mint: Pubkey,
+    pub issuer: Pubkey,
+    pub registrar: Pubkey,
+}
+
+#[event]
+pub struct RegistrarChanged {
+    pub asset: Pubkey,
+    pub old: Pubkey,
+    pub new: Pubkey,
+}
 
 #[event]
 pub struct ActionDeclared {
@@ -421,12 +578,22 @@ pub struct Claimed {
     pub amount: u64,
 }
 
+#[event]
+pub struct ActionSettled {
+    pub action: Pubkey,
+    pub total_claimed: u128,
+}
+
 #[error_code]
 pub enum OwedError {
     #[msg("invalid action type byte")]
     InvalidActionType,
     #[msg("split ratio parts must be nonzero")]
     InvalidRatio,
+    #[msg("dividend escrow holds less than amount_per_token * supply")]
+    EscrowUnderfunded,
+    #[msg("signer is not the mint authority")]
+    NotMintAuthority,
     #[msg("register must be sorted by owner without duplicates")]
     RegisterNotSorted,
     #[msg("register must be non-empty")]
@@ -437,6 +604,8 @@ pub enum OwedError {
     BadProof,
     #[msg("action is not in the required status")]
     WrongStatus,
+    #[msg("effective timestamp not reached yet")]
+    BeforeEffective,
     #[msg("signer is not the asset's registrar")]
     UnauthorizedRegistrar,
     #[msg("arithmetic overflow")]
