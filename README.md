@@ -59,6 +59,42 @@ node scripts/verify-trap.mjs            # worst offenders, auto-selected
 node scripts/verify-trap.mjs AAPLx NFLXx
 ```
 
+### The reader is verified against the runtime, not just argued for
+
+`scripts/conformance.mjs` checks our rule against the chain mint by mint:
+`getTokenSupply` reports the runtime's effective scaled amount, so the ratio it
+returns is ground truth.
+
+```
+$ node scripts/conformance.mjs --all
+924/924 mints match the Token-2022 runtime (tolerance 1e-9), 1 not checked
+                          # ARx hit a transient HTTP 403 mid-sweep;
+                          # `--only ARx` retried it clean: 1/1
+```
+
+That is the **entire official xStocks set — 925 of 925 mints — with our reader
+agreeing with the runtime to nine decimal places.** The default `--n` sample is
+stratified (every mint with a real gap is included, then the rest filled from
+fresh mints), so a pass cannot be earned by only testing mints where the two
+readings trivially agree.
+
+### Why this is a settlement bug, not a display bug
+
+`scripts/collateral-scenario.mjs` models the consequence without a price feed: a
+valuation is `raw × multiplier × price`, so price and position size cancel out of
+the error entirely. What is left is a multiplier ratio, and a loan-to-value is
+inflated by exactly that ratio.
+
+| Position genuinely at 10% LTV, 75% liquidation threshold | Outcome |
+|---|---|
+| The 2 mints at 10× | reads as **100% LTV** → liquidated while healthy |
+| The 3 mints at 2–5× | reads 20–50% → wrong, not liquidatable |
+| Median across all 379 stale mints | 0.32% → immaterial |
+
+**2 of 379 stale mints would liquidate a position that is genuinely at 10% LTV.**
+Not 379. The other 377 are wrong in a way that has not yet cost anyone money, and
+saying so is the difference between a finding and a sales pitch.
+
 And the security surface nobody markets: **every official xStock carries a
 permanent delegate and a pause authority.** One compromised issuer key can
 confiscate or freeze any holder's balance. Presence is not an attack — but any
@@ -67,35 +103,47 @@ visible in a wallet UI.
 
 ## What Owed ships
 
-**1. The risk board** — `web/board.html`, a single self-contained file (open it,
-no server, no build):
+**1. `feed/owed-risk.json` — the integration surface.** One document that answers
+"what multiplier is in force for this mint, and is anything about it dangerous?"
+for all 925 mints, with a JSON Schema at `feed/schema.json`. Two design choices
+make it auditable rather than trustworthy-by-assertion:
 
-- All 925 mints with stored vs **time-correct effective** multiplier, Δ%, how long
-  it has been stale, and issuer-control flags.
-- The snapshot is embedded at build time and **re-classified against your local
-  clock on every render** — rows flip from SCHEDULED to READER TRAP the moment an
-  activation passes, with no server and no API key.
-- **Live re-scan** (optional): public RPCs reject browser origins, so you paste
-  your own RPC URL (Helius/QuickNode); it stays in `localStorage`.
+- It publishes the **raw `scaledUiAmountConfig` state** alongside our answer, so a
+  consumer can recompute the rule and disagree with us. A test enforces that every
+  published value is reproducible from the published state.
+- `effectiveMultiplier` is stamped with the clock it was computed at, because the
+  value is time-dependent and a silently stale feed is worse than no feed.
 
-**2. The correct reader, tested** — `keeper/src/scaled.mjs`:
-`classifyScaled` / `extractExtensions` / `readScaledMint` / `scaledAmount`, with
-tests pinned to the real mainnet account shape (including the gotcha that
-security surfaces are *sibling extensions*, not fields of the scaled config).
+**2. `web/differential.html` — the harm, clickable.** Single self-contained file:
+pick a token, enter a position and a debt, and see what a naive reader says beside
+what the chain applies, with the liquidation consequence stated plainly. Below it,
+every stale multiplier, worst first, re-classified against your clock on load.
 
-**3. The full-mint scanner** — `scripts/scan-xstocks.mjs` (Node, public RPC,
-chunked `getMultipleAccounts`, retries, timeouts):
+**3. `web/board.html` — the risk board.** All 925 mints with stored vs effective
+multiplier, gap, days stale, and issuer-control flags. Same offline, no-build
+property; optional live re-scan with your own RPC URL.
 
-```bash
-node scripts/scan-xstocks.mjs   # refreshes keeper/data/xstocks-scan.json
-node scripts/gen-webdata.mjs    # injects scan + asset list into the board
-```
+**4. The correct reader, tested** — `keeper/src/trap.mjs` (`effectiveMultiplier`,
+`readerTrapGap`, `matchVerdict`, `classifyRecord`, `summarize`) plus
+`keeper/src/scaled.mjs` for parsing the extensions themselves, with tests pinned to
+real mainnet account shapes.
 
-**4. The registry primitive (the deeper fix)** — an on-chain corporate-actions
+**5. The registry primitive (the deeper fix)** — an on-chain corporate-actions
 registry: issuer declares an action, the holder set is snapshotted at the record
 slot into a Merkle root, holders claim with proofs. `programs/owed/` is the
 Anchor reference program; `core/` (Rust) and `keeper/` carry the same math with
 cross-language golden vectors.
+
+## What we could not establish
+
+We tried to show that the largest Solana DEX aggregator misstates xStock supply,
+and **could not**. `scripts/aggregator-audit.mjs` recovers the aggregator's implied
+supply as `marketCap / priceUsd` and compares it to `getTokenSupply`, but the
+control tokens miss too — JUP implies 0.48× total supply (vesting), USDC 9.6×
+(aggregated across chains). A mismatch is therefore consistent with a different
+*supply definition*, not with an inability to read supply. One control one cannot
+attribute blame to a single party. The probe is kept as a record of an open
+question and is deliberately not cited as evidence anywhere above.
 
 ## Repository layout
 
@@ -103,11 +151,13 @@ cross-language golden vectors.
 owed/
 ├── programs/owed/        # Anchor program: initialize_asset, declare/snapshot/claim/settle
 ├── core/                 # Rust crate: register, Merkle tree, split/dividend math
-├── keeper/               # TS: scaled reader, snapshot builder, RPC, demo
-│   └── data/             # official mint list + latest scan (committed)
-├── web/                  # board.html (self-contained) + index.html (price board)
+├── keeper/               # TS: trap logic, scaled reader, snapshot builder, RPC
+│   ├── data/             # official mint list, latest scan, conformance reports
+│   └── test/             # 73 tests, one live-gated
+├── feed/                 # owed-risk.json + schema.json (the integration contract)
+├── web/                  # differential.html (harm) + board.html (risk) + index.html
 ├── shared/vectors/       # cross-language golden vectors (generated, committed)
-├── scripts/              # gen-vectors, gen-webdata, scan-xstocks
+├── scripts/              # scan, verify-trap, conformance, collateral, risk-feed, gen-*
 └── docs/                 # SPEC.md, DEMOSCRIPT.md
 ```
 
@@ -116,10 +166,13 @@ owed/
 | Component | Status |
 |---|---|
 | Mainnet scan | ✅ 925/925 mints read and classified via public RPC; snapshot committed |
-| `keeper/` TS | ✅ 47 tests — scaled classifier (pinned to real account shapes), Merkle parity, RPC parsing, base58, 500-holder stress, Pyth auth handling |
+| **Conformance** | ✅ **925/925 mints** — our reader equals the Token-2022 runtime at 1e-9 relative tolerance across the whole official set (`node scripts/conformance.mjs --all`) |
+| **Trap verification** | ✅ 8/8 sampled traps confirmed against `getTokenSupply`; 2 at exactly 10× |
+| **Risk feed** | ✅ 925 tokens; every published `effectiveMultiplier` reproducibly recomputed from published raw state (tested) |
+| `keeper/` TS | ✅ 73 tests — trap logic, scaled classifier pinned to real account shapes, feed contract, page build integrity, Merkle parity, RPC parsing, base58, 500-holder stress |
 | `core/` Rust | ✅ 21 tests — Merkle (exhaustive n=1..17 + 33, tamper rejection), supply conservation, split/dividend math, golden vectors |
 | Golden vectors | ✅ Regenerated in CI; Node↔Rust drift fails the build |
-| `web/board.html` | ✅ Runs from the file system; re-classifies live; embedded snapshot |
+| `web/` pages | ✅ Both run from the file system with no network; re-classify against the viewer's clock |
 | `programs/owed/` Anchor | ⚠️ Reference source with typed SPL accounts and escrow checks — needs the Anchor toolchain to compile; not audited |
 
 ## Honest scope boundary
@@ -145,8 +198,17 @@ OWED_LIVE_RPC=1 OWED_TEST_MINT=<addr> node --test test/live.test.mjs
 # Regenerate shared golden vectors (CI fails if they drift)
 node scripts/gen-vectors.mjs
 
-# Re-scan all xStocks mints + rebuild the board snapshot
-node scripts/scan-xstocks.mjs && node scripts/gen-webdata.mjs
+# Refresh the data, then rebuild every derived artifact
+node scripts/scan-xstocks.mjs        # keeper/data/xstocks-scan.json (925 mints)
+node scripts/risk-feed.mjs           # feed/owed-risk.json + feed/schema.json
+node scripts/conformance.mjs         # keeper/data/conformance.json (live)
+node scripts/collateral-scenario.mjs # keeper/data/collateral.json (price-free model)
+node scripts/gen-webdata.mjs         # inject into web/board.html + web/differential.html
+
+# Evidence, on demand
+node scripts/verify-trap.mjs         # is the stored field really stale?
+node scripts/verify-trap.mjs AAPLx NFLXx
+node scripts/conformance.mjs --all   # every official mint (925 RPC calls)
 
 # Runnable demo (synthetic register without args; live with a mint)
 node keeper/demo/snapshot-demo.mjs [<MINT_ADDRESS>]

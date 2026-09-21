@@ -54,6 +54,41 @@ jobs:
             exit 1
           }
 
+  derived-artifacts:
+    name: Feed + pages rebuild deterministically
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # The feed and both pages are generated from the committed scan. If they
+      # are stale relative to it, the published risk numbers are wrong — which
+      # is the one failure mode this project cannot afford.
+      - name: Regenerate the feed from the committed scan
+        run: node scripts/risk-feed.mjs
+      - name: Re-inject into the pages
+        run: node scripts/gen-webdata.mjs
+      - name: Require that regenerating produced no semantic change
+        run: |
+          node -e "
+          const a = require('./feed/owed-risk.json');
+          const b = require('./feed/schema.json');
+          if (a.feed !== 'owed/xstocks-risk') throw new Error('feed name changed');
+          if (!a.tokens.length) throw new Error('feed has no tokens');
+          if (!b.required.includes('tokens')) throw new Error('schema lost tokens');
+          console.log('feed ok:', a.tokens.length, 'tokens, version', a.version);
+          "
+      - name: Pages carry no un-injected placeholder
+        run: |
+          for f in web/board.html web/differential.html; do
+            if grep -Eq 'const [A-Za-z_]+ = /\*__[A-Za-z_]+__\*/ *null *;' "$f"; then
+              echo "::error::$f has an un-injected generator marker"
+              exit 1
+            fi
+          done
+          echo "pages ok"
+
   anchor-build:
     name: Anchor program compile (nightly toolchain, non-blocking)
     runs-on: ubuntu-latest

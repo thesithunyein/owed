@@ -1,0 +1,1213 @@
+{
+  "generatedAt": "2026-09-21T15:15:19.027Z",
+  "rpc": "https://api.mainnet-beta.solana.com",
+  "clock": 1790003667,
+  "tolerance": 1e-9,
+  "mode": "sample",
+  "checked": 120,
+  "pass": 120,
+  "fail": 0,
+  "errored": 0,
+  "results": [
+    {
+      "symbol": "PPLTx",
+      "mint": "Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme",
+      "stored": 1,
+      "pending": 10,
+      "predicted": 10,
+      "chainRatio": 10.000000000000002,
+      "relativeError": 2.220446049250313e-16,
+      "status": "PASS"
+    },
+    {
+      "symbol": "NFLXx",
+      "mint": "XsEH7wWfJJu2ZT3UCFeVfALnVA6CP5ur7Ee11KmzVpL",
+      "stored": 1,
+      "pending": 10,
+      "predicted": 10,
+      "chainRatio": 10,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "PALLx",
+      "mint": "XsTTtPA5V19YwHKDv4xeVXNM6kdsQNJvg3MyWkRUckt",
+      "stored": 1,
+      "pending": 5,
+      "predicted": 5,
+      "chainRatio": 5,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "CRWDx",
+      "mint": "Xs7xXqkcK7K8urEqGg52SECi79dRp2cEKKuYjUePYDw",
+      "stored": 1,
+      "pending": 4,
+      "predicted": 4,
+      "chainRatio": 4,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "APHx",
+      "mint": "XsvqNba1k4wF5ZEZ6Nrx8AXUDkKzAFuj4HaVDEemyYH",
+      "stored": 1,
+      "pending": 2,
+      "predicted": 2,
+      "chainRatio": 2,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "SNDSCx",
+      "mint": "XsFRth3iT4KjYSzVvWpdeFhFjzdguCFiv3zMWJEodsF",
+      "stored": 1,
+      "pending": 1.0390625,
+      "predicted": 1.0390625,
+      "chainRatio": 1.0390624999999991,
+      "relativeError": 8.881784197001252e-16,
+      "status": "PASS"
+    },
+    {
+      "symbol": "WHGROx",
+      "mint": "XsQDsbd6nqERiTZY2TkBheUG53QsewgCa2eaCSS4PYe",
+      "stored": 1,
+      "pending": 1.029261155816,
+      "predicted": 1.029261155816,
+      "chainRatio": 1.029261155815998,
+      "relativeError": 1.887379141862766e-15,
+      "status": "PASS"
+    },
+    {
+      "symbol": "CRESMx",
+      "mint": "XsKFSq4aTzj9L2g1rqbdcewZH3bZNE2WwWBZKcGNxsX",
+      "stored": 1,
+      "pending": 1.02783530572,
+      "predicted": 1.02783530572,
+      "chainRatio": 1.027835305719984,
+      "relativeError": 1.554312234475219e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "SINOTx",
+      "mint": "XsgiiLos4YromwpmshTMTN6z3PSbD51HSn9k9xysujp",
+      "stored": 1,
+      "pending": 1.026433691756,
+      "predicted": 1.026433691756,
+      "chainRatio": 1.026433691755984,
+      "relativeError": 1.554312234475219e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "STRKx",
+      "mint": "XsaQGz41BEQkS9xAB44uvUtuXcdLJAXEU1dogEzWMZ8",
+      "stored": 1.0561756999911942,
+      "pending": 1.0840910085675701,
+      "predicted": 1.0840910085675701,
+      "chainRatio": 1.0840910085675375,
+      "relativeError": 3.008704396734174e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "CPETCx",
+      "mint": "Xsk88vf8LbRSVFTd9nu7kBsC2hNpQt4UckiV7eLSct4",
+      "stored": 1,
+      "pending": 1.0244057649667406,
+      "predicted": 1.0244057649667406,
+      "chainRatio": 1.0244057649667406,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "OPENx",
+      "mint": "XsGtpmjhmC8kyjVSWL4VicGu36ceq9u55PTgF8bhGv6",
+      "stored": 1,
+      "pending": 1.02081561906,
+      "predicted": 1.02081561906,
+      "chainRatio": 1.0208156190599984,
+      "relativeError": 1.5543122344752192e-15,
+      "status": "PASS"
+    },
+    {
+      "symbol": "COVELx",
+      "mint": "XsSWT1Cw3vemPuy82ATtfT8R347jctHVri1m2NzfD2G",
+      "stored": 1,
+      "pending": 1.018976897689769,
+      "predicted": 1.018976897689769,
+      "chainRatio": 1.0189768976897655,
+      "relativeError": 3.4416913763379853e-15,
+      "status": "PASS"
+    },
+    {
+      "symbol": "CITICx",
+      "mint": "XsdSGGAQyFiEuCVyV5ZQgB79pXXpr7vZPm3nhvHwKzK",
+      "stored": 1,
+      "pending": 1.0176757902403497,
+      "predicted": 1.0176757902403497,
+      "chainRatio": 1.017675790240348,
+      "relativeError": 1.7763568394002505e-15,
+      "status": "PASS"
+    },
+    {
+      "symbol": "EWQx",
+      "mint": "Xs1neEMHNaDDSHqE9nvDGkmuX73ZASKcLtQqwmVAQde",
+      "stored": 1,
+      "pending": 1.01632636637,
+      "predicted": 1.01632636637,
+      "chainRatio": 1.0163263663699884,
+      "relativeError": 1.1324274851176597e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "SCCOx",
+      "mint": "XsQD8itHh5CdrWMiH8cZPB55KSATjdXsxcSJJ14YCFD",
+      "stored": 1.003847883664,
+      "pending": 1.019224471246712,
+      "predicted": 1.019224471246712,
+      "chainRatio": 1.0192244712464493,
+      "relativeError": 2.5768276401549883e-13,
+      "status": "PASS"
+    },
+    {
+      "symbol": "DFDVx",
+      "mint": "Xs2yquAgsHByNzx68WJC55WHjHBvG9JsMB7CWjTLyPy",
+      "stored": 1,
+      "pending": 1.01472895118,
+      "predicted": 1.01472895118,
+      "chainRatio": 1.0147289511799973,
+      "relativeError": 2.6645352591003757e-15,
+      "status": "PASS"
+    },
+    {
+      "symbol": "GLPIx",
+      "mint": "XsbohnBoBBbXg2scrDy9yzBqeXhNN53F5dcjwFF8XFR",
+      "stored": 1,
+      "pending": 1.014006832601,
+      "predicted": 1.014006832601,
+      "chainRatio": 1.014006832600987,
+      "relativeError": 1.2878587085651816e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "KRAQx",
+      "mint": "XsAiRejKuvLAdq9KtedrMSrabz7SWdzKoVK6Qgac1Ki",
+      "stored": 1,
+      "pending": 1.01375909737,
+      "predicted": 1.01375909737,
+      "chainRatio": 1.0137590973699913,
+      "relativeError": 8.548717289613705e-15,
+      "status": "PASS"
+    },
+    {
+      "symbol": "EWGx",
+      "mint": "XsM51PKxDNQBZR65VRxRjNqcMWUBoYwHeVn2FR6WXi9",
+      "stored": 1,
+      "pending": 1.01375813519,
+      "predicted": 1.01375813519,
+      "chainRatio": 1.0137581351899705,
+      "relativeError": 2.90878432451791e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "DAXx",
+      "mint": "XsKbKZ6e1BtERDn2cF11WkpVwvzSWCrf83AMafgnMQT",
+      "stored": 1,
+      "pending": 1.013533965245,
+      "predicted": 1.013533965245,
+      "chainRatio": 1.0135339652449802,
+      "relativeError": 1.9539925233402755e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "VICIx",
+      "mint": "XsN9HmM3TqbY317obKz1fYbRvR81MT9qbL5eUSiGto3",
+      "stored": 1,
+      "pending": 1.01312678353,
+      "predicted": 1.01312678353,
+      "chainRatio": 1.0131267835299704,
+      "relativeError": 2.919886554764162e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "PFEx",
+      "mint": "XsAtbqkAP1HJxy7hFDeq7ok6yM43DQ9mQ1Rh861X8rw",
+      "stored": 1.0411821501505005,
+      "pending": 1.0537129709103943,
+      "predicted": 1.0537129709103943,
+      "chainRatio": 1.0537129709103823,
+      "relativeError": 1.1324274851176597e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "FEZx",
+      "mint": "XsbZDdYJKxEBQASz4KBj23NRgymXw2NK6mbNQ6PYhC7",
+      "stored": 1,
+      "pending": 1.01110672995,
+      "predicted": 1.01110672995,
+      "chainRatio": 1.0111067299499537,
+      "relativeError": 4.5852210917018965e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "KHCx",
+      "mint": "XszMPpjvc5nyynUGktkn7JkqkfFYxunE29Rxi4Vo8C5",
+      "stored": 1,
+      "pending": 1.011014948859,
+      "predicted": 1.011014948859,
+      "chainRatio": 1.0110149488589926,
+      "relativeError": 7.216449660063518e-15,
+      "status": "PASS"
+    },
+    {
+      "symbol": "MOx",
+      "mint": "XsztStxbbGZE63p8DyD8YCpzyWFJwwy2PNcyaf3cZz8",
+      "stored": 1,
+      "pending": 1.011004107067,
+      "predicted": 1.011004107067,
+      "chainRatio": 1.0110041070669236,
+      "relativeError": 7.560618797697316e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "UPSx",
+      "mint": "XsnqNkeDhvaK8C5B3Z4D1ciCupVAgkw1AdS3U2uEn26",
+      "stored": 1,
+      "pending": 1.010985645933,
+      "predicted": 1.010985645933,
+      "chainRatio": 1.0109856459329867,
+      "relativeError": 1.3211653993039363e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "CKHUTx",
+      "mint": "XsjMBmvjeERTrf2odjQKQKFgBVWsiC5J9Mhe9eCNyfW",
+      "stored": 1,
+      "pending": 1.0108278867102396,
+      "predicted": 1.0108278867102396,
+      "chainRatio": 1.0108278867102274,
+      "relativeError": 1.2101430968414206e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "CCIx",
+      "mint": "XsbPN4VFi14geuC8D2Tb2u37kQM83VSkfMUyvXsWWoC",
+      "stored": 1,
+      "pending": 1.010027639207,
+      "predicted": 1.010027639207,
+      "chainRatio": 1.0100276392069172,
+      "relativeError": 8.204548151979907e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "EWUx",
+      "mint": "XsbWCMXPzLdZMLpPtiiWE7M99fySmsnK5eFCWGWfDQ8",
+      "stored": 1,
+      "pending": 1.009889236641,
+      "predicted": 1.009889236641,
+      "chainRatio": 1.0098892366409764,
+      "relativeError": 2.3314683517128287e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "CMCSAx",
+      "mint": "XsvKCaNsxg2GN8jjUmq71qukMJr7Q1c5R2Mk9P8kcS8",
+      "stored": 1.0775407627046052,
+      "pending": 1.0876797409606038,
+      "predicted": 1.0876797409606038,
+      "chainRatio": 1.0876797409605912,
+      "relativeError": 1.1657341758564144e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "OHIx",
+      "mint": "XsAeqdosiRKYKtYRLoao2TQDB16yLRP82MCwd7ibVuH",
+      "stored": 1,
+      "pending": 1.009401540589,
+      "predicted": 1.009401540589,
+      "chainRatio": 1.009401540588949,
+      "relativeError": 5.062616992290714e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "ACNx",
+      "mint": "Xs5UJzmCRQ8DWZjskExdSQDnbE6iLkRu2jjrRAB1JSU",
+      "stored": 1.0191415587808974,
+      "pending": 1.0282231285426122,
+      "predicted": 1.0282231285426122,
+      "chainRatio": 1.0282231285425205,
+      "relativeError": 8.915090887740007e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "TROWx",
+      "mint": "Xs8urJdzBSFLaKqxZiMackbXDkyZbwPeAwz7PepQ1eD",
+      "stored": 1,
+      "pending": 1.008601134216,
+      "predicted": 1.008601134216,
+      "chainRatio": 1.0086011342158432,
+      "relativeError": 1.5543122344752192e-13,
+      "status": "PASS"
+    },
+    {
+      "symbol": "CKAHx",
+      "mint": "XsEV5rBKdRtbmVLXmCxTm6Dox3467drekVVwpupVLrP",
+      "stored": 1,
+      "pending": 1.008563074352548,
+      "predicted": 1.008563074352548,
+      "chainRatio": 1.0085630743525325,
+      "relativeError": 1.5432100042289676e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "FNFx",
+      "mint": "XsPH7DxK5rGBdoFSSCpU6HgJZp1mKpRTVnsKQUN1j8B",
+      "stored": 1,
+      "pending": 1.008344795965,
+      "predicted": 1.008344795965,
+      "chainRatio": 1.0083447959649214,
+      "relativeError": 7.793765632868599e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "KMBx",
+      "mint": "XsNnfg6KXzaRsH8PE9T9YEahq3MQpSZ3dQAa4hcL1SN",
+      "stored": 1,
+      "pending": 1.008300138953,
+      "predicted": 1.008300138953,
+      "chainRatio": 1.0083001389528836,
+      "relativeError": 1.1535217225855376e-13,
+      "status": "PASS"
+    },
+    {
+      "symbol": "KVUEx",
+      "mint": "XsDDkXqF1sr1ixW4Y93Geqfd2LbrWxokCjQf9poGN3c",
+      "stored": 1.007716535433,
+      "pending": 1.0160340161020378,
+      "predicted": 1.0160340161020378,
+      "chainRatio": 1.0160340161020176,
+      "relativeError": 1.9872992140790302e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "OKEx",
+      "mint": "XspDMNC416uCcUbngqyAwzk1phuRYdmm6AMsWo3EHd4",
+      "stored": 1,
+      "pending": 1.008247990309,
+      "predicted": 1.008247990309,
+      "chainRatio": 1.0082479903089672,
+      "relativeError": 3.26405569239796e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "KIMx",
+      "mint": "XseurSPz9hnmd6k1eQT52a8QC53QcoCoD4qVbPmWzCC",
+      "stored": 1,
+      "pending": 1.008193979933,
+      "predicted": 1.008193979933,
+      "chainRatio": 1.0081939799329593,
+      "relativeError": 4.030109579389318e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "ESx",
+      "mint": "XsgPX8MYf23yPRv9DrT5ofHn4mThBZgkhboLHz5uSx7",
+      "stored": 1,
+      "pending": 1.008140135854,
+      "predicted": 1.008140135854,
+      "chainRatio": 1.0081401358539073,
+      "relativeError": 9.203748874142548e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "EXRx",
+      "mint": "XseFccApcVhrqASiXFM97ZkX7a2uDWbUWjC4T82LgAT",
+      "stored": 1,
+      "pending": 1.008134863702,
+      "predicted": 1.008134863702,
+      "chainRatio": 1.0081348637018153,
+      "relativeError": 1.8329782136561334e-13,
+      "status": "PASS"
+    },
+    {
+      "symbol": "PRUx",
+      "mint": "XsPhDoJMMgARN4eB8apaPNFUjVBKqx3WtRS4ddBwKVw",
+      "stored": 1,
+      "pending": 1.008089145687,
+      "predicted": 1.008089145687,
+      "chainRatio": 1.008089145686986,
+      "relativeError": 1.3877787807814457e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "CLXx",
+      "mint": "XshmkFbMrRMtVb2HoJw1nc9jGMKNjTWcutT86YpMbKi",
+      "stored": 1,
+      "pending": 1.008083140878,
+      "predicted": 1.008083140878,
+      "chainRatio": 1.0080831408779902,
+      "relativeError": 9.658940314238862e-15,
+      "status": "PASS"
+    },
+    {
+      "symbol": "DOWx",
+      "mint": "XsKWMeTN8wmhrkoWKy6tXAj6476Guj8zonzQu7jivqP",
+      "stored": 1,
+      "pending": 1.008030154048,
+      "predicted": 1.008030154048,
+      "chainRatio": 1.0080301540479728,
+      "relativeError": 2.6867397195928788e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "FISx",
+      "mint": "XsTdkPyDNVtJYUjV7VhyZwtqQmA2Lg4DdTkRjYPD2gQ",
+      "stored": 1,
+      "pending": 1.007995846314,
+      "predicted": 1.007995846314,
+      "chainRatio": 1.0079958463139702,
+      "relativeError": 2.9531932455029164e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "IPx",
+      "mint": "XsS6AVyq5YpDA5yCUYuwxvkk5hvKvFxAt5tUJik9Y5H",
+      "stored": 1,
+      "pending": 1.007873297665,
+      "predicted": 1.007873297665,
+      "chainRatio": 1.0078732976649567,
+      "relativeError": 4.296563105299356e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "LAMRx",
+      "mint": "XsqZyeL1GGWZzMQ5hh3KckQnXNt3Yt96QHBUdiJSoFS",
+      "stored": 1,
+      "pending": 1.007867311491,
+      "predicted": 1.007867311491,
+      "chainRatio": 1.0078673114909524,
+      "relativeError": 4.718447854656915e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "AGNCx",
+      "mint": "XsycyYwi9Kekp26jyGg3x5Fo1JDRr3XnTJmVaf5CRUb",
+      "stored": 1,
+      "pending": 1.0077064220183487,
+      "predicted": 1.0077064220183487,
+      "chainRatio": 1.0077064220183272,
+      "relativeError": 2.142730437526552e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "CRESLx",
+      "mint": "XsbsVbQ24JD4HKnrz4eLktPBgZEMX3cooqiFapFjUtB",
+      "stored": 1,
+      "pending": 1.007684630739,
+      "predicted": 1.007684630739,
+      "chainRatio": 1.0076846307389877,
+      "relativeError": 1.2101430968414206e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "Fx",
+      "mint": "XsBNJXGu68cBH5hgFxdqZkeh8cMQv32jeEtZtYTYvfS",
+      "stored": 1,
+      "pending": 1.0075,
+      "predicted": 1.0075,
+      "chainRatio": 1.007499999999997,
+      "relativeError": 3.1086244689504383e-15,
+      "status": "PASS"
+    },
+    {
+      "symbol": "SPGx",
+      "mint": "XsUXFEjcDYrp7NuzHtC88JLyirmnLpA8nde1e8eRxEn",
+      "stored": 1,
+      "pending": 1.007433452898,
+      "predicted": 1.007433452898,
+      "chainRatio": 1.0074334528977262,
+      "relativeError": 2.717825964282383e-13,
+      "status": "PASS"
+    },
+    {
+      "symbol": "PEPx",
+      "mint": "Xsv99frTRUeornyvCfvhnDesQDWuvns1M852Pez91vF",
+      "stored": 1.0268028384810615,
+      "pending": 1.0344000941634355,
+      "predicted": 1.0344000941634355,
+      "chainRatio": 1.0344000941633527,
+      "relativeError": 8.004708007547379e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "NKEx",
+      "mint": "XsGYpMvKbVt6ViHqRd7cF3s746dAMFBQWcC49hB9VVP",
+      "stored": 1,
+      "pending": 1.007347670251,
+      "predicted": 1.007347670251,
+      "chainRatio": 1.0073476702509927,
+      "relativeError": 7.327471962526033e-15,
+      "status": "PASS"
+    },
+    {
+      "symbol": "ARESx",
+      "mint": "Xsm7SVTuyeaeD5fwaWD1RFKX7Rr8WmNGz5j35r5npth",
+      "stored": 1,
+      "pending": 1.007319907049,
+      "predicted": 1.007319907049,
+      "chainRatio": 1.00731990704887,
+      "relativeError": 1.2889689315898067e-13,
+      "status": "PASS"
+    },
+    {
+      "symbol": "BBYx",
+      "mint": "Xsac5qkc4B254kpnb2qneeu6qsNX1fPtACeuNEiXWMR",
+      "stored": 1,
+      "pending": 1.007268793943,
+      "predicted": 1.007268793943,
+      "chainRatio": 1.007268793942922,
+      "relativeError": 7.760458942129844e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "BAMx",
+      "mint": "XsLdXScusw7mCSATbp7bWKfyBR1RVWEEayKgRcmJ8dZ",
+      "stored": 1,
+      "pending": 1.0072309094397545,
+      "predicted": 1.0072309094397545,
+      "chainRatio": 1.0072309094397418,
+      "relativeError": 1.2545520178264269e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "PAYXx",
+      "mint": "Xsuo3Vd8T7MVAx3miKJ1beX4sGutzdL3GJsjk1yFbxA",
+      "stored": 1,
+      "pending": 1.007213370281,
+      "predicted": 1.007213370281,
+      "chainRatio": 1.0072133702808554,
+      "relativeError": 1.4355183708403274e-13,
+      "status": "PASS"
+    },
+    {
+      "symbol": "OMCx",
+      "mint": "XscmXyJYjYbGNhxQsPjjRYsEwscg6uPFJzR6Af7Qi18",
+      "stored": 1,
+      "pending": 1.007124681934,
+      "predicted": 1.007124681934,
+      "chainRatio": 1.0071246819339144,
+      "relativeError": 8.515410598874951e-14,
+      "status": "PASS"
+    },
+    {
+      "symbol": "PSAx",
+      "mint": "XsBLm8wotoJMHjonHcr1btz9RwLa3EWjhtbs3DbQphg",
+      "stored": 1,
+      "pending": 1.007109004739,
+      "predicted": 1.007109004739,
+      "chainRatio": 1.007109004738875,
+      "relativeError": 1.2390088954816747e-13,
+      "status": "PASS"
+    },
+    {
+      "symbol": "PCTx",
+      "mint": "XsyQipBmDKeSy78zCSMp4BY91Cd46Dx3q4eBoSqbBDX",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "WYFIx",
+      "mint": "XsLkMYrJVUPJv23tH3PB167BV6kpdubPe5F3KfVvSFN",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "QUBTx",
+      "mint": "XsRJiWgqGJrDaidERfWfdZkaxdA4VPjVEqN6XFctpp3",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "INDIx",
+      "mint": "XsHYm9cRdEJoogpxDSZVDa4g19fKqUFXWxKisLpEuVm",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "FLNCx",
+      "mint": "Xsc5BxL1ucvrQNXZqW3CT8M9gWTko1LPSLLkSVzGe9h",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "XRXx",
+      "mint": "XsensupeZBdHxZtdnLptf1UfWpVyancWcit7qWFYZrJ",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "BETRx",
+      "mint": "Xsv3MnH24RsSJwcBvkPUMsDAZqszgmxnbWcUDbfzaYW",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "WGSx",
+      "mint": "XsmPveq9vFqqCBfhBfDyfACu1W7bLVABkqaL3u8uFyy",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "WRLDx",
+      "mint": "XsmjCXMpgsWWchGjczHfWz2aGKdYF7WiwPPurUd6c7W",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "METCx",
+      "mint": "Xs2UKGPTD9S19rXkSqwJ6ufxAtuCU9Ww3wQumk9MvCn",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "AIx",
+      "mint": "Xs7QhN79WzM4hjfHbu2W46ZRkdyumim3ooJHhPxenoU",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "MPx",
+      "mint": "XsFARXCfXKCdu6BxV2WACBt3Dk88nxLujoqPzyyBib9",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "SAILx",
+      "mint": "XscePZ4mjiXqyEVv9ZZPGbT6L86LqnYPEBE4ViKSt3T",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "SCIx",
+      "mint": "XsC3icNzi6x7cRA6hodAZQT5GAsxwGrTxWL5awu4gsn",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "DRSx",
+      "mint": "Xsf3NfLggzL9WXy4yaxJB3866ehq7y7sQxohwAkNiEu",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "BSYx",
+      "mint": "XsMJnAApxALiWrwPBkAqm2FebHRmMLQVyjv9xVckzyk",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "DCIx",
+      "mint": "Xs1n717k7fpA1edvo1xndLzPGYnkF81MPFsW3CC8jiZ",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "DVAx",
+      "mint": "XsS3GWSysqkDJZYFSuMDFZ2ELSjQAWwMH28vxLThnb4",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "AXSMx",
+      "mint": "XsYa1w57EZDEiryphKCD8AJf33f4ewr2BHUW4RcjSuE",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "RYANx",
+      "mint": "Xsgyj7QR8RoPrkCCS2ebXwiASE69q2EvK5B7ppeKgBt",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "AMx",
+      "mint": "XsLLmMhRTib24GrQd3wfrgh3rBWF6NHeVx6hox2eZXH",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "ALSNx",
+      "mint": "XsZLnz25FKoaHSjhGDYtv2E7sgKwP3g5XeC7eSWLVnm",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "GSATx",
+      "mint": "XsNB1EjXVMUXGEC5X55DBG1ekMajZZvt9yAKzNmFhk4",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "GDDYx",
+      "mint": "XsZLNUcjAVzNSbU5Z198ngop2mmoinZnw5ijBeMgWhW",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "BXPx",
+      "mint": "Xsc3DUGC7diNKyYkKTagzj4R42EuM8KHBgFnLmXA12y",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "DYx",
+      "mint": "XsHsqDrvsU85aJXNNmPBkxU4STbELJUeTV7zT4cJQD5",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "FRHCx",
+      "mint": "XsCKGVtLBwZ4Z264jSPgPxzm3w6Sm3UkKv5WgHd3ike",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "SMTCx",
+      "mint": "Xs9bdUnLdSWjQWeEsy8cde6t2L7d3adDRKcH8H51Uwr",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "DPZx",
+      "mint": "Xs6z8AmfhiHTGmfdcX6hG7hho5P7xnbE21ChtJ94oVj",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "PAGx",
+      "mint": "Xs7waUdcn1ZQDsuFmHRerWEEazRHoWWzWSa6aB7QjHG",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "EGPx",
+      "mint": "XsuAyd21vBFvAJfpzYQgmTi3A9Qwb6feHmNVsU6Z5vM",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "BPOPx",
+      "mint": "Xs75Z8HFGHFnTubABp1CZSLvzCPepWsYhtHYLAFYEa7",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "TTMIx",
+      "mint": "Xs1PSc6DL1cdDPTbyJevgYYU7uA1wiJQESzrpWM7JRv",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "EHCx",
+      "mint": "XsM3qqkARr8UMejnZUU3gBs7hz2fUdxDP35Dhxx9z94",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "AEISx",
+      "mint": "XsiXtK4niZXG2MFkDmgRcZskNYoetURTV9XhgRf1ESL",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "KTOSx",
+      "mint": "XsssrKt95uWKWRbDdbCeMubD7iiD74NqiXeNL1p3Gaj",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "GMEDx",
+      "mint": "XsMkiaVUP5GkFCSJJGcun75edh1FSsLkCtDC3piGK2j",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "ARx",
+      "mint": "Xscms1jQDud7fsxLTKibMVxSTSQz3JFeJ1HDshRkPwc",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "SEICx",
+      "mint": "XstGFYNtBmWaCk3MfbEeqMYYbUf2o3PTLJm7R7iYfGS",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "MGMx",
+      "mint": "Xs2hW1n8cBJAKUtDxZjJtFZBaxqTwczJY6n6XY8eV4o",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "HALOx",
+      "mint": "XsLaYaQLQfc9Z2Qis9gh6zebLbEoG1MLCrxD2wAmBBY",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "HIIx",
+      "mint": "XsqxvS2n4fRh41imCC68Z6NmDHk2SPXkGXrekg9o9kd",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "GFLx",
+      "mint": "Xs7pKrTAgPBaXjiZbGm8QQK36GRRX1Vsh7pTndjhxng",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "HRLx",
+      "mint": "XsQMbNzqcJURkmjzmh7DMfhjPf7Effu5QS3fpBLtazr",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "IESCx",
+      "mint": "XsepazYXhizTmBmiZWfGwFnyUUSepwzQkLRgQyBp2Zg",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "AMKRx",
+      "mint": "Xsqbg1tmAvNT5332hhX4hMSznqf2NJ1tz2cNWmAkRD3",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "BMRNx",
+      "mint": "XsF6swLUV7mDXkG39Ywmgouktp1PXaJ3oyGnCDvYs9G",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "HUBSx",
+      "mint": "Xs8sK7KXi6tWULhBq4a8197Ydz4zDdLxtKjK6gBF59x",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "AFGx",
+      "mint": "XsEv23PPmUAxWJ8VMyN84tyJzEnUg4Yg3636Mvyw4Pk",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "AMHx",
+      "mint": "XsFUCDYcyPbbYKFXaNUU661ZGip7mwjUEEk3W1YPCrK",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "DOCUx",
+      "mint": "XszH3SckdYS1Kbyj9wcmjttt9Lp8jMgU39rGL8b9Wcp",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "OCx",
+      "mint": "XseGSSi5kLz8eR539iXZ6tLz6r75UaHTQ6CHYkPjs9F",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "JKHYx",
+      "mint": "XsQpEG5WPyZ5Pkno8mHrDXNfYNdeCUkgUEQcaHAQQ9g",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "WTRGx",
+      "mint": "XsR9n59W439iWymAe3x5qnjdnaRXQmbvPE2uC9efzjE",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "VNOMx",
+      "mint": "XsW8ts3iGPo8pxif5eFMv1Rnx6xE5Yw57Zhz2xYdhYL",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "FIVEx",
+      "mint": "Xs7zvvE6QUtYmpMBrz4oWJexS7WSJPwJs7vQsvMCpaG",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "IVZx",
+      "mint": "XsM5qDSyGiTVyHoi2VixmaEacByd3UCUoWtNhEqsyoH",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "MDGLx",
+      "mint": "Xs6hbDwJ8wr1zoxLusdhY2Vxjfz5C2doLVgZdZGRqvz",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "JEFx",
+      "mint": "XsWiS1zCUByB7TkvLQcxbHW4wLQ45vm1Uqg9tkk81ur",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    },
+    {
+      "symbol": "AHRx",
+      "mint": "XsLEJJP8FpnaSP17ETzVfkTQFHBP4i4hRvmz3RKX7B8",
+      "stored": 1,
+      "pending": 1,
+      "predicted": 1,
+      "chainRatio": 1,
+      "relativeError": 0,
+      "status": "PASS"
+    }
+  ]
+}

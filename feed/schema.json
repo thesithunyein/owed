@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://owed.sithunyein.com/feed/schema.json",
+  "title": "Owed xStocks risk feed",
+  "type": "object",
+  "required": [
+    "feed",
+    "version",
+    "generatedAt",
+    "clock",
+    "effectiveMultiplierRule",
+    "summary",
+    "tokens"
+  ],
+  "properties": {
+    "feed": {
+      "const": "owed/xstocks-risk"
+    },
+    "version": {
+      "type": "string"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "clock": {
+      "type": "integer",
+      "description": "Unix seconds at which effectiveMultiplier was computed."
+    },
+    "effectiveMultiplierRule": {
+      "type": "string",
+      "description": "Expression consumers apply to scaled.state, evaluated at their own clock."
+    },
+    "stalenessWarning": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "total",
+        "trap",
+        "permanentDelegate",
+        "pauseAuthority"
+      ],
+      "properties": {
+        "total": {
+          "type": "integer"
+        },
+        "trap": {
+          "type": "integer",
+          "description": "Mints whose stored multiplier is stale."
+        },
+        "ge10x": {
+          "type": "integer"
+        },
+        "ge100": {
+          "type": "integer"
+        },
+        "ge1": {
+          "type": "integer"
+        },
+        "ge0_5": {
+          "type": "integer"
+        },
+        "permanentDelegate": {
+          "type": "integer"
+        },
+        "pauseAuthority": {
+          "type": "integer"
+        },
+        "paused": {
+          "type": "integer"
+        },
+        "maxGapPct": {
+          "type": "number"
+        }
+      }
+    },
+    "tokens": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "symbol",
+          "mint",
+          "decimals",
+          "scaled",
+          "trap",
+          "security"
+        ],
+        "properties": {
+          "symbol": {
+            "type": "string"
+          },
+          "mint": {
+            "type": "string"
+          },
+          "decimals": {
+            "type": "integer"
+          },
+          "supply": {
+            "type": "object",
+            "properties": {
+              "raw": {
+                "type": [
+                  "string",
+                  "number"
+                ]
+              }
+            }
+          },
+          "scaled": {
+            "type": "object",
+            "required": [
+              "state",
+              "effectiveMultiplier"
+            ],
+            "properties": {
+              "state": {
+                "type": "object",
+                "required": [
+                  "multiplier"
+                ],
+                "properties": {
+                  "multiplier": {
+                    "type": [
+                      "string",
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "newMultiplier": {
+                    "type": [
+                      "string",
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "newMultiplierEffectiveTimestamp": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "effectiveMultiplier": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          },
+          "trap": {
+            "type": "object",
+            "required": [
+              "stale"
+            ],
+            "properties": {
+              "stale": {
+                "type": "boolean"
+              },
+              "gapPct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "daysStale": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          },
+          "security": {
+            "type": "object",
+            "properties": {
+              "permanentDelegate": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "pauseAuthority": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "paused": {
+                "type": "boolean"
+              },
+              "transferHookAuthority": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

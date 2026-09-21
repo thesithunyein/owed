@@ -1,0 +1,107 @@
+{
+  "generatedAt": "2026-09-21T15:13:54.422Z",
+  "rpc": "https://api.mainnet-beta.solana.com",
+  "results": [
+    {
+      "label": "BONK (control)",
+      "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+      "raw": 87994398325629.44,
+      "scaled": 87994398325629.42,
+      "priceUsd": 0.000003394,
+      "marketCap": 298728121,
+      "fdv": 301675357,
+      "impliedSupply": 88016535356511.48,
+      "ratioVsRaw": 1.0002515731831034,
+      "ratioVsScaled": 1.0002515731831036,
+      "verdict": "MATCHES_ONCHAIN",
+      "group": "control"
+    },
+    {
+      "label": "JUP (control)",
+      "mint": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+      "raw": 6861486788.388758,
+      "scaled": 6861486788.388758,
+      "priceUsd": 0.3038,
+      "marketCap": 1008657504,
+      "fdv": 2127085109,
+      "impliedSupply": 3320136616.1948647,
+      "ratioVsRaw": 0.4838800566975241,
+      "ratioVsScaled": 0.4838800566975241,
+      "verdict": "MISMATCH",
+      "group": "control"
+    },
+    {
+      "label": "USDC (control)",
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "raw": 7715572418.738457,
+      "scaled": 7715572418.738457,
+      "priceUsd": 1.00019,
+      "marketCap": 74258143483,
+      "fdv": 9344688082,
+      "impliedSupply": 74244037115.94798,
+      "ratioVsRaw": 9.622622028099288,
+      "ratioVsScaled": 9.622622028099288,
+      "verdict": "MISMATCH",
+      "group": "control"
+    },
+    {
+      "label": "PPLTx",
+      "mint": "Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme",
+      "raw": 79671.52999996,
+      "scaled": 796715.2999996,
+      "verdict": "NO_PAIR",
+      "implied": null,
+      "group": "xstock"
+    },
+    {
+      "label": "NFLXx",
+      "mint": "XsEH7wWfJJu2ZT3UCFeVfALnVA6CP5ur7Ee11KmzVpL",
+      "raw": 155056.85531324,
+      "scaled": 1550568.5531324,
+      "priceUsd": 720.76,
+      "marketCap": 720770,
+      "fdv": 720770,
+      "impliedSupply": 1000.0138742438537,
+      "ratioVsRaw": 0.006449336743116991,
+      "ratioVsScaled": 0.0006449336743116991,
+      "verdict": "MISMATCH",
+      "group": "xstock"
+    },
+    {
+      "label": "PALLx",
+      "mint": "XsTTtPA5V19YwHKDv4xeVXNM6kdsQNJvg3MyWkRUckt",
+      "raw": 104994.15,
+      "scaled": 524970.75,
+      "verdict": "NO_PAIR",
+      "implied": null,
+      "group": "xstock"
+    },
+    {
+      "label": "CRWDx",
+      "mint": "Xs7xXqkcK7K8urEqGg52SECi79dRp2cEKKuYjUePYDw",
+      "raw": 34486.99837275,
+      "scaled": 137947.993491,
+      "verdict": "NO_PAIR",
+      "implied": null,
+      "group": "xstock"
+    },
+    {
+      "label": "APHx",
+      "mint": "XsvqNba1k4wF5ZEZ6Nrx8AXUDkKzAFuj4HaVDEemyYH",
+      "raw": 36407.76699029,
+      "scaled": 72815.53398058,
+      "verdict": "NO_PAIR",
+      "implied": null,
+      "group": "xstock"
+    },
+    {
+      "label": "SNDSCx",
+      "mint": "XsFRth3iT4KjYSzVvWpdeFhFjzdguCFiv3zMWJEodsF",
+      "raw": 1308418.82882717,
+      "scaled": 1359528.93932823,
+      "verdict": "NO_PAIR",
+      "implied": null,
+      "group": "xstock"
+    }
+  ]
+}
