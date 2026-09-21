@@ -3,20 +3,21 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Owed — what a naive reader gets wrong on Solana tokenized stocks</title>
-<meta name="description" content="379 of 925 official xStocks have a stale on-chain multiplier right now. Two are off by 10x. Verified against the Token-2022 runtime; computed from the raw state we publish." />
+<title>Owed — The correctness layer for tokenized equities</title>
+<meta name="description" content="379 of 925 official xStocks on Solana carry a stale Token-2022 multiplier — two are off by 10×. Measured from mainnet, reproducible in one command." />
+<meta name="theme-color" content="#f0f0ee" />
 <link rel="icon" type="image/png" href="assets/favicon.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Owed" />
-<meta property="og:title" content="Owed — 379 of 925 tokenized stocks are misquoted by any naive reader" />
-<meta property="og:description" content="The stored Token-2022 multiplier field is stale on 379 official xStocks. Two are off by a full 10x. Pick a token, enter a position, see the gap in money." />
+<meta property="og:title" content="Owed — The correctness layer for tokenized equities" />
+<meta property="og:description" content="The stored Token-2022 multiplier field is stale on 379 official xStocks. Two are off by a full 10×. Pick a token, enter a position, see the gap in money." />
 <meta property="og:url" content="https://owed.sithunyein.com/" />
 <meta property="og:image" content="https://owed.sithunyein.com/assets/og.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Owed — 379 of 925 tokenized stocks misquoted by naive readers" />
-<meta name="twitter:description" content="Stale Token-2022 multipliers on Solana xStocks, measured, not estimated. Two are off by 10x." />
+<meta name="twitter:title" content="Owed — The correctness layer for tokenized equities" />
+<meta name="twitter:description" content="Stale Token-2022 multipliers on Solana xStocks, measured from mainnet, not estimated. Two are off by 10×." />
 <meta name="twitter:image" content="https://owed.sithunyein.com/assets/og.png" />
 <style>
   :root {
@@ -80,30 +81,79 @@
   .scroll { max-height: 460px; overflow: auto; border: 1px solid var(--line); border-radius: 10px; }
   code { background: #171c27; border: 1px solid var(--line); border-radius: 5px; padding: 1px 5px; font-size: 12.5px; }
   .foot { color: var(--faint); font-size: 12.5px; margin-top: 34px; border-top: 1px solid var(--line); padding-top: 16px; }
+
+  /* ---- hero ------------------------------------------------------------- */
+  html { scroll-behavior: smooth; }
+  .hero { position: relative; min-height: 100vh; min-height: 100svh; overflow: hidden; background: #f0f0ee; color: #111827; }
+  .hero video.hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero .hero-fg { position: relative; z-index: 10; display: flex; flex-direction: column; min-height: 100vh; min-height: 100svh; }
+  .hero nav { display: flex; align-items: center; justify-content: center; padding: 16px 16px 0; gap: 8px; }
+  @media (min-width: 640px) { .hero nav { padding: 24px 32px 0; gap: 12px; } }
+  .nav-badge { display: flex; align-items: center; justify-content: center; border-radius: 9999px; width: 40px; height: 40px; flex-shrink: 0; background: #ededed; text-decoration: none; }
+  @media (min-width: 640px) { .nav-badge { width: 44px; height: 44px; } }
+  .nav-pill { display: flex; align-items: center; gap: 16px; border-radius: 12px; padding: 10px 16px; background: #ededed; }
+  @media (min-width: 640px) { .nav-pill { gap: 40px; padding: 12px 32px; } }
+  .nav-pill a { font-size: 12px; font-weight: 500; color: #374151; text-decoration: none; transition: color 0.2s; }
+  .nav-pill a:hover { color: #111827; }
+  @media (min-width: 640px) { .nav-pill a { font-size: 14px; } }
+  .hero-content { flex: 1; display: flex; align-items: flex-end; padding: 0 24px 40px; }
+  @media (min-width: 640px) { .hero-content { padding: 0 48px 64px; } }
+  @media (min-width: 1024px) { .hero-content { padding: 0 112px 80px; } }
+  .hero-copy { max-width: 340px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 500; color: #3b82f6; text-decoration: none; margin-bottom: 12px; }
+  .hero-badge:hover { color: #2563eb; }
+  .hero-badge .arr, .hero-cta .arr { display: inline-block; transition: transform 0.2s; }
+  .hero-badge:hover .arr, .hero-cta:hover .arr { transform: translateX(2px); }
+  .hero h1 { font-size: 1.5rem; line-height: 1.15; font-weight: 500; color: #111827; letter-spacing: -0.02em; margin: 0 0 12px; }
+  @media (min-width: 640px) { .hero h1 { font-size: 1.75rem; } }
+  .hero-sub { font-size: 13px; font-weight: 400; color: #9ca3af; margin: 0 0 12px; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: #3b82f6; border: 1px solid #60a5fa; border-radius: 9999px; padding: 10px 20px; text-decoration: none; transition: all 0.2s; }
+  .hero-cta:hover { background: #3b82f6; color: #fff; border-color: #3b82f6; }
   a { color: var(--blue); }
   .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: var(--dim); }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <h1>What a naive reader says vs what the chain applies</h1>
-  <p class="lead">
-    <strong>Owed is a correctness layer for tokenized equities.</strong> Issuers rebase
-    dividends and splits through a Token-2022 multiplier; the on-chain field keeps the old
-    value after each activation, and anything reading it computes the wrong balance. Every
-    number here is measured from mainnet and reproducible from the repo in one command.
-  </p>
-  <p class="nav">
-    <a href="board.html">Risk board — all 925 mints</a>
-    <span>·</span>
-    <a href="https://owed.sithunyein.com/feed/owed-risk.json">feed/owed-risk.json</a>
-    <span>·</span>
-    <a href="https://github.com/thesithunyein/owed">source</a>
-  </p>
-  <p class="sub" id="sub">Loading the committed risk feed…</p>
+<section class="hero">
+  <video class="hero-bg" autoplay muted loop playsinline preload="metadata" poster="assets/poster.jpg">
+    <source src="assets/hero.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-fg">
+    <nav>
+      <a class="nav-badge" href="#" aria-label="Owed — back to top">
+        <svg width="18" height="18" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill="rgb(84, 84, 84)" d="M 160 88 L 194 34 L 216 0 L 256 0 L 256 40 L 221.5 93.5 L 200 128 L 256 128 L 256 256 L 96 256 L 96 168 L 64.246 220 L 40 256 L 0 256 L 0 216 L 34 162 L 56 128 L 0 128 L 0 0 L 160 0 Z" />
+        </svg>
+      </a>
+      <div class="nav-pill">
+        <a href="#calculation">Calculation</a>
+        <a href="#registry">Data</a>
+        <a href="board.html">Board</a>
+        <a href="https://owed.sithunyein.com/feed/owed-risk.json">Feed</a>
+      </div>
+    </nav>
+    <div class="hero-content">
+      <div class="hero-copy">
+        <a class="hero-badge" href="#verification">
+          <span>Measured live from Solana mainnet · 925 tokens scanned</span>
+          <span class="arr">→</span>
+        </a>
+        <h1>The correctness layer for tokenized equities.</h1>
+        <p class="hero-sub">
+          <span id="heroStale">—</span> official xStocks are mispriced by naive readers
+          right now. Worst error: <span id="heroWorst">—</span>.
+        </p>
+        <a class="hero-cta" href="#calculation">
+          <span>Run the calculation</span>
+          <span class="arr">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <div class="grid" id="stats"></div>
+<div class="wrap" id="calculation">
 
   <h2>The calculation <span class="n">— pick a token, enter a position</span></h2>
   <p class="sub" style="margin-bottom:14px">
@@ -142,7 +192,12 @@
     <div class="verdict" id="verdict"></div>
   </div>
 
-  <h2>Every stale multiplier, worst first <span class="n" id="tblCount"></span></h2>
+  <h2>Measured from mainnet <span class="n">— recomputed against your clock</span></h2>
+  <p class="sub" id="sub" style="margin-bottom:14px">Loading the committed risk feed…</p>
+
+  <div class="grid" id="stats"></div>
+
+  <h2 id="registry">Every stale multiplier, worst first <span class="n" id="tblCount"></span></h2>
   <p class="sub" style="margin-bottom:12px">
     Re-classified against your clock on load, so rows appear and disappear as
     activations pass — no server, no API key.
@@ -163,7 +218,7 @@
     </table>
   </div>
 
-  <div class="foot">
+  <div class="foot" id="verification">
     <p id="proof"></p>
     <p>
       <strong>Method.</strong> Effective multipliers are recomputed in your browser from the
@@ -251,6 +306,10 @@ function stats() {
   $("sub").innerHTML =
     `Feed generated <strong>${new Date(RISK.generatedAt).toUTCString()}</strong> from ` +
     `<span class="mono">${RISK.source.rpc || "mainnet RPC"}</span>, re-classified against your clock just now.`;
+  // Hero figures track the same live classification so a refresh rescan that
+  // changes the counts can never leave the landing page asserting stale numbers.
+  $("heroStale").textContent = rows.length.toLocaleString("en-US");
+  $("heroWorst").textContent = worst ? Math.round(worst.c.gap * 100) + "%" : "none";
 }
 
 function table() {

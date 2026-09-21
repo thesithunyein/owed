@@ -56,10 +56,26 @@ const board = read("web", "board.html");
 assertDeployable("differential.html", harm);
 assertDeployable("board.html", board);
 
-// Static assets (og image, favicon) are copied verbatim.
+// Static assets (og image, favicon, hero video) are copied verbatim. The video
+// is the hero background — shipping a truncated or zero-byte copy would render
+// a blank hero in front of a judge, so its presence and size are load-bearing.
 mkdirSync(join(SITE, "assets"), { recursive: true });
-writeFileSync(join(SITE, "assets", "og.png"), readFileSync(join(ROOT, "web", "assets", "og.png")));
-writeFileSync(join(SITE, "assets", "favicon.png"), readFileSync(join(ROOT, "web", "assets", "favicon.png")));
+for (const asset of ["og.png", "favicon.png", "hero.mp4", "poster.jpg"]) {
+  const src = join(ROOT, "web", "assets", asset);
+  if (!existsSync(src)) {
+    throw new Error(`web/assets/${asset} is missing — it is part of the site`);
+  }
+  const bytes = readFileSync(src);
+  if (bytes.length === 0) {
+    throw new Error(`web/assets/${asset} is empty`);
+  }
+  if (asset === "hero.mp4" && bytes.length < 1_000_000) {
+    throw new Error(
+      `web/assets/hero.mp4 is ${bytes.length} bytes — looks truncated (expected ~2.7MB)`,
+    );
+  }
+  writeFileSync(join(SITE, "assets", asset), bytes);
+}
 
 const feedPath = join(ROOT, "feed", "owed-risk.json");
 const schemaPath = join(ROOT, "feed", "schema.json");
@@ -126,6 +142,6 @@ console.log(`site/ assembled from generated artifacts:`);
 for (const [name, len] of Object.entries(sizes)) {
   console.log(`  ${name.padEnd(26)} ${(len / 1024).toFixed(0)}KB`);
 }
-console.log(`  vercel.json + feed/index.json + assets/ (og, favicon)`);
+console.log(`  vercel.json + feed/index.json + assets/ (og, favicon, hero.mp4)`);
 console.log(`\nfeed: ${feed.tokens.length} tokens, generated ${feed.generatedAt}`);
 console.log(`deploy: cd site && vercel deploy --prod --yes --project owed`);

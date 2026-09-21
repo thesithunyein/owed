@@ -47,38 +47,57 @@ test("substituted payloads parse as JSON", () => {
     found += 1;
   }
   assert.ok(found >= 1, "at least one payload was injected");
-});
+});/**
+ * Extract resource URLs that a page *loads* (affects rendering) and narrow the
+ * match down to just the URL — matching whole tags makes every downstream check
+ * vacuous because the string starts with "<".
+ */
+function loadedResourceUrls(src) {
+  const patterns = [
+    /<script[^>]*\bsrc\s*=\s*["']([^"']+)["']/g,
+    /<img[^>]*\bsrc\s*=\s*["']([^"']+)["']/g,
+    /<link[^>]*\bhref\s*=\s*["']([^"']+)["']/g,
+    /<source[^>]*\bsrc\s*=\s*["']([^"']+)["']/g,
+    /<video[^>]*\bsrc\s*=\s*["']([^"']+)["']/g,
+    /<video[^>]*\bposter\s*=\s*["']([^"']+)["']/g,
+    /@import\s+["']([^"']+)["']/g,
+  ];
+  const urls = [];
+  for (const re of patterns) {
+    for (const m of src.matchAll(re)) urls.push(m[1]);
+  }
+  return urls;
+}
 
 test("both pages load no EXTERNAL resources (relative site assets are fine)", () => {
   for (const p of PAGES) {
     const src = readFileSync(join(WEB, p), "utf8");
+    const urls = loadedResourceUrls(src);
+
+    // Sanity: the extractor itself must be finding something, or this test
+    // proves nothing. board.html loads one asset (its favicon); differential
+    // loads favicon + og poster + hero video/poster.
+    assert.ok(urls.length >= 1, `${p}: extractor found ${urls.length} resource urls — it is not matching`);
 
     // Anything the page *loads* must not point at another origin: scripts,
-    // images, stylesheets, fonts. Relative assets (favicon, og image) are part
-    // of the site and ship alongside the page; a plain <a href> is navigation,
-    // not a dependency, and does not affect rendering.
-    const loads = [
-      ...(src.match(/<script[^>]*\bsrc\s*=\s*["']([^"']+)["']/g) ?? []),
-      ...(src.match(/<img[^>]*\bsrc\s*=\s*["']([^"']+)["']/g) ?? []),
-      ...(src.match(/<link[^>]*\bhref\s*=\s*["']([^"']+)["']/g) ?? []),
-      ...(src.match(/@import\s+["']([^"']+)["']/g) ?? []),
-    ].filter((u) => /^(?:[a-z]+:)?\/\//i.test(u) && !u.startsWith("//"));
+    // images, stylesheets, fonts, video. Relative assets (favicon, og image,
+    // hero video) are part of the site and ship alongside the page; a plain
+    // <a href> is navigation, not a dependency, and does not affect rendering.
+    const external = urls.filter(
+      (u) => /^[a-z][a-z0-9+.-]*:\/\//i.test(u) || u.startsWith("//"),
+    );
     assert.deepEqual(
-      loads,
+      external,
       [],
-      `${p} loads cross-origin resources: ${loads.join(", ")}`,
+      `${p} loads cross-origin resources: ${external.join(", ")}`,
     );
 
-    // Relative loads must be assets the site actually ships.
-    const rel = [
-      ...(src.match(/<link[^>]*\bhref\s*=\s*["']([^"':]+)["']/g) ?? []),
-      ...(src.match(/<img[^>]*\bsrc\s*=\s*["']([^"':]+)["']/g) ?? []),
-    ].filter((u) => !u.includes("https://") && !u.startsWith("<"));
-    for (const asset of rel) {
-      const path = asset.replace(/^assets\//, "");
+    // Every relative load must be an asset the site actually ships.
+    for (const u of urls.filter((u) => !/^[a-z][a-z0-9+.-]*:/i.test(u))) {
+      const path = u.replace(/^\.?\//, "").replace(/^assets\//, "");
       assert.ok(
         existsSync(join(WEB, "assets", path)),
-        `${p} references ${asset} but web/assets/${path} does not exist`,
+        `${p} references "${u}" but web/assets/${path} does not exist`,
       );
     }
 
