@@ -190,8 +190,13 @@ pub mod owed {
         ctx: Context<Claim>,
         leaf_index: u32,
         amount: u64,
-        /// (sibling, side) pairs, bottom-up. side: 0 = sibling was Left,
-        /// 1 = sibling was Right — identical to core/src/merkle.rs.
+        // (sibling, side) pairs, bottom-up. side: 0 = sibling was Left,
+        // 1 = sibling was Right — identical to core/src/merkle.rs.
+        //
+        // NOTE: these must be `//` and not `///`. A doc comment on a function
+        // parameter desugars to an attribute, which Rust rejects with
+        // "expected identifier, found `#`" — the first error this program ever
+        // produced when it was finally compiled.
         proof: Vec<([u8; 32], u8)>,
     ) -> Result<()> {
         let action = &mut ctx.accounts.action;
@@ -256,7 +261,11 @@ pub mod owed {
 // ---------------------------------------------------------------------------
 
 fn sha256(data: &[u8]) -> [u8; 32] {
-    solana_program::hash::hash(data).to_bytes()
+    // `anchor_lang` re-exports `solana_program`; naming the crate directly here
+    // failed to resolve because it was never declared as a dependency. Using the
+    // re-export keeps the dependency list minimal and the versions locked
+    // together with anchor itself.
+    anchor_lang::solana_program::hash::hash(data).to_bytes()
 }
 
 fn hash_leaf(data: &[u8]) -> [u8; 32] {
