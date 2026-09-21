@@ -1,0 +1,87 @@
+name: Refresh data
+
+# The pages embed a mainnet snapshot, so a committed snapshot is always aging.
+# This workflow is why it does not go stale: it re-scans all 925 official xStocks
+# mints, regenerates the feed and both pages, commits any change, and redeploys.
+#
+# Every 6 hours: xStocks dividend activations land at 00:30 UTC daily, so this
+# catches them within a quarter day at most. Also runnable on demand.
+#
+# The deploy step is conditional on the VERCEL_TOKEN secret: until it is added
+# the refresh still commits fresh data, and the manual deploy stays the way the
+# site is updated. Once the secret exists, the loop closes with no human step.
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Re-scan all official mints
+        run: node scripts/scan-xstocks.mjs
+
+      - name: Regenerate feed, pages, and site
+        run: |
+          node scripts/risk-feed.mjs
+          node scripts/gen-webdata.mjs
+          node scripts/build-site.mjs
+
+      - name: Fail if the regenerated summary disagrees with the feed
+        # A scan that silently produced 0 tokens or wrong stats would deploy a
+        # confidently wrong page. This is the tripwire.
+        run: |
+          node -e "
+          const feed = require('./feed/owed-risk.json');
+          const scan = require('./keeper/data/xstocks-scan.json');
+          if (feed.tokens.length !== scan.results.length) {
+            throw new Error('feed/scan token count mismatch');
+          }
+          if (scan.results.length < 900) {
+            throw new Error('scan lost tokens: ' + scan.results.length);
+          }
+          console.log('fresh snapshot:', scan.results.length, 'mints,', feed.summary.trap, 'stale');
+          "
+
+      - name: Commit refreshed data
+        id: commit
+        run: |
+          git config user.name "Sithu Nyein"
+          git config user.email "sithunyein.mailto@gmail.com"
+          git add keeper/data feed web shared/vectors
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "snapshot unchanged"
+          else
+            git commit -m "Refresh mainnet snapshot (scheduled)"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Push
+        if: steps.commit.outputs.changed == 'true'
+        run: git push
+
+      - name: Deploy to Vercel
+        if: steps.commit.outputs.changed == 'true' && env.VERCEL_TOKEN != ''
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          npm i -g vercel@latest
+          cd site
+          vercel deploy --prod --yes --token "$VERCEL_TOKEN"
