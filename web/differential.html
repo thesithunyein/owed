@@ -106,8 +106,8 @@
   @media (min-width: 640px) { .hero nav { padding: 24px 32px 0; gap: 12px; } }
   .nav-badge { display: flex; align-items: center; justify-content: center; border-radius: 9999px; width: 40px; height: 40px; flex-shrink: 0; background: #ededed; text-decoration: none; }
   @media (min-width: 640px) { .nav-badge { width: 44px; height: 44px; } }
-  .nav-pill { display: flex; align-items: center; gap: 16px; border-radius: 12px; padding: 10px 16px; background: #ededed; }
-  @media (min-width: 640px) { .nav-pill { gap: 40px; padding: 12px 32px; } }
+  .nav-pill { display: flex; align-items: center; gap: 16px; border-radius: 12px; padding: 10px 16px; background: #ededed; flex-wrap: wrap; justify-content: center; }
+  @media (min-width: 640px) { .nav-pill { gap: 40px; padding: 12px 32px; flex-wrap: nowrap; } }
   .nav-pill a { font-size: 12px; font-weight: 500; color: #374151; text-decoration: none; transition: color 0.2s; }
   .nav-pill a:hover { color: #111827; }
   @media (min-width: 640px) { .nav-pill a { font-size: 14px; } }
@@ -147,6 +147,7 @@
         <a href="#registry">Data</a>
         <a href="board.html">Board</a>
         <a href="https://owed.sithunyein.com/feed/owed-risk.json">Feed</a>
+        <a href="https://github.com/thesithunyein/owed" target="_blank" rel="noopener">Source</a>
       </div>
     </nav>
     <div class="hero-content">
