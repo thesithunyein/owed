@@ -221,10 +221,10 @@ describe("owed — settle a 4:1 split on devnet", () => {
     for (let i = 0; i < sorted.length; i += 1) {
       const entry = sorted[i];
       const holderKey = new PublicKey(Buffer.from(entry.owner));
-      const proof = proofs[i].siblings.map(([h, side]) => [
-        Array.from(h),
-        side === "Left" ? 0 : 1,
-      ]);
+      const proof = proofs[i].siblings.map(([h, side]) => ({
+        sibling: Array.from(h),
+        side: side === "Left" ? 0 : 1,
+      }));
 
       const [receipt] = PublicKey.findProgramAddressSync(
         [Buffer.from("receipt"), actionPda.toBuffer(), holderKey.toBuffer()],
@@ -254,10 +254,10 @@ describe("owed — settle a 4:1 split on devnet", () => {
     const { proofs } = registerRootAndProofs(register);
     const entry = register.entries[0];
     const holderKey = new PublicKey(Buffer.from(entry.owner));
-    const proof = proofs[0].siblings.map(([h, side]) => [
-      Array.from(h),
-      side === "Left" ? 0 : 1,
-    ]);
+    const proof = proofs[0].siblings.map(([h, side]) => ({
+      sibling: Array.from(h),
+      side: side === "Left" ? 0 : 1,
+    }));
     const [receipt] = PublicKey.findProgramAddressSync(
       [Buffer.from("receipt"), actionPda.toBuffer(), holderKey.toBuffer()],
       program.programId,

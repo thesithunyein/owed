@@ -201,7 +201,10 @@ pub mod owed {
         // parameter desugars to an attribute, which Rust rejects with
         // "expected identifier, found `#`" — the first error this program ever
         // produced when it was finally compiled.
-        proof: Vec<([u8; 32], u8)>,
+        //
+        // `ProofNode`, not `([u8; 32], u8)`: the same IDL limitation that made
+        // `Vec<(Pubkey, u64)>` unbuildable applies to a tuple inside a Vec.
+        proof: Vec<ProofNode>,
     ) -> Result<()> {
         let action = &mut ctx.accounts.action;
         require!(action.status == STATUS_SNAPSHOTTED, OwedError::WrongStatus);
@@ -277,6 +280,18 @@ pub struct HolderEntry {
     pub amount: u64,
 }
 
+/// One level of a Merkle proof: the sibling hash and which side it sat on.
+///
+/// `side`: 0 = the sibling was the left input, 1 = the sibling was the right
+/// input, matching `core/src/merkle.rs` exactly. Explicit sides rather than a
+/// guessed ordering — the previous draft tried both orderings, which would have
+/// accepted proofs that are not the ones the tree produced.
+#[derive(AnchorSerialize, AnchorDeserialize, Clone, Debug, PartialEq, Eq)]
+pub struct ProofNode {
+    pub sibling: [u8; 32],
+    pub side: u8,
+}
+
 // ---------------------------------------------------------------------------
 // Merkle helpers — byte-identical conventions to core/src/merkle.rs.
 // ---------------------------------------------------------------------------
@@ -306,12 +321,12 @@ fn hash_node(left: &[u8; 32], right: &[u8; 32]) -> [u8; 32] {
 
 /// Verify a proof carrying explicit sibling sides (same wire format as
 /// core/src/merkle.rs `Proof`). One direction per level, no guessing.
-fn verify_proof(leaf: &[u8; 32], proof: &[([u8; 32], u8)], root: &[u8; 32]) -> bool {
+fn verify_proof(leaf: &[u8; 32], proof: &[ProofNode], root: &[u8; 32]) -> bool {
     let mut cur = *leaf;
-    for (sib, side) in proof {
-        cur = match side {
-            0 => hash_node(sib, &cur), // sibling was Left
-            1 => hash_node(&cur, sib), // sibling was Right
+    for node in proof {
+        cur = match node.side {
+            0 => hash_node(&node.sibling, &cur), // sibling was Left
+            1 => hash_node(&cur, &node.sibling), // sibling was Right
             _ => return false,
         };
     }
