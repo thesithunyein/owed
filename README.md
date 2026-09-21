@@ -178,7 +178,7 @@ site/                     # deploy output (gitignored) — built by build-site.m
 | Golden vectors | ✅ Regenerated in CI; Node↔Rust drift fails the build |
 | `web/` pages | ✅ Both run from the file system with no network; re-classify against the viewer's clock |
 | `tests/owed.mjs` | ⚠️ Written but **never executed** — needs the Solana/Anchor toolchain; see the deploy workflow |
-| `programs/owed/` Anchor | ⚠️ **Never compiled.** It shipped as a bare `src/lib.rs` with no crate at all — no `Cargo.toml`, no `Anchor.toml` — so nothing could have built it. Those now exist, the file parses and is rustfmt-clean, and CI attempts a real SBF build. Still not type-checked, not deployed, not audited |
+| `programs/owed/` Anchor | ✅ **Compiles for SBF** — `owed.so`, 297KB, from a real `anchor build` in CI. Getting there took four genuine fixes (see below). Not deployed, not audited |
 
 ## Honest scope boundary
 
@@ -189,6 +189,24 @@ workspace (which deliberately excludes `core/`, to keep that crate's
 dependency-free, offline-testable property), and an `Anchor.toml`. Its ID is still
 the `anchor init` placeholder — the clearest possible evidence it was never
 deployed.
+
+### The program compiles now — and it took four real bugs to get there
+
+`programs/owed/` shipped as a bare `src/lib.rs` with no crate around it: no
+`Cargo.toml`, no `Anchor.toml`, just the default `anchor init` program id. Nothing
+could have compiled it, and nothing ever had. Once it was a crate and CI ran a
+real build, the compiler found four errors that no amount of reading would have:
+
+| Error | Cause |
+|---|---|
+| `expected identifier, found '#'` | a `///` doc comment on a **function parameter**, which desugars to an attribute Rust forbids there |
+| `unresolved crate solana_program` | `sha256` called it directly without it being a dependency |
+| `undeclared type COption` | `mint.mint_authority` is an SPL `COption`; anchor's prelude does not re-export it |
+| `Unsupported type` ×2 | `Vec<(Pubkey, u64)>` and `Vec<([u8; 32], u8)>` — Anchor's IDL cannot express tuples, so **both instructions were unbuildable** |
+
+The last one is the instructive one: `snapshot_holders` and `claim` were written
+in the most natural way to write them and could never have been deployed. They now
+take `Vec<HolderEntry>` and `Vec<ProofNode>`, mapping 1:1 onto the core types.
 
 **There is no devnet transaction signature in this repo yet.** The path to one is
 `.github/workflows/deploy-devnet.yml` (manual dispatch, needs a funded

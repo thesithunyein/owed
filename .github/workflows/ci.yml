@@ -92,19 +92,21 @@ jobs:
           echo "pages ok"
 
   anchor-build:
-    name: Anchor program build (SBF, advisory)
+    name: Anchor program build (SBF)
     runs-on: ubuntu-latest
-    # Advisory for now, and that is stated rather than implied.
+    # Blocking, because it now genuinely builds: a 297KB owed.so from a real SBF
+    # release compile.
     #
-    # The previous version of this job was worthless: it ran
+    # The previous version of this job was worthless. It ran
     # `cargo check --manifest-path programs/owed/Cargo.toml || true` against a
     # directory that held only src/lib.rs — no Cargo.toml existed, so cargo
     # errored instantly and `|| true` turned that into a green tick. It reported
-    # success in 7s without compiling a single line.
+    # success in 7s without compiling a single line, and hid four real errors.
     #
-    # This one installs the real toolchain and runs a real build. It is advisory
-    # only until the crate has compiled once; flip it to blocking after that.
-    continue-on-error: true
+    # It is also the only compiler this program has. The four bugs fixed to get
+    # here (a doc comment on a parameter, an undeclared solana_program crate, an
+    # undeclared COption, and two IDL-unrepresentable tuple types) were all
+    # invisible to reading and to cargo check on a machine with no SBF target.
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
