@@ -85,9 +85,17 @@
   .tag.warm { color: var(--amber); border-color: #ecd9b4; background: #fdf6e9; }
   .tag.mild { color: var(--dim); border-color: var(--line); background: #f2f2ee; }
   tbody tr:hover { background: #e9e9e3; }
+  tbody tr:nth-child(even) { background: #fafaf8; }
+  tbody tr:nth-child(even):hover { background: #e9e9e3; }
   .scroll { max-height: 460px; overflow: auto; border: 1px solid var(--line); border-radius: 10px; }
   code { background: #e8e8e2; border: 1px solid var(--line); border-radius: 5px; padding: 1px 5px; font-size: 12.5px; }
-  .foot { color: var(--faint); font-size: 12.5px; margin-top: 34px; border-top: 1px solid var(--line); padding-top: 16px; }
+  .foot { color: var(--dim); font-size: 13px; margin-top: 40px; border-top: 1px solid var(--line); padding-top: 20px; line-height: 1.6; }
+  .foot p { margin: 0 0 10px; max-width: 72ch; }
+  .foot .proof { background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--green); border-radius: 10px; padding: 14px 16px; margin-bottom: 20px; }
+  .foot .proof p { margin: 0; max-width: none; }
+  .foot h3 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint); margin: 0 0 8px; font-weight: 600; }
+  .foot-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 28px; }
+  @media (max-width: 640px) { .foot-grid { grid-template-columns: 1fr; } }
 
   /* ---- hero ------------------------------------------------------------- */
   html { scroll-behavior: smooth; }
@@ -227,22 +235,32 @@
   </div>
 
   <div class="foot" id="verification">
-    <p id="proof"></p>
-    <p>
-      <strong>Method.</strong> Effective multipliers are recomputed in your browser from the
-      raw <code>scaledUiAmountConfig</code> state published in the feed, using the same rule the
-      program uses — <code>now &gt;= newMultiplierEffectiveTimestamp ? newMultiplier : multiplier</code>.
-      Sizes and prices cancel out of the error factor, so the multiplier gap is the whole story
-      at any position size.
-    </p>
-    <p>
-      Sources: <span class="mono">feed/owed-risk.json</span>,
-      <span class="mono">keeper/data/xstocks-scan.json</span>,
-      <span class="mono">keeper/data/conformance.json</span>.
-      Reproduce: <span class="mono">node scripts/verify-trap.mjs</span>,
-      <span class="mono">node scripts/conformance.mjs</span>,
-      <span class="mono">node scripts/collateral-scenario.mjs</span>.
-    </p>
+    <div class="proof"><h3>Verification</h3><p id="proof"></p></div>
+    <div class="foot-grid">
+      <div>
+        <h3>Method</h3>
+        <p>
+          Effective multipliers are recomputed in your browser from the raw
+          <code>scaledUiAmountConfig</code> state published in the feed, using the same rule the
+          program uses — <code>now &gt;= newMultiplierEffectiveTimestamp ? newMultiplier : multiplier</code>.
+          Sizes and prices cancel out of the error factor, so the multiplier gap is the whole
+          story at any position size.
+        </p>
+      </div>
+      <div>
+        <h3>Reproduce</h3>
+        <p>
+          <span class="mono">node scripts/verify-trap.mjs</span><br />
+          <span class="mono">node scripts/conformance.mjs</span><br />
+          <span class="mono">node scripts/collateral-scenario.mjs</span>
+        </p>
+        <p>
+          Sources: <span class="mono">feed/owed-risk.json</span>,
+          <span class="mono">keeper/data/xstocks-scan.json</span>,
+          <span class="mono">keeper/data/conformance.json</span>.
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -320,6 +338,11 @@ function stats() {
   $("heroWorst").textContent = worst ? Math.round(worst.c.gap * 100) + "%" : "none";
 }
 
+/** Compact display form for multipliers; the exact value rides in the title. */
+function fmtMult(x) {
+  return Number(Number(x).toPrecision(6)).toString();
+}
+
 function table() {
   $("tblCount").textContent = "— " + rows.length + " of " + RISK.summary.total;
   $("rows").innerHTML = rows
@@ -329,8 +352,8 @@ function table() {
       if (t.security.pauseAuthority) ctl.push("pause");
       return (
         `<tr><td>${t.symbol}</td>` +
-        `<td class="num">${c.stored}</td>` +
-        `<td class="num">${c.eff}</td>` +
+        `<td class="num" title="exact: ${c.stored}">${fmtMult(c.stored)}</td>` +
+        `<td class="num" title="exact: ${c.eff}">${fmtMult(c.eff)}</td>` +
         `<td class="num">${(c.gap * 100).toFixed(2)}% ${tag(c.gap * 100)}</td>` +
         `<td class="num">${c.days == null ? "—" : Math.round(c.days)}</td>` +
         `<td class="mono">${ctl.join(" + ") || "—"}</td></tr>`
@@ -400,7 +423,7 @@ function proof() {
         `)`
       : `a stratified sample of ${c.checked} mints`;
   $("proof").innerHTML =
-    `<strong>Verification.</strong> Our reader was checked against the Token-2022 runtime on ` +
+    `Our reader was checked against the Token-2022 runtime on ` +
     `<strong>${c.pass}/${c.checked}</strong> mints — ${scope} — at a relative tolerance of ` +
     `${c.tolerance}. The runtime's own <span class="mono">getTokenSupply.uiAmount</span> is ` +
     `the ground truth. Every feed value is additionally recomputable from the raw state the ` +
