@@ -114,10 +114,13 @@ jobs:
           echo "$HOME/.local/share/solana/install/active_release/bin" >> "$GITHUB_PATH"
       - name: Install Anchor 0.31.2 (pinned prebuilt)
         run: |
-          curl -sSfL -o anchor.tar.gz \
-            https://github.com/coral-xyz/anchor/releases/download/v0.31.2/anchor-0.31.2-x86_64-unknown-linux-gnu.tar.gz
-          tar -xzf anchor.tar.gz
-          sudo mv anchor-0.31.2-x86_64-unknown-linux-gnu/anchor /usr/local/bin/anchor
+          # The release asset is a bare binary — there is no .tar.gz — and the
+          # old coral-xyz/anchor repo now redirects to otter-sec/anchor. Both
+          # facts cost a CI run to learn: the first attempt 404'd.
+          curl -sSfL -o anchor \
+            https://github.com/otter-sec/anchor/releases/download/v0.31.2/anchor-0.31.2-x86_64-unknown-linux-gnu
+          chmod +x anchor
+          sudo mv anchor /usr/local/bin/anchor
           anchor --version
       - name: Show toolchain versions
         run: solana --version && anchor --version

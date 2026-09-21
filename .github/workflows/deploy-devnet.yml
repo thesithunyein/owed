@@ -46,10 +46,13 @@ jobs:
 
       - name: Install Anchor 0.31.2 (pinned prebuilt)
         run: |
-          curl -sSfL -o anchor.tar.gz \
-            https://github.com/coral-xyz/anchor/releases/download/v0.31.2/anchor-0.31.2-x86_64-unknown-linux-gnu.tar.gz
-          tar -xzf anchor.tar.gz
-          sudo mv anchor-0.31.2-x86_64-unknown-linux-gnu/anchor /usr/local/bin/anchor
+          # Bare binary asset, and the repo moved: coral-xyz/anchor now
+          # redirects to otter-sec/anchor.
+          curl -sSfL -o anchor \
+            https://github.com/otter-sec/anchor/releases/download/v0.31.2/anchor-0.31.2-x86_64-unknown-linux-gnu
+          chmod +x anchor
+          sudo mv anchor /usr/local/bin/anchor
+          anchor --version
 
       - name: Restore wallet from SOLANA_KEYPAIR
         env:
