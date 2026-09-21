@@ -26,6 +26,13 @@
     --green: #059669; --red: #dc2626; --amber: #b45309; --blue: #2563eb;
   }
   * { box-sizing: border-box; }
+  :focus-visible { outline:2px solid var(--blue); outline-offset:2px; border-radius:4px; }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition:none !important; animation:none !important; }
+    .hero video.hero-bg { display:none; }
+  }
+  .skip { position:absolute; left:-9999px; }
+  .skip:focus { left:12px; top:12px; z-index:100; background:#fff; border:1px solid var(--line); border-radius:8px; padding:8px 14px; font-size:13px; color:var(--text); text-decoration:none; }
   body {
     margin: 0; background: var(--bg); color: var(--text);
     font: 15px/1.55 ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
@@ -43,7 +50,7 @@
   .nav span { color: var(--faint); margin: 0 6px; }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 18px 0; }
   .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
-  .stat b { display: block; font-size: 22px; letter-spacing: -0.02em; }
+  .stat b { display: block; font-size: 22px; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
   .stat span { color: var(--dim); font-size: 12.5px; }
   .stat.hot b { color: var(--red); }
   .stat.ok b { color: var(--green); }
@@ -59,7 +66,7 @@
   @media (max-width: 640px) { .cmp { grid-template-columns: 1fr; } }
   .side { border: 1px solid var(--line); border-radius: 10px; padding: 14px; background: var(--panel2); }
   .side .k { color: var(--dim); font-size: 12.5px; }
-  .side .v { font-size: 25px; letter-spacing: -0.02em; margin: 4px 0 2px; }
+  .side .v { font-size: 25px; letter-spacing: -0.02em; margin: 4px 0 2px; font-variant-numeric: tabular-nums; }
   .side .note { color: var(--faint); font-size: 12px; }
   .side.bad { border-color: #f3d4d4; }
   .side.bad .v { color: var(--red); }
@@ -114,9 +121,10 @@
 </style>
 </head>
 <body>
+<a class="skip" href="#calculation">Skip to the calculation</a>
 
-<section class="hero">
-  <video class="hero-bg" autoplay muted loop playsinline preload="metadata" poster="assets/poster.jpg">
+<section class="hero" aria-label="Owed — the correctness layer for tokenized equities">
+  <video class="hero-bg" autoplay muted loop playsinline preload="metadata" poster="assets/poster.jpg" aria-hidden="true">
     <source src="assets/hero.mp4" type="video/mp4" />
   </video>
   <div class="hero-fg">
@@ -136,7 +144,7 @@
     <div class="hero-content">
       <div class="hero-copy">
         <a class="hero-badge" href="#verification">
-          <span>Measured live from Solana mainnet · 925 tokens scanned</span>
+          <span>Measured live from Solana mainnet · 925 official xStocks scanned</span>
           <span class="arr">→</span>
         </a>
         <h1>The correctness layer for tokenized equities.</h1>

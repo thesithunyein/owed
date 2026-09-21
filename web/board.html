@@ -24,9 +24,11 @@
     font-family: ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
   }
   * { box-sizing: border-box; }
-  body { margin:0; background:var(--bg); color:var(--text); }
-  header { padding:26px 22px 8px; }
-  h1 { margin:0 0 6px; font-size:22px; }
+  body { margin:0; background:var(--bg); color:var(--text); font:15px/1.55 ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif; }
+  :focus-visible { outline:2px solid var(--blue); outline-offset:2px; border-radius:4px; }
+  @media (prefers-reduced-motion: reduce) { * { transition:none !important; animation:none !important; } }
+  header { padding:26px 22px 8px; max-width:1080px; margin:0 auto; }
+  h1 { margin:0 0 6px; font-size:22px; letter-spacing:-0.02em; }
   h1 .brand { color:var(--amber); }
   .sub { color:var(--dim); font-size:13px; max-width:880px; line-height:1.55; }
   .sub b { color:var(--text); }
@@ -39,10 +41,12 @@
   .status { font-size:12px; color:var(--dim); }
   .kpis { display:flex; gap:10px; padding:0 22px 6px; flex-wrap:wrap; }
   .kpi { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:10px 14px; min-width:150px; }
-  .kpi .n { font-size:20px; font-weight:700; }
+  .kpi .n { font-size:20px; font-weight:700; font-variant-numeric:tabular-nums; }
   .kpi .l { font-size:11px; color:var(--dim); text-transform:uppercase; letter-spacing:.5px; }
   .kpi.red .n { color:var(--red); } .kpi.amber .n { color:var(--amber); } .kpi.blue .n { color:var(--blue); }
-  table { width:calc(100% - 44px); margin:8px 22px 40px; border-collapse:collapse; }
+  header, .bar, .kpis, .foot { max-width:1080px; margin-left:auto; margin-right:auto; }
+  .tblwrap { width:min(calc(100% - 44px), 1036px); margin:8px auto 40px; overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; min-width:860px; }
   th,td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); font-size:12.5px; }
   th { color:var(--dim); font-weight:500; text-transform:uppercase; font-size:10.5px; letter-spacing:.6px; }
   td.num,th.num { text-align:right; font-variant-numeric:tabular-nums; }
@@ -51,7 +55,7 @@
   .flag.warn { background:rgba(255,180,84,.14); color:var(--amber); }
   .flag.ok { background:rgba(46,204,143,.12); color:var(--green); }
   .mono { font-family:ui-monospace,monospace; font-size:11px; color:var(--dim); }
-  .foot { color:var(--dim); font-size:11px; margin:0 22px 30px; line-height:1.6; max-width:920px; }
+  .foot { color:var(--dim); font-size:11px; margin:0 22px 30px; line-height:1.6; max-width:1036px; }
   a { color:var(--blue); text-decoration:none; }
   dialog { background:var(--panel); color:var(--text); border:1px solid var(--line);
     border-radius:12px; padding:18px; max-width:420px; }
@@ -64,7 +68,7 @@
 <header>
   <h1><span class="brand">Owed</span> — Corporate-Actions Risk Board</h1>
   <p style="margin:0 0 14px;font-size:13px">
-    <a href="index.html">The harm, clickable — naive vs chain-correct</a>
+    <a href="index.html">Harm calculator — naive vs chain-correct</a>
     <span style="opacity:.5"> · </span>
     <a href="https://owed.sithunyein.com/feed/owed-risk.json">feed/owed-risk.json</a>
     <span style="opacity:.5"> · </span>
@@ -92,6 +96,7 @@
   <span class="status" id="status">loading…</span>
 </div>
 <div class="kpis" id="kpis"></div>
+<div class="tblwrap">
 <table>
   <thead><tr>
     <th>Asset</th><th class="num">Stored Mult</th><th class="num">Effective</th>
@@ -99,6 +104,7 @@
   </tr></thead>
   <tbody id="rows"><tr><td colspan="7" class="status">loading snapshot…</td></tr></tbody>
 </table>
+</div>
 <p class="foot">
   Data: Token-2022 mint accounts of every official xStocks Solana mint, read on-chain via
   <span class="mono">getMultipleAccounts</span> (snapshot: <span class="mono" id="scan-meta">…</span>),
