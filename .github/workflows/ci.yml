@@ -92,11 +92,36 @@ jobs:
           echo "pages ok"
 
   anchor-build:
-    name: Anchor program compile (nightly toolchain, non-blocking)
+    name: Anchor program build (SBF, advisory)
     runs-on: ubuntu-latest
+    # Advisory for now, and that is stated rather than implied.
+    #
+    # The previous version of this job was worthless: it ran
+    # `cargo check --manifest-path programs/owed/Cargo.toml || true` against a
+    # directory that held only src/lib.rs — no Cargo.toml existed, so cargo
+    # errored instantly and `|| true` turned that into a green tick. It reported
+    # success in 7s without compiling a single line.
+    #
+    # This one installs the real toolchain and runs a real build. It is advisory
+    # only until the crate has compiled once; flip it to blocking after that.
     continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
-      - name: Type-check program crate (no Solana SBF target)
-        run: cargo check --manifest-path programs/owed/Cargo.toml || true
+      - name: Install Solana CLI
+        run: |
+          sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"
+          echo "$HOME/.local/share/solana/install/active_release/bin" >> "$GITHUB_PATH"
+      - name: Install Anchor 0.31.2 (pinned prebuilt)
+        run: |
+          curl -sSfL -o anchor.tar.gz \
+            https://github.com/coral-xyz/anchor/releases/download/v0.31.2/anchor-0.31.2-x86_64-unknown-linux-gnu.tar.gz
+          tar -xzf anchor.tar.gz
+          sudo mv anchor-0.31.2-x86_64-unknown-linux-gnu/anchor /usr/local/bin/anchor
+          anchor --version
+      - name: Show toolchain versions
+        run: solana --version && anchor --version
+      - name: Build the program for SBF
+        run: anchor build
+      - name: Report what was produced
+        run: ls -la target/deploy/ || echo "no target/deploy produced"

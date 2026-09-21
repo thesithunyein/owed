@@ -1,0 +1,15 @@
+# Workspace for the on-chain program.
+#
+# `core/` is deliberately EXCLUDED: it is a dependency-free crate with its own
+# committed lockfile that must stay buildable offline. Putting it in this
+# workspace would move its lockfile to the root and pull its "no external crates"
+# property into a tree that downloads solana-program.
+[workspace]
+members = ["programs/owed"]
+exclude = ["core"]
+resolver = "2"
+
+[profile.release]
+overflow-checks = true
+lto = "fat"
+codegen-units = 1

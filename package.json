@@ -1,0 +1,17 @@
+{
+  "name": "owed-anchor-tests",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Anchor integration tests for the Owed registry (devnet end-to-end settlement)",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha --timeout 1000000 tests/**/*.mjs"
+  },
+  "devDependencies": {
+    "@coral-xyz/anchor": "0.31.2",
+    "@solana/spl-token": "^0.4.9",
+    "@solana/web3.js": "^1.95.4",
+    "chai": "^4.3.10",
+    "mocha": "^10.7.3"
+  }
+}

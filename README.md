@@ -177,15 +177,31 @@ site/                     # deploy output (gitignored) — built by build-site.m
 | `core/` Rust | ✅ 21 tests — Merkle (exhaustive n=1..17 + 33, tamper rejection), supply conservation, split/dividend math, golden vectors |
 | Golden vectors | ✅ Regenerated in CI; Node↔Rust drift fails the build |
 | `web/` pages | ✅ Both run from the file system with no network; re-classify against the viewer's clock |
-| `programs/owed/` Anchor | ⚠️ Reference source with typed SPL accounts and escrow checks — needs the Anchor toolchain to compile; not audited |
+| `tests/owed.mjs` | ⚠️ Written but **never executed** — needs the Solana/Anchor toolchain; see the deploy workflow |
+| `programs/owed/` Anchor | ⚠️ **Never compiled.** It shipped as a bare `src/lib.rs` with no crate at all — no `Cargo.toml`, no `Anchor.toml` — so nothing could have built it. Those now exist, the file parses and is rustfmt-clean, and CI attempts a real SBF build. Still not type-checked, not deployed, not audited |
 
 ## Honest scope boundary
 
-The board and scanner read real mainnet state and are immediately useful. The
-registry program is reference code: no deployment, no audit, payout CPIs unwired,
-register bounded by transaction size (concurrent Merkle trees are the roadmap).
-`SECURITY.md` lists what a reviewer should check first. Nothing here is
-investment advice.
+The scanner, reader, feed and pages read real mainnet state and are immediately
+useful. The **registry program is not**: it has never been compiled, because it
+was not a crate until this commit. `programs/owed/` now has a manifest, a
+workspace (which deliberately excludes `core/`, to keep that crate's
+dependency-free, offline-testable property), and an `Anchor.toml`. Its ID is still
+the `anchor init` placeholder — the clearest possible evidence it was never
+deployed.
+
+**There is no devnet transaction signature in this repo yet.** The path to one is
+`.github/workflows/deploy-devnet.yml` (manual dispatch, needs a funded
+`SOLANA_KEYPAIR` secret) plus `tests/owed.mjs`, which registers an asset, declares
+a 4:1 split, snapshots holders, claims for each holder with Merkle proofs, and
+proves a second claim reverts. **That test has never been executed** — it cannot
+run on the Windows machine where it was written (no `cargo-build-sbf`, no WSL) —
+so treat it as a scripted path, not a passing test.
+
+Also unwired: payout CPIs (`claim` verifies proofs and writes receipts but does
+not yet move escrow funds), and the register is bounded by transaction size
+(concurrent Merkle trees are the roadmap). `SECURITY.md` lists what a reviewer
+should check first. Nothing here is investment advice.
 
 ## Development
 

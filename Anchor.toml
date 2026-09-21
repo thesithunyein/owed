@@ -1,0 +1,39 @@
+# Anchor workspace config for the Owed registry.
+#
+# STATUS: the program has never been built. It shipped as a bare `src/lib.rs`
+# with no crate around it, so no toolchain — Anchor, cargo, anything — could
+# compile it. This file plus the Cargo manifests make it a real crate; whether it
+# compiles is now answerable, and CI answers it.
+#
+# `owed` below is still the `anchor init` placeholder ID, which is itself proof it
+# was never deployed. Run `anchor keys sync` to generate a real keypair and write
+# the ID into both this file and `declare_id!`.
+
+[toolchain]
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.localnet]
+owed = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+
+[programs.devnet]
+owed = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+# The end-to-end test is plain ESM (.mjs) so it can import keeper/src/merkle.mjs
+# directly — the same module verified against the Rust core by golden vectors.
+test = "mocha --timeout 1000000 tests/**/*.mjs"
+
+[test]
+startup_wait = 5000
+shutdown_wait = 2000
+upgradeable = false

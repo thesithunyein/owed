@@ -3,8 +3,19 @@
 ## Supported scope
 
 Owed is **pre-production, devnet-scoped research software**. The on-chain
-program in `programs/owed/` is reference source that has not been compiled,
-deployed, or audited. Do not point it at mainnet assets or real treasuries.
+program in `programs/owed/` has never been compiled, deployed, or audited — and
+until recently it could not have been, because the directory contained only
+`src/lib.rs` with no crate manifest. Do not point it at mainnet assets or real
+treasuries.
+
+Two specific things a reviewer should know before trusting anything downstream:
+
+1. **`tests/owed.mjs` has never run.** It is the scripted path to a devnet
+   signature, not evidence that one exists. Treat its assertions as untested.
+2. **`claim` does not move money yet.** It verifies the Merkle proof and writes a
+   `ClaimReceipt`, which is what prevents double claims, but the escrow-transfer
+   and mint-to CPIs for payouts are unwired. Entitlements are computed and
+   verified; they are not settled.
 
 ## What is actually verified here
 

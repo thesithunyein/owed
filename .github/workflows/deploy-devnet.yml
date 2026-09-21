@@ -1,0 +1,102 @@
+name: Deploy registry to devnet
+
+# Manual only. This is the path to the one artifact still missing from the
+# submission: a transaction signature from a real corporate action settled on
+# devnet. It cannot be produced on Windows dev machines — there is no
+# `cargo-build-sbf`, and the Solana toolchain is Linux/macOS only — so it runs
+# here, where the toolchain works.
+#
+# One-time setup, which only the repository owner can do:
+#
+#   1. Create a funded devnet keypair and add its JSON as the repository secret
+#      SOLANA_KEYPAIR (Settings → Secrets and variables → Actions).
+#        solana-keygen new --outfile devnet.json
+#        solana airdrop 2 --url devnet
+#        # paste the contents of devnet.json as the secret value
+#
+#   2. Run this workflow. It builds, generates a real program id, deploys, and
+#      then runs the end-to-end settlement test, printing explorer links in the
+#      run summary.
+#
+# Nothing here runs on a push: deploying is a deliberate act.
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_settlement_test:
+        description: "Also run tests/owed.mjs (settles a 4:1 split end to end)"
+        type: boolean
+        default: true
+
+jobs:
+  deploy:
+    name: Build, deploy, settle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Solana CLI
+        run: |
+          sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"
+          echo "$HOME/.local/share/solana/install/active_release/bin" >> "$GITHUB_PATH"
+
+      - name: Install Anchor 0.31.2 (pinned prebuilt)
+        run: |
+          curl -sSfL -o anchor.tar.gz \
+            https://github.com/coral-xyz/anchor/releases/download/v0.31.2/anchor-0.31.2-x86_64-unknown-linux-gnu.tar.gz
+          tar -xzf anchor.tar.gz
+          sudo mv anchor-0.31.2-x86_64-unknown-linux-gnu/anchor /usr/local/bin/anchor
+
+      - name: Restore wallet from SOLANA_KEYPAIR
+        env:
+          SOLANA_KEYPAIR: ${{ secrets.SOLANA_KEYPAIR }}
+        run: |
+          if [ -z "$SOLANA_KEYPAIR" ]; then
+            echo "::error::SOLANA_KEYPAIR secret is not set. See the header of this workflow."
+            exit 1
+          fi
+          mkdir -p ~/.config/solana
+          printf '%s' "$SOLANA_KEYPAIR" > ~/.config/solana/id.json
+          solana config set --url devnet
+          solana address
+          solana balance
+
+      - name: Generate a real program id
+        # `anchor keys sync` rewrites declare_id! and Anchor.toml to match a
+        # freshly generated program keypair. Committing a placeholder id is how
+        # you can tell a program was never deployed; this replaces it.
+        run: anchor keys sync
+
+      - name: Build for SBF
+        run: anchor build
+
+      - name: Deploy to devnet
+        run: |
+          anchor deploy --provider.cluster devnet 2>&1 | tee deploy.log
+          grep -oE "Program Id: [A-Za-z0-9]+" deploy.log || true
+
+      - name: Install test dependencies
+        if: ${{ inputs.run_settlement_test }}
+        run: npm install
+
+      - name: Settle a corporate action end to end
+        if: ${{ inputs.run_settlement_test }}
+        # Needs a funded keypair for fees and account rent. This is the run that
+        # prints the signatures the submission links to.
+        run: npm test
+
+      - name: Summarise
+        run: |
+          {
+            echo "## Registry deployed to devnet"
+            echo
+            echo "Settlement test: ${{ inputs.run_settlement_test }}"
+            echo
+            echo '```'
+            tail -40 deploy.log || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

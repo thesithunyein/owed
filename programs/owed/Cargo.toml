@@ -1,0 +1,27 @@
+[package]
+name = "owed"
+version = "0.1.0"
+description = "Owed corporate-actions registry for tokenized equities"
+edition = "2021"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "owed"
+
+[features]
+default = []
+# `no-entrypoint` is enabled by consumers that link the program as a library
+# (and by the host-target test build), which is why the entrypoint is gated.
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build"]
+
+[dependencies]
+anchor-lang = "0.31.2"
+anchor-spl = "0.31.2"
+
+[dev-dependencies]
+# Host-target unit tests run with `cargo test -p owed`.
