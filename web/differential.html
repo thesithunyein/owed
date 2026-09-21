@@ -20,6 +20,10 @@
   h2 { font-size: 17px; margin: 36px 0 4px; letter-spacing: -0.01em; }
   h2 .n { color: var(--faint); font-weight: 500; }
   .sub { color: var(--dim); margin: 0 0 22px; }
+  .nav { margin: 0 0 14px; font-size: 13px; color: var(--faint); }
+  .nav a { color: var(--blue); text-decoration: none; }
+  .nav a:hover { text-decoration: underline; }
+  .nav span { color: var(--faint); margin: 0 6px; }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 18px 0; }
   .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
   .stat b { display: block; font-size: 22px; letter-spacing: -0.02em; }
@@ -68,6 +72,13 @@
 <div class="wrap">
 
   <h1>What a naive reader says vs what the chain applies</h1>
+  <p class="nav">
+    <a href="board.html">Risk board — all 925 mints</a>
+    <span>·</span>
+    <a href="https://owed.sithunyein.com/feed/owed-risk.json">feed/owed-risk.json</a>
+    <span>·</span>
+    <a href="https://github.com/thesithunyein/owed">source</a>
+  </p>
   <p class="sub" id="sub">Loading the committed risk feed…</p>
 
   <div class="grid" id="stats"></div>

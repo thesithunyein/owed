@@ -33,7 +33,10 @@ test("no un-injected generator marker remains", () => {
 
 test("substituted payloads parse as JSON", () => {
   const src = readFileSync(join(WEB, "differential.html"), "utf8");
-  const re = /const\s+(\w+)\s*=\s*\/\*__\w+__\*\/([\s\S]*?);\n/g;
+  // Line-ending agnostic: these files are rewritten by tools on both Windows
+  // and Linux, so assuming LF here would make the guard pass or fail based on
+  // checkout settings rather than on the content.
+  const re = /const\s+(\w+)\s*=\s*\/\*__\w+__\*\/([\s\S]*?);\r?\n/g;
   let found = 0;
   for (const [, name, payload] of src.matchAll(re)) {
     if (payload === "null") continue;

@@ -1,5 +1,7 @@
 # Owed — the corporate-actions risk layer for tokenized equities on Solana
 
+> **Live: <https://owed.sithunyein.com>** · feed: `/feed/owed-risk.json` · schema: `/feed/schema.json`
+
 > **379 of 925 official xStocks have a stale on-chain multiplier field right now,
 > and 5 of them are off by 100% or more — two by a full 10x.** Not in theory: we
 > scanned every mint and verified the effective value against the chain.
@@ -159,6 +161,8 @@ owed/
 ├── shared/vectors/       # cross-language golden vectors (generated, committed)
 ├── scripts/              # scan, verify-trap, conformance, collateral, risk-feed, gen-*
 └── docs/                 # SPEC.md, DEMOSCRIPT.md
+
+site/                     # deploy output (gitignored) — built by build-site.mjs
 ```
 
 ## What is verified in this checkout
@@ -209,6 +213,10 @@ node scripts/gen-webdata.mjs         # inject into web/board.html + web/differen
 node scripts/verify-trap.mjs         # is the stored field really stale?
 node scripts/verify-trap.mjs AAPLx NFLXx
 node scripts/conformance.mjs --all   # every official mint (925 RPC calls)
+
+# Build and ship the site (site/ is generated, not source)
+node scripts/build-site.mjs
+cd site && vercel deploy --prod --yes --project owed
 
 # Runnable demo (synthetic register without args; live with a mint)
 node keeper/demo/snapshot-demo.mjs [<MINT_ADDRESS>]
