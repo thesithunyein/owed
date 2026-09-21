@@ -1,16 +1,20 @@
 /**
- * Scaled UI Amount (Token-2022) corporate-actions reader — the core of the
- * post-research Owed: issuers (xStocks/Backed) rebase dividends and splits
- * through the Scaled UI Amount extension. The on-chain extension stores a
+ * Scaled UI Amount (Token-2022) corporate-actions reader — the core of Owed:
+ * issuers (xStocks/Backed) rebase dividends and splits through the Scaled UI
+ * Amount extension. The on-chain extension stores a
  * STALE `multiplier` plus a pending change with an activation timestamp;
  * the EFFECTIVE multiplier is time-dependent and must be computed:
  *
  *   effective(now) = now >= newMultiplierEffectiveTimestamp
  *                    ? newMultiplier : multiplier
  *
- * Applications that read the stored field alone are quoting the wrong price
- * after every activation. This module is the correct reader, plus the risk
- * classification (reader-stale, pending activation, security surfaces).
+ * Applications that read the stored field alone compute the wrong *balance*
+ * after every activation — verified against the runtime's own scaled amount on
+ * all 925 official mints (see scripts/conformance.mjs). Note the precise claim:
+ * the runtime applies the effective multiplier correctly, so this is a defect in
+ * naive integrations, not in the chain, and it does not by itself imply that
+ * venues price these tokens wrongly. This module is the correct reader, plus the
+ * risk classification (reader-stale, pending activation, security surfaces).
  */
 
 /**

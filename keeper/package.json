@@ -1,11 +1,11 @@
 {
   "name": "owed-keeper",
   "version": "0.1.0",
-  "description": "Owed keeper: snapshot builder, Merkle registers, divergence monitor",
+  "description": "Owed keeper: reader-trap classification, scaled reader, snapshot builder, Merkle registers",
   "type": "module",
   "license": "MIT",
   "scripts": {
     "test": "node --test",
-    "gen:vectors": "node scripts/gen-vectors.mjs"
+    "gen:vectors": "node ../scripts/gen-vectors.mjs"
   }
 }

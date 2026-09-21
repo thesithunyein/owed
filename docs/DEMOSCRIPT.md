@@ -1,74 +1,111 @@
 # Owed — Demo Script
 
-The 90-second walkthrough. Every screen shows a fact a judge can verify.
+~2:30. Every number on screen is reproducible from the repo in one command.
+
+> **Note on an earlier draft.** This script previously opened with "a tokenized
+> equity nobody adjusted is quoting the wrong price on every Solana AMM, 4× wrong."
+> That is **false** and was removed. The Token-2022 runtime *does* apply the
+> effective multiplier, and the venues we checked agree with each other to within
+> 0.6%. The real defect is narrower and is what this script now shows: the *stored
+> field* is stale, and anything reading it computes the wrong balance.
 
 ---
 
-## 0. The line (0:00–0:10)
+## 0. The line (0:00–0:15)
 
-> "On a stock split day, a tokenized equity that nobody adjusted is quoting
-> the wrong price on every Solana AMM — 4× wrong for a 4-for-1 split — and
-> nothing tells the pools, the lenders, or the holders.
-> Owed is the register that fixes it."
+> "379 of the 925 tokenized stocks on Solana have a stale multiplier field
+> on-chain right now. Two of them are off by a factor of ten. Here is the proof
+> against the chain, and here is the drop-in fix."
 
-## 1. The live divergence board (0:10–0:35)
+Say it flatly. No adjectives. The numbers carry it.
 
-Open the board. Point at real prices:
+## 1. The harm, clickable (0:15–0:55)
 
-* Pyth reference for the underlying (live).
-* On-chain token price (live, DexScreener/Jupiter).
-* The gap, and whether it is flagged.
+Open `web/differential.html`. It works from disk — no server, no build, no key.
 
-Say: *"These prices are fetched live right now. The flagged row is a token
-that missed its corporate action — every pool pricing off it is mispriced
-until someone adjusts."*
+1. It loads showing **379 stale of 925**, re-classified against the viewer's clock.
+2. Select `NFLXx` (the default, worst first). Set position `100000`, debt `10000`.
+3. The two panels read **$10,000** against **$100,000**. Same position.
+4. The verdict banner: *"sees this position at 100.0% loan-to-value and liquidates
+   it — while it is genuinely at 10%."*
 
-## 2. The register snapshot (0:35–0:55)
+Say: *"Price and position size cancel out of this, so it holds at any size. A
+lending market reading the stored field liquidates a healthy position, and the
+error belongs to the stale field, not the borrower."*
 
-Run the snapshot in the terminal against devnet:
+Then scroll the table. Say: *"Most of these are small — the median is a third of a
+percent. Two are not."* Saying that is the point.
+
+## 2. The reader is verified against the chain (0:55–1:25)
+
+Terminal:
+
+```bash
+node scripts/conformance.mjs --all
+```
+
+It prints one dot per mint, then:
 
 ```
-node keeper/demo/snapshot-demo.mjs
+924/924 mints match the Token-2022 runtime (tolerance 1e-9), 1 not checked
 ```
 
-Show the two invariants printing:
+Say: *"This compares our rule against `getTokenSupply` — the runtime's own scaled
+amount — for all 925 official mints. Nine decimal places. The rule was an
+assumption this morning; now it's measured. One mint hit a transient 403, and
+`--only ARx` retries it on its own."*
 
-* `holders: N, sum == mint.supply ✓` — supply conservation enforced.
-* `root: 0x…` — the Merkle root that will anchor every claim.
+Optionally also:
 
-Say: *"The register is the thing brokerages have and blockchains don't.
-This is the shareholder roll, frozen at the record slot, verifiable by
-anyone."*
+```bash
+node scripts/verify-trap.mjs        # 8/8 traps match the pending multiplier
+node scripts/collateral-scenario.mjs
+```
 
-## 3. The claim (0:55–1:15)
+## 3. The integration surface (1:25–1:55)
 
-Show a claim transaction on devnet, then click the Explorer link:
+Open `feed/owed-risk.json` beside `feed/schema.json`. Show two things:
 
-* Proof verifies, entitlement lands.
-* Second attempt with the same wallet **fails at account creation** —
-  the `ClaimReceipt` PDA already exists.
+1. Each token carries the **raw `scaledUiAmountConfig` state** next to our answer.
+2. `effectiveMultiplier` is stamped with the `clock` it was computed at.
 
-Say: *"Double claims aren't blocked by our bookkeeping — they're blocked
-by the account model itself."*
+Say: *"You don't have to trust this feed — it publishes the raw state so you can
+recompute the rule and disagree with us. And a test enforces that: every published
+value has to be reproducible from the published inputs, or CI fails. A feed that
+only publishes its own conclusions is unauditable."*
 
-## 4. What's honest (1:15–1:30)
+## 4. Breadth, and the surface nobody markets (1:55–2:15)
 
-> "What you just saw is real: the register, the conservation check, the
-> Merkle settlement, the live divergence monitor. What is simulated today:
-> issuer declarations are seeded, not pulled from filings — that's the
-> integration this roadmap is for."
+Open `web/board.html`. Say: *"All 925 mints, same offline property."*
 
-## 5. Why Solana (1:30–1:40)
+Then point at the control column: *"Every single official xStock carries a
+permanent delegate and a pause authority — 925 of 925. One compromised issuer key
+can freeze or confiscate any holder's balance. That is not an attack, it is a
+capability, and no wallet UI shows it."*
 
-> "97% of on-chain equity volume settles here. A register for tokenized
-> equities only matters on the chain where the equities actually are."
+## 5. What is not done (2:15–2:30)
+
+> "What you just saw is real and reproducible: the scan, the conformance proof,
+> the feed, both pages. What is not: the on-chain registry that would *fix* this
+> rather than report it is reference source — `programs/owed/` has not been
+> compiled, deployed, or audited, and I am not going to pretend otherwise. And we
+> tried to show a major aggregator misstating these supplies; our own controls
+> failed, so we dropped the claim instead of shipping it."
+
+That paragraph is worth more than a third feature.
+
+## 6. Why Solana (2:30–2:40)
+
+> "Tokenized equities are on Solana, and the mechanism causing this —
+> Token-2022 Scaled UI Amount — only exists here. A correctness layer for it can
+> only be built where the tokens are."
 
 ---
 
-## Definition of done for this script
+## Definition of done
 
-- [ ] Board shows live Pyth + DEX prices at recording time
-- [ ] Snapshot demo prints conservation + root from a real devnet mint
-- [ ] Claim tx link opens on Solana Explorer
-- [ ] Double-claim rejection captured on camera
-- [ ] The honesty line is in the video, not just the README
+- [ ] Harm page opens from disk with numbers live at recording time
+- [ ] `node scripts/conformance.mjs --all` runs on camera and prints 924/924
+- [ ] Feed and schema shown side by side, recomputability stated
+- [ ] Board's 925/925 control-surface count shown
+- [ ] The honesty paragraph is in the video, not only in the README

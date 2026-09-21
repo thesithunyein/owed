@@ -155,7 +155,7 @@ owed/
 │   ├── data/             # official mint list, latest scan, conformance reports
 │   └── test/             # 73 tests, one live-gated
 ├── feed/                 # owed-risk.json + schema.json (the integration contract)
-├── web/                  # differential.html (harm) + board.html (risk) + index.html
+├── web/                  # differential.html (harm, clickable) + board.html (risk table)
 ├── shared/vectors/       # cross-language golden vectors (generated, committed)
 ├── scripts/              # scan, verify-trap, conformance, collateral, risk-feed, gen-*
 └── docs/                 # SPEC.md, DEMOSCRIPT.md
