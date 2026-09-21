@@ -49,7 +49,7 @@ impl Register {
     /// This is the off-chain mirror of the on-chain `snapshot_holders`
     /// constraint: the holder amounts must sum exactly to the mint supply.
     pub fn new(mut entries: Vec<RegisterEntry>, total_supply: u64) -> Result<Self> {
-        entries.sort_by(|a, b| a.owner.cmp(&b.owner));
+        entries.sort_by_key(|a| a.owner);
 
         // Duplicate check after sorting: equal neighbours.
         for w in entries.windows(2) {
@@ -60,10 +60,16 @@ impl Register {
 
         let sum: u128 = entries.iter().map(|e| e.amount as u128).sum();
         if sum != total_supply as u128 {
-            return Err(Error::SupplyMismatch { sum, supply: total_supply });
+            return Err(Error::SupplyMismatch {
+                sum,
+                supply: total_supply,
+            });
         }
 
-        Ok(Register { entries, total_supply })
+        Ok(Register {
+            entries,
+            total_supply,
+        })
     }
 
     pub fn entries(&self) -> &[RegisterEntry] {
@@ -85,11 +91,7 @@ impl Register {
     }
 
     /// Prove that `owner` held `amount` in this register.
-    pub fn prove(
-        &self,
-        owner: [u8; 32],
-        amount: u64,
-    ) -> Result<(merkle::Proof, u32)> {
+    pub fn prove(&self, owner: [u8; 32], amount: u64) -> Result<(merkle::Proof, u32)> {
         let target = RegisterEntry::new(owner, amount);
         let idx = self
             .entries
@@ -118,7 +120,10 @@ mod tests {
     #[test]
     fn accepts_conserving_register() {
         let reg = Register::new(
-            vec![RegisterEntry::new(owner(1), 60), RegisterEntry::new(owner(2), 40)],
+            vec![
+                RegisterEntry::new(owner(1), 60),
+                RegisterEntry::new(owner(2), 40),
+            ],
             100,
         )
         .unwrap();
@@ -129,17 +134,29 @@ mod tests {
     #[test]
     fn rejects_supply_mismatch() {
         let err = Register::new(
-            vec![RegisterEntry::new(owner(1), 60), RegisterEntry::new(owner(2), 39)],
+            vec![
+                RegisterEntry::new(owner(1), 60),
+                RegisterEntry::new(owner(2), 39),
+            ],
             100,
         )
         .unwrap_err();
-        assert_eq!(err, Error::SupplyMismatch { sum: 99, supply: 100 });
+        assert_eq!(
+            err,
+            Error::SupplyMismatch {
+                sum: 99,
+                supply: 100
+            }
+        );
     }
 
     #[test]
     fn rejects_duplicate_owner() {
         let err = Register::new(
-            vec![RegisterEntry::new(owner(1), 50), RegisterEntry::new(owner(1), 50)],
+            vec![
+                RegisterEntry::new(owner(1), 50),
+                RegisterEntry::new(owner(1), 50),
+            ],
             100,
         )
         .unwrap_err();

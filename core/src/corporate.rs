@@ -29,7 +29,9 @@ pub struct SplitRatio {
 impl SplitRatio {
     pub fn new(num: u64, den: u64) -> crate::Result<Self> {
         if num == 0 || den == 0 {
-            return Err(crate::Error::InvalidAction("split ratio parts must be nonzero"));
+            return Err(crate::Error::InvalidAction(
+                "split ratio parts must be nonzero",
+            ));
         }
         Ok(SplitRatio { num, den })
     }
@@ -37,7 +39,7 @@ impl SplitRatio {
     /// Adjust one balance. Returns `None` on overflow.
     pub fn adjust(&self, balance: u64) -> Option<u64> {
         let v = (balance as u128) * (self.num as u128);
-        Some(v.checked_div(self.den as u128)?.try_into().ok()?)
+        v.checked_div(self.den as u128)?.try_into().ok()
     }
 
     /// Total post-split supply and the dust dropped by floor-division.
@@ -109,7 +111,10 @@ mod tests {
     fn entitlement_fits_u128_and_escrow_overflow_is_caught() {
         // u64 * u64 always fits u128; the escrow *sum* can overflow with
         // enough max-value entries, and that must be an error, not a wrap.
-        assert_eq!(dividend_entitlement(u64::MAX, u64::MAX).unwrap(), (u64::MAX as u128) * (u64::MAX as u128));
+        assert_eq!(
+            dividend_entitlement(u64::MAX, u64::MAX).unwrap(),
+            (u64::MAX as u128) * (u64::MAX as u128)
+        );
         let big = RegisterEntry::new([9; 32], u64::MAX);
         let entries = vec![big.clone(), big.clone(), big.clone(), big];
         assert!(dividend_escrow_requirement(&entries, u64::MAX).is_err());
@@ -129,7 +134,7 @@ mod tests {
     #[test]
     fn split_conserves_register() {
         // After a 4:1 split, the register's amounts scale and still conserve.
-        let holders = vec![(owner(1), 60u64), (owner(2), 40), (owner(3), 25)];
+        let holders = [(owner(1), 60u64), (owner(2), 40), (owner(3), 25)];
         let total: u64 = holders.iter().map(|h| h.1).sum();
         let r = SplitRatio::new(4, 1).unwrap();
 

@@ -22,7 +22,10 @@ impl fmt::Display for Error {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Error::SupplyMismatch { sum, supply } => {
-                write!(f, "register supply mismatch: holders sum to {sum}, mint supply is {supply}")
+                write!(
+                    f,
+                    "register supply mismatch: holders sum to {sum}, mint supply is {supply}"
+                )
             }
             Error::DuplicateOwner => write!(f, "duplicate owner in register"),
             Error::BadProof => write!(f, "merkle proof rejected"),

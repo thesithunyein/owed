@@ -17,7 +17,7 @@ fn hex_to_32(s: &str) -> [u8; 32] {
 #[test]
 fn golden_vectors_match_node_generator() {
     let txt = include_str!("../../shared/vectors/vectors.txt");
-    assert!(txt.len() > 0, "vectors.txt must be committed");
+    assert!(!txt.is_empty(), "vectors.txt must be committed");
 
     let mut merkle_cases = 0usize;
     let mut register_cases = 0usize;
@@ -31,8 +31,7 @@ fn golden_vectors_match_node_generator() {
         match parts[0] {
             "merkle" => {
                 assert_eq!(parts.len(), 4, "merkle line: name|leaves|root");
-                let leaves: Vec<[u8; 32]> =
-                    parts[2].split(',').map(hex_to_32).collect();
+                let leaves: Vec<[u8; 32]> = parts[2].split(',').map(hex_to_32).collect();
                 let expected_root = hex_to_32(parts[3]);
                 let (root, proofs) = build(&leaves);
                 assert_eq!(
@@ -59,11 +58,8 @@ fn golden_vectors_match_node_generator() {
                     o[0] = n;
                     RegisterEntry::new(o, amt)
                 };
-                let reg = Register::new(
-                    vec![mk(9, 10), mk(3, 30), mk(5, 50), mk(1, 10)],
-                    100,
-                )
-                .expect("register case must be valid");
+                let reg = Register::new(vec![mk(9, 10), mk(3, 30), mk(5, 50), mk(1, 10)], 100)
+                    .expect("register case must be valid");
                 let (root, _) = reg.merkle_root_and_proofs();
                 assert_eq!(
                     root,

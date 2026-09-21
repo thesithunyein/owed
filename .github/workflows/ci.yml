@@ -21,7 +21,9 @@ jobs:
         with:
           workspaces: core
       - run: cargo test -- --nocapture
-      - run: cargo clippy -- -D warnings
+      # --all-targets so test code is linted too: three of the four lints this
+      # job first caught were only visible with it (len_zero, useless_vec).
+      - run: cargo clippy --all-targets -- -D warnings
       - run: cargo fmt --check
 
   keeper:

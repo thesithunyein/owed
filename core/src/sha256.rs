@@ -15,8 +15,7 @@ const K: [u32; 64] = [
 ];
 
 const H0: [u32; 8] = [
-    0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a,
-    0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19,
+    0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19,
 ];
 
 /// SHA-256 digest of `data`.
@@ -36,7 +35,12 @@ pub struct Sha256 {
 
 impl Sha256 {
     pub fn new() -> Self {
-        Sha256 { state: H0, buf: [0u8; 64], buflen: 0, bitlen: 0 }
+        Sha256 {
+            state: H0,
+            buf: [0u8; 64],
+            buflen: 0,
+            bitlen: 0,
+        }
     }
 
     pub fn update(&mut self, mut data: &[u8]) {

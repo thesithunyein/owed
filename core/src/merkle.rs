@@ -92,7 +92,7 @@ pub fn build(leaves: &[[u8; 32]]) -> ([u8; 32], Vec<Proof>) {
         .collect();
 
     while level.len() > 1 {
-        level.sort_by(|a, b| a.0.cmp(&b.0));
+        level.sort_by_key(|a| a.0);
 
         let mut next: Vec<([u8; 32], Vec<usize>)> = Vec::with_capacity(level.len().div_ceil(2));
 
