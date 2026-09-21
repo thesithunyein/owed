@@ -18,6 +18,10 @@
 
 use anchor_lang::prelude::*;
 use anchor_spl::token::{Mint, Token, TokenAccount};
+// SPL's `Mint::mint_authority` is a `COption`, which the anchor prelude does not
+// re-export. Without this the constraint on `initialize_asset` failed with
+// "use of undeclared type `COption`" — the third error this program produced.
+use anchor_lang::solana_program::program_option::COption;
 
 declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
 
