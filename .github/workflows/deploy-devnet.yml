@@ -184,10 +184,29 @@ jobs:
         # only that variable, and nothing else sets it here — and `anchor test`
         # would rebuild and redeploy, which this workflow has already done in
         # the steps above.
+        # Retried as a whole file, not by mocha's --retries: the failure mode is
+        # the public endpoint throttling a burst with 429s, which poisons a run
+        # partway through and leaves the later tests cascading off missing state.
+        # A fresh attempt rebuilds that state from scratch, and the backoff gives
+        # the rate-limit window time to clear. The first dispatch died at the
+        # second instruction and every subsequent test failed as a consequence.
         run: |
+          set +e
           export ANCHOR_PROVIDER_URL=https://api.devnet.solana.com
           export ANCHOR_WALLET="$HOME/.config/solana/id.json"
-          npx mocha --timeout 1000000 tests/**/*.mjs
+          # Let the deploy's own traffic cool off before starting.
+          sleep 20
+          for attempt in 1 2 3; do
+            echo "::group::settlement attempt $attempt"
+            npx mocha --timeout 1000000 tests/**/*.mjs
+            status=$?
+            echo "::endgroup::"
+            [ $status -eq 0 ] && exit 0
+            echo "attempt $attempt failed (exit $status) — rate-limit backoff"
+            sleep $((attempt * 60))
+          done
+          echo "::error::the settlement did not complete in 3 attempts"
+          exit 1
 
       - name: Write the deployment record
         # The machine-readable outcome, so linking it in the README or the site is

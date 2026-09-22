@@ -100,6 +100,17 @@ const record = (label, sig, extra = {}) => {
   return entry;
 };
 
+/**
+ * Pace transaction sends.
+ *
+ * The public devnet endpoint throttles bursts with 429s, and one live run lost
+ * an entire settlement to that storm — the deploy and the first two instructions
+ * landed, then everything after them drowned in retries. Spacing the sends costs
+ * a few seconds on a local validator and is the difference between a devnet run
+ * that completes and one that dies halfway.
+ */
+const pace = (ms = 400) => new Promise((resolve) => setTimeout(resolve, ms));
+
 /** Convert keeper proof siblings into the program's ProofNode wire shape. */
 const toProof = (siblings) =>
   siblings.map(([hash, side]) => ({
@@ -207,6 +218,7 @@ describe("owed — settle corporate actions end to end", () => {
     );
     const { root, proofs } = registerRootAndProofs(register);
 
+    await pace();
     const sig = await program.methods
       .snapshotHolders(
         register.entries.map((e) => ({
@@ -233,6 +245,7 @@ describe("owed — settle corporate actions end to end", () => {
     const payoutBefore = BigInt((await getAccount(connection, holder.payoutAta)).amount);
 
     const receipt = receiptPda(action, holder.key.publicKey);
+    await pace();
     const sig = await program.methods
       .claim(index, new BN(amount.toString()), proof)
       .accounts({
@@ -275,8 +288,10 @@ describe("owed — settle corporate actions end to end", () => {
     // 0 decimals: "shares" are whole units, so the register arithmetic in the
     // test and in core/ is directly comparable.
     shareMint = await createMint(connection, payer, payer.publicKey, null, 0);
+    await pace();
     // 6 decimals: a stablecoin-shaped payout currency.
     payoutMint = await createMint(connection, payer, payer.publicKey, null, 6);
+    await pace();
 
     for (const h of holders) {
       const ata = await getOrCreateAssociatedTokenAccount(
@@ -286,7 +301,9 @@ describe("owed — settle corporate actions end to end", () => {
         h.key.publicKey,
       );
       h.ata = ata.address;
+      await pace();
       await mintTo(connection, payer, shareMint, h.ata, payer, h.initial);
+      await pace();
 
       const payout = await getOrCreateAssociatedTokenAccount(
         connection,
