@@ -91,3 +91,49 @@ jobs:
           env -u VERCEL_PROJECT_ID -u VERCEL_ORG_ID \
             vercel link --yes --project owed --token "$VERCEL_TOKEN"
           vercel deploy --prod --yes --token "$VERCEL_TOKEN"
+
+  # A refreshed snapshot only helps anyone if the domain actually serves it.
+  # This job exists because that silently stopped being true: the refresh
+  # committed fresh data while the live site stayed on a five-hour-old
+  # snapshot, and nothing went red. A stale board is worse than no board, so
+  # this compares the deployed page against the committed feed and fails.
+  freshness:
+    name: Live site is not stale
+    runs-on: ubuntu-latest
+    needs: refresh
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Compare the deployed snapshot against the committed one
+        run: |
+          node -e "
+          const https = require('https');
+          const get = (url) => new Promise((ok, no) => https.get(url, (r) => {
+            let b = ''; r.on('data', (c) => b += c); r.on('end', () => ok(b));
+          }).on('error', no));
+          const feed = require('./feed/owed-risk.json');
+          const committed = Date.parse(feed.generatedAt);
+          (async () => {
+            const html = await get('https://owed.sithunyein.com/?cb=' + Date.now());
+            const m = html.match(/\"generatedAt\":\"([^\"]+)\"/);
+            if (!m) throw new Error('live page carries no embedded snapshot');
+            const live = Date.parse(m[1]);
+            const hours = (committed - live) / 3.6e6;
+            console.log('committed:', feed.generatedAt, '| deployed:', m[1]);
+            if (hours > 2) {
+              throw new Error('the live site is ' + hours.toFixed(1) + 'h behind the committed feed.\n' +
+                'The domain only updates on deploy. Either:' +
+                '  (a) add VERCEL_TOKEN, VERCEL_ORG_ID and VERCEL_PROJECT_ID repo secrets so the' +
+                '      Deploy step above runs, or' +
+                '  (b) connect the GitHub repo to the Vercel project (root vercel.json already' +
+                '      sets buildCommand/outputDirectory), so every push deploys.');
+            }
+            console.log('ok: deployed snapshot is current');
+          })().catch((e) => { console.error(e.message); process.exit(1); });
+          "

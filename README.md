@@ -499,7 +499,31 @@ node scripts/conformance.mjs --all   # every official mint (925 RPC calls)
 # Build and ship the site (site/ is generated, not source)
 node scripts/build-site.mjs
 cd site && vercel deploy --prod --yes --project owed
+```
 
+### Deployment, and the way it went wrong
+
+The pages embed a snapshot, so a committed snapshot is always aging. The
+`Refresh data` workflow re-scans every 6 hours and commits the result - but a
+commit is not a deploy, and for a while nothing closed that gap: the domain
+kept serving a five-hour-old board while the repository held fresh data, and
+nothing went red. A board that is quietly stale is worse than no board, so
+`Refresh data` now ends with a `Live site is not stale` job that reads the
+deployed page's own embedded timestamp and fails if it trails the committed
+feed by more than two hours.
+
+Closing the gap properly needs one of these, both in the Vercel dashboard:
+
+| | |
+|---|---|
+| **Vercel token secrets** | add `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` as repository secrets - the workflow's `Deploy to Vercel` step already runs once they exist |
+| **Git integration** | connect this repository to the Vercel project and point it at the repository root; `vercel.json` already sets `buildCommand: node scripts/build-site.mjs` and `outputDirectory: site`, so every push deploys with no secrets at all |
+
+The domain belongs to the Vercel project named `owed`. Deploying into a
+different project succeeds and changes nothing that anyone can see - which is
+exactly how the staleness above happened the first time.
+
+```bash
 # Runnable demo (synthetic register without args; live with a mint)
 node keeper/demo/snapshot-demo.mjs [<MINT_ADDRESS>]
 

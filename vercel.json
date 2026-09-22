@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "node scripts/build-site.mjs",
+  "outputDirectory": "site",
+  "installCommand": "echo 'no dependencies to install: the site build is zero-dependency node'",
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/feed/(.*).json",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=300, stale-while-revalidate=3600" }
+      ]
+    }
+  ]
+}
