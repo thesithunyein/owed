@@ -166,7 +166,16 @@ jobs:
           declared=$(sed -n 's/.*declare_id!("\([^"]*\)").*/\1/p' programs/owed/src/lib.rs | head -1)
           keypair=$(solana-keygen pubkey target/deploy/owed-keypair.json)
           toml=$(sed -n '/^\[programs\.localnet\]/,/^\[/p' Anchor.toml | sed -n 's/^owed *= *"\([^"]*\)".*/\1/p' | head -1)
-          idl=$(node -e "console.log(require('./target/idl/owed.json').metadata.address)")
+          # Anchor 0.31 puts the address at the TOP level of the IDL
+          # (`Idl.address`); `metadata` holds only name/version/spec. Reading
+          # `metadata.address` yields undefined, which is how this step failed
+          # its first run — so both shapes are accepted, and an IDL that has
+          # neither is reported with its actual keys rather than as "undefined".
+          idl=$(node -e "const i=require('./target/idl/owed.json'); console.log(i.address ?? i.metadata?.address ?? '')")
+          if [ -z "$idl" ]; then
+            echo "::error::target/idl/owed.json carries no address; top-level keys: $(node -e "console.log(Object.keys(require('./target/idl/owed.json')).join(', '))") "
+            exit 1
+          fi
           echo "declare_id!     $declared"
           echo "target keypair  $keypair"
           echo "Anchor.toml     $toml"

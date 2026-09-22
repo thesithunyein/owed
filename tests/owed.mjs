@@ -2,15 +2,18 @@
  * End-to-end settlement: the registry does not just record entitlements, it
  * moves value.
  *
- * Runs against whatever cluster `AnchorProvider.env()` points at:
+ * Runs against whatever cluster `ANCHOR_PROVIDER_URL` points at, with the
+ * program deployed there first. The `.github/workflows/ci.yml` `settlement` job
+ * is the canonical invocation — a throwaway validator, an explicit
+ * `solana program deploy`, then this file under mocha. `anchor test` is NOT
+ * equivalent: with `--skip-build` it deploys nothing at all, and the failures
+ * then look like program-id mismatches rather than a missing program. The
+ * `.github/workflows/deploy-devnet.yml` job runs the same file against devnet
+ * with a funded keypair.
  *
- *   anchor test                 # local validator, fully hermetic, no keypair
- *   anchor test --skip-build    # same, without rebuilding
- *
- * and the "Deploy registry to devnet" workflow runs it against devnet with a
- * funded keypair. The local-validator path is the important one: a judge can
- * reproduce the entire settlement from a clone, with no keys and no funded
- * account, and watch the balances change.
+ * The local-validator path is the important one: a judge can reproduce the
+ * entire settlement from a clone, with no keys and no funded account, and watch
+ * the balances change.
  *
  * What it proves, in order:
  *   1. the issuer hands mint authority to the registry (arm_split_authority)
@@ -28,6 +31,11 @@
  * byte-for-byte against the Rust core by committed golden vectors.
  * Re-implementing the tree here would test a re-implementation instead of the
  * thing that ships.
+ *
+ * Every claim below is asserted against on-chain balances read before and
+ * after, and one machine-readable report is written to
+ * `tests/settlement-report.json` (uploaded by CI as an artifact) so the run is
+ * evidence a reader can check rather than a green tick to take on faith.
  */
 
 import * as anchor from "@coral-xyz/anchor";
