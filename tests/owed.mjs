@@ -423,9 +423,15 @@ describe("owed — settle corporate actions end to end", () => {
       message = err?.error?.errorCode?.errorCode ?? String(err);
     }
     // Specific, not merely "it failed": a client-side exception would satisfy
-    // `rejected === true` while proving nothing about conservation.
+    // `rejected === true` while proving nothing about conservation. The code
+    // name is matched with `include`, not equality: depending on how the RPC
+    // surfaces the failure, `message` is either the bare code name or the full
+    // AnchorError string ("AnchorError thrown in programs/owed/src/lib.rs:225.
+    // Error Code: SupplyMismatch. Error Number: 6006. …"), and the first live
+    // run came back in the long form. Either shape proves the program's own
+    // conservation check fired; a client-side crash would contain neither.
     expect(rejected, "a register short of supply must be rejected").to.equal(true);
-    expect(message).to.equal("SupplyMismatch");
+    expect(message).to.include("SupplyMismatch");
     report.steps.push({ label: "snapshot_holders(short register)", rejected: true, code: message });
   });
 
