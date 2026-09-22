@@ -35,7 +35,7 @@ import {
   createMint,
   getOrCreateAssociatedTokenAccount,
   getAccount,
-  getTokenSupply,
+  getMint,
   mintTo,
   transfer,
   TOKEN_PROGRAM_ID,
@@ -148,13 +148,18 @@ describe("owed — settle corporate actions end to end", () => {
       program.programId,
     )[0];
 
+  // NOTE: `getTokenSupply` does not exist in @solana/spl-token 0.4.x — the
+  // supply lives on the mint account, via `getMint`.
+  const shareSupply = async () =>
+    BigInt((await getMint(connection, shareMint)).supply);
+
   /** Read the frozen register off-chain from real balances, then snapshot it. */
   async function snapshotFromChain(action, onlyHolders = holders) {
     const balances = [];
     for (const h of onlyHolders) {
       balances.push(BigInt((await getAccount(connection, h.ata)).amount));
     }
-    const supply = BigInt((await getTokenSupply(connection, shareMint)).value.amount);
+    const supply = await shareSupply();
 
     const register = buildRegister(
       onlyHolders.map((h, i) => ({
@@ -272,8 +277,7 @@ describe("owed — settle corporate actions end to end", () => {
     ).then((a) => a.address);
     await mintTo(connection, payer, payoutMint, issuerPayoutAta, payer, ISSUER_FLOAT);
 
-    const supply = await getTokenSupply(connection, shareMint);
-    assert.equal(BigInt(supply.value.amount), initialSupply);
+    assert.equal(await shareSupply(), initialSupply);
   });
 
   it("registers the asset and delegates snapshot rights to a separate key", async () => {
@@ -417,8 +421,7 @@ describe("owed — settle corporate actions end to end", () => {
       assert.equal(result.payoutDelta, 0n, "a split moves no cash");
     }
 
-    const supply = await getTokenSupply(connection, shareMint);
-    assert.equal(BigInt(supply.value.amount), initialSupply * 4n,
+    assert.equal(await shareSupply(), initialSupply * 4n,
       "supply must grow by exactly the ratio");
   });
 
@@ -488,7 +491,7 @@ describe("owed — settle corporate actions end to end", () => {
   });
 
   it("pays a cash distribution in the payout currency and sweeps the remainder", async () => {
-    const supply = BigInt((await getTokenSupply(connection, shareMint)).value.amount);
+    const supply = await shareSupply();
     const required = AMOUNT_PER_SHARE * supply;
     await transfer(connection, payer, issuerPayoutAta, escrow.address, payer, required);
     assert.equal(BigInt((await getAccount(connection, escrow.address)).amount), required);

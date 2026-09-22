@@ -8,7 +8,7 @@
     "test": "mocha --timeout 1000000 tests/**/*.mjs"
   },
   "devDependencies": {
-    "@coral-xyz/anchor": "0.31.2",
+    "@coral-xyz/anchor": "0.31.1",
     "@solana/spl-token": "^0.4.9",
     "@solana/web3.js": "^1.95.4",
     "chai": "^4.3.10",
