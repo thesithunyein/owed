@@ -6,6 +6,7 @@ import { dirname, join } from "node:path";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const WEB = join(HERE, "..", "..", "web");
+const ROOT = join(HERE, "..", "..");
 
 /**
  * The pages are shipped as single files that must work from disk — no server, no
@@ -14,6 +15,49 @@ const WEB = join(HERE, "..", "..", "web");
  * so these guards run in CI.
  */
 const PAGES = ["board.html", "differential.html"];
+
+test("README numbers match the published feed", () => {
+  // The README quotes counts that change with every snapshot refresh, and it
+  // quoted them by hand. That already went wrong: it advertised "off by ≥100%:
+  // 5" while the feed one directory away published 4, and a scheduled refresh
+  // would have widened the gap while the README looked authoritative.
+  //
+  // gen-webdata.mjs now writes those numbers between markers. This checks the
+  // committed README against the committed feed, so a hand edit or a skipped
+  // regeneration fails the build instead of shipping a wrong number.
+  const readme = readFileSync(join(ROOT, "README.md"), "utf8");
+  const feed = JSON.parse(readFileSync(join(ROOT, "feed", "owed-risk.json"), "utf8"));
+  const s = feed.summary;
+
+  const block = (name) => {
+    const m = readme.match(
+      new RegExp(`<!-- owed:${name}:start -->([\\s\\S]*?)<!-- owed:${name}:end -->`),
+    );
+    assert.ok(m, `README.md has the owed:${name} block`);
+    return m[1];
+  };
+
+  const stats = block("stats");
+  assert.match(stats, new RegExp(`\\b${s.trap} of ${s.total}\\b`), "headline stale count");
+  assert.match(stats, new RegExp(`\\b${s.ge100}\\b`), "headline ≥100% count");
+  assert.match(stats, new RegExp(`\\b${s.ge10x}\\b`), "headline 10x count");
+
+  const table = block("table");
+  const cells = table
+    .split("\n")
+    .filter((line) => line.startsWith("|"))
+    .map((line) => line.split("|")[2]?.replace(/[*`]/g, "").trim() ?? "");
+  assert.equal(cells.length, 12, "the findings table has all 12 rows");
+  assert.equal(cells[0], String(s.total));
+  assert.equal(cells[1], String(s.trap));
+  assert.ok(cells[2].startsWith(String(s.ge10x)));
+  assert.equal(cells[3], String(s.ge100));
+  assert.equal(cells[4], String(s.ge1));
+  assert.equal(cells[5], String(s.ge0_5));
+  assert.equal(cells[9], `${s.permanentDelegate} / ${s.total}`);
+  assert.equal(cells[10], `${s.pauseAuthority} / ${s.total}`);
+  assert.equal(cells[11], String(s.paused));
+});
 
 test("generated pages exist", () => {
   for (const p of PAGES) {

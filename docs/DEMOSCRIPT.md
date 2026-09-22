@@ -11,19 +11,28 @@
 
 ---
 
+<!-- NOTE FOR THE PRESENTER: the counts below are a snapshot and they move as
+     activations pass. Read the current figure off the page's own counter (it
+     re-classifies against your clock) or from the README's generated block,
+     which is regenerated from `feed/owed-risk.json` on every refresh. Saying a
+     stale number out loud in a demo of staleness is the one unforced error
+     available here. -->
+
 ## 0. The line (0:00–0:15)
 
-> "379 of the 925 tokenized stocks on Solana have a stale multiplier field
+> "<count> of the 925 tokenized stocks on Solana have a stale multiplier field
 > on-chain right now. Two of them are off by a factor of ten. Here is the proof
 > against the chain, and here is the drop-in fix."
 
-Say it flatly. No adjectives. The numbers carry it.
+Read `<count>` off the live page before you start — it is the number the
+counter shows, and it changes as activations pass. Say it flatly. No adjectives.
+The numbers carry it.
 
 ## 1. The harm, clickable (0:15–0:55)
 
 Open `web/differential.html`. It works from disk — no server, no build, no key.
 
-1. It loads showing **379 stale of 925**, re-classified against the viewer's clock.
+1. It loads showing **the stale count of 925**, re-classified against the viewer's clock.
 2. Select `NFLXx` (the default, worst first). Set position `100000`, debt `10000`.
 3. The two panels read **$10,000** against **$100,000**. Same position.
 4. The verdict banner: *"sees this position at 100.0% loan-to-value and liquidates

@@ -123,6 +123,79 @@ const js =
 mkdirSync(join(root, "web", "data"), { recursive: true });
 writeFileSync(join(root, "web", "data", "assets.mjs"), js);
 
+// ---------------------------------------------------------------------------
+// The README's numbers are generated as well
+// ---------------------------------------------------------------------------
+//
+// The counts in the README move every time the snapshot refreshes, and the
+// pages re-classify live, so hand-typed figures disagree with the site within
+// one refresh cycle — they already did (`≥100%` read 5 in the README while the
+// published feed said 4). So the headline block and the findings table are
+// generated from the feed between markers, exactly like the pages, and
+// keeper/test/build-integrity.test.mjs fails if either drifts out of agreement.
+
+// `feed` is the same object the pages were just built from — one read, one
+// source of truth, so the README and the pages cannot disagree.
+let readmeChanged = false;
+
+if (feed) {
+  const s = feed.summary;
+  const at = `${new Date(feed.clock * 1000).toISOString().slice(0, 16).replace("T", " ")} UTC`;
+  const stale = feed.tokens.filter((t) => t.trap.stale);
+  const median = (xs) => {
+    if (!xs.length) return 0;
+    const sorted = [...xs].sort((a, b) => a - b);
+    return sorted[Math.floor(sorted.length / 2)];
+  };
+  const tenX = stale.filter((t) => t.trap.gapPct >= 900).map((t) => t.symbol);
+  const longest = stale.reduce(
+    (a, b) => (b.trap.daysStale > a.trap.daysStale ? b : a),
+    stale[0]
+  );
+
+  const quote =
+    `<!-- owed:stats:start -->\n` +
+    `> **${s.trap} of ${s.total} official xStocks carry a stale on-chain multiplier field**\n` +
+    `> (classified at ${at}); ${s.ge100} are off by 100% or more, and ${s.ge10x} by a full 10x.\n` +
+    `> Not in theory: every mint was scanned and the effective value read from the chain.\n` +
+    `<!-- owed:stats:end -->`;
+
+  const rows = [
+    `| Official xStocks Solana mints scanned | **${s.total}** |`,
+    `| **Reader traps** (activation passed, stored field stale) | **${s.trap}** |`,
+    `| … off by **10x** (10-for-1 splits) | **${s.ge10x}** (${tenX.map((x) => `\`${x}\``).join(", ") || "none"}) |`,
+    `| … off by **≥100%** | **${s.ge100}** |`,
+    `| … off by **≥1%** | **${s.ge1}** |`,
+    `| … off by **≥0.5%** | **${s.ge0_5}** |`,
+    `| Median magnitude of the gap | **${median(stale.map((t) => Math.abs(t.trap.gapPct))).toFixed(2)}%** |`,
+    `| Median time already stale | **${Math.round(median(stale.map((t) => t.trap.daysStale)))} days** |`,
+    `| Longest stale | **${Math.round(longest.trap.daysStale)} days** (\`${longest.symbol}\`) |`,
+    `| Mints with a **permanent delegate** (issuer can move anyone's tokens) | **${s.permanentDelegate} / ${s.total}** |`,
+    `| Mints with a **pause authority** (issuer can freeze all transfers) | **${s.pauseAuthority} / ${s.total}** |`,
+    `| Currently paused | ${s.paused} |`,
+  ];
+  const table = `<!-- owed:table:start -->\n${rows.join("\n")}\n<!-- owed:table:end -->`;
+
+  const readmePath = join(root, "README.md");
+  const before = readFileSync(readmePath, "utf8");
+  const splice = (src, name, block) => {
+    const start = `<!-- owed:${name}:start -->`;
+    const end = `<!-- owed:${name}:end -->`;
+    const re = new RegExp(`${start}[\\s\\S]*?${end}`);
+    if (!re.test(src)) throw new Error(`README.md is missing the owed:${name} block`);
+    return src.replace(re, block);
+  };
+  const after = splice(splice(before, "stats", quote), "table", table);
+  if (after !== before) {
+    writeFileSync(readmePath, after);
+    readmeChanged = true;
+  }
+  console.log(
+    `README.md: ${readmeChanged ? "numbers updated" : "numbers already current"} ` +
+      `(${s.trap}/${s.total} stale at ${at})`
+  );
+}
+
 const kb = (n) => (n / 1024).toFixed(0);
 console.log(
   `board.html: ${compact.length} assets` +

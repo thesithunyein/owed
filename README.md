@@ -2,11 +2,13 @@
 
 > **Live: <https://owed.sithunyein.com>** · feed: `/feed/owed-risk.json` · schema: `/feed/schema.json`
 
-> **379 of 925 official xStocks have a stale on-chain multiplier field right now,
-> and 5 of them are off by 100% or more — two by a full 10x.** Not in theory: we
-> scanned every mint and verified the effective value against the chain.
+<!-- owed:stats:start -->
+> **379 of 925 official xStocks carry a stale on-chain multiplier field**
+> (classified at 2026-09-22 08:13 UTC); 4 are off by 100% or more, and 2 by a full 10x.
+> Not in theory: every mint was scanned and the effective value read from the chain.
+<!-- owed:stats:end -->
 
-## What we found (all verified live on mainnet, 2026-09-21)
+## What we found (live mainnet snapshot)
 
 xStocks (Backed Finance) rebases dividends and splits through the Token-2022
 **Scaled UI Amount** extension. The extension stores `multiplier` plus a pending
@@ -23,18 +25,20 @@ wrong price for every affected token. Our full scan of the official mint list:
 
 | Finding | Count |
 |---|---|
+<!-- owed:table:start -->
 | Official xStocks Solana mints scanned | **925** |
 | **Reader traps** (activation passed, stored field stale) | **379** |
 | … off by **10x** (10-for-1 splits) | **2** (`PPLTx`, `NFLXx`) |
-| … off by **≥100%** | **5** |
-| … off by **≥1%** | **29** |
-| … off by **≥0.5%** | **111** |
+| … off by **≥100%** | **4** |
+| … off by **≥1%** | **28** |
+| … off by **≥0.5%** | **110** |
 | Median magnitude of the gap | **0.32%** |
 | Median time already stale | **28 days** |
 | Longest stale | **348 days** (`GMEx`) |
 | Mints with a **permanent delegate** (issuer can move anyone's tokens) | **925 / 925** |
 | Mints with a **pause authority** (issuer can freeze all transfers) | **925 / 925** |
 | Currently paused | 0 |
+<!-- owed:table:end -->
 
 Most gaps are small — and saying so is the point. `AAPLx` (`XsbEhL…zJp`) has
 stored `1.00266…` while `1.00327…` took effect on **2026-08-07**, a 0.06% error.
@@ -89,13 +93,14 @@ inflated by exactly that ratio.
 
 | Position genuinely at 10% LTV, 75% liquidation threshold | Outcome |
 |---|---|
-| The 2 mints at 10× | reads as **100% LTV** → liquidated while healthy |
-| The 3 mints at 2–5× | reads 20–50% → wrong, not liquidatable |
-| Median across all 379 stale mints | 0.32% → immaterial |
+| The mints at 10× | reads as **100% LTV** → liquidated while healthy |
+| Mints in the 2–5× range | reads 20–50% → wrong, not liquidatable |
+| Median across the mispriced set | under 1% → immaterial |
 
-**2 of 379 stale mints would liquidate a position that is genuinely at 10% LTV.**
-Not 379. The other 377 are wrong in a way that has not yet cost anyone money, and
-saying so is the difference between a finding and a sales pitch.
+**Only the handful at 10× would liquidate a position that is genuinely at 10% LTV.**
+Not the whole mispriced set. The rest are wrong in a way that has not yet cost
+anyone money, and saying so is the difference between a finding and a sales pitch.
+The exact counts are generated above from the published feed, never typed by hand.
 
 And the security surface nobody markets: **every official xStock carries a
 permanent delegate and a pause authority.** One compromised issuer key can
