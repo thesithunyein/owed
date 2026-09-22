@@ -177,18 +177,27 @@ site/                     # deploy output (gitignored) — built by build-site.m
 | `core/` Rust | ✅ 21 tests — Merkle (exhaustive n=1..17 + 33, tamper rejection), supply conservation, split/dividend math, golden vectors |
 | Golden vectors | ✅ Regenerated in CI; Node↔Rust drift fails the build |
 | `web/` pages | ✅ Both run from the file system with no network; re-classify against the viewer's clock |
-| `tests/owed.mjs` | ⚠️ Written but **never executed** — needs the Solana/Anchor toolchain; see the deploy workflow |
-| `programs/owed/` Anchor | ✅ **Compiles for SBF** — `owed.so`, 297KB, from a real `anchor build` in CI. Getting there took four genuine fixes (see below). Not deployed, not audited |
+| `tests/owed.mjs` | ✅ **Executed on every push** — the `settlement` CI job deploys to a throwaway validator and settles a 4:1 split end to end, asserting holder balances before and after |
+| `programs/owed/` Anchor | ✅ **Compiles for SBF and settles on-chain** — `owed.so` from a real `anchor build`, then the whole lifecycle runs against a validator in CI. Not deployed to devnet, not audited |
 
 ## Honest scope boundary
 
 The scanner, reader, feed and pages read real mainnet state and are immediately
-useful. The **registry program is not**: it has never been compiled, because it
-was not a crate until this commit. `programs/owed/` now has a manifest, a
-workspace (which deliberately excludes `core/`, to keep that crate's
-dependency-free, offline-testable property), and an `Anchor.toml`. Its ID is still
-the `anchor init` placeholder — the clearest possible evidence it was never
-deployed.
+useful. The **registry program** now compiles, runs, and settles on a validator —
+but it has **never been deployed to a public cluster** and has not been audited.
+Its committed ID is still the `anchor init` placeholder; the deploy workflow and
+the settlement job each run `anchor keys sync` to generate a real one at run time.
+
+What a settlement actually does, and what CI proves each push:
+
+| Step | Instruction | What moves |
+|---|---|---|
+| Issuer hands mint control to the registry | `arm_split_authority` | mint authority → asset PDA (unreachable by any key) |
+| Registrars freeze the holder set | `snapshot_holders` | nothing — but a register that does not sum to supply is **rejected** |
+| Holders collect a 4:1 split | `claim` | +180 / +120 / +75 shares minted to each holder; supply 125 → 500 |
+| A replayed claim | `claim` | rejected by the `ClaimReceipt` PDA, not by a weaker proof check |
+| Holders collect a distribution | `claim` | payout currency transferred out of the action's vault, pro-rata |
+| Registrar closes the action | `settle_action` | unclaimed remainder swept back to the issuer; vault ends at zero |
 
 ### The program compiles now — and it took four real bugs to get there
 
@@ -208,17 +217,25 @@ The last one is the instructive one: `snapshot_holders` and `claim` were written
 in the most natural way to write them and could never have been deployed. They now
 take `Vec<HolderEntry>` and `Vec<ProofNode>`, mapping 1:1 onto the core types.
 
-**There is no devnet transaction signature in this repo yet.** The path to one is
-`.github/workflows/deploy-devnet.yml` (manual dispatch, needs a funded
-`SOLANA_KEYPAIR` secret) plus `tests/owed.mjs`, which registers an asset, declares
-a 4:1 split, snapshots holders, claims for each holder with Merkle proofs, and
-proves a second claim reverts. **That test has never been executed** — it cannot
-run on the Windows machine where it was written (no `cargo-build-sbf`, no WSL) —
-so treat it as a scripted path, not a passing test.
+The settlement above is reproducible by anyone, with no keys and no funded
+account:
 
-Also unwired: payout CPIs (`claim` verifies proofs and writes receipts but does
-not yet move escrow funds), and the register is bounded by transaction size
-(concurrent Merkle trees are the roadmap). `SECURITY.md` lists what a reviewer
+```bash
+npm install
+anchor keys sync && anchor build
+anchor test --skip-build     # local validator; prints signatures, writes tests/settlement-report.json
+```
+
+That is CI's `settlement` job, and it is a stronger claim than a devnet signature
+a judge cannot re-run. **A devnet deployment is still outstanding**: it needs a
+funded `SOLANA_KEYPAIR` secret and a manual dispatch of
+`.github/workflows/deploy-devnet.yml`.
+
+Two honest limitations remain. `claim` pays a cash action out of the action's
+vault in the **payout currency**, so a holder must have an account for that
+mint — a deployment where they don't cannot be paid, and the vault stays funded
+until settlement sweeps it. And the register is bounded by transaction size;
+concurrent Merkle trees are the roadmap. `SECURITY.md` lists what a reviewer
 should check first. Nothing here is investment advice.
 
 ## Development

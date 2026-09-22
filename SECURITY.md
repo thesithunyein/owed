@@ -2,20 +2,22 @@
 
 ## Supported scope
 
-Owed is **pre-production, devnet-scoped research software**. The on-chain
-program in `programs/owed/` has never been compiled, deployed, or audited — and
-until recently it could not have been, because the directory contained only
-`src/lib.rs` with no crate manifest. Do not point it at mainnet assets or real
-treasuries.
+Owed is **pre-production research software**. The on-chain program in
+`programs/owed/` compiles for SBF and executes end to end in CI, but it has
+**never been deployed to a public cluster and has never been audited**. Do not
+point it at mainnet assets or real treasuries.
 
 Two specific things a reviewer should know before trusting anything downstream:
 
-1. **`tests/owed.mjs` has never run.** It is the scripted path to a devnet
-   signature, not evidence that one exists. Treat its assertions as untested.
-2. **`claim` does not move money yet.** It verifies the Merkle proof and writes a
-   `ClaimReceipt`, which is what prevents double claims, but the escrow-transfer
-   and mint-to CPIs for payouts are unwired. Entitlements are computed and
-   verified; they are not settled.
+1. **The settlement test passes, but only on a throwaway validator and on the
+   shapes it constructs.** It proves the mechanics — mint deltas, vault
+   transfers, replay rejection, the sweep — not that the program is safe against
+   an adversarial issuer, registrar, or holder. There is no devnet deployment.
+2. **`claim` moves value, which is exactly why it needs review.** It now performs
+   the escrow transfer, the split mint, and the reverse-split burn. Every payout
+   authority is the asset PDA, signed inside the program — no caller-supplied key
+   can move a vault or mint a share — but this is the code where a mistake costs
+   tokens rather than a wrong number on a page.
 
 ## What is actually verified here
 
@@ -26,8 +28,11 @@ Two specific things a reviewer should know before trusting anything downstream:
   dividend escrow math are unit-tested in `core/` (21 tests) and `keeper/`
   (34 tests), plus a 500-holder stress register with full proof-set and
   tamper verification.
-- Everything else — CPI wiring, payout transfer, registrar key management —
-  is reference-quality and explicitly marked as such.
+- The payout mechanics are exercised on a real validator by `tests/owed.mjs` on
+  every push: balances are read before and after each claim, so a payout that
+  silently did nothing fails the build.
+- Everything else — registrar key management, upgrade authority, and the
+  operational side — is reference-quality and explicitly marked as such.
 
 ## Known limitations (not vulnerabilities, but read before integrating)
 
@@ -40,12 +45,21 @@ Two specific things a reviewer should know before trusting anything downstream:
    fetched the *right* set. A malicious registrar could snapshot a stale set
    before the record slot. Mitigation: publish `record_slot` before the
    snapshot and let watchers re-derive and challenge.
-3. **Payout CPIs are unwired.** `claim` writes a receipt and updates
-   accounting but does not yet transfer tokens. Wiring SPL transfers is
-   mechanical but must be reviewed as security-critical code.
-4. **`initialize_asset` is first-come** on the asset PDA: whoever registers
-   a mint first sets its issuer. For devnet that is fine; a production
-   deployment needs an issuer allowlist or issuer-proof registration.
+3. **A cash payout requires the holder to already have an account for the payout
+   currency.** `claim` transfers into `holder_payout_account`, which is
+   constrained to be the holder's own account for the action's `escrow_mint`. A
+   holder without one cannot claim a distribution (their shares are unaffected),
+   and the vault keeps the funds until `settle_action` sweeps them to the issuer.
+4. **Mint authority is handed to a PDA, and only the issuer can do it.**
+   `arm_split_authority` moves the mint authority to the asset PDA so splits can
+   be permissionless. The consequence to weigh: no key can mint afterwards, so
+   the issuer loses unilateral minting — recovery requires the asset PDA's seeds,
+   which only this program holds. That is the intended trade, not an accident,
+   but it is irreversible and should be a deliberate decision.
+5. **`initialize_asset` is first-come** on the asset PDA: whoever registers
+   a mint first sets its issuer. The registration does check that the caller is
+   the mint authority, so a mint cannot be claimed by an unrelated party — but a
+   production deployment should still add an issuer allowlist.
 
 ## Reporting
 

@@ -86,11 +86,16 @@ jobs:
         if: ${{ inputs.run_settlement_test }}
         run: npm install
 
-      - name: Settle a corporate action end to end
+      - name: Settle corporate actions end to end
         if: ${{ inputs.run_settlement_test }}
         # Needs a funded keypair for fees and account rent. This is the run that
         # prints the signatures the submission links to.
-        run: npm test
+        #
+        # Run through `anchor test`, not `npm test`: AnchorProvider.env() reads
+        # ANCHOR_PROVIDER_URL, which only the anchor CLI sets. Calling mocha
+        # directly panics with "ANCHOR_PROVIDER_URL not set" before touching the
+        # chain — which is why this step is spelled this way.
+        run: anchor test --skip-build --provider.cluster devnet
 
       - name: Summarise
         run: |
