@@ -31,7 +31,13 @@ wallet = "~/.config/solana/id.json"
 [scripts]
 # The end-to-end test is plain ESM (.mjs) so it can import keeper/src/merkle.mjs
 # directly — the same module verified against the Rust core by golden vectors.
-test = "mocha --timeout 1000000 tests/**/*.mjs"
+#
+# `npx`, not a bare `mocha`: Anchor runs this command through a plain shell that
+# does not have node_modules/.bin on PATH, so the bare form dies with
+# "bash: line 1: mocha: command not found" (exit 127) *after* the validator is
+# up and the program is deployed — the most expensive possible place to fail.
+# `npx` resolves the locally installed binary.
+test = "npx mocha --timeout 1000000 tests/**/*.mjs"
 
 [test]
 # 30s, not the 5s this started at. On a cold CI runner the test validator takes

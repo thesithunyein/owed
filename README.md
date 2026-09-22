@@ -228,7 +228,10 @@ account:
 ```bash
 npm install
 anchor keys sync && anchor build
-anchor test --skip-build     # local validator; prints signatures, writes tests/settlement-report.json
+# `--provider.cluster localnet` is required: Anchor.toml's provider is devnet,
+# and a bare `anchor test` would try to deploy there.
+anchor test --skip-build --provider.cluster localnet
+# prints one signature per instruction and writes tests/settlement-report.json
 ```
 
 That is CI's `settlement` job, and it is a stronger claim than a devnet signature
@@ -277,8 +280,9 @@ cd site && vercel deploy --prod --yes --project owed
 # Runnable demo (synthetic register without args; live with a mint)
 node keeper/demo/snapshot-demo.mjs [<MINT_ADDRESS>]
 
-# Anchor program (requires anchor toolchain)
-cd programs/owed && anchor build && anchor test
+# Anchor program (requires the anchor + solana toolchains, Linux/macOS only)
+anchor keys sync && anchor build
+anchor test --skip-build --provider.cluster localnet
 ```
 
 ## License
