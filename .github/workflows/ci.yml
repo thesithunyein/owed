@@ -143,40 +143,81 @@ jobs:
           solana address
       - name: Install test dependencies
         run: npm install
-      - name: Generate a program id for this run
-        # A committed placeholder id is how you can tell a program was never
-        # deployed. This generates a real keypair and writes its pubkey into both
-        # declare_id! and Anchor.toml, so the build and the deploy agree.
-        run: anchor keys sync
+      - name: Place the committed program keypair
+        # The program's address has to be one fixed, real value. `anchor keys
+        # sync` generated a fresh random id on every run, so the address changed
+        # each time and no artifact could refer to the program. This keypair is
+        # committed for that reason alone — it controls nothing, because the
+        # program is deployed nowhere and holds no authority anywhere.
+        run: |
+          mkdir -p target/deploy
+          cp programs/owed/owed-keypair.json target/deploy/owed-keypair.json
       - name: Build the program for SBF
         run: anchor build
       - name: Report what was produced
         run: ls -la target/deploy/ || echo "no target/deploy produced"
+      - name: Assert every declared program id agrees
+        # The check whose absence cost several runs. A disagreement here appears
+        # at the first instruction as `DeclaredProgramIdMismatch`, which reads
+        # like a resync bug and names none of the four sources. Four sources,
+        # one expected value, printed before anything is executed:
+        run: |
+          set -euo pipefail
+          declared=$(sed -n 's/.*declare_id!("\([^"]*\)").*/\1/p' programs/owed/src/lib.rs | head -1)
+          keypair=$(solana-keygen pubkey target/deploy/owed-keypair.json)
+          toml=$(sed -n '/^\[programs\.localnet\]/,/^\[/p' Anchor.toml | sed -n 's/^owed *= *"\([^"]*\)".*/\1/p' | head -1)
+          idl=$(node -e "console.log(require('./target/idl/owed.json').metadata.address)")
+          echo "declare_id!     $declared"
+          echo "target keypair  $keypair"
+          echo "Anchor.toml     $toml"
+          echo "built IDL       $idl"
+          for pair in "target keypair:$keypair" "Anchor.toml:$toml" "built IDL:$idl"; do
+            name=${pair%%:*}
+            value=${pair#*:}
+            if [ "$value" != "$declared" ]; then
+              echo "::error::$name declares $value, but programs/owed/src/lib.rs declares $declared"
+              exit 1
+            fi
+          done
+          echo "all four agree on $declared"
+      - name: Start a local validator
+        # Driven explicitly rather than left to `anchor test`. Anchor's implicit
+        # deploy printed nothing at all, so the program was absent while every
+        # symptom pointed at program ids instead.
+        run: |
+          solana-test-validator --reset --ledger .anchor/test-ledger --quiet > /tmp/validator.log 2>&1 &
+          for i in $(seq 1 60); do
+            if solana --url http://127.0.0.1:8899 cluster-version >/dev/null 2>&1; then
+              echo "validator answered after ${i}s"
+              break
+            fi
+            sleep 1
+          done
+          solana --url http://127.0.0.1:8899 cluster-version
+      - name: Fund the deploy wallet
+        run: |
+          solana --url http://127.0.0.1:8899 airdrop 500
+          solana --url http://127.0.0.1:8899 balance
+      - name: Deploy the program to it
+        run: |
+          solana program deploy target/deploy/owed.so \
+            --program-id target/deploy/owed-keypair.json \
+            --url http://127.0.0.1:8899
+          solana program show "$(solana-keygen pubkey target/deploy/owed-keypair.json)" \
+            --url http://127.0.0.1:8899
       - name: Settle corporate actions end to end
-        # Two flags' worth of hard-won detail here.
-        #
-        # `--provider.cluster localnet` is required, not decorative: Anchor.toml
-        # sets `[provider] cluster = "devnet"`, so a bare `anchor test` tries to
-        # DEPLOY THE PROGRAM TO DEVNET. That failed with "insufficient funds for
-        # spend (1.77993548 SOL)" — the throwaway wallet has none, and it should
-        # not need any. Naming localnet makes Anchor start a validator and
-        # deploy there instead, which is the whole point of this job: no keys,
-        # no funded account, reproducible from a clone.
-        #
-        # NOT `--skip-build`. Skipping the build also skips the deploy that goes
-        # with it in localnet mode — Anchor went straight from "Running test
-        # suite" to mocha, with the program never deployed anywhere. Every call
-        # then failed with DeclaredProgramIdMismatch, which reads like an id
-        # problem and is really an absence-of-program problem. The build above
-        # stays as its own step because it reports the .so; this one re-runs it
-        # as a no-op from cache and deploys for real.
-        run: anchor test --provider.cluster localnet
+        # Plain mocha with the provider pointed at the validator started above.
+        # No `anchor test`: this job is meant to be read — including the step
+        # that deploys — not to depend on a CLI's internal sequencing.
+        run: |
+          export ANCHOR_PROVIDER_URL=http://127.0.0.1:8899
+          export ANCHOR_WALLET="$HOME/.config/solana/id.json"
+          npx mocha --timeout 1000000 tests/**/*.mjs
       - name: Show the validator log (only on failure)
-        # A validator that refuses to start is the least diagnosable failure here:
-        # Anchor reports "does not look started" and nothing else.
+        # A validator that refuses to start is the least diagnosable failure here.
         if: failure()
         run: |
-          for f in .anchor/test-ledger/test-ledger-log.txt target/validator.log; do
+          for f in /tmp/validator.log .anchor/test-ledger/test-ledger-log.txt; do
             if [ -f "$f" ]; then
               echo "=== $f ==="
               tail -60 "$f"

@@ -31,7 +31,12 @@ use anchor_spl::token::{Mint, Token, TokenAccount};
 // "use of undeclared type `COption`" — the third error this program produced.
 use anchor_lang::solana_program::program_option::COption;
 
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
+// A real program id, derived from the committed keypair at
+// `programs/owed/owed-keypair.json`. It replaced the `anchor init` placeholder,
+// which was the clearest possible evidence the program had never been deployed —
+// and it is fixed rather than regenerated per run, so an address in a log, a
+// test, or a submission still refers to this program tomorrow.
+declare_id!("42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV");
 
 /// Action kinds (u8 discriminant).
 pub const ACTION_DIVIDEND: u8 = 0;

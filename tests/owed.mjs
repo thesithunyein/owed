@@ -48,6 +48,21 @@ import { writeFileSync } from "node:fs";
 
 import { buildRegister, registerRootAndProofs } from "../keeper/src/merkle.mjs";
 
+// @coral-xyz/anchor 0.31.1 ships a CommonJS build, and its ESM namespace omits
+// `BN` — so both `import { BN }` and `anchor.BN` fail, the first at load and the
+// second with "anchor.BN is not a constructor" at the first u64 argument. The
+// CJS module.exports is reachable as `default`, and BN is on it.
+//
+// This cost a CI run to learn, which is why it is spelled out rather than
+// wrapped in a one-liner nobody would trust.
+const BN = anchor.default?.BN;
+if (typeof BN !== "function") {
+  throw new Error(
+    "BN is not reachable from @coral-xyz/anchor (checked anchor.BN and " +
+      "anchor.default.BN) — the u64 arguments below cannot be encoded",
+  );
+}
+
 // Action type codes — must match the constants in programs/owed/src/lib.rs.
 const ACTION_DIVIDEND = 0;
 const ACTION_SPLIT = 1;
@@ -188,7 +203,7 @@ describe("owed — settle corporate actions end to end", () => {
       .snapshotHolders(
         register.entries.map((e) => ({
           owner: new PublicKey(Buffer.from(e.owner)),
-          amount: new anchor.BN(e.amount.toString()),
+          amount: new BN(e.amount.toString()),
         })),
       )
       .accounts({
@@ -211,7 +226,7 @@ describe("owed — settle corporate actions end to end", () => {
 
     const receipt = receiptPda(action, holder.key.publicKey);
     const sig = await program.methods
-      .claim(index, new anchor.BN(amount.toString()), proof)
+      .claim(index, new BN(amount.toString()), proof)
       .accounts({
         action,
         asset: assetPda,
@@ -352,10 +367,10 @@ describe("owed — settle corporate actions end to end", () => {
     const sig = await program.methods
       .declareAction(
         ACTION_SPLIT,
-        new anchor.BN(Math.floor(Date.now() / 1000) - 60),
-        new anchor.BN(4), // ratio_num
-        new anchor.BN(1), // ratio_den
-        new anchor.BN(0), // amount_per_token — a split moves no cash
+        new BN(Math.floor(Date.now() / 1000) - 60),
+        new BN(4), // ratio_num
+        new BN(1), // ratio_den
+        new BN(0), // amount_per_token — a split moves no cash
         Array.from(sha256("owed:test:4-for-1-split")),
       )
       .accounts({
@@ -385,7 +400,7 @@ describe("owed — settle corporate actions end to end", () => {
     try {
       await program.methods
         .snapshotHolders([
-          { owner: holders[0].key.publicKey, amount: new anchor.BN(1) },
+          { owner: holders[0].key.publicKey, amount: new BN(1) },
         ])
         .accounts({
           asset: assetPda,
@@ -397,8 +412,10 @@ describe("owed — settle corporate actions end to end", () => {
         .rpc();
     } catch (err) {
       rejected = true;
-      message = err?.error?.errorCode?.errorCode ?? String(err).slice(0, 80);
+      message = err?.error?.errorCode?.errorCode ?? String(err);
     }
+    // Specific, not merely "it failed": a client-side exception would satisfy
+    // `rejected === true` while proving nothing about conservation.
     expect(rejected, "a register short of supply must be rejected").to.equal(true);
     expect(message).to.equal("SupplyMismatch");
     report.steps.push({ label: "snapshot_holders(short register)", rejected: true, code: message });
@@ -455,7 +472,7 @@ describe("owed — settle corporate actions end to end", () => {
     let code = "";
     try {
       await program.methods
-        .claim(0, new anchor.BN(holders[0].initial.toString()), toProof(original.proofs[0].siblings))
+        .claim(0, new BN(holders[0].initial.toString()), toProof(original.proofs[0].siblings))
         .accounts({
           action: currentAction,
           asset: assetPda,
@@ -474,10 +491,17 @@ describe("owed — settle corporate actions end to end", () => {
         .rpc();
     } catch (err) {
       rejected = true;
-      code = err?.error?.errorCode?.errorCode ?? String(err).slice(0, 60);
+      code = err?.error?.errorCode?.errorCode ?? String(err);
     }
     expect(rejected, "a replayed claim must fail").to.equal(true);
-    expect(code, "the receipt PDA must be what blocks it").to.not.equal("BadProof");
+    // The replay must be blocked by the receipt PDA already existing — not by a
+    // bad proof, and not by a thrown TypeError, either of which would make this
+    // test pass while proving nothing. (It did the latter until the BN bug was
+    // found.)
+    expect(
+      code,
+      "the replay must be blocked by an already-initialised receipt",
+    ).to.match(/AccountAlreadyInUse|already in use|0x0/i);
     report.steps.push({ label: "claim(replay)", rejected: true, code });
   });
 
@@ -514,10 +538,10 @@ describe("owed — settle corporate actions end to end", () => {
     const declareSig = await program.methods
       .declareAction(
         ACTION_DIVIDEND,
-        new anchor.BN(Math.floor(Date.now() / 1000) - 60),
-        new anchor.BN(1),
-        new anchor.BN(1),
-        new anchor.BN(AMOUNT_PER_SHARE.toString()),
+        new BN(Math.floor(Date.now() / 1000) - 60),
+        new BN(1),
+        new BN(1),
+        new BN(AMOUNT_PER_SHARE.toString()),
         Array.from(sha256("owed:test:distribution")),
       )
       .accounts({

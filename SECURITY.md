@@ -7,6 +7,14 @@ Owed is **pre-production research software**. The on-chain program in
 **never been deployed to a public cluster and has never been audited**. Do not
 point it at mainnet assets or real treasuries.
 
+A note on the keypair in this repository: `programs/owed/owed-keypair.json` is
+committed on purpose, so the program's address is a single fixed value rather
+than one regenerated per build. **It controls nothing.** The program is deployed
+to no cluster, and the authority to upgrade it belongs to whatever keypair
+deploys it (the `SOLANA_KEYPAIR` secret, for the manual devnet workflow). If you
+ever deploy this for real, generate a fresh keypair and treat the deployment
+authority as a secret.
+
 Two specific things a reviewer should know before trusting anything downstream:
 
 1. **The settlement test passes, but only on a throwaway validator and on the

@@ -15,11 +15,17 @@
 resolution = true
 skip-lint = false
 
+# Both clusters use the same id, derived from the committed keypair at
+# programs/owed/owed-keypair.json. Do not run `anchor keys sync` here: it would
+# generate a new random id, and the address would stop referring to this program.
+# CI asserts that these two, declare_id!, the target keypair, and the built IDL
+# all agree before it executes anything.
+
 [programs.localnet]
-owed = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+owed = "42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV"
 
 [programs.devnet]
-owed = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+owed = "42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV"
 
 [registry]
 url = "https://api.apr.dev"

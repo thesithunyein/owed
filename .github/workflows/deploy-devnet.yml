@@ -68,14 +68,28 @@ jobs:
           solana address
           solana balance
 
-      - name: Generate a real program id
-        # `anchor keys sync` rewrites declare_id! and Anchor.toml to match a
-        # freshly generated program keypair. Committing a placeholder id is how
-        # you can tell a program was never deployed; this replaces it.
-        run: anchor keys sync
+      - name: Place the committed program keypair
+        # In that order, and NOT `anchor keys sync`: the id is committed and
+        # fixed, so syncing would generate a new random address and silently
+        # change which program this deployment is about.
+        run: |
+          mkdir -p target/deploy
+          cp programs/owed/owed-keypair.json target/deploy/owed-keypair.json
 
       - name: Build for SBF
         run: anchor build
+
+      - name: Assert every declared program id agrees
+        run: |
+          set -euo pipefail
+          declared=$(sed -n 's/.*declare_id!("\([^"]*\)").*/\1/p' programs/owed/src/lib.rs | head -1)
+          keypair=$(solana-keygen pubkey target/deploy/owed-keypair.json)
+          toml=$(sed -n '/^\[programs\.devnet\]/,/^\[/p' Anchor.toml | sed -n 's/^owed *= *"\([^"]*\)".*/\1/p' | head -1)
+          idl=$(node -e "console.log(require('./target/idl/owed.json').metadata.address)")
+          echo "declare_id! $declared | keypair $keypair | Anchor.toml $toml | IDL $idl"
+          for v in "$keypair" "$toml" "$idl"; do
+            [ "$v" = "$declared" ] || { echo "::error::program id disagreement: $v != $declared"; exit 1; }
+          done
 
       - name: Deploy to devnet
         run: |
@@ -91,11 +105,15 @@ jobs:
         # Needs a funded keypair for fees and account rent. This is the run that
         # prints the signatures the submission links to.
         #
-        # Run through `anchor test`, not `npm test`: AnchorProvider.env() reads
-        # ANCHOR_PROVIDER_URL, which only the anchor CLI sets. Calling mocha
-        # directly panics with "ANCHOR_PROVIDER_URL not set" before touching the
-        # chain — which is why this step is spelled this way.
-        run: anchor test --skip-build --provider.cluster devnet
+        # Mocha directly, with the provider named explicitly. `npm test` would
+        # panic with "ANCHOR_PROVIDER_URL not set" — AnchorProvider.env() reads
+        # only that variable, and nothing else sets it here — and `anchor test`
+        # would rebuild and redeploy, which this workflow has already done in
+        # the steps above.
+        run: |
+          export ANCHOR_PROVIDER_URL=https://api.devnet.solana.com
+          export ANCHOR_WALLET="$HOME/.config/solana/id.json"
+          npx mocha --timeout 1000000 tests/**/*.mjs
 
       - name: Summarise
         run: |

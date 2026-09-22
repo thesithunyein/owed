@@ -227,11 +227,22 @@ account:
 
 ```bash
 npm install
-anchor keys sync && anchor build
-# `--provider.cluster localnet` is required: Anchor.toml's provider is devnet,
-# and a bare `anchor test` would try to deploy there.
-anchor test --skip-build --provider.cluster localnet
-# prints one signature per instruction and writes tests/settlement-report.json
+# The program's address is fixed by the committed keypair; do not `keys sync`.
+mkdir -p target/deploy && cp programs/owed/owed-keypair.json target/deploy/
+anchor build
+
+# A throwaway validator, started and deployed to explicitly. `anchor test`
+# manages this itself, but it deploys silently (and not at all with
+# --skip-build), so the steps are spelled out.
+solana-test-validator --reset --ledger .anchor/test-ledger --quiet &
+solana --url http://127.0.0.1:8899 airdrop 500
+solana program deploy target/deploy/owed.so \
+  --program-id target/deploy/owed-keypair.json --url http://127.0.0.1:8899
+
+# Prints one signature per instruction; writes tests/settlement-report.json
+ANCHOR_PROVIDER_URL=http://127.0.0.1:8899 \
+ANCHOR_WALLET="$HOME/.config/solana/id.json" \
+  npx mocha --timeout 1000000 tests/**/*.mjs
 ```
 
 That is CI's `settlement` job, and it is a stronger claim than a devnet signature
@@ -281,8 +292,11 @@ cd site && vercel deploy --prod --yes --project owed
 node keeper/demo/snapshot-demo.mjs [<MINT_ADDRESS>]
 
 # Anchor program (requires the anchor + solana toolchains, Linux/macOS only)
-anchor keys sync && anchor build
-anchor test --skip-build --provider.cluster localnet
+mkdir -p target/deploy && cp programs/owed/owed-keypair.json target/deploy/
+anchor build
+# Then the validator + deploy + mocha sequence shown under "Honest scope
+# boundary", or read `.github/workflows/ci.yml`, whose `settlement` job is exactly
+# those commands and runs them on every push.
 ```
 
 ## License
