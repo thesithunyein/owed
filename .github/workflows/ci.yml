@@ -153,29 +153,32 @@ jobs:
           mkdir -p target/deploy
           cp programs/owed/owed-keypair.json target/deploy/owed-keypair.json
       - name: Build the program for SBF
-        # One build, Anchor's default. Anchor 0.31.2 emits an SBPFv3 ELF, and
-        # that is the right artifact: enable_sbpf_v1/v2/v3_deployment_and_execution
-        # are all ACTIVE on devnet and mainnet (verified 2026-09-22 by RPC
-        # getAccountInfo on the gate addresses), so the public clusters accept it,
-        # and SIMD-0500 (Agave 4.4, Nov 2026) will make v3 the MINIMUM deployable
-        # version — a v0 artifact would expire then.
+        # One build, Anchor's default. The e_flags step below prints what it
+        # actually emits — SBPFv0 (00 00 00 00 at offset 0x30), despite Anchor
+        # documentation claiming v3 defaults. That was measured, not assumed,
+        # and it matches where the artifact has to go: devnet and mainnet have
+        # enable_sbpf_v1/v2/v3_deployment_and_execution all ACTIVE (verified
+        # 2026-09-22 by RPC getAccountInfo on the gate addresses) with
+        # disable_sbpf_v0_execution not yet activated, so they accept v0 today.
+        # (SIMD-0500, Agave 4.4 / Nov 2026, makes v3 the minimum — at that point
+        # the toolchain, not this repo, has to move.)
         #
-        # The place that rejects v3 is a fresh local validator: it starts with no
-        # feature gates, so its loader accepts only v0 — which is exactly the
-        # "Detected sbpf_version required by the executable which are not enabled"
-        # this job hit three times before anyone read the gate family out of
-        # agave/feature-set and checked the clusters. The step after the validator
-        # starts activates the same three gates here, so the local run judges the
-        # artifact by the same rules the real clusters will.
+        # The place that rejects v0 is a fresh local validator: solana-test-
+        # validator starts with EVERY feature gate active, including
+        # disable_sbpf_v0_execution, so its loader accepts only v3 — which is
+        # exactly the "Detected sbpf_version required by the executable which
+        # are not enabled" this job hit three times before anyone printed the
+        # bytes. The step after the validator starts deactivates that one gate,
+        # so the local run judges the artifact by the same rules devnet will.
         run: |
           anchor build
           ls -la target/deploy/owed.so
       - name: Inspect the ELF actually being deployed
         # The loader's version gate reads e_flags (byte offset 0x30 in the ELF
         # header; 0=v0 1=v1 2=v2 3=v3) — nothing else decides which cluster can
-        # load the artifact, so it is printed rather than assumed. This exists
-        # because a `--arch v0` rebuild was once trusted to have produced a v0
-        # ELF that then failed the same gate; the bytes are the only authority.
+        # load the artifact, so it is printed rather than assumed. This step is
+        # what exposed that Anchor 0.31.2 emits v0, contradicting its own docs,
+        # after an --arch v0 rebuild was trusted to have changed the version.
         run: |
           set -euo pipefail
           echo "ELF e_flags (LE u32 at 0x30; 0=v0 1=v1 2=v2 3=v3):"
@@ -231,16 +234,15 @@ jobs:
         # create directory .anchor/test-ledger: No such file or directory".
         run: |
           mkdir -p .anchor
-          # The three --activate-feature flags are the point of driving the
-          # validator by hand: a fresh validator enables no SBPF gates, so its
-          # loader accepts only v0 ELFs, while Anchor emits v3. devnet and
-          # mainnet have all three of these active (checked 2026-09-22 via
-          # getAccountInfo on the gate addresses), so activating them here makes
-          # the local cluster judge artifacts by the same rules as the real ones.
+          # One --deactivate-feature is the point of driving the validator by
+          # hand: solana-test-validator starts with EVERY gate active, including
+          # disable_sbpf_v0_execution, so its loader accepts only v3 ELFs — while
+          # Anchor 0.31.2 emits v0 (printed two steps up). Deactivating that gate
+          # restores the range devnet actually runs: v0 through v3. (--activate-
+          # feature does not exist in this CLI; the USAGE line in the failure
+          # said so, and cost one run to learn.)
           solana-test-validator --reset --ledger .anchor/test-ledger --quiet \
-            --activate-feature JE86WkYvTrzW8HgNmrHY7dFYpCmSptUpKupbo2AdQ9cG \
-            --activate-feature F6UVKh1ujTEFK3en2SyAL3cdVnqko1FVEXWhmdLRu6WP \
-            --activate-feature 5cC3foj77CWun58pC51ebHFUWavHWKarWyR5UUik7dnC \
+            --deactivate-feature TestFeature11111111111111111111111111111111 \
             > /tmp/validator.log 2>&1 &
           started=""
           for i in $(seq 1 60); do
@@ -278,7 +280,7 @@ jobs:
                  --program-id target/deploy/owed-keypair.json \
                  --url http://127.0.0.1:8899 2>&1 | tee /tmp/deploy.log; then
             if grep -q "sbpf_version" /tmp/deploy.log; then
-              echo "::error::the built ELF requires an SBPF version this validator has not enabled — the enable_sbpf_v1/v2/v3 gates are passed via --activate-feature above; if the build now emits a different version, activate its gate too (e_flags at offset 0x30 prints the version)"
+              echo "::error::the built ELF requires an SBPF version this validator has not enabled — disable_sbpf_v0_execution is deactivated above so v0 through v3 are accepted; check the e_flags version printed earlier"
             fi
             exit 1
           fi

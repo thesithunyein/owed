@@ -77,12 +77,14 @@ jobs:
           cp programs/owed/owed-keypair.json target/deploy/owed-keypair.json
 
       - name: Build for SBF
-        # Anchor's default, which emits SBPFv3. That is what devnet wants:
-        # enable_sbpf_v1/v2/v3_deployment_and_execution are all active there
-        # (verified 2026-09-22), and SIMD-0500 will make v3 the minimum. The
-        # only cluster that rejects v3 is a gate-less local validator; the CI
-        # settlement job activates the gates on its throwaway one and documents
-        # the whole story.
+        # Anchor's default. It emits an SBPFv0 ELF (measured via e_flags in the
+        # CI job's inspection step — despite Anchor docs claiming v3 defaults).
+        # That is what devnet accepts today: with disable_sbpf_v0_execution not
+        # yet activated, devnet's loader range is v0..=v3. A gate-full LOCAL
+        # validator is the only thing that rejects v0 (it starts with every gate
+        # active, so it accepts only v3); the CI settlement job deactivates that
+        # one gate and documents the story. When SIMD-0500 lands (Agave 4.4),
+        # the toolchain itself must move past v0.
         run: |
           anchor build
           ls -la target/deploy/owed.so
