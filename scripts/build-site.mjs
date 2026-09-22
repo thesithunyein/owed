@@ -60,7 +60,7 @@ assertDeployable("board.html", board);
 // is the hero background — shipping a truncated or zero-byte copy would render
 // a blank hero in front of a judge, so its presence and size are load-bearing.
 mkdirSync(join(SITE, "assets"), { recursive: true });
-for (const asset of ["og.png", "favicon.png", "hero.mp4", "poster.jpg"]) {
+for (const asset of ["og.png", "favicon.png", "logo.png", "logo-white.png", "hero.mp4", "poster.jpg"]) {
   const src = join(ROOT, "web", "assets", asset);
   if (!existsSync(src)) {
     throw new Error(`web/assets/${asset} is missing — it is part of the site`);
@@ -142,6 +142,6 @@ console.log(`site/ assembled from generated artifacts:`);
 for (const [name, len] of Object.entries(sizes)) {
   console.log(`  ${name.padEnd(26)} ${(len / 1024).toFixed(0)}KB`);
 }
-console.log(`  vercel.json + feed/index.json + assets/ (og, favicon, hero.mp4)`);
+console.log(`  vercel.json + feed/index.json + assets/ (og, favicon, logo, hero.mp4)`);
 console.log(`\nfeed: ${feed.tokens.length} tokens, generated ${feed.generatedAt}`);
 console.log(`deploy: cd site && vercel deploy --prod --yes --project owed`);

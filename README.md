@@ -1,3 +1,10 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="web/assets/logo-white.png" />
+    <img src="web/assets/logo.png" alt="Owed" width="96" />
+  </picture>
+</p>
+
 # Owed — the corporate-actions risk layer for tokenized equities on Solana
 
 > **Live: <https://owed.sithunyein.com>** · feed: `/feed/owed-risk.json` · schema: `/feed/schema.json`

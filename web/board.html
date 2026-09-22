@@ -6,6 +6,7 @@
 <title>Owed — Corporate-Actions Risk Board</title>
 <meta name="description" content="All 925 official xStocks on Solana, classified by stale multiplier and issuer control surfaces, from live mainnet state." />
 <link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="apple-touch-icon" href="assets/favicon.png" />
 <meta name="theme-color" content="#f0f0ee" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Owed" />
@@ -30,6 +31,11 @@
   header { padding:26px 22px 8px; max-width:1080px; margin:0 auto; }
   h1 { margin:0 0 6px; font-size:22px; letter-spacing:-0.02em; }
   h1 .brand { color:var(--amber); }
+  /* The shipped mark is black on transparency, and both pages are light, so the
+     black file is the one to use here. logo-white.png is the same artwork with
+     RGB negated and alpha untouched, for dark surfaces (the README under a dark
+     colour scheme, share cards). */
+  h1 .mark { vertical-align:-5px; margin-right:9px; }
   .sub { color:var(--dim); font-size:13px; max-width:880px; line-height:1.55; }
   .sub b { color:var(--text); }
   .bar { display:flex; gap:10px; align-items:center; padding:14px 22px; flex-wrap:wrap; }
@@ -69,7 +75,7 @@
 </head>
 <body>
 <header>
-  <h1><span class="brand">Owed</span> — Corporate-Actions Risk Board</h1>
+  <h1><img class="mark" src="assets/logo.png" alt="" width="30" height="30" /><span class="brand">Owed</span> — Corporate-Actions Risk Board</h1>
   <p style="margin:0 0 14px;font-size:13px">
     <a href="index.html">Harm calculator — naive vs chain-correct</a>
     <span style="opacity:.5"> · </span>
