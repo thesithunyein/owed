@@ -512,12 +512,15 @@ nothing went red. A board that is quietly stale is worse than no board, so
 deployed page's own embedded timestamp and fails if it trails the committed
 feed by more than two hours.
 
-Closing the gap properly needs one of these, both in the Vercel dashboard:
-
-| | |
-|---|---|
-| **Vercel token secrets** | add `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` as repository secrets - the workflow's `Deploy to Vercel` step already runs once they exist |
-| **Git integration** | connect this repository to the Vercel project and point it at the repository root; `vercel.json` already sets `buildCommand: node scripts/build-site.mjs` and `outputDirectory: site`, so every push deploys with no secrets at all |
+The repository is connected to the Vercel project, so **every push to `main`
+builds and deploys itself** - including the refresh workflow's scheduled
+commits. `vercel.json` carries the whole configuration (`buildCommand: node
+scripts/build-site.mjs`, `outputDirectory: site`, no install step, because the
+site build has no dependencies), so nothing about the deploy lives in a
+dashboard setting that a reader cannot see. The fallback for a fork that
+cannot use the integration is to add `VERCEL_TOKEN`, `VERCEL_ORG_ID` and
+`VERCEL_PROJECT_ID` as repository secrets; the workflow's `Deploy to Vercel`
+step runs as soon as they exist.
 
 The domain belongs to the Vercel project named `owed`. Deploying into a
 different project succeeds and changes nothing that anyone can see - which is
