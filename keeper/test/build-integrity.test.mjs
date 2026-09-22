@@ -42,6 +42,18 @@ test("README numbers match the published feed", () => {
   assert.match(stats, new RegExp(`\\b${s.ge100}\\b`), "headline ≥100% count");
   assert.match(stats, new RegExp(`\\b${s.ge10x}\\b`), "headline 10x count");
 
+  // The counts alone are not enough. They can hold steady across a refresh
+  // while the time quoted in the same sentence rots, and that is exactly what
+  // happened: the README advertised a 15:49 classification while the feed and
+  // the board it describes said 17:11, because the refresh workflow
+  // regenerated the pages but not this file. Every number here is derived, so
+  // the derivation's clock has to be checked too.
+  const at = `${new Date(feed.clock * 1000).toISOString().slice(0, 16).replace("T", " ")} UTC`;
+  assert.ok(
+    stats.includes(`classified at ${at}`),
+    `the README quotes the feed's own classification time (${at})`,
+  );
+
   const table = block("table");
   const cells = table
     .split("\n")

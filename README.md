@@ -33,7 +33,7 @@
 
 <!-- owed:stats:start -->
 > **379 of 925 official xStocks carry a stale on-chain multiplier field**
-> (classified at 2026-09-22 15:49 UTC); 4 are off by 100% or more, and 2 by a full 10x.
+> (classified at 2026-09-22 17:11 UTC); 4 are off by 100% or more, and 2 by a full 10x.
 > Not in theory: every mint was scanned and the effective value read from the chain.
 <!-- owed:stats:end -->
 
