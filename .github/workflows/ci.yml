@@ -193,15 +193,33 @@ jobs:
         # Driven explicitly rather than left to `anchor test`. Anchor's implicit
         # deploy printed nothing at all, so the program was absent while every
         # symptom pointed at program ids instead.
+        #
+        # `mkdir -p .anchor` is load-bearing: solana-test-validator creates the
+        # ledger directory itself but not its parent, and dies with "Unable to
+        # create directory .anchor/test-ledger: No such file or directory".
         run: |
+          mkdir -p .anchor
           solana-test-validator --reset --ledger .anchor/test-ledger --quiet > /tmp/validator.log 2>&1 &
+          started=""
           for i in $(seq 1 60); do
             if solana --url http://127.0.0.1:8899 cluster-version >/dev/null 2>&1; then
-              echo "validator answered after ${i}s"
+              started="$i"
+              break
+            fi
+            # A validator that died during startup will never become ready, so
+            # say so now instead of waiting out the full minute and reporting a
+            # bare connection error.
+            if ! kill -0 "$!" 2>/dev/null; then
               break
             fi
             sleep 1
           done
+          if [ -z "$started" ]; then
+            echo "::error::the local validator never answered on 127.0.0.1:8899"
+            cat /tmp/validator.log
+            exit 1
+          fi
+          echo "validator answered after ${started}s"
           solana --url http://127.0.0.1:8899 cluster-version
       - name: Fund the deploy wallet
         run: |

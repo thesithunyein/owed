@@ -233,7 +233,9 @@ anchor build
 
 # A throwaway validator, started and deployed to explicitly. `anchor test`
 # manages this itself, but it deploys silently (and not at all with
-# --skip-build), so the steps are spelled out.
+# --skip-build), so the steps are spelled out. The `mkdir` matters: the validator
+# creates the ledger directory but not its parent.
+mkdir -p .anchor
 solana-test-validator --reset --ledger .anchor/test-ledger --quiet &
 solana --url http://127.0.0.1:8899 airdrop 500
 solana program deploy target/deploy/owed.so \
