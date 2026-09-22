@@ -285,10 +285,11 @@ site/                      # deploy output (gitignored) — built by build-site.
 ## Honest scope boundary
 
 The scanner, reader, feed and pages read real mainnet state and are immediately
-useful. The **registry program** now compiles, runs, and settles on a validator —
-but it has **never been deployed to a public cluster** and has not been audited.
-Its committed ID is still the `anchor init` placeholder; the deploy workflow and
-the settlement job each run `anchor keys sync` to generate a real one at run time.
+useful. The **registry program** compiles, settles end-to-end in CI on every push,
+and is **deployed to devnet** with a green build-deploy-settle run — but it is
+**not on mainnet and has not been audited**, so nothing real-value should touch it
+yet. Its address is fixed by the committed keypair (`42WwVtPQ…FCLV`), not minted
+per build; see [Devnet deployment](#devnet-deployment) for the receipts.
 
 What a settlement actually does, and what CI proves each push:
 
@@ -339,10 +340,17 @@ anchor build
 # path (disable_sbpf_v0_v1_v2_deployment). Devnet and mainnet have both gates
 # inactive, which is why the same artifact deploys there. `anchor build`
 # emits an SBPFv0 ELF (its e_flags say so; Anchor's docs claim v3 defaults).
+#
+# `TestFeature1111…` is the gate's real address, not a placeholder: Anza leaves
+# feature gates at TestFeature… addresses until they are renamed for activation,
+# and this one has not been. It looks fake; it is not.
 mkdir -p .anchor
 solana-test-validator --reset --ledger .anchor/test-ledger --quiet \
   --deactivate-feature TestFeature11111111111111111111111111111111 \
   --deactivate-feature B8JJXCy5amZyWG9r7EnUYLwzXSXTxG7GZ1qZ1qggo83g &
+# The settlement's fee payer is the CLI's default keypair; create it first on a
+# fresh machine. Local airdrops only — none of this touches a public cluster.
+solana-keygen new --no-bip39-passphrase -o "$HOME/.config/solana/id.json" --force
 solana --url http://127.0.0.1:8899 airdrop 500
 solana program deploy target/deploy/owed.so \
   --program-id target/deploy/owed-keypair.json --url http://127.0.0.1:8899
@@ -502,12 +510,10 @@ node keeper/demo/snapshot-demo.mjs [<MINT_ADDRESS>]
 # Anchor program (requires the anchor + solana toolchains, Linux/macOS only)
 mkdir -p target/deploy && cp programs/owed/owed-keypair.json target/deploy/
 anchor build
-# Then the validator (with its one --deactivate-feature flag) + deploy + mocha
-# sequence shown in the repro block, or read `.github/workflows/ci.yml`, whose
-# `settlement` job is exactly those commands and runs them on every push.
 # Then the validator + deploy + mocha sequence shown under "Honest scope
-# boundary", or read `.github/workflows/ci.yml`, whose `settlement` job is exactly
-# those commands and runs them on every push.
+# boundary" — validator first, with BOTH --deactivate-feature flags.
+# `.github/workflows/ci.yml`'s `settlement` job is the same commands, running on
+# every push, and is the reference if this comment and reality ever diverge.
 ```
 
 ## Governance
