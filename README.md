@@ -33,7 +33,7 @@
 
 <!-- owed:stats:start -->
 > **379 of 925 official xStocks carry a stale on-chain multiplier field**
-> (classified at 2026-09-22 10:26 UTC); 4 are off by 100% or more, and 2 by a full 10x.
+> (classified at 2026-09-22 15:49 UTC); 4 are off by 100% or more, and 2 by a full 10x.
 > Not in theory: every mint was scanned and the effective value read from the chain.
 <!-- owed:stats:end -->
 
@@ -112,8 +112,8 @@ wrong price for every affected token. Our full scan of the official mint list:
 | … off by **≥1%** | **28** |
 | … off by **≥0.5%** | **110** |
 | Median magnitude of the gap | **0.32%** |
-| Median time already stale | **28 days** |
-| Longest stale | **348 days** (`GMEx`) |
+| Median time already stale | **29 days** |
+| Longest stale | **349 days** (`GMEx`) |
 | Mints with a **permanent delegate** (issuer can move anyone's tokens) | **925 / 925** |
 | Mints with a **pause authority** (issuer can freeze all transfers) | **925 / 925** |
 | Currently paused | 0 |
@@ -397,12 +397,12 @@ by `scripts/gen-webdata.mjs`, and a CI test fails if the two ever disagree:
 | initialize_asset | [G92HsCsjee1cr7vs…](https://explorer.solana.com/tx/G92HsCsjee1cr7vsuS97yk6A9BL6PxbBeiDod8sfeRUZowbWoGB3vbEwmocFQz19PieHzJx9rzvUwZxwg9XyHZo?cluster=devnet) |
 | arm_split_authority | [2ivzcAChnksjhkPb…](https://explorer.solana.com/tx/2ivzcAChnksjhkPbxMLt7t3rZrHprD9HcDPzGAPB73W6oWui3zLDnTXcGsFAbtSZ4QVUDJ8C7BnNq8KyGtehrDSX?cluster=devnet) |
 | declare_action(split 4:1) | [3iNVHCARumMzFPZU…](https://explorer.solana.com/tx/3iNVHCARumMzFPZU1akt4eWkbKy4kjcvVy1RPti1VMraH2c9waHcgmFv33iTSAjaZ7Lj1aZ6nVeWALtmRU1acWxr?cluster=devnet) |
-| snapshot_holders(short register) | **rejected** — the program's own `SupplyMismatch` (lib.rs:225): a register that does not sum to supply cannot be recorded |
+| snapshot_holders(short register) | **rejected** - the program's own `SupplyMismatch` (lib.rs:225): a register that does not sum to supply cannot be recorded |
 | snapshot_holders(action 4zqNC9…) | [3nbPfG7RmwL1eTtd…](https://explorer.solana.com/tx/3nbPfG7RmwL1eTtdHvncbzdus9CP8zNbK4KUY8bA5o5bRc5mKx6VsZXELryVwozC55pm75DE1AXVPwhYdipsLBDv?cluster=devnet) |
 | claim[2Km2Hu…] | [GDHpmmFxmNEZvxML…](https://explorer.solana.com/tx/GDHpmmFxmNEZvxMLKmux7z9ZJiwqJWENquVEZGziAWzGiqPB9HvDFjNfMgVipaFBaZ74JcAopNCdykHykQo6qaC?cluster=devnet) |
 | claim[8bHPWZ…] | [xzcZJWMFE7Do9Wng…](https://explorer.solana.com/tx/xzcZJWMFE7Do9Wngp4Lm9xUNu2R24tLnRm7fRzsiLdhCXf378uWM8vNKK6qPjPqaxruXTgSsx3atXZfacR9zoSx?cluster=devnet) |
 | claim[9svT6y…] | [3qZcC9PMyZHQuXhf…](https://explorer.solana.com/tx/3qZcC9PMyZHQuXhfUNjzeGZatdCiL4XsQnxjR5Ljivhs9DkVmdBCV6Q9ez6ZUCsFVqJejnKnexapkDbthxJrNtU6?cluster=devnet) |
-| claim(replay) | **rejected** — the receipt PDA already exists, so a settled claim can never be paid twice |
+| claim(replay) | **rejected** - the receipt PDA already exists, so a settled claim can never be paid twice |
 | settle_action(split) | [5JPbGxFbi1iosL5z…](https://explorer.solana.com/tx/5JPbGxFbi1iosL5zRKp85rGhnAmsUhnteHsZWwYQ3PthEXvPEpCK4xEn9PokXxCik88Cff8nH6zAH4Yx294o2VtW?cluster=devnet) |
 | declare_action(dividend) | [2uoiQQsihuHFA3Jx…](https://explorer.solana.com/tx/2uoiQQsihuHFA3JxcMfdmRaT1cBHs4TKHvVeTT2KN1dQNwo5V2wbL6w7pZvQqNXVgYkRNhZZzkZeMFdcKk798WuG?cluster=devnet) |
 | snapshot_holders(action HV7jHU…) | [4mn7zkrBu8ncSFRx…](https://explorer.solana.com/tx/4mn7zkrBu8ncSFRxhtRJC1oka1rwW8mQDzC6J4WbtJWJenkqBcxNjERdv13XqSY2HuMSJswbkhzb9iB4dKQZeeF3?cluster=devnet) |

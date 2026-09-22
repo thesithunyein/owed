@@ -214,9 +214,9 @@ if (feed) {
     // The two paths that must refuse, in the words the test itself asserts.
     const REJECTED_NOTE = {
       "snapshot_holders(short register)":
-        "**rejected** — the program's own `SupplyMismatch` (lib.rs:225): a register that does not sum to supply cannot be recorded",
+        "**rejected** - the program's own `SupplyMismatch` (lib.rs:225): a register that does not sum to supply cannot be recorded",
       "claim(replay)":
-        "**rejected** — the receipt PDA already exists, so a settled claim can never be paid twice",
+        "**rejected** - the receipt PDA already exists, so a settled claim can never be paid twice",
     };
     const rows = report.steps.map((s) =>
       s.rejected
