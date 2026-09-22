@@ -13,3 +13,6 @@ test-ledger/
 .env
 *.log
 .DS_Store
+
+# Local scratch: self-contained page copies used for visual checks
+/.freebuff-owed-preview

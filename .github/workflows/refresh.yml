@@ -84,4 +84,10 @@ jobs:
         run: |
           npm i -g vercel@latest
           cd site
+          # The production domain owed.sithunyein.com belongs to the Vercel project
+          # "owed". Link explicitly (ignoring any org/project env override) so a
+          # stale project id can never deploy into a project the domain does not
+          # serve - which silently leaves the live site on an old snapshot.
+          env -u VERCEL_PROJECT_ID -u VERCEL_ORG_ID \
+            vercel link --yes --project owed --token "$VERCEL_TOKEN"
           vercel deploy --prod --yes --token "$VERCEL_TOKEN"
