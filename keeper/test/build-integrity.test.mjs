@@ -136,9 +136,13 @@ test("both pages load no EXTERNAL resources (relative site assets are fine)", ()
       `${p} loads cross-origin resources: ${external.join(", ")}`,
     );
 
-    // Every relative load must be an asset the site actually ships.
+    // Every relative load must be an asset the site actually ships. A cache
+    // busting query (?v=N on the favicon) is not part of the path.
     for (const u of urls.filter((u) => !/^[a-z][a-z0-9+.-]*:/i.test(u))) {
-      const path = u.replace(/^\.?\//, "").replace(/^assets\//, "");
+      const path = u
+        .split("?")[0]
+        .replace(/^\.?\//, "")
+        .replace(/^assets\//, "");
       assert.ok(
         existsSync(join(WEB, "assets", path)),
         `${p} references "${u}" but web/assets/${path} does not exist`,

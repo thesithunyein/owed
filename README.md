@@ -5,7 +5,7 @@
   </picture>
 </p>
 
-# Owed — the corporate-actions risk layer for tokenized equities on Solana
+# Owed - corporate-actions risk for tokenized equities on Solana
 
 <p align="center">
   <a href="https://owed.sithunyein.com">Live app</a> ·
@@ -23,7 +23,7 @@
   <img alt="mints scanned" src="https://img.shields.io/badge/mints%20scanned-925%2F925-2563eb?style=flat-square" />
   <img alt="license" src="https://img.shields.io/badge/license-MIT-6b7280?style=flat-square" />
   <img alt="keeper deps" src="https://img.shields.io/badge/keeper%20runtime%20deps-0-059669?style=flat-square" />
-  <a href="SECURITY.md"><img alt="audits" src="https://img.shields.io/badge/audited-no%20—%20devnet%20only-d97706?style=flat-square" /></a>
+  <a href="SECURITY.md"><img alt="audits" src="https://img.shields.io/badge/audited-no%20-%20devnet%20only-d97706?style=flat-square" /></a>
 </p>
 
 <p align="center">
@@ -39,52 +39,48 @@
 
 ## Architecture
 
+The pipeline that turns mainnet state into a published, checkable answer:
+
+```mermaid
+flowchart TB
+  Mainnet[Solana mainnet: 925 xStocks mints] --> Scan[scan-xstocks.mjs]
+  Scan --> Raw[keeper/data/xstocks-scan.json: raw Scaled UI Amount state]
+  Raw --> Feed[risk-feed.mjs]
+  Feed --> Contract[feed/owed-risk.json + schema.json: the contract]
+  Contract --> Pages[gen-webdata.mjs]
+  Contract --> Trap[verify-trap.mjs]
+  Contract --> Conf[conformance.mjs: reader vs runtime on all 925]
+  Pages --> App[owed.sithunyein.com: search a ticker]
+  Pages --> Board[board.html: every mint]
+  Trap --> CI[CI verification spine]
+  Conf --> CI
+  CI --> Settle[on-chain settlement on every push]
 ```
-                                OFF-CHAIN PIPELINE
 
-  Solana mainnet ──► scan-xstocks.mjs ──► keeper/data/xstocks-scan.json
-  (925 official       every RPC read        raw scaledUiAmountConfig
-   xStocks mints)     carries its clock     + security extensions
-                            │
-                            ▼
-                    risk-feed.mjs ──────► feed/owed-risk.json  ◄── THE CONTRACT
-                    classifies at a       + feed/schema.json        (consumers integrate
-                    stamped clock                                   against this)
-                            │
-              ┌─────────────┼──────────────┐
-              ▼             ▼              ▼
-       gen-webdata.mjs   verify-trap.mjs   conformance.mjs
-       injects into the  replays the trap  reader vs runtime
-       pages + README    from the feed     on all 925 mints
-              │
-              ▼
-       web/differential.html ── the app: search a ticker, get the answer
-       web/board.html ────────── all 925 mints, every state
-       (single files, work from disk, re-classify against YOUR clock)
+The on-chain registry that settles corporate actions correctly, once price
+discovery on the stale field is done:
 
-                              ON-CHAIN LAYER
-
-  programs/owed (Anchor)          core (Rust)          keeper (TS)
-  ─────────────────────           ───────────          ───────────
-  initialize_asset  ◄── regs the  register.rs          snapshot.mjs
-  declare_action    ──► action    merkle.rs            fetches holders
-  snapshot_holders  ──► frozen    corporate.rs  ◄──►  scaled.mjs
-  │                      root     sha256.rs            SAME vectors
-  ▼                      │             ▲                    ▲
-  claim (Merkle proof) ──┘             └──── shared/golden vectors (committed;
-  settle_action ──► vault swept           both languages verify in CI)
-  ──► dividends paid pro rata
-
-  Devnet: 42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV
-  (split + dividend settled end-to-end; signatures in "Devnet deployment" below)
-
-                              VERIFICATION SPINE
-
-  every push ──► CI: rust tests · 75 keeper tests · 925/925 conformance ·
-                 determinism (rebuild = byte-identical) · program-id agreement
-                 (4 sources) · ELF e_flags · on-chain settlement with receipts ·
-                 page/README claims re-checked against committed records
+```mermaid
+flowchart TB
+  Issuer[Issuer declares a split or dividend] --> Declare[declare_action]
+  Declare --> Snap[snapshot_holders: Merkle root frozen on-chain]
+  Snap --> Claim[Holder claims with a Merkle proof]
+  Claim --> Settle[settle_action]
+  Settle --> Vault[Vault swept: dividends paid pro rata]
+  Keeper[Keeper fetches holders + builds proofs] --> Snap
+  Core[Rust core: merkle + corporate math] --> Keeper
+  Prog[programs/owed on devnet] --> Declare
+  Prog --> Settle
+  Prog --> Snap
 ```
+
+Devnet program: `42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV` (split and
+dividend settled end-to-end; signatures in "Devnet deployment" below).
+
+CI runs the full verification spine on every push: Rust tests, 75 keeper tests,
+925/925 conformance against the runtime, deterministic rebuild, program-id
+agreement across four sources, ELF e_flags, an on-chain settlement with
+receipts, and re-checking every page/README claim against committed records.
 
 The invariant that holds the whole thing together: **every published number is
 recomputable from published inputs.** The feed ships the raw chain state beside
@@ -103,7 +99,7 @@ overwrites it, while the *effective* multiplier is time-dependent:
 effective(now) = now >= newMultiplierEffectiveTimestamp ? newMultiplier : multiplier
 ```
 
-An app that reads the stored field alone — the obvious integration — computes the
+An app that reads the stored field alone - the obvious integration - computes the
 wrong price for every affected token. Our full scan of the official mint list:
 
 | Finding | Count |
@@ -123,7 +119,7 @@ wrong price for every affected token. Our full scan of the official mint list:
 | Currently paused | 0 |
 <!-- owed:table:end -->
 
-Most gaps are small — and saying so is the point. `AAPLx` (`XsbEhL…zJp`) has
+Most gaps are small - and saying so is the point. `AAPLx` (`XsbEhL…zJp`) has
 stored `1.00266…` while `1.00327…` took effect on **2026-08-07**, a 0.06% error.
 But the tail is not small: `NFLXx` still carries a stored `1.0` while the chain
 applies **10**, 309 days after the split activated. Anyone valuing an `NFLXx`
@@ -131,7 +127,7 @@ position from that field is wrong by an order of magnitude, and it has been wron
 since November 2025.
 
 **Precise scope of the claim** (it is falsifiable, so state it precisely): this
-traps apps that read `scaledUiAmountConfig.multiplier` from the mint account — the
+traps apps that read `scaledUiAmountConfig.multiplier` from the mint account - the
 obvious integration when you cache token config, build an indexer, or value
 collateral. Apps that call `getTokenSupply` / `amountToUiAmount` get the correct
 effective value from the runtime and are unaffected.
@@ -141,7 +137,7 @@ Token-2022 applying the pending multiplier automatically once its timestamp
 passes. `scripts/verify-trap.mjs` tests that against mainnet instead of reasoning
 about it: `getTokenSupply` reports the runtime's effective scaled amount, so the
 ratio `uiAmount / rawAmount` is ground truth. Result: **8 of 8 sampled traps match
-the pending multiplier, not the stored one** — including `NFLXx` at exactly `10`.
+the pending multiplier, not the stored one** - including `NFLXx` at exactly `10`.
 
 ```
 node scripts/verify-trap.mjs            # worst offenders, auto-selected
@@ -161,7 +157,7 @@ $ node scripts/conformance.mjs --all
                           # `--only ARx` retried it clean: 1/1
 ```
 
-That is the **entire official xStocks set — 925 of 925 mints — with our reader
+That is the **entire official xStocks set - 925 of 925 mints - with our reader
 agreeing with the runtime to nine decimal places.** The default `--n` sample is
 stratified (every mint with a real gap is included, then the rest filled from
 fresh mints), so a pass cannot be earned by only testing mints where the two
@@ -187,13 +183,13 @@ The exact counts are generated above from the published feed, never typed by han
 
 And the security surface nobody markets: **every official xStock carries a
 permanent delegate and a pause authority.** One compromised issuer key can
-confiscate or freeze any holder's balance. Presence is not an attack — but any
+confiscate or freeze any holder's balance. Presence is not an attack - but any
 protocol integrating these tokens as collateral must know, and none of it is
 visible in a wallet UI.
 
 ## What Owed ships
 
-**1. `feed/owed-risk.json` — the integration surface.** One document that answers
+**1. `feed/owed-risk.json` - the integration surface.** One document that answers
 "what multiplier is in force for this mint, and is anything about it dangerous?"
 for all 925 mints, with a JSON Schema at `feed/schema.json`. Two design choices
 make it auditable rather than trustworthy-by-assertion:
@@ -204,24 +200,24 @@ make it auditable rather than trustworthy-by-assertion:
 - `effectiveMultiplier` is stamped with the clock it was computed at, because the
   value is time-dependent and a silently stale feed is worse than no feed.
 
-**2. `web/differential.html` — the harm, clickable.** Single self-contained file
-shaped like an app rather than a report: you search a ticker and get one answer —
+**2. `web/differential.html` - the harm, clickable.** Single self-contained file
+shaped like an app rather than a report: you search a ticker and get one answer -
 what a naive reader sees, what the chain applies, and how long it has been wrong,
 with the position-sizing and liquidation consequence one click deeper. A mint that
 is fine says so. The full findings, the method and the evidence are collapsed
 behind disclosures instead of filling the first screen, and a shared link carries
 its token (`#t=AAPLx`). All of it re-classified against your clock on load.
 
-**3. `web/board.html` — the risk board.** All 925 mints with stored vs effective
+**3. `web/board.html` - the risk board.** All 925 mints with stored vs effective
 multiplier, gap, days stale, and issuer-control flags. Same offline, no-build
 property; optional live re-scan with your own RPC URL.
 
-**4. The correct reader, tested** — `keeper/src/trap.mjs` (`effectiveMultiplier`,
+**4. The correct reader, tested** - `keeper/src/trap.mjs` (`effectiveMultiplier`,
 `readerTrapGap`, `matchVerdict`, `classifyRecord`, `summarize`) plus
 `keeper/src/scaled.mjs` for parsing the extensions themselves, with tests pinned to
 real mainnet account shapes.
 
-**5. The registry primitive (the deeper fix)** — an on-chain corporate-actions
+**5. The registry primitive (the deeper fix)** - an on-chain corporate-actions
 registry: issuer declares an action, the holder set is snapshotted at the record
 slot into a Merkle root, holders claim with proofs. `programs/owed/` is the
 Anchor reference program; `core/` (Rust) and `keeper/` carry the same math with
@@ -232,7 +228,7 @@ cross-language golden vectors.
 We tried to show that the largest Solana DEX aggregator misstates xStock supply,
 and **could not**. `scripts/aggregator-audit.mjs` recovers the aggregator's implied
 supply as `marketCap / priceUsd` and compares it to `getTokenSupply`, but the
-control tokens miss too — JUP implies 0.48× total supply (vesting), USDC 9.6×
+control tokens miss too - JUP implies 0.48× total supply (vesting), USDC 9.6×
 (aggregated across chains). A mismatch is therefore consistent with a different
 *supply definition*, not with an inability to read supply. One control one cannot
 attribute blame to a single party. The probe is kept as a record of an open
@@ -242,16 +238,16 @@ question and is deliberately not cited as evidence anywhere above.
 
 ```
 owed/
-├── programs/owed/         # Anchor program — initialize_asset, declare/snapshot/
+├── programs/owed/         # Anchor program - initialize_asset, declare/snapshot/
 │   ├── src/lib.rs         #   claim/settle; the SBF artifact CI builds every push
 │   └── owed-keypair.json  #   committed: fixes the program address (see Devnet)
-├── core/                  # Rust crate — register, Merkle tree, split/dividend math
+├── core/                  # Rust crate - register, Merkle tree, split/dividend math
 │   └── src/               #   offline, no external crates; golden-vector verified
-├── keeper/                # TypeScript — trap logic, scaled reader, snapshot builder
+├── keeper/                # TypeScript - trap logic, scaled reader, snapshot builder
 │   ├── src/               #   zero runtime dependencies, hermetic
 │   ├── data/              #   official mint list, latest scan, conformance reports
 │   └── test/              #   76 tests incl. build-integrity guards on the pages
-├── feed/                  # owed-risk.json + schema.json — THE integration contract
+├── feed/                  # owed-risk.json + schema.json - THE integration contract
 ├── web/                   # differential.html (the app) + board.html (risk table)
 │   └── assets/            #   logo, favicon, og card, hero video/poster
 ├── shared/vectors/        # cross-language golden vectors (generated, committed)
@@ -264,7 +260,7 @@ owed/
 ├── SECURITY.md            # scope, verified vs not, disclosure
 └── LICENSE                # MIT
 
-site/                      # deploy output (gitignored) — built by build-site.mjs
+site/                      # deploy output (gitignored) - built by build-site.mjs
 ```
 
 ## What is verified in this checkout
@@ -272,21 +268,21 @@ site/                      # deploy output (gitignored) — built by build-site.
 | Component | Status |
 |---|---|
 | Mainnet scan | ✅ 925/925 mints read and classified via public RPC; snapshot committed |
-| **Conformance** | ✅ **925/925 mints** — our reader equals the Token-2022 runtime at 1e-9 relative tolerance across the whole official set (`node scripts/conformance.mjs --all`) |
+| **Conformance** | ✅ **925/925 mints** - our reader equals the Token-2022 runtime at 1e-9 relative tolerance across the whole official set (`node scripts/conformance.mjs --all`) |
 | **Trap verification** | ✅ 8/8 sampled traps confirmed against `getTokenSupply`; 2 at exactly 10× |
 | **Risk feed** | ✅ 925 tokens; every published `effectiveMultiplier` reproducibly recomputed from published raw state (tested) |
-| `keeper/` TS | ✅ 73 tests — trap logic, scaled classifier pinned to real account shapes, feed contract, page build integrity, Merkle parity, RPC parsing, base58, 500-holder stress |
-| `core/` Rust | ✅ 21 tests — Merkle (exhaustive n=1..17 + 33, tamper rejection), supply conservation, split/dividend math, golden vectors |
+| `keeper/` TS | ✅ 73 tests - trap logic, scaled classifier pinned to real account shapes, feed contract, page build integrity, Merkle parity, RPC parsing, base58, 500-holder stress |
+| `core/` Rust | ✅ 21 tests - Merkle (exhaustive n=1..17 + 33, tamper rejection), supply conservation, split/dividend math, golden vectors |
 | Golden vectors | ✅ Regenerated in CI; Node↔Rust drift fails the build |
 | `web/` pages | ✅ Both run from the file system with no network; re-classify against the viewer's clock |
-| `tests/owed.mjs` | ✅ **Executed on every push** — the `settlement` CI job deploys to a throwaway validator and settles a 4:1 split end to end, asserting holder balances before and after |
-| `programs/owed/` Anchor | ✅ **Compiles for SBF, settles on-chain in CI, and settles on devnet** — `owed.so` from a real `anchor build`, the whole lifecycle runs against a throwaway validator on every push, and the same lifecycle has run on devnet with real signatures ([see below](#devnet-deployment)). Not audited |
+| `tests/owed.mjs` | ✅ **Executed on every push** - the `settlement` CI job deploys to a throwaway validator and settles a 4:1 split end to end, asserting holder balances before and after |
+| `programs/owed/` Anchor | ✅ **Compiles for SBF, settles on-chain in CI, and settles on devnet** - `owed.so` from a real `anchor build`, the whole lifecycle runs against a throwaway validator on every push, and the same lifecycle has run on devnet with real signatures ([see below](#devnet-deployment)). Not audited |
 
 ## Honest scope boundary
 
 The scanner, reader, feed and pages read real mainnet state and are immediately
 useful. The **registry program** compiles, settles end-to-end in CI on every push,
-and is **deployed to devnet** with a green build-deploy-settle run — but it is
+and is **deployed to devnet** with a green build-deploy-settle run - but it is
 **not on mainnet and has not been audited**, so nothing real-value should touch it
 yet. Its address is fixed by the committed keypair (`42WwVtPQ…FCLV`), not minted
 per build; see [Devnet deployment](#devnet-deployment) for the receipts.
@@ -296,13 +292,13 @@ What a settlement actually does, and what CI proves each push:
 | Step | Instruction | What moves |
 |---|---|---|
 | Issuer hands mint control to the registry | `arm_split_authority` | mint authority → asset PDA (unreachable by any key) |
-| Registrars freeze the holder set | `snapshot_holders` | nothing — but a register that does not sum to supply is **rejected** |
+| Registrars freeze the holder set | `snapshot_holders` | nothing - but a register that does not sum to supply is **rejected** |
 | Holders collect a 4:1 split | `claim` | +180 / +120 / +75 shares minted to each holder; supply 125 → 500 |
 | A replayed claim | `claim` | rejected by the `ClaimReceipt` PDA, not by a weaker proof check |
 | Holders collect a distribution | `claim` | payout currency transferred out of the action's vault, pro-rata |
 | Registrar closes the action | `settle_action` | unclaimed remainder swept back to the issuer; vault ends at zero |
 
-### The program compiles now — and it took four real bugs to get there
+### The program compiles now - and it took four real bugs to get there
 
 `programs/owed/` shipped as a bare `src/lib.rs` with no crate around it: no
 `Cargo.toml`, no `Anchor.toml`, just the default `anchor init` program id. Nothing
@@ -314,7 +310,7 @@ real build, the compiler found four errors that no amount of reading would have:
 | `expected identifier, found '#'` | a `///` doc comment on a **function parameter**, which desugars to an attribute Rust forbids there |
 | `unresolved crate solana_program` | `sha256` called it directly without it being a dependency |
 | `undeclared type COption` | `mint.mint_authority` is an SPL `COption`; anchor's prelude does not re-export it |
-| `Unsupported type` ×2 | `Vec<(Pubkey, u64)>` and `Vec<([u8; 32], u8)>` — Anchor's IDL cannot express tuples, so **both instructions were unbuildable** |
+| `Unsupported type` ×2 | `Vec<(Pubkey, u64)>` and `Vec<([u8; 32], u8)>` - Anchor's IDL cannot express tuples, so **both instructions were unbuildable** |
 
 The last one is the instructive one: `snapshot_holders` and `claim` were written
 in the most natural way to write them and could never have been deployed. They now
@@ -335,7 +331,7 @@ anchor build
 #
 # The `mkdir` matters: the validator creates the ledger directory but not its
 # parent. The TWO --deactivate-feature flags matter: a test-validator boots
-# with every feature gate active, so it accepts only SBPFv3 — once via the
+# with every feature gate active, so it accepts only SBPFv3 - once via the
 # execution range (disable_sbpf_v0_execution) and again via the deployment
 # path (disable_sbpf_v0_v1_v2_deployment). Devnet and mainnet have both gates
 # inactive, which is why the same artifact deploys there. `anchor build`
@@ -349,7 +345,7 @@ solana-test-validator --reset --ledger .anchor/test-ledger --quiet \
   --deactivate-feature TestFeature11111111111111111111111111111111 \
   --deactivate-feature B8JJXCy5amZyWG9r7EnUYLwzXSXTxG7GZ1qZ1qggo83g &
 # The settlement's fee payer is the CLI's default keypair; create it first on a
-# fresh machine. Local airdrops only — none of this touches a public cluster.
+# fresh machine. Local airdrops only - none of this touches a public cluster.
 solana-keygen new --no-bip39-passphrase -o "$HOME/.config/solana/id.json" --force
 solana --url http://127.0.0.1:8899 airdrop 500
 solana program deploy target/deploy/owed.so \
@@ -362,7 +358,7 @@ ANCHOR_WALLET="$HOME/.config/solana/id.json" \
 ```
 
 That is CI's `settlement` job. It is why the devnet signatures below can be trusted
-rather than merely clicked: the same 15 steps — including both rejections — pass on
+rather than merely clicked: the same 15 steps - including both rejections - pass on
 every push against a chain anyone can stand up, so a judge is not asked to take a
 run on a shared test cluster on faith.
 
@@ -380,16 +376,16 @@ run on a shared test cluster on faith.
 | Size / rent | 350,208 bytes / 1.77993548 SOL |
 
 The address is the same one CI settles against locally, because it is fixed by
-the committed program keypair rather than minted per build — which is what the
+the committed program keypair rather than minted per build - which is what the
 four-source id assertion in both workflows exists to guarantee.
 
 ### The settlement, on devnet, with signatures
 
-A 4:1 split and then a cash distribution, settled against the program above — 10
+A 4:1 split and then a cash distribution, settled against the program above - 10
 passing tests, 13 signed transactions, and the two paths that must *refuse*. This is
 not a laptop run: it is [workflow run
 35732983131](https://github.com/thesithunyein/owed/actions/runs/35732983131), green
-end to end on 2026-09-22 — build, deploy, settle — whose `devnet-deployment`
+end to end on 2026-09-22 - build, deploy, settle - whose `devnet-deployment`
 artifact holds both the record below and the report the suite wrote. The table is
 generated from
 [`docs/devnet-settlement-2026-09-22.json`](docs/devnet-settlement-2026-09-22.json)
@@ -415,21 +411,21 @@ by `scripts/gen-webdata.mjs`, and a CI test fails if the two ever disagree:
 | settle_action(dividend) | [5oisftAyUtWY9iph…](https://explorer.solana.com/tx/5oisftAyUtWY9iphCJyaCxuoo6qpZkCETmEF4Thvc1qP4gv2pTHCfKZ9kjgjKcz4e1jHjzRNb5kfZUGoXJ6BjuPf?cluster=devnet) |
 <!-- owed:devnet-settlement:end -->
 
-What the split and the dividend each prove about value actually moving — the
+What the split and the dividend each prove about value actually moving - the
 deltas asserted around every signature, the vault swept to exactly zero, the
-unclaimed remainder returned to the issuer — is in the frozen-register section
+unclaimed remainder returned to the issuer - is in the frozen-register section
 above; the devnet run asserts the same numbers, not fewer.
 
 **Reproducing this yourself**, in order:
 
 1. The `SOLANA_KEYPAIR` repository secret holds a devnet keypair generated for
    this repo. Its file is `~/.config/solana/owed-devnet.json` on the machine that
-   generated it — **keep it**, since it is the program's upgrade authority and
+   generated it - **keep it**, since it is the program's upgrade authority and
    GitHub secrets cannot be read back. (`solana-keygen new --outfile
    owed-devnet.json` does this with your own key; `gh secret set SOLANA_KEYPAIR <
    owed-devnet.json` swaps it in.)
 2. That wallet needed ~4 SOL from https://faucet.solana.com (Devnet) for the
-   first deployment: **3.61 SOL** measured — 1.78 SOL of rent for the
+   first deployment: **3.61 SOL** measured - 1.78 SOL of rent for the
    ProgramData account of a 350KB program plus the same again for the buffer,
    returned when the upgrade lands. A later **upgrade** needs only the buffer,
    because the ProgramData account is already funded, so the workflow's preflight
@@ -443,7 +439,7 @@ above; the devnet run asserts the same numbers, not fewer.
    transaction, and spl-token swallows that error and re-reads, so the run died as
    `TokenAccountNotFoundError` in the fourth step with seven tests cascading behind
    it. The harness now retries that call, and the measured result on the public
-   endpoint is a complete run — 10 passing in 2 minutes, the signatures above. A
+   endpoint is a complete run - 10 passing in 2 minutes, the signatures above. A
    shared CI runner IP is throttled harder than a laptop, so a free key from
    Helius, QuickNode or Alchemy remains the way to make unattended dispatches
    boring:
@@ -462,13 +458,13 @@ above; the devnet run asserts the same numbers, not fewer.
 
    It builds, deploys to the pinned program address, runs the same settlement
    test against devnet (four attempts, because rate-limit storms pass), and writes
-   `devnet-deployment.json` — program id plus every transaction signature — as a
+   `devnet-deployment.json` - program id plus every transaction signature - as a
    run artifact and in the run summary, with
    explorer links, so citing it in a submission is copy-paste.
 
 Two honest limitations remain. `claim` pays a cash action out of the action's
 vault in the **payout currency**, so a holder must have an account for that
-mint — a deployment where they don't cannot be paid, and the vault stays funded
+mint - a deployment where they don't cannot be paid, and the vault stays funded
 until settlement sweeps it. And the register is bounded by transaction size;
 concurrent Merkle trees are the roadmap. `SECURITY.md` lists what a reviewer
 should check first. Nothing here is investment advice.
@@ -511,7 +507,7 @@ node keeper/demo/snapshot-demo.mjs [<MINT_ADDRESS>]
 mkdir -p target/deploy && cp programs/owed/owed-keypair.json target/deploy/
 anchor build
 # Then the validator + deploy + mocha sequence shown under "Honest scope
-# boundary" — validator first, with BOTH --deactivate-feature flags.
+# boundary" - validator first, with BOTH --deactivate-feature flags.
 # `.github/workflows/ci.yml`'s `settlement` job is the same commands, running on
 # every push, and is the reference if this comment and reality ever diverge.
 ```
@@ -520,11 +516,11 @@ anchor build
 
 | | |
 |---|---|
-| **Bugs & features** | [open an issue](https://github.com/thesithunyein/owed/issues) — one logical change per PR, see [CONTRIBUTING.md](CONTRIBUTING.md) |
-| **Security disclosures** | **never in public** — [SECURITY.md](SECURITY.md) has the private channel and response policy |
-| **Conduct** | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) — enforced in every project space; critique the work, not the person |
-| **License** | [MIT](LICENSE) — Copyright (c) 2026 Sithu Nyein |
+| **Bugs & features** | [open an issue](https://github.com/thesithunyein/owed/issues) - one logical change per PR, see [CONTRIBUTING.md](CONTRIBUTING.md) |
+| **Security disclosures** | **never in public** - [SECURITY.md](SECURITY.md) has the private channel and response policy |
+| **Conduct** | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) - enforced in every project space; critique the work, not the person |
+| **License** | [MIT](LICENSE) - Copyright (c) 2026 Sithu Nyein |
 
 The claim standard applies to issues too: a report that "the feed is wrong" needs
-the mint, the value you expected, the value you read, and the RPC response — the
+the mint, the value you expected, the value you read, and the RPC response - the
 same evidence standard the feed itself publishes under.

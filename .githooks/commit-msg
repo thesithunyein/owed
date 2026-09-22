@@ -1,0 +1,5 @@
+#!/bin/sh
+# Enforce solo attribution: commits are authored by Sithu Nyein alone.
+# Strips any Codebuff co-author trailer injected by tooling at commit time.
+# Enabled via: git config core.hooksPath .githooks
+sed -i -e '/^Co-Authored-By: Codebuff/d' -e '/^Generated with Codebuff/d' "$1"
