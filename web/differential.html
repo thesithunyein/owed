@@ -62,7 +62,8 @@
     border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; font: inherit;
   }
   .controls { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; }
-  @media (max-width: 640px) { .controls { grid-template-columns: 1fr; } }
+  .controls.two { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 640px) { .controls, .controls.two { grid-template-columns: 1fr; } }
   .cmp { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
   @media (max-width: 640px) { .cmp { grid-template-columns: 1fr; } }
   .side { border: 1px solid var(--line); border-radius: 10px; padding: 14px; background: var(--panel2); }
@@ -132,10 +133,87 @@
   .hero-cta:hover { background: #3b82f6; color: #fff; border-color: #3b82f6; }
   a { color: var(--blue); }
   .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: var(--dim); }
+
+  /* ---- product surface --------------------------------------------------- */
+  /* The landing page asks one question and answers it. Everything else — the
+     full table, the method, the evidence — is one click away rather than in the
+     reader's face, which is the difference between an app and a report. */
+  .hero-search { display: flex; gap: 8px; margin: 0 0 10px; max-width: 400px; }
+  .hero-search input {
+    flex: 1; min-width: 0; background: rgba(255,255,255,.94); border: 1px solid #d8d8d2;
+    border-radius: 9999px; padding: 12px 16px; font: inherit; font-size: 14px;
+  }
+  .hero-search input:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: var(--blue); }
+  .hero-search button {
+    flex-shrink: 0; font: inherit; font-size: 13px; font-weight: 500; color: #fff;
+    background: var(--blue); border: 1px solid var(--blue); border-radius: 9999px;
+    padding: 12px 20px; cursor: pointer; transition: background .2s, border-color .2s;
+  }
+  .hero-search button:hover { background: #1d4ed8; border-color: #1d4ed8; }
+  .hero-note { font-size: 11.5px; color: #9ca3af; margin: 0 0 14px; }
+  .hero-note .dot { color: #10b981; }
+  .hero-links { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12.5px; }
+  .hero-links a { color: #3b82f6; text-decoration: none; }
+  .hero-links a:hover { text-decoration: underline; }
+
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+  .card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+  .card-head h3 { margin: 0; font-size: 19px; letter-spacing: -0.02em; }
+  .card-head .who { margin: 2px 0 0; color: var(--faint); font-size: 12.5px; }
+  .state { flex-shrink: 0; font-size: 11.5px; font-weight: 500; padding: 4px 10px; border-radius: 999px; border: 1px solid; white-space: nowrap; }
+  .state.bad { color: var(--red); border-color: #f3c1c1; background: #fef2f2; }
+  .state.ok { color: var(--green); border-color: #bfe3d4; background: #f1faf6; }
+  .lede { margin: 14px 0 0; font-size: 14.5px; max-width: 68ch; }
+  .lede b { font-variant-numeric: tabular-nums; }
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin: 16px 0 0; }
+  .fact { background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+  .fact .k { color: var(--faint); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+  .fact .v { font-size: 15px; margin-top: 3px; font-variant-numeric: tabular-nums; word-break: break-all; }
+  .fact .v.hot { color: var(--red); }
+  .fact .v.ok { color: var(--green); }
+  .size { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 4px; }
+  .size > summary { cursor: pointer; padding: 12px 0; font-size: 13.5px; color: var(--blue); list-style: none; }
+  .size > summary::-webkit-details-marker { display: none; }
+  .size > summary:hover { text-decoration: underline; }
+  .examples { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 12px 0 0; font-size: 12.5px; color: var(--faint); }
+  .chip {
+    font: inherit; font-size: 12px; color: var(--text); background: var(--panel2);
+    border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; cursor: pointer;
+  }
+  .chip:hover { background: #ecece6; }
+  .chip span { color: var(--red); font-weight: 500; }
+  .empty { color: var(--dim); font-size: 13.5px; }
+  .empty p { margin: 0; }
+
+  /* ---- folds ------------------------------------------------------------- */
+  .fold { border-top: 1px solid var(--line); margin-top: 34px; }
+  .fold > summary {
+    cursor: pointer; list-style: none; padding: 18px 0; display: flex; align-items: baseline;
+    justify-content: space-between; gap: 16px; font-size: 15.5px; font-weight: 500;
+  }
+  .fold > summary::-webkit-details-marker { display: none; }
+  .fold > summary::after { content: "+"; color: var(--faint); font-weight: 400; font-size: 17px; }
+  .fold[open] > summary::after { content: "–"; }
+  .fold > summary:hover { color: var(--blue); }
+  /* The count stays on one line and the label wraps instead — "379 need / attention"
+     broken across two lines reads like a layout bug on a phone. */
+  .fold > summary > span:first-child { min-width: 0; }
+  .fold > summary .n { font-size: 12.5px; color: var(--faint); font-weight: 400; white-space: nowrap; }
+  .fold-body { padding-bottom: 10px; }
+  footer.site {
+    margin-top: 46px; padding: 22px 0 0; border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px;
+    color: var(--faint); font-size: 12.5px;
+  }
+  footer.site img { width: 20px; height: 20px; vertical-align: -5px; margin-right: 7px; }
+  footer.site a { color: var(--dim); text-decoration: none; }
+  footer.site a:hover { color: var(--blue); text-decoration: underline; }
+  footer.site .sp { margin-left: auto; }
+  @media (max-width: 640px) { footer.site .sp { margin-left: 0; } }
 </style>
 </head>
 <body>
-<a class="skip" href="#calculation">Skip to the calculation</a>
+<a class="skip" href="#check">Skip to the token checker</a>
 
 <section class="hero" aria-label="Owed — the correctness layer for tokenized equities">
   <video class="hero-bg" autoplay muted loop playsinline preload="metadata" poster="assets/poster.jpg" aria-hidden="true">
@@ -147,76 +225,61 @@
         <img src="assets/logo.png" alt="Owed" width="26" height="26" />
       </a>
       <div class="nav-pill">
-        <a href="#calculation">Calculation</a>
-        <a href="#registry">Data</a>
-        <a href="board.html">Board</a>
-        <a href="https://owed.sithunyein.com/feed/owed-risk.json">Feed</a>
-        <a href="https://github.com/thesithunyein/owed" target="_blank" rel="noopener">Source</a>
+        <a href="#check">Check a token</a>
+        <a href="#findings">Findings</a>
+        <a href="board.html">Risk board</a>
+        <a href="https://github.com/thesithunyein/owed" target="_blank" rel="noopener">Docs</a>
       </div>
     </nav>
     <div class="hero-content">
       <div class="hero-copy">
-        <a class="hero-badge" href="#verification">
-          <span>Measured live from Solana mainnet · 925 official xStocks scanned</span>
-          <span class="arr">→</span>
-        </a>
-        <h1>The correctness layer for tokenized equities.</h1>
+        <h1>Know what a tokenized stock is really worth.</h1>
         <p class="hero-sub">
-          <span id="heroStale">—</span> official xStocks are mispriced by naive readers
-          right now. Worst error: <span id="heroWorst">—</span>.
+          Splits and dividends rebase tokenized equities on-chain. Owed reports what the
+          chain actually applies, so your protocol stops pricing collateral with the stale
+          field.
         </p>
-        <a class="hero-cta" href="#calculation">
-          <span>Run the calculation</span>
-          <span class="arr">→</span>
-        </a>
+        <form class="hero-search" id="search" role="search">
+          <input id="q" list="symbols" autocomplete="off" spellcheck="false"
+                 placeholder="Search a ticker — AAPLx, PPLTx…"
+                 aria-label="Search a tokenized stock" />
+          <button type="submit">Check</button>
+        </form>
+        <datalist id="symbols"></datalist>
+        <p class="hero-note">
+          <span class="dot">●</span> Live from Solana mainnet ·
+          <span id="coverage">—</span> official xStocks
+        </p>
+        <div class="hero-links">
+          <a href="#findings">Browse what we found</a>
+          <a href="board.html">Risk board →</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="wrap" id="calculation">
+<div class="wrap">
 
-  <h2>The calculation <span class="n">— pick a token, enter a position</span></h2>
-  <p class="sub" style="margin-bottom:14px">
-    A lending market or terminal that reads <code>scaledUiAmountConfig.multiplier</code>
-    from the mint account multiplies balances by the <em>stored</em> field. The runtime
-    applies the <em>effective</em> one. Fill in a position to see the gap in money.
-  </p>
-
-  <div class="panel">
-    <div class="controls">
-      <div>
-        <label for="tok">Token</label>
-        <select id="tok"></select>
-      </div>
-      <div>
-        <label for="notional">Position value, correctly valued (USD)</label>
-        <input id="notional" type="number" min="1" step="1000" value="100000" />
-      </div>
-      <div>
-        <label for="debt">Debt against it (USD)</label>
-        <input id="debt" type="number" min="0" step="1000" value="10000" />
-      </div>
+  <section id="check" aria-label="Token checker">
+    <div class="card" id="result" aria-live="polite">
+      <p class="empty">
+        Search any official xStock above to see whether the multiplier your app would
+        read is the one the chain applies.
+      </p>
     </div>
-    <div class="cmp">
-      <div class="side bad">
-        <div class="k">Naive reader (stored field)</div>
-        <div class="v" id="naiveVal">—</div>
-        <div class="note" id="naiveNote"></div>
-      </div>
-      <div class="side good">
-        <div class="k">Chain-correct (effective multiplier)</div>
-        <div class="v" id="trueVal">—</div>
-        <div class="note" id="trueNote"></div>
-      </div>
-    </div>
-    <div class="verdict" id="verdict"></div>
-  </div>
+    <div class="examples" id="examples"></div>
+  </section>
 
-  <h2>Measured from mainnet <span class="n">— recomputed against your clock</span></h2>
-  <p class="sub" id="sub" style="margin-bottom:14px">Loading the committed risk feed…</p>
+  <details class="fold" id="findings">
+    <summary>
+      <span>What we found across all <span id="foldTotal">925</span> mints</span>
+      <span class="n" id="foldCount"></span>
+    </summary>
+    <div class="fold-body">
+      <p class="sub" id="sub" style="margin-bottom:14px">Loading the committed risk feed…</p>
 
-  <div class="grid" id="stats"></div>
+      <div class="grid" id="stats"></div>
 
   <h2 id="registry">Every stale multiplier, worst first <span class="n" id="tblCount"></span></h2>
   <p class="sub" style="margin-bottom:12px">
@@ -238,6 +301,11 @@
       <tbody id="rows"></tbody>
     </table>
   </div>
+  </details>
+
+  <details class="fold" id="evidence">
+    <summary>Evidence, method and reproduction</summary>
+    <div class="fold-body">
 
   <div class="foot" id="verification">
     <div class="proof">
@@ -290,6 +358,18 @@
       </div>
     </div>
   </div>
+
+    </div>
+  </details>
+
+  <footer class="site">
+    <span><img src="assets/logo.png" alt="" />Owed — corporate-action risk for tokenized equities</span>
+    <a href="board.html">Risk board</a>
+    <a href="feed/owed-risk.json">Risk feed</a>
+    <a href="feed/schema.json">Schema</a>
+    <a href="https://github.com/thesithunyein/owed" target="_blank" rel="noopener">GitHub</a>
+    <span class="sp">Snapshot data, refreshed on a schedule · not financial advice</span>
+  </footer>
 </div>
 
 <script>
@@ -332,24 +412,26 @@ function tag(gapPct) {
 
 // ---- render -----------------------------------------------------------------
 
-const rows = [];
-for (const t of RISK.tokens) {
-  const c = classify(t, now);
-  if (c && c.stale) rows.push({ t, c });
-}
-rows.sort((a, b) => b.c.gap - a.c.gap);
+// Every official mint is searchable — "this one is fine" is a real answer, not an
+// absence — while `rows` stays the ranked list of the ones that need attention.
+const all = RISK.tokens.map((t) => ({ t, c: classify(t, now) }));
+const rows = all.filter((r) => r.c && r.c.stale).sort((a, b) => b.c.gap - a.c.gap);
+const bySymbol = new Map(all.map((r) => [r.t.symbol.toUpperCase(), r]));
 
-const nf = { style: "currency", currency: "USD", maximumFractionDigits: 0 };
+const escapeHtml = (s) =>
+  String(s).replace(/[&<>"']/g, (ch) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+const fact = (k, v, cls = "") => `<div class="fact"><div class="k">${k}</div><div class="v ${cls}">${v}</div></div>`;
 
 function stats() {
-  const worst = rows[0];
+  const w = rows[0];
   const big = rows.filter((r) => r.c.gap >= 1).length;
   const controlled = RISK.summary.permanentDelegate;
   $("stats").innerHTML = [
     ["Official xStocks scanned", RISK.summary.total, ""],
     ["Stale multiplier right now", rows.length, "hot"],
     ["Error ≥ 1% (the ones that bite)", big, big ? "hot" : "ok"],
-    ["Worst error", worst ? Math.round(worst.c.gap * 100) + "%" : "—", "hot"],
+    ["Worst error", w ? Math.round(w.c.gap * 100) + "%" : "—", "hot"],
     ["Mints with a permanent delegate", controlled + " / " + RISK.summary.total, ""],
   ]
     .map(
@@ -360,10 +442,11 @@ function stats() {
   $("sub").innerHTML =
     `Feed generated <strong>${new Date(RISK.generatedAt).toUTCString()}</strong> from ` +
     `<span class="mono">${RISK.source.rpc || "mainnet RPC"}</span>, re-classified against your clock just now.`;
-  // Hero figures track the same live classification so a refresh rescan that
-  // changes the counts can never leave the landing page asserting stale numbers.
-  $("heroStale").textContent = rows.length.toLocaleString("en-US");
-  $("heroWorst").textContent = worst ? Math.round(worst.c.gap * 100) + "%" : "none";
+  // Counts are derived from the same live classification the checker uses, so a
+  // refresh that changes them can never leave the page asserting yesterday's number.
+  $("coverage").textContent = RISK.summary.total.toLocaleString("en-US");
+  $("foldTotal").textContent = RISK.summary.total.toLocaleString("en-US");
+  $("foldCount").textContent = `${rows.length} need attention`;
 }
 
 /** Compact display form for multipliers; the exact value rides in the title. */
@@ -390,16 +473,132 @@ function table() {
     .join("");
 }
 
-function options() {
-  $("tok").innerHTML = rows
-    .map(({ t, c }) => `<option value="${t.symbol}">${t.symbol} — off by ${(c.gap * 100).toFixed(0)}%</option>`)
+/** The datalist behind the search box: every official mint, worst first. */
+function symbols() {
+  $("symbols").innerHTML = all
+    .slice()
+    .sort((a, b) => (b.c?.gap ?? 0) - (a.c?.gap ?? 0))
+    .map((r) => `<option value="${r.t.symbol}"></option>`)
     .join("");
 }
 
+/** Real tickers to click, so the checker is never a blank box. */
+function examples() {
+  $("examples").innerHTML =
+    "<span>Worst right now:</span> " +
+    rows
+      .slice(0, 3)
+      .map(
+        (r) =>
+          `<button type="button" class="chip" data-sym="${r.t.symbol}">` +
+          `${r.t.symbol} <span>${(r.c.gap * 100).toFixed(0)}%</span></button>`,
+      )
+      .join("");
+}
+
+/** The token currently on screen; the sizing controls act on it. */
+let selected = null;
+
+/**
+ * Render one token's answer. A clean mint is answered too — "nothing to fix" is
+ * information — because a checker that only ever speaks when something is wrong
+ * teaches people to distrust silence.
+ */
+function render(symbolRaw) {
+  const symbol = String(symbolRaw ?? "").trim().toUpperCase();
+  const box = $("result");
+  if (!symbol) return;
+
+  const row = bySymbol.get(symbol) ?? null;
+  selected = row;
+
+  if (!row) {
+    box.className = "card";
+    box.innerHTML =
+      `<p class="empty">No official xStock is called <b>${escapeHtml(symbol)}</b>. ` +
+      `Try another ticker, or <a href="#findings">browse what we found across all ` +
+      `${RISK.summary.total}</a>.</p>`;
+    return;
+  }
+
+  const { t, c } = row;
+  const clean = !c || !c.stale;
+  const head =
+    `<div class="card-head"><div><h3>${escapeHtml(t.symbol)}</h3>` +
+    `<p class="who">Token-2022 · Scaled UI Amount</p></div>` +
+    (clean
+      ? `<span class="state ok">Up to date</span>`
+      : `<span class="state bad">${(c.gap * 100).toFixed(c.gap * 100 >= 100 ? 0 : 2)}% mispricing</span>`) +
+    `</div>`;
+
+  // Shared between both answers. Only fields this page actually ships: the
+  // embedded payload carries the mint and the multiplier state, not decimals or
+  // supply, and a fact tile reading `undefined` is worse than no tile at all.
+  const identity = fact(
+    "Mint",
+    `<span title="${escapeHtml(t.mint)}">${escapeHtml(t.mint.slice(0, 4))}…${escapeHtml(t.mint.slice(-4))}</span>`,
+  );
+
+  if (clean) {
+    const stored = c ? c.stored : Number(t.scaled?.state?.multiplier ?? 0);
+    box.className = "card";
+    box.innerHTML =
+      head +
+      `<p class="lede">The stored multiplier on this mint (<b>${fmtMult(stored)}×</b>) is exactly ` +
+      `what the Token-2022 runtime applies right now. Nothing to correct — this is what a ` +
+      `healthy tokenized equity looks like.</p>` +
+      `<div class="facts">${fact("Stored field", fmtMult(stored))}${fact("Effective now", fmtMult(stored), "ok")}${identity}</div>`;
+    return;
+  }
+
+  const pct = (c.gap * 100).toFixed(c.gap * 100 >= 100 ? 0 : 2);
+  box.className = "card";
+  box.innerHTML =
+    head +
+    `<p class="lede">An app reading the stored field sees <b>${fmtMult(c.stored)}×</b>, but the ` +
+    `runtime applies <b>${fmtMult(c.eff)}×</b> — every position in this token is understated ` +
+    `by <b>${c.factor.toFixed(3)}×</b>, and has been for <b>${Math.round(c.days)} days</b>.</p>` +
+    `<div class="facts">` +
+    fact("Stored field", fmtMult(c.stored)) +
+    fact("Effective now", fmtMult(c.eff), "hot") +
+    fact("Off by", pct + "%", "hot") +
+    fact("Stale for", Math.round(c.days) + " days") +
+    identity +
+    `</div>` +
+    `<details class="size"><summary>Size the impact on a position</summary>` +
+    `<div class="controls two">` +
+    `<div><label for="notional">Position value, correctly valued (USD)</label>` +
+    `<input id="notional" type="number" min="1" step="1000" value="100000" /></div>` +
+    `<div><label for="debt">Debt against it (USD)</label>` +
+    `<input id="debt" type="number" min="0" step="1000" value="10000" /></div>` +
+    `</div>` +
+    `<div class="cmp">` +
+    `<div class="side bad"><div class="k">Naive reader (stored field)</div>` +
+    `<div class="v" id="naiveVal">—</div><div class="note" id="naiveNote"></div></div>` +
+    `<div class="side good"><div class="k">Chain-correct (effective multiplier)</div>` +
+    `<div class="v" id="trueVal">—</div><div class="note" id="trueNote"></div></div>` +
+    `</div><div class="verdict" id="verdict"></div></details>`;
+
+  // These inputs exist only for a stale token, so they are wired after rendering.
+  $("notional").addEventListener("input", calc);
+  $("debt").addEventListener("input", calc);
+  calc();
+}
+
+/** The search box: typed, submitted or picked from the datalist. */
+function lookup(value) {
+  const symbol = String(value ?? $("q").value ?? "").trim();
+  if (!symbol) return;
+  $("q").value = symbol;
+  render(symbol);
+  history.replaceState(null, "", "#t=" + encodeURIComponent(symbol));
+  $("check").scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+/** Size the mispricing in money, for the token currently on screen. */
 function calc() {
-  const sym = $("tok").value;
-  const row = rows.find((r) => r.t.symbol === sym);
-  if (!row) return;
+  const row = selected;
+  if (!row || !row.c || !row.c.stale) return;
   const trueValue = Number($("notional").value) || 0;
   const debt = Number($("debt").value) || 0;
   const { factor } = row.c;
@@ -419,7 +618,9 @@ function calc() {
 
   const v = $("verdict");
   v.className = "verdict show " + (naiveLTV >= 0.75 ? "danger" : "plain");
-  const pct = (x) => (x * 100).toFixed(1) + "%";
+  // Two decimals: on a 0.06% gap, one decimal prints "10.0% instead of 10.0%" and
+  // reads as a rounding artefact rather than the small, real error it is.
+  const pct = (x) => (x * 100).toFixed(2) + "%";
   if (debt <= 0) {
     v.textContent = "Enter a debt to see the liquidation consequence.";
     v.className = "verdict show plain";
@@ -459,13 +660,27 @@ function proof() {
 }
 
 stats();
-options();
+symbols();
+examples();
 table();
-calc();
 proof();
-$("tok").addEventListener("change", calc);
-$("notional").addEventListener("input", calc);
-$("debt").addEventListener("input", calc);
+
+// A shared link carries its token, and the page opens on the worst one right now
+// rather than an empty box: one answer, not a wall of numbers. Nothing scrolls on
+// load — that is reserved for an actual search.
+const linked = (location.hash.match(/^#t=([A-Za-z0-9._-]+)$/) ?? [])[1];
+const initial = linked ? decodeURIComponent(linked) : rows[0]?.t.symbol;
+if (initial) render(initial);
+
+$("search").addEventListener("submit", (e) => {
+  e.preventDefault();
+  lookup();
+});
+$("q").addEventListener("change", () => lookup());
+$("examples").addEventListener("click", (e) => {
+  const chip = e.target.closest(".chip");
+  if (chip) lookup(chip.dataset.sym);
+});
 </script>
 </body>
 </html>

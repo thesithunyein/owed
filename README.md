@@ -128,10 +128,13 @@ make it auditable rather than trustworthy-by-assertion:
 - `effectiveMultiplier` is stamped with the clock it was computed at, because the
   value is time-dependent and a silently stale feed is worse than no feed.
 
-**2. `web/differential.html` — the harm, clickable.** Single self-contained file:
-pick a token, enter a position and a debt, and see what a naive reader says beside
-what the chain applies, with the liquidation consequence stated plainly. Below it,
-every stale multiplier, worst first, re-classified against your clock on load.
+**2. `web/differential.html` — the harm, clickable.** Single self-contained file
+shaped like an app rather than a report: you search a ticker and get one answer —
+what a naive reader sees, what the chain applies, and how long it has been wrong,
+with the position-sizing and liquidation consequence one click deeper. A mint that
+is fine says so. The full findings, the method and the evidence are collapsed
+behind disclosures instead of filling the first screen, and a shared link carries
+its token (`#t=AAPLx`). All of it re-classified against your clock on load.
 
 **3. `web/board.html` — the risk board.** All 925 mints with stored vs effective
 multiplier, gap, days stale, and issuer-control flags. Same offline, no-build
