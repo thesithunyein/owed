@@ -92,6 +92,20 @@ describe("owed — settle corporate actions end to end", () => {
   const payer = provider.wallet.payer ?? Keypair.generate();
 
   before(async () => {
+    // Fail with the address rather than with what a missing program actually
+    // looks like. Anchor reports a call to an undeployed program as
+    // `DeclaredProgramIdMismatch`, which sends you hunting for an id-resync bug
+    // when the real problem is that nothing was deployed at all (that is exactly
+    // what `anchor test --skip-build` did to this suite once).
+    const deployed = await connection.getAccountInfo(program.programId);
+    if (!deployed) {
+      throw new Error(
+        `no program deployed at ${program.programId.toBase58()} on ` +
+          `${connection.rpcEndpoint} — run \`anchor test\` without --skip-build so ` +
+          `Anchor deploys before testing`,
+      );
+    }
+
     // Fund the fee payer so the run is hermetic on a fresh local validator.
     // On devnet this is normally a no-op (the wallet already has SOL) and the
     // faucet is rate-limited, so a failure here must not fail the suite — the

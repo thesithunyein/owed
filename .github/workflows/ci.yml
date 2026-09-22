@@ -153,6 +153,8 @@ jobs:
       - name: Report what was produced
         run: ls -la target/deploy/ || echo "no target/deploy produced"
       - name: Settle corporate actions end to end
+        # Two flags' worth of hard-won detail here.
+        #
         # `--provider.cluster localnet` is required, not decorative: Anchor.toml
         # sets `[provider] cluster = "devnet"`, so a bare `anchor test` tries to
         # DEPLOY THE PROGRAM TO DEVNET. That failed with "insufficient funds for
@@ -160,7 +162,15 @@ jobs:
         # not need any. Naming localnet makes Anchor start a validator and
         # deploy there instead, which is the whole point of this job: no keys,
         # no funded account, reproducible from a clone.
-        run: anchor test --skip-build --provider.cluster localnet
+        #
+        # NOT `--skip-build`. Skipping the build also skips the deploy that goes
+        # with it in localnet mode — Anchor went straight from "Running test
+        # suite" to mocha, with the program never deployed anywhere. Every call
+        # then failed with DeclaredProgramIdMismatch, which reads like an id
+        # problem and is really an absence-of-program problem. The build above
+        # stays as its own step because it reports the .so; this one re-runs it
+        # as a no-op from cache and deploys for real.
+        run: anchor test --provider.cluster localnet
       - name: Show the validator log (only on failure)
         # A validator that refuses to start is the least diagnosable failure here:
         # Anchor reports "does not look started" and nothing else.
