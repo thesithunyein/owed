@@ -170,6 +170,22 @@ test("every devnet signature a page cites is backed by a committed record", () =
   }
   assert.ok(signed.size >= 10, `the record holds the devnet signatures (${signed.size})`);
 
+  // The README table is generated from the same record by gen-webdata.mjs, so it
+  // must still list exactly those transactions — a hand edit or a skipped
+  // regeneration would publish a signature the record does not contain.
+  const readme = readFileSync(join(ROOT, "README.md"), "utf8");
+  const block = readme.match(
+    /<!-- owed:devnet-settlement:start -->([\s\S]*?)<!-- owed:devnet-settlement:end -->/,
+  );
+  assert.ok(block, "README.md has the owed:devnet-settlement block");
+  const listed = [...block[1].matchAll(/explorer\.solana\.com\/tx\/([1-9A-HJ-NP-Za-km-z]{32,90})/g)].map((m) => m[1]);
+  assert.equal(
+    listed.length,
+    signed.size,
+    "the README table lists every signed step of the record",
+  );
+  for (const sig of listed) assert.ok(signed.has(sig), `README lists ${sig}, absent from the record`);
+
   // The deployment transaction is evidence of a different kind — it appears in
   // the README's deployment table, not in a settlement report.
   const DEPLOY_TX =

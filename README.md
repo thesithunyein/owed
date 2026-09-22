@@ -280,29 +280,35 @@ four-source id assertion in both workflows exists to guarantee.
 
 ### The settlement, on devnet, with signatures
 
-A 4:1 split and then a cash distribution, settled against the program above on
-2026-09-22 — 10 passing tests, 13 signed transactions, and the two paths that must
-*refuse*. Copied verbatim from
-[`docs/devnet-settlement-2026-09-22.json`](docs/devnet-settlement-2026-09-22.json),
-which the suite writes on every run:
+A 4:1 split and then a cash distribution, settled against the program above — 10
+passing tests, 13 signed transactions, and the two paths that must *refuse*. This is
+not a laptop run: it is [workflow run
+35732983131](https://github.com/thesithunyein/owed/actions/runs/35732983131), green
+end to end on 2026-09-22 — build, deploy, settle — whose `devnet-deployment`
+artifact holds both the record below and the report the suite wrote. The table is
+generated from
+[`docs/devnet-settlement-2026-09-22.json`](docs/devnet-settlement-2026-09-22.json)
+by `scripts/gen-webdata.mjs`, and a CI test fails if the two ever disagree:
 
+<!-- owed:devnet-settlement:start -->
 | step | devnet transaction |
 |---|---|
-| initialize_asset | [2FyjiBCidwJRDC3G…](https://explorer.solana.com/tx/2FyjiBCidwJRDC3GX6eAzkiYRWizo1Gu6v6NgCk8aR7jTiefnoSXe7zhn8iEezjUvrVdcS7b9aSBvpAKcScCKNc6?cluster=devnet) |
-| arm_split_authority | [4Cue92Zkhb92JT23…](https://explorer.solana.com/tx/4Cue92Zkhb92JT23rjmcthncaoFQkkR7m71WTMYi12fh5DBifdvbfutR4VEqMShmcTxS4fFmcNkx5RWgA2mNHG95?cluster=devnet) |
-| declare_action(split 4:1) | [2MmfBjBW2hMdqiSG…](https://explorer.solana.com/tx/2MmfBjBW2hMdqiSGUsxjaGgomeNyX2JXQSDG6DiziMqVYDk7piGgCExArMTDs9ohHXJmAHwUxuDTrXFW5YRYUyQ5?cluster=devnet) |
-| snapshot_holders(short register) | **rejected** — the program's own `SupplyMismatch` (lib.rs:225); a register that does not sum to supply cannot be recorded |
-| snapshot_holders(action 37BmCT…) | [LFyhH4GVZ7YEtU5s…](https://explorer.solana.com/tx/LFyhH4GVZ7YEtU5sgrf4eRWkyrDnTzi7TaTFnnzgpurCHkhgTzVnkWmSVLjaAGjiDdT2GZs86Mxew74AZBQ2ySd?cluster=devnet) |
-| claim[48CRpC…] | [3GPso2z5y2zPyAkz…](https://explorer.solana.com/tx/3GPso2z5y2zPyAkzBHUTy8pUhyd7vfdj6BgnjkMRgaE9Cf5KwCG1GXVyZhjobXB9Nd6xCmU2H9VYjoJzxdUSgtkV?cluster=devnet) |
-| claim[63JR9u…] | [4tRNv5e3NNiDTNVQ…](https://explorer.solana.com/tx/4tRNv5e3NNiDTNVQfsrsc4R5RH53PtR5vTTCZSKrwdmmWVEPrUXu88V26jN8oh4K9iASybULdvQmXjWCHmy8iHJW?cluster=devnet) |
-| claim[FCrPQ9…] | [5neRX8Z54Gxdd58r…](https://explorer.solana.com/tx/5neRX8Z54Gxdd58rzAGqmZLoJcozsVYrW7gZHwMaBUC7xmSMVprZFcqkG66b2gAEnbJvnxfwa4sfMqrTjoVRFEoV?cluster=devnet) |
-| claim(replay of a settled claim) | **rejected** — the receipt PDA already exists, so a claim cannot be paid twice |
-| settle_action(split) | [xrTS4BQZCtcVGr6n…](https://explorer.solana.com/tx/xrTS4BQZCtcVGr6nM9BryE1HgNGX4s94bGawnV64NqwNTAzaehNSxSfb31BZYsZWPU8qnSxRNCAwpkSpQutxD8w?cluster=devnet) |
-| declare_action(dividend) | [2joDv9Hi7tirEGP8…](https://explorer.solana.com/tx/2joDv9Hi7tirEGP83QoxYrtinCZirirM2qnWymH5qSqzKNyzdGKEGm38WS7MjMcUkgG4j3Rwo41Y6aX5kvoHWwLS?cluster=devnet) |
-| snapshot_holders(action BRTpap…) | [2HNBmNAcyav77nVL…](https://explorer.solana.com/tx/2HNBmNAcyav77nVLQdiGaeqWtf4aVXoQ3DNWLWfb4kcarMjc3ix2D4LtUSSF5CziT5CmjJjX1Me46moKiV3BVsvw?cluster=devnet) |
-| claim[48CRpC…] | [mXqe3LHJz6pK9Ca6…](https://explorer.solana.com/tx/mXqe3LHJz6pK9Ca6SfpHiT1RvoutnuyryYgrU5NRTdhT3mwYxudHQEBC2T1AAwdzZR4LCid1N71QJ27jB3he4CU?cluster=devnet) |
-| claim[63JR9u…] | [59jGi4t4Rdb9r3Wz…](https://explorer.solana.com/tx/59jGi4t4Rdb9r3WztvzS4i9XEq1aAu9V7fZCt6d9jNC6jbzBpqoTu8YHcoNRMovNQ5K7VdVXyERHdAVK8RAkK7RX?cluster=devnet) |
-| settle_action(dividend) | [kioAdGHAWRhpoJSQ…](https://explorer.solana.com/tx/kioAdGHAWRhpoJSQqufHrMP2CBAHwUcvMFWjw8DM7J98M32xQ18ifnpo6zLsoecNe61kxNAhUagJGpE8dzE5raS?cluster=devnet) |
+| initialize_asset | [G92HsCsjee1cr7vs…](https://explorer.solana.com/tx/G92HsCsjee1cr7vsuS97yk6A9BL6PxbBeiDod8sfeRUZowbWoGB3vbEwmocFQz19PieHzJx9rzvUwZxwg9XyHZo?cluster=devnet) |
+| arm_split_authority | [2ivzcAChnksjhkPb…](https://explorer.solana.com/tx/2ivzcAChnksjhkPbxMLt7t3rZrHprD9HcDPzGAPB73W6oWui3zLDnTXcGsFAbtSZ4QVUDJ8C7BnNq8KyGtehrDSX?cluster=devnet) |
+| declare_action(split 4:1) | [3iNVHCARumMzFPZU…](https://explorer.solana.com/tx/3iNVHCARumMzFPZU1akt4eWkbKy4kjcvVy1RPti1VMraH2c9waHcgmFv33iTSAjaZ7Lj1aZ6nVeWALtmRU1acWxr?cluster=devnet) |
+| snapshot_holders(short register) | **rejected** — the program's own `SupplyMismatch` (lib.rs:225): a register that does not sum to supply cannot be recorded |
+| snapshot_holders(action 4zqNC9…) | [3nbPfG7RmwL1eTtd…](https://explorer.solana.com/tx/3nbPfG7RmwL1eTtdHvncbzdus9CP8zNbK4KUY8bA5o5bRc5mKx6VsZXELryVwozC55pm75DE1AXVPwhYdipsLBDv?cluster=devnet) |
+| claim[2Km2Hu…] | [GDHpmmFxmNEZvxML…](https://explorer.solana.com/tx/GDHpmmFxmNEZvxMLKmux7z9ZJiwqJWENquVEZGziAWzGiqPB9HvDFjNfMgVipaFBaZ74JcAopNCdykHykQo6qaC?cluster=devnet) |
+| claim[8bHPWZ…] | [xzcZJWMFE7Do9Wng…](https://explorer.solana.com/tx/xzcZJWMFE7Do9Wngp4Lm9xUNu2R24tLnRm7fRzsiLdhCXf378uWM8vNKK6qPjPqaxruXTgSsx3atXZfacR9zoSx?cluster=devnet) |
+| claim[9svT6y…] | [3qZcC9PMyZHQuXhf…](https://explorer.solana.com/tx/3qZcC9PMyZHQuXhfUNjzeGZatdCiL4XsQnxjR5Ljivhs9DkVmdBCV6Q9ez6ZUCsFVqJejnKnexapkDbthxJrNtU6?cluster=devnet) |
+| claim(replay) | **rejected** — the receipt PDA already exists, so a settled claim can never be paid twice |
+| settle_action(split) | [5JPbGxFbi1iosL5z…](https://explorer.solana.com/tx/5JPbGxFbi1iosL5zRKp85rGhnAmsUhnteHsZWwYQ3PthEXvPEpCK4xEn9PokXxCik88Cff8nH6zAH4Yx294o2VtW?cluster=devnet) |
+| declare_action(dividend) | [2uoiQQsihuHFA3Jx…](https://explorer.solana.com/tx/2uoiQQsihuHFA3JxcMfdmRaT1cBHs4TKHvVeTT2KN1dQNwo5V2wbL6w7pZvQqNXVgYkRNhZZzkZeMFdcKk798WuG?cluster=devnet) |
+| snapshot_holders(action HV7jHU…) | [4mn7zkrBu8ncSFRx…](https://explorer.solana.com/tx/4mn7zkrBu8ncSFRxhtRJC1oka1rwW8mQDzC6J4WbtJWJenkqBcxNjERdv13XqSY2HuMSJswbkhzb9iB4dKQZeeF3?cluster=devnet) |
+| claim[2Km2Hu…] | [4CWHUejtzLTw4KTU…](https://explorer.solana.com/tx/4CWHUejtzLTw4KTUbyCJ45A1hJmC82JFWUjYEFiU5RfpkqmxKvYRsqgrSezuuEALdLiWY1FDpr8enjqeQAFEgdek?cluster=devnet) |
+| claim[8bHPWZ…] | [54JQPuRgX2UcJ6Uz…](https://explorer.solana.com/tx/54JQPuRgX2UcJ6Uzik75yoMi6v4bX14gdNk6qyzoq3nGKyataLvtBGp2tWcfDZANY5qyaftqqz8ycgDbY2SSpiTW?cluster=devnet) |
+| settle_action(dividend) | [5oisftAyUtWY9iph…](https://explorer.solana.com/tx/5oisftAyUtWY9iphCJyaCxuoo6qpZkCETmEF4Thvc1qP4gv2pTHCfKZ9kjgjKcz4e1jHjzRNb5kfZUGoXJ6BjuPf?cluster=devnet) |
+<!-- owed:devnet-settlement:end -->
 
 What the split and the dividend each prove about value actually moving — the
 deltas asserted around every signature, the vault swept to exactly zero, the

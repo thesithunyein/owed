@@ -12,7 +12,7 @@
  *   node scripts/conformance.mjs      # refresh keeper/data/conformance.json
  *   node scripts/gen-webdata.mjs      # inject into the pages
  */
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { readFileSync, readdirSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -194,6 +194,53 @@ if (feed) {
     `README.md: ${readmeChanged ? "numbers updated" : "numbers already current"} ` +
       `(${s.trap}/${s.total} stale at ${at})`
   );
+}
+
+// The devnet settlement table in README.md is generated from the committed
+// evidence file for the same reason the numbers above are: it is a claim about a
+// chain, and a hand-copied signature rots the moment a later run reuses the file.
+// keeper/test/build-integrity.test.mjs fails the build if the two disagree, and
+// checks that every devnet transaction the pages cite appears in the record.
+{
+  const docs = join(root, "docs");
+  const newest = readdirSync(docs)
+    .filter((f) => f.startsWith("devnet-settlement-") && f.endsWith(".json"))
+    .sort()
+    .at(-1);
+  if (!newest) {
+    console.warn("no docs/devnet-settlement-*.json — README settlement table left alone");
+  } else {
+    const report = JSON.parse(readFileSync(join(docs, newest), "utf8"));
+    // The two paths that must refuse, in the words the test itself asserts.
+    const REJECTED_NOTE = {
+      "snapshot_holders(short register)":
+        "**rejected** — the program's own `SupplyMismatch` (lib.rs:225): a register that does not sum to supply cannot be recorded",
+      "claim(replay)":
+        "**rejected** — the receipt PDA already exists, so a settled claim can never be paid twice",
+    };
+    const rows = report.steps.map((s) =>
+      s.rejected
+        ? `| ${s.label} | ${REJECTED_NOTE[s.label] ?? "**rejected**"} |`
+        : `| ${s.label} | [${s.signature.slice(0, 16)}…](https://explorer.solana.com/tx/${s.signature}?cluster=devnet) |`,
+    );
+    const block =
+      `<!-- owed:devnet-settlement:start -->\n` +
+      `| step | devnet transaction |\n|---|---|\n` +
+      `${rows.join("\n")}\n` +
+      `<!-- owed:devnet-settlement:end -->`;
+
+    const readmePath = join(root, "README.md");
+    const src = readFileSync(readmePath, "utf8");
+    const re = /<!-- owed:devnet-settlement:start -->[\s\S]*?<!-- owed:devnet-settlement:end -->/;
+    if (!re.test(src)) throw new Error("README.md is missing the owed:devnet-settlement block");
+    const after = src.replace(re, block);
+    if (after !== src) {
+      writeFileSync(readmePath, after);
+      console.log(`README.md: devnet settlement table updated from ${newest}`);
+    } else {
+      console.log(`README.md: devnet settlement table already current (${newest})`);
+    }
+  }
 }
 
 const kb = (n) => (n / 1024).toFixed(0);

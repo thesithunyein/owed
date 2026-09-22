@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-09-22T13:17:34.477Z",
+  "generatedAt": "2026-09-22T13:28:57.893Z",
   "steps": [
     {
       "label": "initialize_asset",
-      "signature": "2FyjiBCidwJRDC3GX6eAzkiYRWizo1Gu6v6NgCk8aR7jTiefnoSXe7zhn8iEezjUvrVdcS7b9aSBvpAKcScCKNc6"
+      "signature": "G92HsCsjee1cr7vsuS97yk6A9BL6PxbBeiDod8sfeRUZowbWoGB3vbEwmocFQz19PieHzJx9rzvUwZxwg9XyHZo"
     },
     {
       "label": "arm_split_authority",
-      "signature": "4Cue92Zkhb92JT23rjmcthncaoFQkkR7m71WTMYi12fh5DBifdvbfutR4VEqMShmcTxS4fFmcNkx5RWgA2mNHG95"
+      "signature": "2ivzcAChnksjhkPbxMLt7t3rZrHprD9HcDPzGAPB73W6oWui3zLDnTXcGsFAbtSZ4QVUDJ8C7BnNq8KyGtehrDSX"
     },
     {
       "label": "declare_action(split 4:1)",
-      "signature": "2MmfBjBW2hMdqiSGUsxjaGgomeNyX2JXQSDG6DiziMqVYDk7piGgCExArMTDs9ohHXJmAHwUxuDTrXFW5YRYUyQ5"
+      "signature": "3iNVHCARumMzFPZU1akt4eWkbKy4kjcvVy1RPti1VMraH2c9waHcgmFv33iTSAjaZ7Lj1aZ6nVeWALtmRU1acWxr"
     },
     {
       "label": "snapshot_holders(short register)",
@@ -19,87 +19,87 @@
       "code": "AnchorError thrown in programs/owed/src/lib.rs:225. Error Code: SupplyMismatch. Error Number: 6006. Error Message: holder amounts must sum exactly to mint supply."
     },
     {
-      "label": "snapshot_holders(action 37BmCT…)",
-      "signature": "LFyhH4GVZ7YEtU5sgrf4eRWkyrDnTzi7TaTFnnzgpurCHkhgTzVnkWmSVLjaAGjiDdT2GZs86Mxew74AZBQ2ySd"
+      "label": "snapshot_holders(action 4zqNC9…)",
+      "signature": "3nbPfG7RmwL1eTtdHvncbzdus9CP8zNbK4KUY8bA5o5bRc5mKx6VsZXELryVwozC55pm75DE1AXVPwhYdipsLBDv"
     },
     {
-      "label": "claim[48CRpC…]",
-      "signature": "3GPso2z5y2zPyAkzBHUTy8pUhyd7vfdj6BgnjkMRgaE9Cf5KwCG1GXVyZhjobXB9Nd6xCmU2H9VYjoJzxdUSgtkV",
-      "entitlement": "25"
-    },
-    {
-      "label": "claim[63JR9u…]",
-      "signature": "4tRNv5e3NNiDTNVQfsrsc4R5RH53PtR5vTTCZSKrwdmmWVEPrUXu88V26jN8oh4K9iASybULdvQmXjWCHmy8iHJW",
+      "label": "claim[2Km2Hu…]",
+      "signature": "GDHpmmFxmNEZvxMLKmux7z9ZJiwqJWENquVEZGziAWzGiqPB9HvDFjNfMgVipaFBaZ74JcAopNCdykHykQo6qaC",
       "entitlement": "60"
     },
     {
-      "label": "claim[FCrPQ9…]",
-      "signature": "5neRX8Z54Gxdd58rzAGqmZLoJcozsVYrW7gZHwMaBUC7xmSMVprZFcqkG66b2gAEnbJvnxfwa4sfMqrTjoVRFEoV",
+      "label": "claim[8bHPWZ…]",
+      "signature": "xzcZJWMFE7Do9Wngp4Lm9xUNu2R24tLnRm7fRzsiLdhCXf378uWM8vNKK6qPjPqaxruXTgSsx3atXZfacR9zoSx",
+      "entitlement": "25"
+    },
+    {
+      "label": "claim[9svT6y…]",
+      "signature": "3qZcC9PMyZHQuXhfUNjzeGZatdCiL4XsQnxjR5Ljivhs9DkVmdBCV6Q9ez6ZUCsFVqJejnKnexapkDbthxJrNtU6",
       "entitlement": "40"
     },
     {
       "label": "claim(replay)",
       "rejected": true,
-      "code": "Error: Simulation failed. \nMessage: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0. \nLogs: \n[\n  \"Program 42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV invoke [1]\",\n  \"Program log: Instruction: Claim\",\n  \"Program 11111111111111111111111111111111 invoke [2]\",\n  \"Allocate: account Address { address: KwtRaR5BCiWvZrDCmtjgg7hSLhX7FrNxjH5PDnctBsu, base: None } already in use\",\n  \"Program 11111111111111111111111111111111 failed: custom program error: 0x0\",\n  \"Program 42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV consumed 11330 of 200000 compute units\",\n  \"Program 42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV failed: custom program error: 0x0\"\n]. \nCatch the `SendTransactionError` and call `getLogs()` on it for full details."
+      "code": "Error: Simulation failed. \nMessage: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0. \nLogs: \n[\n  \"Program 42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV invoke [1]\",\n  \"Program log: Instruction: Claim\",\n  \"Program 11111111111111111111111111111111 invoke [2]\",\n  \"Allocate: account Address { address: E5MUs1sW8vdR4ktdWEvqBbAvauYxabuP4eBvMUytLWHD, base: None } already in use\",\n  \"Program 11111111111111111111111111111111 failed: custom program error: 0x0\",\n  \"Program 42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV consumed 17330 of 200000 compute units\",\n  \"Program 42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV failed: custom program error: 0x0\"\n]. \nCatch the `SendTransactionError` and call `getLogs()` on it for full details."
     },
     {
       "label": "settle_action(split)",
-      "signature": "xrTS4BQZCtcVGr6nM9BryE1HgNGX4s94bGawnV64NqwNTAzaehNSxSfb31BZYsZWPU8qnSxRNCAwpkSpQutxD8w"
+      "signature": "5JPbGxFbi1iosL5zRKp85rGhnAmsUhnteHsZWwYQ3PthEXvPEpCK4xEn9PokXxCik88Cff8nH6zAH4Yx294o2VtW"
     },
     {
       "label": "declare_action(dividend)",
-      "signature": "2joDv9Hi7tirEGP83QoxYrtinCZirirM2qnWymH5qSqzKNyzdGKEGm38WS7MjMcUkgG4j3Rwo41Y6aX5kvoHWwLS"
+      "signature": "2uoiQQsihuHFA3JxcMfdmRaT1cBHs4TKHvVeTT2KN1dQNwo5V2wbL6w7pZvQqNXVgYkRNhZZzkZeMFdcKk798WuG"
     },
     {
-      "label": "snapshot_holders(action BRTpap…)",
-      "signature": "2HNBmNAcyav77nVLQdiGaeqWtf4aVXoQ3DNWLWfb4kcarMjc3ix2D4LtUSSF5CziT5CmjJjX1Me46moKiV3BVsvw"
+      "label": "snapshot_holders(action HV7jHU…)",
+      "signature": "4mn7zkrBu8ncSFRxhtRJC1oka1rwW8mQDzC6J4WbtJWJenkqBcxNjERdv13XqSY2HuMSJswbkhzb9iB4dKQZeeF3"
     },
     {
-      "label": "claim[48CRpC…]",
-      "signature": "mXqe3LHJz6pK9Ca6SfpHiT1RvoutnuyryYgrU5NRTdhT3mwYxudHQEBC2T1AAwdzZR4LCid1N71QJ27jB3he4CU",
-      "entitlement": "100"
-    },
-    {
-      "label": "claim[63JR9u…]",
-      "signature": "59jGi4t4Rdb9r3WztvzS4i9XEq1aAu9V7fZCt6d9jNC6jbzBpqoTu8YHcoNRMovNQ5K7VdVXyERHdAVK8RAkK7RX",
+      "label": "claim[2Km2Hu…]",
+      "signature": "4CWHUejtzLTw4KTUbyCJ45A1hJmC82JFWUjYEFiU5RfpkqmxKvYRsqgrSezuuEALdLiWY1FDpr8enjqeQAFEgdek",
       "entitlement": "240"
     },
     {
+      "label": "claim[8bHPWZ…]",
+      "signature": "54JQPuRgX2UcJ6Uzik75yoMi6v4bX14gdNk6qyzoq3nGKyataLvtBGp2tWcfDZANY5qyaftqqz8ycgDbY2SSpiTW",
+      "entitlement": "100"
+    },
+    {
       "label": "settle_action(dividend)",
-      "signature": "kioAdGHAWRhpoJSQqufHrMP2CBAHwUcvMFWjw8DM7J98M32xQ18ifnpo6zLsoecNe61kxNAhUagJGpE8dzE5raS"
+      "signature": "5oisftAyUtWY9iphCJyaCxuoo6qpZkCETmEF4Thvc1qP4gv2pTHCfKZ9kjgjKcz4e1jHjzRNb5kfZUGoXJ6BjuPf"
     }
   ],
   "actions": [
     {
       "kind": "split",
       "ratio": "4:1",
-      "action": "37BmCTeyb1WNTMWQp5LCDWAFy7hYpQ2jqe5F32nEibmF"
+      "action": "4zqNC9DtPFJLkFGGrRqEhNhsS59iQdjNryx3aT3dNVzF"
     },
     {
       "kind": "dividend",
       "perShare": "1000",
       "required": "500000",
-      "action": "BRTpapiP9AeC7JfmTgKZkdzNZrgJC7bqK6gTThB4ZZZP",
+      "action": "HV7jHUMLWnZbANDUkLMVbZ5hUsREnWpTWQaGB7caSBND",
       "paid": "340000",
       "swept": "160000"
     }
   ],
   "programId": "42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV",
   "cluster": "https://api.devnet.solana.com",
-  "shareMint": "GVFVXN56SkajjcR6nq8ZyWGGaFkEdJgyoRW2dHFFohrN",
-  "payoutMint": "CSvcwvdsfVTGLdY2XuES3jGBh3s38BgZuqZRPvbsrc75",
-  "asset": "Gsmod4DtnYv1Vfnkdar49ctCc9DjCQDsarqFVdyVSFsf",
+  "shareMint": "RUhGuRHEBJtCinAWV8xEprK9K41TZBSRWgtwsW5NgUD",
+  "payoutMint": "2TEGQvidHoVQviAMmgTFk1ueXkmJg415x77key7fnPzz",
+  "asset": "GKqdr5yr9RRPvM3rLwD2txSVM5VTFah45wMgXnuAodfh",
   "holders": [
     {
-      "owner": "63JR9uJ97fiZn315DaP5YmHcsDzf8Sdja7Dt77PoVume",
+      "owner": "2Km2Huu22PZZev8idFMfLSpaajm2hykX7xFc595aD9TV",
       "initial": "60"
     },
     {
-      "owner": "FCrPQ9DgnQJ7SMnMMvnt8WA2S7T73ukUeNPpkdX7LbsJ",
+      "owner": "9svT6y7W6eRU8PcB3WUd7jwAmrpGx3YDw2b8TfyjVmW1",
       "initial": "40"
     },
     {
-      "owner": "48CRpC4xQ8S3K95rE5MFTbNw2GU1MafokZJY1zhzQkfy",
+      "owner": "8bHPWZ4GFuCsJKqEmb42WgsLhG8TpKVtPu3ZJ3hjA2rj",
       "initial": "25"
     }
   ]
