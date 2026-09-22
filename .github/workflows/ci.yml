@@ -153,7 +153,14 @@ jobs:
       - name: Report what was produced
         run: ls -la target/deploy/ || echo "no target/deploy produced"
       - name: Settle corporate actions end to end
-        run: anchor test --skip-build
+        # `--provider.cluster localnet` is required, not decorative: Anchor.toml
+        # sets `[provider] cluster = "devnet"`, so a bare `anchor test` tries to
+        # DEPLOY THE PROGRAM TO DEVNET. That failed with "insufficient funds for
+        # spend (1.77993548 SOL)" — the throwaway wallet has none, and it should
+        # not need any. Naming localnet makes Anchor start a validator and
+        # deploy there instead, which is the whole point of this job: no keys,
+        # no funded account, reproducible from a clone.
+        run: anchor test --skip-build --provider.cluster localnet
       - name: Upload the settlement report
         if: always()
         uses: actions/upload-artifact@v4
