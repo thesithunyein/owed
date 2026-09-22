@@ -234,15 +234,26 @@ jobs:
         # create directory .anchor/test-ledger: No such file or directory".
         run: |
           mkdir -p .anchor
-          # One --deactivate-feature is the point of driving the validator by
-          # hand: solana-test-validator starts with EVERY gate active, including
-          # disable_sbpf_v0_execution, so its loader accepts only v3 ELFs — while
-          # Anchor 0.31.2 emits v0 (printed two steps up). Deactivating that gate
-          # restores the range devnet actually runs: v0 through v3. (--activate-
-          # feature does not exist in this CLI; the USAGE line in the failure
-          # said so, and cost one run to learn.)
+          # TWO --deactivate-feature flags, and both are load-bearing, because
+          # deployment and execution read the feature set differently:
+          #
+          # 1. disable_sbpf_v0_execution (TestFeature1111…) — with it active the
+          #    loader's min version is V3, so even the base environment accepts
+          #    nothing older.
+          # 2. disable_sbpf_v0_v1_v2_deployment (B8JJXCy5…, SIMD-0500) — the
+          #    deploy path re-morphs the environment and, with this active,
+          #    clamps it to V3..=V3 regardless of (1). solana program deploy
+          #    hits exactly that path. Deactivating only (1) still failed the
+          #    deploy with the same error, which is how this second gate was
+          #    found.
+          #
+          # A test-validator boots with EVERY gate active, while devnet and
+          # mainnet have both of these inactive (verified 2026-09-22 via RPC
+          # getAccountInfo). Deactivating both restores the range the public
+          # clusters actually run: v0..=v3.
           solana-test-validator --reset --ledger .anchor/test-ledger --quiet \
             --deactivate-feature TestFeature11111111111111111111111111111111 \
+            --deactivate-feature B8JJXCy5amZyWG9r7EnUYLwzXSXTxG7GZ1qZ1qggo83g \
             > /tmp/validator.log 2>&1 &
           started=""
           for i in $(seq 1 60); do
@@ -280,7 +291,7 @@ jobs:
                  --program-id target/deploy/owed-keypair.json \
                  --url http://127.0.0.1:8899 2>&1 | tee /tmp/deploy.log; then
             if grep -q "sbpf_version" /tmp/deploy.log; then
-              echo "::error::the built ELF requires an SBPF version this validator has not enabled — disable_sbpf_v0_execution is deactivated above so v0 through v3 are accepted; check the e_flags version printed earlier"
+              echo "::error::the built ELF requires an SBPF version this validator has not enabled — both disable_sbpf_v0_execution and disable_sbpf_v0_v1_v2_deployment must be deactivated above; check the e_flags version printed earlier"
             fi
             exit 1
           fi

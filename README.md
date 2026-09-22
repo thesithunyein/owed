@@ -229,22 +229,23 @@ account:
 npm install
 # The program's address is fixed by the committed keypair; do not `keys sync`.
 mkdir -p target/deploy && cp programs/owed/owed-keypair.json target/deploy/
-# `anchor build` emits an SBPFv0 ELF (its e_flags say so; Anchor's docs claim
-# v3 defaults — they are wrong). Devnet and mainnet accept v0..=v3 today. A
-# FRESH LOCAL VALIDATOR does not: solana-test-validator starts with every
-# feature gate active, including disable_sbpf_v0_execution, so it accepts only
-# v3 and a local deploy fails with "Detected sbpf_version required by the
-# executable which are not enabled". Deactivate that one gate at start,
-# exactly as the CI settlement job does:
+anchor build
 
 # A throwaway validator, started and deployed to explicitly. `anchor test`
 # manages this itself, but it deploys silently (and not at all with
-# --skip-build), so the steps are spelled out. The `mkdir` matters: the validator
-# creates the ledger directory but not its parent. The `--deactivate-feature`
-# flag matters: without it a fresh validator accepts only SBPFv3.
+# --skip-build), so the steps are spelled out.
+#
+# The `mkdir` matters: the validator creates the ledger directory but not its
+# parent. The TWO --deactivate-feature flags matter: a test-validator boots
+# with every feature gate active, so it accepts only SBPFv3 — once via the
+# execution range (disable_sbpf_v0_execution) and again via the deployment
+# path (disable_sbpf_v0_v1_v2_deployment). Devnet and mainnet have both gates
+# inactive, which is why the same artifact deploys there. `anchor build`
+# emits an SBPFv0 ELF (its e_flags say so; Anchor's docs claim v3 defaults).
 mkdir -p .anchor
 solana-test-validator --reset --ledger .anchor/test-ledger --quiet \
-  --deactivate-feature TestFeature11111111111111111111111111111111 &
+  --deactivate-feature TestFeature11111111111111111111111111111111 \
+  --deactivate-feature B8JJXCy5amZyWG9r7EnUYLwzXSXTxG7GZ1qZ1qggo83g &
 solana --url http://127.0.0.1:8899 airdrop 500
 solana program deploy target/deploy/owed.so \
   --program-id target/deploy/owed-keypair.json --url http://127.0.0.1:8899
