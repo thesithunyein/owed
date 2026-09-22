@@ -24,7 +24,16 @@ name: Deploy registry to devnet
 #        (`solana airdrop` from a laptop or runner is usually rate-limited with
 #        429s; the web faucet is the practical path.)
 #
-#     2. Run this workflow. It builds, deploys to the pinned program address, runs
+#     2. Strongly recommended: give the settlement a keyed devnet endpoint. The
+#        public one enforces a connection rate limit (429 "Connection rate limits
+#        exceeded") that a ~25-transaction integration test trips — so the deploy
+#        succeeds and the settlement then drowns, which is exactly what three
+#        dispatches did. A free key from Helius, QuickNode or Alchemy fixes it:
+#            gh secret set SOLANA_RPC_URL --body "https://devnet.helius-rpc.com/?api-key=…"
+#        (Read from a secret, so GitHub masks it in the logs; the `rpc_url` input
+#        is the fallback for a public endpoint.)
+#
+#     3. Run this workflow. It builds, deploys to the pinned program address, runs
 #        the end-to-end settlement test against devnet, and writes the program id
 #        plus every transaction signature — with explorer links — into the run
 #        summary and as the `devnet-deployment` artifact.
@@ -41,6 +50,10 @@ on:
         description: "Also run tests/owed.mjs (settles a 4:1 split end to end)"
         type: boolean
         default: true
+      rpc_url:
+        description: "Devnet RPC endpoint. A keyed provider is far more reliable; see the SOLANA_RPC_URL secret."
+        type: string
+        default: "https://api.devnet.solana.com"
 
 jobs:
   deploy:
@@ -71,6 +84,7 @@ jobs:
       - name: Restore wallet from SOLANA_KEYPAIR
         env:
           SOLANA_KEYPAIR: ${{ secrets.SOLANA_KEYPAIR }}
+          SOLANA_RPC: ${{ secrets.SOLANA_RPC_URL || inputs.rpc_url }}
         run: |
           if [ -z "$SOLANA_KEYPAIR" ]; then
             echo "::error::SOLANA_KEYPAIR secret is not set. See the header of this workflow."
@@ -79,7 +93,7 @@ jobs:
           mkdir -p ~/.config/solana
           printf '%s' "$SOLANA_KEYPAIR" > ~/.config/solana/id.json
           chmod 600 ~/.config/solana/id.json
-          solana config set --url devnet
+          solana config set --url "$SOLANA_RPC"
           solana address
           solana balance
 
@@ -89,10 +103,12 @@ jobs:
         # best-effort: if it fails, the funding preflight below reports the
         # address and the exact amount instead of letting the deploy fail with
         # "insufficient funds" three steps later.
+        env:
+          SOLANA_RPC: ${{ secrets.SOLANA_RPC_URL || inputs.rpc_url }}
         run: |
           set +e
           for i in 1 2 3; do
-            solana airdrop 2 --url devnet && break
+            solana airdrop 2 --url "$SOLANA_RPC" && break
             sleep 5
           done
           solana balance || true
@@ -140,6 +156,8 @@ jobs:
         # not the ~5 SOL this comment guessed before a run measured it. Computed
         # from the artifact with `solana rent` and reported with the faucet URL,
         # because a silent "insufficient funds" costs an hour of guessing.
+        env:
+          SOLANA_RPC: ${{ secrets.SOLANA_RPC_URL || inputs.rpc_url }}
         run: |
           set -euo pipefail
           size=$(stat -c %s target/deploy/owed.so)
@@ -151,7 +169,7 @@ jobs:
           # upgrade demanded 3.61 SOL from a wallet holding 3.21 and blocked a run
           # whose deploy would have cost 0.001 — the second dispatch failed this
           # way, which is why the check asks the cluster what already exists.
-          if solana program show "$program_id" --url devnet >/dev/null 2>&1; then
+          if solana program show "$program_id" --url "$SOLANA_RPC" >/dev/null 2>&1; then
             factor=1
             echo "program $program_id is already on devnet — upgrade: only the buffer needs rent"
           else
@@ -177,12 +195,14 @@ jobs:
         # `anchor deploy`: identical to the command the CI settlement job proves
         # on every push, it does not rebuild, and --program-id pins the address
         # instead of letting Anchor mint a new one per run.
+        env:
+          SOLANA_RPC: ${{ secrets.SOLANA_RPC_URL || inputs.rpc_url }}
         run: |
           solana program deploy target/deploy/owed.so \
             --program-id target/deploy/owed-keypair.json \
-            --url devnet 2>&1 | tee deploy.log
+            --url "$SOLANA_RPC" 2>&1 | tee deploy.log
           grep -oE "Program Id: [A-Za-z0-9]+" deploy.log | tail -1 | tee /tmp/program-id.txt
-          solana program show "$(solana-keygen pubkey target/deploy/owed-keypair.json)" --url devnet
+          solana program show "$(solana-keygen pubkey target/deploy/owed-keypair.json)" --url "$SOLANA_RPC"
 
       - name: Install test dependencies
         if: ${{ inputs.run_settlement_test }}
@@ -204,13 +224,16 @@ jobs:
         # A fresh attempt rebuilds that state from scratch, and the backoff gives
         # the rate-limit window time to clear. The first dispatch died at the
         # second instruction and every subsequent test failed as a consequence.
+        env:
+          SOLANA_RPC: ${{ secrets.SOLANA_RPC_URL || inputs.rpc_url }}
         run: |
           set +e
-          export ANCHOR_PROVIDER_URL=https://api.devnet.solana.com
+          export ANCHOR_PROVIDER_URL="$SOLANA_RPC"
           export ANCHOR_WALLET="$HOME/.config/solana/id.json"
+          echo "settling against $SOLANA_RPC"
           # Let the deploy's own traffic cool off before starting.
           sleep 20
-          for attempt in 1 2 3; do
+          for attempt in 1 2 3 4; do
             echo "::group::settlement attempt $attempt"
             npx mocha --timeout 1000000 tests/**/*.mjs
             status=$?
@@ -219,7 +242,10 @@ jobs:
             echo "attempt $attempt failed (exit $status) — rate-limit backoff"
             sleep $((attempt * 60))
           done
-          echo "::error::the settlement did not complete in 3 attempts"
+          {
+            echo "::error::the settlement did not complete in 4 attempts against $SOLANA_RPC"
+            echo "::error::the public endpoint enforces a connection rate limit (429 'Connection rate limits exceeded') that a 25-transaction suite trips. Set the SOLANA_RPC_URL secret to a keyed devnet endpoint and re-run."
+          }
           exit 1
 
       - name: Write the deployment record

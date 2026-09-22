@@ -4,7 +4,7 @@
 
 <!-- owed:stats:start -->
 > **379 of 925 official xStocks carry a stale on-chain multiplier field**
-> (classified at 2026-09-22 08:13 UTC); 4 are off by 100% or more, and 2 by a full 10x.
+> (classified at 2026-09-22 10:26 UTC); 4 are off by 100% or more, and 2 by a full 10x.
 > Not in theory: every mint was scanned and the effective value read from the chain.
 <!-- owed:stats:end -->
 
@@ -292,15 +292,29 @@ four-source id assertion in both workflows exists to guarantee.
    asks the cluster what exists and states the figure for the case it finds
    rather than charging the first-deploy price forever. (`solana airdrop` fails
    with 429s from both a laptop and a CI runner; the web faucet is the path.)
-3. Dispatch it:
+3. Give the settlement a keyed devnet endpoint. This is the difference between a
+   deploy that succeeds and a settlement that completes: the public endpoint's
+   connection rate limit (`429 Connection rate limits exceeded`) is not something
+   pacing fixes, and a ~25-transaction integration test trips it — three separate
+   dispatches died that way after their deploy had already landed. A free key from
+   Helius, QuickNode or Alchemy is enough:
+
+   ```bash
+   gh secret set SOLANA_RPC_URL --body "https://devnet.helius-rpc.com/?api-key=…"
+   ```
+
+   The workflow falls back to its `rpc_url` input and then to the public endpoint,
+   and the value is read from a secret, so GitHub masks it in the logs.
+4. Dispatch it:
 
    ```bash
    gh workflow run deploy-devnet.yml --ref main -f run_settlement_test=true
    ```
 
    It builds, deploys to the pinned program address, runs the same settlement
-   test against devnet, and writes `devnet-deployment.json` — program id plus
-   every transaction signature — as a run artifact and in the run summary, with
+   test against devnet (four attempts, because rate-limit storms pass), and writes
+   `devnet-deployment.json` — program id plus every transaction signature — as a
+   run artifact and in the run summary, with
    explorer links, so citing it in a submission is copy-paste.
 
 Two honest limitations remain. `claim` pays a cash action out of the action's
