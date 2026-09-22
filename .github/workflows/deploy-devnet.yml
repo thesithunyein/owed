@@ -77,11 +77,16 @@ jobs:
           cp programs/owed/owed-keypair.json target/deploy/owed-keypair.json
 
       - name: Build for SBF
-        # `--arch v1`, not Anchor's default v3: devnet has not activated
-        # `enable_sbpf_v3_deployment_and_execution`, so a v3 ELF fails to deploy
-        # there with "Detected sbpf_version required by the executable which are
-        # not enabled".
-        run: anchor build --arch v1
+        # `anchor build` for the IDL, then a direct cargo-build-sbf for the
+        # artifact that ships. Anchor 0.31.2 builds SBPFv3, and devnet has not
+        # activated `enable_sbpf_v3_deployment_and_execution`, so a v3 ELF fails
+        # to deploy with "Detected sbpf_version required by the executable which
+        # are not enabled". SBPFv1 is active everywhere. Same pair of commands as
+        # the CI settlement job, which is why this deployment is reproducible.
+        run: |
+          anchor build
+          ( cd programs/owed && cargo build-sbf --arch v1 )
+          ls -la target/deploy/owed.so
 
       - name: Assert every declared program id agrees
         run: |

@@ -153,20 +153,33 @@ jobs:
           mkdir -p target/deploy
           cp programs/owed/owed-keypair.json target/deploy/owed-keypair.json
       - name: Build the program for SBF
-        # `--arch v1` is deliberate, not a default. Anchor 0.31.2 builds with
-        # `--tools-version v1.57 --arch v3`, and a v3 artifact is rejected by any
-        # cluster that has not activated `enable_sbpf_v3_deployment_and_execution`
-        # — which a fresh local validator has not, and neither have the public
-        # clusters:
+        # Two builds, for two different artifacts, and both are needed.
         #
-        #   Detected sbpf_version required by the executable which are not enabled
-        #   Program BPFLoaderUpgradeab1e11111111111111111111111 failed:
-        #     invalid account data for instruction
+        # 1. `anchor build` emits target/idl/owed.json, which the client and the
+        #    id assertion below both read. It also produces an SBPFv3 artifact:
+        #    Anchor 0.31.2 drives cargo-build-sbf with `--arch v3`. (Anchor's own
+        #    `--arch` flag is an unrelated thing that only accepts `bpf` or `sbf`
+        #    — passing `--arch v1` to `anchor build` failed here first.)
         #
-        # SBPFv1 has been active on the public clusters for years, so the same
-        # artifact deploys both here and to devnet. Raising this arch re-breaks
-        # the local run; the deploy step says so if it ever happens again.
-        run: anchor build --arch v1
+        # 2. A v3 ELF is rejected by any cluster where
+        #    `enable_sbpf_v3_deployment_and_execution` is not active, which is a
+        #    fresh local validator and the public clusters alike:
+        #
+        #      Detected sbpf_version required by the executable which are not enabled
+        #      Program BPFLoaderUpgradeab1e11111111111111111111111 failed:
+        #        invalid account data for instruction
+        #
+        #    So the binary that actually gets deployed is rebuilt directly with
+        #    cargo-build-sbf, which is the thing that takes the SBPF version.
+        #    SBPFv1 has been live on the public clusters for years, so this
+        #    artifact deploys to the validator below and to devnet unchanged.
+        #    It overwrites target/deploy/owed.so in place.
+        run: |
+          anchor build
+          echo "--- cargo-build-sbf's own --arch values, for the record ---"
+          cargo build-sbf --help | sed -n '/--arch/,+3p' || true
+          ( cd programs/owed && cargo build-sbf --arch v1 )
+          ls -la target/deploy/owed.so
       - name: Report what was produced
         run: ls -la target/deploy/ || echo "no target/deploy produced"
       - name: Assert every declared program id agrees
