@@ -161,6 +161,18 @@ jobs:
         # deploy there instead, which is the whole point of this job: no keys,
         # no funded account, reproducible from a clone.
         run: anchor test --skip-build --provider.cluster localnet
+      - name: Show the validator log (only on failure)
+        # A validator that refuses to start is the least diagnosable failure here:
+        # Anchor reports "does not look started" and nothing else.
+        if: failure()
+        run: |
+          for f in .anchor/test-ledger/test-ledger-log.txt target/validator.log; do
+            if [ -f "$f" ]; then
+              echo "=== $f ==="
+              tail -60 "$f"
+            fi
+          done
+
       - name: Upload the settlement report
         if: always()
         uses: actions/upload-artifact@v4
@@ -168,3 +180,11 @@ jobs:
           name: settlement-report
           path: tests/settlement-report.json
           if-no-files-found: warn
+
+      - name: Upload the validator ledger log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validator-log
+          path: .anchor/test-ledger/test-ledger-log.txt
+          if-no-files-found: ignore

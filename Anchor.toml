@@ -34,6 +34,13 @@ wallet = "~/.config/solana/id.json"
 test = "mocha --timeout 1000000 tests/**/*.mjs"
 
 [test]
-startup_wait = 5000
-shutdown_wait = 2000
+# 30s, not the 5s this started at. On a cold CI runner the test validator takes
+# far longer than 5s to answer, and `anchor test` gives up with "Unable to get
+# latest blockhash. Test validator does not look started." rather than waiting.
+# The settlement job is the only thing that runs this, and it is worth 30s.
+startup_wait = 30000
+shutdown_wait = 5000
+# `upgradeable = false`: the settlement test asserts holder balances after a real
+# action, and an upgradeable program adds a deploy-time authority check that has
+# nothing to do with what is being tested.
 upgradeable = false
