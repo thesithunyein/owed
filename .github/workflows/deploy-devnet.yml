@@ -6,17 +6,30 @@ name: Deploy registry to devnet
 # `cargo-build-sbf`, and the Solana toolchain is Linux/macOS only — so it runs
 # here, where the toolchain works.
 #
-# One-time setup, which only the repository owner can do:
+# Setup state (2026-09-22):
 #
-#   1. Create a funded devnet keypair and add its JSON as the repository secret
-#      SOLANA_KEYPAIR (Settings → Secrets and variables → Actions).
-#        solana-keygen new --outfile devnet.json
-#        solana airdrop 2 --url devnet
-#        # paste the contents of devnet.json as the secret value
+#   The SOLANA_KEYPAIR secret IS set, from a devnet keypair generated for this
+#   repository. The keypair file lives at ~/.config/solana/owed-devnet.json on
+#   the machine that generated it — keep it, because the upgrade authority for
+#   the deployed program is this key, and GitHub secrets cannot be read back.
 #
-#   2. Run this workflow. It builds, generates a real program id, deploys, and
-#      then runs the end-to-end settlement test, printing explorer links in the
-#      run summary.
+#   The remaining step is funding, and only the owner can do it:
+#
+#     1. Go to https://faucet.solana.com (Devnet), paste the wallet address
+#        printed by the "Restore wallet" step, and request SOL. Repeat until the
+#        wallet holds ~5 SOL: a 350KB program rents ~2.5 SOL for its ProgramData
+#        account plus ~2.5 SOL for the buffer that carries it there. The preflight
+#        step below states the exact requirement for the artifact being built.
+#        (`solana airdrop` from a laptop or runner is usually rate-limited with
+#        429s; the web faucet is the practical path.)
+#
+#     2. Run this workflow. It builds, deploys to the pinned program address, runs
+#        the end-to-end settlement test against devnet, and writes the program id
+#        plus every transaction signature — with explorer links — into the run
+#        summary and as the `devnet-deployment` artifact.
+#
+#   To use a different wallet instead, replace the secret:
+#       gh secret set SOLANA_KEYPAIR < your-funded-devnet-keypair.json
 #
 # Nothing here runs on a push: deploying is a deliberate act.
 
@@ -64,9 +77,24 @@ jobs:
           fi
           mkdir -p ~/.config/solana
           printf '%s' "$SOLANA_KEYPAIR" > ~/.config/solana/id.json
+          chmod 600 ~/.config/solana/id.json
           solana config set --url devnet
           solana address
           solana balance
+
+      - name: Try the devnet faucet (best effort)
+        # The public faucet is rate-limited per IP, and a runner is a different IP
+        # than a laptop, so this occasionally just works. It is deliberately
+        # best-effort: if it fails, the funding preflight below reports the
+        # address and the exact amount instead of letting the deploy fail with
+        # "insufficient funds" three steps later.
+        run: |
+          set +e
+          for i in 1 2 3; do
+            solana airdrop 2 --url devnet && break
+            sleep 5
+          done
+          solana balance || true
 
       - name: Place the committed program keypair
         # In that order, and NOT `anchor keys sync`: the id is committed and
@@ -103,10 +131,42 @@ jobs:
             [ "$v" = "$declared" ] || { echo "::error::program id disagreement: $v != $declared"; exit 1; }
           done
 
-      - name: Deploy to devnet
+      - name: Check the wallet can pay for this deployment
+        # A 350KB program needs ~2.5 SOL of rent for its ProgramData account and
+        # ~2.5 SOL more for the buffer that carries it there (returned once the
+        # upgrade lands), so the real requirement is close to 5 SOL — not the
+        # "a bit of SOL for fees" a reader would assume. Computed from the actual
+        # artifact with `solana rent`, and reported with the faucet URL, because
+        # a silent "insufficient funds" costs an hour of guessing.
         run: |
-          anchor deploy --provider.cluster devnet 2>&1 | tee deploy.log
-          grep -oE "Program Id: [A-Za-z0-9]+" deploy.log || true
+          set -euo pipefail
+          size=$(stat -c %s target/deploy/owed.so)
+          per=$(solana rent $((size + 45)) | awk '/SOL/ {print $3; exit}')
+          need=$(awk -v r="$per" 'BEGIN { printf "%.3f", 2*r + 0.05 }')
+          have=$(solana balance | awk '{print $1}')
+          address=$(solana address)
+          echo "program ${size} bytes | rent ${per} SOL each | need ~${need} SOL | have ${have} SOL"
+          if awk -v n="$need" -v h="$have" 'BEGIN { exit (h+0 >= n+0) ? 0 : 1 }'; then
+            echo "funded"
+          else
+            {
+              echo "::error::wallet $address holds ${have} SOL but this deployment needs ~${need} SOL on devnet"
+              echo "::error::fund $address at https://faucet.solana.com (Devnet), then re-run this workflow"
+            }
+            exit 1
+          fi
+
+      - name: Deploy to devnet
+        # `solana program deploy` with the committed program keypair, not
+        # `anchor deploy`: identical to the command the CI settlement job proves
+        # on every push, it does not rebuild, and --program-id pins the address
+        # instead of letting Anchor mint a new one per run.
+        run: |
+          solana program deploy target/deploy/owed.so \
+            --program-id target/deploy/owed-keypair.json \
+            --url devnet 2>&1 | tee deploy.log
+          grep -oE "Program Id: [A-Za-z0-9]+" deploy.log | tail -1 | tee /tmp/program-id.txt
+          solana program show "$(solana-keygen pubkey target/deploy/owed-keypair.json)" --url devnet
 
       - name: Install test dependencies
         if: ${{ inputs.run_settlement_test }}
@@ -127,6 +187,33 @@ jobs:
           export ANCHOR_WALLET="$HOME/.config/solana/id.json"
           npx mocha --timeout 1000000 tests/**/*.mjs
 
+      - name: Write the deployment record
+        # The machine-readable outcome, so linking it in the README or the site is
+        # a copy-paste rather than a scavenger hunt through logs. Uploaded below.
+        if: always()
+        run: |
+          node -e "
+            const { readFileSync, writeFileSync, existsSync } = require('node:fs');
+            const out = { generatedAt: new Date().toISOString(), cluster: 'devnet' };
+            try { out.programId = readFileSync('/tmp/program-id.txt','utf8').trim().replace('Program Id: ',''); } catch {}
+            try {
+              const r = JSON.parse(readFileSync('tests/settlement-report.json','utf8'));
+              out.settlement = { steps: r.steps, actions: r.actions, holders: r.holders };
+            } catch {}
+            writeFileSync('devnet-deployment.json', JSON.stringify(out, null, 2));
+            console.log(JSON.stringify(out, null, 2).slice(0, 600));
+          " || echo 'no deployment record produced'
+
+      - name: Upload the deployment record and settlement report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: devnet-deployment
+          path: |
+            devnet-deployment.json
+            tests/settlement-report.json
+          if-no-files-found: warn
+
       - name: Summarise
         run: |
           {
@@ -134,6 +221,24 @@ jobs:
             echo
             echo "Settlement test: ${{ inputs.run_settlement_test }}"
             echo
+            if [ -f /tmp/program-id.txt ]; then
+              echo "Program: $(cat /tmp/program-id.txt)"
+              echo
+              echo "Explorer: https://explorer.solana.com/address/$(cat /tmp/program-id.txt | sed 's/Program Id: //')?cluster=devnet"
+              echo
+            fi
+            if [ -f tests/settlement-report.json ]; then
+              echo "### Settlement signatures (devnet)"
+              echo
+              node -e "
+                const r = require('./tests/settlement-report.json');
+                for (const s of r.steps) {
+                  if (s.rejected) console.log('- ' + s.label + ' — rejected (' + String(s.code).slice(0, 60) + ')');
+                  else if (s.signature) console.log('- ' + s.label + ' — https://explorer.solana.com/tx/' + s.signature + '?cluster=devnet');
+                }
+              " || true
+              echo
+            fi
             echo '```'
             tail -40 deploy.log || true
             echo '```'

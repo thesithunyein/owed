@@ -257,9 +257,33 @@ ANCHOR_WALLET="$HOME/.config/solana/id.json" \
 ```
 
 That is CI's `settlement` job, and it is a stronger claim than a devnet signature
-a judge cannot re-run. **A devnet deployment is still outstanding**: it needs a
-funded `SOLANA_KEYPAIR` secret and a manual dispatch of
-`.github/workflows/deploy-devnet.yml`.
+a judge cannot re-run.
+
+### Devnet deployment
+
+The public-cluster deployment is prepared and gated on funding, not on code:
+
+1. The `SOLANA_KEYPAIR` repository secret is set, from a devnet keypair generated
+   for this repo. Its file is `~/.config/solana/owed-devnet.json` on the machine
+   that generated it — **keep it**, since it is the program's upgrade authority
+   and GitHub secrets cannot be read back. (`solana-keygen new --outfile
+   owed-devnet.json` recreates this situation with your own key; `gh secret set
+   SOLANA_KEYPAIR < owed-devnet.json` swaps it in.)
+2. Fund that wallet with ~5 SOL from https://faucet.solana.com (Devnet). The
+   arithmetic is in the workflow: ~2.5 SOL of rent for the ProgramData account of
+   a 350KB program, plus ~2.5 SOL for the buffer, returned once the upgrade
+   lands. `solana airdrop` is rate-limited (429) in practice — the web faucet is
+   the path.
+3. Dispatch it:
+
+   ```bash
+   gh workflow run deploy-devnet.yml --ref main -f run_settlement_test=true
+   ```
+
+   It builds, deploys to the pinned program address, runs the same settlement
+   test against devnet, and writes `devnet-deployment.json` — program id plus
+   every transaction signature — as a run artifact and in the run summary, with
+   explorer links, so citing it in a submission is copy-paste.
 
 Two honest limitations remain. `claim` pays a cash action out of the action's
 vault in the **payout currency**, so a holder must have an account for that
