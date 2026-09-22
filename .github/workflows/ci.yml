@@ -153,7 +153,20 @@ jobs:
           mkdir -p target/deploy
           cp programs/owed/owed-keypair.json target/deploy/owed-keypair.json
       - name: Build the program for SBF
-        run: anchor build
+        # `--arch v1` is deliberate, not a default. Anchor 0.31.2 builds with
+        # `--tools-version v1.57 --arch v3`, and a v3 artifact is rejected by any
+        # cluster that has not activated `enable_sbpf_v3_deployment_and_execution`
+        # — which a fresh local validator has not, and neither have the public
+        # clusters:
+        #
+        #   Detected sbpf_version required by the executable which are not enabled
+        #   Program BPFLoaderUpgradeab1e11111111111111111111111 failed:
+        #     invalid account data for instruction
+        #
+        # SBPFv1 has been active on the public clusters for years, so the same
+        # artifact deploys both here and to devnet. Raising this arch re-breaks
+        # the local run; the deploy step says so if it ever happens again.
+        run: anchor build --arch v1
       - name: Report what was produced
         run: ls -la target/deploy/ || echo "no target/deploy produced"
       - name: Assert every declared program id agrees
@@ -227,9 +240,19 @@ jobs:
           solana --url http://127.0.0.1:8899 balance
       - name: Deploy the program to it
         run: |
-          solana program deploy target/deploy/owed.so \
-            --program-id target/deploy/owed-keypair.json \
-            --url http://127.0.0.1:8899
+          set -euo pipefail
+          # A failure here has two very different causes, and the raw error does
+          # not distinguish them: a missing/mismatched program id, or an ELF that
+          # needs an SBPF version this cluster has not enabled. The second is
+          # named explicitly so the next person does not have to decode it.
+          if ! solana program deploy target/deploy/owed.so \
+                 --program-id target/deploy/owed-keypair.json \
+                 --url http://127.0.0.1:8899 2>&1 | tee /tmp/deploy.log; then
+            if grep -q "sbpf_version" /tmp/deploy.log; then
+              echo "::error::the built ELF requires an SBPF version this cluster has not enabled — check the --arch in the build step above (v3 needs enable_sbpf_v3_deployment_and_execution, which a fresh validator does not activate)"
+            fi
+            exit 1
+          fi
           solana program show "$(solana-keygen pubkey target/deploy/owed-keypair.json)" \
             --url http://127.0.0.1:8899
       - name: Settle corporate actions end to end

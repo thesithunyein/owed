@@ -229,7 +229,11 @@ account:
 npm install
 # The program's address is fixed by the committed keypair; do not `keys sync`.
 mkdir -p target/deploy && cp programs/owed/owed-keypair.json target/deploy/
-anchor build
+# `--arch v1` matters: Anchor 0.31.2 defaults to `--arch v3`, and a v3 ELF is
+# rejected by any cluster without the `enable_sbpf_v3_deployment_and_execution`
+# feature gate active — including a fresh local validator, which fails with
+# "Detected sbpf_version required by the executable which are not enabled".
+anchor build --arch v1
 
 # A throwaway validator, started and deployed to explicitly. `anchor test`
 # manages this itself, but it deploys silently (and not at all with
@@ -295,7 +299,7 @@ node keeper/demo/snapshot-demo.mjs [<MINT_ADDRESS>]
 
 # Anchor program (requires the anchor + solana toolchains, Linux/macOS only)
 mkdir -p target/deploy && cp programs/owed/owed-keypair.json target/deploy/
-anchor build
+anchor build --arch v1   # see the note in the repro block above
 # Then the validator + deploy + mocha sequence shown under "Honest scope
 # boundary", or read `.github/workflows/ci.yml`, whose `settlement` job is exactly
 # those commands and runs them on every push.

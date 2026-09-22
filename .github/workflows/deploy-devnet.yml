@@ -77,7 +77,11 @@ jobs:
           cp programs/owed/owed-keypair.json target/deploy/owed-keypair.json
 
       - name: Build for SBF
-        run: anchor build
+        # `--arch v1`, not Anchor's default v3: devnet has not activated
+        # `enable_sbpf_v3_deployment_and_execution`, so a v3 ELF fails to deploy
+        # there with "Detected sbpf_version required by the executable which are
+        # not enabled".
+        run: anchor build --arch v1
 
       - name: Assert every declared program id agrees
         run: |
