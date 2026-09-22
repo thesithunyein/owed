@@ -183,7 +183,7 @@ site/                     # deploy output (gitignored) — built by build-site.m
 | Golden vectors | ✅ Regenerated in CI; Node↔Rust drift fails the build |
 | `web/` pages | ✅ Both run from the file system with no network; re-classify against the viewer's clock |
 | `tests/owed.mjs` | ✅ **Executed on every push** — the `settlement` CI job deploys to a throwaway validator and settles a 4:1 split end to end, asserting holder balances before and after |
-| `programs/owed/` Anchor | ✅ **Compiles for SBF, settles on-chain in CI, and is deployed to devnet** — `owed.so` from a real `anchor build`, the whole lifecycle runs against a throwaway validator on every push, and the program is live on devnet at `42WwVtPQ…FCLV` ([see below](#devnet-deployment)). Not audited |
+| `programs/owed/` Anchor | ✅ **Compiles for SBF, settles on-chain in CI, and settles on devnet** — `owed.so` from a real `anchor build`, the whole lifecycle runs against a throwaway validator on every push, and the same lifecycle has run on devnet with real signatures ([see below](#devnet-deployment)). Not audited |
 
 ## Honest scope boundary
 
@@ -256,8 +256,10 @@ ANCHOR_WALLET="$HOME/.config/solana/id.json" \
   npx mocha --timeout 1000000 tests/**/*.mjs
 ```
 
-That is CI's `settlement` job, and it is a stronger claim than a devnet signature
-a judge cannot re-run.
+That is CI's `settlement` job. It is why the devnet signatures below can be trusted
+rather than merely clicked: the same 15 steps — including both rejections — pass on
+every push against a chain anyone can stand up, so a judge is not asked to take a
+run on a shared test cluster on faith.
 
 ### Devnet deployment
 
@@ -276,6 +278,37 @@ The address is the same one CI settles against locally, because it is fixed by
 the committed program keypair rather than minted per build — which is what the
 four-source id assertion in both workflows exists to guarantee.
 
+### The settlement, on devnet, with signatures
+
+A 4:1 split and then a cash distribution, settled against the program above on
+2026-09-22 — 10 passing tests, 13 signed transactions, and the two paths that must
+*refuse*. Copied verbatim from
+[`docs/devnet-settlement-2026-09-22.json`](docs/devnet-settlement-2026-09-22.json),
+which the suite writes on every run:
+
+| step | devnet transaction |
+|---|---|
+| initialize_asset | [2FyjiBCidwJRDC3G…](https://explorer.solana.com/tx/2FyjiBCidwJRDC3GX6eAzkiYRWizo1Gu6v6NgCk8aR7jTiefnoSXe7zhn8iEezjUvrVdcS7b9aSBvpAKcScCKNc6?cluster=devnet) |
+| arm_split_authority | [4Cue92Zkhb92JT23…](https://explorer.solana.com/tx/4Cue92Zkhb92JT23rjmcthncaoFQkkR7m71WTMYi12fh5DBifdvbfutR4VEqMShmcTxS4fFmcNkx5RWgA2mNHG95?cluster=devnet) |
+| declare_action(split 4:1) | [2MmfBjBW2hMdqiSG…](https://explorer.solana.com/tx/2MmfBjBW2hMdqiSGUsxjaGgomeNyX2JXQSDG6DiziMqVYDk7piGgCExArMTDs9ohHXJmAHwUxuDTrXFW5YRYUyQ5?cluster=devnet) |
+| snapshot_holders(short register) | **rejected** — the program's own `SupplyMismatch` (lib.rs:225); a register that does not sum to supply cannot be recorded |
+| snapshot_holders(action 37BmCT…) | [LFyhH4GVZ7YEtU5s…](https://explorer.solana.com/tx/LFyhH4GVZ7YEtU5sgrf4eRWkyrDnTzi7TaTFnnzgpurCHkhgTzVnkWmSVLjaAGjiDdT2GZs86Mxew74AZBQ2ySd?cluster=devnet) |
+| claim[48CRpC…] | [3GPso2z5y2zPyAkz…](https://explorer.solana.com/tx/3GPso2z5y2zPyAkzBHUTy8pUhyd7vfdj6BgnjkMRgaE9Cf5KwCG1GXVyZhjobXB9Nd6xCmU2H9VYjoJzxdUSgtkV?cluster=devnet) |
+| claim[63JR9u…] | [4tRNv5e3NNiDTNVQ…](https://explorer.solana.com/tx/4tRNv5e3NNiDTNVQfsrsc4R5RH53PtR5vTTCZSKrwdmmWVEPrUXu88V26jN8oh4K9iASybULdvQmXjWCHmy8iHJW?cluster=devnet) |
+| claim[FCrPQ9…] | [5neRX8Z54Gxdd58r…](https://explorer.solana.com/tx/5neRX8Z54Gxdd58rzAGqmZLoJcozsVYrW7gZHwMaBUC7xmSMVprZFcqkG66b2gAEnbJvnxfwa4sfMqrTjoVRFEoV?cluster=devnet) |
+| claim(replay of a settled claim) | **rejected** — the receipt PDA already exists, so a claim cannot be paid twice |
+| settle_action(split) | [xrTS4BQZCtcVGr6n…](https://explorer.solana.com/tx/xrTS4BQZCtcVGr6nM9BryE1HgNGX4s94bGawnV64NqwNTAzaehNSxSfb31BZYsZWPU8qnSxRNCAwpkSpQutxD8w?cluster=devnet) |
+| declare_action(dividend) | [2joDv9Hi7tirEGP8…](https://explorer.solana.com/tx/2joDv9Hi7tirEGP83QoxYrtinCZirirM2qnWymH5qSqzKNyzdGKEGm38WS7MjMcUkgG4j3Rwo41Y6aX5kvoHWwLS?cluster=devnet) |
+| snapshot_holders(action BRTpap…) | [2HNBmNAcyav77nVL…](https://explorer.solana.com/tx/2HNBmNAcyav77nVLQdiGaeqWtf4aVXoQ3DNWLWfb4kcarMjc3ix2D4LtUSSF5CziT5CmjJjX1Me46moKiV3BVsvw?cluster=devnet) |
+| claim[48CRpC…] | [mXqe3LHJz6pK9Ca6…](https://explorer.solana.com/tx/mXqe3LHJz6pK9Ca6SfpHiT1RvoutnuyryYgrU5NRTdhT3mwYxudHQEBC2T1AAwdzZR4LCid1N71QJ27jB3he4CU?cluster=devnet) |
+| claim[63JR9u…] | [59jGi4t4Rdb9r3Wz…](https://explorer.solana.com/tx/59jGi4t4Rdb9r3WztvzS4i9XEq1aAu9V7fZCt6d9jNC6jbzBpqoTu8YHcoNRMovNQ5K7VdVXyERHdAVK8RAkK7RX?cluster=devnet) |
+| settle_action(dividend) | [kioAdGHAWRhpoJSQ…](https://explorer.solana.com/tx/kioAdGHAWRhpoJSQqufHrMP2CBAHwUcvMFWjw8DM7J98M32xQ18ifnpo6zLsoecNe61kxNAhUagJGpE8dzE5raS?cluster=devnet) |
+
+What the split and the dividend each prove about value actually moving — the
+deltas asserted around every signature, the vault swept to exactly zero, the
+unclaimed remainder returned to the issuer — is in the frozen-register section
+above; the devnet run asserts the same numbers, not fewer.
+
 **Reproducing this yourself**, in order:
 
 1. The `SOLANA_KEYPAIR` repository secret holds a devnet keypair generated for
@@ -292,12 +325,17 @@ four-source id assertion in both workflows exists to guarantee.
    asks the cluster what exists and states the figure for the case it finds
    rather than charging the first-deploy price forever. (`solana airdrop` fails
    with 429s from both a laptop and a CI runner; the web faucet is the path.)
-3. Give the settlement a keyed devnet endpoint. This is the difference between a
-   deploy that succeeds and a settlement that completes: the public endpoint's
-   connection rate limit (`429 Connection rate limits exceeded`) is not something
-   pacing fixes, and a ~25-transaction integration test trips it — three separate
-   dispatches died that way after their deploy had already landed. A free key from
-   Helius, QuickNode or Alchemy is enough:
+3. A keyed devnet endpoint is still worth setting, though it is no longer
+   load-bearing. The public endpoint throttles bursts (`429 Connection rate limits
+   exceeded`), and what used to kill a run was not the throttle itself but what it
+   hid: a throttled `getOrCreateAssociatedTokenAccount` loses its create
+   transaction, and spl-token swallows that error and re-reads, so the run died as
+   `TokenAccountNotFoundError` in the fourth step with seven tests cascading behind
+   it. The harness now retries that call, and the measured result on the public
+   endpoint is a complete run — 10 passing in 2 minutes, the signatures above. A
+   shared CI runner IP is throttled harder than a laptop, so a free key from
+   Helius, QuickNode or Alchemy remains the way to make unattended dispatches
+   boring:
 
    ```bash
    gh secret set SOLANA_RPC_URL --body "https://devnet.helius-rpc.com/?api-key=…"

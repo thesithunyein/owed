@@ -24,11 +24,16 @@ name: Deploy registry to devnet
 #        (`solana airdrop` from a laptop or runner is usually rate-limited with
 #        429s; the web faucet is the practical path.)
 #
-#     2. Strongly recommended: give the settlement a keyed devnet endpoint. The
-#        public one enforces a connection rate limit (429 "Connection rate limits
-#        exceeded") that a ~25-transaction integration test trips — so the deploy
-#        succeeds and the settlement then drowns, which is exactly what three
-#        dispatches did. A free key from Helius, QuickNode or Alchemy fixes it:
+#     2. A keyed devnet endpoint is recommended, though no longer load-bearing.
+#        The public one throttles bursts (429), and the thing that used to lose a
+#        run was what the throttle hid: a dropped create in
+#        `getOrCreateAssociatedTokenAccount`, whose error spl-token swallows and
+#        which surfaced as `TokenAccountNotFoundError` in the fourth step with
+#        seven tests cascading behind it. tests/owed.mjs now retries that call;
+#        the measured result on the public endpoint is a complete run (10
+#        passing, 2 minutes, 13 signatures). A shared runner IP is throttled
+#        harder than a laptop, so a free key from Helius, QuickNode or Alchemy
+#        is still the way to make unattended dispatches boring:
 #            gh secret set SOLANA_RPC_URL --body "https://devnet.helius-rpc.com/?api-key=…"
 #        (Read from a secret, so GitHub masks it in the logs; the `rpc_url` input
 #        is the fallback for a public endpoint.)
@@ -244,7 +249,7 @@ jobs:
           done
           {
             echo "::error::the settlement did not complete in 4 attempts against $SOLANA_RPC"
-            echo "::error::the public endpoint enforces a connection rate limit (429 'Connection rate limits exceeded') that a 25-transaction suite trips. Set the SOLANA_RPC_URL secret to a keyed devnet endpoint and re-run."
+            echo "::error::the settlement did not complete against the public endpoint in 4 attempts. Its 429 throttle hides lost sends (see the retry in tests/owed.mjs's ensureAta). Set the SOLANA_RPC_URL secret to a keyed devnet endpoint and re-run."
           }
           exit 1
 

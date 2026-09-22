@@ -1,0 +1,106 @@
+{
+  "generatedAt": "2026-09-22T13:17:34.477Z",
+  "steps": [
+    {
+      "label": "initialize_asset",
+      "signature": "2FyjiBCidwJRDC3GX6eAzkiYRWizo1Gu6v6NgCk8aR7jTiefnoSXe7zhn8iEezjUvrVdcS7b9aSBvpAKcScCKNc6"
+    },
+    {
+      "label": "arm_split_authority",
+      "signature": "4Cue92Zkhb92JT23rjmcthncaoFQkkR7m71WTMYi12fh5DBifdvbfutR4VEqMShmcTxS4fFmcNkx5RWgA2mNHG95"
+    },
+    {
+      "label": "declare_action(split 4:1)",
+      "signature": "2MmfBjBW2hMdqiSGUsxjaGgomeNyX2JXQSDG6DiziMqVYDk7piGgCExArMTDs9ohHXJmAHwUxuDTrXFW5YRYUyQ5"
+    },
+    {
+      "label": "snapshot_holders(short register)",
+      "rejected": true,
+      "code": "AnchorError thrown in programs/owed/src/lib.rs:225. Error Code: SupplyMismatch. Error Number: 6006. Error Message: holder amounts must sum exactly to mint supply."
+    },
+    {
+      "label": "snapshot_holders(action 37BmCT…)",
+      "signature": "LFyhH4GVZ7YEtU5sgrf4eRWkyrDnTzi7TaTFnnzgpurCHkhgTzVnkWmSVLjaAGjiDdT2GZs86Mxew74AZBQ2ySd"
+    },
+    {
+      "label": "claim[48CRpC…]",
+      "signature": "3GPso2z5y2zPyAkzBHUTy8pUhyd7vfdj6BgnjkMRgaE9Cf5KwCG1GXVyZhjobXB9Nd6xCmU2H9VYjoJzxdUSgtkV",
+      "entitlement": "25"
+    },
+    {
+      "label": "claim[63JR9u…]",
+      "signature": "4tRNv5e3NNiDTNVQfsrsc4R5RH53PtR5vTTCZSKrwdmmWVEPrUXu88V26jN8oh4K9iASybULdvQmXjWCHmy8iHJW",
+      "entitlement": "60"
+    },
+    {
+      "label": "claim[FCrPQ9…]",
+      "signature": "5neRX8Z54Gxdd58rzAGqmZLoJcozsVYrW7gZHwMaBUC7xmSMVprZFcqkG66b2gAEnbJvnxfwa4sfMqrTjoVRFEoV",
+      "entitlement": "40"
+    },
+    {
+      "label": "claim(replay)",
+      "rejected": true,
+      "code": "Error: Simulation failed. \nMessage: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0. \nLogs: \n[\n  \"Program 42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV invoke [1]\",\n  \"Program log: Instruction: Claim\",\n  \"Program 11111111111111111111111111111111 invoke [2]\",\n  \"Allocate: account Address { address: KwtRaR5BCiWvZrDCmtjgg7hSLhX7FrNxjH5PDnctBsu, base: None } already in use\",\n  \"Program 11111111111111111111111111111111 failed: custom program error: 0x0\",\n  \"Program 42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV consumed 11330 of 200000 compute units\",\n  \"Program 42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV failed: custom program error: 0x0\"\n]. \nCatch the `SendTransactionError` and call `getLogs()` on it for full details."
+    },
+    {
+      "label": "settle_action(split)",
+      "signature": "xrTS4BQZCtcVGr6nM9BryE1HgNGX4s94bGawnV64NqwNTAzaehNSxSfb31BZYsZWPU8qnSxRNCAwpkSpQutxD8w"
+    },
+    {
+      "label": "declare_action(dividend)",
+      "signature": "2joDv9Hi7tirEGP83QoxYrtinCZirirM2qnWymH5qSqzKNyzdGKEGm38WS7MjMcUkgG4j3Rwo41Y6aX5kvoHWwLS"
+    },
+    {
+      "label": "snapshot_holders(action BRTpap…)",
+      "signature": "2HNBmNAcyav77nVLQdiGaeqWtf4aVXoQ3DNWLWfb4kcarMjc3ix2D4LtUSSF5CziT5CmjJjX1Me46moKiV3BVsvw"
+    },
+    {
+      "label": "claim[48CRpC…]",
+      "signature": "mXqe3LHJz6pK9Ca6SfpHiT1RvoutnuyryYgrU5NRTdhT3mwYxudHQEBC2T1AAwdzZR4LCid1N71QJ27jB3he4CU",
+      "entitlement": "100"
+    },
+    {
+      "label": "claim[63JR9u…]",
+      "signature": "59jGi4t4Rdb9r3WztvzS4i9XEq1aAu9V7fZCt6d9jNC6jbzBpqoTu8YHcoNRMovNQ5K7VdVXyERHdAVK8RAkK7RX",
+      "entitlement": "240"
+    },
+    {
+      "label": "settle_action(dividend)",
+      "signature": "kioAdGHAWRhpoJSQqufHrMP2CBAHwUcvMFWjw8DM7J98M32xQ18ifnpo6zLsoecNe61kxNAhUagJGpE8dzE5raS"
+    }
+  ],
+  "actions": [
+    {
+      "kind": "split",
+      "ratio": "4:1",
+      "action": "37BmCTeyb1WNTMWQp5LCDWAFy7hYpQ2jqe5F32nEibmF"
+    },
+    {
+      "kind": "dividend",
+      "perShare": "1000",
+      "required": "500000",
+      "action": "BRTpapiP9AeC7JfmTgKZkdzNZrgJC7bqK6gTThB4ZZZP",
+      "paid": "340000",
+      "swept": "160000"
+    }
+  ],
+  "programId": "42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV",
+  "cluster": "https://api.devnet.solana.com",
+  "shareMint": "GVFVXN56SkajjcR6nq8ZyWGGaFkEdJgyoRW2dHFFohrN",
+  "payoutMint": "CSvcwvdsfVTGLdY2XuES3jGBh3s38BgZuqZRPvbsrc75",
+  "asset": "Gsmod4DtnYv1Vfnkdar49ctCc9DjCQDsarqFVdyVSFsf",
+  "holders": [
+    {
+      "owner": "63JR9uJ97fiZn315DaP5YmHcsDzf8Sdja7Dt77PoVume",
+      "initial": "60"
+    },
+    {
+      "owner": "FCrPQ9DgnQJ7SMnMMvnt8WA2S7T73ukUeNPpkdX7LbsJ",
+      "initial": "40"
+    },
+    {
+      "owner": "48CRpC4xQ8S3K95rE5MFTbNw2GU1MafokZJY1zhzQkfy",
+      "initial": "25"
+    }
+  ]
+}

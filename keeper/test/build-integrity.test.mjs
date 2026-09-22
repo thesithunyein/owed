@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
@@ -150,6 +150,43 @@ test("both pages load no EXTERNAL resources (relative site assets are fine)", ()
       !/fetch\(\s*["'][^"']*(?:data\/|\.json)/.test(src),
       `${p} should not fetch a sibling data file`,
     );
+  }
+});
+
+test("every devnet signature a page cites is backed by a committed record", () => {
+  // The pages link real devnet transactions as evidence. A link no artifact
+  // backs is indistinguishable from a fabricated one, and hand-typed evidence
+  // rots the moment someone reuses a page for a later run — so the committed
+  // settlement records (docs/devnet-settlement-*.json, written by tests/owed.mjs)
+  // are the source of truth, and the pages are checked against them.
+  const evidence = readdirSync(join(ROOT, "docs"))
+    .filter((f) => f.startsWith("devnet-settlement-") && f.endsWith(".json"))
+    .map((f) => JSON.parse(readFileSync(join(ROOT, "docs", f), "utf8")));
+  assert.ok(evidence.length >= 1, "docs/devnet-settlement-*.json exists");
+
+  const signed = new Set();
+  for (const record of evidence) {
+    for (const step of record.steps ?? []) if (step.signature) signed.add(step.signature);
+  }
+  assert.ok(signed.size >= 10, `the record holds the devnet signatures (${signed.size})`);
+
+  // The deployment transaction is evidence of a different kind — it appears in
+  // the README's deployment table, not in a settlement report.
+  const DEPLOY_TX =
+    "49haW2jxU32L4XonwB7LtBv4AwR1z5YcVbTLYD5eDQhqnc64taSBSNizk3z9dgen6dWjSz14VNX6Tcpo5pJS3pd6";
+
+  for (const p of PAGES) {
+    const src = readFileSync(join(WEB, p), "utf8");
+    const cited = new Set(
+      [...src.matchAll(/explorer\.solana\.com\/tx\/([1-9A-HJ-NP-Za-km-z]{32,90})/g)].map((m) => m[1]),
+    );
+    for (const sig of cited) {
+      if (sig === DEPLOY_TX) continue;
+      assert.ok(
+        signed.has(sig),
+        `${p} cites devnet transaction ${sig}, which no committed settlement record contains`,
+      );
+    }
   }
 });
 

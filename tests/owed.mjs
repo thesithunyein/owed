@@ -125,6 +125,40 @@ describe("owed — settle corporate actions end to end", () => {
   const connection = provider.connection;
   const payer = provider.wallet.payer ?? Keypair.generate();
 
+  /**
+   * Create-or-fetch an associated token account, surviving a dropped send.
+   *
+   * `getOrCreateAssociatedTokenAccount` swallows the create transaction's error
+   * ("Ignore all errors; for now there is no API-compatible way to selectively
+   * ignore the expected instruction error") and then re-reads the account. On a
+   * throttled endpoint a 429'd create therefore surfaces as a
+   * `TokenAccountNotFoundError` from that second read — which is exactly how the
+   * first live devnet run died: the first three steps landed and then this threw
+   * while creating the escrow vault, leaving seven tests cascading off missing
+   * state. Retrying is the fix, and the read is pinned to `finalized` so a create
+   * that did land can never be reported missing by a node that has not caught up.
+   */
+  async function ensureAta(mint, owner, allowOwnerOffCurve = false, attempts = 5) {
+    let lastError;
+    for (let attempt = 1; attempt <= attempts; attempt += 1) {
+      try {
+        return await getOrCreateAssociatedTokenAccount(
+          connection,
+          payer,
+          mint,
+          owner,
+          allowOwnerOffCurve,
+          "finalized",
+        );
+      } catch (err) {
+        lastError = err;
+        console.log(`  ensureAta attempt ${attempt}/${attempts} failed: ${err?.name ?? err} — retrying`);
+        await pace(attempt * 1500);
+      }
+    }
+    throw lastError;
+  }
+
   before(async () => {
     // Fail with the address rather than with what a missing program actually
     // looks like. Anchor reports a call to an undeployed program as
@@ -294,41 +328,21 @@ describe("owed — settle corporate actions end to end", () => {
     await pace();
 
     for (const h of holders) {
-      const ata = await getOrCreateAssociatedTokenAccount(
-        connection,
-        payer,
-        shareMint,
-        h.key.publicKey,
-      );
+      const ata = await ensureAta(shareMint, h.key.publicKey);
       h.ata = ata.address;
       await pace();
       await mintTo(connection, payer, shareMint, h.ata, payer, h.initial);
       await pace();
 
-      const payout = await getOrCreateAssociatedTokenAccount(
-        connection,
-        payer,
-        payoutMint,
-        h.key.publicKey,
-      );
+      const payout = await ensureAta(payoutMint, h.key.publicKey);
       h.payoutAta = payout.address;
     }
 
-    const issuerShare = await getOrCreateAssociatedTokenAccount(
-      connection,
-      payer,
-      shareMint,
-      payer.publicKey,
-    );
+    const issuerShare = await ensureAta(shareMint, payer.publicKey);
     // The issuer holds no shares: supply is exactly the holder register.
     assert.equal(BigInt((await getAccount(connection, issuerShare.address)).amount), 0n);
 
-    issuerPayoutAta = await getOrCreateAssociatedTokenAccount(
-      connection,
-      payer,
-      payoutMint,
-      payer.publicKey,
-    ).then((a) => a.address);
+    issuerPayoutAta = (await ensureAta(payoutMint, payer.publicKey)).address;
     await mintTo(connection, payer, payoutMint, issuerPayoutAta, payer, ISSUER_FLOAT);
 
     assert.equal(await shareSupply(), initialSupply);
@@ -380,13 +394,8 @@ describe("owed — settle corporate actions end to end", () => {
   });
 
   it("declares a 4-for-1 split and creates its vault", async () => {
-    escrow = await getOrCreateAssociatedTokenAccount(
-      connection,
-      payer,
-      payoutMint,
-      assetPda,
-      true, // allowOwnerOffCurve — the vault is owned by the asset PDA
-    );
+    escrow = await ensureAta(payoutMint, assetPda, true);
+    // allowOwnerOffCurve: the vault is owned by the asset PDA, not a signer.
 
     currentAction = actionPda(0);
     const sig = await program.methods
