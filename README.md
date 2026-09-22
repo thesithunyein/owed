@@ -229,20 +229,24 @@ account:
 npm install
 # The program's address is fixed by the committed keypair; do not `keys sync`.
 mkdir -p target/deploy && cp programs/owed/owed-keypair.json target/deploy/
-anchor build
-# Then rebuild the artifact itself for SBPFv0. Anchor 0.31.2 builds v3, and every
-# arch above v0 needs its `enable_sbpf_vN_deployment_and_execution` feature gate
-# active — which no cluster has for v1/v2/v3, including a fresh local validator:
-#   "Detected sbpf_version required by the executable which are not enabled"
-# v0 is the only version that deploys everywhere today.
-( cd programs/owed && cargo build-sbf --arch v0 )
+# `anchor build` emits an SBPFv3 ELF, which devnet and mainnet both accept:
+# their enable_sbpf_v1/v2/v3_deployment_and_execution gates are all active.
+# A FRESH LOCAL VALIDATOR, though, starts with no gates and accepts only v0 —
+# so a local deploy of this artifact fails with "Detected sbpf_version required
+# by the executable which are not enabled" unless the three gates are passed at
+# validator start, exactly as the CI settlement job does:
+solana-test-validator --reset --ledger .anchor/test-ledger --quiet \
+  --activate-feature JE86WkYvTrzW8HgNmrHY7dFYpCmSptUpKupbo2AdQ9cG \
+  --activate-feature F6UVKh1ujTEFK3en2SyAL3cdVnqko1FVEXWhmdLRu6WP \
+  --activate-feature 5cC3foj77CWun58pC51ebHFUWavHWKarWyR5UUik7dnC &
 
 # A throwaway validator, started and deployed to explicitly. `anchor test`
 # manages this itself, but it deploys silently (and not at all with
 # --skip-build), so the steps are spelled out. The `mkdir` matters: the validator
-# creates the ledger directory but not its parent.
+# creates the ledger directory but not its parent. The `--activate-feature`
+# flags matter: without them a fresh validator accepts only SBPFv0, which no
+# current toolchain emits.
 mkdir -p .anchor
-solana-test-validator --reset --ledger .anchor/test-ledger --quiet &
 solana --url http://127.0.0.1:8899 airdrop 500
 solana program deploy target/deploy/owed.so \
   --program-id target/deploy/owed-keypair.json --url http://127.0.0.1:8899
@@ -302,7 +306,9 @@ node keeper/demo/snapshot-demo.mjs [<MINT_ADDRESS>]
 # Anchor program (requires the anchor + solana toolchains, Linux/macOS only)
 mkdir -p target/deploy && cp programs/owed/owed-keypair.json target/deploy/
 anchor build
-( cd programs/owed && cargo build-sbf --arch v0 )  # see the repro block above
+# Then the validator (with its three --activate-feature flags) + deploy + mocha
+# sequence shown in the repro block, or read `.github/workflows/ci.yml`, whose
+# `settlement` job is exactly those commands and runs them on every push.
 # Then the validator + deploy + mocha sequence shown under "Honest scope
 # boundary", or read `.github/workflows/ci.yml`, whose `settlement` job is exactly
 # those commands and runs them on every push.

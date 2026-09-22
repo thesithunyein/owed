@@ -153,31 +153,39 @@ jobs:
           mkdir -p target/deploy
           cp programs/owed/owed-keypair.json target/deploy/owed-keypair.json
       - name: Build the program for SBF
-        # Two builds, for two different artifacts, and both are needed.
+        # One build, Anchor's default. Anchor 0.31.2 emits an SBPFv3 ELF, and
+        # that is the right artifact: enable_sbpf_v1/v2/v3_deployment_and_execution
+        # are all ACTIVE on devnet and mainnet (verified 2026-09-22 by RPC
+        # getAccountInfo on the gate addresses), so the public clusters accept it,
+        # and SIMD-0500 (Agave 4.4, Nov 2026) will make v3 the MINIMUM deployable
+        # version — a v0 artifact would expire then.
         #
-        # 1. `anchor build` emits target/idl/owed.json, which the client and the
-        #    id assertion below both read. It also produces an SBPFv3 artifact:
-        #    Anchor 0.31.2 drives cargo-build-sbf with `--arch v3`. (Anchor's own
-        #    `--arch` flag is an unrelated thing that only accepts `bpf` or `sbf`
-        #    — passing `--arch v1` to `anchor build` failed here first.)
-        #
-        # 2. The loader rejects an ELF whose SBPF version has no active feature
-        #    gate: v1/v2/v3 each need `enable_sbpf_vN_deployment_and_execution`
-        #    (v1 JE86WkYvTrzW8HgNmrHY7dFYpCmSptUpKupbo2AdQ9cG, v2
-        #    F6UVKh1ujTEFK3en2SyAL3cdVnqko1FVEXWhmdLRu6WP, v3
-        #    5cC3foj77CWun58pC51ebHFUWavHWKarWyR5UUik7dnC), and none of them is
-        #    active on a fresh validator — this cost two failed deploys, one with
-        #    a v3 ELF and one with a v1 ELF that failed identically, before the
-        #    gate family was read out of agave/feature-set. v0 is the only version
-        #    that deploys wherever its disable-gates are inactive, which is
-        #    everywhere today. So the binary that actually ships is rebuilt
-        #    directly with cargo-build-sbf — the command that takes the version —
-        #    and it deploys to the validator below and to devnet unchanged.
-        #    It overwrites target/deploy/owed.so in place.
+        # The place that rejects v3 is a fresh local validator: it starts with no
+        # feature gates, so its loader accepts only v0 — which is exactly the
+        # "Detected sbpf_version required by the executable which are not enabled"
+        # this job hit three times before anyone read the gate family out of
+        # agave/feature-set and checked the clusters. The step after the validator
+        # starts activates the same three gates here, so the local run judges the
+        # artifact by the same rules the real clusters will.
         run: |
           anchor build
-          ( cd programs/owed && cargo build-sbf --arch v0 )
           ls -la target/deploy/owed.so
+      - name: Inspect the ELF actually being deployed
+        # The loader's version gate reads e_flags (byte offset 0x30 in the ELF
+        # header; 0=v0 1=v1 2=v2 3=v3) — nothing else decides which cluster can
+        # load the artifact, so it is printed rather than assumed. This exists
+        # because a `--arch v0` rebuild was once trusted to have produced a v0
+        # ELF that then failed the same gate; the bytes are the only authority.
+        run: |
+          set -euo pipefail
+          echo "ELF e_flags (LE u32 at 0x30; 0=v0 1=v1 2=v2 3=v3):"
+          od -A x -t x1 -j 48 -N 4 target/deploy/owed.so
+          flags=$(od -A n -t u4 -j 48 -N 4 target/deploy/owed.so | tr -d ' ')
+          echo "sbpf version: v$flags"
+          [ "$flags" -ge 0 ] && [ "$flags" -le 3 ] || {
+            echo "::error::unexpected sbpf version v$flags in the built ELF"
+            exit 1
+          }
       - name: Report what was produced
         run: ls -la target/deploy/ || echo "no target/deploy produced"
       - name: Assert every declared program id agrees
@@ -223,7 +231,17 @@ jobs:
         # create directory .anchor/test-ledger: No such file or directory".
         run: |
           mkdir -p .anchor
-          solana-test-validator --reset --ledger .anchor/test-ledger --quiet > /tmp/validator.log 2>&1 &
+          # The three --activate-feature flags are the point of driving the
+          # validator by hand: a fresh validator enables no SBPF gates, so its
+          # loader accepts only v0 ELFs, while Anchor emits v3. devnet and
+          # mainnet have all three of these active (checked 2026-09-22 via
+          # getAccountInfo on the gate addresses), so activating them here makes
+          # the local cluster judge artifacts by the same rules as the real ones.
+          solana-test-validator --reset --ledger .anchor/test-ledger --quiet \
+            --activate-feature JE86WkYvTrzW8HgNmrHY7dFYpCmSptUpKupbo2AdQ9cG \
+            --activate-feature F6UVKh1ujTEFK3en2SyAL3cdVnqko1FVEXWhmdLRu6WP \
+            --activate-feature 5cC3foj77CWun58pC51ebHFUWavHWKarWyR5UUik7dnC \
+            > /tmp/validator.log 2>&1 &
           started=""
           for i in $(seq 1 60); do
             if solana --url http://127.0.0.1:8899 cluster-version >/dev/null 2>&1; then
@@ -260,7 +278,7 @@ jobs:
                  --program-id target/deploy/owed-keypair.json \
                  --url http://127.0.0.1:8899 2>&1 | tee /tmp/deploy.log; then
             if grep -q "sbpf_version" /tmp/deploy.log; then
-              echo "::error::the built ELF requires an SBPF version this cluster has not enabled — check the --arch in the build step above (v3 needs enable_sbpf_v3_deployment_and_execution, which a fresh validator does not activate)"
+              echo "::error::the built ELF requires an SBPF version this validator has not enabled — the enable_sbpf_v1/v2/v3 gates are passed via --activate-feature above; if the build now emits a different version, activate its gate too (e_flags at offset 0x30 prints the version)"
             fi
             exit 1
           fi

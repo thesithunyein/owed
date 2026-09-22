@@ -77,16 +77,14 @@ jobs:
           cp programs/owed/owed-keypair.json target/deploy/owed-keypair.json
 
       - name: Build for SBF
-        # `anchor build` for the IDL, then a direct cargo-build-sbf for the
-        # artifact that ships. Anchor 0.31.2 builds SBPFv3, and every arch above
-        # v0 needs its enable_sbpf_vN_deployment_and_execution gate active —
-        # which no cluster has for v1/v2/v3 — so a v3 (or v1) ELF fails to deploy
-        # with "Detected sbpf_version required by the executable which are not
-        # enabled". v0 deploys everywhere today. Same pair of commands as the CI
-        # settlement job, which is why this deployment is reproducible.
+        # Anchor's default, which emits SBPFv3. That is what devnet wants:
+        # enable_sbpf_v1/v2/v3_deployment_and_execution are all active there
+        # (verified 2026-09-22), and SIMD-0500 will make v3 the minimum. The
+        # only cluster that rejects v3 is a gate-less local validator; the CI
+        # settlement job activates the gates on its throwaway one and documents
+        # the whole story.
         run: |
           anchor build
-          ( cd programs/owed && cargo build-sbf --arch v0 )
           ls -la target/deploy/owed.so
 
       - name: Assert every declared program id agrees
