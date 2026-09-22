@@ -7,13 +7,89 @@
 
 # Owed — the corporate-actions risk layer for tokenized equities on Solana
 
-> **Live: <https://owed.sithunyein.com>** · feed: `/feed/owed-risk.json` · schema: `/feed/schema.json`
+<p align="center">
+  <a href="https://owed.sithunyein.com">Live app</a> ·
+  <a href="https://owed.sithunyein.com/feed/owed-risk.json">Risk feed</a> ·
+  <a href="https://owed.sithunyein.com/board.html">Risk board</a> ·
+  <a href="https://github.com/thesithunyein/owed/actions/workflows/ci.yml">CI</a> ·
+  <a href="CONTRIBUTING.md">Contributing</a> ·
+  <a href="CODE_OF_CONDUCT.md">Conduct</a> ·
+  <a href="SECURITY.md">Security</a> ·
+  <a href="LICENSE">MIT</a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/thesithunyein/owed/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/thesithunyein/owed/ci.yml?branch=main&label=CI%20(settle%20on-chain)&style=flat-square" /></a>
+  <img alt="mints scanned" src="https://img.shields.io/badge/mints%20scanned-925%2F925-2563eb?style=flat-square" />
+  <img alt="license" src="https://img.shields.io/badge/license-MIT-6b7280?style=flat-square" />
+  <img alt="keeper deps" src="https://img.shields.io/badge/keeper%20runtime%20deps-0-059669?style=flat-square" />
+  <a href="SECURITY.md"><img alt="audits" src="https://img.shields.io/badge/audited-no%20—%20devnet%20only-d97706?style=flat-square" /></a>
+</p>
+
+<p align="center">
+  <em>Splits and dividends rebase tokenized stocks on-chain. The on-chain field most apps read goes stale.
+  Owed measures the gap, publishes it as an auditable feed, and settles corporate actions correctly on-chain.</em>
+</p>
 
 <!-- owed:stats:start -->
 > **379 of 925 official xStocks carry a stale on-chain multiplier field**
 > (classified at 2026-09-22 10:26 UTC); 4 are off by 100% or more, and 2 by a full 10x.
 > Not in theory: every mint was scanned and the effective value read from the chain.
 <!-- owed:stats:end -->
+
+## Architecture
+
+```
+                                OFF-CHAIN PIPELINE
+
+  Solana mainnet ──► scan-xstocks.mjs ──► keeper/data/xstocks-scan.json
+  (925 official       every RPC read        raw scaledUiAmountConfig
+   xStocks mints)     carries its clock     + security extensions
+                            │
+                            ▼
+                    risk-feed.mjs ──────► feed/owed-risk.json  ◄── THE CONTRACT
+                    classifies at a       + feed/schema.json        (consumers integrate
+                    stamped clock                                   against this)
+                            │
+              ┌─────────────┼──────────────┐
+              ▼             ▼              ▼
+       gen-webdata.mjs   verify-trap.mjs   conformance.mjs
+       injects into the  replays the trap  reader vs runtime
+       pages + README    from the feed     on all 925 mints
+              │
+              ▼
+       web/differential.html ── the app: search a ticker, get the answer
+       web/board.html ────────── all 925 mints, every state
+       (single files, work from disk, re-classify against YOUR clock)
+
+                              ON-CHAIN LAYER
+
+  programs/owed (Anchor)          core (Rust)          keeper (TS)
+  ─────────────────────           ───────────          ───────────
+  initialize_asset  ◄── regs the  register.rs          snapshot.mjs
+  declare_action    ──► action    merkle.rs            fetches holders
+  snapshot_holders  ──► frozen    corporate.rs  ◄──►  scaled.mjs
+  │                      root     sha256.rs            SAME vectors
+  ▼                      │             ▲                    ▲
+  claim (Merkle proof) ──┘             └──── shared/golden vectors (committed;
+  settle_action ──► vault swept           both languages verify in CI)
+  ──► dividends paid pro rata
+
+  Devnet: 42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV
+  (split + dividend settled end-to-end; signatures in "Devnet deployment" below)
+
+                              VERIFICATION SPINE
+
+  every push ──► CI: rust tests · 75 keeper tests · 925/925 conformance ·
+                 determinism (rebuild = byte-identical) · program-id agreement
+                 (4 sources) · ELF e_flags · on-chain settlement with receipts ·
+                 page/README claims re-checked against committed records
+```
+
+The invariant that holds the whole thing together: **every published number is
+recomputable from published inputs.** The feed ships the raw chain state beside
+its answer; the pages re-classify at your clock; CI fails if a README number, a
+cited signature, and the committed record ever disagree.
 
 ## What we found (live mainnet snapshot)
 
@@ -166,18 +242,29 @@ question and is deliberately not cited as evidence anywhere above.
 
 ```
 owed/
-├── programs/owed/        # Anchor program: initialize_asset, declare/snapshot/claim/settle
-├── core/                 # Rust crate: register, Merkle tree, split/dividend math
-├── keeper/               # TS: trap logic, scaled reader, snapshot builder, RPC
-│   ├── data/             # official mint list, latest scan, conformance reports
-│   └── test/             # 73 tests, one live-gated
-├── feed/                 # owed-risk.json + schema.json (the integration contract)
-├── web/                  # differential.html (harm, clickable) + board.html (risk table)
-├── shared/vectors/       # cross-language golden vectors (generated, committed)
-├── scripts/              # scan, verify-trap, conformance, collateral, risk-feed, gen-*
-└── docs/                 # SPEC.md, DEMOSCRIPT.md
+├── programs/owed/         # Anchor program — initialize_asset, declare/snapshot/
+│   ├── src/lib.rs         #   claim/settle; the SBF artifact CI builds every push
+│   └── owed-keypair.json  #   committed: fixes the program address (see Devnet)
+├── core/                  # Rust crate — register, Merkle tree, split/dividend math
+│   └── src/               #   offline, no external crates; golden-vector verified
+├── keeper/                # TypeScript — trap logic, scaled reader, snapshot builder
+│   ├── src/               #   zero runtime dependencies, hermetic
+│   ├── data/              #   official mint list, latest scan, conformance reports
+│   └── test/              #   76 tests incl. build-integrity guards on the pages
+├── feed/                  # owed-risk.json + schema.json — THE integration contract
+├── web/                   # differential.html (the app) + board.html (risk table)
+│   └── assets/            #   logo, favicon, og card, hero video/poster
+├── shared/vectors/        # cross-language golden vectors (generated, committed)
+├── scripts/               # scan, risk-feed, conformance, verify-trap, gen-*, build-site
+├── tests/                 # on-chain settlement suite (localnet in CI; devnet by hand)
+├── docs/                  # SPEC.md, DEMOSCRIPT.md, committed devnet-settlement-*.json
+├── .github/workflows/     # ci.yml (5 jobs) + deploy-devnet.yml (manual)
+├── CONTRIBUTING.md        # the verify-first standard every change must meet
+├── CODE_OF_CONDUCT.md     # Contributor Covenant, enforced
+├── SECURITY.md            # scope, verified vs not, disclosure
+└── LICENSE                # MIT
 
-site/                     # deploy output (gitignored) — built by build-site.mjs
+site/                      # deploy output (gitignored) — built by build-site.mjs
 ```
 
 ## What is verified in this checkout
@@ -423,6 +510,15 @@ anchor build
 # those commands and runs them on every push.
 ```
 
-## License
+## Governance
 
-MIT — Copyright (c) 2026 Sithu Nyein
+| | |
+|---|---|
+| **Bugs & features** | [open an issue](https://github.com/thesithunyein/owed/issues) — one logical change per PR, see [CONTRIBUTING.md](CONTRIBUTING.md) |
+| **Security disclosures** | **never in public** — [SECURITY.md](SECURITY.md) has the private channel and response policy |
+| **Conduct** | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) — enforced in every project space; critique the work, not the person |
+| **License** | [MIT](LICENSE) — Copyright (c) 2026 Sithu Nyein |
+
+The claim standard applies to issues too: a report that "the feed is wrong" needs
+the mint, the value you expected, the value you read, and the RPC response — the
+same evidence standard the feed itself publishes under.
