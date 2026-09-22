@@ -17,9 +17,10 @@ name: Deploy registry to devnet
 #
 #     1. Go to https://faucet.solana.com (Devnet), paste the wallet address
 #        printed by the "Restore wallet" step, and request SOL. Repeat until the
-#        wallet holds ~5 SOL: a 350KB program rents ~2.5 SOL for its ProgramData
-#        account plus ~2.5 SOL for the buffer that carries it there. The preflight
-#        step below states the exact requirement for the artifact being built.
+#        wallet holds ~4 SOL: the measured requirement is 3.61 SOL (1.78 SOL of
+#        rent for ProgramData plus the same for the buffer, which is returned on
+#        success). The preflight step below prints the exact figure for the
+#        artifact it just built.
 #        (`solana airdrop` from a laptop or runner is usually rate-limited with
 #        429s; the web faucet is the practical path.)
 #
@@ -132,12 +133,13 @@ jobs:
           done
 
       - name: Check the wallet can pay for this deployment
-        # A 350KB program needs ~2.5 SOL of rent for its ProgramData account and
-        # ~2.5 SOL more for the buffer that carries it there (returned once the
-        # upgrade lands), so the real requirement is close to 5 SOL — not the
-        # "a bit of SOL for fees" a reader would assume. Computed from the actual
-        # artifact with `solana rent`, and reported with the faucet URL, because
-        # a silent "insufficient funds" costs an hour of guessing.
+        # Measured for the current artifact on 2026-09-22: 350,208 bytes, rent
+        # 1.77993548 SOL for the ProgramData account, and the same again for the
+        # buffer that carries it there (returned once the upgrade lands) — so
+        # ~3.61 SOL, not the "a bit of SOL for fees" a reader would assume, and
+        # not the ~5 SOL this comment guessed before a run measured it. Computed
+        # from the artifact with `solana rent` and reported with the faucet URL,
+        # because a silent "insufficient funds" costs an hour of guessing.
         run: |
           set -euo pipefail
           size=$(stat -c %s target/deploy/owed.so)

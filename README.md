@@ -269,11 +269,13 @@ The public-cluster deployment is prepared and gated on funding, not on code:
    and GitHub secrets cannot be read back. (`solana-keygen new --outfile
    owed-devnet.json` recreates this situation with your own key; `gh secret set
    SOLANA_KEYPAIR < owed-devnet.json` swaps it in.)
-2. Fund that wallet with ~5 SOL from https://faucet.solana.com (Devnet). The
-   arithmetic is in the workflow: ~2.5 SOL of rent for the ProgramData account of
-   a 350KB program, plus ~2.5 SOL for the buffer, returned once the upgrade
-   lands. `solana airdrop` is rate-limited (429) in practice — the web faucet is
-   the path.
+2. Fund that wallet with ~4 SOL from https://faucet.solana.com (Devnet). The
+   measured requirement for the current artifact is **3.61 SOL** — 1.78 SOL of
+   rent for the ProgramData account of a 350KB program plus the same again for
+   the buffer, which is returned once the upgrade lands — and the workflow's
+   preflight step prints the exact figure for whatever it just built rather than
+   leaving you to guess. `solana airdrop` fails with 429s from both a laptop and
+   a CI runner, so the web faucet is the path.
 3. Dispatch it:
 
    ```bash
