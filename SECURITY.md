@@ -3,24 +3,28 @@
 ## Supported scope
 
 Owed is **pre-production research software**. The on-chain program in
-`programs/owed/` compiles for SBF and executes end to end in CI, but it has
-**never been deployed to a public cluster and has never been audited**. Do not
-point it at mainnet assets or real treasuries.
+`programs/owed/` compiles for SBF, executes end to end in CI, and is **deployed
+to devnet** at `42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV`. It has **never
+been deployed to mainnet and has never been audited**. Do not point it at mainnet
+assets or real treasuries; the devnet deployment is a test artifact, not a
+service anyone should rely on.
 
-A note on the keypair in this repository: `programs/owed/owed-keypair.json` is
-committed on purpose, so the program's address is a single fixed value rather
-than one regenerated per build. **It controls nothing.** The program is deployed
-to no cluster, and the authority to upgrade it belongs to whatever keypair
-deploys it (the `SOLANA_KEYPAIR` secret, for the manual devnet workflow). If you
-ever deploy this for real, generate a fresh keypair and treat the deployment
-authority as a secret.
+A note on the keypairs here. `programs/owed/owed-keypair.json` is committed on
+purpose, so the program's address is a single fixed value rather than one
+regenerated per build; **it controls nothing**, and the address it fixes is the
+same on a local validator and on devnet. The *upgrade authority* is different
+and is a secret: on devnet it is the wallet in the `SOLANA_KEYPAIR` repository
+secret (`28P3757G7i5EafsytQjSt3P7tKgHFoB2s2kc9n6gZ7rK`), whose local file is
+`~/.config/solana/owed-devnet.json`. Before any mainnet deployment, generate a
+fresh keypair and treat that authority as production secret material.
 
 Two specific things a reviewer should know before trusting anything downstream:
 
-1. **The settlement test passes, but only on a throwaway validator and on the
-   shapes it constructs.** It proves the mechanics — mint deltas, vault
-   transfers, replay rejection, the sweep — not that the program is safe against
-   an adversarial issuer, registrar, or holder. There is no devnet deployment.
+1. **The settlement test passes, but only on the shapes it constructs.** It
+   proves the mechanics — mint deltas, vault transfers, replay rejection, the
+   sweep — not that the program is safe against an adversarial issuer, registrar,
+   or holder. The devnet deployment runs the same suite, so treat it as a demo of
+   the mechanics rather than evidence of security.
 2. **`claim` moves value, which is exactly why it needs review.** It now performs
    the escrow transfer, the split mint, and the reverse-split burn. Every payout
    authority is the asset PDA, signed inside the program — no caller-supplied key

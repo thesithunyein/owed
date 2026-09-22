@@ -183,7 +183,7 @@ site/                     # deploy output (gitignored) — built by build-site.m
 | Golden vectors | ✅ Regenerated in CI; Node↔Rust drift fails the build |
 | `web/` pages | ✅ Both run from the file system with no network; re-classify against the viewer's clock |
 | `tests/owed.mjs` | ✅ **Executed on every push** — the `settlement` CI job deploys to a throwaway validator and settles a 4:1 split end to end, asserting holder balances before and after |
-| `programs/owed/` Anchor | ✅ **Compiles for SBF and settles on-chain** — `owed.so` from a real `anchor build`, then the whole lifecycle runs against a validator in CI. Not deployed to devnet, not audited |
+| `programs/owed/` Anchor | ✅ **Compiles for SBF, settles on-chain in CI, and is deployed to devnet** — `owed.so` from a real `anchor build`, the whole lifecycle runs against a throwaway validator on every push, and the program is live on devnet at `42WwVtPQ…FCLV` ([see below](#devnet-deployment)). Not audited |
 
 ## Honest scope boundary
 
@@ -261,21 +261,37 @@ a judge cannot re-run.
 
 ### Devnet deployment
 
-The public-cluster deployment is prepared and gated on funding, not on code:
+**The program is live on devnet.** Deployed 2026-09-22 from
+`.github/workflows/deploy-devnet.yml` (run [35718143099](https://github.com/thesithunyein/owed/actions/runs/35718143099)):
 
-1. The `SOLANA_KEYPAIR` repository secret is set, from a devnet keypair generated
-   for this repo. Its file is `~/.config/solana/owed-devnet.json` on the machine
-   that generated it — **keep it**, since it is the program's upgrade authority
-   and GitHub secrets cannot be read back. (`solana-keygen new --outfile
-   owed-devnet.json` recreates this situation with your own key; `gh secret set
-   SOLANA_KEYPAIR < owed-devnet.json` swaps it in.)
-2. Fund that wallet with ~4 SOL from https://faucet.solana.com (Devnet). The
-   measured requirement for the current artifact is **3.61 SOL** — 1.78 SOL of
-   rent for the ProgramData account of a 350KB program plus the same again for
-   the buffer, which is returned once the upgrade lands — and the workflow's
-   preflight step prints the exact figure for whatever it just built rather than
-   leaving you to guess. `solana airdrop` fails with 429s from both a laptop and
-   a CI runner, so the web faucet is the path.
+| | |
+|---|---|
+| Program | [`42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV`](https://explorer.solana.com/address/42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV?cluster=devnet) |
+| Deploy transaction | [`49haW2jxU32L4XonwB7LtBv4AwR1z5YcVbTLYD5eDQhqnc64taSBSNizk3z9dgen6dWjSz14VNX6Tcpo5pJS3pd6`](https://explorer.solana.com/tx/49haW2jxU32L4XonwB7LtBv4AwR1z5YcVbTLYD5eDQhqnc64taSBSNizk3z9dgen6dWjSz14VNX6Tcpo5pJS3pd6?cluster=devnet) |
+| ProgramData | `AwrBktZ7iygYh37NcRj6PoVLK4J792TeuBtThERN1Jm` |
+| Upgrade authority | `28P3757G7i5EafsytQjSt3P7tKgHFoB2s2kc9n6gZ7rK` |
+| Size / rent | 350,208 bytes / 1.77993548 SOL |
+
+The address is the same one CI settles against locally, because it is fixed by
+the committed program keypair rather than minted per build — which is what the
+four-source id assertion in both workflows exists to guarantee.
+
+**Reproducing this yourself**, in order:
+
+1. The `SOLANA_KEYPAIR` repository secret holds a devnet keypair generated for
+   this repo. Its file is `~/.config/solana/owed-devnet.json` on the machine that
+   generated it — **keep it**, since it is the program's upgrade authority and
+   GitHub secrets cannot be read back. (`solana-keygen new --outfile
+   owed-devnet.json` does this with your own key; `gh secret set SOLANA_KEYPAIR <
+   owed-devnet.json` swaps it in.)
+2. That wallet needed ~4 SOL from https://faucet.solana.com (Devnet) for the
+   first deployment: **3.61 SOL** measured — 1.78 SOL of rent for the
+   ProgramData account of a 350KB program plus the same again for the buffer,
+   returned when the upgrade lands. A later **upgrade** needs only the buffer,
+   because the ProgramData account is already funded, so the workflow's preflight
+   asks the cluster what exists and states the figure for the case it finds
+   rather than charging the first-deploy price forever. (`solana airdrop` fails
+   with 429s from both a laptop and a CI runner; the web faucet is the path.)
 3. Dispatch it:
 
    ```bash

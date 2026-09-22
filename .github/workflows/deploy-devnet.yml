@@ -144,10 +144,24 @@ jobs:
           set -euo pipefail
           size=$(stat -c %s target/deploy/owed.so)
           per=$(solana rent $((size + 45)) | awk '/SOL/ {print $3; exit}')
-          need=$(awk -v r="$per" 'BEGIN { printf "%.3f", 2*r + 0.05 }')
+          program_id=$(solana-keygen pubkey target/deploy/owed-keypair.json)
+          # A first deployment has to rent the ProgramData account itself; an
+          # upgrade reuses the account that is already funded and only needs the
+          # buffer, which is returned when the upgrade lands. Charging 2x for an
+          # upgrade demanded 3.61 SOL from a wallet holding 3.21 and blocked a run
+          # whose deploy would have cost 0.001 — the second dispatch failed this
+          # way, which is why the check asks the cluster what already exists.
+          if solana program show "$program_id" --url devnet >/dev/null 2>&1; then
+            factor=1
+            echo "program $program_id is already on devnet — upgrade: only the buffer needs rent"
+          else
+            factor=2
+            echo "no program on devnet yet — first deploy: ProgramData needs rent of its own"
+          fi
+          need=$(awk -v r="$per" -v f="$factor" 'BEGIN { printf "%.3f", f*r + 0.05 }')
           have=$(solana balance | awk '{print $1}')
           address=$(solana address)
-          echo "program ${size} bytes | rent ${per} SOL each | need ~${need} SOL | have ${have} SOL"
+          echo "program ${size} bytes | rent ${per} SOL per account | need ~${need} SOL | have ${have} SOL"
           if awk -v n="$need" -v h="$have" 'BEGIN { exit (h+0 >= n+0) ? 0 : 1 }'; then
             echo "funded"
           else
