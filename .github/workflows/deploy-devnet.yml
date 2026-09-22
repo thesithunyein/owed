@@ -78,14 +78,15 @@ jobs:
 
       - name: Build for SBF
         # `anchor build` for the IDL, then a direct cargo-build-sbf for the
-        # artifact that ships. Anchor 0.31.2 builds SBPFv3, and devnet has not
-        # activated `enable_sbpf_v3_deployment_and_execution`, so a v3 ELF fails
-        # to deploy with "Detected sbpf_version required by the executable which
-        # are not enabled". SBPFv1 is active everywhere. Same pair of commands as
-        # the CI settlement job, which is why this deployment is reproducible.
+        # artifact that ships. Anchor 0.31.2 builds SBPFv3, and every arch above
+        # v0 needs its enable_sbpf_vN_deployment_and_execution gate active —
+        # which no cluster has for v1/v2/v3 — so a v3 (or v1) ELF fails to deploy
+        # with "Detected sbpf_version required by the executable which are not
+        # enabled". v0 deploys everywhere today. Same pair of commands as the CI
+        # settlement job, which is why this deployment is reproducible.
         run: |
           anchor build
-          ( cd programs/owed && cargo build-sbf --arch v1 )
+          ( cd programs/owed && cargo build-sbf --arch v0 )
           ls -la target/deploy/owed.so
 
       - name: Assert every declared program id agrees

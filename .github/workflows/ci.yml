@@ -161,24 +161,22 @@ jobs:
         #    `--arch` flag is an unrelated thing that only accepts `bpf` or `sbf`
         #    — passing `--arch v1` to `anchor build` failed here first.)
         #
-        # 2. A v3 ELF is rejected by any cluster where
-        #    `enable_sbpf_v3_deployment_and_execution` is not active, which is a
-        #    fresh local validator and the public clusters alike:
-        #
-        #      Detected sbpf_version required by the executable which are not enabled
-        #      Program BPFLoaderUpgradeab1e11111111111111111111111 failed:
-        #        invalid account data for instruction
-        #
-        #    So the binary that actually gets deployed is rebuilt directly with
-        #    cargo-build-sbf, which is the thing that takes the SBPF version.
-        #    SBPFv1 has been live on the public clusters for years, so this
-        #    artifact deploys to the validator below and to devnet unchanged.
+        # 2. The loader rejects an ELF whose SBPF version has no active feature
+        #    gate: v1/v2/v3 each need `enable_sbpf_vN_deployment_and_execution`
+        #    (v1 JE86WkYvTrzW8HgNmrHY7dFYpCmSptUpKupbo2AdQ9cG, v2
+        #    F6UVKh1ujTEFK3en2SyAL3cdVnqko1FVEXWhmdLRu6WP, v3
+        #    5cC3foj77CWun58pC51ebHFUWavHWKarWyR5UUik7dnC), and none of them is
+        #    active on a fresh validator — this cost two failed deploys, one with
+        #    a v3 ELF and one with a v1 ELF that failed identically, before the
+        #    gate family was read out of agave/feature-set. v0 is the only version
+        #    that deploys wherever its disable-gates are inactive, which is
+        #    everywhere today. So the binary that actually ships is rebuilt
+        #    directly with cargo-build-sbf — the command that takes the version —
+        #    and it deploys to the validator below and to devnet unchanged.
         #    It overwrites target/deploy/owed.so in place.
         run: |
           anchor build
-          echo "--- cargo-build-sbf's own --arch values, for the record ---"
-          cargo build-sbf --help | sed -n '/--arch/,+3p' || true
-          ( cd programs/owed && cargo build-sbf --arch v1 )
+          ( cd programs/owed && cargo build-sbf --arch v0 )
           ls -la target/deploy/owed.so
       - name: Report what was produced
         run: ls -la target/deploy/ || echo "no target/deploy produced"
