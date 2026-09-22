@@ -324,6 +324,19 @@ jobs:
           path: tests/settlement-report.json
           if-no-files-found: warn
 
+      - name: Upload the program IDL
+        # The IDL is how any consumer integrates with this program without
+        # cloning and building it — and how a maintainer can run the settlement
+        # suite against devnet from a machine with no SBF toolchain (the test
+        # reads target/idl via anchor.workspace). Generated here, where the
+        # Anchor toolchain lives.
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: program-idl
+          path: target/idl/owed.json
+          if-no-files-found: error
+
       - name: Upload the validator ledger log
         if: always()
         uses: actions/upload-artifact@v4
