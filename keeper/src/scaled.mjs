@@ -31,13 +31,31 @@ export function classifyScaled(state, nowSec = Math.floor(Date.now() / 1000), se
     state.newMultiplier != null ? Number(state.newMultiplier) : null;
   const effTs = Number(state.newMultiplierEffectiveTimestamp || 0);
 
-  const effective = effTs > 0 && nowSec >= effTs ? newMultiplier : multiplier;
+  // The published rule, verbatim:
+  //
+  //   if unix_timestamp >= new_multiplier_effective_timestamp { new_multiplier }
+  //   else { multiplier }
+  //
+  // (solana.com/docs/tokens/extensions/scaled-ui-amount: "Before
+  // new_multiplier_effective_timestamp, conversions use multiplier. At or after
+  // that timestamp, conversions use new_multiplier.")
+  //
+  // There is deliberately NO `effTs > 0` special case. A zero timestamp makes
+  // the comparison true, so the runtime uses `new_multiplier` - and the rule is
+  // quoted here rather than paraphrased so a reader cannot drift from it.
+  // `newMultiplier != null` is the one concession, and it is about the RPC
+  // omitting a field rather than about the rule: on a real mint the struct
+  // always carries a value. Verified on all 933 official mints: every mint with
+  // a zero timestamp has multiplier === newMultiplier, so the concession changes
+  // no published number.
+  const activationPassed = newMultiplier != null && nowSec >= effTs;
+  const effective = activationPassed ? newMultiplier : multiplier;
 
   // A "reader trap" exists when a naive consumer (reading the stored
   // `multiplier` field) would compute a different number than the
   // time-correct effective multiplier.
-  const readerTrap = effTs > 0 && nowSec >= effTs && newMultiplier !== multiplier;
-  const pending = effTs > 0 && nowSec < effTs && newMultiplier !== multiplier;
+  const readerTrap = activationPassed && newMultiplier !== multiplier;
+  const pending = !activationPassed && newMultiplier !== multiplier;
 
   return {
     multiplier,

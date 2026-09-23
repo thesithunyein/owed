@@ -138,7 +138,9 @@ test("scaled-raw fixtures: the published numbers are derivable from the bytes", 
   for (const symbol of ["PPLTx", "SPACEX", "AZNx", "SPCXx"]) {
     const parsed = readScaledRaw(readFileSync(join(DIR, `${symbol}.bin`)));
     const ts = BigInt(parsed.effectiveTimestamp);
-    const activated = ts > 0n && now >= ts;
+    // The published rule has no `ts > 0` special case: a zero timestamp makes
+    // the comparison true. See core/src/multiplier.rs.
+    const activated = now >= ts;
     const effective = activated ? parsed.newMultiplier : parsed.multiplier;
     assert.equal(
       effective,

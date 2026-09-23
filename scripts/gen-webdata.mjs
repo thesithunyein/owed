@@ -288,13 +288,13 @@ if (!feed) {
       .join("");
   const genStats = [
     ["Official mints scanned (both issuers)", genAll.length, ""],
-    ["Stale multiplier right now", genRows.length, "hot"],
+    ["Stored field is not what applies", genRows.length, "hot"],
     ["Error ≥ 1% (the ones that bite)", genRows.filter((r) => r.c.gap >= 1).length, genRows.some((r) => r.c.gap >= 1) ? "hot" : "ok"],
     ["Worst error", genRows[0] ? Math.round(genRows[0].c.gap * 100) + "%" : "-", "hot"],
     ["Mints with a permanent delegate", `${genAll.filter((r) => r.t.security.permanentDelegate).length} / ${genAll.length}`, ""],
     ...(feed.issuers ?? []).map((i) => [
       `… on ${i.name} (${i.kind})`,
-      `${i.trap} of ${i.total} stale`,
+      `${i.trap} of ${i.total} out of date`,
       i.trap ? "hot" : "ok",
     ]),
   ]
@@ -332,7 +332,7 @@ if (!feed) {
     diff,
     "hero-worst",
     genRows.length
-      ? `<p class="hero-worst"><strong>${genRows.length} of ${genAll.length} mints</strong> misprice positions right now, worst: ` +
+      ? `<p class="hero-worst"><strong>${genRows.length} of ${genAll.length} mints</strong> read a different multiplier from the stored field than the runtime applies, worst: ` +
         genRows
           .filter((r) => r.c.gap >= 1)
           .slice(0, 4)
@@ -408,7 +408,8 @@ if (feed) {
 
   const quote =
     `<!-- owed:stats:start -->\n` +
-    `> **${s.trap} of ${s.total} official xStocks carry a stale on-chain multiplier field**\n` +
+    `> **${s.trap} of ${s.total} official xStocks carry a stored multiplier field that is not the\n` +
+    `> value the Token-2022 runtime applies**\n` +
     `> (classified at ${at}); ${s.ge100} are off by 100% or more, and ${s.ge10x} by a full 10x.\n` +
     (pre
       ? `> The same defect is live on a second issuer: **${pre.trap} of ${pre.total} PreStocks mints**,\n` +
@@ -421,14 +422,14 @@ if (feed) {
 
   const rows = [
     `| Official xStocks Solana mints scanned | **${s.total}** |`,
-    `| **Reader traps** (activation passed, stored field stale) | **${s.trap}** |`,
+    `| **Reader traps** (activation passed, stored field no longer what applies) | **${s.trap}** |`,
     `| … off by **10x** (10-for-1 splits) | **${s.ge10x}** (${tenX.map((x) => `\`${x}\``).join(", ") || "none"}) |`,
     `| … off by **≥100%** | **${s.ge100}** |`,
     `| … off by **≥1%** | **${s.ge1}** |`,
     `| … off by **≥0.5%** | **${s.ge0_5}** |`,
     `| Median magnitude of the gap | **${median(stale.map((t) => Math.abs(t.trap.gapPct))).toFixed(2)}%** |`,
-    `| Median time already stale | **${Math.round(median(stale.map((t) => t.trap.daysStale)))} days** |`,
-    `| Longest stale | **${Math.round(longest.trap.daysStale)} days** (\`${longest.symbol}\`) |`,
+    `| Median time since the stored field diverged | **${Math.round(median(stale.map((t) => t.trap.daysStale)))} days** |`,
+    `| Longest divergence | **${Math.round(longest.trap.daysStale)} days** (\`${longest.symbol}\`) |`,
     `| Mints with a **permanent delegate** (issuer can move anyone's tokens) | **${s.permanentDelegate} / ${s.total}** |`,
     `| Mints with a **pause authority** (issuer can freeze all transfers) | **${s.pauseAuthority} / ${s.total}** |`,
     `| Currently paused | ${s.paused} |`,
@@ -459,7 +460,7 @@ if (feed) {
   }
   console.log(
     `README.md: ${readmeChanged ? "numbers updated" : "numbers already current"} ` +
-      `(${s.trap}/${s.total} stale at ${at})`
+      `(${s.trap}/${s.total} divergent at ${at})`
   );
 }
 

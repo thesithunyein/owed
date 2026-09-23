@@ -200,18 +200,33 @@ pub fn find_scaled_ui_amount_config(data: &[u8]) -> crate::Result<Option<ScaledU
 
 /// The effective multiplier for a config at `now_sec`.
 ///
-/// The rule, and the reason this whole repository exists:
+/// This is the Token-2022 rule quoted rather than paraphrased, from
+/// `ScaledUiAmountConfig::current_multiplier` in the SPL interface crate:
 ///
 /// ```text
-///   effective = now >= new_multiplier_effective_timestamp ? new : stored
+///   if unix_timestamp >= new_multiplier_effective_timestamp
+///       { new_multiplier } else { multiplier }
 /// ```
 ///
-/// A timestamp of 0 means nothing is scheduled. A config whose pending value
-/// equals the stored value is inert either way, so it is neither stale nor
-/// pending - it is the one case where reading the stored field is harmless.
+/// The published documentation states the same thing in words: "Before
+/// `new_multiplier_effective_timestamp`, conversions use `multiplier`. At or
+/// after that timestamp, conversions use `new_multiplier`."
+///
+/// Note what is deliberately **not** here: a `ts > 0` special case. With a zero
+/// timestamp the comparison is true, so the runtime uses `new_multiplier` -
+/// initialization sets both fields to the same value, which is why an earlier
+/// version of this function could treat zero as "nothing scheduled" and still
+/// agree with the chain on every mint. Quoting the rule removes that coincidence
+/// as a load-bearing assumption: measured across all 933 official mints, 541
+/// carry a zero timestamp and all 541 have `multiplier == new_multiplier`, so
+/// this change moves no published number while making the code match the spec
+/// even where the catalogue has no example.
+///
+/// A config whose pending value equals the stored value is inert: it is neither
+/// stale nor pending, and reading the stored field is harmless for it.
 pub fn effective_multiplier(config: &ScaledUiAmountConfig, now_sec: i64) -> MultiplierReading {
     let ts = config.new_multiplier_effective_timestamp;
-    let activation_passed = ts > 0 && now_sec >= ts;
+    let activation_passed = now_sec >= ts;
     let changes = config.new_multiplier != config.multiplier;
 
     MultiplierReading {
@@ -224,7 +239,7 @@ pub fn effective_multiplier(config: &ScaledUiAmountConfig, now_sec: i64) -> Mult
         new_multiplier: config.new_multiplier,
         effective_timestamp: ts,
         stale: activation_passed && changes,
-        pending: ts > 0 && !activation_passed && changes,
+        pending: !activation_passed && changes,
     }
 }
 
@@ -441,13 +456,29 @@ mod tests {
         let r = effective_multiplier(&inert, 500);
         assert!(!r.stale && !r.pending, "equal values change nothing");
 
-        let unscheduled = ScaledUiAmountConfig {
+        // A zero timestamp is NOT "nothing scheduled": the comparison is true,
+        // so the spec applies `new_multiplier`. Initialization writes both fields
+        // to the same value, which is the only reason the two readings have ever
+        // agreed - so the case is asserted here even though the live catalogue
+        // contains no mint where it would matter.
+        let immediate = ScaledUiAmountConfig {
             new_multiplier_effective_timestamp: 0,
             new_multiplier: 4.0,
             ..base
         };
-        let r = effective_multiplier(&unscheduled, 10_000);
-        assert_eq!(r.effective, 1.0, "timestamp 0 means nothing is scheduled");
-        assert!(!r.stale && !r.pending);
+        let r = effective_multiplier(&immediate, 10_000);
+        assert_eq!(r.effective, 4.0, "zero timestamp applies new_multiplier");
+        assert!(r.stale, "the stored field is not the one the runtime uses");
+
+        // The zero-timestamp case the catalogue does contain, and the reason
+        // this distinction moves no published number: 541 of 933 mints.
+        let zero_equal = ScaledUiAmountConfig {
+            new_multiplier_effective_timestamp: 0,
+            new_multiplier: 1.0,
+            ..base
+        };
+        let r = effective_multiplier(&zero_equal, 10_000);
+        assert_eq!(r.effective, 1.0);
+        assert!(!r.stale && !r.pending, "equal values change nothing");
     }
 }

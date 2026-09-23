@@ -27,19 +27,39 @@
 </p>
 
 <p align="center">
-  <em>Splits and dividends rebase tokenized stocks on-chain. The on-chain field most apps read goes stale.
-  Owed measures the gap, publishes it as an auditable feed, and settles corporate actions correctly on-chain.</em>
+  <em>Splits and dividends rebase tokenized stocks on-chain. The field most apps read is not the value the
+  runtime applies. Owed measures the gap, publishes it as an auditable feed, and settles corporate actions correctly on-chain.</em>
 </p>
 
 <!-- owed:stats:start -->
-> **381 of 925 official xStocks carry a stale on-chain multiplier field**
-> (classified at 2026-09-23 18:53 UTC); 4 are off by 100% or more, and 2 by a full 10x.
+> **381 of 925 official xStocks carry a stored multiplier field that is not the
+> value the Token-2022 runtime applies**
+> (classified at 2026-09-23 19:15 UTC); 4 are off by 100% or more, and 2 by a full 10x.
 > The same defect is live on a second issuer: **2 of 8 PreStocks mints**,
 > which are tokenized pre-IPO equity rather than public equity. Same Token-2022 extension,
 > same classifier, different issuer - so this is a property of how the assets are issued,
 > not one vendor's mistake.
 > Not in theory: every mint was scanned and the effective value read from the chain.
 <!-- owed:stats:end -->
+
+**What "stale" means here, exactly.** Token-2022's rule is that *before*
+`new_multiplier_effective_timestamp` conversions use `multiplier`, and *at or
+after* it they use `new_multiplier`
+([docs](https://solana.com/docs/tokens/extensions/scaled-ui-amount);
+`current_multiplier` in the
+[SPL interface crate](https://github.com/solana-program/token-2022/blob/main/interface/src/extension/scaled_ui_amount/mod.rs)).
+Nothing folds `new_multiplier` into `multiplier` when the timestamp passes, so
+after an activation the stored field keeps the pre-activation value until the
+authority calls `UpdateMultiplier` again. "Stale" counts exactly this: mints whose
+stored field is no longer the value the runtime applies.
+
+That is a claim about readers, and it is worth being precise about what it is
+*not*. It is not a claim that the chain is wrong - it applies the effective
+multiplier correctly, which is why conformance against the runtime's own scaled
+amount passes 924/924. It is not a claim about intent: whether an issuer re-publishes
+the field is their operational choice, and nothing here attributes a reason. And my
+"days" column is not a measure of harm done; it is **days since the last activation
+took effect**, which is why the table above is labelled that way.
 
 ## Architecture
 
@@ -112,14 +132,14 @@ second one is what makes the finding systemic rather than a single vendor's bug:
 |---|---|
 <!-- owed:table:start -->
 | Official xStocks Solana mints scanned | **925** |
-| **Reader traps** (activation passed, stored field stale) | **381** |
+| **Reader traps** (activation passed, stored field no longer what applies) | **381** |
 | … off by **10x** (10-for-1 splits) | **2** (`PPLTx`, `NFLXx`) |
 | … off by **≥100%** | **4** |
 | … off by **≥1%** | **29** |
 | … off by **≥0.5%** | **111** |
 | Median magnitude of the gap | **0.33%** |
-| Median time already stale | **28 days** |
-| Longest stale | **350 days** (`GMEx`) |
+| Median time since the stored field diverged | **28 days** |
+| Longest divergence | **350 days** (`GMEx`) |
 | Mints with a **permanent delegate** (issuer can move anyone's tokens) | **925 / 925** |
 | Mints with a **pause authority** (issuer can freeze all transfers) | **925 / 925** |
 | Currently paused | 0 |
@@ -249,24 +269,42 @@ matched to its feeds and the issuer's own quote is compared to them:
   1874 catalogue feeds matched against all 933 mints, giving 22 same-asset wrapper
   feeds, 638 underlying-equity references and 17 redemption rates. Matching needs no
   key, so the mapping is a fact in the repo rather than a runtime hope.
-- **Prices need a key and are therefore optional.** Since Pyth's Core upgrade every
-  price endpoint answers 401 without a Bearer token. When `PYTH_API_KEY` is absent
-  the lane reports `status: "unconfigured"` and publishes **no price in any row** -
-  an empty honest lane instead of a populated invented one. The guard test fails if
-  an unconfigured lane emits a single number.
+- **The prices come from Solana, not from an HTTP API, and need no key.** Pyth
+  publishes sponsored price accounts *on Solana* as PDAs of its receiver program
+  (`pythWSnswVUd12oZpeFP8e9CVaEqJg25g1Vtc2biRsT`, seeds `shard_le16 ++ feed_id`), so
+  the reference is read straight from chain state. Hermes still answers 401 without
+  a Bearer token and is therefore unused. The lane's status is `ok` and it prices
+  17 of the 22 same-asset wrapper feeds. The guard test still fails if a lane whose
+  status is not `ok` emits a single number.
 - **Only like-for-like comparisons become numbers.** The issuer's quote is compared
   to Pyth's feed for the *same* asset (`Crypto.<SYM>/USD`); the comparison is
   published as `basisPct` with the gap flagged past a 1% tolerance.
 - **The underlying and the redemption rate are reference only.** They are named but
   never divided into the token price, because the redemption rate's orientation
-  cannot be validated without paid access - and a derived number nobody can check is
-  what this repo refuses to ship.
+  cannot be validated against a source we can cite - and a derived number nobody
+  can check is what this repo refuses to ship.
+
+State the lane's thinness plainly, because it bounds what the prize can claim:
+
+- **22 is the ceiling, not a slow start.** Only 22 mints have a same-asset wrapper
+  feed at all, so 22 is the most measured bases this lane could ever publish. A key
+  would not raise it.
+- **The reference itself ages, and that is measured too.** 16 of the 17 priced
+  wrapper feeds were stale when read (2 to 11 days behind; only `TSLAx` was fresh),
+  and the underlying-equity references sit 40 to 140 days behind. Dividing by a
+  stale reference injects an error of the same class as the multiplier trap, so
+  those rows publish `staleReference: true` and **no** `basisPct`. That is why
+  exactly one basis exists today: `TSLAx` at -2.42%.
+- **Unreachable feeds are named, not hidden.** 5 of the 22 wrapper feeds have no
+  sponsored on-chain account, and the feed says so per mint rather than reporting
+  them as "no reference exists".
 
 Both surfaces state the lane's status in words. The board marks each mint's row
 (`PYTH`, or `PYTH +2.34%` when a gap was measured) and its header line reads
-`Pyth lane unconfigured (N feeds resolved, no prices)`; the app shows a Pyth
-reference tile per token. An absent column would read as "no reference exists"
-when the truth is "no price was fetched", which is a different claim.
+`Pyth: 22 same-asset feeds, 1 flagged` once the lane is `ok`, falling back to
+naming the condition when it is not; the app shows a Pyth reference tile per
+token. An absent column would read as "no reference exists" when the truth is
+"no price was fetched", which is a different claim.
 
 ## Use it in ten lines
 
@@ -289,10 +327,10 @@ $ node sdk/example.mjs PPLTx
 PPLTx (Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme)
   stored multiplier   : 1   <- what a naive reader uses
   effective multiplier: 10   <- what the chain applies
-  stale               : true for 130 days
+  stored is current   : false   <- the two fields diverged 130 days ago
   display balance     : 1000000000 base units
 
-  Fix: use effective=10, not stored=1. Positions are understated by 10.0000x until you do.
+  Fix: use effective=10, not stored=1. A client reading the stored field is 10.0000x wrong until you do.
 ```
 
 `sdk/owed.mjs` is zero-dependency, imports the same reader the feed is built

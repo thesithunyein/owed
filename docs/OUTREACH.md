@@ -105,12 +105,13 @@ curl -s https://owed.sithunyein.com/feed/owed-risk.json | head -c 400   # the wh
 
 > Hi - quick heads up that may touch your xStock collateral pricing. On 383 of
 > 933 official tokenized-equity mints, the mint's `multiplier` field is not the
-> multiplier the runtime applies (Token-2022 Scaled UI Amount: the stored field
-> goes stale once the pending activation timestamp passes).
+> multiplier the runtime applies (Token-2022 Scaled UI Amount: once the pending
+> activation timestamp passes, the stored field stops being the value the runtime
+> uses).
 >
-> Worst cases: PPLTx and NFLXx read 1 but the chain applies 10 (stale 130 and
-> 311 days); PALLx and CRWDx 5x and 4x. If you price a position off
-> `scaledUiAmountConfig.multiplier`, it is understated by that factor.
+> Worst cases: PPLTx and NFLXx read 1 while the chain applies 10 (the two fields
+> diverged 130 and 311 days ago); PALLx and CRWDx 5x and 4x. If you price a
+> position off `scaledUiAmountConfig.multiplier`, you get that factor wrong.
 >
 > Fix is one line: read `effective = now >= newMultiplierEffectiveTimestamp ?
 > newMultiplier : multiplier` (or `getTokenSupply.uiAmountString`, which is
@@ -123,10 +124,10 @@ curl -s https://owed.sithunyein.com/feed/owed-risk.json | head -c 400   # the wh
 > Hi - we built a public monitor for Token-2022 scaled-amount state on tokenized
 > equity (github.com/thesithunyein/owed). Two things that may be useful:
 >
-> 1. Any integrator reading the stored `multiplier` field is understating
->    positions after an activation - on your set that is 381 of 925 mints right
->    now, up to 10x (PPLTx, NFLXx). It may be worth a line in your integration
->    docs: use the effective value, not the raw field.
+> 1. Any integrator reading the stored `multiplier` field gets a different number
+>    than the runtime applies once an activation has passed - on your set that is
+>    381 of 925 mints right now, by up to 10x (PPLTx, NFLXx). It may be worth a
+>    line in your integration docs: use the effective value, not the raw field.
 > 2. The state is public and we publish it as an auditable feed
 >    (owed.sithunyein.com/feed/owed-risk.json), with a schema, so integrators
 >    can check themselves rather than take a number on faith.
