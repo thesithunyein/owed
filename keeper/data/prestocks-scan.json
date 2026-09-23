@@ -1,0 +1,275 @@
+{
+ "scannedAt": "2026-09-23T13:29:05.000Z",
+ "rpc": "https://api.mainnet-beta.solana.com",
+ "totalOfficial": 8,
+ "totalRead": 8,
+ "failed": 0,
+ "stats": {
+  "readerTrap": 2,
+  "pending": 0,
+  "pausable": 8,
+  "permanentDelegate": 8,
+  "paused": 0
+ },
+ "results": [
+  {
+   "symbol": "ANDURIL",
+   "mint": "PresTj4Yc2bAR197Er7wz4UUKSfqt6FryBEdAriBoQB",
+   "meta": {
+    "name": "Anduril PreStocks",
+    "markPrice": 151.86301894,
+    "tokenPrice": 149.73652880433104,
+    "issuerSupply": 11805.820587074,
+    "externalUrl": "https://www.prestocks.com/anduril"
+   },
+   "decimals": 9,
+   "supply": "11805820587074",
+   "scaledState": {
+    "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+    "multiplier": "1",
+    "newMultiplier": "1",
+    "newMultiplierEffectiveTimestamp": 0
+   },
+   "security": {
+    "permanentDelegate": {
+     "delegate": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc"
+    },
+    "pausable": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "paused": false
+    },
+    "transferHook": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "programId": null
+    }
+   }
+  },
+  {
+   "symbol": "ANTHROPIC",
+   "mint": "Pren1FvFX6J3E4kXhJuCiAD5aDmGEb7qJRncwA8Lkhw",
+   "meta": {
+    "name": "Anthropic PreStocks",
+    "markPrice": 1048.62982457,
+    "tokenPrice": 1039.5163697963899,
+    "issuerSupply": 7381.826001601,
+    "externalUrl": "https://www.prestocks.com/anthropic"
+   },
+   "decimals": 9,
+   "supply": "7381826001601",
+   "scaledState": {
+    "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+    "multiplier": "1",
+    "newMultiplier": "1",
+    "newMultiplierEffectiveTimestamp": 0
+   },
+   "security": {
+    "permanentDelegate": {
+     "delegate": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc"
+    },
+    "pausable": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "paused": false
+    },
+    "transferHook": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "programId": null
+    }
+   }
+  },
+  {
+   "symbol": "FIGUREAI",
+   "mint": "PreZad18qfPtbxNpMtMuAuX2zVpvkEU8DnJx56faCWd",
+   "meta": {
+    "name": "Figure AI PreStocks",
+    "markPrice": 181.55003448,
+    "tokenPrice": 175.21512641462968,
+    "issuerSupply": 3012.857155916,
+    "externalUrl": "https://www.prestocks.com/figureai"
+   },
+   "decimals": 9,
+   "supply": "3012857155916",
+   "scaledState": {
+    "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+    "multiplier": "1",
+    "newMultiplier": "1",
+    "newMultiplierEffectiveTimestamp": 0
+   },
+   "security": {
+    "permanentDelegate": {
+     "delegate": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc"
+    },
+    "pausable": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "paused": false
+    },
+    "transferHook": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "programId": null
+    }
+   }
+  },
+  {
+   "symbol": "KALSHI",
+   "mint": "PreLWGkkeqG1s4HEfFZSy9moCrJ7btsHuUtfcCeoRua",
+   "meta": {
+    "name": "Kalshi PreStocks",
+    "markPrice": 885.18934049,
+    "tokenPrice": 865.805234225113,
+    "issuerSupply": 904.868345532,
+    "externalUrl": "https://www.prestocks.com/kalshi"
+   },
+   "decimals": 9,
+   "supply": "904868345532",
+   "scaledState": {
+    "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+    "multiplier": "1",
+    "newMultiplier": "1",
+    "newMultiplierEffectiveTimestamp": 0
+   },
+   "security": {
+    "permanentDelegate": {
+     "delegate": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc"
+    },
+    "pausable": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "paused": false
+    },
+    "transferHook": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "programId": null
+    }
+   }
+  },
+  {
+   "symbol": "NEURALINK",
+   "mint": "PrekqLJvJ3qVdXmBGDiexvwUTF4rLFDa6HWS4HJbw9S",
+   "meta": {
+    "name": "Neuralink PreStocks",
+    "markPrice": 338.15969823,
+    "tokenPrice": 430.67930162248035,
+    "issuerSupply": 2595.30414425,
+    "externalUrl": "https://www.prestocks.com/neuralink"
+   },
+   "decimals": 9,
+   "supply": "2595304144250",
+   "scaledState": {
+    "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+    "multiplier": "1",
+    "newMultiplier": "1",
+    "newMultiplierEffectiveTimestamp": 0
+   },
+   "security": {
+    "permanentDelegate": {
+     "delegate": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc"
+    },
+    "pausable": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "paused": false
+    },
+    "transferHook": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "programId": null
+    }
+   }
+  },
+  {
+   "symbol": "OPENAI",
+   "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+   "meta": {
+    "name": "OpenAI PreStocks",
+    "markPrice": 1022.139686409314,
+    "tokenPrice": 1296.2109408604624,
+    "issuerSupply": 2826.3852399511047,
+    "externalUrl": "https://www.prestocks.com/openai"
+   },
+   "decimals": 9,
+   "supply": "1901836515863",
+   "scaledState": {
+    "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+    "multiplier": "1",
+    "newMultiplier": "1.4861347",
+    "newMultiplierEffectiveTimestamp": 1784305800
+   },
+   "security": {
+    "permanentDelegate": {
+     "delegate": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc"
+    },
+    "pausable": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "paused": false
+    },
+    "transferHook": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "programId": null
+    }
+   }
+  },
+  {
+   "symbol": "POLYMARKET",
+   "mint": "Pre8AREmFPtoJFT8mQSXQLh56cwJmM7CFDRuoGBZiUP",
+   "meta": {
+    "name": "Polymarket PreStocks",
+    "markPrice": 144.26202128,
+    "tokenPrice": 149.36312636879862,
+    "issuerSupply": 4816.970106875,
+    "externalUrl": "https://www.prestocks.com/polymarket"
+   },
+   "decimals": 9,
+   "supply": "4816970106875",
+   "scaledState": {
+    "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+    "multiplier": "1",
+    "newMultiplier": "1",
+    "newMultiplierEffectiveTimestamp": 0
+   },
+   "security": {
+    "permanentDelegate": {
+     "delegate": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc"
+    },
+    "pausable": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "paused": false
+    },
+    "transferHook": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "programId": null
+    }
+   }
+  },
+  {
+   "symbol": "SPACEX",
+   "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
+   "meta": {
+    "name": "SpaceX PreStocks",
+    "markPrice": 152.11025325707112,
+    "tokenPrice": 112.496991575484,
+    "issuerSupply": 43712.532115040005,
+    "externalUrl": "https://www.prestocks.com/spacex"
+   },
+   "decimals": 9,
+   "supply": "8742506423008",
+   "scaledState": {
+    "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+    "multiplier": "1",
+    "newMultiplier": "5",
+    "newMultiplierEffectiveTimestamp": 1781065800
+   },
+   "security": {
+    "permanentDelegate": {
+     "delegate": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc"
+    },
+    "pausable": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "paused": false
+    },
+    "transferHook": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "programId": null
+    }
+   }
+  }
+ ],
+ "issuer": "prestocks",
+ "listSource": "https://prestocks.com/api/prestocks",
+ "listFetchedAt": "2026-09-23T13:29:05.457Z"
+}

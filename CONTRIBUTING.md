@@ -33,6 +33,30 @@ that property or it does not.
    verified and what is not (unaudited program, devnet only, snapshot data). A
    change that makes any of those claims stale must update them in the same
    commit.
+6. **One lane shape, one classifier.** Owed's finding is about the Token-2022
+   extension rather than about one issuer, so every issuer roster is scanned by
+   `keeper/src/scan.mjs` and published through `keeper/src/feed.mjs`. Two copies
+   of either would drift, and the drift would show up as two issuers that were
+   not measured the same way - which is the one thing a cross-issuer claim
+   cannot survive.
+
+### Adding an issuer lane
+
+1. Fetch the roster from the issuer's own endpoint into
+   `keeper/data/<issuer>-solana.json`, with a cached fallback: an API outage
+   should degrade to old data, never to an empty lane.
+2. Scan it with `keeper/src/scan.mjs`. Do not copy the loop.
+3. Publish it through `keeper/src/feed.mjs`, which fixes one row shape for every
+   lane. `tokens` keeps its exact meaning; a new lane goes in its own array plus a
+   matching `issuers[]` entry. Adding a lane is a minor version bump and must not
+   change what an existing consumer reads.
+4. Commit the runtime corroboration (`scripts/verify-prestocks-runtime.mjs`
+   writes `keeper/data/prestocks-runtime.json`). A lane whose only evidence is
+   our own reader agreeing with itself proves nothing.
+5. Add the lane to `.github/workflows/refresh.yml`, or it is true on the day it
+   was written and quietly false afterwards.
+6. Add guards under `keeper/test/` that fail if the roster, the counts, the row
+   shape, or the runtime verdicts drift apart.
 
 ## Working on it
 

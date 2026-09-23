@@ -1,0 +1,94 @@
+{
+ "checkedAt": "2026-09-23T13:32:12.000Z",
+ "rpc": "https://api.mainnet-beta.solana.com",
+ "issuer": "prestocks",
+ "method": "getTokenSupply: uiAmountString / (amount / 10^decimals)",
+ "tolerance": 0.0001,
+ "note": "Ground-truth corroboration that the classifier agrees with the runtime for every official PreStocks mint, not only for the xStocks roster. Committed so CI can assert the verdicts without network access.",
+ "verdicts": {
+  "AMBIGUOUS_EQUAL": 6,
+  "STALE_CONFIRMED": 2
+ },
+ "mints": [
+  {
+   "symbol": "ANDURIL",
+   "mint": "PresTj4Yc2bAR197Er7wz4UUKSfqt6FryBEdAriBoQB",
+   "storedMultiplier": 1,
+   "pendingMultiplier": 1,
+   "activation": 0,
+   "measuredRatio": 1,
+   "rulePredicts": 1,
+   "verdict": "AMBIGUOUS_EQUAL"
+  },
+  {
+   "symbol": "ANTHROPIC",
+   "mint": "Pren1FvFX6J3E4kXhJuCiAD5aDmGEb7qJRncwA8Lkhw",
+   "storedMultiplier": 1,
+   "pendingMultiplier": 1,
+   "activation": 0,
+   "measuredRatio": 1,
+   "rulePredicts": 1,
+   "verdict": "AMBIGUOUS_EQUAL"
+  },
+  {
+   "symbol": "FIGUREAI",
+   "mint": "PreZad18qfPtbxNpMtMuAuX2zVpvkEU8DnJx56faCWd",
+   "storedMultiplier": 1,
+   "pendingMultiplier": 1,
+   "activation": 0,
+   "measuredRatio": 1,
+   "rulePredicts": 1,
+   "verdict": "AMBIGUOUS_EQUAL"
+  },
+  {
+   "symbol": "KALSHI",
+   "mint": "PreLWGkkeqG1s4HEfFZSy9moCrJ7btsHuUtfcCeoRua",
+   "storedMultiplier": 1,
+   "pendingMultiplier": 1,
+   "activation": 0,
+   "measuredRatio": 1,
+   "rulePredicts": 1,
+   "verdict": "AMBIGUOUS_EQUAL"
+  },
+  {
+   "symbol": "NEURALINK",
+   "mint": "PrekqLJvJ3qVdXmBGDiexvwUTF4rLFDa6HWS4HJbw9S",
+   "storedMultiplier": 1,
+   "pendingMultiplier": 1,
+   "activation": 0,
+   "measuredRatio": 1,
+   "rulePredicts": 1,
+   "verdict": "AMBIGUOUS_EQUAL"
+  },
+  {
+   "symbol": "OPENAI",
+   "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+   "storedMultiplier": 1,
+   "pendingMultiplier": 1.4861347,
+   "activation": 1784305800,
+   "measuredRatio": 1.486134699999945,
+   "rulePredicts": 1.4861347,
+   "verdict": "STALE_CONFIRMED"
+  },
+  {
+   "symbol": "POLYMARKET",
+   "mint": "Pre8AREmFPtoJFT8mQSXQLh56cwJmM7CFDRuoGBZiUP",
+   "storedMultiplier": 1,
+   "pendingMultiplier": 1,
+   "activation": 0,
+   "measuredRatio": 1,
+   "rulePredicts": 1,
+   "verdict": "AMBIGUOUS_EQUAL"
+  },
+  {
+   "symbol": "SPACEX",
+   "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
+   "storedMultiplier": 1,
+   "pendingMultiplier": 5,
+   "activation": 1781065800,
+   "measuredRatio": 4.999999999999999,
+   "rulePredicts": 5,
+   "verdict": "STALE_CONFIRMED"
+  }
+ ]
+}

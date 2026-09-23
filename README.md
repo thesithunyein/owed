@@ -20,7 +20,7 @@
 
 <p align="center">
   <a href="https://github.com/thesithunyein/owed/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/thesithunyein/owed/ci.yml?branch=main&label=CI%20(settle%20on-chain)&style=flat-square" /></a>
-  <img alt="mints scanned" src="https://img.shields.io/badge/mints%20scanned-925%2F925-2563eb?style=flat-square" />
+  <img alt="mints scanned" src="https://img.shields.io/badge/mints%20scanned-925%20xStocks%20%2B%208%20PreStocks-2563eb?style=flat-square" />
   <img alt="license" src="https://img.shields.io/badge/license-MIT-6b7280?style=flat-square" />
   <img alt="keeper deps" src="https://img.shields.io/badge/keeper%20runtime%20deps-0-059669?style=flat-square" />
   <a href="SECURITY.md"><img alt="audits" src="https://img.shields.io/badge/audited-no%20-%20devnet%20only-d97706?style=flat-square" /></a>
@@ -33,7 +33,11 @@
 
 <!-- owed:stats:start -->
 > **381 of 925 official xStocks carry a stale on-chain multiplier field**
-> (classified at 2026-09-23 10:21 UTC); 4 are off by 100% or more, and 2 by a full 10x.
+> (classified at 2026-09-23 13:29 UTC); 4 are off by 100% or more, and 2 by a full 10x.
+> The same defect is live on a second issuer: **2 of 8 PreStocks mints**,
+> which are tokenized pre-IPO equity rather than public equity. Same Token-2022 extension,
+> same classifier, different issuer - so this is a property of how the assets are issued,
+> not one vendor's mistake.
 > Not in theory: every mint was scanned and the effective value read from the chain.
 <!-- owed:stats:end -->
 
@@ -43,12 +47,12 @@ The pipeline that turns mainnet state into a published, checkable answer:
 
 ```mermaid
 flowchart TB
-  Mainnet[Solana mainnet: 925 xStocks mints] --> Scan[scan-xstocks.mjs]
-  Scan --> Raw[keeper/data/xstocks-scan.json: raw Scaled UI Amount state]
+  Mainnet[Solana mainnet: 925 xStocks + 8 PreStocks mints] --> Scan[scan-xstocks.mjs / scan-prestocks.mjs]
+  Scan --> Raw[keeper/data/*-scan.json: raw Scaled UI Amount state]
   Raw --> Feed[risk-feed.mjs]
   Feed --> Contract[feed/owed-risk.json + schema.json: the contract]
   Contract --> Pages[gen-webdata.mjs]
-  Contract --> Trap[verify-trap.mjs]
+  Contract --> Trap[verify-trap.mjs + verify-prestocks-runtime.mjs]
   Contract --> Conf[conformance.mjs: reader vs runtime on all 925]
   Pages --> App[owed.sithunyein.com: search a ticker]
   Pages --> Board[board.html: every mint]
@@ -89,7 +93,7 @@ cited signature, and the committed record ever disagree.
 
 ## What we found (live mainnet snapshot)
 
-xStocks (Backed Finance) rebases dividends and splits through the Token-2022
+Tokenized equities on Solana rebase dividends and splits through the Token-2022
 **Scaled UI Amount** extension. The extension stores `multiplier` plus a pending
 change with an activation timestamp. The field is **not self-maintaining**: after
 an activation passes, the stored `multiplier` keeps the old value until the issuer
@@ -100,7 +104,9 @@ effective(now) = now >= newMultiplierEffectiveTimestamp ? newMultiplier : multip
 ```
 
 An app that reads the stored field alone - the obvious integration - computes the
-wrong price for every affected token. Our full scan of the official mint list:
+wrong price for every affected token. That is a property of the extension, not of
+one issuer, so both official rosters are scanned by the same classifier and the
+second one is what makes the finding systemic rather than a single vendor's bug:
 
 | Finding | Count |
 |---|---|
@@ -112,11 +118,15 @@ wrong price for every affected token. Our full scan of the official mint list:
 | … off by **≥1%** | **29** |
 | … off by **≥0.5%** | **111** |
 | Median magnitude of the gap | **0.33%** |
-| Median time already stale | **27 days** |
-| Longest stale | **349 days** (`GMEx`) |
+| Median time already stale | **28 days** |
+| Longest stale | **350 days** (`GMEx`) |
 | Mints with a **permanent delegate** (issuer can move anyone's tokens) | **925 / 925** |
 | Mints with a **pause authority** (issuer can freeze all transfers) | **925 / 925** |
 | Currently paused | 0 |
+| **PreStocks mints scanned** (tokenized pre-IPO equity) | **8** |
+| … of those, carrying the same stale multiplier field | **2** (`SPACEX`, `OPENAI`) |
+| … largest PreStocks gap | **400%** |
+| PreStocks mints with a **permanent delegate** | **8 / 8** |
 <!-- owed:table:end -->
 
 Most gaps are small - and saying so is the point. `AAPLx` (`XsbEhL…zJp`) has
@@ -191,14 +201,19 @@ visible in a wallet UI.
 
 **1. `feed/owed-risk.json` - the integration surface.** One document that answers
 "what multiplier is in force for this mint, and is anything about it dangerous?"
-for all 925 mints, with a JSON Schema at `feed/schema.json`. Two design choices
-make it auditable rather than trustworthy-by-assertion:
+for all 933 official mints - the xStocks lane in `tokens`, the PreStocks lane in
+`preStocks`, per-issuer counts in `issuers` - with a JSON Schema at
+`feed/schema.json`. Three design choices make it auditable rather than
+trustworthy-by-assertion:
 
 - It publishes the **raw `scaledUiAmountConfig` state** alongside our answer, so a
   consumer can recompute the rule and disagree with us. A test enforces that every
   published value is reproducible from the published state.
 - `effectiveMultiplier` is stamped with the clock it was computed at, because the
   value is time-dependent and a silently stale feed is worse than no feed.
+- Both issuer lanes publish **one identical row shape** and are scanned by one
+  classifier, so the cross-issuer comparison is apples-to-apples by construction
+  rather than by convention.
 
 **2. `web/differential.html` - the harm, clickable.** Single self-contained file
 shaped like an app rather than a report: you search a ticker and get one answer -
@@ -208,9 +223,10 @@ is fine says so. The full findings, the method and the evidence are collapsed
 behind disclosures instead of filling the first screen, and a shared link carries
 its token (`#t=AAPLx`). All of it re-classified against your clock on load.
 
-**3. `web/board.html` - the risk board.** All 925 mints with stored vs effective
-multiplier, gap, days stale, and issuer-control flags. Same offline, no-build
-property; optional live re-scan with your own RPC URL.
+**3. `web/board.html` - the risk board.** All 933 mints from both issuers in one
+table, labelled by issuer, with stored vs effective multiplier, gap, days stale,
+and issuer-control flags, worst-first. Same offline, no-build property; optional
+live re-scan with your own RPC URL.
 
 **4. The correct reader, tested** - `keeper/src/trap.mjs` (`effectiveMultiplier`,
 `readerTrapGap`, `matchVerdict`, `classifyRecord`, `summarize`) plus
@@ -234,6 +250,14 @@ control tokens miss too - JUP implies 0.48× total supply (vesting), USDC 9.6×
 attribute blame to a single party. The probe is kept as a record of an open
 question and is deliberately not cited as evidence anywhere above.
 
+On the second issuer specifically, two things remain open and are not claimed
+above. **Why the field is stale** is unknown: a reader trap is consistent with an
+issuer that forgot to republish `multiplier`, and equally with one that intends
+integrators to compute the effective value. Owed measures the divergence and
+does not attribute intent. And the **PreStocks roster is issuer-published**, from
+`prestocks.com/api/prestocks`, so it is their claim about their own catalogue -
+the same posture as the xStocks list, and no more independent than it was.
+
 ## Repository layout
 
 ```
@@ -244,14 +268,18 @@ owed/
 ├── core/                  # Rust crate - register, Merkle tree, split/dividend math
 │   └── src/               #   offline, no external crates; golden-vector verified
 ├── keeper/                # TypeScript - trap logic, scaled reader, snapshot builder
-│   ├── src/               #   zero runtime dependencies, hermetic
-│   ├── data/              #   official mint list, latest scan, conformance reports
-│   └── test/              #   76 tests incl. build-integrity guards on the pages
+│   ├── src/               #   zero runtime dependencies, hermetic; scan.mjs is the
+│   │                      #   one scan loop both issuer lanes run
+│   ├── data/              #   both official mint lists, both scans, conformance,
+│   │                      #   and the committed runtime verdict for PreStocks
+│   └── test/              #   86 tests incl. build-integrity guards on the pages
+│                          #   and keeper/test/prestocks-lane.test.mjs
 ├── feed/                  # owed-risk.json + schema.json - THE integration contract
 ├── web/                   # differential.html (the app) + board.html (risk table)
 │   └── assets/            #   logo, favicon, og card, hero video/poster
 ├── shared/vectors/        # cross-language golden vectors (generated, committed)
-├── scripts/               # scan, risk-feed, conformance, verify-trap, gen-*, build-site
+├── scripts/               # scan/fetch/verify per issuer, risk-feed, conformance,
+│                          # gen-*, build-site
 ├── tests/                 # on-chain settlement suite (localnet in CI; devnet by hand)
 ├── docs/                  # SPEC.md, DEMOSCRIPT.md, committed devnet-settlement-*.json
 ├── .github/workflows/     # ci.yml (5 jobs) + deploy-devnet.yml (manual)
@@ -267,10 +295,11 @@ site/                      # deploy output (gitignored) - built by build-site.mj
 
 | Component | Status |
 |---|---|
-| Mainnet scan | ✅ 925/925 mints read and classified via public RPC; snapshot committed |
+| Mainnet scan | ✅ 925/925 xStocks read and classified via public RPC; snapshot committed |
+| **Second issuer** | ✅ **8/8 PreStocks mints** scanned by the same classifier, with the runtime verdict for each one committed (`keeper/data/prestocks-runtime.json`) |
 | **Conformance** | ✅ **925/925 mints** - our reader equals the Token-2022 runtime at 1e-9 relative tolerance across the whole official set (`node scripts/conformance.mjs --all`) |
 | **Trap verification** | ✅ 8/8 sampled traps confirmed against `getTokenSupply`; 2 at exactly 10× |
-| **Risk feed** | ✅ 925 tokens; every published `effectiveMultiplier` reproducibly recomputed from published raw state (tested) |
+| **Risk feed** | ✅ 925 xStocks + 8 PreStocks tokens in one row shape; every published `effectiveMultiplier` reproducibly recomputed from published raw state (tested) |
 | `keeper/` TS | ✅ 73 tests - trap logic, scaled classifier pinned to real account shapes, feed contract, page build integrity, Merkle parity, RPC parsing, base58, 500-holder stress |
 | `core/` Rust | ✅ 21 tests - Merkle (exhaustive n=1..17 + 33, tamper rejection), supply conservation, split/dividend math, golden vectors |
 | Golden vectors | ✅ Regenerated in CI; Node↔Rust drift fails the build |
@@ -486,6 +515,8 @@ node scripts/gen-vectors.mjs
 
 # Refresh the data, then rebuild every derived artifact
 node scripts/scan-xstocks.mjs        # keeper/data/xstocks-scan.json (925 mints)
+node scripts/fetch-prestocks.mjs     # keeper/data/prestocks-solana.json (8 mints)
+node scripts/scan-prestocks.mjs      # keeper/data/prestocks-scan.json (same classifier)
 node scripts/risk-feed.mjs           # feed/owed-risk.json + feed/schema.json
 node scripts/conformance.mjs         # keeper/data/conformance.json (live)
 node scripts/collateral-scenario.mjs # keeper/data/collateral.json (price-free model)
@@ -494,6 +525,7 @@ node scripts/gen-webdata.mjs         # inject into web/board.html + web/differen
 # Evidence, on demand
 node scripts/verify-trap.mjs         # is the stored field really stale?
 node scripts/verify-trap.mjs AAPLx NFLXx
+node scripts/verify-prestocks-runtime.mjs  # runtime verdict for every PreStocks mint
 node scripts/conformance.mjs --all   # every official mint (925 RPC calls)
 
 # Build and ship the site (site/ is generated, not source)

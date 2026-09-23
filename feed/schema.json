@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://owed.sithunyein.com/feed/schema.json",
-  "title": "Owed xStocks risk feed",
+  "title": "Owed tokenized-equity risk feed (xStocks + PreStocks)",
   "type": "object",
   "required": [
     "feed",
@@ -34,8 +34,64 @@
     "stalenessWarning": {
       "type": "string"
     },
+    "issuers": {
+      "type": "array",
+      "description": "One entry per issuer lane, including the lane `summary`/`tokens` describe. Counts here match the lane arrays.",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "kind",
+          "total",
+          "trap"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "trap": {
+            "type": "integer"
+          },
+          "ge10x": {
+            "type": "integer"
+          },
+          "ge100": {
+            "type": "integer"
+          },
+          "maxGapPct": {
+            "type": "number"
+          },
+          "permanentDelegate": {
+            "type": "integer"
+          },
+          "pauseAuthority": {
+            "type": "integer"
+          },
+          "paused": {
+            "type": "integer"
+          },
+          "source": {
+            "type": "object"
+          }
+        }
+      }
+    },
     "summary": {
       "type": "object",
+      "description": "Counts for `tokens` only (the xStocks lane). See `issuers` for all lanes.",
       "required": [
         "total",
         "trap",
@@ -78,6 +134,7 @@
     },
     "tokens": {
       "type": "array",
+      "description": "The xStocks lane. Unchanged from feed version 1.0.0.",
       "items": {
         "type": "object",
         "required": [
@@ -89,11 +146,156 @@
           "security"
         ],
         "properties": {
+          "issuer": {
+            "const": "xstocks"
+          },
           "symbol": {
             "type": "string"
           },
           "mint": {
             "type": "string"
+          },
+          "meta": {
+            "type": "object",
+            "description": "Issuer-published context (display name, mark price, issuer-reported supply). Not chain state.",
+            "additionalProperties": true
+          },
+          "decimals": {
+            "type": "integer"
+          },
+          "supply": {
+            "type": "object",
+            "properties": {
+              "raw": {
+                "type": [
+                  "string",
+                  "number"
+                ]
+              }
+            }
+          },
+          "scaled": {
+            "type": "object",
+            "required": [
+              "state",
+              "effectiveMultiplier"
+            ],
+            "properties": {
+              "state": {
+                "type": "object",
+                "required": [
+                  "multiplier"
+                ],
+                "properties": {
+                  "multiplier": {
+                    "type": [
+                      "string",
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "newMultiplier": {
+                    "type": [
+                      "string",
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "newMultiplierEffectiveTimestamp": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "effectiveMultiplier": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          },
+          "trap": {
+            "type": "object",
+            "required": [
+              "stale"
+            ],
+            "properties": {
+              "stale": {
+                "type": "boolean"
+              },
+              "gapPct": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "daysStale": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            }
+          },
+          "security": {
+            "type": "object",
+            "properties": {
+              "permanentDelegate": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "pauseAuthority": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "paused": {
+                "type": "boolean"
+              },
+              "transferHookAuthority": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "preStocks": {
+      "type": "array",
+      "description": "The PreStocks lane: tokenized pre-IPO equity, same row shape as `tokens`, scanned by the same classifier.",
+      "items": {
+        "type": "object",
+        "required": [
+          "symbol",
+          "mint",
+          "decimals",
+          "scaled",
+          "trap",
+          "security"
+        ],
+        "properties": {
+          "issuer": {
+            "const": "prestocks"
+          },
+          "symbol": {
+            "type": "string"
+          },
+          "mint": {
+            "type": "string"
+          },
+          "meta": {
+            "type": "object",
+            "description": "Issuer-published context (display name, mark price, issuer-reported supply). Not chain state.",
+            "additionalProperties": true
           },
           "decimals": {
             "type": "integer"

@@ -1,7 +1,7 @@
 /**
- * Inject the official xStocks asset list, the latest corporate-actions scan,
- * the risk feed, and the conformance result into the web pages, so each one is
- * a single self-contained file that works from disk with no server.
+ * Inject the official asset lists, both issuer scans, the risk feed, and the
+ * conformance result into the web pages, so each one is a single
+ * self-contained file that works from disk with no server.
  *
  * Both pages re-classify against the viewer's clock on load, which is why they
  * carry the raw extension state rather than only our computed answer.
@@ -28,13 +28,17 @@ try {
     readFileSync(join(root, "keeper", "data", "xstocks-scan.json"), "utf8")
   );
 } catch {
-  console.warn("no xstocks-scan.json found — board will embed assets only");
+  console.warn("no xstocks-scan.json found - board will embed assets only");
 }
+
+// The PreStocks lane, scanned by the same classifier. Optional at the file
+// level: a clone without it still builds a board for the lane it has.
+const preScan = readJsonIfPresent("keeper", "data", "prestocks-scan.json");
 
 const boardPath = join(root, "web", "board.html");
 let board = readFileSync(boardPath, "utf8");
 
-// Match `const NAME = /*__MARK__*/<anything>;` — base58 never contains `;`
+// Match `const NAME = /*__MARK__*/<anything>;` - base58 never contains `;`
 // or `]`, so terminating on the first `];` is safe.
 function inject(src, name, value, file) {
   const re = new RegExp(`(const ${name} = )/\\*__${name}__\\*/[\\s\\S]*?;`);
@@ -52,6 +56,22 @@ function readJsonIfPresent(...parts) {
 }
 
 board = inject(board, "ASSETS", compact, "board.html");
+if (preScan) {
+  board = inject(
+    board,
+    "PRESTOCKS",
+    {
+      scannedAt: preScan.scannedAt,
+      rpc: preScan.rpc,
+      listSource: preScan.listSource ?? null,
+      stats: preScan.stats,
+      results: preScan.results,
+    },
+    "board.html"
+  );
+} else {
+  board = inject(board, "PRESTOCKS", null, "board.html");
+}
 if (scan) {
   board = inject(
     board,
@@ -79,22 +99,30 @@ const conformance =
   readJsonIfPresent("keeper", "data", "conformance.json");
 
 if (!feed) {
-  console.warn("no feed/owed-risk.json — run node scripts/risk-feed.mjs first");
+  console.warn("no feed/owed-risk.json - run node scripts/risk-feed.mjs first");
 } else {
   // The page only needs what it renders or recomputes; trimming keeps the
   // single-file page from carrying the full 700KB feed.
+  //
+  // Both issuer lanes travel in one `tokens` array, tagged with `issuer`, so the
+  // page's search, card and sizing logic stay issuer-agnostic: a defect that is
+  // a property of the Token-2022 extension should not need two code paths.
+  const trim = (t) => ({
+    issuer: t.issuer ?? null,
+    symbol: t.symbol,
+    mint: t.mint,
+    name: t.meta?.name ?? null,
+    scaled: { state: t.scaled.state, effectiveMultiplier: t.scaled.effectiveMultiplier },
+    security: { permanentDelegate: t.security.permanentDelegate, pauseAuthority: t.security.pauseAuthority },
+  });
   const trimmed = {
     generatedAt: feed.generatedAt,
     clock: feed.clock,
     version: feed.version,
     source: { rpc: feed.source?.rpc ?? null },
     summary: feed.summary,
-    tokens: feed.tokens.map((t) => ({
-      symbol: t.symbol,
-      mint: t.mint,
-      scaled: { state: t.scaled.state, effectiveMultiplier: t.scaled.effectiveMultiplier },
-      security: { permanentDelegate: t.security.permanentDelegate, pauseAuthority: t.security.pauseAuthority },
-    })),
+    issuers: feed.issuers ?? [],
+    tokens: [...feed.tokens.map(trim), ...(feed.preStocks ?? []).map(trim)],
   };
   diff = inject(diff, "RISK", trimmed, "differential.html");
 }
@@ -117,7 +145,7 @@ if (conformance) {
 writeFileSync(diffPath, diff);
 
 const js =
-  "// Generated from keeper/data/ — do not edit by hand.\n" +
+  "// Generated from keeper/data/ - do not edit by hand.\n" +
   "// Regenerate: node scripts/gen-webdata.mjs\n" +
   "export const ASSETS = " + JSON.stringify(compact) + ";\n";
 mkdirSync(join(root, "web", "data"), { recursive: true });
@@ -129,19 +157,21 @@ writeFileSync(join(root, "web", "data", "assets.mjs"), js);
 //
 // The counts in the README move every time the snapshot refreshes, and the
 // pages re-classify live, so hand-typed figures disagree with the site within
-// one refresh cycle — they already did (`≥100%` read 5 in the README while the
+// one refresh cycle - they already did (`≥100%` read 5 in the README while the
 // published feed said 4). So the headline block and the findings table are
 // generated from the feed between markers, exactly like the pages, and
 // keeper/test/build-integrity.test.mjs fails if either drifts out of agreement.
 
-// `feed` is the same object the pages were just built from — one read, one
+// `feed` is the same object the pages were just built from - one read, one
 // source of truth, so the README and the pages cannot disagree.
 let readmeChanged = false;
 
 if (feed) {
   const s = feed.summary;
+  const pre = feed.issuers?.find((i) => i.id === "prestocks") ?? null;
   const at = `${new Date(feed.clock * 1000).toISOString().slice(0, 16).replace("T", " ")} UTC`;
   const stale = feed.tokens.filter((t) => t.trap.stale);
+  const stalePre = (feed.preStocks ?? []).filter((t) => t.trap.stale);
   const median = (xs) => {
     if (!xs.length) return 0;
     const sorted = [...xs].sort((a, b) => a - b);
@@ -157,6 +187,12 @@ if (feed) {
     `<!-- owed:stats:start -->\n` +
     `> **${s.trap} of ${s.total} official xStocks carry a stale on-chain multiplier field**\n` +
     `> (classified at ${at}); ${s.ge100} are off by 100% or more, and ${s.ge10x} by a full 10x.\n` +
+    (pre
+      ? `> The same defect is live on a second issuer: **${pre.trap} of ${pre.total} PreStocks mints**,\n` +
+        `> which are tokenized pre-IPO equity rather than public equity. Same Token-2022 extension,\n` +
+        `> same classifier, different issuer - so this is a property of how the assets are issued,\n` +
+        `> not one vendor's mistake.\n`
+      : "") +
     `> Not in theory: every mint was scanned and the effective value read from the chain.\n` +
     `<!-- owed:stats:end -->`;
 
@@ -173,6 +209,14 @@ if (feed) {
     `| Mints with a **permanent delegate** (issuer can move anyone's tokens) | **${s.permanentDelegate} / ${s.total}** |`,
     `| Mints with a **pause authority** (issuer can freeze all transfers) | **${s.pauseAuthority} / ${s.total}** |`,
     `| Currently paused | ${s.paused} |`,
+    ...(pre
+      ? [
+          `| **PreStocks mints scanned** (tokenized pre-IPO equity) | **${pre.total}** |`,
+          `| … of those, carrying the same stale multiplier field | **${pre.trap}** (${stalePre.map((x) => `\`${x.symbol}\``).join(", ")}) |`,
+          `| … largest PreStocks gap | **${pre.maxGapPct.toFixed(0)}%** |`,
+          `| PreStocks mints with a **permanent delegate** | **${pre.permanentDelegate} / ${pre.total}** |`,
+        ]
+      : []),
   ];
   const table = `<!-- owed:table:start -->\n${rows.join("\n")}\n<!-- owed:table:end -->`;
 
@@ -208,7 +252,7 @@ if (feed) {
     .sort()
     .at(-1);
   if (!newest) {
-    console.warn("no docs/devnet-settlement-*.json — README settlement table left alone");
+    console.warn("no docs/devnet-settlement-*.json - README settlement table left alone");
   } else {
     const report = JSON.parse(readFileSync(join(docs, newest), "utf8"));
     // The two paths that must refuse, in the words the test itself asserts.
@@ -247,11 +291,14 @@ const kb = (n) => (n / 1024).toFixed(0);
 console.log(
   `board.html: ${compact.length} assets` +
     (scan ? ` + ${scan.results.length} scan results` : "") +
+    (preScan ? ` + ${preScan.results.length} PreStocks results` : "") +
     ` (${kb(board.length)}KB)`,
 );
 console.log(
   `differential.html: ` +
-    (feed ? `${feed.tokens.length} tokens` : "no feed") +
+    (feed
+      ? `${feed.tokens.length} xStocks + ${(feed.preStocks ?? []).length} PreStocks tokens`
+      : "no feed") +
     (conformance ? ` + conformance ${conformance.pass}/${conformance.checked}` : "") +
     ` (${kb(diff.length)}KB)`,
 );

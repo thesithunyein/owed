@@ -1,8 +1,9 @@
 name: Refresh data
 
 # The pages embed a mainnet snapshot, so a committed snapshot is always aging.
-# This workflow is why it does not go stale: it re-scans all 925 official xStocks
-# mints, regenerates the feed and both pages, commits any change, and redeploys.
+# This workflow is why it does not go stale: it re-scans every official mint on
+# both issuer lanes (xStocks, PreStocks), regenerates the feed and both pages,
+# commits any change, and redeploys.
 #
 # Every 6 hours: xStocks dividend activations land at 00:30 UTC daily, so this
 # catches them within a quarter day at most. Also runnable on demand.
@@ -35,6 +36,18 @@ jobs:
       - name: Re-scan all official mints
         run: node scripts/scan-xstocks.mjs
 
+      - name: Refresh and re-scan the PreStocks lane
+        # The second issuer is part of the published finding, so it refreshes on
+        # the same schedule. A lane that only refreshes when someone remembers
+        # would make the cross-issuer claim true on the day it was written and
+        # quietly false afterwards - the exact failure this workflow exists for.
+        # fetch-prestocks falls back to the committed list if the issuer API is
+        # down, so an outage degrades to stale data rather than an empty lane.
+        run: |
+          node scripts/fetch-prestocks.mjs
+          node scripts/scan-prestocks.mjs
+          node scripts/verify-prestocks-runtime.mjs
+
       - name: Regenerate feed, pages, and site
         run: |
           node scripts/risk-feed.mjs
@@ -55,6 +68,25 @@ jobs:
             throw new Error('scan lost tokens: ' + scan.results.length);
           }
           console.log('fresh snapshot:', scan.results.length, 'mints,', feed.summary.trap, 'stale');
+          // The PreStocks lane is checked with the same severity: a scan that
+          // silently lost the second issuer would leave the site claiming a
+          // cross-issuer finding from a single issuer's data.
+          const preScan = require('./keeper/data/prestocks-scan.json');
+          if (!Array.isArray(feed.preStocks)) {
+            throw new Error('feed lost the PreStocks lane');
+          }
+          if (feed.preStocks.length !== preScan.results.length) {
+            throw new Error('PreStocks feed/scan length mismatch');
+          }
+          if (preScan.results.length < 8) {
+            throw new Error('PreStocks scan lost tokens: ' + preScan.results.length);
+          }
+          const overlap = new Set(feed.tokens.map((t) => t.mint));
+          if (feed.preStocks.some((t) => overlap.has(t.mint))) {
+            throw new Error('a mint appears in both issuer lanes');
+          }
+          console.log('prestocks:', feed.preStocks.length, 'mints,',
+            feed.issuers.find((i) => i.id === 'prestocks').trap, 'stale');
           "
 
       - name: Commit refreshed data
@@ -65,6 +97,8 @@ jobs:
           # README.md belongs in this list: gen-webdata regenerates the derived
           # numbers in it, so omitting it left the README advertising an older
           # classification time than the feed and the board it describes.
+          # keeper/data carries the PreStocks roster, scan and runtime evidence;
+          # all three belong to the snapshot this commit publishes.
           git add keeper/data feed web shared/vectors README.md
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"

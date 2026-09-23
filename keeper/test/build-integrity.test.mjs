@@ -59,7 +59,9 @@ test("README numbers match the published feed", () => {
     .split("\n")
     .filter((line) => line.startsWith("|"))
     .map((line) => line.split("|")[2]?.replace(/[*`]/g, "").trim() ?? "");
-  assert.equal(cells.length, 12, "the findings table has all 12 rows");
+  // 12 xStocks rows, then the PreStocks lane's rows. The lane appended rather
+  // than replacing anything, so the indices above keep their meaning.
+  assert.equal(cells.length, 16, "the findings table has all 16 rows");
   assert.equal(cells[0], String(s.total));
   assert.equal(cells[1], String(s.trap));
   assert.ok(cells[2].startsWith(String(s.ge10x)));
@@ -69,6 +71,24 @@ test("README numbers match the published feed", () => {
   assert.equal(cells[9], `${s.permanentDelegate} / ${s.total}`);
   assert.equal(cells[10], `${s.pauseAuthority} / ${s.total}`);
   assert.equal(cells[11], String(s.paused));
+
+  // The second issuer's numbers are asserted too, because the README's headline
+  // sentence now makes a cross-issuer claim and a hand edit there would be
+  // exactly the kind of drift these blocks exist to prevent.
+  const pre = feed.issuers?.find((i) => i.id === "prestocks");
+  if (pre) {
+    assert.equal(cells[12], String(pre.total), "PreStocks mints scanned");
+    assert.ok(
+      cells[13].startsWith(String(pre.trap)),
+      "PreStocks stale count matches the feed",
+    );
+    assert.equal(cells[14], `${pre.maxGapPct.toFixed(0)}%`);
+    assert.equal(cells[15], `${pre.permanentDelegate} / ${pre.total}`);
+    assert.ok(
+      stats.includes(`**${pre.trap} of ${pre.total} PreStocks mints**`),
+      "the headline names the second issuer",
+    );
+  }
 });
 
 test("generated pages exist", () => {
