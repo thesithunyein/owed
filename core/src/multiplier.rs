@@ -268,7 +268,9 @@ mod tests {
     #[test]
     fn before_the_activation_the_stored_value_still_applies() {
         // 60 seconds before the timestamp: the same bytes, a different answer.
-        let r = read_multiplier(PPLTX, 1_778_985_000 - 60).unwrap().expect("scaled config");
+        let r = read_multiplier(PPLTX, 1_778_985_000 - 60)
+            .unwrap()
+            .expect("scaled config");
         assert_eq!(r.stored, 1.0);
         assert_eq!(r.effective, 1.0);
         assert!(!r.stale);
@@ -290,7 +292,9 @@ mod tests {
         // The TLV list is walked, not indexed: on this PreStocks mint the scaled
         // entry sits at byte 575, so a fixed-offset reader passes every xStocks
         // fixture and silently misreads the second issuer.
-        let entry = find_scaled_ui_amount_config(SPACEX).unwrap().expect("scaled config");
+        let entry = find_scaled_ui_amount_config(SPACEX)
+            .unwrap()
+            .expect("scaled config");
         assert_eq!(entry.multiplier, 1.0);
         assert_eq!(entry.new_multiplier, 5.0);
 
@@ -341,7 +345,10 @@ mod tests {
         // enforced.
         let mut data = vec![0u8; TLV_START];
         data[ACCOUNT_TYPE_OFFSET] = 2;
-        assert!(matches!(find_scaled_ui_amount_config(&data), Err(Error::MalformedMint(_))));
+        assert!(matches!(
+            find_scaled_ui_amount_config(&data),
+            Err(Error::MalformedMint(_))
+        ));
     }
 
     #[test]
@@ -357,7 +364,10 @@ mod tests {
         data[ACCOUNT_TYPE_OFFSET] = ACCOUNT_TYPE_MINT;
         // type 7, length 0xFFFF - far past the end of the buffer.
         data[TLV_START..TLV_START + 4].copy_from_slice(&[7, 0, 0xff, 0xff]);
-        assert!(matches!(find_scaled_ui_amount_config(&data), Err(Error::MalformedMint(_))));
+        assert!(matches!(
+            find_scaled_ui_amount_config(&data),
+            Err(Error::MalformedMint(_))
+        ));
     }
 
     #[test]
@@ -365,7 +375,10 @@ mod tests {
         let mut data = vec![0u8; TLV_START + 4 + 16];
         data[ACCOUNT_TYPE_OFFSET] = ACCOUNT_TYPE_MINT;
         data[TLV_START..TLV_START + 4].copy_from_slice(&[25, 0, 16, 0]);
-        assert!(matches!(find_scaled_ui_amount_config(&data), Err(Error::MalformedMint(_))));
+        assert!(matches!(
+            find_scaled_ui_amount_config(&data),
+            Err(Error::MalformedMint(_))
+        ));
     }
 
     #[test]
