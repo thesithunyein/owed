@@ -48,6 +48,22 @@ jobs:
           node scripts/scan-prestocks.mjs
           node scripts/verify-prestocks-runtime.mjs
 
+      - name: Refresh the Pyth registry and divergence lane
+        # The registry is what the pages' Pyth markers are built from, so it ages
+        # on the same schedule as everything else. Without this step a mint that
+        # gained a reference feed would keep being reported as having none, and
+        # the coverage counts in the feed would drift away from the catalogue.
+        #
+        # The catalogue needs no key, so the registry half always runs. The priced
+        # half reports `unconfigured` and publishes nothing when PYTH_API_KEY is
+        # absent, which is the honest state rather than a failure - so it is not
+        # allowed to fail the job.
+        run: |
+          node scripts/pyth-feeds.mjs
+          node scripts/pyth-divergence.mjs || echo "pyth divergence lane skipped: ${?}"
+        env:
+          PYTH_API_KEY: ${{ secrets.PYTH_API_KEY }}
+
       - name: Regenerate feed, pages, and site
         run: |
           node scripts/risk-feed.mjs
@@ -87,6 +103,29 @@ jobs:
           }
           console.log('prestocks:', feed.preStocks.length, 'mints,',
             feed.issuers.find((i) => i.id === 'prestocks').trap, 'stale');
+          // The Pyth lane is published coverage, so losing it would silently
+          // downgrade every mint to "no reference exists". The registry must
+          // cover both rosters and stay reconciled with the feed's own block.
+          const reg = require('./keeper/data/pyth-feeds.json');
+          if (!feed.pyth || !Array.isArray(reg.assets)) {
+            throw new Error('feed lost the Pyth lane');
+          }
+          const audited = feed.tokens.length + feed.preStocks.length;
+          if (reg.assets.length !== audited) {
+            throw new Error('pyth registry/report mismatch: ' + reg.assets.length + ' vs ' + audited);
+          }
+          const resolved = reg.assets.filter((a) => a.xstock).length;
+          if (feed.pyth.coverage.xstocks.xstockFeed !== resolved) {
+            throw new Error('pyth coverage disagrees with the registry: ' +
+              feed.pyth.coverage.xstocks.xstockFeed + ' vs ' + resolved);
+          }
+          if (feed.pyth.status !== 'ok' && feed.pyth.pricedFeeds !== 0) {
+            throw new Error('a non-ok Pyth lane published prices');
+          }
+          // `summary` is null while the lane is not ok, so it is read defensively:
+          // the tripwire must not be the thing that fails the refresh.
+          console.log('pyth:', feed.pyth.status, '|', resolved, 'same-asset feeds of',
+            reg.catalogueSize, 'catalogue feeds |', feed.pyth.summary?.priced ?? 0, 'priced');
           "
 
       - name: Commit refreshed data
