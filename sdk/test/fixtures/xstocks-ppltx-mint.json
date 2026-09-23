@@ -1,0 +1,78 @@
+{
+  "owner": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+  "data": {
+    "parsed": {
+      "type": "mint",
+      "info": {
+        "decimals": 8,
+        "extensions": [
+          {
+            "extension": "metadataPointer",
+            "state": {
+              "authority": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
+              "metadataAddress": "Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme"
+            }
+          },
+          {
+            "extension": "permanentDelegate",
+            "state": {
+              "delegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq"
+            }
+          },
+          {
+            "extension": "defaultAccountState",
+            "state": {
+              "accountState": "initialized"
+            }
+          },
+          {
+            "extension": "scaledUiAmountConfig",
+            "state": {
+              "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
+              "multiplier": "1",
+              "newMultiplier": "10",
+              "newMultiplierEffectiveTimestamp": 1778985000
+            }
+          },
+          {
+            "extension": "pausableConfig",
+            "state": {
+              "authority": "JDq14BWvqCRFNu1krb12bcRpbGtJZ1FLEakMw6FdxJNs",
+              "paused": false
+            }
+          },
+          {
+            "extension": "confidentialTransferMint",
+            "state": {
+              "auditorElgamalPubkey": null,
+              "authority": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
+              "autoApproveNewAccounts": false
+            }
+          },
+          {
+            "extension": "transferHook",
+            "state": {
+              "authority": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
+              "programId": null
+            }
+          },
+          {
+            "extension": "tokenMetadata",
+            "state": {
+              "additionalMetadata": [],
+              "mint": "Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme",
+              "name": "abrdn Physical Platinum Shares xStock",
+              "symbol": "PPLTx",
+              "updateAuthority": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
+              "uri": "https://xstocks-metadata.backed.fi/tokens/Solana/PPLTx/metadata.json"
+            }
+          }
+        ],
+        "freezeAuthority": "JDq14BWvqCRFNu1krb12bcRpbGtJZ1FLEakMw6FdxJNs",
+        "isInitialized": true,
+        "mintAuthority": "7pt9tkctJPK7PPNQJ77GKg8ZffSF6QxoMiCFYHxrtaCj",
+        "supply": "7967152999996"
+      }
+    }
+  }
+}

@@ -1,0 +1,207 @@
+# Submission text
+
+Paste-ready. Written for a judge who has six other entries to read, so the
+short answer comes first and the proof is one click away.
+
+Everything below was true as of the committed snapshot (2026-09-23 15:59 UTC).
+The live page re-classifies against the reader's own clock, so if a number has
+moved, the page is right and this file is one refresh behind.
+
+---
+
+## Main track
+
+### The short version
+
+**383 of the 933 official tokenized-equity mints on Solana carry an on-chain
+multiplier field that is not the multiplier the runtime applies.** Owed measures
+that gap from chain state, publishes it as an auditable feed, ships the
+one-line reader that fixes it, and settles corporate actions correctly on-chain
+when the issuer would rather not make every integrator implement it.
+
+### Who has the problem
+
+Anyone building on tokenized equities: lending markets and vaults taking
+tokenized stocks as collateral, wallets and portfolio trackers showing balances,
+oracles and indexers serving their scale, and pricing bots. The end user with
+money at risk is a borrower whose collateral is misevaluated by up to a factor
+of ten.
+
+### What the problem is
+
+Tokenized stocks rebase splits and dividends on-chain through Token-2022's
+Scaled UI Amount extension. That extension stores a `multiplier` field **plus a
+pending change with an activation timestamp**:
+
+```
+effective = now >= newMultiplierEffectiveTimestamp ? newMultiplier : multiplier
+```
+
+Once the activation passes, the stored `multiplier` is stale and the runtime
+still applies the new value. Reading `multiplier` directly is the obvious thing
+to do and produces the wrong balance after every corporate action. It is silent:
+no error, no event, no failed transaction. The token just means 10x more than
+the reader thinks.
+
+To be exact about what we are and are not claiming: the **runtime is correct**,
+and we have verified our reader against it on all 925 official mints at a
+relative tolerance of 1e-9. The defect is in naive integrations, and the fix is
+a function call.
+
+### What we built
+
+1. **The measurement.** A scanner that reads live mainnet state for every
+   official mint and classifies it. Not a sample: all 925 xStocks mints, plus all
+   8 PreStocks mints through the same classifier.
+2. **The published feed.** `feed/owed-risk.json` (v1.1.0) plus a JSON Schema:
+   one row shape for both issuers, every published value recomputable from the
+   raw state published beside it. This is the integration surface, not a
+   dashboard.
+3. **The one-line fix.** `sdk/owed.mjs` - `getEffectiveMultiplier(mint)`, zero
+   dependencies, no API key, with an example and tests that run against a real
+   committed mainnet account.
+4. **The on-chain fix for issuers who want it.** An Anchor program that settles
+   corporate actions properly: declare an action, snapshot holders into a Merkle
+   root at a record slot, let holders claim with proofs, settle. Compiles for
+   SBF, runs a full split plus dividend lifecycle on every push in CI, and has
+   settled on devnet with real explorer-verifiable signatures.
+5. **The app.** `owed.sithunyein.com` - search any official ticker and see the
+   stored value, the chain-correct value, the resulting error, and what it does
+   to a position. Plus a risk board and a read-only wallet scan that answers the
+   question per user, not in aggregate.
+
+### The evidence
+
+Measured today from mainnet state; the app recomputes it in the visitor's
+browser on load:
+
+| symbol | issuer | stored | chain applies | error | stale for |
+|---|---|---|---|---|---|
+| PPLTx | xStocks | 1 | 10 | **10x** | 130 days |
+| NFLXx | xStocks | 1 | 10 | **10x** | 311 days |
+| PALLx | xStocks | 1 | 5 | **5x** | 130 days |
+| SPACEX | PreStocks | 1 | 5 | **5x** | 105 days |
+| CRWDx | xStocks | 1 | 4 | **4x** | 83 days |
+| OPENAI | PreStocks | 1 | 1.4861347 | **48.61%** | 68 days |
+
+383 mints are stale right now; 31 are off by 1% or more and 6 by 10% or more.
+
+**Two issuers, not one vendor's bug.** All 8 PreStocks mints carry the same
+Token-2022 extension set as the xStocks set - same issuance template, different
+issuer - so the finding is a property of how these assets are issued, not one
+team's mistake. That is what makes it worth fixing at the infrastructure layer.
+
+**Independently verifiable, not asserted:**
+- Our reader equals the Token-2022 runtime on 925/925 mints (`scripts/conformance.mjs --all`).
+- Every trap mint is confirmed against the runtime's own scaled supply.
+- The devnet settlement is a 15-step run: 13 signed transactions plus 2 designed
+  rejections (a short register and a replayed claim) proving the guards bite.
+- We also publish what we could **not** establish - including a probe that
+  failed and is not cited as evidence. `README.md` -> "What we could not establish".
+
+### The demo
+
+- **App:** https://owed.sithunyein.com - search `PPLTx`, watch it price a position
+  10x wrong, then correct it.
+- **Board:** https://owed.sithunyein.com/board - every stale mint, worst first, both issuers.
+- **Feed:** https://owed.sithunyein.com/feed/owed-risk.json - the contract other builders read.
+- **Repo:** https://github.com/thesithunyein/owed
+- **Repro in two commands:** `node sdk/example.mjs PPLTx` (stored 1, chain applies 10)
+- **Two-minute walkthrough:** `docs/DEMOSCRIPT.md`.
+
+### Why Solana
+
+This is not a product that could exist the same way anywhere else. The defect
+lives in Token-2022's extension model - a mint-level, time-dependent multiplier
+that is applied by the runtime. Detecting it means reading mint extensions and
+comparing them against what the runtime actually returns; fixing it means either
+computing the effective value at read time or settling the corporate action
+on-chain with an on-chain registry and Merkle-claimed entitlements. Both are
+Solana-native primitives, and the tokens themselves only exist here.
+
+### What happens next
+
+1. **Get the integrators to adopt the reader.** Five targets are identified with
+   exact mints and messages in `docs/OUTREACH.md`; one confirmation that this
+   affects a live product is the traction this needs.
+2. **Keep the feed fresh and honest.** It refreshes every six hours with
+   tripwires that fail the build if the cross-issuer claim goes stale, and a
+   scheduled refresh regenerates the registry, scan, feed and both pages.
+3. **Mainnet-deploy the registry** once the program has been reviewed; it is
+   deliberately devnet-only and unaudited today, with a pinned address reserved
+   for that move.
+
+### Honest scope
+
+The scanner, feed, SDK and pages read real mainnet state and are usable now. The
+registry program compiles, settles in CI on every push, and settles on devnet,
+but is **not on mainnet and not audited**. Why the stored field is stale is
+unknown and we do not attribute intent: a trap is consistent with an issuer that
+forgot to republish and with one that expects integrators to compute the
+effective value. We measure the divergence.
+
+---
+
+## PreStocks bounty variant
+
+**Two of your eight mints are live examples of a trap that hits every
+integrator.** Owed scans all 8 PreStocks mints with the same classifier we run
+across all 925 xStocks mints, and reports exactly what we find, including what
+is clean.
+
+- **SPACEX** (`PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh`): stored multiplier
+  `1`, chain applies `5`. **5x understatement, stale 105 days.**
+- **OPENAI** (`PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF`): stored `1`, chain
+  applies `1.4861347`. **48.61%, stale 68 days.**
+- The other six (ANDURIL, ANTHROPIC, FIGUREAI, KALSHI, NEURALINK, POLYMARKET)
+  are currently clean, and the page says so - a monitor that only screams is not
+  a monitor.
+
+The rest of the set matters for a different reason: **all 8 PreStocks mints carry
+the same Token-2022 extension set as the xStocks roster** (scaled UI amount,
+permanent delegate, pausable, transfer hook). That is what turns this from a
+single issuer's bug into a finding about how tokenized pre-IPO equity is issued,
+and it is why the PreStocks lane is published in the feed as its own lane rather
+than folded into one number.
+
+What you get: the exact mints, the error factor, the one-line fix
+(`getEffectiveMultiplier(mint)`), a feed that keeps the state current every six
+hours, and a guard test that fails the build if the lane is ever dropped or a
+mint appears in both rosters. Tessera is deliberately not integrated, so this
+submission stays inside the bounty's token scope.
+
+---
+
+## Pyth bounty variant
+
+**Pyth data does real work in Owed, and we found something about the feeds
+themselves on the way.**
+
+Every one of the 933 mints is matched against Pyth's published catalogue: 22
+same-asset wrapper feeds, 638 underlying-equity references, 17 redemption rates.
+Those references are not decoration - the app shows the issuer's own quote
+against its Pyth reference, and the feed publishes the basis per row:
+
+- `basisPct` - the gap between the issuer's quote and its same-asset Pyth feed.
+  Live example: **TSLAx at -2.42%** against `Crypto.TSLAX/USD`, flagged.
+- The comparison rule and tolerance ship in the feed itself, so any consumer can
+  re-derive the number rather than trust it.
+
+**The finding: the prices are read from Solana, not from an API.** Pyth publishes
+sponsored price accounts on-chain as PDAs under the receiver program, so Owed
+resolves each feed id to its account and parses the price directly from chain
+state - no key, no Hermes dependency, and the reference is verifiable in the same
+place the asset lives. That is also what let us measure something a consumer
+cannot see from an API response:
+
+**16 of the 17 priced xStock wrapper feeds were stale when read** - published 2
+to 11 days earlier, with only TSLAx fresh (4 hours). That is measured live, not
+sampled. A consumer dividing by a stale oracle price adds an error of the same
+class as the multiplier trap this project exists to measure. Owed therefore
+publishes `staleReference` instead of a basis whenever the reference is not
+fresh, and only compares against a fresh one - which is why exactly one basis
+(`TSLAx`, -2.42%) is published today and 16 rows carry no number at all.
+
+The lane is built to be correct with no configuration: it publishes **no number
+at all** when prices are unavailable, and a guard test enforces that, because an
+invented gap is worse than an absent one.

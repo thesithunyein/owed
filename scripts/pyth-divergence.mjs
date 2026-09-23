@@ -22,11 +22,13 @@
  *     token's price, because the redemption rate's orientation cannot be
  *     validated, and this repo does not ship derived numbers nobody can check.
  *   - a basis is computed only against a reference young enough to witness the
- *     quote (FRESHNESS_BOUND_SEC). The sponsored push accounts are not always
- *     fresh - on 2026-09-23, 13 of 17 xStock wrapper accounts carried a price
- *     from 11 days earlier - and comparing today's quote to an old price would
- *     manufacture divergence out of two clocks. Stale references publish their
- *     price with `staleReference: true` and no basis.
+ *     quote (FRESHNESS_BOUND_SEC). The sponsored push accounts are frequently
+ *     not fresh: measured on 2026-09-23, 16 of the 17 priced xStock wrapper
+ *     accounts carried a price 2 to 11 days old, with only TSLAx current.
+ *     Comparing today's quote to an old price would manufacture divergence out
+ *     of two clocks, so stale references publish their price with
+ *     `staleReference: true` and no basis - which is why the lane can price 17
+ *     feeds yet publish exactly one basis.
  */
 
 import { writeFileSync, readFileSync, existsSync } from "node:fs";

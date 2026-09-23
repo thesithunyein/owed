@@ -33,7 +33,7 @@
 
 <!-- owed:stats:start -->
 > **381 of 925 official xStocks carry a stale on-chain multiplier field**
-> (classified at 2026-09-23 15:59 UTC); 4 are off by 100% or more, and 2 by a full 10x.
+> (classified at 2026-09-23 16:32 UTC); 4 are off by 100% or more, and 2 by a full 10x.
 > The same defect is live on a second issuer: **2 of 8 PreStocks mints**,
 > which are tokenized pre-IPO equity rather than public equity. Same Token-2022 extension,
 > same classifier, different issuer - so this is a property of how the assets are issued,
@@ -268,6 +268,50 @@ Both surfaces state the lane's status in words. The board marks each mint's row
 reference tile per token. An absent column would read as "no reference exists"
 when the truth is "no price was fetched", which is a different claim.
 
+## Use it in ten lines
+
+Most integrations get this wrong by reading one field. The fix is a function
+call, and it needs no key, no wallet and no signup:
+
+```js
+import { getEffectiveMultiplier, toDisplayAmount } from "./sdk/owed.mjs";
+
+// The multiplier the chain actually applies to this mint right now.
+const m = await getEffectiveMultiplier("Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme");
+// -> 10   (the mint's stored multiplier field still reads 1)
+
+// Price a position with it instead of the raw balance.
+const display = toDisplayAmount(100_000_000n, m); // -> 1000000000n
+```
+
+```console
+$ node sdk/example.mjs PPLTx
+PPLTx (Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme)
+  stored multiplier   : 1   <- what a naive reader uses
+  effective multiplier: 10   <- what the chain applies
+  stale               : true for 130 days
+  display balance     : 1000000000 base units
+
+  Fix: use effective=10, not stored=1. Positions are understated by 10.0000x until you do.
+```
+
+`sdk/owed.mjs` is zero-dependency, imports the same reader the feed is built
+from rather than reimplementing it, and takes an optional `nowSec` so callers
+can reason about a scheduled activation. Its tests run offline against a
+committed mainnet account, with an eighth test that hits mainnet only when
+`OWED_LIVE_SDK=1` is set, so the SDK's own claim is checked against the chain it
+describes:
+
+```console
+$ OWED_LIVE_SDK=1 node --test test/owed.test.mjs
+✔ LIVE: mainnet still reports 10x for PPLTx (network-gated)
+```
+
+If you only want data and not code, read
+[`feed/owed-risk.json`](https://owed.sithunyein.com/feed/owed-risk.json) - both
+lanes, both issuers, one row shape, with the [schema](https://owed.sithunyein.com/feed/schema.json)
+beside it.
+
 ## What we could not establish
 
 We tried to show that the largest Solana DEX aggregator misstates xStock supply,
@@ -301,17 +345,20 @@ owed/
 │   │                      #   one scan loop both issuer lanes run
 │   ├── data/              #   both official mint lists, both scans, conformance,
 │   │                      #   and the committed runtime verdict for PreStocks
-│   └── test/              #   86 tests incl. build-integrity guards on the pages
-│                          #   and keeper/test/prestocks-lane.test.mjs
+│   └── test/              #   106 tests incl. build-integrity guards on the pages,
+│                          #   the PreStocks lane and the Pyth lane
 ├── feed/                  # owed-risk.json + schema.json - THE integration contract
 ├── web/                   # differential.html (the app) + board.html (risk table)
 │   └── assets/            #   logo, favicon, og card, hero video/poster
 ├── shared/vectors/        # cross-language golden vectors (generated, committed)
 ├── scripts/               # scan/fetch/verify per issuer, risk-feed, conformance,
 │                          # gen-*, build-site
+├── sdk/                   # copyable reader: getEffectiveMultiplier(mint),
+│   └── test/fixtures/     #   example.mjs, and a real mainnet account to test on
 ├── tests/                 # on-chain settlement suite (localnet in CI; devnet by hand)
-├── docs/                  # SPEC.md, DEMOSCRIPT.md, committed devnet-settlement-*.json
-├── .github/workflows/     # ci.yml (5 jobs) + deploy-devnet.yml (manual)
+├── docs/                  # SPEC.md, DEMOSCRIPT.md, SUBMISSION.md, OUTREACH.md,
+│                          #   committed devnet-settlement-*.json
+├── .github/workflows/     # ci.yml (6 jobs) + deploy-devnet.yml (manual)
 ├── CONTRIBUTING.md        # the verify-first standard every change must meet
 ├── CODE_OF_CONDUCT.md     # Contributor Covenant, enforced
 ├── SECURITY.md            # scope, verified vs not, disclosure
@@ -329,7 +376,8 @@ site/                      # deploy output (gitignored) - built by build-site.mj
 | **Conformance** | ✅ **925/925 mints** - our reader equals the Token-2022 runtime at 1e-9 relative tolerance across the whole official set (`node scripts/conformance.mjs --all`) |
 | **Trap verification** | ✅ 8/8 sampled traps confirmed against `getTokenSupply`; 2 at exactly 10× |
 | **Risk feed** | ✅ 925 xStocks + 8 PreStocks tokens in one row shape; every published `effectiveMultiplier` reproducibly recomputed from published raw state (tested) |
-| `keeper/` TS | ✅ 73 tests - trap logic, scaled classifier pinned to real account shapes, feed contract, page build integrity, Merkle parity, RPC parsing, base58, 500-holder stress |
+| `keeper/` TS | ✅ 106 tests - trap logic, scaled classifier pinned to real account shapes, feed contract, page build integrity (including the static-fallback guards), Merkle parity, RPC parsing, base58, Pyth lane, 500-holder stress |
+| `sdk/` | ✅ 7 offline tests against a committed mainnet account, plus an 8th that hits mainnet when `OWED_LIVE_SDK=1` - asserts PPLTx still reads stored 1 / effective 10 |
 | `core/` Rust | ✅ 21 tests - Merkle (exhaustive n=1..17 + 33, tamper rejection), supply conservation, split/dividend math, golden vectors |
 | Golden vectors | ✅ Regenerated in CI; Node↔Rust drift fails the build |
 | `web/` pages | ✅ Both run from the file system with no network; re-classify against the viewer's clock. The front page also ships a generator-baked static fallback (finding, stats, clickable worst mints) that renders with JavaScript disabled; the page script keeps it whenever the viewer's clock classifies identically to the feed and re-renders only when it does not |

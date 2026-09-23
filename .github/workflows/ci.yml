@@ -40,6 +40,22 @@ jobs:
       - name: Run all keeper tests (hermetic — no network)
         run: node --test
 
+  sdk:
+    name: SDK (node --test)
+    runs-on: ubuntu-latest
+    # The SDK is the copyable artifact external builders actually use, so it
+    # gets its own gate: offline, against the committed mainnet fixture.
+    defaults:
+      run:
+        working-directory: sdk
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run SDK tests (hermetic — fixture, no network)
+        run: node --test
+
   vectors:
     name: Golden vectors regenerate byte-identical
     runs-on: ubuntu-latest
