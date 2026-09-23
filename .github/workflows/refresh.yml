@@ -128,6 +128,21 @@ jobs:
             reg.catalogueSize, 'catalogue feeds |', feed.pyth.summary?.priced ?? 0, 'priced');
           "
 
+      - name: Alert digest
+        # The feed is a report you have to go and read. This turns the same facts
+        # into the two events worth interrupting someone for: a mint whose stored
+        # field just went stale, and an activation landing inside the next 48h.
+        # It writes keeper/data/alert-state.json, which the commit step below
+        # already stages, so the next run can say what actually changed.
+        #
+        # No ALERT_WEBHOOK configured is a state, not a failure: the step then
+        # prints the digest and records state. A job that goes red whenever a
+        # secret is absent is a job everyone learns to ignore, which is how an
+        # alert lane ends up worse than none.
+        run: node scripts/alert-digest.mjs --post
+        env:
+          ALERT_WEBHOOK: ${{ secrets.ALERT_WEBHOOK }}
+
       - name: Commit refreshed data
         id: commit
         run: |
