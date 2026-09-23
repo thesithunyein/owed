@@ -202,7 +202,9 @@ test("preStocks: both pages carry the lane", { skip }, () => {
   const injected = (file) => {
     const src = readFileSync(join(WEB, file), "utf8");
     const out = {};
-    const re = /const\s+(\w+)\s*=\s*\/\*__\w+__\*\/([\s\S]*?);\r?\n/g;
+    // Line-anchored: one injected payload is one line, whatever characters it
+    // contains. See the note in scripts/gen-webdata.mjs `inject`.
+    const re = /^const\s+(\w+)\s*=\s*\/\*__\w+__\*\/(.*);\r?$/gm;
     for (const [, name, payload] of src.matchAll(re)) out[name] = payload;
     return { src, out };
   };

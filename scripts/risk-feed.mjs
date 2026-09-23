@@ -64,8 +64,56 @@ try {
   console.warn("no keeper/data/prestocks-scan.json - feed will carry the xStocks lane only");
 }
 
-const tokens = buildTokens(scan, now, "xstocks");
-const preStocks = preStocksScan ? buildTokens(preStocksScan, now, "prestocks") : [];
+// The Pyth lane: which public feed describes each mint, and (when a key is
+// configured) how far the issuer's own quote sits from it. Both artifacts are
+// optional so a clone without them still publishes a valid feed.
+const readOptional = (...parts) => {
+  try {
+    return JSON.parse(readFileSync(join(ROOT, ...parts), "utf8"));
+  } catch {
+    return null;
+  }
+};
+const feedRegistry = readOptional("keeper", "data", "pyth-feeds.json");
+const divergence = readOptional("keeper", "data", "pyth-divergence.json");
+const divergenceByMint = new Map((divergence?.rows ?? []).map((r) => [r.mint, r]));
+
+/** Attach the same `pyth` key to every row, priced or not, so shapes stay uniform. */
+const withPyth = (rows) =>
+  rows.map((row) => {
+    const d = divergenceByMint.get(row.mint) ?? null;
+    const reg = feedRegistry?.assets?.find((a) => a.mint === row.mint) ?? null;
+    const ref = (feed) => (feed ? { feedId: feed.feedId, symbol: feed.symbol, price: null } : null);
+    return {
+      ...row,
+      pyth: d
+        ? { xstock: d.xstock, equity: d.equity, redemptionRate: d.redemptionRate }
+        : {
+            xstock: ref(reg?.xstock),
+            equity: ref(reg?.equity),
+            redemptionRate: ref(reg?.redemptionRate),
+          },
+    };
+  });
+
+const tokens = withPyth(buildTokens(scan, now, "xstocks"));
+const preStocks = preStocksScan ? withPyth(buildTokens(preStocksScan, now, "prestocks")) : [];
+
+const pyth = divergence
+  ? {
+      status: divergence.status,
+      reason: divergence.reason ?? null,
+      checkedAt: divergence.checkedAt ?? null,
+      rule: divergence.rule,
+      tolerancePct: divergence.tolerancePct,
+      referenceOnly: divergence.referenceOnly ?? null,
+      catalogueSize: divergence.catalogueSize ?? null,
+      catalogueFetchedAt: divergence.catalogueFetchedAt ?? null,
+      coverage: divergence.coverage ?? null,
+      summary: divergence.summary ?? null,
+      pricedFeeds: divergence.pricedFeeds ?? 0,
+    }
+  : null;
 
 const issuers = [
   describeIssuer(
@@ -128,6 +176,7 @@ const feed = {
   // counts, including the PreStocks lane, are in `issuers`.
   summary: summarize(scan.results, now),
   issuers,
+  ...(pyth ? { pyth } : {}),
   tokens,
   ...(preStocksScan ? { preStocks } : {}),
 };
@@ -142,6 +191,18 @@ const tokenItem = (extra = {}) => ({
     issuer: {
       type: "string",
       description: "Issuer lane this row belongs to. Matches an `issuers[].id`.",
+    },
+    pyth: {
+      type: "object",
+      description:
+        "Public Pyth feeds describing this mint. `xstock` is the same asset from a " +
+        "second source and carries `basisPct` when prices were available; `equity` and " +
+        "`redemptionRate` are reference only and never divided into the token price.",
+      properties: {
+        xstock: { type: ["object", "null"] },
+        equity: { type: ["object", "null"] },
+        redemptionRate: { type: ["object", "null"] },
+      },
     },
     symbol: { type: "string" },
     mint: { type: "string" },
@@ -214,6 +275,25 @@ const schema = {
         "Expression consumers apply to scaled.state, evaluated at their own clock.",
     },
     stalenessWarning: { type: "string" },
+    pyth: {
+      type: "object",
+      description:
+        "The Pyth lane: `status` is `ok`, `unconfigured` or `error`. While it is not " +
+        "`ok`, no row publishes a price - an empty honest lane rather than a populated " +
+        "invented one.",
+      properties: {
+        status: { enum: ["ok", "unconfigured", "error"] },
+        reason: { type: ["string", "null"] },
+        checkedAt: { type: ["string", "null"] },
+        rule: { type: "string" },
+        tolerancePct: { type: "number" },
+        referenceOnly: { type: ["string", "null"] },
+        catalogueSize: { type: ["integer", "null"] },
+        coverage: { type: ["object", "null"] },
+        summary: { type: ["object", "null"] },
+        pricedFeeds: { type: "integer" },
+      },
+    },
     issuers: {
       type: "array",
       description:
@@ -282,6 +362,9 @@ if (preStocksScan) {
     `feed: ${feed.preStocks.length} PreStocks tokens | stale ${p.trap} | ` +
       `max gap ${p.maxGapPct.toFixed(0)}% | permanent delegate ${p.permanentDelegate}/${p.total}`,
   );
+}
+if (pyth) {
+  console.log(`feed: pyth lane ${pyth.status}${pyth.summary ? ` | ${pyth.summary.priced} priced` : ""}`);
 }
 console.log(`wrote ${OUT}`);
 console.log(`wrote ${SCHEMA_OUT}`);

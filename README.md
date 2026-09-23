@@ -33,7 +33,7 @@
 
 <!-- owed:stats:start -->
 > **381 of 925 official xStocks carry a stale on-chain multiplier field**
-> (classified at 2026-09-23 13:29 UTC); 4 are off by 100% or more, and 2 by a full 10x.
+> (classified at 2026-09-23 14:06 UTC); 4 are off by 100% or more, and 2 by a full 10x.
 > The same defect is live on a second issuer: **2 of 8 PreStocks mints**,
 > which are tokenized pre-IPO equity rather than public equity. Same Token-2022 extension,
 > same classifier, different issuer - so this is a property of how the assets are issued,
@@ -238,6 +238,35 @@ registry: issuer declares an action, the holder set is snapshotted at the record
 slot into a Merkle root, holders claim with proofs. `programs/owed/` is the
 Anchor reference program; `core/` (Rust) and `keeper/` carry the same math with
 cross-language golden vectors.
+
+**6. The independent second opinion - `keeper/src/pyth.mjs`.** Everything above
+derives from mint state alone, so it can be internally consistent and still be
+wrong about the world. Pyth is the one venue where the reference price of the
+underlying *and* of the tokenized wrapper are both published, so each mint is
+matched to its feeds and the issuer's own quote is compared to them:
+
+- The **registry is built unconditionally** and committed (`keeper/data/pyth-feeds.json`):
+  1874 catalogue feeds matched against all 933 mints, giving 22 same-asset wrapper
+  feeds, 638 underlying-equity references and 17 redemption rates. Matching needs no
+  key, so the mapping is a fact in the repo rather than a runtime hope.
+- **Prices need a key and are therefore optional.** Since Pyth's Core upgrade every
+  price endpoint answers 401 without a Bearer token. When `PYTH_API_KEY` is absent
+  the lane reports `status: "unconfigured"` and publishes **no price in any row** -
+  an empty honest lane instead of a populated invented one. The guard test fails if
+  an unconfigured lane emits a single number.
+- **Only like-for-like comparisons become numbers.** The issuer's quote is compared
+  to Pyth's feed for the *same* asset (`Crypto.<SYM>/USD`); the comparison is
+  published as `basisPct` with the gap flagged past a 1% tolerance.
+- **The underlying and the redemption rate are reference only.** They are named but
+  never divided into the token price, because the redemption rate's orientation
+  cannot be validated without paid access - and a derived number nobody can check is
+  what this repo refuses to ship.
+
+Both surfaces state the lane's status in words. The board marks each mint's row
+(`PYTH`, or `PYTH +2.34%` when a gap was measured) and its header line reads
+`Pyth lane unconfigured (N feeds resolved, no prices)`; the app shows a Pyth
+reference tile per token. An absent column would read as "no reference exists"
+when the truth is "no price was fetched", which is a different claim.
 
 ## What we could not establish
 

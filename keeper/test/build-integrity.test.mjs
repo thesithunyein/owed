@@ -112,7 +112,11 @@ test("substituted payloads parse as JSON", () => {
   // Line-ending agnostic: these files are rewritten by tools on both Windows
   // and Linux, so assuming LF here would make the guard pass or fail based on
   // checkout settings rather than on the content.
-  const re = /const\s+(\w+)\s*=\s*\/\*__\w+__\*\/([\s\S]*?);\r?\n/g;
+  // Line-anchored, so a payload containing a semicolon (a sentence in a reason
+  // string, say) is read whole instead of being truncated at that character.
+  // Truncating here would make this guard parse a prefix and report a failure
+  // that has nothing to do with the payload's real contents.
+  const re = /^const\s+(\w+)\s*=\s*\/\*__\w+__\*\/(.*);\r?$/gm;
   let found = 0;
   for (const [, name, payload] of src.matchAll(re)) {
     if (payload === "null") continue;

@@ -34,6 +34,64 @@
     "stalenessWarning": {
       "type": "string"
     },
+    "pyth": {
+      "type": "object",
+      "description": "The Pyth lane: `status` is `ok`, `unconfigured` or `error`. While it is not `ok`, no row publishes a price - an empty honest lane rather than a populated invented one.",
+      "properties": {
+        "status": {
+          "enum": [
+            "ok",
+            "unconfigured",
+            "error"
+          ]
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "checkedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rule": {
+          "type": "string"
+        },
+        "tolerancePct": {
+          "type": "number"
+        },
+        "referenceOnly": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "catalogueSize": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "coverage": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "summary": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "pricedFeeds": {
+          "type": "integer"
+        }
+      }
+    },
     "issuers": {
       "type": "array",
       "description": "One entry per issuer lane, including the lane `summary`/`tokens` describe. Counts here match the lane arrays.",
@@ -148,6 +206,30 @@
         "properties": {
           "issuer": {
             "const": "xstocks"
+          },
+          "pyth": {
+            "type": "object",
+            "description": "Public Pyth feeds describing this mint. `xstock` is the same asset from a second source and carries `basisPct` when prices were available; `equity` and `redemptionRate` are reference only and never divided into the token price.",
+            "properties": {
+              "xstock": {
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "equity": {
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "redemptionRate": {
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            }
           },
           "symbol": {
             "type": "string"
@@ -285,6 +367,30 @@
         "properties": {
           "issuer": {
             "const": "prestocks"
+          },
+          "pyth": {
+            "type": "object",
+            "description": "Public Pyth feeds describing this mint. `xstock` is the same asset from a second source and carries `basisPct` when prices were available; `equity` and `redemptionRate` are reference only and never divided into the token price.",
+            "properties": {
+              "xstock": {
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "equity": {
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "redemptionRate": {
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            }
           },
           "symbol": {
             "type": "string"

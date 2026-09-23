@@ -35,13 +35,29 @@ try {
 // level: a clone without it still builds a board for the lane it has.
 const preScan = readJsonIfPresent("keeper", "data", "prestocks-scan.json");
 
+// Read once, at the top: both pages and the README are built from this one
+// object, so they cannot disagree about the snapshot they describe.
+const feed = readJsonIfPresent("feed", "owed-risk.json");
+
 const boardPath = join(root, "web", "board.html");
 let board = readFileSync(boardPath, "utf8");
 
-// Match `const NAME = /*__MARK__*/<anything>;` - base58 never contains `;`
-// or `]`, so terminating on the first `];` is safe.
+/**
+ * Replace one injected payload, matching the WHOLE line.
+ *
+ * This used to terminate at the first `;`, justified by "base58 never contains
+ * `;`". That held until a payload carried a sentence with a semicolon in it: the
+ * first run wrote the payload correctly, and every later run matched only as far
+ * as that semicolon, replaced that prefix, and left the rest of the previous
+ * payload behind. The page grew a few KB of trailing garbage per run and the
+ * injected JSON stopped parsing - silently, from a script that reported success.
+ *
+ * `JSON.stringify` never emits a newline, so one payload is exactly one line,
+ * and anchoring at both ends is both stricter and independent of the payload's
+ * contents.
+ */
 function inject(src, name, value, file) {
-  const re = new RegExp(`(const ${name} = )/\\*__${name}__\\*/[\\s\\S]*?;`);
+  const re = new RegExp(`^(const ${name} = )/\\*__${name}__\\*/.*;\\r?$`, "m");
   if (!re.test(src)) throw new Error(`${name} marker missing from ${file}`);
   return src.replace(re, `$1/*__${name}__*/${JSON.stringify(value)};`);
 }
@@ -56,6 +72,44 @@ function readJsonIfPresent(...parts) {
 }
 
 board = inject(board, "ASSETS", compact, "board.html");
+
+// The Pyth lane, trimmed to what the board renders: the lane's own state, its
+// coverage counts, and the mints that have a same-asset feed (22 of 925). The
+// other 638 equity references are a count, not a per-row string - they are in
+// the feed for anyone who wants them.
+const pyth = feed?.pyth ?? null;
+const pythRefs = Object.fromEntries(
+  (feed?.tokens ?? [])
+    .concat(feed?.preStocks ?? [])
+    .filter((t) => t.pyth?.xstock)
+    // The comparison travels with the reference, not just its name, so the board
+    // can show the gap once prices exist instead of only ever naming the feed.
+    .map((t) => [
+      t.mint,
+      {
+        symbol: t.pyth.xstock.symbol,
+        price: t.pyth.xstock.price ?? null,
+        basisPct: t.pyth.xstock.basisPct ?? null,
+        flagged: t.pyth.xstock.flagged ?? null,
+      },
+    ]),
+);
+// Injected as an object even when the lane is absent, because a `null` payload
+// is indistinguishable from a marker the generator never replaced - and the
+// build guard explicitly treats `null` as un-injected.
+board = inject(
+  board,
+  "PYTH",
+  {
+    status: pyth?.status ?? "unavailable",
+    reason: pyth?.reason ?? "no feed/owed-risk.json pyth block: run scripts/pyth-feeds.mjs",
+    coverage: pyth?.coverage ?? null,
+    summary: pyth?.summary ?? null,
+    tolerancePct: pyth?.tolerancePct ?? null,
+    refs: pythRefs,
+  },
+  "board.html",
+);
 if (preScan) {
   board = inject(
     board,
@@ -70,7 +124,9 @@ if (preScan) {
     "board.html"
   );
 } else {
-  board = inject(board, "PRESTOCKS", null, "board.html");
+  // Same reason as PYTH: an object, not null, so the guard's "un-injected
+  // marker" check keeps its meaning and the page can report the lane is absent.
+  board = inject(board, "PRESTOCKS", { results: [], stats: null, absent: true }, "board.html");
 }
 if (scan) {
   board = inject(
@@ -92,7 +148,6 @@ writeFileSync(boardPath, board);
 const diffPath = join(root, "web", "differential.html");
 let diff = readFileSync(diffPath, "utf8");
 
-const feed = readJsonIfPresent("feed", "owed-risk.json");
 // Prefer the full sweep; the stratified sample is the fallback.
 const conformance =
   readJsonIfPresent("keeper", "data", "conformance-all.json") ??
@@ -115,6 +170,20 @@ if (!feed) {
     scaled: { state: t.scaled.state, effectiveMultiplier: t.scaled.effectiveMultiplier },
     security: { permanentDelegate: t.security.permanentDelegate, pauseAuthority: t.security.pauseAuthority },
   });
+  // The Pyth lane travels with the page so the card can name the reference for
+  // a mint and, when prices exist, show the basis. Trimmed to the priced fields:
+  // the feed ids are in the feed, and shipping 933 of them would double the page.
+  const trimPyth = (t) =>
+    t.pyth?.xstock
+      ? {
+          xstock: t.pyth.xstock.symbol,
+          price: t.pyth.xstock.price ?? null,
+          basisPct: t.pyth.xstock.basisPct ?? null,
+          flagged: t.pyth.xstock.flagged ?? null,
+          equity: t.pyth.equity?.symbol ?? null,
+        }
+      : null;
+  const trimWithPyth = (t) => ({ ...trim(t), pyth: trimPyth(t) });
   const trimmed = {
     generatedAt: feed.generatedAt,
     clock: feed.clock,
@@ -122,7 +191,17 @@ if (!feed) {
     source: { rpc: feed.source?.rpc ?? null },
     summary: feed.summary,
     issuers: feed.issuers ?? [],
-    tokens: [...feed.tokens.map(trim), ...(feed.preStocks ?? []).map(trim)],
+    pyth: feed.pyth
+      ? {
+          status: feed.pyth.status,
+          reason: feed.pyth.reason ?? null,
+          rule: feed.pyth.rule,
+          tolerancePct: feed.pyth.tolerancePct,
+          coverage: feed.pyth.coverage ?? null,
+          summary: feed.pyth.summary ?? null,
+        }
+      : null,
+    tokens: [...feed.tokens.map(trimWithPyth), ...(feed.preStocks ?? []).map(trimWithPyth)],
   };
   diff = inject(diff, "RISK", trimmed, "differential.html");
 }

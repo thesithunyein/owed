@@ -1,0 +1,80 @@
+{
+ "status": "unconfigured",
+ "reason": "PYTH_API_KEY is not set. Pyth price endpoints have required a Bearer key since 2026-08-26; the feed catalogue (scripts/pyth-feeds.mjs) does not, so the registry and its coverage are still published. Add the key to the environment or as the PYTH_API_KEY repo secret to turn this lane on.",
+ "issuerScope": [
+  "xstocks",
+  "prestocks"
+ ],
+ "checkedAt": "2026-09-23T14:01:01.000Z",
+ "rule": "basisPct = (issuerQuoteMid / pythPrice - 1) * 100, where issuerQuoteMid is (bid + ask) / 2 from the issuer's own list and pythPrice is the latest value of the Pyth feed named in xstock.feedId",
+ "tolerancePct": 1,
+ "referenceOnly": "equity and redemptionRate feed ids are published as reference. Only the xstock comparison (same asset, two sources) becomes a basis percentage.",
+ "coverage": {
+  "xstocks": {
+   "total": 925,
+   "xstockFeed": 22,
+   "equityFeed": 638,
+   "redemptionRate": 17,
+   "unresolved": [
+    "PCTx",
+    "WYFIx",
+    "INDIx",
+    "XRXx",
+    "BETRx",
+    "WGSx",
+    "WRLDx",
+    "METCx",
+    "SAILx",
+    "SCIx",
+    "DRSx",
+    "BSYx",
+    "DCIx",
+    "AXSMx",
+    "WMSx",
+    "RYANx",
+    "AMx",
+    "ALSNx",
+    "GSATx",
+    "FRHCx",
+    "SFx",
+    "SMTCx",
+    "PAGx",
+    "EGPx",
+    "BPOPx",
+    "EHCx",
+    "AEISx",
+    "GMEDx",
+    "ARx",
+    "SEICx",
+    "HALOx",
+    "GFLx",
+    "IESCx",
+    "CRx",
+    "BMRNx",
+    "HUBSx",
+    "AFGx",
+    "AMHx",
+    "OCx",
+    "VNOMx"
+   ]
+  },
+  "prestocks": {
+   "total": 8,
+   "xstockFeed": 0,
+   "equityFeed": 2,
+   "redemptionRate": 0,
+   "unresolved": [
+    "ANDURIL",
+    "FIGUREAI",
+    "KALSHI",
+    "NEURALINK",
+    "POLYMARKET",
+    "SPACEX"
+   ]
+  }
+ },
+ "catalogueSize": 1874,
+ "catalogueFetchedAt": "2026-09-23T13:56:37.725Z",
+ "pricedFeeds": 0,
+ "rows": []
+}
