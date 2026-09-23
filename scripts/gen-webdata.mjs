@@ -204,6 +204,150 @@ if (!feed) {
     tokens: [...feed.tokens.map(trimWithPyth), ...(feed.preStocks ?? []).map(trimWithPyth)],
   };
   diff = inject(diff, "RISK", trimmed, "differential.html");
+
+  // --- static fallback: the page works before (or without) JavaScript ---------
+  //
+  // Everything on the front page used to render client-side, so any script
+  // failure left a blank page. The generator now bakes the same numbers the
+  // live classification would produce, between markers, and the page script
+  // leaves them alone unless the viewer's clock disagrees with the feed's - in
+  // which case the numbers would mislead, and re-rendering is correct.
+  const genNow = feed.clock;
+  const genNowMs = genNow * 1000;
+  const genEffective = (state) => {
+    const stored = Number(state.multiplier);
+    if (state.newMultiplier == null || state.newMultiplierEffectiveTimestamp == null)
+      return stored;
+    return genNow >= Number(state.newMultiplierEffectiveTimestamp)
+      ? Number(state.newMultiplier)
+      : stored;
+  };
+  const genClassify = (t) => {
+    const s = t.scaled?.state;
+    if (!s || s.multiplier == null) return null;
+    const stored = Number(s.multiplier);
+    const eff = genEffective(s);
+    const gap = eff / stored - 1;
+    return {
+      stored,
+      eff,
+      gap,
+      stale: gap > 0,
+      days: gap > 0 ? (genNow - Number(s.newMultiplierEffectiveTimestamp)) / 86400 : null,
+    };
+  };
+  const genAll = [...feed.tokens, ...(feed.preStocks ?? [])].map((t) => ({
+    t,
+    c: genClassify(t),
+  }));
+  const genRows = genAll
+    .filter((r) => r.c && r.c.stale)
+    .sort((a, b) => b.c.gap - a.c.gap);
+  const genEscape = (s) =>
+    String(s).replace(/[&<>"']/g, (ch) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+  const genTag = (gapPct) => {
+    const cls = gapPct >= 100 ? "hot" : gapPct >= 1 ? "warm" : "mild";
+    const label = gapPct >= 900 ? "10x" : gapPct >= 100 ? "≥2x" : gapPct >= 1 ? "≥1%" : "<1%";
+    return `<span class="tag ${cls}">${label}</span>`;
+  };
+  const genChips = (() => {
+    // Same worst-of-each-lane rule as the page's examples(): a plain top-3 of
+    // 10x and 5x splits hides the second issuer entirely.
+    const worstX = genRows.find((r) => r.t.issuer !== "prestocks");
+    const worstPre = genRows.find((r) => r.t.issuer === "prestocks");
+    const chips = [...genRows.slice(0, 3), ...[worstX, worstPre].filter(Boolean)]
+      .filter((r, i, self) => self.indexOf(r) === i)
+      .sort((a, b) => b.c.gap - a.c.gap);
+    return (
+      "<span>Worst right now:</span> " +
+      chips
+        .map(
+          (r) =>
+            `<button type="button" class="chip" data-sym="${genEscape(r.t.symbol)}">` +
+            `${genEscape(r.t.symbol)} <span>${(r.c.gap * 100).toFixed(0)}%</span></button>`,
+        )
+        .join("")
+    );
+  })();
+  const genTable = () =>
+    genRows
+      .map(({ t, c }) => {
+        const ctl = [];
+        if (t.security.permanentDelegate) ctl.push("delegate");
+        if (t.security.pauseAuthority) ctl.push("pause");
+        return (
+          `<tr><td>${genEscape(t.symbol)}</td>` +
+          `<td class="num" title="exact: ${c.stored}">${Number(Number(c.stored).toPrecision(6))}</td>` +
+          `<td class="num" title="exact: ${c.eff}">${Number(Number(c.eff).toPrecision(6))}</td>` +
+          `<td class="num">${(c.gap * 100).toFixed(2)}% ${genTag(c.gap * 100)}</td>` +
+          `<td class="num">${c.days == null ? "-" : Math.round(c.days)}</td>` +
+          `<td class="mono">${ctl.join(" + ") || "-"}</td></tr>`
+        );
+      })
+      .join("");
+  const genStats = [
+    ["Official mints scanned (both issuers)", genAll.length, ""],
+    ["Stale multiplier right now", genRows.length, "hot"],
+    ["Error ≥ 1% (the ones that bite)", genRows.filter((r) => r.c.gap >= 1).length, genRows.some((r) => r.c.gap >= 1) ? "hot" : "ok"],
+    ["Worst error", genRows[0] ? Math.round(genRows[0].c.gap * 100) + "%" : "-", "hot"],
+    ["Mints with a permanent delegate", `${genAll.filter((r) => r.t.security.permanentDelegate).length} / ${genAll.length}`, ""],
+    ...(feed.issuers ?? []).map((i) => [
+      `… on ${i.name} (${i.kind})`,
+      `${i.trap} of ${i.total} stale`,
+      i.trap ? "hot" : "ok",
+    ]),
+  ]
+    .map(
+      ([k, v, cls]) =>
+        `<div class="stat ${cls}"><b>${v}</b><span>${k}</span></div>`,
+    )
+    .join("");
+  const genSub =
+    `Feed generated <strong>${new Date(feed.generatedAt).toUTCString()}</strong> from ` +
+    `<span class="mono">${genEscape(feed.source?.rpc || "mainnet RPC")}</span>, re-classified against your clock just now.`;
+  // Clock-stability, honestly derived: the baked numbers survive the page's
+  // live re-render check only when no activation timestamp sits within +/-48h
+  // of the feed's clock - any reasonable viewer clock then classifies
+  // identically. Near a boundary the page re-renders, which is the case where
+  // static numbers could mislead.
+  const nearBoundary = [...feed.tokens, ...(feed.preStocks ?? [])].some((t) => {
+    const ts = Number(t.scaled?.state?.newMultiplierEffectiveTimestamp ?? 0);
+    return ts > 0 && Math.abs(genNow - ts) < 48 * 3600;
+  });
+  const staticMatch = nearBoundary ? "0" : "1";
+  const swapStatic = (src, marker, html) =>
+    src.replace(
+      new RegExp(`(<!-- owed:${marker}:start -->)[\\s\\S]*?(<!-- owed:${marker}:end -->)`, "m"),
+      `$1${html}$2`,
+    );
+  diff = swapStatic(diff, "stats", genStats);
+  diff = swapStatic(
+    diff,
+    "sub",
+    `<span class="static-match">${staticMatch}</span>${genSub}`,
+  );
+  diff = swapStatic(diff, "chips", genChips);
+  diff = swapStatic(
+    diff,
+    "hero-worst",
+    genRows.length
+      ? `<p class="hero-worst"><strong>${genRows.length} of ${genAll.length} mints</strong> misprice positions right now, worst: ` +
+        genRows
+          .filter((r) => r.c.gap >= 1)
+          .slice(0, 4)
+          .map((r) => `${genEscape(r.t.symbol)} ${(r.c.gap * 100).toFixed(0)}%`)
+          .join(", ") +
+        `.</p>`
+      : "",
+  );
+  // Two counts live outside marker blocks and are set by script only, which
+  // left the no-JS page reading "all - mints". Baked from the feed, re-matched
+  // regardless of current content so reruns stay idempotent.
+  const totalStr = genAll.length.toLocaleString("en-US");
+  diff = diff
+    .replace(/(<span id="foldTotal">)[^<]*(<\/span>)/, `$1${totalStr}$2`)
+    .replace(/(<span id="coverage">)[^<]*(<\/span>)/, `$1${totalStr}$2`);
 }
 
 if (conformance) {

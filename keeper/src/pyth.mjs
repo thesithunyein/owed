@@ -37,8 +37,24 @@ export const DIVERGENCE_TOLERANCE_PCT = 1.0;
 /** The rule consumers apply, published in the feed beside the numbers. */
 export const DIVERGENCE_RULE =
   "basisPct = (issuerQuoteMid / pythPrice - 1) * 100, where issuerQuoteMid is " +
-  "(bid + ask) / 2 from the issuer's own list and pythPrice is the latest value " +
-  "of the Pyth feed named in xstock.feedId";
+  "(bid + ask) / 2 from the issuer's own list (xStocks quotes in cents, divided " +
+  "by 100; PreStocks quotes in dollars) and pythPrice is the latest value of the " +
+  "Pyth feed named in xstock.feedId, read from its push-oracle account on Solana.";
+
+/**
+ * A reference older than this is not a price; it is a memory.
+ *
+ * The freshness gate exists because the sponsored push accounts are not always
+ * fresh: on 2026-09-23, 13 of the 17 xStock wrapper accounts carried a price
+ * from Sep 12 - about 11 days old. Comparing an issuer's live quote against an
+ * 11-day-old reference would manufacture divergence that is really just two
+ * clocks, so a basis is computed only against a reference with an age at or
+ * under this bound, and every priced row publishes its reference age anyway.
+ *
+ * 24h in seconds. xStocks quote around the clock, so a reference older than a
+ * day cannot witness the current quote for any of them.
+ */
+export const FRESHNESS_BOUND_SEC = 86_400;
 
 /** The open catalogue: 1874 feeds in one request, no auth. */
 export async function fetchCatalogue({ url = PYTH_CATALOGUE_URL } = {}) {
@@ -185,6 +201,8 @@ export function buildPythRow({
   redemptionRate,
   priceFor = () => null,
   tolerancePct,
+  freshnessBoundSec = FRESHNESS_BOUND_SEC,
+  nowSec = () => Math.floor(Date.now() / 1000),
 }) {
   const at = (feed) => {
     if (!feed) return null;
@@ -194,6 +212,10 @@ export function buildPythRow({
       symbol: feed.symbol,
       price: p?.price ?? null,
       publishTime: p?.publishTime ?? null,
+      // The age of the reference travels with every priced row, because a
+      // basis computed against a stale reference is a different claim than one
+      // computed against a fresh one - and the reader must be able to tell.
+      ageSec: p?.publishTime != null ? Math.max(0, nowSec() - p.publishTime) : null,
     };
   };
 
@@ -208,27 +230,38 @@ export function buildPythRow({
   };
   if (!row.xstock) return row;
 
-  // Only the same-asset comparison becomes a number, and only with a price.
-  const reference = row.xstock.price;
-  const b = quote && reference != null ? basis(quote.mid, reference, tolerancePct) : null;
+  // Only the same-asset comparison becomes a number - and only against a
+  // reference young enough to witness the quote. An 11-day-old price is not
+  // evidence about today's market; comparing against it would manufacture
+  // divergence out of two clocks. Stale references keep their price (published,
+  // visible) but no basis is derived from them.
+  const ref = row.xstock;
+  const fresh = ref.price != null && ref.ageSec != null && ref.ageSec <= freshnessBoundSec;
+  const b = quote && fresh ? basis(quote.mid, ref.price, tolerancePct) : null;
   row.xstock.basisPct = b?.basisPct ?? null;
   row.xstock.flagged = b?.flagged ?? null;
   row.xstock.direction = b?.direction ?? null;
+  row.xstock.staleReference = ref.price != null && !fresh;
   return row;
 }
 
 /** Counts for the feed's `pyth` block and the pages. */
 export function summarizePyth(rows) {
   const priced = rows.filter((r) => r.xstock && r.xstock.price != null);
-  const flagged = priced.filter((r) => r.xstock.flagged);
+  // Only fresh references can produce a basis, so `basis` counts those.
+  const basisd = priced.filter((r) => r.xstock.basisPct != null);
+  const flagged = basisd.filter((r) => r.xstock.flagged);
+  const staleRef = priced.filter((r) => r.xstock.staleReference);
   return {
     total: rows.length,
     priced: priced.length,
+    basis: basisd.length,
     flagged: flagged.length,
+    staleReference: staleRef.length,
     withEquityReference: rows.filter((r) => r.equity).length,
     withRedemptionRate: rows.filter((r) => r.redemptionRate).length,
-    worstBasisPct: priced.length
-      ? Math.max(...priced.map((r) => Math.abs(r.xstock.basisPct)))
+    worstBasisPct: basisd.length
+      ? Math.max(...basisd.map((r) => Math.abs(r.xstock.basisPct)))
       : 0,
   };
 }

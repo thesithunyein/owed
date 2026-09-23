@@ -4,12 +4,14 @@
  *
  *   node scripts/pyth-divergence.mjs     # -> keeper/data/pyth-divergence.json
  *
- * Requires PYTH_API_KEY. Since the Pyth Core upgrade (2026-08-26) every price
- * endpoint answers 401 without a Bearer key, so this script cannot invent a
- * fallback: with no key it writes `status: "unconfigured"`, names the missing
- * secret, and publishes **zero** prices. An empty honest lane beats a populated
- * dishonest one, and the guard in keeper/test/pyth-lane.test.mjs enforces that
- * no row carries a number while the status is unconfigured.
+ * Prices come from Solana state, keyless: each feed's push-oracle account
+ * (PDA of the Pyth push oracle program, seeds shard+feed id) is read with the
+ * same `getMultipleAccounts` calls the rest of the keeper uses. Since the Pyth
+ * Core upgrade (2026-08-26) the Hermes REST endpoints answer 401 without a
+ * Bearer key, so REST is only a fallback for feeds the sponsor does not push:
+ * if PYTH_API_KEY is set, feeds missing on-chain are re-fetched from Hermes and
+ * their source is published per row. Without a key the lane still runs - it
+ * simply publishes nothing for un-pushed feeds, and says so.
  *
  * What the comparison is, precisely:
  *
@@ -18,8 +20,13 @@
  *   - `equity` and `redemptionRate` are published as **reference only**: the feed
  *     id, symbol and (when priced) the price. They are never divided into the
  *     token's price, because the redemption rate's orientation cannot be
- *     validated without paid price access, and this repo does not ship derived
- *     numbers nobody can check.
+ *     validated, and this repo does not ship derived numbers nobody can check.
+ *   - a basis is computed only against a reference young enough to witness the
+ *     quote (FRESHNESS_BOUND_SEC). The sponsored push accounts are not always
+ *     fresh - on 2026-09-23, 13 of 17 xStock wrapper accounts carried a price
+ *     from 11 days earlier - and comparing today's quote to an old price would
+ *     manufacture divergence out of two clocks. Stale references publish their
+ *     price with `staleReference: true` and no basis.
  */
 
 import { writeFileSync, readFileSync, existsSync } from "node:fs";
@@ -28,11 +35,13 @@ import { dirname, join } from "node:path";
 import {
   DIVERGENCE_RULE,
   DIVERGENCE_TOLERANCE_PCT,
+  FRESHNESS_BOUND_SEC,
   buildPythRow,
   quoteMid,
   summarizePyth,
 } from "../keeper/src/pyth.mjs";
 import { fetchPythPrices, PYTH_API_KEY_REQUIRED_SINCE } from "../keeper/src/divergence.mjs";
+import { fetchOnChainPrices } from "../keeper/src/pyth-onchain.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, "..");
@@ -49,8 +58,21 @@ if (!registry) {
 const now = Math.floor(Date.now() / 1000);
 const xstocks = readJson(join(ROOT, "keeper", "data", "xstocks-solana.json"));
 const prestocks = readJson(join(ROOT, "keeper", "data", "prestocks-solana.json"));
+// Units, verified against a fresh third party rather than assumed: xStocks
+// lists quotes in CENTS (AAPLx mid 33542.51 = $335.43, and the fresh
+// Equity.US.SPCX/USD push account agreed with the cent-adjusted SPCXx mid to
+// 0.17%), while PreStocks lists dollars. Scaling happens once, here, so every
+// downstream consumer - feed, pages, guards - sees dollar quotes only.
 const quotes = new Map([
-  ...(xstocks?.assets ?? []).map((a) => [`xstocks:${a.symbol}`, a]),
+  ...(xstocks?.assets ?? []).map((a) => [
+    `xstocks:${a.symbol}`,
+    {
+      ...a,
+      bid: a.bid != null ? a.bid / 100 : a.bid,
+      ask: a.ask != null ? a.ask / 100 : a.ask,
+      tokenPrice: a.tokenPrice != null ? a.tokenPrice / 100 : a.tokenPrice,
+    },
+  ]),
   ...(prestocks?.assets ?? []).map((a) => [`prestocks:${a.symbol}`, a]),
 ]);
 
@@ -62,10 +84,38 @@ const feedIds = [
   ),
 ];
 
-// Hermes rejects a very long ids[] list outright (a 677-id URL came back 520,
-// which would have been reported as a Pyth outage when the real problem was the
-// request). Chunked, it is a handful of well-formed calls.
-const CHUNK = 50;
+// Primary source: the chain itself. One batched getMultipleAccounts sweep over
+// every feed's push-oracle account; no key, same RPC as the rest of the keeper.
+const prices = new Map();
+let onchainErrors = 0;
+try {
+  const onchain = await fetchOnChainPrices(feedIds);
+  for (const [k, v] of onchain) prices.set(k, { ...v, source: "onchain" });
+} catch {
+  // The RPC being down must not kill the lane if a Hermes key exists; fall
+  // through and let the fallback decide what is knowable.
+  onchainErrors = 1;
+}
+
+// Optional fallback: REST Hermes for feeds without a push account. Only runs
+// when a key is present, so an unconfigured run stays fully keyless.
+const apiKey = process.env.PYTH_API_KEY;
+let hermesFetched = 0;
+if (apiKey) {
+  const missing = feedIds.filter((id) => !prices.has(id.toLowerCase()));
+  for (let i = 0; i < missing.length; i += CHUNK) {
+    try {
+      const got = await fetchPythPrices(missing.slice(i, i + CHUNK));
+      for (const [k, v] of got) prices.set(k, { ...v, source: "hermes" });
+      hermesFetched += got.size;
+    } catch (e) {
+      // A failing fallback is reported in the artifact, not thrown: the lane's
+      // job is to publish what it could see, and say what it could not.
+      base.fallbackError = `hermes: ${e.message}`;
+      break;
+    }
+  }
+}
 
 const base = {
   issuerScope: ["xstocks", "prestocks"],
@@ -80,45 +130,15 @@ const base = {
   catalogueFetchedAt: registry.fetchedAt,
 };
 
-const apiKey = process.env.PYTH_API_KEY;
+const apiKeyPrecheck = process.env.PYTH_API_KEY;
 
-if (!apiKey) {
-  // Check the key before calling anything. Without this, a request that fails
-  // for an unrelated reason would be reported as a Pyth outage - blaming the
-  // vendor for our own missing configuration.
-  const doc = {
-    status: "unconfigured",
-    reason:
-      `PYTH_API_KEY is not set. Pyth price endpoints have required a Bearer key since ` +
-      `${PYTH_API_KEY_REQUIRED_SINCE}; the feed catalogue (scripts/pyth-feeds.mjs) does not, ` +
-      `so the registry and its coverage are still published. Add the key to the environment ` +
-      `or as the PYTH_API_KEY repo secret to turn this lane on.`,
-    ...base,
-    pricedFeeds: 0,
-    rows: [],
-  };
-  writeFileSync(OUT, JSON.stringify(doc, null, 1));
-  console.warn("pyth: PYTH_API_KEY is not set - publishing no prices (status: unconfigured)");
-  console.log(`wrote ${OUT}`);
-  process.exit(0);
-}
-
-const prices = new Map();
-try {
-  for (let i = 0; i < feedIds.length; i += CHUNK) {
-    const got = await fetchPythPrices(feedIds.slice(i, i + CHUNK));
-    for (const [k, v] of got) prices.set(k, v);
-  }
-} catch (e) {
-  // A key exists, so this is a genuine failure and must read like one.
-  const doc = { status: "error", reason: e.message, ...base, pricedFeeds: 0, rows: [] };
-  writeFileSync(OUT, JSON.stringify(doc, null, 1));
-  console.error(`pyth: price fetch failed - ${e.message}`);
-  console.log(`wrote ${OUT}`);
-  process.exit(0);
-}
-
-const priceFor = (feedId) => prices.get(feedId.toLowerCase()) ?? null;
+// Lookup normalises the `0x` prefix away: the registry stores bare hex, while
+// the fetched map is keyed by the ids as requested (which carry the prefix).
+const norm = (id) => id.replace(/^0x/, "").toLowerCase();
+const priceFor = (feedId) => {
+  const hit = prices.get(norm(feedId)) ?? prices.get(`0x${norm(feedId)}`) ?? null;
+  return hit ? { ...hit, feedId: norm(feedId) } : null;
+};
 const rows = registry.assets.map((a) =>
   buildPythRow({
     issuer: a.issuer,
@@ -135,11 +155,19 @@ const rows = registry.assets.map((a) =>
 
 const summary = summarizePyth(rows);
 const doc = {
-  status: "ok",
-  reason: null,
+  status: prices.size > 0 ? "ok" : onchainErrors ? "error" : "unconfigured",
+  reason:
+    prices.size > 0
+      ? null
+      : onchainErrors
+        ? "the Solana RPC rejected the push-oracle account reads"
+        : `no push-oracle accounts exist for these feeds and PYTH_API_KEY is not set, so Hermes fallback is unavailable (Hermes has required a Bearer key since ${PYTH_API_KEY_REQUIRED_SINCE}). The registry and its coverage remain published.`,
   ...base,
+  sources: { onchain: "push-oracle accounts via getMultipleAccounts, keyless", hermes: apiKeyPrecheck ? "REST fallback for feeds without a push account" : "not configured (no PYTH_API_KEY)" },
+  freshnessBoundSec: FRESHNESS_BOUND_SEC,
   feedIdsRequested: feedIds.length,
   pricedFeeds: prices.size,
+  hermesFetched,
   summary,
   rows,
 };

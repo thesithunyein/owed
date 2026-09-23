@@ -36,7 +36,7 @@
     },
     "pyth": {
       "type": "object",
-      "description": "The Pyth lane: `status` is `ok`, `unconfigured` or `error`. While it is not `ok`, no row publishes a price - an empty honest lane rather than a populated invented one.",
+      "description": "The Pyth lane: `status` is `ok`, `unconfigured` or `error`. While it is not `ok`, no row publishes a price - an empty honest lane rather than a populated invented one. When `ok`, prices come from the feed's push-oracle account on Solana (keyless); `freshnessBoundSec` bounds how old a reference may be before no basis is derived from it, and `sources` names where prices came from.",
       "properties": {
         "status": {
           "enum": [
@@ -62,6 +62,18 @@
         },
         "tolerancePct": {
           "type": "number"
+        },
+        "freshnessBoundSec": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "sources": {
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "referenceOnly": {
           "type": [
@@ -209,13 +221,64 @@
           },
           "pyth": {
             "type": "object",
-            "description": "Public Pyth feeds describing this mint. `xstock` is the same asset from a second source and carries `basisPct` when prices were available; `equity` and `redemptionRate` are reference only and never divided into the token price.",
+            "description": "Public Pyth feeds describing this mint. `xstock` is the same asset from a second source: it carries `price`/`ageSec` whenever the feed's push-oracle account was readable, and `basisPct` only when that reference was fresh enough to witness the quote (`staleReference: true` marks a priced row whose reference exceeded freshnessBoundSec and so yields no basis). `equity` and `redemptionRate` are reference only and never divided into the token price.",
             "properties": {
               "xstock": {
                 "type": [
                   "object",
                   "null"
-                ]
+                ],
+                "properties": {
+                  "feedId": {
+                    "type": "string"
+                  },
+                  "symbol": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "publishTime": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "ageSec": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "basisPct": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "flagged": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "direction": {
+                    "enum": [
+                      "PREMIUM",
+                      "DISCOUNT",
+                      null
+                    ]
+                  },
+                  "staleReference": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  }
+                }
               },
               "equity": {
                 "type": [
@@ -370,13 +433,64 @@
           },
           "pyth": {
             "type": "object",
-            "description": "Public Pyth feeds describing this mint. `xstock` is the same asset from a second source and carries `basisPct` when prices were available; `equity` and `redemptionRate` are reference only and never divided into the token price.",
+            "description": "Public Pyth feeds describing this mint. `xstock` is the same asset from a second source: it carries `price`/`ageSec` whenever the feed's push-oracle account was readable, and `basisPct` only when that reference was fresh enough to witness the quote (`staleReference: true` marks a priced row whose reference exceeded freshnessBoundSec and so yields no basis). `equity` and `redemptionRate` are reference only and never divided into the token price.",
             "properties": {
               "xstock": {
                 "type": [
                   "object",
                   "null"
-                ]
+                ],
+                "properties": {
+                  "feedId": {
+                    "type": "string"
+                  },
+                  "symbol": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "publishTime": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "ageSec": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "basisPct": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "flagged": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "direction": {
+                    "enum": [
+                      "PREMIUM",
+                      "DISCOUNT",
+                      null
+                    ]
+                  },
+                  "staleReference": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  }
+                }
               },
               "equity": {
                 "type": [

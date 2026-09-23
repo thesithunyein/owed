@@ -258,3 +258,60 @@ test("differential page carries the harm model inputs", () => {
     assert.ok(src.includes(needle), `page references ${needle}`);
   }
 });
+
+test("differential page ships a non-empty static fallback", () => {
+  // Everything on the front page renders client-side, so any script failure
+  // used to leave a blank page. The generator now bakes the summary between
+  // markers; if a regeneration stops filling them, this fails instead of
+  // shipping an empty page to whoever arrives with JavaScript off.
+  const html = readFileSync(join(WEB, "differential.html"), "utf8");
+  const grab = (m) => {
+    const x = html.match(new RegExp(`<!-- owed:${m}:start -->([\\s\\S]*?)<!-- owed:${m}:end -->`));
+    return x ? x[1] : null;
+  };
+  const stats = grab("stats");
+  const chips = grab("chips");
+  const sub = grab("sub");
+  const worst = grab("hero-worst");
+  for (const [name, content] of [["stats", stats], ["chips", chips], ["sub", sub], ["hero-worst", worst]]) {
+    assert.ok(content !== null, `owed:${name} marker present`);
+    assert.ok(content.trim().length > 0, `owed:${name} fallback is non-empty`);
+  }
+  // The bake must agree with the committed feed, not just exist.
+  const feed = JSON.parse(readFileSync(join(ROOT, "feed", "owed-risk.json"), "utf8"));
+  assert.ok(
+    stats.includes(`<b>${feed.tokens.length + (feed.preStocks ?? []).length}</b>`),
+    "stats tile carries the feed's total mint count",
+  );
+  assert.ok(chips.includes("data-sym="), "chips carry clickable tickers");
+  // The generator flags clock-stability honestly: near an activation boundary
+  // the static numbers could mislead, so the page must re-render.
+  const nearBoundary = [...feed.tokens, ...(feed.preStocks ?? [])].some((t) => {
+    const ts = Number(t.scaled?.state?.newMultiplierEffectiveTimestamp ?? 0);
+    return ts > 0 && Math.abs(feed.clock - ts) < 48 * 3600;
+  });
+  const match = sub.match(/<span class="static-match">([01])<\/span>/);
+  assert.ok(match, "sub block carries the static-match flag");
+  assert.equal(
+    match[1],
+    nearBoundary ? "0" : "1",
+    "static-match flag equals the feed's actual clock-stability",
+  );
+});
+
+test("page script preserves the static fallback when the clocks agree", () => {
+  // The guard cuts both ways: the script must keep the bake when the flag says
+  // it is safe, and must re-render when it does not. Both branches are tested
+  // here against the page's own source so neither can rot silently.
+  const src = readFileSync(join(WEB, "differential.html"), "utf8");
+  assert.ok(src.includes("function statsMatchesStatic()"), "statsMatchesStatic defined");
+  assert.ok(src.includes("function chipsMatchStatic("), "chipsMatchStatic defined");
+  assert.ok(
+    /if \(statsMatchesStatic\(\)\) return;/.test(src),
+    "stats() keeps the static copy when it matches",
+  );
+  assert.ok(
+    /if \(chipsMatchStatic\(chips\)\) return;/.test(src),
+    "examples() keeps static chips when they match",
+  );
+});

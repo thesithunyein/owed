@@ -33,7 +33,7 @@
 
 <!-- owed:stats:start -->
 > **381 of 925 official xStocks carry a stale on-chain multiplier field**
-> (classified at 2026-09-23 15:38 UTC); 4 are off by 100% or more, and 2 by a full 10x.
+> (classified at 2026-09-23 15:59 UTC); 4 are off by 100% or more, and 2 by a full 10x.
 > The same defect is live on a second issuer: **2 of 8 PreStocks mints**,
 > which are tokenized pre-IPO equity rather than public equity. Same Token-2022 extension,
 > same classifier, different issuer - so this is a property of how the assets are issued,
@@ -332,7 +332,7 @@ site/                      # deploy output (gitignored) - built by build-site.mj
 | `keeper/` TS | ✅ 73 tests - trap logic, scaled classifier pinned to real account shapes, feed contract, page build integrity, Merkle parity, RPC parsing, base58, 500-holder stress |
 | `core/` Rust | ✅ 21 tests - Merkle (exhaustive n=1..17 + 33, tamper rejection), supply conservation, split/dividend math, golden vectors |
 | Golden vectors | ✅ Regenerated in CI; Node↔Rust drift fails the build |
-| `web/` pages | ✅ Both run from the file system with no network; re-classify against the viewer's clock |
+| `web/` pages | ✅ Both run from the file system with no network; re-classify against the viewer's clock. The front page also ships a generator-baked static fallback (finding, stats, clickable worst mints) that renders with JavaScript disabled; the page script keeps it whenever the viewer's clock classifies identically to the feed and re-renders only when it does not |
 | `tests/owed.mjs` | ✅ **Executed on every push** - the `settlement` CI job deploys to a throwaway validator and settles a 4:1 split end to end, asserting holder balances before and after |
 | `programs/owed/` Anchor | ✅ **Compiles for SBF, settles on-chain in CI, and settles on devnet** - `owed.so` from a real `anchor build`, the whole lifecycle runs against a throwaway validator on every push, and the same lifecycle has run on devnet with real signatures ([see below](#devnet-deployment)). Not audited |
 
@@ -439,8 +439,19 @@ four-source id assertion in both workflows exists to guarantee.
 
 ### The settlement, on devnet, with signatures
 
-A 4:1 split and then a cash distribution, settled against the program above - 10
-passing tests, 13 signed transactions, and the two paths that must *refuse*. This is
+A 4:1 split and then a cash distribution, settled against the program above: 10
+passing tests, 13 signed transactions, and the two paths that must *refuse* (a
+short register and a replayed claim) - 15 steps in the table below. Two settlement
+paths exist and are kept distinct on purpose:
+
+- **Every push** - the `settlement` CI job settles the identical 15-step
+  lifecycle on a throwaway local validator in CI; its
+  `settlement-report` artifact carries the signatures of that run.
+- **Once, on devnet** - the run below was executed against devnet itself, so
+  every signature is a real, publicly verifiable explorer link. This is the run
+  that proves the program behaves on a network the team does not control.
+
+This is
 not a laptop run: it is [workflow run
 35732983131](https://github.com/thesithunyein/owed/actions/runs/35732983131), green
 end to end on 2026-09-22 - build, deploy, settle - whose `devnet-deployment`

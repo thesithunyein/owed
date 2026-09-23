@@ -130,6 +130,7 @@ test("pyth: a row without a price publishes no number, and keeps its feed id", (
 });
 
 test("pyth: a priced row derives its basis from the injected price", () => {
+  const NOW = 1_790_100_000;
   const row = buildPythRow({
     issuer: "xstocks",
     symbol: "AAPLx",
@@ -138,18 +139,54 @@ test("pyth: a priced row derives its basis from the injected price", () => {
     xstock: { feedId: "b".repeat(64), symbol: "Crypto.AAPLX/USD" },
     equity: null,
     redemptionRate: null,
-    priceFor: () => ({ price: 100, publishTime: 1_790_000_000 }),
+    // A reference one minute old at the injected clock: young enough to
+    // witness the quote, so the comparison becomes a number.
+    priceFor: () => ({ price: 100, publishTime: NOW - 60 }),
     tolerancePct: DIVERGENCE_TOLERANCE_PCT,
+    nowSec: () => NOW,
   });
   assert.equal(row.xstock.price, 100);
+  assert.equal(row.xstock.ageSec, 60);
   assert.ok(Math.abs(row.xstock.basisPct - 18) < 1e-9);
   assert.equal(row.xstock.flagged, true);
   assert.equal(row.xstock.direction, "PREMIUM");
+  assert.equal(row.xstock.staleReference, false);
 
   const summary = summarizePyth([row]);
   assert.equal(summary.priced, 1);
+  assert.equal(summary.basis, 1);
   assert.equal(summary.flagged, 1);
   assert.ok(Math.abs(summary.worstBasisPct - 18) < 1e-9);
+});
+
+test("pyth: a stale reference keeps its price but yields no basis", () => {
+  // The sponsored push accounts are not always fresh - on 2026-09-23 most
+  // carried a price from 11 days earlier. A basis against that would be
+  // manufactured divergence (two clocks, one market), so the row publishes
+  // the price with a stale marker and no number, and the summary counts it.
+  const NOW = 1_790_100_000;
+  const row = buildPythRow({
+    issuer: "xstocks",
+    symbol: "NFLXx",
+    mint: "MINT",
+    quote: { mid: 78, source: "issuer bid/ask mid" },
+    xstock: { feedId: "b".repeat(64), symbol: "Crypto.NFLXX/USD" },
+    equity: null,
+    redemptionRate: null,
+    priceFor: () => ({ price: 77.98, publishTime: NOW - 11 * 86_400 }),
+    tolerancePct: DIVERGENCE_TOLERANCE_PCT,
+    nowSec: () => NOW,
+  });
+  assert.equal(row.xstock.price, 77.98, "the price itself is still published");
+  assert.equal(row.xstock.basisPct, null, "but no number is derived from it");
+  assert.equal(row.xstock.flagged, null);
+  assert.equal(row.xstock.staleReference, true, "and the reason is stated");
+
+  const s = summarizePyth([row]);
+  assert.equal(s.priced, 1);
+  assert.equal(s.basis, 0);
+  assert.equal(s.flagged, 0);
+  assert.equal(s.staleReference, 1);
 });
 
 test("pyth: an unpriced row is counted as unpriced, not as agreement", () => {
@@ -258,20 +295,35 @@ test("pyth divergence: every published basis recomputes from published inputs", 
   if (d.status !== "ok") return;
   const reg = readJson(REGISTRY);
   const byMint = new Map(reg.assets.map((a) => [a.mint, a]));
+  const bound = d.freshnessBoundSec ?? 86_400;
 
   let priced = 0;
+  let basisd = 0;
+  let stale = 0;
   for (const row of d.rows) {
     assert.ok(byMint.has(row.mint), `${row.symbol} is in the registry`);
     if (row.xstock?.price == null) continue;
     priced += 1;
+    if (row.xstock.basisPct == null) {
+      // No basis on a priced row is allowed for exactly one reason: the
+      // reference is too old to witness the quote, and the row says so.
+      assert.equal(row.xstock.staleReference, true, `${row.symbol} prices without a basis must be marked stale`);
+      assert.ok(row.xstock.ageSec > bound, `${row.symbol} marked stale but age ${row.xstock.ageSec}s is within the ${bound}s bound`);
+      stale += 1;
+      continue;
+    }
+    basisd += 1;
     const b = basis(row.quote.mid, row.xstock.price, d.tolerancePct);
     assert.ok(
       Math.abs(b.basisPct - row.xstock.basisPct) < 1e-9,
       `${row.symbol} basis recomputes`,
     );
     assert.equal(row.xstock.flagged, b.flagged, `${row.symbol} flag follows the tolerance`);
+    assert.ok(row.xstock.ageSec <= bound, `${row.symbol} has a basis but its reference is ${row.xstock.ageSec}s old`);
   }
   assert.equal(d.summary.priced, priced, "summary counts the rows it summarises");
+  assert.equal(d.summary.basis, basisd, "basis count matches the rows that carry one");
+  assert.equal(d.summary.staleReference, stale, "stale count matches the rows marked stale");
 });
 
 // --------------------------------------------------------------- feed wiring
