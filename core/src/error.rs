@@ -14,6 +14,12 @@ pub enum Error {
     AlreadyClaimed,
     /// Corporate-action fields are inconsistent with the action type.
     InvalidAction(&'static str),
+    /// A Token-2022 mint account's bytes are internally inconsistent.
+    ///
+    /// Distinct from "no scaled config": a malformed account must never be
+    /// reported as an absence, because callers treat absence as a fallback to a
+    /// multiplier of 1.0 and would silently misprice rather than fail.
+    MalformedMint(&'static str),
     /// Arithmetic overflow.
     Overflow,
 }
@@ -31,6 +37,7 @@ impl fmt::Display for Error {
             Error::BadProof => write!(f, "merkle proof rejected"),
             Error::AlreadyClaimed => write!(f, "already claimed"),
             Error::InvalidAction(why) => write!(f, "invalid corporate action: {why}"),
+            Error::MalformedMint(why) => write!(f, "malformed Token-2022 mint: {why}"),
             Error::Overflow => write!(f, "arithmetic overflow"),
         }
     }

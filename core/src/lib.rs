@@ -20,6 +20,7 @@
 pub mod corporate;
 pub mod error;
 pub mod merkle;
+pub mod multiplier;
 pub mod register;
 pub mod sha256;
 

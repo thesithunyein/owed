@@ -1,0 +1,62 @@
+{
+  "note": "Raw mainnet mint accounts, captured by scripts/fetch-scaled-fixtures.mjs. Expectations are copied from feed/owed-risk.json at the feed's own clock; the keeper test asserts the two still agree.",
+  "generatedAt": "2026-09-23T16:32:45.000Z",
+  "nowSec": 1790181165,
+  "fixtures": [
+    {
+      "symbol": "PPLTx",
+      "mint": "Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme",
+      "owner": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "bytes": 703,
+      "stored": 1,
+      "newMultiplier": 10,
+      "effectiveTimestamp": 1778985000,
+      "effective": 10,
+      "readerTrap": true
+    },
+    {
+      "symbol": "SPACEX",
+      "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
+      "owner": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "bytes": 902,
+      "stored": 1,
+      "newMultiplier": 5,
+      "effectiveTimestamp": 1781065800,
+      "effective": 5,
+      "readerTrap": true
+    },
+    {
+      "symbol": "AZNx",
+      "mint": "Xs3ZFkPYT2BN7qBMqf1j1bfTeTm1rFzEFSsQ1z3wAKU",
+      "owner": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "bytes": 682,
+      "stored": 0.5111362527152737,
+      "newMultiplier": 0.5111362527152737,
+      "effectiveTimestamp": 1786062600,
+      "effective": 0.5111362527152737,
+      "readerTrap": false
+    },
+    {
+      "symbol": "SPCXx",
+      "mint": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+      "owner": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "bytes": 679,
+      "stored": 1,
+      "newMultiplier": 1,
+      "effectiveTimestamp": 0,
+      "effective": 1,
+      "readerTrap": false
+    },
+    {
+      "symbol": "USDC",
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "owner": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "bytes": 82,
+      "stored": null,
+      "newMultiplier": null,
+      "effectiveTimestamp": null,
+      "effective": null,
+      "readerTrap": null
+    }
+  ]
+}
