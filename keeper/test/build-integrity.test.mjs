@@ -315,3 +315,76 @@ test("page script preserves the static fallback when the clocks agree", () => {
     "examples() keeps static chips when they match",
   );
 });
+
+test("README test counts match the suites they describe", () => {
+  // These counts were the last hand-written numbers in the README that
+  // described the code sitting next to them, and they drifted exactly as that
+  // kind of number does: the CI spine sentence advertised "75 keeper tests"
+  // while the status table on the same page said 106. A stale count is a small
+  // lie in a project whose entire claim is that every published number is
+  // recomputable, so the counts are recomputed here.
+  //
+  // Counting declarations - `^test(` at column 0 for the JS suites, `#[test]`
+  // for Rust - reproduces `node --test`'s own total exactly for both JS suites
+  // as of this commit (keeper 107, sdk 8). If a suite ever gains nested
+  // `describe` blocks or a loop that generates cases, this test is what says
+  // the counting rule needs revisiting, instead of quietly passing on a number
+  // nobody rechecked.
+  const readme = readFileSync(join(ROOT, "README.md"), "utf8");
+
+  const walk = (dir) => {
+    const out = [];
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      if (entry.isDirectory()) {
+        if (entry.name === "node_modules" || entry.name === "target") continue;
+        out.push(...walk(join(dir, entry.name)));
+      } else {
+        out.push(join(dir, entry.name));
+      }
+    }
+    return out;
+  };
+
+  const countTests = (dir, ext, re) =>
+    walk(join(ROOT, dir))
+      .filter((f) => f.endsWith(ext))
+      .reduce((n, f) => n + (readFileSync(f, "utf8").match(re) ?? []).length, 0);
+
+  const keeper = countTests("keeper/test", ".mjs", /^test\(/gm);
+  const core = countTests("core", ".rs", /#\[test\]/g);
+  const sdkSrc = walk(join(ROOT, "sdk", "test"))
+    .filter((f) => f.endsWith(".mjs"))
+    .map((f) => readFileSync(f, "utf8"))
+    .join("\n");
+  const sdk = (sdkSrc.match(/^test\(/gm) ?? []).length;
+
+  // keeper is quoted three times: the CI spine sentence, the file-tree legend,
+  // and the status table. All three must agree with the suite itself.
+  assert.ok(
+    readme.includes(`Rust tests, ${keeper} keeper tests`),
+    `the CI spine sentence says "${keeper} keeper tests"`,
+  );
+  assert.ok(
+    readme.includes(`${keeper} tests incl. build-integrity guards`),
+    `the file-tree legend says "${keeper} tests"`,
+  );
+  assert.ok(
+    readme.includes(`| \`keeper/\` TS | \u2705 ${keeper} tests`),
+    `the status table says "| keeper/ TS | ${keeper} tests"`,
+  );
+
+  assert.ok(
+    readme.includes(`| \`core/\` Rust | \u2705 ${core} tests`),
+    `the status table says "${core} core tests"`,
+  );
+
+  // Exactly one sdk test hits mainnet, skipped unless OWED_LIVE_SDK=1, so the
+  // offline count the README quotes is the total minus one. A second gated test
+  // would make that sentence misleading, so its presence is asserted too.
+  const gated = (sdkSrc.match(/OWED_LIVE_SDK/g) ?? []).length;
+  assert.ok(gated >= 1, "the sdk suite keeps its network-gated test");
+  assert.ok(
+    readme.includes(`| \`sdk/\` | \u2705 ${sdk - 1} offline tests`),
+    `the status table says "${sdk - 1} offline tests"`,
+  );
+});

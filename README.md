@@ -33,7 +33,7 @@
 
 <!-- owed:stats:start -->
 > **381 of 925 official xStocks carry a stale on-chain multiplier field**
-> (classified at 2026-09-23 16:32 UTC); 4 are off by 100% or more, and 2 by a full 10x.
+> (classified at 2026-09-23 18:53 UTC); 4 are off by 100% or more, and 2 by a full 10x.
 > The same defect is live on a second issuer: **2 of 8 PreStocks mints**,
 > which are tokenized pre-IPO equity rather than public equity. Same Token-2022 extension,
 > same classifier, different issuer - so this is a property of how the assets are issued,
@@ -81,7 +81,7 @@ flowchart TB
 Devnet program: `42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV` (split and
 dividend settled end-to-end; signatures in "Devnet deployment" below).
 
-CI runs the full verification spine on every push: Rust tests, 75 keeper tests,
+CI runs the full verification spine on every push: Rust tests, 124 keeper tests,
 925/925 conformance against the runtime, deterministic rebuild, program-id
 agreement across four sources, ELF e_flags, an on-chain settlement with
 receipts, and re-checking every page/README claim against committed records.
@@ -339,20 +339,27 @@ owed/
 │   ├── src/lib.rs         #   claim/settle; the SBF artifact CI builds every push
 │   └── owed-keypair.json  #   committed: fixes the program address (see Devnet)
 ├── core/                  # Rust crate - register, Merkle tree, split/dividend math
+│   ├── src/multiplier.rs  #   raw Token-2022 Scaled UI Amount reader: no RPC, no
+│   │                      #   allocator use, panic-free on hostile input, so a
+│   │                      #   program can import it (see docs/BUILD-NOTES.md)
 │   └── src/               #   offline, no external crates; golden-vector verified
 ├── keeper/                # TypeScript - trap logic, scaled reader, snapshot builder
 │   ├── src/               #   zero runtime dependencies, hermetic; scan.mjs is the
-│   │                      #   one scan loop both issuer lanes run
+│   │                      #   one scan loop both issuer lanes run; alerts.mjs is
+│   │                      #   the alert rules (pure, so they test offline)
 │   ├── data/              #   both official mint lists, both scans, conformance,
 │   │                      #   and the committed runtime verdict for PreStocks
-│   └── test/              #   106 tests incl. build-integrity guards on the pages,
-│                          #   the PreStocks lane and the Pyth lane
+│   └── test/              #   124 tests incl. build-integrity guards on the pages,
+│                          #   the PreStocks/Pyth lanes and the raw fixtures
 ├── feed/                  # owed-risk.json + schema.json - THE integration contract
 ├── web/                   # differential.html (the app) + board.html (risk table)
 │   └── assets/            #   logo, favicon, og card, hero video/poster
 ├── shared/vectors/        # cross-language golden vectors (generated, committed)
+│   └── scaled-raw/        #   real mainnet mint accounts, as bytes: the fixtures
+│                          #   the Rust reader and the on-chain path are pinned to
 ├── scripts/               # scan/fetch/verify per issuer, risk-feed, conformance,
-│                          # gen-*, build-site
+│                          # gen-*, build-site, alert-digest (the alert lane),
+│                          # fetch-scaled-fixtures
 ├── sdk/                   # copyable reader: getEffectiveMultiplier(mint),
 │   └── test/fixtures/     #   example.mjs, and a real mainnet account to test on
 ├── tests/                 # on-chain settlement suite (localnet in CI; devnet by hand)
@@ -376,9 +383,12 @@ site/                      # deploy output (gitignored) - built by build-site.mj
 | **Conformance** | ✅ **925/925 mints** - our reader equals the Token-2022 runtime at 1e-9 relative tolerance across the whole official set (`node scripts/conformance.mjs --all`) |
 | **Trap verification** | ✅ 8/8 sampled traps confirmed against `getTokenSupply`; 2 at exactly 10× |
 | **Risk feed** | ✅ 925 xStocks + 8 PreStocks tokens in one row shape; every published `effectiveMultiplier` reproducibly recomputed from published raw state (tested) |
-| `keeper/` TS | ✅ 106 tests - trap logic, scaled classifier pinned to real account shapes, feed contract, page build integrity (including the static-fallback guards), Merkle parity, RPC parsing, base58, Pyth lane, 500-holder stress |
+| `keeper/` TS | ✅ 124 tests - trap logic, scaled classifier pinned to real account shapes, feed contract, page build integrity (including the static-fallback guards), Merkle parity, RPC parsing, base58, Pyth lane, 500-holder stress |
 | `sdk/` | ✅ 7 offline tests against a committed mainnet account, plus an 8th that hits mainnet when `OWED_LIVE_SDK=1` - asserts PPLTx still reads stored 1 / effective 10 |
-| `core/` Rust | ✅ 21 tests - Merkle (exhaustive n=1..17 + 33, tamper rejection), supply conservation, split/dividend math, golden vectors |
+| `core/` Rust | ✅ 35 tests - Merkle (exhaustive n=1..17 + 33, tamper rejection), supply conservation, split/dividend math, golden vectors, and the raw Token-2022 multiplier reader (including every truncation of every fixture, because a panic on-chain aborts the transaction) |
+| `shared/vectors/scaled-raw/` | ✅ 5 real mainnet mint accounts committed as raw bytes, chosen to cover every branch: a 10x split, a PreStocks mint whose scaled entry is **not** first in the TLV list, a reverse split, an inert config, and a legacy mint with no extensions. The Rust reader is pinned to them; the keeper test asserts the same bytes still yield the feed's published numbers |
+| Alert lane | ✅ `keeper/src/alerts.mjs` (pure rules, 13 offline tests) + `scripts/alert-digest.mjs`, run by the refresh workflow. Fires only for a mint that **just** went stale, or an activation inside 48h - never for the 383 that are already stale, because an alert channel that cries continuously stops being read. No webhook configured is a clean no-op, not a failure |
+| Guided demo | ✅ One click in the app walks the story (harm, breadth, provenance, fix) with a highlight ring. Every caption is built from the live payload at click time, so the demo cannot quote a different number than the page it is standing on |
 | Golden vectors | ✅ Regenerated in CI; Node↔Rust drift fails the build |
 | `web/` pages | ✅ Both run from the file system with no network; re-classify against the viewer's clock. The front page also ships a generator-baked static fallback (finding, stats, clickable worst mints) that renders with JavaScript disabled; the page script keeps it whenever the viewer's clock classifies identically to the feed and re-renders only when it does not |
 | `tests/owed.mjs` | ✅ **Executed on every push** - the `settlement` CI job deploys to a throwaway validator and settles a 4:1 split end to end, asserting holder balances before and after |
@@ -406,21 +416,11 @@ What a settlement actually does, and what CI proves each push:
 
 ### The program compiles now - and it took four real bugs to get there
 
-`programs/owed/` shipped as a bare `src/lib.rs` with no crate around it: no
-`Cargo.toml`, no `Anchor.toml`, just the default `anchor init` program id. Nothing
-could have compiled it, and nothing ever had. Once it was a crate and CI ran a
-real build, the compiler found four errors that no amount of reading would have:
-
-| Error | Cause |
-|---|---|
-| `expected identifier, found '#'` | a `///` doc comment on a **function parameter**, which desugars to an attribute Rust forbids there |
-| `unresolved crate solana_program` | `sha256` called it directly without it being a dependency |
-| `undeclared type COption` | `mint.mint_authority` is an SPL `COption`; anchor's prelude does not re-export it |
-| `Unsupported type` ×2 | `Vec<(Pubkey, u64)>` and `Vec<([u8; 32], u8)>` - Anchor's IDL cannot express tuples, so **both instructions were unbuildable** |
-
-The last one is the instructive one: `snapshot_holders` and `claim` were written
-in the most natural way to write them and could never have been deployed. They now
-take `Vec<HolderEntry>` and `Vec<ProofNode>`, mapping 1:1 onto the core types.
+`programs/owed/` shipped as a bare `src/lib.rs` with no crate around it, so
+nothing could compile it and nothing ever had. Once CI ran a real build the
+compiler found four errors that reading had not, including two instructions that
+were unbuildable as written. The table, and the SBPF feature-gate trap that comes
+next in the deploy path, are in [`docs/BUILD-NOTES.md`](docs/BUILD-NOTES.md).
 
 The settlement above is reproducible by anyone, with no keys and no funded
 account:
