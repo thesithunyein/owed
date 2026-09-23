@@ -32,8 +32,8 @@
 </p>
 
 <!-- owed:stats:start -->
-> **377 of 925 official xStocks carry a stale on-chain multiplier field**
-> (classified at 2026-09-22 20:32 UTC); 4 are off by 100% or more, and 2 by a full 10x.
+> **381 of 925 official xStocks carry a stale on-chain multiplier field**
+> (classified at 2026-09-23 02:00 UTC); 4 are off by 100% or more, and 2 by a full 10x.
 > Not in theory: every mint was scanned and the effective value read from the chain.
 <!-- owed:stats:end -->
 
@@ -106,11 +106,11 @@ wrong price for every affected token. Our full scan of the official mint list:
 |---|---|
 <!-- owed:table:start -->
 | Official xStocks Solana mints scanned | **925** |
-| **Reader traps** (activation passed, stored field stale) | **377** |
+| **Reader traps** (activation passed, stored field stale) | **381** |
 | … off by **10x** (10-for-1 splits) | **2** (`PPLTx`, `NFLXx`) |
 | … off by **≥100%** | **4** |
-| … off by **≥1%** | **28** |
-| … off by **≥0.5%** | **110** |
+| … off by **≥1%** | **29** |
+| … off by **≥0.5%** | **111** |
 | Median magnitude of the gap | **0.33%** |
 | Median time already stale | **29 days** |
 | Longest stale | **349 days** (`GMEx`) |
