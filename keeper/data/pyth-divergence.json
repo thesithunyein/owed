@@ -5,7 +5,7 @@
   "xstocks",
   "prestocks"
  ],
- "checkedAt": "2026-09-23T14:01:01.000Z",
+ "checkedAt": "2026-09-23T14:20:47.000Z",
  "rule": "basisPct = (issuerQuoteMid / pythPrice - 1) * 100, where issuerQuoteMid is (bid + ask) / 2 from the issuer's own list and pythPrice is the latest value of the Pyth feed named in xstock.feedId",
  "tolerancePct": 1,
  "referenceOnly": "equity and redemptionRate feed ids are published as reference. Only the xstock comparison (same asset, two sources) becomes a basis percentage.",
@@ -74,7 +74,7 @@
   }
  },
  "catalogueSize": 1874,
- "catalogueFetchedAt": "2026-09-23T13:56:37.725Z",
+ "catalogueFetchedAt": "2026-09-23T14:20:47.307Z",
  "pricedFeeds": 0,
  "rows": []
 }
