@@ -33,7 +33,7 @@
 
 <!-- owed:stats:start -->
 > **381 of 925 official xStocks carry a stale on-chain multiplier field**
-> (classified at 2026-09-23 02:00 UTC); 4 are off by 100% or more, and 2 by a full 10x.
+> (classified at 2026-09-23 10:21 UTC); 4 are off by 100% or more, and 2 by a full 10x.
 > Not in theory: every mint was scanned and the effective value read from the chain.
 <!-- owed:stats:end -->
 
@@ -112,7 +112,7 @@ wrong price for every affected token. Our full scan of the official mint list:
 | … off by **≥1%** | **29** |
 | … off by **≥0.5%** | **111** |
 | Median magnitude of the gap | **0.33%** |
-| Median time already stale | **29 days** |
+| Median time already stale | **27 days** |
 | Longest stale | **349 days** (`GMEx`) |
 | Mints with a **permanent delegate** (issuer can move anyone's tokens) | **925 / 925** |
 | Mints with a **pause authority** (issuer can freeze all transfers) | **925 / 925** |
