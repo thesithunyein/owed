@@ -171,7 +171,7 @@
     <input id="rpc-url" placeholder="https://your-rpc.example/your-key" size="40" />
     <menu style="display:flex;gap:8px;justify-content:flex-end">
       <button value="cancel">Cancel</button>
-      <button id="rpc-save" value="ok">Save &amp; re-scan</button>
+      <button id="rpc-save" value="ok">Save &amp; re-check</button>
     </menu>
   </form>
 </dialog>
@@ -400,7 +400,7 @@ function render() {
   }).join("") || '<tr><td colspan="8" class="status">no rows match</td></tr>';
 }
 
-// ---- Live re-scan (opt-in, user RPC) ----------------------------------------
+// ---- Live re-check (opt-in, user RPC) ---------------------------------------
 function extractFromAccount(v) {
   const info = v?.data?.parsed?.info;
   if (!info) return null;
@@ -440,7 +440,7 @@ async function liveRescan() {
       if (!ext) return;
       out.push({ ...chunk[idx], ...ext, cls: classifyScaled(ext.scaledState, now, ext.security) });
     });
-    $("status").textContent = `live re-scan ${Math.min(i + 100, assets.length)}/${assets.length}…`;
+    $("status").textContent = `live re-check ${Math.min(i + 100, assets.length)}/${assets.length}…`;
   }
   ROWS = out;
   render();
