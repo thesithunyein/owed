@@ -344,6 +344,21 @@
   .state { flex-shrink: 0; font-size: 11.5px; font-weight: 500; padding: 4px 10px; border-radius: 999px; border: 1px solid; white-space: nowrap; }
   .state.bad { color: var(--red); border-color: #f3c1c1; background: #fef2f2; }
   .state.ok { color: var(--green); border-color: #bfe3d4; background: #f1faf6; }
+  /* The connected state needs an exit beside it. The chip states what was read,
+     the button ends the session, and they sit together so the head stays two
+     items - a third child would put the chip in the middle of the card under
+     `justify-content: space-between`. */
+  .card-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  /* Shaped here rather than inheriting from the browser: a class name is not a
+     style. Without the radius and padding below this button rendered as the
+     platform's default rectangle beside two pill-shaped controls. */
+  .card-actions button.ghost {
+    font-size: 0.8125rem; font-weight: 500; padding: 7px 14px; border-radius: 999px;
+    background: var(--panel2); color: var(--dim); border: 1px solid var(--line);
+    transition: background 120ms ease-out, color 120ms ease-out, border-color 120ms ease-out;
+  }
+  .card-actions button.ghost:hover { background: #ecece6; border-color: #d8d8d2; color: var(--text); }
+  .card-actions button.ghost:active { transform: scale(0.98); }
   .lede { margin: 14px 0 0; font-size: 14.5px; max-width: 68ch; }
   .lede b { font-variant-numeric: tabular-nums; }
   .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin: 16px 0 0; }
@@ -445,7 +460,9 @@
   .alert-log { margin: 14px 0 0; font-size: 11.5px; color: var(--faint); }
   .alert-row.log { padding: 7px 0; font-size: 12.5px; color: var(--dim); }
   .alert-row.log .when { cursor: help; }
-  .alerts-foot { color: var(--faint); font-size: 12px; margin: 12px 0 0; }
+  /* The alerts card used to end with "read it as JSON at feed/alerts.json". A
+     filename is not a feature: the same document is linked from the developer
+     page, where the reader who wants it is already heading. */
   /* The two-endpoint demonstration: the code block is the argument, so it has to
      be readable and copyable rather than decorative. */
   pre.cmd {
@@ -585,9 +602,6 @@
         <!-- owed:alerts-state:start --><span class="state ok" id="alertsState">Quiet for 14h</span><!-- owed:alerts-state:end -->
       </div>
       <div id="alertsBody"><!-- owed:alerts:start --><div class="alert-row now"><span class="kind">wrong now</span><span><b>INVHx</b> has been wrong for 15h: most apps show 1x and the blockchain uses 1.0078x.</span></div><p class="alert-log">Earlier changes</p><div class="alert-row log"><span class="when" title="2026-09-24 01:49 UTC">14h ago</span><span class="kind">changed</span><span>INVHx: most apps show 1x and the blockchain uses 1.0078x.</span></div><div class="alert-row log"><span class="when" title="2026-09-24 01:49 UTC">14h ago</span><span class="kind">changed</span><span>SREx: most apps show 1x and the blockchain uses 1.0058x.</span></div><!-- owed:alerts:end --></div>
-      <p class="alerts-foot">
-        Read it as JSON at <a href="feed/alerts.json"><span class="mono">feed/alerts.json</span></a>.
-      </p>
     </div>
   </section>
 
@@ -595,7 +609,10 @@
     <div class="card" id="walletCard" aria-live="polite">
       <div class="card-head"><div><h3 id="walletTitle">Your positions</h3>
       <p class="who" id="walletAddr"></p></div>
-      <span class="state" id="walletState">Loading…</span></div>
+      <div class="card-actions">
+        <span class="state" id="walletState">Loading…</span>
+        <button class="ghost" type="button" id="walletDisconnect" hidden>Disconnect</button>
+      </div></div>
       <p class="lede" id="walletLede">Reading your tokenized-equity balances from Solana.</p>
       <div class="facts" id="walletSummary"></div>
       <div id="walletRows"></div>
@@ -707,16 +724,15 @@
       <span class="brand-note">Corporate-action risk for tokenized equities</span>
       <span class="sp">Data refreshed on a schedule. Not financial advice.</span>
     </div>
+    <!-- The footer is navigation, not a file cabinet: the feed, the schema and the
+         repository are documented on the developer page, which is one click away,
+         where a reader who wants them is already going. -->
     <nav class="foot-links" aria-label="Footer">
+      <a href="#how">How it works</a>
+      <a href="#faq">Questions</a>
       <a href="board.html">All stocks</a>
+      <a href="board.html?issuer=prestocks">PreStocks</a>
       <a href="integrate.html">For developers</a>
-      <span class="foot-group">
-        <span class="foot-label">Data</span>
-        <a href="feed/owed-risk.json">owed-risk.json</a>
-        <a href="feed/alerts.json">alerts.json</a>
-        <a href="feed/schema.json">schema.json</a>
-      </span>
-      <a href="https://github.com/thesithunyein/owed" target="_blank" rel="noopener">GitHub</a>
     </nav>
   </footer>
 </div>
@@ -1159,6 +1175,36 @@ async function walletConnect() {
   }
 }
 
+/**
+ * Disconnect.
+ *
+ * The pill's own click means "read my positions again", so the way out has to be
+ * its own control: without one, a reader who connected to look had no way back to
+ * the state the page starts in. The provider is asked to disconnect as well, so
+ * the wallet's own UI does not keep a session this page no longer shows.
+ */
+async function walletDisconnect() {
+  const btn = $("walletBtn");
+  try {
+    await provider()?.disconnect?.();
+  } catch {
+    // A wallet may refuse; the page still returns to its default state, which is
+    // the part the reader asked for.
+  }
+  btn.classList.remove("connected", "busy");
+  btn.disabled = false;
+  btn.textContent = "Connect wallet";
+  btn.title = "";
+  $("walletDisconnect").hidden = true;
+  $("portfolio").hidden = true;
+  $("walletAddr").textContent = "";
+  $("walletSummary").innerHTML = "";
+  $("walletRows").innerHTML = "";
+  $("walletState").className = "state";
+  $("walletState").textContent = "Loading…";
+  $("walletLede").textContent = "Reading your tokenized-equity balances from Solana.";
+}
+
 async function rpcCall(method, params) {
   const r = await fetch(RPC, {
     method: "POST",
@@ -1173,6 +1219,9 @@ async function rpcCall(method, params) {
 async function scanWallet(addr) {
   const btn = $("walletBtn");
   const state = $("walletState");
+  // A first connect brings the answer into view. Re-reading a card already on
+  // screen leaves the page where the reader put it.
+  const firstRead = $("portfolio").hidden;
   try {
     state.textContent = "Scanning…";
     const out = await rpcCall("getTokenAccountsByOwner", [
@@ -1191,6 +1240,7 @@ async function scanWallet(addr) {
       if (amount > 0n && XSTOCK_MINTS.has(mint)) held.push({ t: XSTOCK_MINTS.get(mint), amount });
     }
     drawPortfolio(addr, held);
+    if (firstRead) $("portfolio").scrollIntoView({ behavior: "smooth", block: "center" });
   } catch (err) {
     state.textContent = "RPC error";
     $("walletLede").textContent =
@@ -1206,7 +1256,10 @@ function drawPortfolio(addr, held) {
   btn.classList.remove("busy");
   btn.classList.add("connected");
   btn.textContent = addr.slice(0, 4) + "…" + addr.slice(-4);
-  btn.title = "Connected. Click to rescan.";
+  btn.title = "Connected. Click to re-read your positions.";
+  // The way out is stated once there is a session, in the card that shows what
+  // was read, rather than hidden behind a second click on the pill.
+  $("walletDisconnect").hidden = false;
 
   $("portfolio").hidden = false;
   $("walletTitle").textContent = "Your positions";
@@ -1256,6 +1309,7 @@ function drawPortfolio(addr, held) {
 }
 
 $("walletBtn").addEventListener("click", walletConnect);
+$("walletDisconnect")?.addEventListener("click", walletDisconnect);
 
 // ---------------------------------------------------------------- wallet ---
 /**

@@ -846,6 +846,40 @@ test("every control is styled by the page, not by the operating system", () => {
         (group && css.includes(`.${group} button`)) ||
         baseFullyStyles;
       assert.ok(addressed, `${p}: this button is styled somewhere - ${b.tag.trim()}`);
+
+      // A mention is not a style. The Disconnect button's class appeared in the
+      // stylesheet as colours only, which satisfied the line above while the
+      // button itself kept the browser's corner radius and padding - the same
+      // defect as the unstyled primary control this guard was written for, wearing
+      // a class name. So some matching rule has to either shape the control
+      // (radius and padding) or deliberately flatten it (padding 0 and no border),
+      // because a text button is a decision and a default button is a miss.
+      const rules = [...css.matchAll(/([^{}]+)\{([^}]*)\}/g)].map((m) => ({ sel: m[1], body: m[2] }));
+      const tight = (s) => s.split(" ").join("").split("\n").join("").split("\r").join("").split("\t").join("");
+      const matched = rules.filter((r) =>
+        r.sel
+          .split(",")
+          .map((s) => s.trim())
+          .some(
+            (s) =>
+              s === "button" ||
+              (id && s.includes(`#${id}`)) ||
+              cls.some((c) => s.split(/ +/).some((token) => token.includes(`.${c}`))) ||
+              (group && s.includes(`.${group} button`)),
+          ),
+      );
+      const shaped = matched.some(
+        (r) => tight(r.body).includes("border-radius:") && tight(r.body).includes("padding:"),
+      );
+      const flattened = matched.some(
+        (r) =>
+          tight(r.body).includes("padding:0") &&
+          (tight(r.body).includes("border:0") || tight(r.body).includes("border:none")),
+      );
+      assert.ok(
+        shaped || flattened,
+        `${p}: shape this button or flatten it on purpose, do not leave it to the browser - ${b.tag.trim()}`,
+      );
     }
   }
 });
