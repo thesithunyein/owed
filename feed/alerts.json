@@ -1,8 +1,8 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-09-24T13:00:29.000Z",
-  "clock": 1790254829,
+  "generatedAt": "2026-09-24T13:29:13.000Z",
+  "clock": 1790256553,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 385,
@@ -14,7 +14,7 @@
   "mostRecent": {
     "symbol": "INVHx",
     "issuer": "xstocks",
-    "daysAgo": 0.5211689814814815,
+    "daysAgo": 0.5411226851851851,
     "stored": 1,
     "effective": 1.007797994801,
     "gapPct": 0.7797994801000074
