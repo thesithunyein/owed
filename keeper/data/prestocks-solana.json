@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-09-24T13:41:18.043Z",
+ "fetchedAt": "2026-09-24T13:44:57.480Z",
  "source": "https://prestocks.com/api/prestocks",
  "count": 8,
  "assets": [
@@ -7,8 +7,8 @@
    "symbol": "ANDURIL",
    "name": "Anduril PreStocks",
    "mint": "PresTj4Yc2bAR197Er7wz4UUKSfqt6FryBEdAriBoQB",
-   "markPrice": 152.87315734,
-   "tokenPrice": 154.02430691957656,
+   "markPrice": 152.8753894,
+   "tokenPrice": 154.0245018317751,
    "issuerSupply": 11805.817985464,
    "externalUrl": "https://www.prestocks.com/anduril"
   },
@@ -16,16 +16,16 @@
    "symbol": "ANTHROPIC",
    "name": "Anthropic PreStocks",
    "mint": "Pren1FvFX6J3E4kXhJuCiAD5aDmGEb7qJRncwA8Lkhw",
-   "markPrice": 1034.20295298,
-   "tokenPrice": 1024.455585088389,
-   "issuerSupply": 7381.811518969,
+   "markPrice": 1034.21102054,
+   "tokenPrice": 1026.1755074326618,
+   "issuerSupply": 7381.811511643,
    "externalUrl": "https://www.prestocks.com/anthropic"
   },
   {
    "symbol": "FIGUREAI",
    "name": "Figure AI PreStocks",
    "mint": "PreZad18qfPtbxNpMtMuAuX2zVpvkEU8DnJx56faCWd",
-   "markPrice": 181.16990581,
+   "markPrice": 181.16857644,
    "tokenPrice": 171.8291784217466,
    "issuerSupply": 3012.857155916,
    "externalUrl": "https://www.prestocks.com/figureai"
@@ -34,7 +34,7 @@
    "symbol": "KALSHI",
    "name": "Kalshi PreStocks",
    "mint": "PreLWGkkeqG1s4HEfFZSy9moCrJ7btsHuUtfcCeoRua",
-   "markPrice": 881.57852186,
+   "markPrice": 881.56818651,
    "tokenPrice": 873.7061318566462,
    "issuerSupply": 904.867766516,
    "externalUrl": "https://www.prestocks.com/kalshi"
@@ -43,8 +43,8 @@
    "symbol": "NEURALINK",
    "name": "Neuralink PreStocks",
    "mint": "PrekqLJvJ3qVdXmBGDiexvwUTF4rLFDa6HWS4HJbw9S",
-   "markPrice": 336.54131308,
-   "tokenPrice": 443.5290927882219,
+   "markPrice": 336.58250444,
+   "tokenPrice": 442.3821786363151,
    "issuerSupply": 2595.280408593,
    "externalUrl": "https://www.prestocks.com/neuralink"
   },
@@ -52,8 +52,8 @@
    "symbol": "OPENAI",
    "name": "OpenAI PreStocks",
    "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
-   "markPrice": 1022.8443935398319,
-   "tokenPrice": 1370.5709190605112,
+   "markPrice": 1022.7745760865417,
+   "tokenPrice": 1367.9482230597384,
    "issuerSupply": 2826.3438829386596,
    "externalUrl": "https://www.prestocks.com/openai"
   },
@@ -61,8 +61,8 @@
    "symbol": "POLYMARKET",
    "name": "Polymarket PreStocks",
    "mint": "Pre8AREmFPtoJFT8mQSXQLh56cwJmM7CFDRuoGBZiUP",
-   "markPrice": 144.36133186,
-   "tokenPrice": 147.11317813055518,
+   "markPrice": 144.37216134,
+   "tokenPrice": 147.93004594030398,
    "issuerSupply": 4816.963143041,
    "externalUrl": "https://www.prestocks.com/polymarket"
   },
@@ -70,7 +70,7 @@
    "symbol": "SPACEX",
    "name": "SpaceX PreStocks",
    "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
-   "markPrice": 148.28346665968795,
+   "markPrice": 147.4325682201093,
    "tokenPrice": 115.82591248173522,
    "issuerSupply": 43712.532100135,
    "externalUrl": "https://www.prestocks.com/spacex"
