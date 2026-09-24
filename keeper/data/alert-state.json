@@ -1,5 +1,5 @@
 {
- "clock": 1790265578,
+ "clock": 1790283053,
  "mints": [
   {
    "mint": "Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme",
@@ -544,14 +544,6 @@
    "stored": 1,
    "next": 1.006737247353,
    "effectiveTimestamp": 1788913800
-  },
-  {
-   "mint": "XsDgw22qRLTv5Uwuzn6T63cW69exG41T6gwQhEK22u2",
-   "symbol": "MDTx",
-   "stale": true,
-   "stored": 1.022582161772571,
-   "next": 1.0294400153167536,
-   "effectiveTimestamp": 1782433800
   },
   {
    "mint": "XsG3eLvLbHwYQP3r7tSznE6bEvcA2Ko1TpYwbyD6RQk",
@@ -2890,22 +2882,6 @@
    "effectiveTimestamp": 1785457800
   },
   {
-   "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
-   "symbol": "SATAx",
-   "stale": true,
-   "stored": 1.048584648214805,
-   "next": 1.049125663791559,
-   "effectiveTimestamp": 1790209800
-  },
-  {
-   "mint": "XsraCsjDB8cYn672MZSxCzZBhrodEPXD7pWd5EiRUhm",
-   "symbol": "BITXx",
-   "stale": true,
-   "stored": 1.0017958445103723,
-   "next": 1.0022919985525838,
-   "effectiveTimestamp": 1787617800
-  },
-  {
    "mint": "XsXoAR52Q2NYFkYiNqhCq4FauvyA1tdRsrmEYNf9fuh",
    "symbol": "ITAx",
    "stale": true,
@@ -3064,6 +3040,54 @@
    "stored": 1.000137470542,
    "next": 1.0002444237463104,
    "effectiveTimestamp": 1782865800
+  },
+  {
+   "mint": "XsDgw22qRLTv5Uwuzn6T63cW69exG41T6gwQhEK22u2",
+   "symbol": "MDTx",
+   "stale": false,
+   "stored": 1.0294400153167536,
+   "next": 1.0357206345492815,
+   "effectiveTimestamp": 1790296200
+  },
+  {
+   "mint": "XsMPKfVuLeJ4mSahPcSgVGHEVGt41QU41CfgfvRzvBG",
+   "symbol": "ELSx",
+   "stale": false,
+   "stored": 1,
+   "next": 1.006376994123,
+   "effectiveTimestamp": 1790296200
+  },
+  {
+   "mint": "XstJ1deKwoZVAzj1oF14s7g8ZPLumJKyiQXysym5duM",
+   "symbol": "RLx",
+   "stale": false,
+   "stored": 1,
+   "next": 1.001989427613,
+   "effectiveTimestamp": 1790296200
+  },
+  {
+   "mint": "XsWCYadcnfTLH3W8sBbJZepwotUkfV1qg7QQmzVo8M8",
+   "symbol": "CWx",
+   "stale": false,
+   "stored": 1,
+   "next": 1.000334429724,
+   "effectiveTimestamp": 1790296200
+  },
+  {
+   "mint": "XsraCsjDB8cYn672MZSxCzZBhrodEPXD7pWd5EiRUhm",
+   "symbol": "BITXx",
+   "stale": false,
+   "stored": 1.0022919985525838,
+   "next": 1.0030331053417478,
+   "effectiveTimestamp": 1790294100
+  },
+  {
+   "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
+   "symbol": "SATAx",
+   "stale": false,
+   "stored": 1.049125663791559,
+   "next": 1.049666958504437,
+   "effectiveTimestamp": 1790296200
   },
   {
    "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
