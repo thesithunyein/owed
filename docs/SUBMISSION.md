@@ -159,6 +159,12 @@ is fine is reported as readily as one that is not.
 - **Feed:** https://owed.sithunyein.com/feed/owed-risk.json - the contract other builders read.
 - **Alerts:** https://owed.sithunyein.com/feed/alerts.json - what changed, and what lands next.
 - **No wallet needed:** the front page takes a pasted list of holdings, not just one ticker.
+- **No crypto vocabulary needed:** the front page opens with the harm in plain words (a stock
+  split changes the price per share), explains the product in three steps under *How it works*,
+  and answers the obvious objections under *Questions* - what a tokenized stock is, whether a
+  wallet or an account is required (neither), where the numbers come from, and whether this is
+  financial advice (it is not). A risk tool that only reads as a risk tool to people who already
+  know the chain is a tool nobody adopts.
 - **Repo:** https://github.com/thesithunyein/owed
 - **Repro in two commands:** `node sdk/example.mjs PPLTx` (stored 1, chain applies 10)
 - **Two-minute walkthrough:** `docs/DEMOSCRIPT.md`.

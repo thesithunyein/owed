@@ -3,28 +3,32 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<!-- owed:title:start -->385 of 933<!-- owed:title:end -->
+<!-- owed:title:start --><!-- 385 of 933 --><!-- owed:title:end -->
 <!-- The count above is this generator's marker; gen-webdata.mjs rewrites it and
      the three titles below together, so there is still one source for the number.
-     The marker deliberately sits outside the title element: a title is RCDATA, so
-     a comment placed inside one is not a comment, it is text, and the markers would
-     be visible in the browser tab and in every social card. -->
-<title>Owed - 385 of 933 tokenized stocks read the wrong multiplier</title>
-<meta name="description" content="Tokenized equities on Solana rebase on-chain via Token-2022, and the stored multiplier field stops matching what the runtime applies. Owed reports the gap per mint, measured from mainnet raw chain state, reproducible in one command." />
+     Two constraints decide its shape, and failing either is invisible locally:
+     1. It sits outside the title element, because a title is RCDATA - a comment
+        inside one is not a comment, it is text, and it would show up in the tab.
+     2. The count is itself wrapped in a comment. Bare text in <head> ends the
+        head early (the HTML parser pops it on the first non-whitespace character),
+        which pushed the title and every og:/twitter: tag into the body: the raw
+        count rendered above the hero, and no crawler could see the card. -->
+<title>Owed - 385 of 933 tokenized stocks show the wrong number</title>
+<meta name="description" content="When a company splits its stock or pays a dividend, tokenized apps can keep showing the old price per share - so the value they report for your holding is too low. Owed reads every tokenized stock on Solana and shows the number your app shows next to the number the blockchain uses." />
 <meta name="theme-color" content="#f0f0ee" />
 <link rel="icon" type="image/png" href="assets/favicon.png?v=2" />
 <link rel="apple-touch-icon" href="assets/favicon.png?v=2" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Owed" />
-<meta property="og:title" content="Owed - 385 of 933 tokenized stocks read the wrong multiplier" />
-<meta property="og:description" content="Search any official tokenized-equity mint and see what the chain actually applies versus what a naive reader gets - some mints are off by a full 10×, measured from mainnet." />
+<meta property="og:title" content="Owed - 385 of 933 tokenized stocks show the wrong number" />
+<meta property="og:description" content="Search any tokenized stock and see whether the number your app shows is the number the blockchain uses. Some are off by a full 10x, measured live from Solana." />
 <meta property="og:url" content="https://owed.sithunyein.com/" />
 <meta property="og:image" content="https://owed.sithunyein.com/assets/og.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Owed - 385 of 933 tokenized stocks read the wrong multiplier" />
-<meta name="twitter:description" content="Token-2022 multiplier fields on Solana tokenized equities versus what the runtime applies. Measured from mainnet, not estimated. Two are off by 10×." />
+<meta name="twitter:title" content="Owed - 385 of 933 tokenized stocks show the wrong number" />
+<meta name="twitter:description" content="Every tokenized stock on Solana, with the number apps show next to the number the blockchain uses. Measured live, not estimated. Some are off by 10x." />
 <meta name="twitter:image" content="https://owed.sithunyein.com/assets/og.png" />
 <style>
   :root {
@@ -120,7 +124,7 @@
   .nav-badge { display: flex; align-items: center; justify-content: center; border-radius: 9999px; width: 40px; height: 40px; flex-shrink: 0; background: #ededed; text-decoration: none; }
   @media (min-width: 640px) { .nav-badge { width: 44px; height: 44px; } }
   .nav-pill { display: flex; align-items: center; gap: 16px; border-radius: 12px; padding: 10px 16px; background: #ededed; flex-wrap: wrap; justify-content: center; }
-  @media (min-width: 640px) { .nav-pill { gap: 40px; padding: 12px 32px; flex-wrap: nowrap; } }  .nav-pill a { font-size: 12px; font-weight: 500; color: #374151;
+  @media (min-width: 640px) { .nav-pill { gap: 26px; padding: 12px 26px; flex-wrap: nowrap; } }  .nav-pill a { font-size: 12px; font-weight: 500; color: #374151;
     text-decoration: none; transition: color 0.2s; padding: 8px 2px; }
   .nav-pill a:hover { color: #111827; }
   @media (min-width: 640px) { .nav-pill a { font-size: 14px; } }
@@ -244,7 +248,21 @@
   .empty p { margin: 0; }
 
   /* ---- folds ------------------------------------------------------------- */
+  .how { margin: 14px 0 0; padding: 0; list-style: none; counter-reset: h; }
+  .how li { counter-increment: h; position: relative; padding: 0 0 16px 42px; font-size: 14.5px; line-height: 1.6; max-width: 80ch; }
+  .how li::before { content: counter(h); position: absolute; left: 0; top: 0; width: 27px; height: 27px; border-radius: 50%; background: rgba(37, 99, 235, 0.1); color: var(--blue); font-weight: 700; font-size: 13px; display: grid; place-items: center; }
+  .how li b { display: block; margin-bottom: 3px; }
+  .how li:last-child { padding-bottom: 0; }
+  .how-note { margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--dim); max-width: 80ch; }
+  .qa { border-top: 1px solid var(--line); }
+  .qa > summary { cursor: pointer; padding: 14px 0; font-weight: 600; font-size: 14.5px; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+  .qa > summary::-webkit-details-marker { display: none; }
+  .qa > summary::after { content: "+"; color: var(--faint); font-weight: 400; font-size: 18px; }
+  .qa[open] > summary::after { content: "–"; }
+  .qa > summary:hover { color: var(--blue); }
+  .qa > p { margin: -4px 0 16px; font-size: 14px; line-height: 1.65; color: var(--dim); max-width: 78ch; }
   .fold { border-top: 1px solid var(--line); margin-top: 34px; }
+  #faq { margin-top: 30px; }
   .fold > summary {
     cursor: pointer; list-style: none; padding: 18px 0; display: flex; align-items: baseline;
     justify-content: space-between; gap: 16px; font-size: 15.5px; font-weight: 500;
@@ -315,11 +333,11 @@
       </a>
       <div class="nav-pill">
         <a href="#check">Check a token</a>
+        <a href="#how">How it works</a>
         <a href="#findings">Findings</a>
-        <a href="board.html">Risk board</a>
+        <a href="board.html">All stocks</a>
         <a href="board.html?issuer=prestocks">PreStocks</a>
-        <a href="integrate.html">Integrate</a>
-        <a href="https://github.com/thesithunyein/owed" target="_blank" rel="noopener">Docs</a>
+        <a href="#faq">Questions</a>
       </div>
       <button class="wallet-btn" id="walletBtn" type="button">Connect wallet</button>
     </nav>
@@ -327,10 +345,11 @@
       <div class="hero-copy">
         <h1>Know what your tokenized stocks are really worth.</h1>
         <p class="hero-sub">
-          Splits and dividends rebase tokenized equities on-chain, and the number your app
-          reads is not always the one the chain applies. Paste a ticker or a whole book and
-          Owed shows you the difference - no wallet, no key, no signup. Works for every
-          official mint from both issuers.
+          When a company splits its stock, apps that track it can fall behind and keep
+          showing the old price per share - so the value you see is simply too low.
+          Paste a ticker, or a whole list of holdings, and Owed shows you the number your
+          app shows, the number the blockchain uses, and what the gap is worth.
+          No wallet, no key, no signup.
         </p>
         <form class="hero-search" id="search" role="search">
           <input id="q" list="symbols" autocomplete="off" spellcheck="false"
@@ -340,14 +359,15 @@
         </form>
         <datalist id="symbols"></datalist>
         <p class="hero-note">
-          <span class="dot">●</span> Live from Solana mainnet ·
-          <span id="coverage">933</span> official mints, <span id="laneNote">two issuers</span>
+          <span class="dot">●</span> Live from Solana · all
+          <span id="coverage">933</span> tokenized stocks, <span id="laneNote">both issuers</span>
         </p>
-        <!-- owed:hero-worst:start --><p class="hero-worst"><strong>385 of 933 mints</strong> read a different multiplier from the stored field than the runtime applies, worst: PPLTx 900%, NFLXx 900%, PALLx 400%, SPACEX 400%.</p><!-- owed:hero-worst:end -->
+        <!-- owed:hero-worst:start --><p class="hero-worst"><strong>385 of 933 tokenized stocks</strong> show a number the blockchain does not use. Worst: PPLTx 900%, NFLXx 900%, PALLx 400%, SPACEX 400%.</p><!-- owed:hero-worst:end -->
         <div class="hero-links">
-          <a href="#findings">See every mispriced mint</a>
-          <a href="board.html">Risk board →</a>
-          <a href="board.html?issuer=prestocks">PreStocks lane →</a>
+          <a href="#how">How it works</a>
+          <a href="#findings">See every affected stock</a>
+          <a href="board.html">See all 933 →</a>
+          <a href="board.html?issuer=prestocks">PreStocks →</a>
           <button type="button" class="demo-btn" id="demoBtn">▶ 60-second guided tour</button>
         </div>
       </div>
@@ -366,16 +386,36 @@
   </div>
 </div><div class="wrap">
 
+  <section id="how" aria-label="How it works">
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h3>How it works</h3>
+          <p class="who">The whole product in three steps. No wallet, no key, no signup - and no crypto knowledge needed.</p>
+        </div>
+      </div>
+      <ol class="how">
+        <li><b>A stock split is not supposed to change what you own.</b> When a company splits its shares, you end up with more shares that are each worth less. Your total value stays the same. Tokenized stocks do the same thing, and the blockchain adjusts the price per share on its own.</li>
+        <li><b>Apps have to keep up with that adjustment, and some do not.</b> An app keeps its own copy of the price per share. When the copy falls behind, the value it shows you is wrong - usually too low, by exactly the size of the split - and nothing on screen says so. The number just looks normal.</li>
+        <li><b>Owed shows you both numbers, and the difference in dollars.</b> Paste a ticker, or a whole list of holdings, or connect a wallet to read your positions. It runs entirely in your browser: nothing to install, nothing to sign up for, and nothing you type is sent anywhere.</li>
+      </ol>
+      <p class="how-note">
+        Not sure where to start? Search a ticker you already own above, or
+        <a href="#findings">open the findings</a> to see every affected stock, worst first.
+      </p>
+    </div>
+  </section>
+
   <section id="alerts" aria-label="Alerts">
     <div class="card">
       <div class="card-head">
         <div>
           <h3>Alerts</h3>
-          <p class="who">The two events worth waking up for, and nothing else.</p>
+          <p class="who">The only reason Owed ever contacts you: a stock whose number just changed. Nothing else fires.</p>
         </div>
-        <span class="state" id="alertsState">quiet by design</span>
+        <span class="state" id="alertsState">nothing new</span>
       </div>
-      <div id="alertsBody"><!-- owed:alerts:start --><div class="alert-row now"><span class="kind">freshest</span><span><b>INVHx</b> diverged 11h ago: the field reads 1x and the runtime applies 1.0078x.</span></div><div class="alert-row"><span class="when">2026-09-24 01:49</span><span class="kind">became-stale</span><span>INVHx: the stored multiplier field stopped matching the runtime. The chain now applies 1.007797994801x while the field still reads 1x.</span></div><div class="alert-row"><span class="when">2026-09-24 01:49</span><span class="kind">became-stale</span><span>SREx: the stored multiplier field stopped matching the runtime. The chain now applies 1.005825949367x while the field still reads 1x.</span></div><!-- owed:alerts:end --></div>
+      <div id="alertsBody"><!-- owed:alerts:start --><div class="alert-row now"><span class="kind">newest</span><span><b>INVHx</b> changed 11h ago: most apps show 1x and the blockchain uses 1.0078x.</span></div><div class="alert-row"><span class="when">2026-09-24 01:49</span><span class="kind">changed</span><span>INVHx: apps showing this stock are now using an out-of-date number. The blockchain applies 1.007797994801x while most apps will still show 1x.</span></div><div class="alert-row"><span class="when">2026-09-24 01:49</span><span class="kind">changed</span><span>SREx: apps showing this stock are now using an out-of-date number. The blockchain applies 1.005825949367x while most apps will still show 1x.</span></div><!-- owed:alerts:end --></div>
       <p class="alerts-foot">
         No wallet to connect. Read it as JSON at
         <a href="feed/alerts.json"><span class="mono">feed/alerts.json</span></a>,
@@ -398,8 +438,8 @@
   <section id="check" aria-label="Token checker">
     <div class="card" id="result" aria-live="polite">
       <p class="empty">
-        Search any official tokenized-equity mint above to see whether the multiplier your app would
-        read is the one the chain applies.
+        Search any tokenized stock above - a ticker like AAPLx, or the token's address - and
+        see whether the number your app shows is the number the blockchain uses.
       </p>
     </div>
     <div class="examples" id="examples"><!-- owed:chips:start --><span>Worst right now:</span> <button type="button" class="chip" data-sym="PPLTx">PPLTx <span>900%</span></button><button type="button" class="chip" data-sym="NFLXx">NFLXx <span>900%</span></button><button type="button" class="chip" data-sym="PALLx">PALLx <span>400%</span></button><button type="button" class="chip" data-sym="SPACEX">SPACEX <span>400%</span></button><!-- owed:chips:end --></div>
@@ -414,9 +454,9 @@
         </div>
       </div>
       <p class="lede">
-        One per line: a ticker or a mint address, then optionally the amount you hold, then
-        optionally the value your system currently computes for it. Useful before a loan, a
-        listing, or a NAV print.
+        Paste one holding per line: a ticker (or the token's address), then how many units you
+        hold, then what your system currently says they are worth. Owed tells you which lines
+        are valued with an out-of-date number, and what that costs you.
       </p>
       <label for="holdingsIn">Your holdings</label>
       <textarea id="holdingsIn" rows="4" spellcheck="false" aria-label="Holdings, one per line"
@@ -431,27 +471,27 @@
 
   <details class="fold" id="findings">
     <summary>
-      <span>What we found across all <span id="foldTotal">933</span> mints, both issuers</span>
+      <span>Everything Owed found across all <span id="foldTotal">933</span> tokenized stocks</span>
       <span class="n" id="foldCount"></span>
     </summary>
-    <div class="fold-body">      <p class="sub" id="sub" style="margin-bottom:14px"><!-- owed:sub:start --><span class="static-match">0</span>Feed generated <strong>Thu, 24 Sep 2026 11:37:38 GMT</strong> from <span class="mono">https://api.mainnet-beta.solana.com</span>, re-classified against your clock just now.<!-- owed:sub:end --></p>
-      <div class="grid" id="stats"><!-- owed:stats:start --><div class="stat "><b>933</b><span>Official mints scanned (both issuers)</span></div><div class="stat hot"><b>385</b><span>Stored field is not what applies</span></div><div class="stat hot"><b>5</b><span>Error ≥ 1% (the ones that bite)</span></div><div class="stat hot"><b>900%</b><span>Worst error</span></div><div class="stat "><b>933 / 933</b><span>Mints with a permanent delegate</span></div><div class="stat hot"><b>383 of 925 out of date</b><span>… on xStocks (tokenized public equity)</span></div><div class="stat hot"><b>2 of 8 out of date</b><span>… on PreStocks (tokenized pre-IPO equity)</span></div><!-- owed:stats:end --></div>
+    <div class="fold-body">      <p class="sub" id="sub" style="margin-bottom:14px"><!-- owed:sub:start --><span class="static-match">0</span>Snapshot taken <strong>Thu, 24 Sep 2026 11:37:38 GMT</strong> from <span class="mono">https://api.mainnet-beta.solana.com</span>, and rechecked in your browser just now.<!-- owed:sub:end --></p>
+      <div class="grid" id="stats"><!-- owed:stats:start --><div class="stat "><b>933</b><span>Tokenized stocks checked</span></div><div class="stat hot"><b>385</b><span>Showing the wrong number</span></div><div class="stat hot"><b>5</b><span>Off by 1% or more (the ones that hurt)</span></div><div class="stat hot"><b>900%</b><span>Biggest difference</span></div><div class="stat "><b>933 / 933</b><span>Stocks the issuer can freeze</span></div><div class="stat hot"><b>383 of 925 out of date</b><span>… on xStocks (public companies)</span></div><div class="stat hot"><b>2 of 8 out of date</b><span>… on PreStocks (private, pre-IPO)</span></div><!-- owed:stats:end --></div>
 
-  <h2 id="registry">Every stale multiplier, worst first <span class="n" id="tblCount"></span></h2>
+  <h2 id="registry">Every stock showing the wrong number, worst first <span class="n" id="tblCount"></span></h2>
   <p class="sub" style="margin-bottom:12px">
-    Re-classified against your clock on load, so rows appear and disappear as
-    activations pass - no server, no API key.
+    Recounted in your browser as the page loads, so a stock leaves this list the moment
+    the blockchain catches up with it. No server, no API key.
   </p>
   <div class="scroll">
     <table>
       <thead>
         <tr>
-          <th>Token</th>
-          <th class="num">Stored</th>
-          <th class="num">Effective</th>
-          <th class="num">Error</th>
-          <th class="num">Diverged</th>
-          <th>Issuer control</th>
+          <th>Stock</th>
+          <th class="num">Apps show</th>
+          <th class="num">Blockchain uses</th>
+          <th class="num">Difference</th>
+          <th class="num">Wrong for</th>
+          <th>Issuer can</th>
         </tr>
       </thead>
       <tbody id="rows"></tbody>
@@ -459,6 +499,45 @@
   </div>
   </details>
 
+
+  <section id="faq" aria-label="Questions">
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h3>Questions</h3>
+          <p class="who">The ones people ask before they trust a number on a page.</p>
+        </div>
+      </div>
+      <details class="qa" open>
+        <summary>What is a tokenized stock?</summary>
+        <p>A share of a real company that is issued on a blockchain instead of being held at a broker. It tracks the same company at the same price, and you can trade it like any other token. On Solana they exist for public companies (Apple, Tesla, Netflix) and for private ones (SpaceX, OpenAI, Anduril).</p>
+      </details>
+      <details class="qa">
+        <summary>Why would the number my app shows be wrong?</summary>
+        <p>When a company splits its shares, or pays out a dividend, the number of shares behind the token changes - and so does the price of one share. The blockchain makes that adjustment on its own. Many apps keep a separate copy of it, and a copy can fall behind. When it does, the app keeps showing the old price per share, and the value it reports is too low by exactly the size of the split. Nothing on screen warns you.</p>
+      </details>
+      <details class="qa">
+        <summary>Do I need a crypto wallet? Do I need an account?</summary>
+        <p>No. The token checker, the holdings checker and the findings table all work with nothing connected and nothing typed in. If you want Owed to read your own positions from the blockchain you can connect a wallet, but Owed never asks for a signature, never moves anything and never needs your keys.</p>
+      </details>
+      <details class="qa">
+        <summary>Where do the numbers come from?</summary>
+        <p>Every number on this page is read from Solana's public blockchain state at a fixed snapshot, then rechecked in your browser as the page loads. The snapshot, the exact rule used to decide whether a stock is current, and the raw per-token data are published as JSON under <span class="mono">/feed/</span> - so you never have to take this page's word for it.</p>
+      </details>
+      <details class="qa">
+        <summary>How do I know this is not just a marketing page?</summary>
+        <p>Because it is a measurement, not a claim, and you can repeat it. The reader is a small open-source program, the raw data behind every figure is published, and the whole finding can be reproduced from your own terminal in one command. The repository links the command and the evidence for each number on this page.</p>
+      </details>
+      <details class="qa">
+        <summary>Is this financial advice?</summary>
+        <p>No. Owed reports a data-quality fact - which number the blockchain uses versus which number an app would show you - and says nothing about whether to buy or sell anything.</p>
+      </details>
+      <details class="qa">
+        <summary>I write code. Can I use this?</summary>
+        <p>Yes, that is the point. The rule is available as a zero-dependency JavaScript package and as Rust for on-chain use, and the data is a plain JSON feed you can poll. The <a href="integrate.html">developer page</a> has copy-paste snippets in both languages, and the repository is MIT licensed.</p>
+      </details>
+    </div>
+  </section>
 
   <footer class="site">
     <span><img src="assets/logo.png" alt="" />Owed - corporate-action risk for tokenized equities</span>
@@ -699,18 +778,17 @@ function render(symbolRaw) {
     // repeating it read as a rendering bug. The lane is named only when the
     // name does not already do it.
     `${t.name ? "" : t.issuer === "prestocks" ? "PreStocks · " : "xStocks · "}` +
-    `${t.issuer === "prestocks" ? "tokenized pre-IPO equity" : "tokenized public equity"} ` +
-    `· Token-2022 Scaled UI Amount</p></div>` +
+    `${t.issuer === "prestocks" ? "a pre-IPO company" : "a public company"}</p></div>` +
     (clean
       ? `<span class="state ok">Up to date</span>`
-      : `<span class="state bad">${(c.gap * 100).toFixed(c.gap * 100 >= 100 ? 0 : 2)}% mispricing</span>`) +
+      :    `<span class="state bad">${(c.gap * 100).toFixed(c.gap * 100 >= 100 ? 0 : 2)}% wrong</span>`) +
     `</div>`;
 
   // Shared between both answers. Only fields this page actually ships: the
   // embedded payload carries the mint and the multiplier state, not decimals or
   // supply, and a fact tile reading `undefined` is worse than no tile at all.
   const identity = fact(
-    "Mint",
+    "Token address",
     `<span title="${escapeHtml(t.mint)}">${escapeHtml(t.mint.slice(0, 4))}…${escapeHtml(t.mint.slice(-4))}</span>`,
   );
 
@@ -735,10 +813,10 @@ function render(symbolRaw) {
     box.className = "card";
     box.innerHTML =
       head +
-      `<p class="lede">The stored multiplier on this mint (<b>${fmtMult(stored)}×</b>) is exactly ` +
-      `what the Token-2022 runtime applies right now. Nothing to correct - this is what a ` +
-      `healthy tokenized equity looks like.</p>` +
-      `<div class="facts">${fact("Stored field", fmtMult(stored))}${fact("Effective now", fmtMult(stored), "ok")}${identity}${referenceTile}</div>`;
+      `<p class="lede">Good news: for this stock the number most apps show ` +
+      `(<b>${fmtMult(stored)}×</b>) is exactly the number the blockchain uses right now. ` +
+      `Nothing to correct - this is what an up-to-date tokenized stock looks like.</p>` +
+      `<div class="facts">${fact("Apps show", fmtMult(stored))}${fact("Blockchain uses", fmtMult(stored), "ok")}${identity}${referenceTile}</div>`;
     return;
   }
 
@@ -746,29 +824,29 @@ function render(symbolRaw) {
   box.className = "card";
   box.innerHTML =
     head +
-    `<p class="lede">An app reading the stored field sees <b>${fmtMult(c.stored)}×</b>, but the ` +
-    `runtime applies <b>${fmtMult(c.eff)}×</b>. So a client that reads the stored field alone ` +
-    `reports a value <b>${c.factor.toFixed(3)}×</b> too small. The two fields have disagreed ` +
-    `since the last activation took effect, <b>${Math.round(c.days)} days</b> ago.</p>` +
+    `<p class="lede">Most apps show <b>${fmtMult(c.stored)}×</b> for this stock, but the ` +
+    `blockchain uses <b>${fmtMult(c.eff)}×</b>. An app showing the first number reports a ` +
+    `value roughly <b>${c.factor.toFixed(2)}×</b> too small, and has done for the last ` +
+    `<b>${Math.round(c.days)} days</b>.</p>` +
     `<div class="facts">` +
-    fact("Stored field", fmtMult(c.stored)) +
-    fact("Effective now", fmtMult(c.eff), "hot") +
-    fact("Off by", pct + "%", "hot") +
-    fact("Diverged for", Math.round(c.days) + " days") +
+    fact("Apps show", fmtMult(c.stored)) +
+    fact("Blockchain uses", fmtMult(c.eff), "hot") +
+    fact("Difference", pct + "%", "hot") +
+    fact("Wrong for", Math.round(c.days) + " days") +
     identity +
     referenceTile +
     `</div>` +
-    `<details class="size"><summary>Size the impact on a position</summary>` +
+    `<details class="size"><summary>What that means in money</summary>` +
     `<div class="controls two">` +
-    `<div><label for="notional">Position value, correctly valued (USD)</label>` +
+    `<div><label for="notional">What the position is really worth (USD)</label>` +
     `<input id="notional" type="number" min="1" step="1000" value="100000" /></div>` +
     `<div><label for="debt">Debt against it (USD)</label>` +
     `<input id="debt" type="number" min="0" step="1000" value="10000" /></div>` +
     `</div>` +
     `<div class="cmp">` +
-    `<div class="side bad"><div class="k">Naive reader (stored field)</div>` +
+    `<div class="side bad"><div class="k">What most apps show</div>` +
     `<div class="v" id="naiveVal">-</div><div class="note" id="naiveNote"></div></div>` +
-    `<div class="side good"><div class="k">Chain-correct (effective multiplier)</div>` +
+    `<div class="side good"><div class="k">What the blockchain uses</div>` +
     `<div class="v" id="trueVal">-</div><div class="note" id="trueNote"></div></div>` +
     `</div><div class="verdict" id="verdict"></div></details>`;
 
@@ -805,9 +883,8 @@ function calc() {
   $("naiveVal").textContent = usd(naiveValue);
   $("trueVal").textContent = usd(trueValue);
   $("naiveNote").textContent =
-    `reads ${row.c.stored} × - understates collateral by ${factor.toFixed(2)}×`;
-  $("trueNote").textContent =
-    `reads ${row.c.eff} × - what the Token-2022 runtime applies`;
+    `shows ${row.c.stored}x - understates the position by ${factor.toFixed(2)}x`;
+  $("trueNote").textContent = `shows ${row.c.eff}x - what the blockchain uses`;
 
   const v = $("verdict");
   v.className = "verdict show " + (naiveLTV >= 0.75 ? "danger" : "plain");
@@ -815,23 +892,23 @@ function calc() {
   // reads as a rounding artefact rather than the small, real error it is.
   const pct = (x) => (x * 100).toFixed(2) + "%";
   if (debt <= 0) {
-    v.textContent = "Enter a debt to see the liquidation consequence.";
+    v.textContent = "Add a debt amount to see what happens if a lender reads the wrong number.";
     v.className = "verdict show plain";
     return;
   }
   if (naiveLTV >= 0.75) {
     v.innerHTML =
-      `A protocol with a 75% liquidation threshold sees this position at <strong>${pct(naiveLTV)}</strong> ` +
-      `loan-to-value and liquidates it - while it is genuinely at <strong>${pct(trueLTV)}</strong>. ` +
-      `The error is the stale field's, not the borrower's.`;
+      `A lender reading the wrong number sees this position as <strong>${pct(naiveLTV)}</strong> ` +
+      `loan-to-value, and sells it - even though it is genuinely at <strong>${pct(trueLTV)}</strong>. ` +
+      `The mistake is the app's, not the borrower's.`;
   } else if (naiveLTV >= 0.5) {
     v.innerHTML =
-      `The position reads as <strong>${pct(naiveLTV)}</strong> LTV instead of ${pct(trueLTV)} - ` +
-      `inside the threshold, but close enough that ordinary price movement triggers a wrongful liquidation.`;
+      `A lender reading the wrong number sees <strong>${pct(naiveLTV)}</strong> instead of ${pct(trueLTV)} - ` +
+      `still inside its limit, but close enough that an ordinary price move forces a sale that should never have happened.`;
   } else {
     v.innerHTML =
-      `The position reads as <strong>${pct(naiveLTV)}</strong> LTV instead of ${pct(trueLTV)}. ` +
-      `Wrong, but not yet liquidatable at a 75% threshold.`;
+      `A lender reading the wrong number sees <strong>${pct(naiveLTV)}</strong> instead of ${pct(trueLTV)}. ` +
+      `Wrong, but not yet enough to force a sale.`;
   }
 }
 
@@ -885,7 +962,7 @@ async function walletConnect() {
     $("walletState").textContent = "No wallet";
     $("walletLede").innerHTML =
       `Install <a href="https://phantom.app" target="_blank" rel="noopener">Phantom</a> or ` +
-      `any Solana wallet, then reload this page.`;
+      `any Solana wallet, then reload this page. You do not need one to use the checker above.`;
     $("portfolio").hidden = false;
     $("portfolio").scrollIntoView({ behavior: "smooth", block: "center" });
     return;
@@ -963,8 +1040,8 @@ function drawPortfolio(addr, held) {
     $("walletState").textContent = "0 xStocks";
     $("walletState").className = "state";
     $("walletLede").innerHTML =
-      `This address holds no official tokenized-equity tokens. Check any ticker above, or ` +
-      `<a href="#findings">browse what we found across all ${all.length} mints</a>.`;
+      `This address holds none of the ${all.length} tokenized stocks Owed follows. Check any ticker above, or ` +
+      `<a href="#findings">browse everything Owed found</a>.`;
     $("walletSummary").innerHTML = "";
     $("walletRows").innerHTML = "";
     return;
@@ -978,9 +1055,9 @@ function drawPortfolio(addr, held) {
   $("walletState").className = "state" + (stale.length ? " bad" : " ok");
   $("walletLede").innerHTML = stale.length
     ? `<b>${stale.length}</b> of your ${rows.length} position${rows.length === 1 ? "" : "s"} ` +
-      `${stale.length === 1 ? "is" : "are"} priced by a stale multiplier. Values below use the ` +
-      `multiplier the runtime actually applies.`
-    : `All of your positions are priced by an up-to-date multiplier. Nothing to correct.`;
+      `${stale.length === 1 ? "is" : "are"} showing a number the blockchain does not use. ` +
+      `The figures below are what each position is actually worth.`
+    : `Every one of your positions is showing the number the blockchain uses. Nothing to correct.`;
   // "1 of your 2 positions is" - the verb agrees with the leading count, not the total.
 
   $("walletSummary").innerHTML =
@@ -994,7 +1071,7 @@ function drawPortfolio(addr, held) {
       const head =
         `<div class="wrow">` +
         `<span class="wsym">${escapeHtml(t.symbol)}</span>` +
-        `<span class="wstat">${staleRow ? `${(c.gap * 100).toFixed(c.gap * 100 >= 100 ? 0 : 2)}% wrong multiplier` : "Up to date"}</span>` +
+        `<span class="wstat">${staleRow ? `${(c.gap * 100).toFixed(c.gap * 100 >= 100 ? 0 : 2)}% wrong` : "Up to date"}</span>` +
         `<a href="#t=${encodeURIComponent(t.symbol)}">Details →</a></div>`;
       return head;
     })
@@ -1031,22 +1108,22 @@ const DEMO_STOPS = [
     target: "examples",
     open: null,
     caption: () =>
-      `Owed reads every official tokenized-equity mint on Solana straight from the chain: ` +
-      `<b>${RISK.tokens.length} mints</b> across two issuers. ` +
-      `<b>${rows.length} of them have a stored field the runtime does not apply.</b>`,
+      `Owed reads every tokenized stock on Solana straight from the blockchain: ` +
+      `<b>${RISK.tokens.length} stocks</b> from two issuers, and ` +
+      `<b>${rows.length} of them are showing a number the blockchain does not use.</b>`,
   },
   {
     target: "result",
     open: () => rows[0] && render(rows[0].t.symbol),
     caption: () => {
       const r = rows[0];
-      if (!r) return "No stale mint in this snapshot.";
+      if (!r) return "Nothing is out of date in this snapshot.";
       const c = r.c;
       return (
-        `<b>${escapeHtml(r.t.symbol)}</b> is the worst case. The field an app reads says ` +
-        `<b>${fmtMult(c.stored)}x</b>; the chain applies <b>${fmtMult(c.eff)}x</b>. ` +
-        `A client reading the stored field is wrong by <b>${Math.round(c.gap * 100)}%</b>. ` +
-        `The fields have disagreed for <b>${Math.round(c.days)} days</b>.`
+        `This is the worst case right now. Most apps show ` +
+        `<b>${escapeHtml(r.t.symbol)}</b> at <b>${fmtMult(c.stored)}x</b>; the blockchain uses ` +
+        `<b>${fmtMult(c.eff)}x</b>. An app showing the first number is wrong by ` +
+        `<b>${Math.round(c.gap * 100)}%</b>, and has been for <b>${Math.round(c.days)} days</b>.`
       );
     },
   },
@@ -1056,8 +1133,8 @@ const DEMO_STOPS = [
     caption: () => {
       const v = $("verdict")?.textContent?.trim();
       return (
-        `Put a position behind it. A lender valuing this collateral with the stored field ` +
-        `believes it is covered: <b>${v || "the numbers above"}</b>`
+        `Put a real position behind it and the consequence is money, not a percentage: ` +
+        `<b>${v || "the numbers above"}</b>`
       );
     },
   },
@@ -1065,8 +1142,8 @@ const DEMO_STOPS = [
     target: "stats",
     open: () => openSel("#findings"),
     caption: () =>
-      `Not one vendor's bug. Both issuers share the same Token-2022 template, so the same ` +
-      `classifier finds it on each: <b>${RISK.issuers.map((i) => `${i.name} ${i.trap} of ${i.total}`).join(", ")}</b>.`,
+      `And it is not one issuer's mistake. Both issuers use the same blockchain standard, ` +
+      `so the same check finds it on both: <b>${RISK.issuers.map((i) => `${i.name} ${i.trap} of ${i.total}`).join(", ")}</b>.`,
   },
 ];
 
@@ -1119,7 +1196,7 @@ function endDemo() {
   document.querySelectorAll(".demo-target").forEach((el) => el.classList.remove("demo-target"));
   $("demo").hidden = true;
   document.body.classList.remove("demo-on");
-  $("demoBtn").textContent = "▶ 60-second guided demo";
+  $("demoBtn").textContent = "▶ 60-second guided tour";
   if (demoKey) document.removeEventListener("keydown", demoKey);
   demoKey = null;
   demoIndex = -1;
@@ -1182,7 +1259,7 @@ function checkHoldings() {
   const lines = parseHoldings(input.value);
   if (!lines.length) {
     out.innerHTML =
-      `<p class="hold-note">Nothing to check yet - enter at least one ticker or mint address.</p>`;
+      `<p class="hold-note">Nothing to check yet - enter at least one ticker or token address.</p>`;
     return;
   }
 
@@ -1200,53 +1277,53 @@ function checkHoldings() {
   const worst = affected[0] ?? null;
 
   const head = !found.length
-    ? `<p class="hold-warn">None of those lines matched an official mint. Check the ticker - the board lists every one.</p>`
+    ? `<p class="hold-warn">None of those lines matched a tokenized stock Owed follows. Check the ticker - the board lists every one.</p>`
     : affected.length
-      ? `<p class="hold-warn"><b>${affected.length} of ${found.length}</b> of these holdings read a multiplier the runtime does not apply.` +
+      ? `<p class="hold-warn"><b>${affected.length} of ${found.length}</b> of the holdings below are valued with a number the blockchain does not use.` +
         (worst
-          ? ` Worst is <b>${escapeHtml(worst.row.t.symbol)}</b>: the field says ` +
-            `<b>${fmtMult(worst.row.c.stored)}x</b> and the chain applies ` +
-            `<b>${fmtMult(worst.row.c.eff)}x</b>, a <b>${(worst.row.c.gap * 100).toFixed(2)}%</b> error.`
+          ? ` Worst is <b>${escapeHtml(worst.row.t.symbol)}</b>: most apps show ` +
+            `<b>${fmtMult(worst.row.c.stored)}x</b> and the blockchain uses ` +
+            `<b>${fmtMult(worst.row.c.eff)}x</b> - a <b>${(worst.row.c.gap * 100).toFixed(2)}%</b> difference.`
           : "") +
         `</p>`
-      : `<p class="hold-ok">All ${found.length} matched holdings are current: the stored field is the multiplier the runtime applies. This is a real answer, not an absence.</p>`;
+      : `<p class="hold-ok">All ${found.length} holdings are current: the number apps show is the number the blockchain uses. That is a real answer, not an empty one.</p>`;
 
   const cards = found
     .map(({ row: { t, c }, amount, valued }) => {
       const bad = !!c.stale;
       const facts = [
-        fact("Stored field", `${fmtMult(c.stored)}x`),
-        fact("Runtime applies", `${fmtMult(c.eff)}x`, bad ? "hot" : "ok"),
-        fact("Error", `${(c.gap * 100).toFixed(2)}%`, bad ? "hot" : "ok"),
-        fact("Diverged", c.days == null ? "now" : `${Math.round(c.days)} days ago`),
+        fact("Apps show", `${fmtMult(c.stored)}x`),
+        fact("Blockchain uses", `${fmtMult(c.eff)}x`, bad ? "hot" : "ok"),
+        fact("Difference", `${(c.gap * 100).toFixed(2)}%`, bad ? "hot" : "ok"),
+        fact("Wrong for", c.days == null ? "just changed" : `${Math.round(c.days)} days`),
       ];
       if (amount != null) {
         facts.push(fact("Units you hold", units(amount)));
-        facts.push(fact("Units your app reads", units(amount * c.stored)));
-        facts.push(fact("Units the chain applies", units(amount * c.eff), bad ? "hot" : "ok"));
+        facts.push(fact("Units your app shows", units(amount * c.stored)));
+        facts.push(fact("Units the blockchain uses", units(amount * c.eff), bad ? "hot" : "ok"));
       }
       if (valued != null) {
         // The entered value is what your system currently believes, so the true
         // figure is that value scaled by applied / stored. Stated on the card so
         // the direction of the correction is never a guess.
         const actual = c.stored ? valued * (c.eff / c.stored) : valued;
-        facts.push(fact("Value your app computes", usd(valued)));
-        facts.push(fact("Value the chain implies", usd(actual), bad ? "hot" : "ok"));
+        facts.push(fact("What your app says it is worth", usd(valued)));
+        facts.push(fact("What it is actually worth", usd(actual), bad ? "hot" : "ok"));
       }
       return (
         `<div class="card" style="margin:14px 0 0">` +
         `<div class="card-head"><div><h3>${escapeHtml(t.symbol)}</h3>` +
-        `<p class="who">${escapeHtml(t.issuer || "")} · <span class="mono">${escapeHtml(t.mint.slice(0, 6))}…${escapeHtml(t.mint.slice(-4))}</span></p></div>` +
+        `<p class="who">${t.issuer === "prestocks" ? "PreStocks" : "xStocks"} · <span class="mono">${escapeHtml(t.mint.slice(0, 6))}…${escapeHtml(t.mint.slice(-4))}</span></p></div>` +
         // Most divergent mints are divergent by a fraction of a percent, so a bare
         // rounded percentage reads "off by 0%" - which looks like no problem at all
         // next to a card that says the field and the runtime disagree. Name the
         // condition instead of rounding it away.
         `<span class="state ${bad ? "bad" : "ok"}">${
           !bad
-            ? "current"
+            ? "up to date"
             : c.gap * 100 >= 0.5
-              ? `off by ${(c.gap * 100).toFixed(0)}%`
-              : "diverged"
+              ? `${(c.gap * 100).toFixed(0)}% wrong`
+              : "wrong number"
         }</span></div>` +
         `<div class="facts">${facts.join("")}</div>` +
         `</div>`

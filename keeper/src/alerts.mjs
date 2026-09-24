@@ -114,8 +114,8 @@ export function classifyAlerts(
         gapPct: f.gapPct,
         daysStale: f.daysStale,
         message:
-          `${f.symbol}: the stored multiplier field stopped matching the runtime. The chain ` +
-          `now applies ${f.effective}x while the field still reads ${f.stored}x.`,
+          `${f.symbol}: apps showing this stock are now using an out-of-date number. The ` +
+          `blockchain applies ${f.effective}x while most apps will still show ${f.stored}x.`,
       });
     }
 
@@ -132,9 +132,9 @@ export function classifyAlerts(
           activatesAt: f.effectiveTimestamp,
           secondsUntil: seconds,
           message:
-            `${f.symbol}: a ${f.next}x multiplier activates in ` +
-            `${Math.max(1, Math.round(seconds / 3600))}h. The field reads ${f.stored}x today and ` +
-            `will diverge from the runtime the moment it lands.`,
+            `${f.symbol}: a stock split takes effect in ` +
+            `${Math.max(1, Math.round(seconds / 3600))}h. Apps showing ${f.stored}x today will be ` +
+            `wrong from that moment, when the blockchain moves to ${f.next}x.`,
         });
       }
     }
@@ -150,17 +150,19 @@ export function formatDigest(feed, { firstRun, events }, nowSec) {
   const when = new Date(nowSec * 1000).toISOString().replace("T", " ").slice(0, 16);
   const lines = [
     `Owed - corporate-action alerts (${when} UTC)`,
-    `${stale} of ${facts.length} official tokenized-equity mints read a stored multiplier ` +
-      `the runtime does not apply right now.`,
+    `${stale} of ${facts.length} tokenized stocks are showing a number the blockchain does ` +
+      `not use right now.`,
   ];
 
   if (firstRun) {
     lines.push("", "No previous state to compare against, so nothing is reported as new.");
   } else if (events.length === 0) {
-    lines.push("", "No mint changed state and nothing activates in the next 48h.");
+    lines.push("", "No stock changed its number and no split takes effect in the next 48h.");
   } else {
     lines.push("");
-    for (const e of events) lines.push(`${e.kind}: ${e.message}`);
+    // The stored kind is a slug; a person reading the digest gets a word.
+    const kindWord = { "became-stale": "changed", "activation-imminent": "upcoming" };
+    for (const e of events) lines.push(`${kindWord[e.kind] ?? e.kind}: ${e.message}`);
   }
 
   const soonest = facts

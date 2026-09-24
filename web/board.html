@@ -75,34 +75,33 @@
 </head>
 <body>
 <header>
-  <h1><img class="mark" src="assets/logo.png" alt="" width="30" height="30" /><span class="brand">Owed</span> - Corporate-Actions Risk Board</h1>
+  <h1><img class="mark" src="assets/logo.png" alt="" width="30" height="30" /><span class="brand">Owed</span> - every tokenized stock, checked</h1>
   <p style="margin:0 0 14px;font-size:13px">
-    <a href="index.html">Harm calculator - naive vs chain-correct</a>
+    <a href="index.html">Check a ticker or a list of holdings</a>
     <span style="opacity:.5"> · </span>
     <a href="https://owed.sithunyein.com/feed/owed-risk.json">feed/owed-risk.json</a>
     <span style="opacity:.5"> · </span>
-    <a href="https://github.com/thesithunyein/owed">source</a>
+    <a href="https://github.com/thesithunyein/owed">source code</a>
   </p>
   <p class="sub">
-    Every official tokenized-equity mint on Solana - xStocks (public equities) and PreStocks
-    (pre-IPO) - classified against mainnet state. Both issuers ship the same Token-2022 template,
-    so a defect in it is not one vendor's problem. Issuers rebase
-    dividends and splits through the Token-2022 <b>Scaled UI Amount</b> multiplier - but the
-    on-chain field keeps a <b>stale</b> value once a scheduled activation's timestamp passes.
-    Apps that read the raw field misprice. The board computes the <b>time-correct effective
-    multiplier</b> from an on-chain snapshot and <b>re-classifies at your local clock</b>, so
-    rows flip the moment an activation passes - no server, no API key.
+    Every tokenized stock on Solana - xStocks (public companies) and PreStocks (private,
+    pre-IPO) - checked against the blockchain itself. When a company splits its shares or pays
+    a dividend, the price of one share has to change with it. The blockchain makes that
+    adjustment on its own; the number most apps read keeps the old value once the change has
+    taken effect, so the app reports a figure that is simply too low. The board works out which
+    number is really in force, and works it out again in your browser as the page loads, so a
+    row updates the moment a change takes effect - no server, no API key.
   </p>
 </header>
 <div class="bar">
   <button id="rescan">Live re-scan…</button>
   <select id="filter">
-    <option value="all">All states</option>
-    <option value="trap">⚠ Reader traps</option>
-    <option value="pending">Scheduled activations</option>
-    <option value="paused">Paused tokens</option>
-    <option value="clean">Clean</option>
-    <option value="prestocks">PreStocks only (pre-IPO)</option>
+    <option value="all">All stocks</option>
+    <option value="trap">⚠ Showing the wrong number</option>
+    <option value="pending">A change is coming</option>
+    <option value="paused">Paused by the issuer</option>
+    <option value="clean">Up to date</option>
+    <option value="prestocks">PreStocks only (private, pre-IPO)</option>
   </select>
   <input id="search" placeholder="Search symbol…" size="14" />
   <span class="status" id="status">loading…</span>
@@ -111,22 +110,23 @@
 <div class="tblwrap">
 <table>
   <thead><tr>
-    <th>Asset</th><th>Issuer</th><th class="num">Stored Mult</th><th class="num">Effective</th>
-    <th class="num">Δ at Activation</th><th>State</th><th>Activates</th><th>Issuer Controls</th>
+    <th>Stock</th><th>Issuer</th><th class="num">Apps show</th><th class="num">Blockchain uses</th>
+    <th class="num">Change at split</th><th>Status</th><th>Takes effect</th><th>Issuer can</th>
   </tr></thead>
   <tbody id="rows"><tr><td colspan="8" class="status">loading snapshot…</td></tr></tbody>
 </table>
 </div>
 <p class="foot">
-  Data: Token-2022 mint accounts of every official xStocks and PreStocks Solana mint, read on-chain via
+  Data: the on-chain accounts behind every official xStocks and PreStocks token, read live via
   <span class="mono">getMultipleAccounts</span> (snapshot: <span class="mono" id="scan-meta">…</span>),
-  re-classified against your local clock each render - activations flip live without any server.
-  <b>Live re-scan</b> needs your own RPC URL: public endpoints reject browser origins, so the
-  URL is entered by you, kept in <span class="mono">localStorage</span>, and sent nowhere else.
-  Issuer controls: permanent delegate (can move anyone's tokens), pausable (can freeze all
-  transfers), transfer hook. <b><span id="foot-controls">…</span></b>
-  Presence is not an attack, but integrators must know. Nothing here is
-  investment advice.
+  and rechecked against your own clock on every render - a change takes effect on screen with no server.
+  <b>Live re-scan</b> needs your own RPC URL: public endpoints reject browser requests, so you supply
+  the URL, it is kept in <span class="mono">localStorage</span>, and it is sent nowhere else.
+  Issuer controls: a permanent delegate (the issuer can move anyone's tokens), pausable (the
+  issuer can freeze all transfers), transfer hook (a program runs on every transfer).
+  <b><span id="foot-controls">…</span></b>
+  Their presence is not an attack, but anyone integrating these tokens needs to know about it.
+  Nothing here is investment advice.
 </p>
 <dialog id="rpc-dlg">
   <form method="dialog">
@@ -230,12 +230,12 @@ function kpis(rows) {
   const xCount = rows.length - preCount;
   const preTraps = rows.filter(r => r.issuer === "prestocks" && r.cls.readerTrap).length;
   $("kpis").innerHTML = `
-    <div class="kpi red"><div class="n">${traps}</div><div class="l">Reader traps (live mispricing)</div></div>
-    <div class="kpi amber"><div class="n">${pending}</div><div class="l">Scheduled activations</div></div>
-    <div class="kpi blue"><div class="n">${controls}</div><div class="l">Issuer-control surfaces</div></div>
-    <div class="kpi${preTraps ? " red" : ""}"><div class="n">${preTraps}</div><div class="l">of ${preCount} PreStocks carry the same trap</div></div>
-    <div class="kpi${paused ? " red" : ""}"><div class="n">${paused}</div><div class="l">Paused tokens</div></div>
-    <div class="kpi"><div class="n">${rows.length}</div><div class="l">Assets scanned (${xCount} xStocks + ${preCount} PreStocks)</div></div>`;
+    <div class="kpi red"><div class="n">${traps}</div><div class="l">Showing the wrong number</div></div>
+    <div class="kpi amber"><div class="n">${pending}</div><div class="l">Change coming up</div></div>
+    <div class="kpi blue"><div class="n">${controls}</div><div class="l">The issuer can freeze or pause</div></div>
+    <div class="kpi${preTraps ? " red" : ""}"><div class="n">${preTraps}</div><div class="l">of ${preCount} PreStocks have the same problem</div></div>
+    <div class="kpi${paused ? " red" : ""}"><div class="n">${paused}</div><div class="l">Paused by the issuer</div></div>
+    <div class="kpi"><div class="n">${rows.length}</div><div class="l">Stocks checked (${xCount} xStocks + ${preCount} PreStocks)</div></div>`;
 }
 
 function render() {
@@ -260,24 +260,24 @@ function render() {
 
   $("rows").innerHTML = rows.slice(0, 300).map(r => {
     const { cls } = r;
-    const state = cls.readerTrap ? '<span class="flag bad">⚠ READER TRAP</span>'
-      : cls.pending ? '<span class="flag warn">SCHEDULED</span>'
-      : '<span class="flag ok">CLEAN</span>';
+    const state = cls.readerTrap ? '<span class="flag bad">⚠ WRONG NUMBER</span>'
+      : cls.pending ? '<span class="flag warn">CHANGE SOON</span>'
+      : '<span class="flag ok">UP TO DATE</span>';
     const act = cls.effectiveTimestamp
       ? new Date(cls.effectiveTimestamp * 1000).toISOString().slice(0, 16).replace("T", " ") + " UTC"
       : "-";
     const past = cls.effectiveTimestamp && cls.effectiveTimestamp <= nowSec();
     const ctrls = [
-      cls.security.permanentDelegate ? '<span class="flag bad">PERM-DELEGATE</span>' : "",
-      cls.security.pausable ? '<span class="flag warn">PAUSABLE</span>' : "",
+      cls.security.permanentDelegate ? '<span class="flag bad">CAN FREEZE</span>' : "",
+      cls.security.pausable ? '<span class="flag warn">CAN PAUSE</span>' : "",
       cls.security.paused ? '<span class="flag bad">PAUSED</span>' : "",
-      cls.security.transferHook ? '<span class="flag warn">HOOK</span>' : "",
+      cls.security.transferHook ? '<span class="flag warn">TRANSFER RULE</span>' : "",
       // A row-level marker, because "which of these has an independent price at
       // all" is the question the Pyth lane answers, and it is per mint. Where a
       // price exists the marker carries the gap; where none does it names the
       // feed and says why, rather than looking like agreement.
       pythFlag(r.mint),
-    ].filter(Boolean).join(" ") || '<span class="mono">none</span>';
+    ].filter(Boolean).join(" ") || '<span class="mono">nothing extra</span>';
     return `<tr>
       <td><b>${r.symbol || "?"}</b> <a class="mono" href="https://solscan.io/token/${r.mint}" target="_blank" rel="noopener">${short(r.mint)}</a></td>
       <td class="mono">${r.issuer === "prestocks" ? "PreStocks" : "xStocks"}</td>
@@ -285,7 +285,7 @@ function render() {
       <td class="num mono"><b>${cls.effective}</b></td>
       <td class="num">${cls.deltaPct == null ? "-" : cls.deltaPct.toFixed(4) + "%"}</td>
       <td>${state}</td>
-      <td class="mono">${act}${past ? ' <span class="flag bad">PASSED</span>' : ""}</td>
+      <td class="mono">${act}${past ? ' <span class="flag bad">IN EFFECT</span>' : ""}</td>
       <td>${ctrls}</td>
     </tr>`;
   }).join("") || '<tr><td colspan="8" class="status">no rows match</td></tr>';

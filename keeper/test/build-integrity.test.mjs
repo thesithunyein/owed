@@ -398,7 +398,39 @@ test("the front page states the finding in its title, and agrees with its own he
 
   const marker = src.match(/<!-- owed:title:start -->([\s\S]*?)<!-- owed:title:end -->/);
   assert.ok(marker, "the title carries a generator marker");
-  assert.match(marker[1], /^\d[\d,]* of [\d,]+$/, `title count is filled in, got "${marker[1]}"`);
+  // The payload is itself an HTML comment, so that the marker cannot end the head
+  // early (asserted below). The value to compare is the count it carries.
+  const count = marker[1].replace(/<!--/g, "").replace(/-->/g, "").trim();
+  assert.match(count, /^\d[\d,]* of [\d,]+$/, `title count is filled in, got "${count}"`);
+
+  // Everything a crawler needs must end up inside <head>. Bare non-whitespace text
+  // in head ends it early - the parser pops the head and re-opens the body - which
+  // is invisible in the browser source and spectacular in the browser: the raw count
+  // rendered above the hero, <title> landed in the body, and every og:/twitter: tag
+  // became body metadata that no crawler reads. The marker used to be exactly that.
+  const head = src.match(/<head>([\s\S]*?)<\/head>/i)?.[1] ?? "";
+  assert.ok(head.length > 0, "the page has a head");
+  // Comments are inert, and <title>/<style>/<script> are allowed to hold text in
+  // head: only text sitting between elements ends the head early.
+  const inert = head
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/<(title|style|script)\b[^>]*>[\s\S]*?<\/\1>/gi, "");
+  const bareText = (inert.match(/>[^<]+</g) ?? [])
+    .map((s) => s.slice(1, -1).trim())
+    .filter(Boolean);
+  assert.deepEqual(
+    bareText,
+    [],
+    `bare text in <head> ends the head early: ${bareText.join(" | ")}`,
+  );
+  for (const needed of [
+    "<title>",
+    'property="og:title"',
+    'property="og:image"',
+    'name="twitter:card"',
+  ]) {
+    assert.ok(head.includes(needed), `${needed} sits inside <head>, where a crawler reads it`);
+  }
 
   // The marker must sit outside <title>, which is RCDATA: a comment inside it is
   // rendered text, not a comment, and would appear in the browser tab and in every
@@ -411,10 +443,10 @@ test("the front page states the finding in its title, and agrees with its own he
   assert.equal(rendered.length, 3, "title, og:title and twitter:title all exist");
   for (const value of rendered) {
     assert.ok(!value.includes("<!--"), `no markup in rendered title text: "${value}"`);
-    assert.ok(value.includes(marker[1]), `title text quotes the marker count: "${value}"`);
+    assert.ok(value.includes(count), `title text quotes the marker count: "${value}"`);
   }
   assert.equal(
-    new Set(rendered.map((v) => v.replace(marker[1], "#"))).size,
+    new Set(rendered.map((v) => v.replace(count, "#"))).size,
     1,
     "the three titles agree with each other",
   );
@@ -423,9 +455,9 @@ test("the front page states the finding in its title, and agrees with its own he
   // two different counts.
   const hero = src.match(/<!-- owed:hero-worst:start -->([\s\S]*?)<!-- owed:hero-worst:end -->/);
   assert.ok(hero, "the hero carries the baked finding");
-  const heroCount = hero[1].match(/<strong>([\d,]+ of [\d,]+) mints<\/strong>/);
+  const heroCount = hero[1].match(/<strong>([\d,]+ of [\d,]+) tokenized stocks<\/strong>/);
   assert.ok(heroCount, "the hero names the count");
-  assert.equal(marker[1], heroCount[1], "the title and the hero quote the same count");
+  assert.equal(count, heroCount[1], "the title and the hero quote the same count");
 });
 
 test("the proof lives in the README, not on the product page", () => {
@@ -455,6 +487,38 @@ test("the proof lives in the README, not on the product page", () => {
     "Kamino",
   ]) {
     assert.ok(readme.includes(moved), `README carries the moved proof: ${moved}`);
+  }
+});
+
+test("the front page explains itself to someone who has never used a wallet", () => {
+  // The harm Owed reports is a stock split, and the person holding a tokenized
+  // equity is not necessarily a crypto user. "Scaled UI Amount", "stored
+  // multiplier" and "mint" are the vocabulary of the implementation; a visitor
+  // arriving from a link needs the vocabulary of the harm. The two explanations
+  // are what stand between a working product and a wall of field names, so they
+  // are asserted here rather than left to whoever edits the page next.
+  const page = readFileSync(join(WEB, "differential.html"), "utf8");
+
+  const how = page.match(/<section id="how"[\s\S]*?<\/section>/);
+  assert.ok(how, "the front page has a How it works section");
+  assert.ok(
+    (how[0].match(/<li>/g) ?? []).length >= 3,
+    "How it works states the product in at least three steps",
+  );
+
+  const faq = page.match(/<section id="faq"[\s\S]*?<\/section>/);
+  assert.ok(faq, "the front page has a Questions section");
+  assert.ok(
+    (faq[0].match(/<details/g) ?? []).length >= 5,
+    "Questions answers at least five of them",
+  );
+
+  // The table a visitor reads must be in their words, not the field names.
+  for (const plain of ["Apps show", "Blockchain uses", "Difference", "Wrong for"]) {
+    assert.ok(page.includes(`<th class="num">${plain}</th>`), `the table column reads "${plain}"`);
+  }
+  for (const jargon of ["Token-2022 Scaled UI Amount", ">Stored</th>", ">Effective</th>"]) {
+    assert.ok(!page.includes(jargon), `the product page does not say ${jargon}`);
   }
 });
 

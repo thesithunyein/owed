@@ -26,14 +26,14 @@
       "kind": "became-stale",
       "symbol": "INVHx",
       "mint": "XsQFmCYjvPGgqYYAth5zNhW8NSCabdamgM1kXMorJs7",
-      "message": "INVHx: the stored multiplier field stopped matching the runtime. The chain now applies 1.007797994801x while the field still reads 1x."
+      "message": "INVHx: apps showing this stock are now using an out-of-date number. The blockchain applies 1.007797994801x while most apps will still show 1x."
     },
     {
       "at": "2026-09-24T01:49:17.000Z",
       "kind": "became-stale",
       "symbol": "SREx",
       "mint": "XsbicvsCUHE9ja8gTsjzruDxQTKeyij94i3phx3NuNf",
-      "message": "SREx: the stored multiplier field stopped matching the runtime. The chain now applies 1.005825949367x while the field still reads 1x."
+      "message": "SREx: apps showing this stock are now using an out-of-date number. The blockchain applies 1.005825949367x while most apps will still show 1x."
     }
   ]
 }

@@ -274,8 +274,8 @@ if (!feed) {
     genRows
       .map(({ t, c }) => {
         const ctl = [];
-        if (t.security.permanentDelegate) ctl.push("delegate");
-        if (t.security.pauseAuthority) ctl.push("pause");
+      if (t.security.permanentDelegate) ctl.push("freeze");
+      if (t.security.pauseAuthority) ctl.push("pause");
         return (
           `<tr><td>${genEscape(t.symbol)}</td>` +
           `<td class="num" title="exact: ${c.stored}">${Number(Number(c.stored).toPrecision(6))}</td>` +
@@ -287,13 +287,13 @@ if (!feed) {
       })
       .join("");
   const genStats = [
-    ["Official mints scanned (both issuers)", genAll.length, ""],
-    ["Stored field is not what applies", genRows.length, "hot"],
-    ["Error ≥ 1% (the ones that bite)", genRows.filter((r) => r.c.gap >= 1).length, genRows.some((r) => r.c.gap >= 1) ? "hot" : "ok"],
-    ["Worst error", genRows[0] ? Math.round(genRows[0].c.gap * 100) + "%" : "-", "hot"],
-    ["Mints with a permanent delegate", `${genAll.filter((r) => r.t.security.permanentDelegate).length} / ${genAll.length}`, ""],
+    ["Tokenized stocks checked", genAll.length, ""],
+    ["Showing the wrong number", genRows.length, "hot"],
+    ["Off by 1% or more (the ones that hurt)", genRows.filter((r) => r.c.gap >= 1).length, genRows.some((r) => r.c.gap >= 1) ? "hot" : "ok"],
+    ["Biggest difference", genRows[0] ? Math.round(genRows[0].c.gap * 100) + "%" : "-", "hot"],
+    ["Stocks the issuer can freeze", `${genAll.filter((r) => r.t.security.permanentDelegate).length} / ${genAll.length}`, ""],
     ...(feed.issuers ?? []).map((i) => [
-      `… on ${i.name} (${i.kind})`,
+      i.id === "prestocks" ? "… on PreStocks (private, pre-IPO)" : "… on xStocks (public companies)",
       `${i.trap} of ${i.total} out of date`,
       i.trap ? "hot" : "ok",
     ]),
@@ -304,8 +304,8 @@ if (!feed) {
     )
     .join("");
   const genSub =
-    `Feed generated <strong>${new Date(feed.generatedAt).toUTCString()}</strong> from ` +
-    `<span class="mono">${genEscape(feed.source?.rpc || "mainnet RPC")}</span>, re-classified against your clock just now.`;
+    `Snapshot taken <strong>${new Date(feed.generatedAt).toUTCString()}</strong> from ` +
+    `<span class="mono">${genEscape(feed.source?.rpc || "mainnet RPC")}</span>, and rechecked in your browser just now.`;
   // Clock-stability, honestly derived: the baked numbers survive the page's
   // live re-render check only when no activation timestamp sits within +/-48h
   // of the feed's clock - any reasonable viewer clock then classifies
@@ -332,7 +332,7 @@ if (!feed) {
     diff,
     "hero-worst",
     genRows.length
-      ? `<p class="hero-worst"><strong>${genRows.length} of ${genAll.length} mints</strong> read a different multiplier from the stored field than the runtime applies, worst: ` +
+      ? `<p class="hero-worst"><strong>${genRows.length} of ${genAll.length} tokenized stocks</strong> show a number the blockchain does not use. Worst: ` +
         genRows
           .filter((r) => r.c.gap >= 1)
           .slice(0, 4)
@@ -363,8 +363,16 @@ if (!feed) {
   // the rest of the sentence: a pattern that consumed up to the closing quote and
   // then re-emitted only the count truncated two of the three titles to
   // "Owed - 383 of 933", which the guard test below caught immediately.
+  //
+  // The marker payload is written as an HTML comment. Bare text inside <head>
+  // ends the head early, and the count had been doing exactly that: the raw number
+  // rendered above the hero and every og:/twitter: tag was parsed into the body,
+  // where no crawler reads it. A comment is inert, so the marker stays inert.
   diff = diff
-    .replace(/(<!-- owed:title:start -->)[\s\S]*?(<!-- owed:title:end -->)/, `$1${titleText}$2`)
+    .replace(
+      /(<!-- owed:title:start -->)[\s\S]*?(<!-- owed:title:end -->)/,
+      `$1<!-- ${titleText} -->$2`,
+    )
     .replace(
       /((?:<title>|property="og:title" content="|name="twitter:title" content=")Owed - )[^"<]*?( tokenized stocks)/g,
       `$1${titleText}$2`,
@@ -383,6 +391,13 @@ if (!feed) {
     alertsDoc = null;
   }
   const strip = [];
+  // The published feed keeps machine-readable event kinds (`became-stale`,
+  // `activation-imminent`); a visitor should not have to read a slug. Mapped
+  // here, at the one place the slug becomes prose.
+  const ALERT_KIND = {
+    "became-stale": "changed",
+    "activation-imminent": "upcoming",
+  };
   const stamp = (sec) =>
     new Date(sec * 1000).toISOString().replace("T", " ").slice(0, 16) + " UTC";
   const until = (sec) => {
@@ -392,11 +407,11 @@ if (!feed) {
   if (alertsDoc?.nextActivation) {
     const a = alertsDoc.nextActivation;
     strip.push(
-      `<div class="alert-row now"><span class="kind">next activation</span><span>` +
-        `<b>${genEscape(a.symbol)}</b>: a ${Number(Number(a.next).toPrecision(6))}x multiplier ` +
-        `activates in ${until(a.secondsUntil)} (${stamp(a.activatesAt)}). The field reads ` +
-        `${Number(Number(a.stored).toPrecision(6))}x today and will diverge from the runtime ` +
-        `the moment it lands.</span></div>`,
+      `<div class="alert-row now"><span class="kind">upcoming</span><span>` +
+        `<b>${genEscape(a.symbol)}</b>: a stock split takes effect in ${until(a.secondsUntil)} ` +
+        `(${stamp(a.activatesAt)}). Most apps will still show ` +
+        `${Number(Number(a.stored).toPrecision(6))}x after that, when the blockchain has moved ` +
+        `to ${Number(Number(a.next).toPrecision(6))}x.</span></div>`,
     );
   }
   if (alertsDoc?.mostRecent) {
@@ -406,9 +421,9 @@ if (!feed) {
         ? `${Math.max(1, Math.round(m.daysAgo * 24))}h ago`
         : `${Math.round(m.daysAgo)} days ago`;
     strip.push(
-      `<div class="alert-row now"><span class="kind">freshest</span><span>` +
-        `<b>${genEscape(m.symbol)}</b> diverged ${ago}: the field reads ` +
-        `${Number(Number(m.stored).toPrecision(6))}x and the runtime applies ` +
+      `<div class="alert-row now"><span class="kind">newest</span><span>` +
+        `<b>${genEscape(m.symbol)}</b> changed ${ago}: most apps show ` +
+        `${Number(Number(m.stored).toPrecision(6))}x and the blockchain uses ` +
         `${Number(Number(m.effective).toPrecision(6))}x.</span></div>`,
     );
   }
@@ -416,13 +431,13 @@ if (!feed) {
     strip.push(
       `<div class="alert-row"><span class="when">${genEscape(
         String(h.at).replace("T", " ").slice(0, 16),
-      )}</span><span class="kind">${genEscape(h.kind)}</span><span>${genEscape(h.message)}</span></div>`,
+      )}</span><span class="kind">${genEscape(ALERT_KIND[h.kind] ?? h.kind)}</span><span>${genEscape(h.message)}</span></div>`,
     );
   }
   if (!strip.length) {
     strip.push(
       alertsDoc
-        ? `<p class="alert-none">Nothing to report. No mint changed state at the last refresh, and no activation lands in the next 48h. That is the lane working, not the lane failing.</p>`
+        ? `<p class="alert-none">Nothing to report. No stock changed its number at the last refresh, and no split takes effect in the next 48h. That is the lane working, not the lane failing.</p>`
         : `<p class="alert-none">The alert lane has not published yet. The checker above and the feed are current regardless.</p>`,
     );
   }

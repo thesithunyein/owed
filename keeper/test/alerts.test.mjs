@@ -115,7 +115,7 @@ test("alerts: an activation inside the window is reported before it lands", () =
   assert.equal(r.events.length, 1);
   assert.equal(r.events[0].kind, "activation-imminent");
   assert.equal(r.events[0].secondsUntil, 3600);
-  assert.match(r.events[0].message, /activates in/);
+  assert.match(r.events[0].message, /takes effect in/);
 });
 
 test("alerts: the activation window boundary is inclusive and the far side is quiet", () => {
@@ -180,11 +180,11 @@ test("alerts: facts survive a mint with no scaled config", () => {
 test("alerts: the digest says so when nothing happened", () => {
   const feed = feedOf([token({ symbol: "A" }), token({ symbol: "B", stale: true, next: 10, ts: NOW - 1 })]);
   const quiet = formatDigest(feed, { firstRun: false, events: [] }, NOW);
-  assert.match(quiet, /No mint changed state/);
+  assert.match(quiet, /No stock changed its number/);
   // The wording matters here. The digest describes what the two fields say, not
   // what anyone intended: the runtime applies the effective multiplier correctly,
   // and "misprice" would put a fault on a party we have not established one for.
-  assert.match(quiet, /1 of 2 official tokenized-equity mints read a stored multiplier/);
+  assert.match(quiet, /1 of 2 tokenized stocks are showing a number the blockchain does not use/);
   assert.ok(!/misprice/.test(quiet), "the digest does not assert fault");
 
   const first = formatDigest(feed, { firstRun: true, events: [] }, NOW);
