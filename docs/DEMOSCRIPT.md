@@ -51,8 +51,9 @@ Front page, hero. Let the headline sit on screen.
 Then point at the counter under the search box, and read it off the page:
 
 > "Three hundred and eighty-five of nine hundred and thirty-three tokenized
-> stocks are showing a number the blockchain does not use. That is not a
-> warning: it is a measurement, and it updates every six hours."
+> stocks are showing a number the blockchain does not use - and five of them are
+> out by a factor rather than a fraction. That is not a warning: it is a
+> measurement, and it updates every six hours."
 
 Do not open with a number you have memorised. Open with the split, because a
 split needs no explanation, and the viewer already believes it.
@@ -76,7 +77,8 @@ instead of saying it twice.
 
 ## 2. The checker, on the worst one (0:40-1:05)
 
-Search `PPLTx`.
+`PPLTx` is already rendered - the page opens on the worst case, so there is
+nothing to search for. (Searching it again re-renders the same card.)
 
 > "This is the worst case on the page. Most apps show one times; the blockchain
 > uses ten. An app showing the first number is wrong by nine hundred percent."
@@ -93,7 +95,7 @@ Open **What that means in money** on the same card and leave the defaults.
 
 ## 3. A whole book, no wallet (1:05-1:20)
 
-Scroll to **Check a list of holdings** and paste four tickers with amounts -
+Scroll to **Check your holdings** and paste four tickers with amounts -
 `AAPLx 12.5`, `PPLTx 3`, `SPACEX 2 50000`, `TSLAx 10`. Press the button.
 
 > "This is the question a risk desk actually asks, and it needs no address and
@@ -102,7 +104,8 @@ Scroll to **Check a list of holdings** and paste four tickers with amounts -
 
 ## 4. The scale, and the honest tail (1:20-1:40)
 
-Open the fold: *"Everything Owed found across all 933 tokenized stocks"*.
+Open the fold: *"Everything found across 933 stocks"* - and read the *"need
+attention"* count on the right of that heading, not the one you memorised.
 
 > "Across nine hundred and thirty-three stocks from two issuers, three hundred and
 > eighty-five are in that state. Most of them are small - the median is a
@@ -160,7 +163,7 @@ Say this plainly. It is worth more than another feature.
 
 | # | Time | On screen | Beat |
 |---|---|---|---|
-| 0 | 0:00 | Hero, headline and counter | A split changes the price; your app may not |
+| 0 | 0:00 | Hero, headline and counter | A split changes the price; five of 933 are out by a factor |
 | 1 | 0:15 | `#how` | Three steps, plain words, no wallet needed |
 | 2 | 0:40 | `PPLTx` result + *What that means in money* | 1x vs 10x, and a lender selling a healthy position |
 | 3 | 1:05 | `#holdings` | A whole book checked with no wallet |

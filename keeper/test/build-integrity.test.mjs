@@ -1048,3 +1048,44 @@ test("the wallet read has a relay to call, and calls it", () => {
     "no copy a reader sees blames rate limiting for an endpoint that forbids browsers",
   );
 });
+
+/**
+ * The demo script is followed on camera, so a cue that names a heading the page no
+ * longer has costs a take: the presenter scrolls looking for it while the recorder
+ * runs. That had already happened twice without anyone noticing, because nothing
+ * tied the script to the page it points at - "Check a list of holdings" survived as
+ * an aria-label after the visible heading became "Check your holdings", and the
+ * findings fold lost the word "Owed" from its heading.
+ *
+ * Each cue is therefore checked on both sides: the page must still show it, and the
+ * script must still name it. Without the second half this list would rot in the
+ * direction nobody reads.
+ */
+test("the demo script only sends the camera to headings the page still has", () => {
+  // The script is prose, so a cue can be split across two source lines by wrapping -
+  // "need\nattention" is one cue and two strings. Whitespace is collapsed before the
+  // comparison for that reason, on both sides.
+  const flat = (s) => s.replace(/\s+/g, " ");
+  const script = flat(readFileSync(join(ROOT, "docs", "DEMOSCRIPT.md"), "utf8"));
+  const page = flat(readFileSync(join(WEB, "differential.html"), "utf8"));
+
+  // Stable fragments only: the counts in these headings are generated and move with
+  // every snapshot, so an assertion that quoted a number would fail on a refresh
+  // rather than on a rename.
+  const cues = [
+    "How it works",
+    "Check your holdings",
+    "What that means in money",
+    "Everything found across",
+    "need attention",
+  ];
+  for (const cue of cues) {
+    assert.ok(page.includes(cue), `the script sends the camera to "${cue}", which the page no longer shows`);
+    assert.ok(script.includes(cue), `the page shows "${cue}" but the script no longer names it - update this list`);
+  }
+
+  // The two cues that were wrong, pinned as negatives so they cannot come back.
+  for (const stale of ["Check a list of holdings", "Everything Owed found across all"]) {
+    assert.ok(!script.includes(stale), `the script still sends the camera to "${stale}", which is not on screen`);
+  }
+});
