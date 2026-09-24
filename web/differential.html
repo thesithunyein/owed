@@ -285,7 +285,10 @@
   /* The finding, as a readout rather than a paragraph: one figure, one sentence,
      separated from the search by a hairline. The number the reader is meant to
      take away is the only thing set in ink at display size. */
-  .hero-worst { margin: 0; padding-top: 20px; border-top: 1px dashed rgba(20, 23, 28, 0.16); font-size: 0.9375rem; line-height: 1.5; color: var(--dim); }
+  /* The rule clears the control row above it. At a fixed zero margin it landed on
+     the search field's own bottom border, so the hairline read as a rendering
+     fault across the control rather than as the separator above the finding. */
+  .hero-worst { margin: 28px 0 0; padding-top: 20px; border-top: 1px dashed rgba(20, 23, 28, 0.16); font-size: 0.9375rem; line-height: 1.5; color: var(--dim); }
   .hero-worst strong { display: block; font-family: var(--serif); font-size: 1.5rem; font-weight: 500; color: var(--text); margin-bottom: 3px; font-variant-numeric: tabular-nums; }
   .hero-links { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; font-size: 0.875rem; margin-top: 16px; }
   .hero-links a { color: #1d4ed8; text-decoration: none; font-weight: 500; }
@@ -395,8 +398,16 @@
     justify-content: space-between; gap: 16px; font-size: 15.5px; font-weight: 500;
   }
   .fold > summary::-webkit-details-marker { display: none; }
-  .fold > summary::after { content: "+"; color: var(--faint); font-weight: 400; font-size: 17px; }
-  .fold[open] > summary::after { content: "–"; }
+  /* The same disc as the questions above, because it is the same gesture: both
+     open onto more detail, so both look the same when they are shut. */
+  .fold > summary::after {
+    content: "+"; flex-shrink: 0; width: 22px; height: 22px;
+    display: grid; place-items: center; border-radius: 50%;
+    background: var(--panel2); border: 1px solid var(--line);
+    color: var(--dim); font-weight: 500; font-size: 15px; line-height: 1;
+    font-family: var(--sans);
+  }
+  .fold[open] > summary::after { content: "–"; background: #e8effd; border-color: #c7d8fb; color: var(--blue); }
   .fold > summary:hover { color: var(--blue); }
   /* The count stays on one line and the label wraps instead - "379 need / attention"
      broken across two lines reads like a layout bug on a phone. */
@@ -458,8 +469,8 @@
      had no rule at all and fell through to the browser's default button. */
   .holdings-actions button {
     font-size: 0.9375rem; font-weight: 600; color: #fff;
-    background: var(--blue); border: 1px solid var(--blue); border-radius: 11px;
-    padding: 12px 20px;
+    background: var(--blue); border: 1px solid var(--blue); border-radius: 999px;
+    padding: 13px 24px;
     transition: background 120ms ease-out, transform 120ms ease-out;
   }
   .holdings-actions button:hover { background: #1d4ed8; border-color: #1d4ed8; }
@@ -475,8 +486,12 @@
     display: block; margin: 16px 0 6px;
     font-size: 0.8125rem; font-weight: 500; color: var(--dim);
   }
+  /* The field grows with what is put in it and stops at a comfortable height. The
+     browser's own corner grip was the one control on the page that could not be
+     made to match anything else, and a list of twenty holdings should not live in
+     a scrolling 116px box. */
   #holdingsIn {
-    width: 100%; min-height: 116px; resize: vertical;
+    width: 100%; min-height: 116px; max-height: 320px; resize: none; overflow-y: auto;
     background: #fff; border: 1px solid #d8d8d2; border-radius: 11px;
     padding: 12px 14px; font-size: 0.9375rem; line-height: 1.65;
     /* Tabular figures so the amounts in a pasted list line up, which is the one
@@ -567,13 +582,11 @@
           <h3>Alerts</h3>
           <p class="who">Fires only when a stock’s number changes. Nothing else does.</p>
         </div>
-        <!-- owed:alerts-state:start --><span class="state ok" id="alertsState">No new changes</span><!-- owed:alerts-state:end -->
+        <!-- owed:alerts-state:start --><span class="state ok" id="alertsState">Quiet for 14h</span><!-- owed:alerts-state:end -->
       </div>
-      <div id="alertsBody"><!-- owed:alerts:start --><div class="alert-row now"><span class="kind">newest</span><span><b>INVHx</b> has been wrong for 15h: most apps show 1x and the blockchain uses 1.0078x.</span></div><p class="alert-log">Earlier changes</p><div class="alert-row log"><span class="when" title="2026-09-24 01:49 UTC">14h ago</span><span class="kind">changed</span><span>INVHx: most apps show 1x and the blockchain uses 1.0078x.</span></div><div class="alert-row log"><span class="when" title="2026-09-24 01:49 UTC">14h ago</span><span class="kind">changed</span><span>SREx: most apps show 1x and the blockchain uses 1.0058x.</span></div><!-- owed:alerts:end --></div>
+      <div id="alertsBody"><!-- owed:alerts:start --><div class="alert-row now"><span class="kind">wrong now</span><span><b>INVHx</b> has been wrong for 15h: most apps show 1x and the blockchain uses 1.0078x.</span></div><p class="alert-log">Earlier changes</p><div class="alert-row log"><span class="when" title="2026-09-24 01:49 UTC">14h ago</span><span class="kind">changed</span><span>INVHx: most apps show 1x and the blockchain uses 1.0078x.</span></div><div class="alert-row log"><span class="when" title="2026-09-24 01:49 UTC">14h ago</span><span class="kind">changed</span><span>SREx: most apps show 1x and the blockchain uses 1.0058x.</span></div><!-- owed:alerts:end --></div>
       <p class="alerts-foot">
-        No wallet to connect. Read it as JSON at
-        <a href="feed/alerts.json"><span class="mono">feed/alerts.json</span></a>,
-        or watch it fire from the same refresh that publishes the risk feed.
+        Read it as JSON at <a href="feed/alerts.json"><span class="mono">feed/alerts.json</span></a>.
       </p>
     </div>
   </section>
@@ -1505,9 +1518,15 @@ function checkHoldings() {
 $("holdingsRun")?.addEventListener("click", checkHoldings);
 $("holdingsClear")?.addEventListener("click", () => {
   const i = $("holdingsIn");
-  if (i) i.value = "";
+  if (i) { i.value = ""; i.style.height = ""; }
   const o = $("holdingsOut");
   if (o) o.innerHTML = "";
+});
+// Grow the box to fit a pasted list, up to the max-height in the stylesheet.
+$("holdingsIn")?.addEventListener("input", (e) => {
+  const el = e.currentTarget;
+  el.style.height = "auto";
+  el.style.height = `${Math.min(el.scrollHeight, 320)}px`;
 });
 // Enter inside the box submits rather than starting a new line, so the control
 // behaves like the search field above it; Shift+Enter still inserts a line.

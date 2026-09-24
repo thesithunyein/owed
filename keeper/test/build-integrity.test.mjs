@@ -888,7 +888,26 @@ test("the alert strip is written for a reader, and its chip agrees with it", () 
   const fresh = (doc.summary?.becameOutOfDate ?? 0) + (doc.summary?.activationImminent ?? 0);
   if (fresh) assert.match(chip, new RegExp(`${fresh} new`), `the chip counts ${fresh} new events`);
   else if (doc.nextActivation) assert.match(chip, /Split scheduled/);
-  else assert.match(chip, /No new changes/);
+  else {
+    // The chip and the newest row of the log underneath it are one claim, so they
+    // are checked against each other. "No new changes" one line above "12h ago
+    // changed" is both statements true and the pair of them reading as a bug: the
+    // chip now states the quiet period, from the same clock the row is stamped
+    // with.
+    const newest = doc.history?.[0]?.at;
+    if (!newest) {
+      assert.match(chip, /No changes recorded/);
+    } else {
+      assert.match(chip, /Quiet for /, "the quiet chip states the quiet period");
+      const row = (src.match(/alert-row log"><span class="when"[^>]*>([^<]+)</) ?? [, ""])[1].trim();
+      assert.ok(row, "the newest log row carries a timestamp");
+      const age = row.replace(/ ago$/, "");
+      assert.ok(
+        age && chip.includes(age),
+        `chip and log agree on the last change: ${chip.trim()} vs ${row}`,
+      );
+    }
+  }
 });
 
 /**

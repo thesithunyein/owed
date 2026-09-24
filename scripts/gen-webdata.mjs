@@ -436,7 +436,7 @@ if (!feed) {
         ? `${Math.max(1, Math.round(m.daysAgo * 24))}h`
         : `${Math.round(m.daysAgo)} days`;
     strip.push(
-      `<div class="alert-row now"><span class="kind">newest</span><span>` +
+      `<div class="alert-row now"><span class="kind">wrong now</span><span>` +
         `<b>${genEscape(m.symbol)}</b> has been wrong for ${span}: most apps show ` +
         `${fmtX(m.stored)}x and the blockchain uses ${fmtX(m.effective)}x.</span></div>`,
     );
@@ -446,16 +446,19 @@ if (!feed) {
   // multiplier and an ISO timestamp, laid out exactly like the live rows above
   // it - which made a quiet lane look busy and made the card read as a log dump.
   // Written here from the same fields the rest of the page uses.
-  const relTime = (iso) => {
+  // How long ago an entry landed, as a duration without the preposition: "12h",
+  // "3 days". The chip uses the same string, so the header and the row under it
+  // cannot disagree about when the last change was.
+  const elapsed = (iso) => {
     const t = Date.parse(iso) / 1000;
-    if (!Number.isFinite(t) || !alertsDoc?.clock) {
-      return String(iso).replace("T", " ").slice(0, 16);
-    }
+    if (!Number.isFinite(t) || !alertsDoc?.clock) return null;
     const mins = Math.max(1, Math.round((alertsDoc.clock - t) / 60));
-    if (mins < 60) return `${mins}m ago`;
+    if (mins < 60) return `${mins}m`;
     const hours = Math.round(mins / 60);
-    return hours < 36 ? `${hours}h ago` : `${Math.round(hours / 24)} days ago`;
+    return hours < 36 ? `${hours}h` : `${Math.round(hours / 24)} days`;
   };
+  const relTime = (iso) =>
+    elapsed(iso) ? `${elapsed(iso)} ago` : String(iso).replace("T", " ").slice(0, 16);
   const historyLine = (h) =>
     h.stored != null && h.effective != null
       ? `${h.symbol}: most apps show ${fmtX(h.stored)}x and the blockchain uses ` +
@@ -487,6 +490,11 @@ if (!feed) {
   // which is the kind of contradiction a reader forgives once and never again.
   const fresh =
     (alertsDoc?.summary?.becameOutOfDate ?? 0) + (alertsDoc?.summary?.activationImminent ?? 0);
+  // "No new changes" was true and still wrong: it sat one line above two rows
+  // reading "12h ago changed", which together read as a contradiction. When the
+  // refresh turned up nothing the chip states the quiet period instead, taken from
+  // the newest entry in the very log underneath it.
+  const quiet = elapsed(alertsDoc?.history?.[0]?.at ?? "");
   diff = swapStatic(
     diff,
     "alerts-state",
@@ -494,7 +502,9 @@ if (!feed) {
       ? `<span class="state bad" id="alertsState">${fresh} new</span>`
       : alertsDoc?.nextActivation
         ? `<span class="state bad" id="alertsState">Split scheduled</span>`
-        : `<span class="state ok" id="alertsState">No new changes</span>`,
+        : quiet
+          ? `<span class="state ok" id="alertsState">Quiet for ${quiet}</span>`
+          : `<span class="state ok" id="alertsState">No changes recorded</span>`,
   );
 
   // The fold's total is the one count still written here rather than baked once:

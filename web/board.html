@@ -51,7 +51,7 @@
   .sub b { color:var(--text); }
   .bar { display:flex; gap:10px; align-items:center; padding:14px 22px; flex-wrap:wrap; }
   button { background:var(--panel); color:var(--text); border:1px solid var(--line);
-    padding:8px 14px; border-radius:8px; font-size:13px; cursor:pointer;
+    padding:9px 18px; border-radius:999px; font-size:13px; cursor:pointer;
     transition:border-color 120ms ease-out, background 120ms ease-out, transform 120ms ease-out; }
   @media (max-width:640px) { button { padding:10px 16px; } }
   button:hover { border-color:var(--blue); }
@@ -63,13 +63,21 @@
   /* The dialog's commit action is the only primary control on this page. */
   #rpc-save { background:var(--blue); border-color:var(--blue); color:#fff; font-weight:600; }
   #rpc-save:hover { background:#1d4ed8; border-color:#1d4ed8; }
+  /* A flex item does not shrink below its content, and a `select` is as wide as its
+     longest option - so "PreStocks only (private, pre-IPO)" pushed the page 10px
+     past the viewport at 320px. min-width:0 lets the control give way instead of
+     the layout. */
   select, input { background:var(--panel); color:var(--text); border:1px solid var(--line);
-    border-radius:8px; padding:8px 10px; font-size:12px; }
+    border-radius:999px; padding:9px 16px; font-size:12.5px; min-width:0; max-width:100%; }
   button, select, input { font-size:13px; }
   @media (max-width:640px) { button, select, input { font-size:16px; } }
   .status { font-size:12px; color:var(--dim); }
-  .kpis { display:flex; gap:10px; padding:0 22px 6px; flex-wrap:wrap; }
-  .kpi { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:10px 14px; min-width:150px; }
+  /* Even tiles, no orphan. Five across with the sixth alone on the next row was
+     the most unfinished-looking thing on the page, and a grid cannot do it: the
+     column count follows the width, so a narrow window gets three and a wide one
+     gets six, both of them complete. */
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit, minmax(158px, 1fr)); gap:10px; padding:0 22px 6px; }
+  .kpi { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 14px; min-width:0; }
   .kpi .n { font-size:20px; font-weight:700; font-variant-numeric:tabular-nums; }
   .kpi .l { font-size:12px; color:var(--dim); }
   .kpi.red .n { color:var(--red); } .kpi.amber .n { color:var(--amber); } .kpi.blue .n { color:var(--blue); }
@@ -85,6 +93,10 @@
      wrapped mid-address and every row became a different height. */
   td .addr { display:block; margin-top:1px; white-space:nowrap; }
   td.num,th.num { text-align:right; font-variant-numeric:tabular-nums; }
+  /* Shrink-wrap the numeric columns. Each holds one short value, and letting them
+     take an equal share of the width stranded the numbers in the middle of empty
+     columns, far from the labels they belong to. */
+  th.num, td.num { width:1px; white-space:nowrap; }
   .flag { padding:2px 8px; border-radius:999px; font-size:10.5px; font-weight:600; white-space:nowrap; }
   .flag.bad { background:rgba(255,93,93,.14); color:var(--red); }
   .flag.warn { background:rgba(255,180,84,.14); color:var(--amber); }
@@ -108,16 +120,14 @@
     <a href="https://github.com/thesithunyein/owed">Source code</a>
   </nav>
   <p class="sub">
-    All 933 tokenized stocks on Solana, public companies and pre-IPO alike, checked against
-    the blockchain itself. When a company splits its shares, the price of one share has to
-    change with it. The blockchain does that on its own. Many apps keep showing the old price,
-    so the value they report for your holding is too low, and this board works out which number
-    is really in force. It checks again in your browser as the page loads, so a row updates the
-    moment a change takes effect.
+    Every tokenized stock on Solana, public companies and pre-IPO alike, checked against the
+    blockchain itself. When a company splits its shares the price per share changes, and many
+    apps keep showing the old price. This board works out which number is really in force, and
+    rechecks it in your browser as the page loads.
   </p>
 </header>
 <div class="bar">
-  <button id="rescan">Live re-scan…</button>
+  <button id="rescan" title="Re-read every mint from the chain over your own RPC">Live re-check</button>
   <select id="filter">
     <option value="all">All stocks</option>
     <option value="trap">⚠ Showing the wrong number</option>
@@ -143,19 +153,19 @@
   Data: the on-chain accounts behind every official xStocks and PreStocks token, read live via
   <span class="mono">getMultipleAccounts</span> (snapshot: <span class="mono" id="scan-meta">…</span>),
   and rechecked against your own clock on every render - a change takes effect on screen with no server.
-  <b>Live re-scan</b> needs your own RPC URL: public endpoints reject browser requests, so you supply
+  <b>Live re-check</b> needs your own RPC URL: public endpoints reject browser requests, so you supply
   the URL, it is kept in <span class="mono">localStorage</span>, and it is sent nowhere else.
   Issuer controls: a permanent delegate (the issuer can move anyone's tokens), pausable (the
   issuer can freeze all transfers), transfer hook (a program runs on every transfer).
-  <b><span id="foot-controls">…</span></b>
+  <b><span id="foot-controls">…</span></b>.
   Their presence is not an attack, but anyone integrating these tokens needs to know about it.
   Nothing here is investment advice.
 </p>
 <dialog id="rpc-dlg">
   <form method="dialog">
-    <b>Live re-scan RPC</b>
+    <b>Live re-check: your own RPC</b>
     <p class="hint">Public Solana RPCs reject browser requests (CORS/origin allowlists), so a
-    live re-scan needs an RPC that allows your origin - e.g. your own Helius/QuickNode
+    live re-check needs an RPC that allows your origin - e.g. your own Helius/QuickNode
     endpoint. The URL stays in your browser (localStorage) and is used only for
     <span class="mono">getMultipleAccounts</span> calls to this board.</p>
     <input id="rpc-url" placeholder="https://your-rpc.example/your-key" size="40" />
@@ -212,6 +222,29 @@ const escapeHtml = (s) =>
   String(s).replace(/[&<>"']/g, (ch) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
 
+/**
+ * Unix seconds as prose: "3 months ago", "in 12 days".
+ *
+ * A UTC timestamp in a table cell is machine output - the same string in every
+ * locale, and the reader still has to subtract. The exact instant is not lost,
+ * it goes in the cell's tooltip.
+ */
+function relTime(sec) {
+  const delta = sec - nowSec();
+  const a = Math.abs(delta);
+  const [unit, size] = a < 90 ? ["second", 1]
+    : a < 5400 ? ["minute", 60]
+    : a < 129600 ? ["hour", 3600]
+    : a < 3888000 ? ["day", 86400]
+    : a < 46656000 ? ["month", 2592000]
+    : ["year", 31536000];
+  const n = Math.max(1, Math.round(a / size));
+  const phrase = `${n} ${unit}${n === 1 ? "" : "s"}`;
+  return delta < 0 ? `${phrase} ago` : `in ${phrase}`;
+}
+const utcTitle = (sec) =>
+  new Date(sec * 1000).toISOString().slice(0, 16).replace("T", " ") + " UTC";
+
 // The per-row Pyth marker. Three states, stated distinctly: a measured gap, a
 // reference with no price fetched yet, and no reference at all (no marker).
 function pythFlag(mint) {
@@ -252,13 +285,25 @@ function kpis(rows) {
   const preCount = rows.filter(r => r.issuer === "prestocks").length;
   const xCount = rows.length - preCount;
   const preTraps = rows.filter(r => r.issuer === "prestocks" && r.cls.readerTrap).length;
+  // The cross-issuer tile only says something when the rows on screen span both
+  // issuers. Filtered to PreStocks it repeated the first tile word for word
+  // ("2 of 8 PreStocks" beside "2 Showing the wrong number"), and filtered to
+  // xStocks it read "of 0 PreStocks", which is not a fact about anything.
+  const spansIssuers = preCount > 0 && xCount > 0;
+  // Under a filter this tile counts the rows on screen, so it says so: "0 xStocks
+  // + 8 PreStocks" is a true statement that reads like a mistake.
+  const wholeBoard = rows.length === ROWS.length;
   $("kpis").innerHTML = `
     <div class="kpi red"><div class="n">${traps}</div><div class="l">Showing the wrong number</div></div>
     <div class="kpi amber"><div class="n">${pending}</div><div class="l">Change coming up</div></div>
     <div class="kpi blue"><div class="n">${controls}</div><div class="l">The issuer can freeze or pause</div></div>
-    <div class="kpi${preTraps ? " red" : ""}"><div class="n">${preTraps}</div><div class="l">of ${preCount} PreStocks have the same problem</div></div>
+    ${spansIssuers ? `<div class="kpi${preTraps ? " red" : ""}"><div class="n">${preTraps}</div><div class="l">of ${preCount} PreStocks have the same problem</div></div>` : ""}
     <div class="kpi${paused ? " red" : ""}"><div class="n">${paused}</div><div class="l">Paused by the issuer</div></div>
-    <div class="kpi"><div class="n">${rows.length}</div><div class="l">Stocks checked (${xCount} xStocks + ${preCount} PreStocks)</div></div>`;
+    <div class="kpi"><div class="n">${rows.length}</div><div class="l">${
+      wholeBoard
+        ? `Stocks checked (${xCount} xStocks + ${preCount} PreStocks)`
+        : "Stocks shown by this filter"
+    }</div></div>`;
 }
 
 /**
@@ -269,7 +314,17 @@ function kpis(rows) {
  * kept where it is the whole story - a gap of 0.78% is a real finding - and
  * dropped where it is noise on the way to the number.
  */
-const pctLabel = (p) => `${p >= 100 ? p.toFixed(0) : p >= 1 ? p.toFixed(1) : p.toFixed(2)}%`;
+const pctLabel = (p) => {
+  const a = Math.abs(p);
+  // A stock the chain and the app agree on is not "0.00% wrong": it is nothing to
+  // report, and a column of zeros trains the eye to skip the column that matters.
+  if (a === 0) return "—";
+  // Below a hundredth of a percent the rounded label would read as one of those
+  // dashes, so say what it actually is instead of rounding a finding away.
+  if (a < 0.01) return "<0.01%";
+  const body = a >= 100 ? a.toFixed(0) : a >= 1 ? a.toFixed(1) : a.toFixed(2);
+  return `${p < 0 ? "−" : ""}${body}%`;
+};
 
 /**
  * A multiplier as a table cell. The stored ratio carries full precision and the
@@ -283,8 +338,12 @@ const xLabel = (v) => {
   return String(Number(n.toPrecision(5)));
 };
 
-function render() {
-  if (!ROWS.length) return;
+/**
+ * The rows the current filter and search actually show. One definition, used by
+ * both the tiles and the table, so the two cannot disagree about what is on
+ * screen.
+ */
+function visibleRows() {
   const f = $("filter").value;
   const q = $("search").value.trim().toUpperCase();
   let rows = ROWS;
@@ -294,22 +353,27 @@ function render() {
   if (f === "clean") rows = rows.filter(r => !r.cls.readerTrap && !r.cls.pending);
   if (f === "prestocks") rows = rows.filter(r => r.issuer === "prestocks");
   if (q) rows = rows.filter(r => (r.symbol || "").toUpperCase().includes(q));
-  // Worst first, by magnitude - not just trapped-first. Sorting only on the
-  // boolean left 383 traps in roster order, so the worst offenders sat behind
-  // 300 filler rows and the second issuer was invisible on the default view
-  // despite being the point of the board.
-  rows = [...rows].sort((a, b) =>
+  return rows;
+}
+
+function render() {
+  if (!ROWS.length) return;
+  const rows = [...visibleRows()].sort((a, b) =>
     (b.cls.readerTrap - a.cls.readerTrap) ||
     (b.cls.pending - a.cls.pending) ||
     Math.abs(b.cls.deltaPct ?? 0) - Math.abs(a.cls.deltaPct ?? 0));
-
+  // The tiles describe the rows on screen. They used to describe the whole board
+  // while the table was filtered, so choosing "PreStocks only" left five tiles
+  // reading 385 / 0 / 933 / 2 / 0 above a table of eight rows: the top of the page
+  // contradicting the bottom of it.
+  kpis(rows);
   $("rows").innerHTML = rows.slice(0, 300).map(r => {
     const { cls } = r;
     const state = cls.readerTrap ? '<span class="flag bad">⚠ Wrong number</span>'
       : cls.pending ? '<span class="flag warn">Change soon</span>'
       : '<span class="flag ok">Up to date</span>';
     const act = cls.effectiveTimestamp
-      ? new Date(cls.effectiveTimestamp * 1000).toISOString().slice(0, 16).replace("T", " ") + " UTC"
+      ? `<span title="${utcTitle(cls.effectiveTimestamp)}">${relTime(cls.effectiveTimestamp)}</span>`
       : "-";
     const past = cls.effectiveTimestamp && cls.effectiveTimestamp <= nowSec();
     const ctrls = [
@@ -415,14 +479,13 @@ function init() {
   if (wanted && [...$("filter").options].some((o) => o.value === wanted)) {
     $("filter").value = wanted;
   }
-  kpis(ROWS);
   render();
   const pending = ROWS.filter(r => r.cls.pending);
   // One sentence per fact, and none of the pipeline's own vocabulary: "snapshot",
   // "re-classified live at render" and "same-asset feeds" describe how the board
   // is built, which is the maintainer's business, not the reader's.
   const next = pending.length
-    ? ` The next scheduled change lands in ${Math.max(0, Math.round((Math.min(...pending.map(r => r.cls.effectiveTimestamp)) - nowSec()) / 3600))}h.`
+    ? ` The next scheduled change lands ${relTime(Math.min(...pending.map(r => r.cls.effectiveTimestamp)))}.`
     : "";
   // The Pyth lane's state is stated, not implied. When it is not configured the
   // board says which condition it is in, because an absent column would read as
@@ -432,9 +495,18 @@ function init() {
   const pythNote = !PYTH
     ? ""
     : PYTH.status === "ok"
-      ? ` Pyth prices ${refs.length} of these assets; ${flagged.length} look wrong.`
+      ? ` Pyth prices ${refs.length} of these assets; ${
+          flagged.length ? `${flagged.length} look wrong` : "none disagree"
+        }.`
       : ` The Pyth lane is ${PYTH.status}: ${refs.length} assets have a feed, none has a price.`;
-  $("status").textContent = `Snapshot ${meta}. Checked again in your browser just now.${next}${pythNote}`;
+  // A filtered table has to say it is filtered, or the reader reads eight rows as
+  // the whole board.
+  const shown = visibleRows().length;
+  const scope = shown === ROWS.length ? "" : ` Showing ${shown} of ${ROWS.length}.`;
+  // The status line is one sentence in the reader's own terms; the exact UTC instant
+  // stays in the foot, where the provenance note already lives.
+  const ago = relTime(Math.floor(Date.parse(SCAN.scannedAt) / 1000));
+  $("status").textContent = `Snapshot taken ${ago}. Checked again in your browser just now.${scope}${next}${pythNote}`;
 }
 
 $("rescan").onclick = () => {
@@ -450,7 +522,7 @@ $("rpc-save").onclick = (e) => {
 };
 $("filter").onchange = render;
 $("search").oninput = render;
-setInterval(() => { if (ROWS.length) { kpis(ROWS); render(); } }, 60_000); // flip traps as activations pass
+setInterval(() => { if (ROWS.length) render(); }, 60_000); // flip traps as activations pass
 
 init();
 </script>
