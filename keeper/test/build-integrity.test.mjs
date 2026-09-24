@@ -428,58 +428,33 @@ test("the front page states the finding in its title, and agrees with its own he
   assert.equal(marker[1], heroCount[1], "the title and the hero quote the same count");
 });
 
-test("the two-endpoint section argues from the feed's own worst row", () => {
-  // This section is the page's shortest path to being believed: two RPC calls whose
-  // outputs disagree unless you know the rule. Its numbers are baked, so a skipped
-  // regeneration would leave it naming a mint the feed no longer publishes as worst.
-  const src = readFileSync(join(WEB, "differential.html"), "utf8");
-  const feed = JSON.parse(readFileSync(join(ROOT, "feed", "owed-risk.json"), "utf8"));
+test("the proof lives in the README, not on the product page", () => {
+  // The front page is the product: check a token, check a whole book, see what is
+  // mispriced. The two-RPC demonstration, the corroboration and the settlement
+  // evidence used to sit on it, which made a working app read as an argument.
+  // They belong in the README, where a reader who wants to falsify a number goes
+  // looking - and this test is what stops them creeping back onto the page a
+  // visitor is actually trying to use.
+  const page = readFileSync(join(WEB, "differential.html"), "utf8");
+  for (const gone of [
+    'id="mechanism"',
+    'id="corroboration"',
+    'id="evidence"',
+    "verify-rpc-mechanism.mjs",
+  ]) {
+    assert.ok(!page.includes(gone), `the product page no longer carries ${gone}`);
+  }
 
-  const block = (name) => {
-    const m = src.match(
-      new RegExp(`<!-- owed:${name}:start -->([\\s\\S]*?)<!-- owed:${name}:end -->`),
-    );
-    assert.ok(m, `differential.html has the owed:${name} block`);
-    return m[1];
-  };
-
-  const state = block("mechanism-state");
-  const text = block("mechanism-text");
-  assert.ok(/\d/.test(state), `the disagreement factor is baked, got "${state}"`);
-
-  const all = [...(feed.tokens ?? []), ...(feed.preStocks ?? [])];
-  const divergent = all.filter((t) => t.trap?.stale);
-  assert.ok(divergent.length > 0, "the feed publishes divergent mints");
-  const maxGap = Math.max(...divergent.map((t) => t.trap.gapPct ?? 0));
-  // Ties are real (two mints sit at 900%), so any member of the worst set satisfies
-  // this rather than one arbitrary winner that a stable sort happens to pick.
-  const worstSet = divergent.filter((t) => (t.trap.gapPct ?? -1) === maxGap).map((t) => t.symbol);
-  assert.ok(
-    worstSet.some((s) => text.includes(s)),
-    `the section names one of the worst mints (${worstSet.join(", ")})`,
-  );
-
-  // A demonstration nobody can rerun is an anecdote, so the command has to be on
-  // the page next to the claim it supports.
-  assert.ok(
-    src.includes("verify-rpc-mechanism.mjs"),
-    "the page gives the command that reproduces the demonstration",
-  );
-
-  // And the copy-pasteable commands must address the mint the sentence names. This
-  // caught the section shipping two curl calls against a different mint, which did
-  // not diverge at all - so a reader who copied them would have disproved the
-  // paragraph directly above. A command that contradicts its own claim is worse
-  // than no command.
-  const section = src.slice(src.indexOf('id="mechanism"'), src.indexOf('id="corroboration"'));
-  const addressed = [...section.matchAll(/"params":\["([1-9A-HJ-NP-Za-km-z]{32,44})"/g)].map(
-    (m) => m[1],
-  );
-  assert.equal(addressed.length, 2, "both requests in the section address a mint");
-  const named = worstSet.find((s) => text.includes(s));
-  const namedMint = divergent.find((t) => t.symbol === named)?.mint;
-  for (const mint of addressed) {
-    assert.equal(mint, namedMint, `the command addresses the mint the sentence names (${named})`);
+  const readme = readFileSync(join(ROOT, "README.md"), "utf8");
+  for (const moved of [
+    "verify-rpc-mechanism.mjs",
+    "getAccountInfo",
+    "getTokenSupply",
+    "current_multiplier",
+    "solana-foundation/explorer",
+    "Kamino",
+  ]) {
+    assert.ok(readme.includes(moved), `README carries the moved proof: ${moved}`);
   }
 });
 

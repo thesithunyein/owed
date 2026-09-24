@@ -3,7 +3,7 @@
 Paste-ready. Written for a judge who has six other entries to read, so the
 short answer comes first and the proof is one click away.
 
-Everything below was true as of the committed snapshot (2026-09-23 15:59 UTC).
+Everything below was true as of the committed snapshot (2026-09-24 10:36 UTC).
 The live page re-classifies against the reader's own clock, so if a number has
 moved, the page is right and this file is one refresh behind.
 
@@ -20,7 +20,7 @@ the timestamp the switch takes effect, with **no field saying which of the two i
 in force**. `getTokenSupply` returns a `uiAmount` the runtime has already scaled.
 On `PPLTx` those two responses differ by **10x**, silently.
 
-**383 of the 933 official tokenized-equity mints are in that state right now.**
+**385 of the 933 official tokenized-equity mints are in that state right now.**
 Owed measures it from chain state for every official mint, publishes it as an
 auditable feed with an alert when it changes, ships the one-line reader that
 fixes it, and settles corporate actions correctly on-chain when an issuer would
@@ -66,7 +66,7 @@ a function call.
 1. **The measurement.** A scanner that reads live mainnet state for every
    official mint and classifies it. Not a sample: all 925 xStocks mints, plus all
    8 PreStocks mints through the same classifier.
-2. **The published feed.** `feed/owed-risk.json` (v1.1.0) plus a JSON Schema:
+2. **The published feed.** `feed/owed-risk.json` (v1.2.0) plus a JSON Schema:
    one row shape for both issuers, every published value recomputable from the
    raw state published beside it. This is the integration surface, not a
    dashboard.
@@ -105,11 +105,12 @@ browser on load:
 | PPLTx | xStocks | 1 | 10 | **10x** | 130 days |
 | NFLXx | xStocks | 1 | 10 | **10x** | 311 days |
 | PALLx | xStocks | 1 | 5 | **5x** | 130 days |
-| SPACEX | PreStocks | 1 | 5 | **5x** | 105 days |
-| CRWDx | xStocks | 1 | 4 | **4x** | 83 days |
-| OPENAI | PreStocks | 1 | 1.4861347 | **48.61%** | 68 days |
+| SPACEX | PreStocks | 1 | 5 | **5x** | 106 days |
+| CRWDx | xStocks | 1 | 4 | **4x** | 84 days |
+| OPENAI | PreStocks | 1 | 1.4861347 | **48.61%** | 69 days |
 
-383 mints are stale right now; 31 are off by 1% or more and 6 by 10% or more.
+385 of the 933 mints across both issuers are stale right now; 30 are off by 1% or
+more, 6 by 10% or more, and 5 by 100% or more.
 
 **Two issuers, not one vendor's bug.** All 8 PreStocks mints carry the same
 Token-2022 extension set as the xStocks set - same issuance template, different
@@ -197,31 +198,56 @@ effective value. We measure the divergence.
 
 ## PreStocks bounty variant
 
-**Two of your eight mints are live examples of a trap that hits every
-integrator.** Owed scans all 8 PreStocks mints with the same classifier we run
-across all 925 xStocks mints, and reports exactly what we find, including what
-is clean.
+**Every PreStocks token is a rebasing asset, and two of yours are rebasing
+silently: SPACEX and OPENAI.** Read the multiplier stored in the mint account -
+the obvious thing for an integrator to do - and you report **5x too little
+SPACEX** and **48.61% too little OPENAI**, with no error and no failed
+transaction. The chain applies a different multiplier than the field says, and
+nothing in the account marks which one is in force.
+
+Owed is the correctness layer for that. It scans all 8 PreStocks mints with the
+same classifier it runs across all 925 xStocks mints and publishes what it finds,
+including what is clean:
 
 - **SPACEX** (`PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh`): stored multiplier
-  `1`, chain applies `5`. **5x understatement, stale 105 days.**
+  `1`, chain applies `5`. **5x understatement, stale ~106 days.**
 - **OPENAI** (`PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF`): stored `1`, chain
-  applies `1.4861347`. **48.61%, stale 68 days.**
-- The other six (ANDURIL, ANTHROPIC, FIGUREAI, KALSHI, NEURALINK, POLYMARKET)
-  are currently clean, and the page says so - a monitor that only screams is not
-  a monitor.
+  applies `1.4861347`. **48.61% understatement, stale ~69 days.**
+- **ANDURIL, ANTHROPIC, FIGUREAI, KALSHI, NEURALINK, POLYMARKET**: clean today,
+  and the page says so by name. A monitor that only ever screams is not a
+  monitor.
+
+**What that is worth to PreStocks specifically.** These tokens are only as usable
+as the integrations that touch them. A wallet, a lending market, a portfolio
+tracker or a tax tool that reads the stored field values your token wrong by 5x -
+and the error is silent, so nothing fails loudly enough to get fixed. Owed makes
+the correct value one function call and publishes the state of every PreStocks
+mint as a feed, so an integrator never has to derive the rule from the spec.
+
+**Verify it in one click, no wallet and no key:**
+
+- `owed.sithunyein.com/board?issuer=prestocks` - all 8 mints, stored vs applied
+  multiplier, re-classified against the reader's own clock.
+- `owed.sithunyein.com/feed/owed-risk.json` - the `preStocks` lane, one row shape
+  with the xStocks lane, every value recomputable from the raw state beside it.
+- `owed.sithunyein.com` - type `SPACEX` to see the same finding priced against a
+  position, before any connection prompt.
 
 The rest of the set matters for a different reason: **all 8 PreStocks mints carry
 the same Token-2022 extension set as the xStocks roster** (scaled UI amount,
 permanent delegate, pausable, transfer hook). That is what turns this from a
 single issuer's bug into a finding about how tokenized pre-IPO equity is issued,
-and it is why the PreStocks lane is published in the feed as its own lane rather
-than folded into one number.
+and it is why the PreStocks lane is published as its own lane rather than folded
+into one number.
 
-What you get: the exact mints, the error factor, the one-line fix
-(`getEffectiveMultiplier(mint)`), a feed that keeps the state current every six
-hours, and a guard test that fails the build if the lane is ever dropped or a
-mint appears in both rosters. Tessera is deliberately not integrated, so this
-submission stays inside the bounty's token scope.
+**Continuing after the hackathon.** The feed refreshes every six hours and the
+alert lane fires only on a real change, so this is a running monitor rather than
+a one-off scan. The lane is guarded: a test fails the build if it is ever dropped
+or if a mint appears in both rosters. Tessera is deliberately not integrated, so
+the submission stays inside the bounty's token scope.
+
+The one-line fix is `getEffectiveMultiplier(mint)` from `sdk/owed.mjs` - zero
+dependencies, no API key.
 
 ---
 

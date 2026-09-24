@@ -31,6 +31,14 @@
       "type": "string",
       "description": "Expression consumers apply to scaled.state, evaluated at their own clock."
     },
+    "summaryScope": {
+      "type": "string",
+      "description": "The issuer lane `summary` and `tokens` describe, which is the xStocks lane. PreStocks rows are in `preStocks`, and all-issuer totals are the sum over `issuers[]`. Present from 1.2.0; absent in 1.0.0/1.1.0."
+    },
+    "summaryScopeNote": {
+      "type": "string",
+      "description": "Human-readable restatement of summaryScope, so a consumer that reads only `summary` cannot mistake one lane for the whole set."
+    },
     "stalenessWarning": {
       "type": "string"
     },

@@ -102,6 +102,7 @@
     <option value="pending">Scheduled activations</option>
     <option value="paused">Paused tokens</option>
     <option value="clean">Clean</option>
+    <option value="prestocks">PreStocks only (pre-IPO)</option>
   </select>
   <input id="search" placeholder="Search symbol…" size="14" />
   <span class="status" id="status">loading…</span>
@@ -246,6 +247,7 @@ function render() {
   if (f === "pending") rows = rows.filter(r => r.cls.pending);
   if (f === "paused") rows = rows.filter(r => r.cls.security.paused);
   if (f === "clean") rows = rows.filter(r => !r.cls.readerTrap && !r.cls.pending);
+  if (f === "prestocks") rows = rows.filter(r => r.issuer === "prestocks");
   if (q) rows = rows.filter(r => (r.symbol || "").toUpperCase().includes(q));
   // Worst first, by magnitude - not just trapped-first. Sorting only on the
   // boolean left 383 traps in roster order, so the worst offenders sat behind
@@ -361,6 +363,13 @@ function init() {
     `(xStocks${pre.length ? `, and all ${pre.length} PreStocks` : ""})`;
   const meta = new Date(SCAN.scannedAt).toISOString().slice(0, 16).replace("T", " ") + " UTC";
   $("scan-meta").textContent = meta;
+  // Deep link, so the pre-IPO lane is one click away rather than one dropdown
+  // away: board.html?issuer=prestocks. Unknown values are ignored, not applied
+  // blindly, so a hand-edited URL cannot empty the table.
+  const wanted = new URLSearchParams(location.search).get("issuer");
+  if (wanted && [...$("filter").options].some((o) => o.value === wanted)) {
+    $("filter").value = wanted;
+  }
   kpis(ROWS);
   render();
   const pending = ROWS.filter(r => r.cls.pending);

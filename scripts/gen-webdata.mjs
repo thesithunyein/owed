@@ -428,58 +428,14 @@ if (!feed) {
   }
   diff = swapStatic(diff, "alerts", strip.join(""));
 
-  // The two-endpoint demonstration names the worst mint by its measured factor, so
-  // the claim on the page is the claim in the feed. A hand-written "10x" would be
-  // right until the day PPLTx is superseded, and then it would be a page arguing
-  // from a number nobody publishes.
-  const worst = genRows[0];
-  if (worst) {
-    const f = worst.c.stored === 0 ? null : worst.c.eff / worst.c.stored;
-    diff = swapStatic(
-      diff,
-      "mechanism-state",
-      f === null ? "scaled" : `${Number(f.toPrecision(4))}× apart`,
-    );
-    // The two commands in the section have to address the mint the sentence names,
-    // or a reader who copies them gets a different answer than the page showed - and
-    // a command that disproves the paragraph above it is worse than no command. Ties
-    // are broken by the same ordering that produced `worst`, so the page and its
-    // executable form can never disagree. Global, because the mint appears in both
-    // requests.
-    diff = diff.replace(
-      /<!-- owed:mechanism-mint:start -->[\s\S]*?<!-- owed:mechanism-mint:end -->/g,
-      worst.t.mint,
-    );
-    diff = swapStatic(
-      diff,
-      "mechanism-text",
-      `Measured on <b>${genEscape(worst.t.symbol)}</b>: the account stores ` +
-        `<code>multiplier: ${Number(Number(worst.c.stored).toPrecision(6))}</code> beside ` +
-        `<code>newMultiplier: ${Number(Number(worst.c.eff).toPrecision(6))}</code>, so the two ` +
-        `endpoints disagree by <b>${f === null ? "an unknown factor" : `${Number(f.toPrecision(6))}×`}</b> ` +
-        `at this snapshot, and both responses are returned without a warning.`,
-    );
-  }
   diff = diff
     .replace(/(<span id="foldTotal">)[^<]*(<\/span>)/, `$1${totalStr}$2`)
     .replace(/(<span id="coverage">)[^<]*(<\/span>)/, `$1${totalStr}$2`);
 }
 
-if (conformance) {
-  diff = inject(
-    diff,
-    "CONFORMANCE",
-    {
-      checked: conformance.checked,
-      pass: conformance.pass,
-      tolerance: conformance.tolerance,
-      mode: conformance.mode,
-      errored: conformance.errored ?? 0,
-      generatedAt: conformance.generatedAt,
-    },
-    "differential.html"
-  );
-}
+// The conformance run is evidence, not product surface: it lives in the README
+// ("the reader is verified against the runtime") rather than in an injected
+// payload on a page a visitor is trying to use.
 writeFileSync(diffPath, diff);
 
 const js =

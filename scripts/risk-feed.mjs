@@ -45,7 +45,11 @@ const SCHEMA_OUT = join(ROOT, "feed", "schema.json");
 
 // 1.1.0 adds the PreStocks lane additively: `tokens`, `summary` and the feed id
 // keep their exact meaning, so a consumer written against 1.0.0 is unaffected.
-export const FEED_VERSION = "1.1.0";
+// 1.2.0 adds `summaryScope`/`summaryScopeNote`. Also additive: they only make
+// explicit what the 1.1.0 comment below always said - that `summary` counts the
+// xStocks lane alone - so a reader who only looks at `summary` cannot mistake
+// 925 for the whole 933-mint set.
+export const FEED_VERSION = "1.2.0";
 
 /** The rule consumers must apply when they recompute from `scaled.state`. */
 export const EFFECTIVE_RULE =
@@ -175,7 +179,14 @@ const feed = {
     "effectiveMultiplier is computed at `clock`. Re-evaluate the rule against " +
     "your own clock before use; do not cache beyond one activation boundary.",
   // `summary` describes `tokens` only, exactly as in 1.0.0. The per-issuer
-  // counts, including the PreStocks lane, are in `issuers`.
+  // counts, including the PreStocks lane, are in `issuers`. `summaryScope` says
+  // so in the payload rather than only in this comment, because the front page
+  // headline counts both lanes (933 / 385) while `summary` counts one (925 / 383),
+  // and a consumer reading only `summary` had no way to tell.
+  summaryScope: "xstocks",
+  summaryScopeNote:
+    "`summary` and `tokens` cover the xStocks lane only. The PreStocks lane is " +
+    "`preStocks`; all-issuer totals are the sum over `issuers[]`.",
   summary: summarize(scan.results, now),
   issuers,
   ...(pyth ? { pyth } : {}),
@@ -292,6 +303,19 @@ const schema = {
       type: "string",
       description:
         "Expression consumers apply to scaled.state, evaluated at their own clock.",
+    },
+    summaryScope: {
+      type: "string",
+      description:
+        "The issuer lane `summary` and `tokens` describe, which is the xStocks " +
+        "lane. PreStocks rows are in `preStocks`, and all-issuer totals are the sum " +
+        "over `issuers[]`. Present from 1.2.0; absent in 1.0.0/1.1.0.",
+    },
+    summaryScopeNote: {
+      type: "string",
+      description:
+        "Human-readable restatement of summaryScope, so a consumer that reads only " +
+        "`summary` cannot mistake one lane for the whole set.",
     },
     stalenessWarning: { type: "string" },
     pyth: {

@@ -160,6 +160,40 @@ Say this plainly. It is worth more than another feature.
 - [ ] The devnet table is shown with its signatures
 - [ ] The not-audited, not-on-mainnet, no-adopters paragraph is spoken, not skipped
 
+## PreStocks bounty cut (record this second, ~35s)
+
+The same footage serves both tracks, but the PreStocks bounty asks a narrower
+question - what does this do for PreStocks' own tokens - so answer that directly
+instead of making the judge find it inside a 933-row product.
+
+1. Go to `board.html?issuer=prestocks` (or pick **PreStocks only (pre-IPO)** in
+   the filter). All eight mints on one screen.
+
+   > "There are eight PreStocks mints. Two of them carry a stored multiplier the
+   > chain does not apply: SPACEX is off by five times, OPENAI by 1.486. The
+   > other six are clean and I am naming them on purpose - a monitor that only
+   > ever screams is not a monitor."
+
+2. Type `SPACEX` into the front-page checker and put a position behind it.
+
+   > "Anything reading the stored field values a SpaceX position five times too
+   > low, silently. That is a wallet, a lending market, or a tax tool - not a
+   > hypothetical."
+
+3. Show the feed's `preStocks` lane, then `/integrate`.
+
+   > "All eight are in the feed, one row shape with the xStocks lane, and the
+   > fix is one function call - `getEffectiveMultiplier`. Six hours later it
+   > re-runs, and it only alerts when something actually changes."
+
+4. Say the scope line once, because the bounty makes it an eligibility rule.
+
+   > "Tessera is deliberately not integrated, so this stays inside the bounty's
+   > token scope."
+
+Keep the honesty paragraph (section 6): "six of the eight are fine" is worth
+more to this judge than another divergent row.
+
 ## If you only get one minute
 
 Section 1. Two RPC calls that disagree, on a live mint, reproducible in one
