@@ -275,7 +275,21 @@
   .alert-row .kind { color: var(--dim); font-size: 12px; white-space: nowrap; }
   .alert-row.now .kind { color: var(--amber); }
   .alert-none { color: var(--dim); font-size: 13.5px; margin: 0; }
-  .alerts-foot { color: var(--faint); font-size: 12px; margin: 12px 0 0; }
+  .alerts-foot { color: var(--faint); font-size: 12px; margin: 12px 0 0; }  /* The two-endpoint demonstration: the code block is the argument, so it has to
+     be readable and copyable rather than decorative. */
+  pre.cmd {
+    background: #12161f; color: #e8edf5; border-radius: 10px; padding: 14px 16px;
+    overflow-x: auto; margin: 12px 0;
+    font: 12.5px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  pre.cmd .c { color: #8b96a8; }
+  pre.cmd .k { color: #6aa7ff; }
+  pre.cmd .s { color: #7fd6a4; }
+  pre.cmd .w { color: #ffb454; }
+  .corrob { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; margin: 14px 0 0; }
+  .corrob > div { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; background: var(--panel2); }
+  .corrob h4 { margin: 0 0 4px; font-size: 13.5px; letter-spacing: -0.01em; }
+  .corrob p { margin: 0; color: var(--dim); font-size: 12.5px; line-height: 1.5; }
   /* The no-wallet holdings check. */
   textarea {
     width: 100%; background: var(--panel2); color: var(--text); border: 1px solid var(--line);
@@ -390,7 +404,90 @@
       </p>
     </div>
     <div class="examples" id="examples"><!-- owed:chips:start --><span>Worst right now:</span> <button type="button" class="chip" data-sym="PPLTx">PPLTx <span>900%</span></button><button type="button" class="chip" data-sym="NFLXx">NFLXx <span>900%</span></button><button type="button" class="chip" data-sym="PALLx">PALLx <span>400%</span></button><button type="button" class="chip" data-sym="SPACEX">SPACEX <span>400%</span></button><!-- owed:chips:end --></div>
-  </section>  <section id="holdings" aria-label="Check a list of holdings">
+  </section>  <section id="mechanism" aria-label="Two RPC calls on the same mint">
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h3>Two RPC calls on the same mint, and they disagree</h3>
+          <p class="who">No wallet, no key, no code to read. Two requests, one node, one mint.</p>
+        </div>
+        <span class="state bad" id="mechanismState"><!-- owed:mechanism-state:start -->10× apart<!-- owed:mechanism-state:end --></span>
+      </div>
+      <p class="lede">
+        <code>getAccountInfo</code> returns the extension as the chain stores it: the
+        <code>multiplier</code> field, the <code>newMultiplier</code> field, and the timestamp the
+        switch takes effect. <b>It never says which of the two is in force</b> - there is no field
+        that answers that. The answer is that timestamp compared against your clock, and only the
+        consumer can make that comparison.
+      </p>
+      <pre class="cmd"><span class="c"># 1. What the account stores. Note there is no "which one applies" field.</span>
+curl -s https://api.mainnet-beta.solana.com -X POST -H 'content-type: application/json' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"getAccountInfo",
+       "params":["Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme",{"encoding":"jsonParsed"}]}' \
+  | jq '.. | objects | select(.extension=="scaledUiAmountConfig") | .state'
+
+<span class="c"># 2. The same node, the same mint, already scaled by the runtime.</span>
+curl -s https://api.mainnet-beta.solana.com -X POST -H 'content-type: application/json' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"getTokenSupply",
+       "params":["Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme"]}' \
+  | jq '.result.value.uiAmount'</pre>
+      <p class="lede" id="mechanismFinding">
+        <span id="mechanismText"><!-- owed:mechanism-text:start -->Measured on <b>PPLTx</b>: the account stores <code>multiplier: 1</code> beside <code>newMultiplier: 10</code>, so the two endpoints disagree by <b>10×</b> at this snapshot, and both responses are returned without a warning.<!-- owed:mechanism-text:end --></span>
+      </p>
+      <p class="note">
+        Reproduce both in one command, for any ticker or mint:
+        <code>node scripts/verify-rpc-mechanism.mjs PPLTx</code>. It exits non-zero when a mint
+        does <em>not</em> diverge, because it exists to try to falsify this page rather than to
+        decorate it.
+      </p>
+    </div>
+  </section>
+
+  <section id="corroboration" aria-label="Independent confirmation">
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h3>Three independent sources, not our reading alone</h3>
+          <p class="who">The hazard is understood elsewhere. What nobody publishes is which mints are in it today.</p>
+        </div>
+      </div>
+      <div class="corrob">
+        <div>
+          <h4>The SPL specification</h4>
+          <p>
+            The Token-2022 interface crate's <span class="mono">current_multiplier</span> selects
+            between the two fields on the timestamp, and the official docs publish the same rule
+            with reference client code. Wallets, DEXes and aggregators are listed as P0.
+          </p>
+        </div>
+        <div>
+          <h4>Solana's own explorer</h4>
+          <p>
+            <span class="mono">solana-foundation/explorer</span> ships
+            <span class="mono">getCurrentTokenScaledUiAmountMultiplier</span>, which compares the
+            clock against the timestamp and picks the same field this page picks.
+          </p>
+        </div>
+        <div>
+          <h4>Kamino's lending oracle</h4>
+          <p>
+            <span class="mono">Kamino-Finance/scope</span> parses the extension from raw bytes with
+            the same offsets and treats a change as a first-class risk: it suspends the price for 24
+            hours before a scheduled switch, and documents that an activation timestamp may already
+            be in the past when it is published.
+          </p>
+        </div>
+      </div>
+      <p class="note">
+        So the problem is not awareness. It is coverage: a protocol that has built a suspension
+        window around this hazard still has to know, per mint, whether the field it is reading is
+        the one in force. This page answers that for every official mint, continuously, and that is
+        the part that was missing.
+      </p>
+    </div>
+  </section>
+
+  <section id="holdings" aria-label="Check a list of holdings">
     <div class="card">
       <div class="card-head">
         <div>

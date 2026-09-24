@@ -101,7 +101,7 @@ flowchart TB
 Devnet program: `42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV` (split and
 dividend settled end-to-end; signatures in "Devnet deployment" below).
 
-CI runs the full verification spine on every push: Rust tests, 127 keeper tests,
+CI runs the full verification spine on every push: Rust tests, 128 keeper tests,
 925/925 conformance against the runtime, deterministic rebuild, program-id
 agreement across four sources, ELF e_flags, an on-chain settlement with
 receipts, and re-checking every page/README claim against committed records.
@@ -192,6 +192,56 @@ agreeing with the runtime to nine decimal places.** The default `--n` sample is
 stratified (every mint with a real gap is included, then the rest filled from
 fresh mints), so a pass cannot be earned by only testing mints where the two
 readings trivially agree.
+
+### The shortest path to being believed: two RPC calls that disagree
+
+`scripts/verify-rpc-mechanism.mjs` makes two calls to the same node for the same
+mint and prints the factor by which they disagree. It needs no key, no wallet,
+and no trust in this repo:
+
+```
+$ node scripts/verify-rpc-mechanism.mjs PPLTx
+  multiplier                         1
+  newMultiplier                      10
+  newMultiplierEffectiveTimestamp    1778985000  (2026-05-17T02:30:00.000Z)
+  which one applies?                 not in the response
+  ...
+  raw units x multiplier field       79671.530000
+  uiAmount (runtime-scaled)          796715.300000
+  disagreement                       10.000000x
+```
+
+`getAccountInfo` returns the extension as the chain stores it - both fields and
+the timestamp - and **never says which of the two is in force**. There is no
+field that answers that; the answer is the timestamp compared against the clock,
+and only the consumer can make that comparison. `getTokenSupply` returns a
+`uiAmount` the runtime has already scaled. So the two responses disagree by the
+factor above, and neither response is marked as the wrong one.
+
+The exit status is part of the contract: `0` diverges, `1` no divergence, `2` no
+extension. A mint that does *not* diverge is reported as readily as one that
+does, because the script exists to try to falsify the claim.
+
+### The hazard is understood elsewhere; the coverage is what is missing
+
+Three independent sources implement the same rule, which is why this is a
+measurement problem rather than a matter of opinion:
+
+| Source | What it does |
+|---|---|
+| The SPL specification | The Token-2022 interface crate's `current_multiplier` selects between the two fields on the timestamp; the official docs publish the same rule with reference client code and mark scaled-amount support **P0** for wallets, DEXes and aggregators |
+| Solana's own explorer | `solana-foundation/explorer` ships `getCurrentTokenScaledUiAmountMultiplier`, which compares the clock against the timestamp and picks the same field we pick |
+| Kamino's lending oracle | `Kamino-Finance/scope` parses the extension from raw bytes at the same offsets and treats a change as a first-class risk: it suspends the price for 24 hours ahead of a scheduled switch, and documents that an activation timestamp may already be in the past when it is published |
+
+So the problem is not awareness. A protocol that has built a suspension window
+around this hazard still has to know, per mint, whether the field it is reading is
+the one in force. Publishing that - for every official mint, continuously, with
+an alert when it changes - is the part that was missing.
+
+Kamino's parser is also an independent check on our byte offsets: the base mint at
+`0..82`, the account-type byte at `165`, TLV entries from `166`, extension type
+`25`, authority at `0`, `multiplier` at `32`, the timestamp at `40`, `new_multiplier`
+at `48`, length `56` - derived here from live accounts and matching their tree.
 
 ### Why this is a settlement bug, not a display bug
 
@@ -387,7 +437,7 @@ owed/
 │   │                      #   the alert rules (pure, so they test offline)
 │   ├── data/              #   both official mint lists, both scans, conformance,
 │   │                      #   and the committed runtime verdict for PreStocks
-│   └── test/              #   127 tests incl. build-integrity guards on the pages,
+│   └── test/              #   128 tests incl. build-integrity guards on the pages,
 │                          #   the PreStocks/Pyth lanes and the raw fixtures
 ├── feed/                  # owed-risk.json + schema.json - THE integration contract
 ├── web/                   # differential.html (the app) + board.html (risk table)
@@ -421,7 +471,7 @@ site/                      # deploy output (gitignored) - built by build-site.mj
 | **Conformance** | ✅ **925/925 mints** - our reader equals the Token-2022 runtime at 1e-9 relative tolerance across the whole official set (`node scripts/conformance.mjs --all`) |
 | **Trap verification** | ✅ 8/8 sampled traps confirmed against `getTokenSupply`; 2 at exactly 10× |
 | **Risk feed** | ✅ 925 xStocks + 8 PreStocks tokens in one row shape; every published `effectiveMultiplier` reproducibly recomputed from published raw state (tested) |
-| `keeper/` TS | ✅ 127 tests - trap logic, scaled classifier pinned to real account shapes, feed contract, page build integrity (including the static-fallback and alert-strip guards), Merkle parity, RPC parsing, base58, Pyth lane, 500-holder stress |
+| `keeper/` TS | ✅ 128 tests - trap logic, scaled classifier pinned to real account shapes, feed contract, page build integrity (including the static-fallback, alert-strip and two-endpoint guards), Merkle parity, RPC parsing, base58, Pyth lane, 500-holder stress |
 | `sdk/` | ✅ 7 offline tests against a committed mainnet account, plus an 8th that hits mainnet when `OWED_LIVE_SDK=1` - asserts PPLTx still reads stored 1 / effective 10 |
 | `core/` Rust | ✅ 35 tests - Merkle (exhaustive n=1..17 + 33, tamper rejection), supply conservation, split/dividend math, golden vectors, and the raw Token-2022 multiplier reader (including every truncation of every fixture, because a panic on-chain aborts the transaction) |
 | `shared/vectors/scaled-raw/` | ✅ 5 real mainnet mint accounts committed as raw bytes, chosen to cover every branch: a 10x split, a PreStocks mint whose scaled entry is **not** first in the TLV list, a reverse split, an inert config, and a legacy mint with no extensions. The Rust reader is pinned to them; the keeper test asserts the same bytes still yield the feed's published numbers |

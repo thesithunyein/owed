@@ -211,6 +211,7 @@ curl -s https://owed.sithunyein.com/feed/owed-risk.json \
 
 node sdk/example.mjs AAPLx           <span class="c"># any official ticker, one line per fact</span>
 node scripts/conformance.mjs --all   <span class="c"># our reader against the runtime, every mint</span>
+node scripts/verify-rpc-mechanism.mjs PPLTx <span class="c"># two RPC calls, and they disagree by 10x</span>
 node scripts/verify-trap.mjs         <span class="c"># settle the thesis against getTokenSupply</span>
 node scripts/collateral-scenario.mjs <span class="c"># what the error does to a loan, in dollars</span></pre>
   <p class="note">
@@ -218,6 +219,13 @@ node scripts/collateral-scenario.mjs <span class="c"># what the error does to a 
     runtime's own effective scaled amount, so comparing our prediction against it is a direct test of
     the reader rather than of our arithmetic. Sampling is stratified: the mints with real gaps are all
     included, so a pass cannot be earned by testing only the easy ones.
+  </p>
+  <p class="note">
+    <code>verify-rpc-mechanism.mjs</code> is the one to run when you want to be convinced rather
+    than told. It makes two calls to the same node for the same mint - the account, which stores both
+    fields and says nothing about which applies, and the supply, which the runtime has already scaled
+    - and prints the factor by which the two disagree. It exits non-zero when a mint does <em>not</em>
+    diverge, so a clean result counts as a result.
   </p>
 
   <h2>What this does and does not claim</h2>

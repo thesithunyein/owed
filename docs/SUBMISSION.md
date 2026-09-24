@@ -13,11 +13,24 @@ moved, the page is right and this file is one refresh behind.
 
 ### The short version
 
-**383 of the 933 official tokenized-equity mints on Solana carry an on-chain
-multiplier field that is not the multiplier the runtime applies.** Owed measures
-that gap from chain state, publishes it as an auditable feed, ships the
-one-line reader that fixes it, and settles corporate actions correctly on-chain
-when the issuer would rather not make every integrator implement it.
+**Two RPC calls to the same node, for the same mint, disagree - and neither one
+is marked as the wrong one.** `getAccountInfo` returns Token-2022's
+`scaledUiAmountConfig` as the chain stores it: `multiplier`, `newMultiplier`, and
+the timestamp the switch takes effect, with **no field saying which of the two is
+in force**. `getTokenSupply` returns a `uiAmount` the runtime has already scaled.
+On `PPLTx` those two responses differ by **10x**, silently.
+
+**383 of the 933 official tokenized-equity mints are in that state right now.**
+Owed measures it from chain state for every official mint, publishes it as an
+auditable feed with an alert when it changes, ships the one-line reader that
+fixes it, and settles corporate actions correctly on-chain when an issuer would
+rather not make every integrator implement it.
+
+**The hazard is understood - the coverage is what is missing.** Solana's own
+explorer implements the same selection rule, and Kamino's lending oracle parses
+the extension from raw bytes and suspends its price for 24 hours ahead of a
+scheduled switch. A protocol that has built a suspension window around this still
+has to know, per mint, whether the field it is reading is the one in force.
 
 ### Who has the problem
 
@@ -102,6 +115,31 @@ browser on load:
 Token-2022 extension set as the xStocks set - same issuance template, different
 issuer - so the finding is a property of how these assets are issued, not one
 team's mistake. That is what makes it worth fixing at the infrastructure layer.
+
+**The 60-second version, no trust required:**
+
+```
+node scripts/verify-rpc-mechanism.mjs PPLTx
+  multiplier                         1
+  newMultiplier                      10
+  newMultiplierEffectiveTimestamp    1778985000  (2026-05-17T02:30:00.000Z)
+  which one applies?                 not in the response
+  raw units x multiplier field       79671.530000
+  uiAmount (runtime-scaled)          796715.300000
+  disagreement                       10.000000x
+```
+
+Two calls, one node, one mint, no API key, no wallet. The exit status is part of
+the contract - `0` diverges, `1` no divergence, `2` no extension - so a mint that
+is fine is reported as readily as one that is not.
+
+**Confirmed independently three times over, then measured per mint:**
+
+| Source | What it establishes |
+|---|---|
+| The SPL specification | The interface crate's `current_multiplier` selects between the fields on the timestamp; the docs publish the same rule in reference client code and mark scaled-amount support P0 for wallets, DEXes and aggregators |
+| Solana's own explorer | `solana-foundation/explorer` ships `getCurrentTokenScaledUiAmountMultiplier`, comparing the clock against the timestamp and choosing the same field we do |
+| Kamino's lending oracle | `Kamino-Finance/scope` parses from raw bytes at the same offsets and treats a change as a first-class risk, suspending the price 24h ahead of a scheduled switch and documenting that an activation timestamp may already be in the past when published |
 
 **Independently verifiable, not asserted:**
 - Our reader equals the Token-2022 runtime on 925/925 mints (`scripts/conformance.mjs --all`).

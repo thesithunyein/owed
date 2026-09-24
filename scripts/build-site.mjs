@@ -70,6 +70,16 @@ if (/owed:title:start -->\s*<!-- owed:title:end/.test(harm)) {
   throw new Error("differential.html has an un-filled title marker - run gen-webdata.mjs");
 }
 
+// The two-endpoint section is the page's shortest path to being believed, and an
+// empty badge next to an empty sentence looks like a feature that was switched off
+// rather than a claim that was measured.
+for (const marker of ["mechanism-state", "mechanism-text", "alerts"]) {
+  const empty = new RegExp(`owed:${marker}:start -->\\s*<!-- owed:${marker}:end`);
+  if (empty.test(harm)) {
+    throw new Error(`differential.html has an empty ${marker} block - run gen-webdata.mjs`);
+  }
+}
+
 // Static assets (og image, favicon, hero video) are copied verbatim. The video
 // is the hero background — shipping a truncated or zero-byte copy would render
 // a blank hero in front of a judge, so its presence and size are load-bearing.
