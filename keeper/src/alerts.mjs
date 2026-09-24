@@ -114,8 +114,8 @@ export function classifyAlerts(
         gapPct: f.gapPct,
         daysStale: f.daysStale,
         message:
-          `${f.symbol}: the stored multiplier field went stale. The chain now applies ` +
-          `${f.effective}x while the field still reads ${f.stored}x.`,
+          `${f.symbol}: the stored multiplier field stopped matching the runtime. The chain ` +
+          `now applies ${f.effective}x while the field still reads ${f.stored}x.`,
       });
     }
 
@@ -134,7 +134,7 @@ export function classifyAlerts(
           message:
             `${f.symbol}: a ${f.next}x multiplier activates in ` +
             `${Math.max(1, Math.round(seconds / 3600))}h. The field reads ${f.stored}x today and ` +
-            `will be stale the moment it lands.`,
+            `will diverge from the runtime the moment it lands.`,
         });
       }
     }
@@ -150,7 +150,8 @@ export function formatDigest(feed, { firstRun, events }, nowSec) {
   const when = new Date(nowSec * 1000).toISOString().replace("T", " ").slice(0, 16);
   const lines = [
     `Owed - corporate-action alerts (${when} UTC)`,
-    `${stale} of ${facts.length} official tokenized-equity mints misprice positions right now.`,
+    `${stale} of ${facts.length} official tokenized-equity mints read a stored multiplier ` +
+      `the runtime does not apply right now.`,
   ];
 
   if (firstRun) {

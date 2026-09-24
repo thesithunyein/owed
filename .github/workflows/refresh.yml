@@ -67,8 +67,17 @@ jobs:
       - name: Regenerate feed, pages, and site
         run: |
           node scripts/risk-feed.mjs
+          # The alert lane runs here, after the feed and before the pages, for two
+          # reasons. The strip on the front page is baked from feed/alerts.json, so
+          # that document has to exist first or the page ships the previous run's
+          # news. And the state file is diffed by the refresh itself, so a mint that
+          # changed state is described in the same commit that publishes the new
+          # numbers rather than one refresh later.
+          node scripts/alert-digest.mjs --post
           node scripts/gen-webdata.mjs
           node scripts/build-site.mjs
+        env:
+          ALERT_WEBHOOK: ${{ secrets.ALERT_WEBHOOK }}
 
       - name: Fail if the regenerated summary disagrees with the feed
         # A scan that silently produced 0 tokens or wrong stats would deploy a
@@ -127,21 +136,6 @@ jobs:
           console.log('pyth:', feed.pyth.status, '|', resolved, 'same-asset feeds of',
             reg.catalogueSize, 'catalogue feeds |', feed.pyth.summary?.priced ?? 0, 'priced');
           "
-
-      - name: Alert digest
-        # The feed is a report you have to go and read. This turns the same facts
-        # into the two events worth interrupting someone for: a mint whose stored
-        # field just went stale, and an activation landing inside the next 48h.
-        # It writes keeper/data/alert-state.json, which the commit step below
-        # already stages, so the next run can say what actually changed.
-        #
-        # No ALERT_WEBHOOK configured is a state, not a failure: the step then
-        # prints the digest and records state. A job that goes red whenever a
-        # secret is absent is a job everyone learns to ignore, which is how an
-        # alert lane ends up worse than none.
-        run: node scripts/alert-digest.mjs --post
-        env:
-          ALERT_WEBHOOK: ${{ secrets.ALERT_WEBHOOK }}
 
       - name: Commit refreshed data
         id: commit
