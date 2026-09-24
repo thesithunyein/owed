@@ -1,24 +1,62 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-09-23T19:15:53.000Z",
-  "clock": 1790190953,
+  "generatedAt": "2026-09-24T01:49:17.000Z",
+  "clock": 1790214557,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
-    "current": 383,
+    "current": 385,
     "total": 933,
-    "becameOutOfDate": 0,
+    "becameOutOfDate": 2,
     "activationImminent": 0
   },
   "nextActivation": null,
   "mostRecent": {
-    "symbol": "TQQQx",
+    "symbol": "INVHx",
     "issuer": "xstocks",
-    "daysAgo": 0.6360300925925926,
-    "stored": 2.008976295242212,
-    "effective": 2.0116905979372675,
-    "gapPct": 0.13510874675244366
+    "daysAgo": 0.05505787037037037,
+    "stored": 1,
+    "effective": 1.007797994801,
+    "gapPct": 0.7797994801000074
   },
-  "events": [],
-  "history": []
+  "events": [
+    {
+      "kind": "became-stale",
+      "mint": "XsQFmCYjvPGgqYYAth5zNhW8NSCabdamgM1kXMorJs7",
+      "symbol": "INVHx",
+      "issuer": "xstocks",
+      "stored": 1,
+      "effective": 1.007797994801,
+      "gapPct": 0.7797994801000074,
+      "daysStale": 0.05505787037037037,
+      "message": "INVHx: the stored multiplier field stopped matching the runtime. The chain now applies 1.007797994801x while the field still reads 1x."
+    },
+    {
+      "kind": "became-stale",
+      "mint": "XsbicvsCUHE9ja8gTsjzruDxQTKeyij94i3phx3NuNf",
+      "symbol": "SREx",
+      "issuer": "xstocks",
+      "stored": 1,
+      "effective": 1.005825949367,
+      "gapPct": 0.5825949367000094,
+      "daysStale": 0.05505787037037037,
+      "message": "SREx: the stored multiplier field stopped matching the runtime. The chain now applies 1.005825949367x while the field still reads 1x."
+    }
+  ],
+  "history": [
+    {
+      "at": "2026-09-24T01:49:17.000Z",
+      "kind": "became-stale",
+      "symbol": "INVHx",
+      "mint": "XsQFmCYjvPGgqYYAth5zNhW8NSCabdamgM1kXMorJs7",
+      "message": "INVHx: the stored multiplier field stopped matching the runtime. The chain now applies 1.007797994801x while the field still reads 1x."
+    },
+    {
+      "at": "2026-09-24T01:49:17.000Z",
+      "kind": "became-stale",
+      "symbol": "SREx",
+      "mint": "XsbicvsCUHE9ja8gTsjzruDxQTKeyij94i3phx3NuNf",
+      "message": "SREx: the stored multiplier field stopped matching the runtime. The chain now applies 1.005825949367x while the field still reads 1x."
+    }
+  ]
 }
