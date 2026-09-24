@@ -1104,7 +1104,7 @@ function drawPortfolio(addr, held) {
         `<div class="wrow">` +
         `<span class="wsym">${escapeHtml(t.symbol)}</span>` +
         `<span class="wstat">${staleRow ? `${(c.gap * 100).toFixed(c.gap * 100 >= 100 ? 0 : 2)}% wrong` : "Up to date"}</span>` +
-        `<a href="#t=${encodeURIComponent(t.symbol)}">Details →</a></div>`;
+        `<a href="#t=${encodeURIComponent(t.symbol)}">Details</a></div>`;
       return head;
     })
     .join("");
