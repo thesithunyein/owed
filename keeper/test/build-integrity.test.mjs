@@ -586,3 +586,45 @@ test("the Integrate page is complete, not a stub", () => {
   assert.match(src, /reads mainnet/, "the page says the measurement is mainnet");
   assert.match(src, /devnet, unaudited/, "the page says the program is devnet and unaudited");
 });
+
+test("README's surface-to-evidence table resolves to real artifacts", () => {
+  // The README promises that every surface on the live site traces back to the
+  // artifact behind it in one click. A path in that table that no longer exists
+  // breaks the promise in the one place a reader goes specifically to check it, so
+  // the paths are resolved here rather than trusted - the same reason every count
+  // in this repo is recomputed instead of typed.
+  const readme = readFileSync(join(ROOT, "README.md"), "utf8");
+  const block = readme.match(
+    /<!-- owed:provenance:start -->([\s\S]*?)<!-- owed:provenance:end -->/,
+  );
+  assert.ok(block, "README has the owed:provenance block");
+  assert.ok(
+    /\| *On the live site *\|/.test(block[1]),
+    "the provenance block is still a table",
+  );
+
+  // Only repo-relative paths count. A bare word (`summary`), a route (`/board`) or a
+  // URL is not a file, so a token has to start with one of the repo's own top-level
+  // directories to be resolved at all.
+  const roots = [
+    "feed/",
+    "keeper/",
+    "core/",
+    "sdk/",
+    "scripts/",
+    "web/",
+    "docs/",
+    "programs/",
+    "tests/",
+    ".github/",
+  ];
+  const paths = new Set();
+  for (const [, token] of block[1].matchAll(/`([^`]+)`/g)) {
+    const t = token.trim();
+    if (roots.some((r) => t.startsWith(r))) paths.add(t);
+  }
+  assert.ok(paths.size >= 12, `the table resolves at least 12 artifacts, saw ${paths.size}`);
+  for (const p of paths) {
+    assert.ok(existsSync(join(ROOT, p)), `README points at ${p}, which does not exist`);
+  }
+});
