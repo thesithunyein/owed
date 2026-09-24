@@ -14,7 +14,7 @@ const ROOT = join(HERE, "..", "..");
  * that looks harmless in a diff and produces a blank page in front of a judge,
  * so these guards run in CI.
  */
-const PAGES = ["board.html", "differential.html"];
+const PAGES = ["board.html", "differential.html", "integrate.html"];
 
 test("README numbers match the published feed", () => {
   // The README quotes counts that change with every snapshot refresh, and it
@@ -387,4 +387,130 @@ test("README test counts match the suites they describe", () => {
     readme.includes(`| \`sdk/\` | \u2705 ${sdk - 1} offline tests`),
     `the status table says "${sdk - 1} offline tests"`,
   );
+});
+
+test("the front page states the finding in its title, and agrees with its own hero", () => {
+  // The title and the OG card are the whole first impression for a shared link,
+  // and they used to read "the correctness layer for tokenized equities", which
+  // tells a reader nothing they can act on. They are baked by gen-webdata.mjs, so
+  // a skipped regeneration would silently ship the previous snapshot's count.
+  const src = readFileSync(join(WEB, "differential.html"), "utf8");
+
+  const marker = src.match(/<!-- owed:title:start -->([\s\S]*?)<!-- owed:title:end -->/);
+  assert.ok(marker, "the title carries a generator marker");
+  assert.match(marker[1], /^\d[\d,]* of [\d,]+$/, `title count is filled in, got "${marker[1]}"`);
+
+  // The marker must sit outside <title>, which is RCDATA: a comment inside it is
+  // rendered text, not a comment, and would appear in the browser tab and in every
+  // social card. This caught exactly that.
+  const rendered = [
+    src.match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? "",
+    src.match(/<meta property="og:title" content="([^"]*)"/)?.[1] ?? "",
+    src.match(/<meta name="twitter:title" content="([^"]*)"/)?.[1] ?? "",
+  ];
+  assert.equal(rendered.length, 3, "title, og:title and twitter:title all exist");
+  for (const value of rendered) {
+    assert.ok(!value.includes("<!--"), `no markup in rendered title text: "${value}"`);
+    assert.ok(value.includes(marker[1]), `title text quotes the marker count: "${value}"`);
+  }
+  assert.equal(
+    new Set(rendered.map((v) => v.replace(marker[1], "#"))).size,
+    1,
+    "the three titles agree with each other",
+  );
+
+  // And the same numbers the hero line states, so one screen cannot tell a reader
+  // two different counts.
+  const hero = src.match(/<!-- owed:hero-worst:start -->([\s\S]*?)<!-- owed:hero-worst:end -->/);
+  assert.ok(hero, "the hero carries the baked finding");
+  const heroCount = hero[1].match(/<strong>([\d,]+ of [\d,]+) mints<\/strong>/);
+  assert.ok(heroCount, "the hero names the count");
+  assert.equal(marker[1], heroCount[1], "the title and the hero quote the same count");
+});
+
+test("the alert lane is published as a document the page agrees with", () => {
+  const feed = JSON.parse(readFileSync(join(ROOT, "feed", "owed-risk.json"), "utf8"));
+  const all = [...(feed.tokens ?? []), ...(feed.preStocks ?? [])];
+  const divergent = all.filter((t) => t.trap?.stale).length;
+
+  const src = readFileSync(join(WEB, "differential.html"), "utf8");
+  const strip = src.match(/<!-- owed:alerts:start -->([\s\S]*?)<!-- owed:alerts:end -->/);
+  assert.ok(strip, "differential.html has the owed:alerts block");
+  assert.ok(strip[1].trim().length > 0, "the alert strip is not empty");
+  assert.ok(!/Loading the alert lane/.test(strip[1]), "the strip is not still the placeholder");
+
+  const alertsPath = join(ROOT, "feed", "alerts.json");
+  if (!existsSync(alertsPath)) {
+    // The lane is allowed to have never run. When it has not, the strip must say
+    // so rather than let a blank box read as "nothing is wrong".
+    assert.match(strip[1], /has not published yet/, "an unpublished lane says so");
+    return;
+  }
+
+  const alerts = JSON.parse(readFileSync(alertsPath, "utf8"));
+  assert.equal(alerts.feed, "owed-alerts");
+  assert.ok(alerts.summary, "the document carries a summary");
+  assert.equal(
+    alerts.summary.current,
+    divergent,
+    "the alert summary counts the same divergent mints the risk feed does",
+  );
+  assert.equal(alerts.summary.total, all.length, "and the same total");
+  assert.ok((alerts.history ?? []).length <= 20, "the published history is bounded");
+  for (const h of alerts.history ?? []) {
+    assert.ok(
+      typeof h.message === "string" && h.message.length > 0,
+      "every history entry says something",
+    );
+    assert.match(h.at, /^\d{4}-\d{2}-\d{2}T/, "every history entry is timestamped");
+  }
+
+  // The strip is baked from this document, so the freshest divergence it names has
+  // to be the one the document names.
+  if (alerts.mostRecent) {
+    assert.ok(
+      strip[1].includes(alerts.mostRecent.symbol),
+      `the strip names the freshest divergence (${alerts.mostRecent.symbol})`,
+    );
+  }
+});
+
+test("the Integrate page is complete, not a stub", () => {
+  const src = readFileSync(join(WEB, "integrate.html"), "utf8");
+
+  // Every path a consumer might take has to be on the page: its whole job is to
+  // turn "other people could build on this" into sixty seconds of work, and a
+  // missing one is a dead end rather than a smaller page.
+  for (const needle of [
+    "getEffectiveMultiplier",
+    "read_multiplier",
+    "feed/owed-risk.json",
+    "conformance.mjs",
+    "schema.json",
+  ]) {
+    assert.ok(src.includes(needle), `integrate.html documents ${needle}`);
+  }
+
+  // The devnet table is filled from the committed record, because an empty table
+  // on the page whose purpose is provability is worse than no page at all.
+  const rows = src.match(/<!-- owed:devnet-rows:start -->([\s\S]*?)<!-- owed:devnet-rows:end -->/);
+  assert.ok(rows, "integrate.html has the owed:devnet-rows block");
+  const record = JSON.parse(
+    readFileSync(join(ROOT, "docs", "devnet-settlement-2026-09-22.json"), "utf8"),
+  );
+  assert.equal(
+    (rows[1].match(/<tr>/g) ?? []).length,
+    record.steps.length,
+    "every settlement step is listed",
+  );
+  assert.equal(
+    (rows[1].match(/tag no">rejected<\/span>/g) ?? []).length,
+    record.steps.filter((s) => s.rejected).length,
+    "the refused steps are labelled as refusals rather than hidden",
+  );
+
+  // The scope split this project is careful about has to be stated on the page,
+  // not left for a reader to infer from a cluster parameter in a URL.
+  assert.match(src, /reads mainnet/, "the page says the measurement is mainnet");
+  assert.match(src, /devnet, unaudited/, "the page says the program is devnet and unaudited");
 });

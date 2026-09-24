@@ -9,7 +9,9 @@
  *
  *   /                     the harm page (naive vs chain-correct)
  *   /board                the full risk table
+ *   /integrate            how to consume this from JS, Rust, HTTP or a shell
  *   /feed/owed-risk.json  the integration contract
+ *   /feed/alerts.json     the alert lane, as a document
  *   /feed/schema.json     its JSON Schema (this is the feed's declared $id)
  *
  * No build step runs on the host: everything here is a copy of an artifact that
@@ -53,8 +55,20 @@ rmSync(SITE, { recursive: true, force: true });
 
 const harm = read("web", "differential.html");
 const board = read("web", "board.html");
+const integrate = read("web", "integrate.html");
 assertDeployable("differential.html", harm);
 assertDeployable("board.html", board);
+assertDeployable("integrate.html", integrate);
+
+// The Integrate page is the one that claims a judge can act in sixty seconds, so
+// an un-filled devnet table or an empty quickstart is worse than a missing page:
+// it is a broken promise on the page that exists to make promises checkable.
+if (/owed:devnet-rows:start -->\s*<!-- owed:devnet-rows:end/.test(integrate)) {
+  throw new Error("integrate.html has an empty devnet table - run gen-webdata.mjs");
+}
+if (/owed:title:start -->\s*<!-- owed:title:end/.test(harm)) {
+  throw new Error("differential.html has an un-filled title marker - run gen-webdata.mjs");
+}
 
 // Static assets (og image, favicon, hero video) are copied verbatim. The video
 // is the hero background — shipping a truncated or zero-byte copy would render
@@ -87,8 +101,21 @@ const feed = JSON.parse(readFileSync(feedPath, "utf8"));
 const sizes = {};
 sizes["index.html"] = write("index.html", harm);
 sizes["board.html"] = write("board.html", board);
+sizes["integrate.html"] = write("integrate.html", integrate);
 sizes["feed/owed-risk.json"] = write("feed/owed-risk.json", read("feed", "owed-risk.json"));
 sizes["feed/schema.json"] = write("feed/schema.json", read("feed", "schema.json"));
+
+// The alert document ships when it exists and is simply absent when the lane has
+// not run yet. Failing the build over it would make the site depend on a job that
+// is allowed to be a no-op, which is the opposite of what this lane is for.
+const alertsPath = join(ROOT, "feed", "alerts.json");
+if (existsSync(alertsPath)) {
+  const alerts = JSON.parse(readFileSync(alertsPath, "utf8"));
+  if (alerts.feed !== "owed-alerts") {
+    throw new Error(`feed/alerts.json is not an owed-alerts document`);
+  }
+  sizes["feed/alerts.json"] = write("feed/alerts.json", JSON.stringify(alerts, null, 2) + "\n");
+}
 
 // The feed is deliberately short-lived: its values are time-dependent, and a
 // cached copy past an activation boundary is exactly the bug this project exists
@@ -142,6 +169,10 @@ console.log(`site/ assembled from generated artifacts:`);
 for (const [name, len] of Object.entries(sizes)) {
   console.log(`  ${name.padEnd(26)} ${(len / 1024).toFixed(0)}KB`);
 }
-console.log(`  vercel.json + feed/index.json + assets/ (og, favicon, logo, hero.mp4)`);
+console.log(
+  `  vercel.json + feed/index.json` +
+    (sizes["feed/alerts.json"] ? " + feed/alerts.json" : " (no alerts.json yet)") +
+    ` + assets/ (og, favicon, logo, hero.mp4)`,
+);
 console.log(`\nfeed: ${feed.tokens.length} tokens, generated ${feed.generatedAt}`);
 console.log(`deploy: cd site && vercel deploy --prod --yes --project owed`);

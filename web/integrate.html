@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Integrate Owed - read the multiplier the runtime actually applies</title>
+<meta name="description" content="Four ways to stop reading a Token-2022 multiplier the runtime does not apply: a zero-dependency JS call, a CPI-callable Rust reader, a public JSON feed, and a CLI that checks your own mint list. Plus the devnet deployment and every signature." />
+<meta name="theme-color" content="#f0f0ee" />
+<link rel="icon" type="image/png" href="assets/favicon.png?v=2" />
+<link rel="apple-touch-icon" href="assets/favicon.png?v=2" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Owed" />
+<meta property="og:title" content="Integrate Owed - read the multiplier the runtime actually applies" />
+<meta property="og:description" content="A JS one-liner, a CPI-callable Rust reader, a public JSON feed and a CLI. Pick the one your stack already speaks." />
+<meta property="og:url" content="https://owed.sithunyein.com/integrate" />
+<meta property="og:image" content="https://owed.sithunyein.com/assets/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Integrate Owed - read the multiplier the runtime actually applies" />
+<meta name="twitter:image" content="https://owed.sithunyein.com/assets/og.png" />
+<style>
+  :root {
+    --bg: #f0f0ee; --panel: #ffffff; --panel2: #fafaf8; --line: #e2e2dc;
+    --text: #111827; --dim: #6b7280; --faint: #9ca3af;
+    --green: #059669; --red: #dc2626; --amber: #b45309; --blue: #2563eb;
+  }
+  * { box-sizing: border-box; }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.55 ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+  }
+  .top { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 18px 16px 0; }
+  .nav-badge {
+    display: flex; align-items: center; justify-content: center; width: 44px; height: 44px;
+    background: #ededed; border-radius: 999px; text-decoration: none;
+  }
+  .nav-badge img { width: 26px; height: 26px; display: block; }
+  .nav-pill {
+    display: flex; align-items: center; gap: 18px; background: #ededed;
+    border-radius: 12px; padding: 11px 20px; flex-wrap: wrap; justify-content: center;
+  }
+  .nav-pill a { color: #374151; text-decoration: none; font-size: 13.5px; font-weight: 500; }
+  .nav-pill a:hover { color: #111827; }
+  .nav-pill a[aria-current] { color: #111827; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 34px 20px 72px; }
+  h1 { font-size: 30px; margin: 0 0 8px; letter-spacing: -0.02em; }
+  h2 { font-size: 19px; margin: 40px 0 6px; letter-spacing: -0.01em; }
+  h2 .n { color: var(--faint); font-weight: 500; font-size: 14px; }
+  h3 { font-size: 15px; margin: 0 0 4px; letter-spacing: -0.01em; }
+  p { margin: 0 0 12px; }
+  .sub { color: var(--dim); font-size: 16px; margin: 0 0 22px; max-width: 70ch; }
+  .lead { max-width: 72ch; }
+  .note { color: var(--dim); font-size: 13px; max-width: 72ch; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px; margin: 14px 0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; margin: 16px 0 0; }
+  .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  .stat b { display: block; font-size: 15px; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+  .stat span { color: var(--dim); font-size: 12.5px; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px; }
+  pre.code {
+    background: #12161f; color: #e8edf5; border-radius: 12px; padding: 16px 18px; margin: 10px 0 12px;
+    overflow-x: auto; font: 12.5px/1.65 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  pre.code .c { color: #8b96a8; }
+  pre.code .k { color: #6aa7ff; }
+  pre.code .s { color: #7fd6a4; }
+  pre.code .w { color: #ffb454; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #e7e7e1; vertical-align: top; }
+  th { color: var(--dim); font-weight: 500; font-size: 12.5px; }
+  td.mono, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; word-break: break-all; }
+  a { color: var(--blue); }
+  .scroll { overflow-x: auto; }
+  .tag { font-size: 11px; padding: 2px 7px; border-radius: 999px; border: 1px solid; white-space: nowrap; }
+  .tag.ok { color: var(--green); border-color: #bfe3d4; background: #f1faf6; }
+  .tag.no { color: var(--red); border-color: #f3c1c1; background: #fef2f2; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0 0; }
+  @media (max-width: 640px) { .split { grid-template-columns: 1fr; } }
+  .side { border: 1px solid var(--line); border-radius: 12px; padding: 16px; background: var(--panel2); }
+  .side h3 { margin-bottom: 6px; }
+  .side p { margin: 0; color: var(--dim); font-size: 13.5px; }
+  footer.site {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 16px;
+    border-top: 1px solid var(--line); margin-top: 52px; padding-top: 20px;
+    color: var(--dim); font-size: 13px;
+  }
+  footer.site img { width: 20px; height: 20px; vertical-align: -5px; margin-right: 7px; }
+  footer.site a { color: var(--dim); text-decoration: none; }
+  footer.site a:hover { color: var(--blue); text-decoration: underline; }
+  footer.site .sp { margin-left: auto; }
+  @media (max-width: 640px) { footer.site .sp { margin-left: 0; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="nav-badge" href="/" aria-label="Owed - back to the checker">
+    <img src="assets/logo.png" alt="Owed" width="26" height="26" />
+  </a>
+  <nav class="nav-pill">
+    <a href="/">Checker</a>
+    <a href="board.html">Risk board</a>
+    <a href="integrate.html" aria-current="page">Integrate</a>
+    <a href="feed/owed-risk.json">Risk feed</a>
+    <a href="https://github.com/thesithunyein/owed" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</header>
+
+<div class="wrap">
+  <h1>Integrate Owed</h1>
+  <p class="sub">
+    Tokenized equities rebase on-chain. The multiplier stored in a mint's
+    <code>scaledUiAmountConfig</code> is not always the one the runtime applies, so a client that reads
+    that field reports a number the chain disagrees with. Here is the fix in whatever your stack
+    already speaks. No key, no account, no signup.
+  </p>
+
+  <div class="grid">
+    <div class="stat"><b>The rule</b><span><code>now &gt;= newMultiplierEffectiveTimestamp ? newMultiplier : multiplier</code></span></div>
+    <div class="stat"><b>Read the mint account</b><span>No extra account or RPC call: it rides along with the mint you already load</span></div>
+    <div class="stat"><b>MIT licensed</b><span>Vendor it, fork it. No signup and no key to rotate</span></div>
+  </div>
+
+  <h2>1. JavaScript and TypeScript <span class="n">zero dependencies, no key</span></h2>
+  <p class="lead">
+    <code>sdk/owed.mjs</code> reads the mint account from any Solana RPC and applies the rule above.
+    It is a file, not a package: copy it in or vendor it, and it needs no install step.
+  </p>
+<pre class="code"><span class="c">// sdk/owed.mjs - one file, no dependencies, no API key.</span>
+<span class="k">import</span> { getScaledState, getEffectiveMultiplier, toDisplayAmount } <span class="k">from</span> <span class="s">"./sdk/owed.mjs"</span>;
+
+<span class="c">// The short form, when you only want the number the chain applies:</span>
+<span class="k">const</span> eff = <span class="k">await</span> getEffectiveMultiplier(mint);   <span class="c">// 10 for PPLTx, while the field reads 1</span>
+
+<span class="c">// The form that also tells you whether you were wrong:</span>
+<span class="k">const</span> { stored, effective, stale, daysStale, factor } = <span class="k">await</span> getScaledState(mint);
+<span class="k">if</span> (stale) {
+  console.warn(
+    <span class="s">`${mint}: field says ${stored}x, chain applies ${effective}x - ${factor}x off`</span>,
+  );
+}
+
+<span class="c">// Balances: convert raw base units the way the runtime does, not the way the field does.</span>
+<span class="k">const</span> shown = toDisplayAmount(rawBalance, eff);</pre>
+  <p class="note">
+    Run it live before you write any code: <code>node sdk/example.mjs AAPLx</code> prints the stored
+    field, the effective multiplier, how long ago they diverged, and the corrected display balance.
+  </p>
+
+  <h2>2. On-chain, from another program <span class="n">Rust, CPI-callable</span></h2>
+  <p class="lead">
+    A program cannot call a JavaScript SDK, so the same rule ships as a library your program imports.
+    It walks the account's TLV extension region rather than assuming a fixed offset, which matters:
+    the scaled config sits at byte 275 on one issuer's mints and at byte 575 on another's, and a
+    fixed-offset reader passes every test on the first issuer while silently misreading the second.
+  </p>
+<pre class="code"><span class="c">// core/src/multiplier.rs - no extra account, no extra RPC call.</span>
+<span class="k">use</span> owed_core::multiplier::read_multiplier;
+
+<span class="c">// `data` is the mint account you already load to validate the mint.</span>
+<span class="k">let</span> now = Clock::get()?.unix_timestamp;
+<span class="k">match</span> read_multiplier(&amp;mint.data.borrow(), now)? {
+    <span class="c">// Not a scaled mint: nothing to correct.</span>
+    <span class="w">None</span> =&gt; {}
+    <span class="c">// The runtime applies `effective`. `stored` is the field that traps readers.</span>
+    <span class="w">Some</span>(r) <span class="k">if</span> r.stale =&gt; {
+        <span class="k">let</span> units = r.effective * raw_balance <span class="k">as</span> f64;
+        <span class="k">let</span> understated_by_pct = r.gap_pct();
+    }
+    <span class="w">Some</span>(_) =&gt; {}
+}</pre>
+  <p class="note">
+    35 tests, run against five real mainnet accounts committed as fixtures, including one that replays
+    every truncation of every fixture - because on-chain a panic aborts the whole transaction.
+  </p>
+
+  <h2>3. Anything else <span class="n">the published feed</span></h2>
+  <p class="lead">
+    If your stack is neither JS nor Rust, read the feed. It is a plain JSON document over HTTPS with
+    CORS open, a five-minute edge cache, and a published schema that is the contract. No key.
+  </p>
+<pre class="code"><span class="c"># Every mint whose stored field is not what the runtime applies, worst first.</span>
+curl -s https://owed.sithunyein.com/feed/owed-risk.json \
+  | jq <span class="s">'.tokens[] | select(.trap.stale) | {symbol, stored: .scaled.state.multiplier,
+        applied: .scaled.effectiveMultiplier, error_pct: .trap.gapPct}'</span></pre>
+<pre class="code"><span class="c">// One entry, as published. The full schema is at /feed/schema.json.</span>
+{
+  <span class="s">"symbol"</span>: <span class="s">"PPLTx"</span>,
+  <span class="s">"mint"</span>: <span class="s">"Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme"</span>,
+  <span class="s">"scaled"</span>: {
+    <span class="s">"state"</span>: { <span class="s">"multiplier"</span>: <span class="s">"1"</span>, <span class="s">"newMultiplier"</span>: <span class="s">"10"</span>,
+               <span class="s">"newMultiplierEffectiveTimestamp"</span>: 1778985000 },
+    <span class="s">"effectiveMultiplier"</span>: 10
+  },
+  <span class="s">"trap"</span>: { <span class="s">"stale"</span>: <span class="k">true</span>, <span class="s">"gapPct"</span>: 900, <span class="s">"daysStale"</span>: 130 }
+}</pre>
+  <p class="note">
+    Machine index: <a href="feed/index.json"><code>/feed/index.json</code></a> points at the feed and
+    its schema, so a consumer never has to read documentation to find it. Alerts, when the lane fires,
+    are at <a href="feed/alerts.json"><code>/feed/alerts.json</code></a>.
+  </p>
+
+  <h2>4. Check your own list before you ship <span class="n">CLI, offline-friendly</span></h2>
+  <p class="lead">
+    The fastest way to know whether this affects you is to measure your own set. Every command below
+    reads public mainnet state and needs no key.
+  </p>
+<pre class="code">git clone https://github.com/thesithunyein/owed &amp;&amp; cd owed
+
+node sdk/example.mjs AAPLx           <span class="c"># any official ticker, one line per fact</span>
+node scripts/conformance.mjs --all   <span class="c"># our reader against the runtime, every mint</span>
+node scripts/verify-trap.mjs         <span class="c"># settle the thesis against getTokenSupply</span>
+node scripts/collateral-scenario.mjs <span class="c"># what the error does to a loan, in dollars</span></pre>
+  <p class="note">
+    <code>conformance.mjs</code> is the one to run first. <code>getTokenSupply</code> returns the
+    runtime's own effective scaled amount, so comparing our prediction against it is a direct test of
+    the reader rather than of our arithmetic. Sampling is stratified: the mints with real gaps are all
+    included, so a pass cannot be earned by testing only the easy ones.
+  </p>
+
+  <h2>What this does and does not claim</h2>
+  <div class="card">
+    <p class="lead">
+      The runtime is correct. It applies the effective multiplier exactly as the SPL specification
+      says, including the case where an activation timestamp has already passed and nothing has folded
+      the new value into the stored field. We do not claim an issuer acted improperly, and we do not
+      know why any particular field lags. We claim one thing, which is falsifiable in one command: the
+      two fields disagree, and a client that reads the stored one reports a different number than the
+      chain will apply. Reading the right field is avoidable.
+    </p>
+    <p class="note" style="margin:0">
+      Reproduce it: <code>node scripts/verify-trap.mjs</code>. It exists to try to falsify this page,
+      and it will say so if the assumption behind it ever stops holding.
+    </p>
+  </div>
+
+  <h2>The registry: what runs where</h2>
+  <p class="lead">
+    Two things live in this project and they are scoped differently on purpose, so neither is dressed
+    up as more than it is.
+  </p>
+  <div class="split">
+    <div class="side">
+      <h3>Measurement <span class="tag ok">reads mainnet</span></h3>
+      <p>
+        Every published number is read from Solana mainnet: 933 official mints across two independent
+        issuers, their real Token-2022 accounts, and the real runtime response. Reading costs nothing
+        and moves nothing, so the finding is mainnet evidence even though the settlement program is
+        not deployed there.
+      </p>
+    </div>
+    <div class="side">
+      <h3>Settlement <span class="tag no">devnet, unaudited</span></h3>
+      <p>
+        The Anchor registry that settles corporate actions - snapshot holders, pay a distribution from
+        escrow, mint a split delta against a published Merkle root - is deployed to devnet and has not
+        been audited. It is not pointed at real assets, and it is not claimed to be.
+      </p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:26px">The program</h3>
+  <div class="scroll">
+    <table>
+      <tbody>
+        <tr><td>Program</td><td class="mono"><a target="_blank" rel="noopener" href="https://explorer.solana.com/address/42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV?cluster=devnet">42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV</a></td></tr>
+        <tr><td>Deploy transaction</td><td class="mono"><a target="_blank" rel="noopener" href="https://explorer.solana.com/tx/49haW2jxU32L4XonwB7LtBv4AwR1z5YcVbTLYD5eDQhqnc64taSBSNizk3z9dgen6dWjSz14VNX6Tcpo5pJS3pd6?cluster=devnet">49haW2jxU32L4XonwB7LtBv…PJS3pd6</a></td></tr>
+        <tr><td>Deployed</td><td>2026-09-22, from <a target="_blank" rel="noopener" href="https://github.com/thesithunyein/owed/actions/runs/35718143099">workflow run 35718143099</a></td></tr>
+        <tr><td>Size / rent</td><td>350,208 bytes / 1.77993548 SOL</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:26px">Every step, with a signature</h3>
+  <p class="lead">
+    A 4:1 split and then a cash distribution, settled against the program above:
+    <a target="_blank" rel="noopener" href="https://github.com/thesithunyein/owed/actions/runs/35732983131">a green
+    end-to-end run</a> whose signatures are public explorer links. Two paths must <em>refuse</em> and are
+    listed as such. The identical 15-step lifecycle also runs on a throwaway validator on every push,
+    so this is not a one-off anyone has to take on faith - and the settlement has genuinely executed on
+    a network the team does not control.
+  </p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>step</th><th>devnet transaction</th></tr></thead>
+      <tbody><!-- owed:devnet-rows:start --><tr><td>initialize_asset</td><td class="mono"><a target="_blank" rel="noopener" href="https://explorer.solana.com/tx/G92HsCsjee1cr7vsuS97yk6A9BL6PxbBeiDod8sfeRUZowbWoGB3vbEwmocFQz19PieHzJx9rzvUwZxwg9XyHZo?cluster=devnet">G92HsCsjee1cr7vsuS…</a></td></tr><tr><td>arm_split_authority</td><td class="mono"><a target="_blank" rel="noopener" href="https://explorer.solana.com/tx/2ivzcAChnksjhkPbxMLt7t3rZrHprD9HcDPzGAPB73W6oWui3zLDnTXcGsFAbtSZ4QVUDJ8C7BnNq8KyGtehrDSX?cluster=devnet">2ivzcAChnksjhkPbxM…</a></td></tr><tr><td>declare_action(split 4:1)</td><td class="mono"><a target="_blank" rel="noopener" href="https://explorer.solana.com/tx/3iNVHCARumMzFPZU1akt4eWkbKy4kjcvVy1RPti1VMraH2c9waHcgmFv33iTSAjaZ7Lj1aZ6nVeWALtmRU1acWxr?cluster=devnet">3iNVHCARumMzFPZU1a…</a></td></tr><tr><td>snapshot_holders(short register)</td><td><span class="tag no">rejected</span> the program's own <code>SupplyMismatch</code>: a register that does not sum to supply cannot be recorded</td></tr><tr><td>snapshot_holders(action 4zqNC9…)</td><td class="mono"><a target="_blank" rel="noopener" href="https://explorer.solana.com/tx/3nbPfG7RmwL1eTtdHvncbzdus9CP8zNbK4KUY8bA5o5bRc5mKx6VsZXELryVwozC55pm75DE1AXVPwhYdipsLBDv?cluster=devnet">3nbPfG7RmwL1eTtdHv…</a></td></tr><tr><td>claim[2Km2Hu…]</td><td class="mono"><a target="_blank" rel="noopener" href="https://explorer.solana.com/tx/GDHpmmFxmNEZvxMLKmux7z9ZJiwqJWENquVEZGziAWzGiqPB9HvDFjNfMgVipaFBaZ74JcAopNCdykHykQo6qaC?cluster=devnet">GDHpmmFxmNEZvxMLKm…</a></td></tr><tr><td>claim[8bHPWZ…]</td><td class="mono"><a target="_blank" rel="noopener" href="https://explorer.solana.com/tx/xzcZJWMFE7Do9Wngp4Lm9xUNu2R24tLnRm7fRzsiLdhCXf378uWM8vNKK6qPjPqaxruXTgSsx3atXZfacR9zoSx?cluster=devnet">xzcZJWMFE7Do9Wngp4…</a></td></tr><tr><td>claim[9svT6y…]</td><td class="mono"><a target="_blank" rel="noopener" href="https://explorer.solana.com/tx/3qZcC9PMyZHQuXhfUNjzeGZatdCiL4XsQnxjR5Ljivhs9DkVmdBCV6Q9ez6ZUCsFVqJejnKnexapkDbthxJrNtU6?cluster=devnet">3qZcC9PMyZHQuXhfUN…</a></td></tr><tr><td>claim(replay)</td><td><span class="tag no">rejected</span> the receipt PDA already exists, so a settled claim can never be paid twice</td></tr><tr><td>settle_action(split)</td><td class="mono"><a target="_blank" rel="noopener" href="https://explorer.solana.com/tx/5JPbGxFbi1iosL5zRKp85rGhnAmsUhnteHsZWwYQ3PthEXvPEpCK4xEn9PokXxCik88Cff8nH6zAH4Yx294o2VtW?cluster=devnet">5JPbGxFbi1iosL5zRK…</a></td></tr><tr><td>declare_action(dividend)</td><td class="mono"><a target="_blank" rel="noopener" href="https://explorer.solana.com/tx/2uoiQQsihuHFA3JxcMfdmRaT1cBHs4TKHvVeTT2KN1dQNwo5V2wbL6w7pZvQqNXVgYkRNhZZzkZeMFdcKk798WuG?cluster=devnet">2uoiQQsihuHFA3JxcM…</a></td></tr><tr><td>snapshot_holders(action HV7jHU…)</td><td class="mono"><a target="_blank" rel="noopener" href="https://explorer.solana.com/tx/4mn7zkrBu8ncSFRxhtRJC1oka1rwW8mQDzC6J4WbtJWJenkqBcxNjERdv13XqSY2HuMSJswbkhzb9iB4dKQZeeF3?cluster=devnet">4mn7zkrBu8ncSFRxht…</a></td></tr><tr><td>claim[2Km2Hu…]</td><td class="mono"><a target="_blank" rel="noopener" href="https://explorer.solana.com/tx/4CWHUejtzLTw4KTUbyCJ45A1hJmC82JFWUjYEFiU5RfpkqmxKvYRsqgrSezuuEALdLiWY1FDpr8enjqeQAFEgdek?cluster=devnet">4CWHUejtzLTw4KTUby…</a></td></tr><tr><td>claim[8bHPWZ…]</td><td class="mono"><a target="_blank" rel="noopener" href="https://explorer.solana.com/tx/54JQPuRgX2UcJ6Uzik75yoMi6v4bX14gdNk6qyzoq3nGKyataLvtBGp2tWcfDZANY5qyaftqqz8ycgDbY2SSpiTW?cluster=devnet">54JQPuRgX2UcJ6Uzik…</a></td></tr><tr><td>settle_action(dividend)</td><td class="mono"><a target="_blank" rel="noopener" href="https://explorer.solana.com/tx/5oisftAyUtWY9iphCJyaCxuoo6qpZkCETmEF4Thvc1qP4gv2pTHCfKZ9kjgjKcz4e1jHjzRNb5kfZUGoXJ6BjuPf?cluster=devnet">5oisftAyUtWY9iphCJ…</a></td></tr><!-- owed:devnet-rows:end --></tbody>
+    </table>
+  </div>
+  <p class="note">
+    Generated from <code>docs/devnet-settlement-2026-09-22.json</code> by
+    <code>scripts/gen-webdata.mjs</code>; a test fails the build if this table and that record ever
+    disagree.
+  </p>
+
+  <footer class="site">
+    <span><img src="assets/logo.png" alt="" />Owed - corporate-action risk for tokenized equities</span>
+    <a href="/">Checker</a>
+    <a href="board.html">Risk board</a>
+    <a href="feed/owed-risk.json">Risk feed</a>
+    <a href="https://github.com/thesithunyein/owed" target="_blank" rel="noopener">GitHub</a>
+    <span class="sp">Snapshot data, refreshed on a schedule · not financial advice</span>
+  </footer>
+</div>
+
+</body>
+</html>

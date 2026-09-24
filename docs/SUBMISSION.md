@@ -67,8 +67,20 @@ a function call.
    settled on devnet with real explorer-verifiable signatures.
 5. **The app.** `owed.sithunyein.com` - search any official ticker and see the
    stored value, the chain-correct value, the resulting error, and what it does
-   to a position. Plus a risk board and a read-only wallet scan that answers the
-   question per user, not in aggregate.
+   to a position. Plus a risk board, a read-only wallet scan that answers the
+   question per user, and a no-wallet path: paste a list of holdings - ticker or
+   mint, optionally an amount and a value - and get the same answer for a whole
+   book, before connecting anything.
+6. **The integration page.** `owed.sithunyein.com/integrate` - the same fix in
+   four languages you can copy in sixty seconds: the JS call, the CPI-callable
+   Rust reader, the HTTP feed with a `jq` one-liner, and the CLI to measure your
+   own mint list. The integration surface is the product, so it has a page rather
+   than a paragraph.
+7. **The alert lane.** `feed/alerts.json`, plus a strip on the front page. It
+   fires for exactly two things - a mint whose field just stopped matching the
+   runtime, and an activation inside 48h - and is deliberately silent otherwise,
+   because a channel that repeats "383 are still wrong" every six hours trains
+   its readers to ignore the one message that matters.
 
 ### The evidence
 
@@ -103,8 +115,11 @@ team's mistake. That is what makes it worth fixing at the infrastructure layer.
 
 - **App:** https://owed.sithunyein.com - search `PPLTx`, watch it price a position
   10x wrong, then correct it.
-- **Board:** https://owed.sithunyein.com/board - every stale mint, worst first, both issuers.
+- **Board:** https://owed.sithunyein.com/board - every mint that diverges, worst first, both issuers.
+- **Integrate:** https://owed.sithunyein.com/integrate - the fix in four languages, plus all 15 devnet settlement steps as explorer links.
 - **Feed:** https://owed.sithunyein.com/feed/owed-risk.json - the contract other builders read.
+- **Alerts:** https://owed.sithunyein.com/feed/alerts.json - what changed, and what lands next.
+- **No wallet needed:** the front page takes a pasted list of holdings, not just one ticker.
 - **Repo:** https://github.com/thesithunyein/owed
 - **Repro in two commands:** `node sdk/example.mjs PPLTx` (stored 1, chain applies 10)
 - **Two-minute walkthrough:** `docs/DEMOSCRIPT.md`.

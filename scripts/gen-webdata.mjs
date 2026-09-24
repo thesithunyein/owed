@@ -12,7 +12,7 @@
  *   node scripts/conformance.mjs      # refresh keeper/data/conformance.json
  *   node scripts/gen-webdata.mjs      # inject into the pages
  */
-import { readFileSync, readdirSync, writeFileSync, mkdirSync } from "node:fs";
+import { readFileSync, readdirSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -345,6 +345,88 @@ if (!feed) {
   // left the no-JS page reading "all - mints". Baked from the feed, re-matched
   // regardless of current content so reruns stay idempotent.
   const totalStr = genAll.length.toLocaleString("en-US");
+
+  // The title and the OG card are the whole first impression for most readers of
+  // a shared link, so they state the finding rather than a slogan. Written by the
+  // generator for the same reason every other number here is: a hand-typed count
+  // is wrong the first time a mint activates.
+  const titleText = genRows.length
+    ? `${genRows.length} of ${genAll.length}`
+    : `all ${genAll.length} of`;
+  // The marker holds the count and lives outside <title>, because <title> is
+  // RCDATA: a comment inside it is not a comment, it is text, and the markers
+  // would be visible in the browser tab and in every social card. The marker is
+  // rewritten here and the three title strings are rewritten from it, so there is
+  // still one source for the number and nothing rendered contains markup.
+  // All three titles in one pass, with the trailing words anchored as the end of
+  // the match. Anchoring on the tail is what stops the replacement from swallowing
+  // the rest of the sentence: a pattern that consumed up to the closing quote and
+  // then re-emitted only the count truncated two of the three titles to
+  // "Owed - 383 of 933", which the guard test below caught immediately.
+  diff = diff
+    .replace(/(<!-- owed:title:start -->)[\s\S]*?(<!-- owed:title:end -->)/, `$1${titleText}$2`)
+    .replace(
+      /((?:<title>|property="og:title" content="|name="twitter:title" content=")Owed - )[^"<]*?( tokenized stocks)/g,
+      `$1${titleText}$2`,
+    );
+
+  // The alert lane, as a strip.
+  //
+  // Read from the published document rather than re-deriving the events here:
+  // the point of feed/alerts.json is that the site, a bot and a judge all see the
+  // same thing, and a second derivation would be a second answer. Missing file is
+  // a state, not an error - the aging snapshot is still current for the checker.
+  let alertsDoc = null;
+  try {
+    alertsDoc = JSON.parse(readFileSync(join(root, "feed", "alerts.json"), "utf8"));
+  } catch {
+    alertsDoc = null;
+  }
+  const strip = [];
+  const stamp = (sec) =>
+    new Date(sec * 1000).toISOString().replace("T", " ").slice(0, 16) + " UTC";
+  const until = (sec) => {
+    const h = Math.round(sec / 3600);
+    return h < 1 ? "under an hour" : h < 48 ? `${h}h` : `${Math.round(h / 24)} days`;
+  };
+  if (alertsDoc?.nextActivation) {
+    const a = alertsDoc.nextActivation;
+    strip.push(
+      `<div class="alert-row now"><span class="kind">next activation</span><span>` +
+        `<b>${genEscape(a.symbol)}</b>: a ${Number(Number(a.next).toPrecision(6))}x multiplier ` +
+        `activates in ${until(a.secondsUntil)} (${stamp(a.activatesAt)}). The field reads ` +
+        `${Number(Number(a.stored).toPrecision(6))}x today and will diverge from the runtime ` +
+        `the moment it lands.</span></div>`,
+    );
+  }
+  if (alertsDoc?.mostRecent) {
+    const m = alertsDoc.mostRecent;
+    const ago =
+      m.daysAgo < 1
+        ? `${Math.max(1, Math.round(m.daysAgo * 24))}h ago`
+        : `${Math.round(m.daysAgo)} days ago`;
+    strip.push(
+      `<div class="alert-row now"><span class="kind">freshest</span><span>` +
+        `<b>${genEscape(m.symbol)}</b> diverged ${ago}: the field reads ` +
+        `${Number(Number(m.stored).toPrecision(6))}x and the runtime applies ` +
+        `${Number(Number(m.effective).toPrecision(6))}x.</span></div>`,
+    );
+  }
+  for (const h of (alertsDoc?.history ?? []).slice(0, 2)) {
+    strip.push(
+      `<div class="alert-row"><span class="when">${genEscape(
+        String(h.at).replace("T", " ").slice(0, 16),
+      )}</span><span class="kind">${genEscape(h.kind)}</span><span>${genEscape(h.message)}</span></div>`,
+    );
+  }
+  if (!strip.length) {
+    strip.push(
+      alertsDoc
+        ? `<p class="alert-none">Nothing to report. No mint changed state at the last refresh, and no activation lands in the next 48h. That is the lane working, not the lane failing.</p>`
+        : `<p class="alert-none">The alert lane has not published yet. The checker above and the feed are current regardless.</p>`,
+    );
+  }
+  diff = swapStatic(diff, "alerts", strip.join(""));
   diff = diff
     .replace(/(<span id="foldTotal">)[^<]*(<\/span>)/, `$1${totalStr}$2`)
     .replace(/(<span id="coverage">)[^<]*(<\/span>)/, `$1${totalStr}$2`);
@@ -507,6 +589,47 @@ if (feed) {
       console.log(`README.md: devnet settlement table updated from ${newest}`);
     } else {
       console.log(`README.md: devnet settlement table already current (${newest})`);
+    }
+
+    // The same record, rendered as HTML for the Integrate page. That page's job is
+    // to make the devnet deployment undeniable rather than to summarise it, so it
+    // needs its own markup - but it must come from this one file, or the page and
+    // the README drift and the guard below stops meaning anything.
+    const REJECTED_HTML = {
+      "snapshot_holders(short register)":
+        "the program's own <code>SupplyMismatch</code>: a register that does not sum to supply cannot be recorded",
+      "claim(replay)":
+        "the receipt PDA already exists, so a settled claim can never be paid twice",
+    };
+    const htmlRows = report.steps
+      .map((s) =>
+        s.rejected
+          ? `<tr><td>${s.label}</td><td><span class="tag no">rejected</span> ${
+              REJECTED_HTML[s.label] ?? ""
+            }</td></tr>`
+          : `<tr><td>${s.label}</td><td class="mono"><a target="_blank" rel="noopener" href="https://explorer.solana.com/tx/${s.signature}?cluster=devnet">${s.signature.slice(
+              0,
+              18,
+            )}…</a></td></tr>`,
+      )
+      .join("");
+    const integratePath = join(root, "web", "integrate.html");
+    if (existsSync(integratePath)) {
+      const html = readFileSync(integratePath, "utf8");
+      const marker = /<!-- owed:devnet-rows:start -->[\s\S]*?<!-- owed:devnet-rows:end -->/;
+      if (!marker.test(html)) {
+        throw new Error("web/integrate.html is missing the owed:devnet-rows block");
+      }
+      const filled = html.replace(
+        marker,
+        `<!-- owed:devnet-rows:start -->${htmlRows}<!-- owed:devnet-rows:end -->`,
+      );
+      if (filled !== html) {
+        writeFileSync(integratePath, filled);
+        console.log(`web/integrate.html: devnet table updated from ${newest}`);
+      } else {
+        console.log(`web/integrate.html: devnet table already current (${newest})`);
+      }
     }
   }
 }

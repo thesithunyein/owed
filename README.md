@@ -101,7 +101,7 @@ flowchart TB
 Devnet program: `42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV` (split and
 dividend settled end-to-end; signatures in "Devnet deployment" below).
 
-CI runs the full verification spine on every push: Rust tests, 124 keeper tests,
+CI runs the full verification spine on every push: Rust tests, 127 keeper tests,
 925/925 conformance against the runtime, deterministic rebuild, program-id
 agreement across four sources, ELF e_flags, an on-chain settlement with
 receipts, and re-checking every page/README claim against committed records.
@@ -387,7 +387,7 @@ owed/
 │   │                      #   the alert rules (pure, so they test offline)
 │   ├── data/              #   both official mint lists, both scans, conformance,
 │   │                      #   and the committed runtime verdict for PreStocks
-│   └── test/              #   124 tests incl. build-integrity guards on the pages,
+│   └── test/              #   127 tests incl. build-integrity guards on the pages,
 │                          #   the PreStocks/Pyth lanes and the raw fixtures
 ├── feed/                  # owed-risk.json + schema.json - THE integration contract
 ├── web/                   # differential.html (the app) + board.html (risk table)
@@ -421,11 +421,12 @@ site/                      # deploy output (gitignored) - built by build-site.mj
 | **Conformance** | ✅ **925/925 mints** - our reader equals the Token-2022 runtime at 1e-9 relative tolerance across the whole official set (`node scripts/conformance.mjs --all`) |
 | **Trap verification** | ✅ 8/8 sampled traps confirmed against `getTokenSupply`; 2 at exactly 10× |
 | **Risk feed** | ✅ 925 xStocks + 8 PreStocks tokens in one row shape; every published `effectiveMultiplier` reproducibly recomputed from published raw state (tested) |
-| `keeper/` TS | ✅ 124 tests - trap logic, scaled classifier pinned to real account shapes, feed contract, page build integrity (including the static-fallback guards), Merkle parity, RPC parsing, base58, Pyth lane, 500-holder stress |
+| `keeper/` TS | ✅ 127 tests - trap logic, scaled classifier pinned to real account shapes, feed contract, page build integrity (including the static-fallback and alert-strip guards), Merkle parity, RPC parsing, base58, Pyth lane, 500-holder stress |
 | `sdk/` | ✅ 7 offline tests against a committed mainnet account, plus an 8th that hits mainnet when `OWED_LIVE_SDK=1` - asserts PPLTx still reads stored 1 / effective 10 |
 | `core/` Rust | ✅ 35 tests - Merkle (exhaustive n=1..17 + 33, tamper rejection), supply conservation, split/dividend math, golden vectors, and the raw Token-2022 multiplier reader (including every truncation of every fixture, because a panic on-chain aborts the transaction) |
 | `shared/vectors/scaled-raw/` | ✅ 5 real mainnet mint accounts committed as raw bytes, chosen to cover every branch: a 10x split, a PreStocks mint whose scaled entry is **not** first in the TLV list, a reverse split, an inert config, and a legacy mint with no extensions. The Rust reader is pinned to them; the keeper test asserts the same bytes still yield the feed's published numbers |
-| Alert lane | ✅ `keeper/src/alerts.mjs` (pure rules, 13 offline tests) + `scripts/alert-digest.mjs`, run by the refresh workflow. Fires only for a mint that **just** went stale, or an activation inside 48h - never for the 383 that are already stale, because an alert channel that cries continuously stops being read. No webhook configured is a clean no-op, not a failure |
+| Alert lane | ✅ `keeper/src/alerts.mjs` (pure rules, 13 offline tests) + `scripts/alert-digest.mjs`, run by the refresh workflow. Fires only for a mint whose field **just** stopped matching the runtime, or an activation inside 48h - never for the 383 that already diverge, because an alert channel that cries continuously stops being read. Publishes `feed/alerts.json` for machines and bakes a strip into the front page; no webhook configured is a clean no-op, not a failure |
+| Integrate page | ✅ `/integrate` - the same fix in four languages (JS one-liner, CPI-callable Rust reader, HTTP feed, shell), the scope split stated plainly, and all 15 devnet settlement steps with explorer links, generated from the committed record |
 | Guided demo | ✅ One click in the app walks the story (harm, breadth, provenance, fix) with a highlight ring. Every caption is built from the live payload at click time, so the demo cannot quote a different number than the page it is standing on |
 | Golden vectors | ✅ Regenerated in CI; Node↔Rust drift fails the build |
 | `web/` pages | ✅ Both run from the file system with no network; re-classify against the viewer's clock. The front page also ships a generator-baked static fallback (finding, stats, clickable worst mints) that renders with JavaScript disabled; the page script keeps it whenever the viewer's clock classifies identically to the feed and re-renders only when it does not |
