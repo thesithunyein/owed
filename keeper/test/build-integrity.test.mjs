@@ -455,9 +455,58 @@ test("the front page states the finding in its title, and agrees with its own he
   // two different counts.
   const hero = src.match(/<!-- owed:hero-worst:start -->([\s\S]*?)<!-- owed:hero-worst:end -->/);
   assert.ok(hero, "the hero carries the baked finding");
-  const heroCount = hero[1].match(/<strong>([\d,]+ of [\d,]+) tokenized stocks<\/strong>/);
+  const heroCount = hero[1].match(/<strong>([\d,]+ of [\d,]+)<\/strong>/);
   assert.ok(heroCount, "the hero names the count");
   assert.equal(count, heroCount[1], "the title and the hero quote the same count");
+});
+
+/**
+ * The page is a product, not an essay: every sentence above the fold is competing
+ * with the search box. A budget is the only thing that keeps that honest, because
+ * each individual addition is defensible and the total is not - this page has
+ * already been through one round of "explain it more" that doubled the words and
+ * made the product harder to use.
+ */
+test("the front page spends few words", () => {
+  // Script blocks carry template strings that contain markup, and comments carry
+  // prose. Neither is copy a reader ever sees, and counting them made this budget
+  // fire on a card header that is built at runtime.
+  const page = readFileSync(join(WEB, "differential.html"), "utf8")
+    .replace(/<script[\s\S]*?<\/script>/g, "")
+    .replace(/<!--[\s\S]*?-->/g, "");
+  const words = (s) => (s.match(/[A-Za-z0-9\u2019'-]+/g) ?? []).length;
+
+  const heroAt = page.indexOf('<section class="hero"');
+  const hero = page.slice(heroAt, page.indexOf("</section>", heroAt));
+  const sub = hero.match(/<p class="hero-sub">([\s\S]*?)<\/p>/);
+  assert.ok(sub, "the hero still has its one sentence");
+  assert.ok(words(sub[1]) <= 18, `the hero sentence runs to ${words(sub[1])} words - budget 18`);
+
+  const how = page.match(/<section id="how"[\s\S]*?<\/section>/)[0];
+  const steps = [...how.matchAll(/<li>([\s\S]*?)<\/li>/g)];
+  assert.ok(steps.length >= 3, "How it works keeps its three steps");
+  for (const [i, step] of steps.entries()) {
+    assert.ok(
+      words(step[1]) <= 30,
+      `step ${i + 1} runs to ${words(step[1])} words - budget 30`,
+    );
+  }
+
+  // The one-line explanations under headings are read at a glance, so they are on
+  // the tightest budget on the page.
+  for (const [, who] of page.matchAll(/<p class="who">([\s\S]*?)<\/p>/g)) {
+    assert.ok(words(who) <= 24, `a card's one-liner runs to ${words(who)} words - budget 24`);
+  }
+
+  // Collapsed answers get more room, because they are opened on purpose - but not
+  // unlimited room: an answer that needs a scroll is one nobody finishes.
+  const faq = page.match(/<section id="faq"[\s\S]*?<\/section>/)[0];
+  for (const [i, answer] of [...faq.matchAll(/<p>([\s\S]*?)<\/p>/g)].entries()) {
+    assert.ok(
+      words(answer[1]) <= 48,
+      `answer ${i + 1} runs to ${words(answer[1])} words - budget 48`,
+    );
+  }
 });
 
 test("the proof lives in the README, not on the product page", () => {
@@ -576,9 +625,15 @@ test("the hero stays a front door, and every id its script writes to still exist
     !/\u2192|&rarr;/.test(hero),
     "no decorative arrows in the hero - they are a generated-page tell",
   );
-  // The panel is what makes the copy legible over the video; a hero that drops it
-  // is back to grey text on moving footage.
-  assert.ok(page.includes(".hero-copy {"), "the hero still has its panel");
+  // Legibility over the video is the invariant, and the wash is what provides it:
+  // the copy column sits on 93-97% white. The card that used to do this job was
+  // removed - it was the last piece of furniture between the reader and the
+  // sentence - so what is asserted here is the mechanism, not the box.
+  assert.ok(page.includes(".hero-copy {"), "the hero still has its copy column");
+  assert.ok(
+    /\.hero::after \{[^}]*linear-gradient/.test(page),
+    "the hero still washes the footage so the copy stays legible",
+  );
   assert.ok(
     !/\.hero-sub \{[^}]*#9ca3af/.test(page),
     "hero body text is not the low-contrast grey it used to be",

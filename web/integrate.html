@@ -21,15 +21,21 @@
 <meta name="twitter:image" content="https://owed.sithunyein.com/assets/og.png" />
 <style>
   :root {
-    --bg: #f0f0ee; --panel: #ffffff; --panel2: #fafaf8; --line: #e2e2dc;
+    --bg: #f4f4f0; --panel: #ffffff; --panel2: #faf9f6; --line: #e4e2da;
+    /* The display face, shared with the front page: one product, one voice. */
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, ui-serif, serif;
     --text: #111827; --dim: #6b7280; --faint: #9ca3af;
     --green: #059669; --red: #dc2626; --amber: #b45309; --blue: #2563eb;
   }
   * { box-sizing: border-box; }
   :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
   body {
-    margin: 0; background: var(--bg); color: var(--text);
-    font: 15px/1.55 ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+    margin: 0; color: var(--text);
+    font: 15px/1.6 ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+    background:
+      radial-gradient(1100px 520px at 16% -10%, #ffffff 0%, rgba(255, 255, 255, 0) 62%),
+      radial-gradient(900px 480px at 104% 2%, #eaeef6 0%, rgba(234, 238, 246, 0) 58%),
+      var(--bg);
   }
   .top { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 18px 16px 0; }
   .nav-badge {
@@ -45,8 +51,8 @@
   .nav-pill a:hover { color: #111827; }
   .nav-pill a[aria-current] { color: #111827; }
   .wrap { max-width: 900px; margin: 0 auto; padding: 34px 20px 72px; }
-  h1 { font-size: 30px; margin: 0 0 8px; letter-spacing: -0.02em; }
-  h2 { font-size: 19px; margin: 40px 0 6px; letter-spacing: -0.01em; }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: 34px; margin: 0 0 8px; letter-spacing: -0.012em; }
+  h2 { font-family: var(--serif); font-weight: 400; font-size: 24px; margin: 40px 0 6px; letter-spacing: -0.01em; }
   h2 .n { color: var(--faint); font-weight: 500; font-size: 14px; }
   h3 { font-size: 15px; margin: 0 0 4px; letter-spacing: -0.01em; }
   p { margin: 0 0 12px; }

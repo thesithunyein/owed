@@ -32,9 +32,16 @@
 <meta name="twitter:image" content="https://owed.sithunyein.com/assets/og.png" />
 <style>
   :root {
-    --bg: #f0f0ee; --panel: #ffffff; --panel2: #fafaf8; --line: #e2e2dc;
-    --text: #111827; --dim: #6b7280; --faint: #9ca3af;
+    --bg: #f4f4f0; --panel: #ffffff; --panel2: #faf9f6; --line: #e4e2da;
+    --text: #14171c; --dim: #62676f; --faint: #969ba3;
     --green: #059669; --red: #dc2626; --amber: #b45309; --blue: #2563eb;
+    /* Two typefaces with two jobs. The sans is for anything you read closely - a
+       number, a label, a table. The serif is for anything that states a fact out
+       loud: at 56px it reads as a publication rather than as a dashboard, and it
+       is the one thing here that could not be mistaken for a default theme. All
+       system faces, so nothing is fetched and nothing blocks first paint. */
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, ui-serif, serif;
+    --sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
   * { box-sizing: border-box; }
   :focus-visible { outline:2px solid var(--blue); outline-offset:2px; border-radius:4px; }
@@ -45,8 +52,13 @@
   .skip { position:absolute; left:-9999px; }
   .skip:focus { left:12px; top:12px; z-index:100; background:#fff; border:1px solid var(--line); border-radius:8px; padding:8px 14px; font-size:13px; color:var(--text); text-decoration:none; }
   body {
-    margin: 0; background: var(--bg); color: var(--text);
-    font: 15px/1.55 ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+    margin: 0; color: var(--text); font: 15px/1.6 var(--sans);
+    /* Warm paper rather than flat grey: two very low-opacity washes give the page
+       a light source without a background image to load. */
+    background:
+      radial-gradient(1100px 520px at 16% -10%, #ffffff 0%, rgba(255, 255, 255, 0) 62%),
+      radial-gradient(900px 480px at 104% 2%, #eaeef6 0%, rgba(234, 238, 246, 0) 58%),
+      var(--bg);
   }
   /* Controls take their type and shape from this stylesheet, never from the
      operating system. An unstyled <button> arrives with the platform's own font,
@@ -59,8 +71,22 @@
   button:disabled { cursor: not-allowed; opacity: 0.55; }
   .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 20px 72px; }
   h1 { font-size: 26px; margin: 0 0 6px; letter-spacing: -0.02em; }
-  h2 { font-size: 17px; margin: 36px 0 4px; letter-spacing: -0.01em; }
-  h2 .n { color: var(--faint); font-weight: 500; }
+  h2 .n { color: var(--faint); font-weight: 500; font-family: var(--sans); font-size: 13px; }
+  /* Display type. Every heading that states something is set in the serif at
+     regular weight; the smaller it gets the more a serif needs weight, so the
+     card titles stay a touch heavier than the section titles. */
+  h2, .block h3, .card-head h3, .fold > summary, .hero h1 {
+    font-family: var(--serif); font-weight: 400; letter-spacing: -0.012em;
+  }
+  h2 { font-size: clamp(1.5rem, 2.5vw, 1.95rem); line-height: 1.15; margin: 42px 0 8px; }
+  .block h3 { font-size: clamp(1.5rem, 2.7vw, 2.05rem); line-height: 1.12; }
+  .card-head h3 { font-size: 1.4rem; font-weight: 500; }
+  /* One small label above a section heading, and only one per section: this is a
+     table of contents, not a caps label on every field. */
+  .eyebrow {
+    margin: 0 0 10px; font-size: 11px; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--faint);
+  }
   .sub { color: var(--dim); margin: 0 0 22px; }
   .lead { max-width: 860px; color: var(--text); font-size: 15.5px; margin: 0 0 10px; }
   .lead strong { color: var(--green); }
@@ -135,7 +161,11 @@
      clipped by it. 1.25 is the source's own headroom, so nothing is upscaled. */
   .hero video.hero-bg {
     position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-    transform: scale(1.25) translateX(6%);
+    /* Placement is arithmetic, not taste. The hand occupies 47.5-56.6% of the
+       source's width (measured off the decoded frame), and this matrix puts that
+       band at 60-72% of the viewport: clear of the copy, clear of the wash, and
+       fully inside the frame edge. */
+    transform: scale(1.38) translateX(13%);
     transform-origin: 50% 50%;
   }
   /* The scrim is what actually makes the copy readable over moving footage, and
@@ -144,21 +174,29 @@
      hero is background and the right half is still a photograph. */
   .hero::after {
     content: ""; position: absolute; inset: 0; pointer-events: none;
+    /* Stops are on the gradient axis, which runs at 100deg and is therefore
+       ~1.5% longer than the box is wide. These map to full strength to 41% of the
+       width, half strength at 42%, and clear by 53% - so the type sits on a known
+       background and the last third of the frame is still a photograph. */
     background: linear-gradient(
       100deg,
       rgba(255, 255, 255, 0.97) 0%,
-      rgba(255, 255, 255, 0.93) 30%,
-      rgba(255, 255, 255, 0.55) 54%,
-      rgba(255, 255, 255, 0) 76%
+      rgba(255, 255, 255, 0.94) 32%,
+      rgba(255, 255, 255, 0.55) 42%,
+      rgba(255, 255, 255, 0) 53%
     );
   }
   .hero .hero-fg { position: relative; z-index: 10; display: flex; flex-direction: column; min-height: 100vh; min-height: 100svh; }
-  .hero nav { display: flex; align-items: center; justify-content: center; padding: 16px 16px 0; gap: 8px; }
-  @media (min-width: 640px) { .hero nav { padding: 24px 32px 0; gap: 12px; } }
-  .nav-badge { display: flex; align-items: center; justify-content: center; border-radius: 9999px; width: 40px; height: 40px; flex-shrink: 0; background: #ededed; text-decoration: none; }
-  @media (min-width: 640px) { .nav-badge { width: 44px; height: 44px; } }
-  .nav-pill { display: flex; align-items: center; gap: 16px; border-radius: 12px; padding: 10px 16px; background: #ededed; flex-wrap: wrap; justify-content: center; }
-  @media (min-width: 640px) { .nav-pill { gap: 26px; padding: 12px 26px; flex-wrap: nowrap; } }
+  /* Mark and wordmark left, links centre, one action right - all of it sitting
+     directly on the page. The grey pill it used to sit in was a container drawn
+     around five words, which is furniture between the reader and the product. */
+  .hero nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 20px 0; gap: 14px; }
+  @media (min-width: 640px) { .hero nav { padding: 26px 40px 0; gap: 24px; } }
+  @media (min-width: 1024px) { .hero nav { padding: 28px 64px 0; } }
+  .nav-badge { display: inline-flex; align-items: center; gap: 9px; flex-shrink: 0; text-decoration: none; color: var(--text); }
+  .nav-badge .word { font-family: var(--serif); font-size: 1.3125rem; letter-spacing: -0.005em; }
+  .nav-pill { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: center; }
+  @media (min-width: 640px) { .nav-pill { gap: 30px; flex-wrap: nowrap; } }
   /* Narrow screens: the nav links become their own scrollable strip under the logo
      and wallet button. Wrapping them instead turned the pill into a vertical column
      that grew tall enough to overlap the hero copy, and an overflowing page is a
@@ -179,10 +217,10 @@
        the contrast it was designed against. */
     .hero::after { background: rgba(255, 255, 255, 0.965); }
   }
-  .nav-pill a { font-size: 12px; font-weight: 500; color: #374151;
-    text-decoration: none; transition: color 0.2s; padding: 8px 2px; }
-  .nav-pill a:hover { color: #111827; }
-  @media (min-width: 640px) { .nav-pill a { font-size: 14px; } }
+  .nav-pill a { font-size: 13px; font-weight: 500; color: var(--dim);
+    text-decoration: none; transition: color 120ms ease-out; padding: 8px 2px; }
+  .nav-pill a:hover { color: var(--text); }
+  @media (min-width: 640px) { .nav-pill a { font-size: 13.5px; } }
   /* Reading a wallet is a side door, not the front door: the whole pitch is that
      you do not need one. Filled near-black made it the heaviest thing on the
      page, so the search has competition from a control most visitors should skip.
@@ -202,29 +240,17 @@
   .wrow .wstat { color: #6b7280; flex: 1; font-size: 13px; }
   .wrow a { font-size: 13px; color: var(--blue, #3b82f6); text-decoration: none; white-space: nowrap; }
   .wrow a:hover { text-decoration: underline; }
-  .hero-content { flex: 1; display: flex; align-items: center; padding: 24px 20px 40px; }
-  @media (min-width: 640px) { .hero-content { padding: 32px 48px 64px; } }
-  @media (min-width: 1024px) { .hero-content { padding: 32px 112px 80px; } }
-  /* One panel, and the only surface on the page that carries weight. It is also
-     the legibility fix: grey type floating directly on a video is unreadable over
-     the bright frames. A frosted material puts the copy on a known background
-     instead of hoping the footage cooperates. */
-  .hero-copy {
-    max-width: 32rem; padding: clamp(20px, 2.6vw, 30px);
-    border-radius: 18px; background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(20px) saturate(150%);
-    -webkit-backdrop-filter: blur(20px) saturate(150%);
-    border: 1px solid rgba(15, 23, 42, 0.06);
-    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 14px 36px -20px rgba(15, 23, 42, 0.3);
-  }
-  .hero-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 500; color: #3b82f6; text-decoration: none; margin-bottom: 12px; }
-  .hero-badge:hover { color: #2563eb; }
-  .hero-badge .arr, .hero-cta .arr { display: inline-block; transition: transform 0.2s; }
-  .hero-badge:hover .arr, .hero-cta:hover .arr { transform: translateX(2px); }
-  .hero h1 { font-size: clamp(1.75rem, 3.4vw, 2.4rem); line-height: 1.1; font-weight: 600; color: #0f172a; letter-spacing: -0.035em; margin: 0 0 12px; text-wrap: balance; }
-  .hero-sub { font-size: 1rem; line-height: 1.5; color: #475569; margin: 0 0 20px; max-width: 42ch; text-wrap: pretty; }
-  .hero-cta { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: #3b82f6; border: 1px solid #60a5fa; border-radius: 9999px; padding: 10px 20px; text-decoration: none; transition: all 0.2s; }
-  .hero-cta:hover { background: #3b82f6; color: #fff; border-color: #3b82f6; }
+  /* The copy column is aligned to the same edge as the nav, so the first screen
+     has one left margin instead of two. */
+  .hero-content { flex: 1; display: flex; align-items: center; padding: 28px 20px 48px; }
+  @media (min-width: 640px) { .hero-content { padding: 32px 40px 64px; } }
+  @media (min-width: 1024px) { .hero-content { padding: 36px 64px 84px; } }
+  /* No panel. The wash in .hero::after is 93-97% white across this column, so the
+     type sits on a known background without a card drawing a box around it - and
+     the box was the last piece of furniture between the reader and the sentence. */
+  .hero-copy { max-width: 34rem; }
+  .hero h1 { font-size: clamp(2.25rem, 4.6vw, 3.5rem); line-height: 1.05; color: var(--text); margin: 0 0 18px; text-wrap: balance; }
+  .hero-sub { font-size: 1.0625rem; line-height: 1.55; color: var(--dim); margin: 0 0 24px; max-width: 34ch; text-wrap: pretty; }
   a { color: var(--blue); }
   .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: var(--dim); }
 
@@ -236,15 +262,17 @@
      page. Feedback lands on press, not on release, and the motion is 120ms: any
      longer and a keystroke feels queued behind an animation. */
   .hero-search { display: flex; gap: 8px; margin: 0; }
+  /* Pills, both of them. The radius is the whole visual language of the page's
+     controls, so the field and the action that submits it agree. */
   .hero-search input {
-    flex: 1; min-width: 0; background: #fff; border: 1px solid #d8d8d2;
-    border-radius: 11px; padding: 14px 16px; font: inherit; font-size: 0.9375rem;
+    flex: 1; min-width: 0; background: #fff; border: 1px solid #dcdad2;
+    border-radius: 999px; padding: 15px 22px; font: inherit; font-size: 0.9375rem;
   }
   .hero-search input:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: var(--blue); }
   .hero-search button {
     flex-shrink: 0; font: inherit; font-size: 0.9375rem; font-weight: 600; color: #fff;
-    background: var(--blue); border: 1px solid var(--blue); border-radius: 11px;
-    padding: 14px 22px; cursor: pointer;
+    background: var(--blue); border: 1px solid var(--blue); border-radius: 999px;
+    padding: 15px 26px; cursor: pointer;
     transition: background 120ms ease-out, transform 120ms ease-out;
   }
   .hero-search button:hover { background: #1d4ed8; border-color: #1d4ed8; }
@@ -257,8 +285,8 @@
   /* The finding, as a readout rather than a paragraph: one figure, one sentence,
      separated from the search by a hairline. The number the reader is meant to
      take away is the only thing set in ink at display size. */
-  .hero-worst { margin: 0; padding-top: 16px; border-top: 1px solid rgba(15, 23, 42, 0.1); font-size: 0.9375rem; line-height: 1.5; color: #475569; }
-  .hero-worst strong { display: block; font-size: 1.125rem; font-weight: 600; color: #0f172a; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; margin-bottom: 2px; }
+  .hero-worst { margin: 0; padding-top: 20px; border-top: 1px dashed rgba(20, 23, 28, 0.16); font-size: 0.9375rem; line-height: 1.5; color: var(--dim); }
+  .hero-worst strong { display: block; font-family: var(--serif); font-size: 1.5rem; font-weight: 500; color: var(--text); margin-bottom: 3px; font-variant-numeric: tabular-nums; }
   .hero-links { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; font-size: 0.875rem; margin-top: 16px; }
   .hero-links a { color: #1d4ed8; text-decoration: none; font-weight: 500; }
   .hero-links a:hover { text-decoration: underline; }
@@ -300,10 +328,16 @@
   /* Explanatory sections are prose with a rule above them, not another white box.
      Sections that are all the same card is what makes a page read as a wall: the
      eye has nothing to rank. Chrome is reserved for surfaces you operate. */
-  .block { border-top: 1px solid var(--line); padding: 26px 0 2px; }
-  .block h3 { margin: 0; font-size: 1.1875rem; letter-spacing: -0.02em; }
-  .block .who { margin: 4px 0 0; color: var(--dim); font-size: 0.875rem; }
-  .wrap > section + section { margin-top: 18px; }
+  /* Section separators are dashed. A page of long solid rules reads as a report;
+     a broken one reads as a page with sections, and it costs one gradient. */
+  .block { position: relative; padding: 48px 0 2px; }
+  .block::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background-image: repeating-linear-gradient(90deg, var(--line) 0 9px, transparent 9px 21px);
+  }
+  .block h3 { margin: 0; }
+  .block .who { margin: 6px 0 0; color: var(--dim); font-size: 0.9375rem; max-width: 60ch; }
+  .wrap > section + section { margin-top: 26px; }
   .state { flex-shrink: 0; font-size: 11.5px; font-weight: 500; padding: 4px 10px; border-radius: 999px; border: 1px solid; white-space: nowrap; }
   .state.bad { color: var(--red); border-color: #f3c1c1; background: #fef2f2; }
   .state.ok { color: var(--green); border-color: #bfe3d4; background: #f1faf6; }
@@ -331,11 +365,12 @@
 
   /* ---- folds ------------------------------------------------------------- */
   .how { margin: 14px 0 0; padding: 0; list-style: none; counter-reset: h; }
-  .how li { counter-increment: h; position: relative; padding: 0 0 16px 42px; font-size: 14.5px; line-height: 1.6; max-width: 80ch; }
+  .how li { counter-increment: h; position: relative; padding: 0 0 18px 42px; font-size: 0.9375rem; line-height: 1.6; max-width: 62ch; }
   .how li::before { content: counter(h); position: absolute; left: 0; top: 0; width: 27px; height: 27px; border-radius: 50%; background: rgba(37, 99, 235, 0.1); color: var(--blue); font-weight: 700; font-size: 13px; display: grid; place-items: center; }
-  .how li b { display: block; margin-bottom: 3px; }
+  /* The step titles carry the serif, so the list reads as three statements rather
+     than three paragraphs of body copy. */
+  .how li b { display: block; margin-bottom: 2px; font-family: var(--serif); font-size: 1.125rem; font-weight: 500; }
   .how li:last-child { padding-bottom: 0; }
-  .how-note { margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--dim); max-width: 80ch; }
   .qa { border-top: 1px solid var(--line); }
   /* Questions read as one list, so the affordance has to be visible at a glance
      rather than implied by a bare + floating in the margin. A small disc does that
@@ -467,7 +502,8 @@
   <div class="hero-fg">
     <nav>
       <a class="nav-badge" href="#" aria-label="Owed - back to top">
-        <img src="assets/logo.png" alt="Owed" width="26" height="26" />
+        <img src="assets/logo.png" alt="" width="24" height="24" />
+        <span class="word">Owed</span>
       </a>
       <!-- The search below is the front door, so the nav does not repeat it. -->
       <div class="nav-pill">
@@ -480,11 +516,10 @@
       <button class="wallet-btn" id="walletBtn" type="button">Connect wallet</button>
     </nav>
     <div class="hero-content">
-      <div class="hero-copy">        <h1>Know what your tokenized stocks are really worth.</h1>
-        <p class="hero-sub">
-          A stock split changes the price per share. Apps can miss it.
-          The blockchain does not.
-        </p>
+      <div class="hero-copy">
+        <p class="eyebrow">Tokenized equities on Solana</p>
+        <h1>Know what your tokenized stocks are really worth.</h1>
+        <p class="hero-sub">A split changes the price per share. Apps can miss it. The blockchain can’t.</p>
         <form class="hero-search" id="search" role="search">
           <input id="q" list="symbols" autocomplete="off" spellcheck="false"
                  placeholder="Search a ticker - AAPLx, PPLTx…"
@@ -492,7 +527,7 @@
           <button type="submit">Check</button>
         </form>
         <datalist id="symbols"></datalist>
-        <!-- owed:hero-worst:start --><p class="hero-worst"><strong>385 of 933 tokenized stocks</strong> show a number the blockchain does not use.</p><!-- owed:hero-worst:end -->
+        <!-- owed:hero-worst:start --><p class="hero-worst"><strong>385 of 933</strong> read a number the blockchain does not use.</p><!-- owed:hero-worst:end -->
         <div class="hero-links">
           <a href="#findings">See every affected stock</a>
           <button type="button" class="demo-btn" id="demoBtn">▶ 60-second guided tour</button>
@@ -515,21 +550,13 @@
 
   <section id="how" aria-label="How it works">
     <div class="block">
-      <div class="card-head">
-        <div>
-          <h3>How it works</h3>
-          <p class="who">The whole product in three steps. No wallet, no key, no signup - and no crypto knowledge needed.</p>
-        </div>
-      </div>
+      <p class="eyebrow">How it works</p>
+      <h3>Three things to know.</h3>
       <ol class="how">
-        <li><b>A stock split is not supposed to change what you own.</b> When a company splits its shares, you end up with more shares that are each worth less. Your total value stays the same. Tokenized stocks do the same thing, and the blockchain adjusts the price per share on its own.</li>
-        <li><b>Apps have to keep up with that adjustment, and some do not.</b> An app keeps its own copy of the price per share. When the copy falls behind, the value it shows you is wrong - usually too low, by exactly the size of the split - and nothing on screen says so. The number just looks normal.</li>
-        <li><b>Owed shows you both numbers, and the difference in dollars.</b> Paste a ticker, or a whole list of holdings, or connect a wallet to read your positions. It runs entirely in your browser: nothing to install, nothing to sign up for, and nothing you type is sent anywhere.</li>
+        <li><b>A split doesn’t change what you own.</b> You get more shares, each worth less. The blockchain re-prices the token itself.</li>
+        <li><b>Your app keeps its own copy of that price.</b> When it falls behind, the number is too low by the size of the split. Nothing warns you.</li>
+        <li><b>Owed shows both numbers.</b> Search a ticker, paste a list, or connect a wallet. It all runs in your browser.</li>
       </ol>
-      <p class="how-note">
-        Not sure where to start? Search a ticker you already own above, or
-        <a href="#findings">open the findings</a> to see every affected stock, worst first.
-      </p>
     </div>
   </section>
 
@@ -538,7 +565,7 @@
       <div class="card-head">
         <div>
           <h3>Alerts</h3>
-          <p class="who">The only reason Owed ever contacts you: a stock whose number just changed. Nothing else fires.</p>
+          <p class="who">Fires only when a stock’s number changes. Nothing else does.</p>
         </div>
         <!-- owed:alerts-state:start --><span class="state ok" id="alertsState">No new changes</span><!-- owed:alerts-state:end -->
       </div>
@@ -576,16 +603,11 @@
     <div class="card">
       <div class="card-head">
         <div>
-          <h3>Check a list of holdings</h3>
-          <p class="who">No wallet, no signature, no network. Nothing leaves your browser.</p>
+          <h3>Check your holdings</h3>
+          <p class="who">No wallet, no signup, nothing sent anywhere.</p>
         </div>
       </div>
-      <p class="lede">
-        Paste one holding per line: a ticker (or the token's address), then how many units you
-        hold, then what your system currently says they are worth. Owed tells you which lines
-        are valued with an out-of-date number, and what that costs you.
-      </p>
-      <label for="holdingsIn">Your holdings</label>
+      <label for="holdingsIn">One line each: ticker, units, then what your app says they’re worth</label>
       <textarea id="holdingsIn" rows="4" spellcheck="false" aria-label="Holdings, one per line"
         placeholder="AAPLx 12.5&#10;PPLTx 3&#10;SPACEX 2 50000&#10;XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB"></textarea>
       <div class="holdings-actions">
@@ -598,7 +620,7 @@
 
   <details class="fold" id="findings">
     <summary>
-      <span>Everything Owed found across all <span id="foldTotal">933</span> tokenized stocks</span>
+      <span>Everything found across <span id="foldTotal">933</span> stocks</span>
       <span class="n" id="foldCount"></span>
     </summary>
     <div class="fold-body">      <p class="sub" id="sub" style="margin-bottom:14px"><!-- owed:sub:start --><span class="static-match">0</span>Snapshot taken <strong>Thu, 24 Sep 2026 13:44:59 GMT</strong> from <span class="mono">https://api.mainnet-beta.solana.com</span>, and rechecked in your browser just now. Covers <span id="laneNote">925 xStocks and 8 PreStocks</span>.<!-- owed:sub:end --></p>
@@ -631,29 +653,29 @@
     <div class="block">
       <div class="card-head">
         <div>
-          <h3>Questions</h3>
-          <p class="who">The ones people ask before they trust a number on a page.</p>
+          <p class="eyebrow">Questions</p>
+          <h3>Before you trust a number.</h3>
         </div>
       </div>
       <details class="qa" open>
         <summary>What is a tokenized stock?</summary>
-        <p>A share of a real company that is issued on a blockchain instead of being held at a broker. It tracks the same company at the same price, and you can trade it like any other token. On Solana they exist for public companies (Apple, Tesla, Netflix) and for private ones (SpaceX, OpenAI, Anduril).</p>
+        <p>A real company’s share, issued on a blockchain instead of held at a broker. It tracks the same company at the same price. On Solana they cover public companies (Apple, Tesla, Netflix) and private ones (SpaceX, OpenAI, Anduril).</p>
       </details>
       <details class="qa">
         <summary>Why would the number my app shows be wrong?</summary>
-        <p>When a company splits its shares, or pays out a dividend, the number of shares behind the token changes - and so does the price of one share. The blockchain makes that adjustment on its own. Many apps keep a separate copy of it, and a copy can fall behind. When it does, the app keeps showing the old price per share, and the value it reports is too low by exactly the size of the split. Nothing on screen warns you.</p>
+        <p>When a company splits its shares or pays a dividend, the price per share changes and the blockchain adjusts for it. Many apps keep a separate copy that falls behind, so the price they show is too low by the size of the split.</p>
       </details>
       <details class="qa">
         <summary>Do I need a crypto wallet? Do I need an account?</summary>
-        <p>No. The token checker, the holdings checker and the findings table all work with nothing connected and nothing typed in. If you want Owed to read your own positions from the blockchain you can connect a wallet, but Owed never asks for a signature, never moves anything and never needs your keys.</p>
+        <p>No. The checker, the holdings list and the findings all work with nothing connected. You can connect a wallet if you want Owed to read your positions, but it never asks for a signature, never moves anything, and never needs your keys.</p>
       </details>
       <details class="qa">
         <summary>Where do the numbers come from?</summary>
-        <p>Every number on this page is read from Solana's public blockchain state at a fixed snapshot, then rechecked in your browser as the page loads. The snapshot, the exact rule used to decide whether a stock is current, and the raw per-token data are published as JSON under <span class="mono">/feed/</span> - so you never have to take this page's word for it.</p>
+        <p>Each number is read from Solana’s public blockchain state at a fixed snapshot, then rechecked in your browser. The snapshot, the rule, and the raw per-token data are published as JSON under <span class="mono">/feed/</span>, so you never have to take this page’s word for it.</p>
       </details>
       <details class="qa">
         <summary>How do I know this is not just a marketing page?</summary>
-        <p>Because it is a measurement, not a claim, and you can repeat it. The reader is a small open-source program, the raw data behind every figure is published, and the whole finding can be reproduced from your own terminal in one command. The repository links the command and the evidence for each number on this page.</p>
+        <p>Because it is a measurement, not a claim, and you can repeat it. The reader is a small open-source program, the raw data behind every figure is published, and the whole finding reproduces from your own terminal in one command.</p>
       </details>
       <details class="qa">
         <summary>Is this financial advice?</summary>
@@ -661,7 +683,7 @@
       </details>
       <details class="qa">
         <summary>I write code. Can I use this?</summary>
-        <p>Yes, that is the point. The rule is available as a zero-dependency JavaScript package and as Rust for on-chain use, and the data is a plain JSON feed you can poll. The <a href="integrate.html">developer page</a> has copy-paste snippets in both languages, and the repository is MIT licensed.</p>
+        <p>Yes, that is the point. The rule ships as a zero-dependency JavaScript package and as Rust for on-chain use, and the data is a JSON feed you can poll. The <a href="integrate.html">developer page</a> has copy-paste snippets in both, and the repository is MIT licensed.</p>
       </details>
     </div>
   </section>

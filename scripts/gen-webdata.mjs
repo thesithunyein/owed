@@ -348,7 +348,7 @@ if (!feed) {
     // chips directly under the checker, so repeating them here only made the
     // hero longer without telling a reader anything new.
     genRows.length
-      ? `<p class="hero-worst"><strong>${genRows.length} of ${genAll.length} tokenized stocks</strong> show a number the blockchain does not use.</p>`
+      ? `<p class="hero-worst"><strong>${genRows.length} of ${genAll.length}</strong> read a number the blockchain does not use.</p>`
       : "",
   );
   // Two counts live outside marker blocks and are set by script only, which

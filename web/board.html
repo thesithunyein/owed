@@ -20,16 +20,22 @@
 <meta name="twitter:image" content="https://owed.sithunyein.com/assets/og.png" />
 <style>
   :root {
-    --bg:#f0f0ee; --panel:#ffffff; --line:#e2e2dc; --text:#111827; --dim:#6b7280;
+    --bg:#f4f4f0; --panel:#ffffff; --line:#e4e2da; --text:#14171c; --dim:#62676f;
+    /* The display face, shared with the front page: one product, one voice. */
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, ui-serif, serif;
     --green:#059669; --red:#dc2626; --amber:#b45309; --blue:#2563eb;
     font-family: ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
   }
   * { box-sizing: border-box; }
-  body { margin:0; background:var(--bg); color:var(--text); font:15px/1.55 ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif; }
+  body { margin:0; color:var(--text); font:15px/1.6 ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+    background:
+      radial-gradient(1100px 520px at 16% -10%, #ffffff 0%, rgba(255, 255, 255, 0) 62%),
+      radial-gradient(900px 480px at 104% 2%, #eaeef6 0%, rgba(234, 238, 246, 0) 58%),
+      var(--bg); }
   :focus-visible { outline:2px solid var(--blue); outline-offset:2px; border-radius:4px; }
   @media (prefers-reduced-motion: reduce) { * { transition:none !important; animation:none !important; } }
   header { padding:26px 22px 8px; max-width:1080px; margin:0 auto; }
-  h1 { margin:0 0 6px; font-size:22px; letter-spacing:-0.02em; }
+  h1 { margin:0 0 6px; font-family:var(--serif); font-weight:400; font-size:27px; letter-spacing:-0.012em; }
   h1 .brand { color:var(--amber); }
   /* The shipped mark is black on transparency, and both pages are light, so the
      black file is the one to use here. logo-white.png is the same artwork with
