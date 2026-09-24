@@ -1,5 +1,5 @@
 {
- "scannedAt": "2026-09-24T10:36:13.000Z",
+ "scannedAt": "2026-09-24T11:37:36.000Z",
  "rpc": "https://api.mainnet-beta.solana.com",
  "totalOfficial": 8,
  "totalRead": 8,
@@ -17,8 +17,8 @@
    "mint": "PresTj4Yc2bAR197Er7wz4UUKSfqt6FryBEdAriBoQB",
    "meta": {
     "name": "Anduril PreStocks",
-    "markPrice": 152.75796066,
-    "tokenPrice": 154.3203029634285,
+    "markPrice": 152.80999557,
+    "tokenPrice": 150.2368035081495,
     "issuerSupply": 11805.817985464,
     "externalUrl": "https://www.prestocks.com/anduril"
    },
@@ -49,13 +49,13 @@
    "mint": "Pren1FvFX6J3E4kXhJuCiAD5aDmGEb7qJRncwA8Lkhw",
    "meta": {
     "name": "Anthropic PreStocks",
-    "markPrice": 1036.90118567,
-    "tokenPrice": 1036.2192681913102,
-    "issuerSupply": 7381.812473622,
+    "markPrice": 1036.86762578,
+    "tokenPrice": 1024.0160759671392,
+    "issuerSupply": 7381.811596492,
     "externalUrl": "https://www.prestocks.com/anthropic"
    },
    "decimals": 9,
-   "supply": "7381812122155",
+   "supply": "7381811596492",
    "scaledState": {
     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
     "multiplier": "1",
@@ -81,8 +81,8 @@
    "mint": "PreZad18qfPtbxNpMtMuAuX2zVpvkEU8DnJx56faCWd",
    "meta": {
     "name": "Figure AI PreStocks",
-    "markPrice": 181.23081139,
-    "tokenPrice": 172.1484168462545,
+    "markPrice": 181.18661924,
+    "tokenPrice": 171.90819145362147,
     "issuerSupply": 3012.857155916,
     "externalUrl": "https://www.prestocks.com/figureai"
    },
@@ -113,8 +113,8 @@
    "mint": "PreLWGkkeqG1s4HEfFZSy9moCrJ7btsHuUtfcCeoRua",
    "meta": {
     "name": "Kalshi PreStocks",
-    "markPrice": 882.01418704,
-    "tokenPrice": 836.0174860844828,
+    "markPrice": 881.97515784,
+    "tokenPrice": 855.1580184046322,
     "issuerSupply": 904.867766516,
     "externalUrl": "https://www.prestocks.com/kalshi"
    },
@@ -145,13 +145,13 @@
    "mint": "PrekqLJvJ3qVdXmBGDiexvwUTF4rLFDa6HWS4HJbw9S",
    "meta": {
     "name": "Neuralink PreStocks",
-    "markPrice": 336.60396425,
-    "tokenPrice": 430.8391099291472,
-    "issuerSupply": 2595.28229058,
+    "markPrice": 336.57132558,
+    "tokenPrice": 422.2591868259583,
+    "issuerSupply": 2595.280408593,
     "externalUrl": "https://www.prestocks.com/neuralink"
    },
    "decimals": 9,
-   "supply": "2595282290580",
+   "supply": "2595280408593",
    "scaledState": {
     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
     "multiplier": "1",
@@ -177,13 +177,13 @@
    "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
    "meta": {
     "name": "OpenAI PreStocks",
-    "markPrice": 1023.0998682219048,
-    "tokenPrice": 1362.5732386357558,
-    "issuerSupply": 2826.3521267373853,
+    "markPrice": 1022.9898983180999,
+    "tokenPrice": 1328.8428221286147,
+    "issuerSupply": 2826.351331499277,
     "externalUrl": "https://www.prestocks.com/openai"
    },
    "decimals": 9,
-   "supply": "1901814234428",
+   "supply": "1901813699323",
    "scaledState": {
     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
     "multiplier": "1",
@@ -209,13 +209,13 @@
    "mint": "Pre8AREmFPtoJFT8mQSXQLh56cwJmM7CFDRuoGBZiUP",
    "meta": {
     "name": "Polymarket PreStocks",
-    "markPrice": 144.34506784,
-    "tokenPrice": 143.56006095941572,
-    "issuerSupply": 4816.964685481,
+    "markPrice": 144.35754623,
+    "tokenPrice": 146.690161233449,
+    "issuerSupply": 4816.963202185,
     "externalUrl": "https://www.prestocks.com/polymarket"
    },
    "decimals": 9,
-   "supply": "4816964685481",
+   "supply": "4816963202185",
    "scaledState": {
     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
     "multiplier": "1",
@@ -241,8 +241,8 @@
    "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
    "meta": {
     "name": "SpaceX PreStocks",
-    "markPrice": 147.5712365795129,
-    "tokenPrice": 115.58534405342034,
+    "markPrice": 147.89139961580204,
+    "tokenPrice": 115.49509999479453,
     "issuerSupply": 43712.532100135,
     "externalUrl": "https://www.prestocks.com/spacex"
    },
@@ -271,5 +271,5 @@
  ],
  "issuer": "prestocks",
  "listSource": "https://prestocks.com/api/prestocks",
- "listFetchedAt": "2026-09-24T10:36:13.503Z"
+ "listFetchedAt": "2026-09-24T11:37:36.882Z"
 }
