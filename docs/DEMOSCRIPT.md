@@ -1,120 +1,166 @@
-# Owed — Demo Script
+# Owed - Demo Script
 
-~2:30. Every number on screen is reproducible from the repo in one command.
+Target **2:00-2:20**. One take is the goal: the app ships a guided tour
+(`docs` aside, it is the **"60-second guided demo"** button on the front page),
+so the screen does the sequencing and you narrate over it. Press `→` to advance,
+`Esc` to exit.
 
-> **Note on an earlier draft.** This script previously opened with "a tokenized
-> equity nobody adjusted is quoting the wrong price on every Solana AMM, 4× wrong."
-> That is **false** and was removed. The Token-2022 runtime *does* apply the
-> effective multiplier, and the venues we checked agree with each other to within
-> 0.6%. The real defect is narrower and is what this script now shows: the *stored
-> field* is stale, and anything reading it computes the wrong balance.
+Every number on screen is reproducible from the repo in one command. Nothing here
+is read from a slide.
+
+> **Two corrections to earlier drafts, both worth knowing before you record.**
+>
+> 1. An early version opened with *"a tokenized equity nobody adjusted is quoting
+>    the wrong price on every Solana AMM, 4x wrong."* That is **false** and was
+>    removed. The Token-2022 runtime applies the effective multiplier correctly,
+>    and the venues we checked agree with each other to within 0.6%. The real
+>    defect is narrower: the *stored field* stops matching the runtime, and
+>    anything reading it computes a different balance.
+> 2. A later version said the on-chain registry *"has not been compiled, deployed,
+>    or audited."* Two of those three are now out of date. The program **is**
+>    compiled for SBF and **is** live on devnet with explorer-verifiable
+>    signatures. Only the audit is still missing, and so is mainnet. Saying
+>    otherwise on camera undersells the strongest engineering artifact here.
+
+<!-- NOTE FOR THE PRESENTER: the counts move as activations pass. Read them off the
+     page's own counter - it re-classifies against your clock - or from the
+     README's generated block. Saying a stale number out loud, in a demo about
+     staleness, is the one unforced error available here. -->
 
 ---
 
-<!-- NOTE FOR THE PRESENTER: the counts below are a snapshot and they move as
-     activations pass. Read the current figure off the page's own counter (it
-     re-classifies against your clock) or from the README's generated block,
-     which is regenerated from `feed/owed-risk.json` on every refresh. Saying a
-     stale number out loud in a demo of staleness is the one unforced error
-     available here. -->
+## 0. The line (0:00-0:12)
 
-## 0. The line (0:00–0:15)
+> "Two RPC calls to the same node, for the same mint, disagree - and neither one
+> is marked as the wrong one."
 
-> "<count> of the 925 tokenized stocks on Solana have a stale multiplier field
-> on-chain right now. Two of them are off by a factor of ten. Here is the proof
-> against the chain, and here is the drop-in fix."
+Do not open with a number. Open with the disagreement, because it needs no trust:
+the viewer can run it themselves in ten seconds. Say it flat, no adjectives.
 
-Read `<count>` off the live page before you start — it is the number the
-counter shows, and it changes as activations pass. Say it flatly. No adjectives.
-The numbers carry it.
+## 1. The proof, before any product (0:12-0:45)
 
-## 1. The harm, clickable (0:15–0:55)
+Press the **guided demo** button, or scroll to *"Two RPC calls on the same mint"*.
+Both commands are on the page and copyable.
 
-Open `web/differential.html`. It works from disk — no server, no build, no key.
+1. `getAccountInfo` returns `multiplier: 1` beside `newMultiplier: 10` and the
+   timestamp the switch takes effect. Point at the line that says
+   **"which one applies?  not in the response."**
 
-1. It loads showing **the stale count of 925**, re-classified against the viewer's clock.
-2. Select `NFLXx` (the default, worst first). Set position `100000`, debt `10000`.
-3. The two panels read **$10,000** against **$100,000**. Same position.
-4. The verdict banner: *"sees this position at 100.0% loan-to-value and liquidates
-   it — while it is genuinely at 10%."*
+   > "There is no field in this response that says which of the two is in force.
+   > The answer is that timestamp compared against the clock, and only the
+   > consumer can do it. Nothing here warns you."
 
-Say: *"Price and position size cancel out of this, so it holds at any size. A
-lending market reading the stored field liquidates a healthy position, and the
-error belongs to the stale field, not the borrower."*
+2. `getTokenSupply`, same node, same mint, returns a `uiAmount` the runtime has
+   **already scaled**.
 
-Then scroll the table. Say: *"Most of these are small — the median is a third of a
-percent. Two are not."* Saying that is the point.
+   > "So the same node tells me two different things about the same mint, and
+   > neither response is marked wrong. On this mint they differ by ten times."
 
-## 2. The reader is verified against the chain (0:55–1:25)
+Then say the line that makes it a product problem rather than an anecdote:
 
-Terminal:
+> "This is verified in one command against a live mint -
+> `node scripts/verify-rpc-mechanism.mjs PPLTx`. It exits non-zero when a mint
+> does *not* diverge, so a clean result counts as a result."
 
-```bash
-node scripts/conformance.mjs --all
-```
+## 2. Not one team's reading (0:45-1:05)
 
-It prints one dot per mint, then:
+Scroll to *"Three independent sources, not our reading alone"*.
 
-```
-924/924 mints match the Token-2022 runtime (tolerance 1e-9), 1 not checked
-```
+> "This is understood elsewhere. Solana's own explorer implements the same
+> selection rule in production. Kamino's lending oracle parses this extension
+> from raw bytes - at the same offsets we derived independently - and it suspends
+> its price for twenty-four hours ahead of a scheduled switch. It even documents
+> that an activation timestamp may already be in the past when it is published.
 
-Say: *"This compares our rule against `getTokenSupply` — the runtime's own scaled
-amount — for all 925 official mints. Nine decimal places. The rule was an
-assumption this morning; now it's measured. One mint hit a transient 403, and
-`--only ARx` retries it on its own."*
+> So the hazard is known. What nobody publishes is **which mints are in that state
+> right now**. That is the gap, and it is the whole product."
 
-Optionally also:
+## 3. The scale, and the honest tail (1:05-1:35)
 
-```bash
-node scripts/verify-trap.mjs        # 8/8 traps match the pending multiplier
-node scripts/collateral-scenario.mjs
-```
+Step to *"What we found"* (the fold behind the counter).
 
-## 3. The integration surface (1:25–1:55)
+> "Across 933 official mints, 385 read a stored multiplier the runtime does not
+> apply. Two issuers, same Token-2022 template."
 
-Open `feed/owed-risk.json` beside `feed/schema.json`. Show two things:
+Then scroll the table, and say the sentence that earns credibility:
 
-1. Each token carries the **raw `scaledUiAmountConfig` state** next to our answer.
-2. `effectiveMultiplier` is stamped with the `clock` it was computed at.
+> "Most of these are small. The median error is a fraction of a percent. Two are
+> off by ten times, and those are the ones that matter. An earlier version of this
+> project claimed the whole set was dangerous; it isn't, and saying so is the
+> difference between a finding and a pitch."
 
-Say: *"You don't have to trust this feed — it publishes the raw state so you can
-recompute the rule and disagree with us. And a test enforces that: every published
-value has to be reproducible from the published inputs, or CI fails. A feed that
-only publishes its own conclusions is unauditable."*
+## 4. What it costs someone (1:35-1:55)
 
-## 4. Breadth, and the surface nobody markets (1:55–2:15)
+Search `PPLTx` and put a position behind it. The two panels read the same
+position at two different values; the verdict banner names the loan-to-value.
 
-Open `web/board.html`. Say: *"All 925 mints, same offline property."*
+> "Price and position size cancel out of this entirely, so it holds at any size.
+> A lender reading the stored field liquidates a healthy position - and the error
+> belongs to the field, not to the borrower."
 
-Then point at the control column: *"Every single official xStock carries a
-permanent delegate and a pause authority — 925 of 925. One compromised issuer key
-can freeze or confiscate any holder's balance. That is not an attack, it is a
-capability, and no wallet UI shows it."*
+If there is time, go to the pasted-holdings box and paste two tickers. It needs
+**no wallet**: the answer comes before any connection prompt.
 
-## 5. What is not done (2:15–2:30)
+## 5. The fix, in the language you already use (1:55-2:15)
 
-> "What you just saw is real and reproducible: the scan, the conformance proof,
-> the feed, both pages. What is not: the on-chain registry that would *fix* this
-> rather than report it is reference source — `programs/owed/` has not been
-> compiled, deployed, or audited, and I am not going to pretend otherwise. And we
-> tried to show a major aggregator misstating these supplies; our own controls
-> failed, so we dropped the claim instead of shipping it."
+Open `/integrate`.
 
-That paragraph is worth more than a third feature.
+> "The fix is a function call. JavaScript: `getEffectiveMultiplier(mint)`, zero
+> dependencies, no key. Rust, if you are a program rather than a client -
+> `read_multiplier` rides along with the mint account you already load. Or read
+> the feed. There is a `jq` one-liner for each."
 
-## 6. Why Solana (2:30–2:40)
+Scroll to the devnet table.
 
-> "Tokenized equities are on Solana, and the mechanism causing this —
-> Token-2022 Scaled UI Amount — only exists here. A correctness layer for it can
+> "And the registry that *settles* these actions is compiled for SBF, running on
+> devnet, with fifteen steps - thirteen signed transactions and two paths that
+> must refuse - all linked to the explorer. It runs on a throwaway validator on
+> every push too, so it is not a one-off."
+
+## 6. What is not done (2:15-2:30)
+
+Say this plainly. It is worth more than another feature.
+
+> "What is not done: the program is **not audited**, and it is on devnet, not
+> mainnet - so it is not pointed at real assets and I am not claiming it is. The
+> Pyth lane publishes one measured basis, not many, because most of the reference
+> feeds for these wrappers are stale and I would rather publish one real number
+> than twenty manufactured ones. And the traction is honest: no external team has
+> adopted the reader yet. The outreach is written and sent; one reply is what this
+> needs."
+
+## 7. Why Solana (2:30-2:40)
+
+> "Tokenized equities are on Solana, and the mechanism causing this -
+> Token-2022 Scaled UI Amount - only exists here. A correctness layer for it can
 > only be built where the tokens are."
 
 ---
 
+## Shot list
+
+| # | Time | On screen | Beat |
+|---|---|---|---|
+| 0 | 0:00 | Front page, hero | The disagreement, stated flat |
+| 1 | 0:12 | `#mechanism` section | Two calls, two answers, no warning |
+| 2 | 0:45 | `#corroboration` | The explorer and Kamino already implement the rule |
+| 3 | 1:05 | The findings fold | 385 of 933, and the honest median |
+| 4 | 1:35 | `PPLTx` result + holdings box | What it costs a position, no wallet needed |
+| 5 | 1:55 | `/integrate` | The fix in JS, Rust and HTTP; devnet table |
+| 6 | 2:15 | Back to camera | What is not done |
+| 7 | 2:30 | Close | Why it can only be built here |
+
 ## Definition of done
 
-- [ ] Harm page opens from disk with numbers live at recording time
-- [ ] `node scripts/conformance.mjs --all` runs on camera and prints 924/924
-- [ ] Feed and schema shown side by side, recomputability stated
-- [ ] Board's 925/925 control-surface count shown
-- [ ] The honesty paragraph is in the video, not only in the README
+- [ ] Front page opens and the counter is live at recording time
+- [ ] The two-RPC section is on screen long enough to read the **"not in the response"** line
+- [ ] `node scripts/verify-rpc-mechanism.mjs PPLTx` runs on camera and prints `10.000000x`
+- [ ] The agreement section names both outside implementers, not just us
+- [ ] The median-is-small sentence is in the video, not only in the README
+- [ ] The devnet table is shown with its signatures
+- [ ] The not-audited, not-on-mainnet, no-adopters paragraph is spoken, not skipped
+
+## If you only get one minute
+
+Section 1. Two RPC calls that disagree, on a live mint, reproducible in one
+command. That is the whole argument, and it asks the judge to trust nothing.

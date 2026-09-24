@@ -1210,6 +1210,35 @@ const DEMO_STOPS = [
     },
   },
   {
+    // The proof stop, and the one to hold on. It needs no trust in this page:
+    // two public RPC calls, both printed, differing by the factor above.
+    target: "mechanism",
+    open: null,
+    caption: () => {
+      const r = rows[0];
+      if (!r) return "No divergent mint in this snapshot, so there is no disagreement to show.";
+      const c = r.c;
+      const f = c.stored === 0 ? null : c.eff / c.stored;
+      return (
+        `Do not take this page's word for it. <b>getAccountInfo</b> returns the account as the ` +
+        `chain stores it - both multiplier fields and the timestamp - and <b>never says which ` +
+        `one is in force</b>. <b>getTokenSupply</b> on the same node returns a value the runtime ` +
+        `has already scaled. On ${escapeHtml(r.t.symbol)} those two responses differ by ` +
+        `<b>${f === null ? "an unknown factor" : `${fmtMult(f)}x`}</b>, and neither response ` +
+        `is marked as the wrong one.`
+      );
+    },
+  },
+  {
+    target: "corroboration",
+    open: null,
+    caption: () =>
+      `And this is not one team's reading. Solana's own explorer implements the same ` +
+      `selection rule in production, and Kamino's lending oracle parses the extension from ` +
+      `raw bytes and suspends its price for 24 hours ahead of a scheduled switch. ` +
+      `<b>The hazard is understood; the per-mint coverage is what was missing.</b>`,
+  },
+  {
     target: "verdict",
     open: () => openSel("details.size"),
     caption: () => {

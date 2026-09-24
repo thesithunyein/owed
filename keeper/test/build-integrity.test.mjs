@@ -530,6 +530,48 @@ test("the alert lane is published as a document the page agrees with", () => {
   }
 });
 
+test("the demo script does not put a false claim in the presenter's mouth", () => {
+  // This file is read aloud on camera, so a stale line here is worse than a stale
+  // line anywhere else: it cannot be corrected after the take. Both of the errors
+  // below shipped at some point, and the second one undersold the strongest
+  // engineering artifact in the repo - the program is compiled and on devnet.
+  const src = readFileSync(join(ROOT, "docs", "DEMOSCRIPT.md"), "utf8");
+  // The header blockquote records claims that were removed and why, so it has to
+  // quote them - scanning it would fail on the correction itself. Only the spoken
+  // body is checked, which starts after the first horizontal rule.
+  const rule = src.indexOf("\n---\n");
+  assert.ok(rule > 0, "the script has a header block and a body");
+  const spoken = src.slice(rule);
+
+  const deployed = readFileSync(join(ROOT, "README.md"), "utf8");
+  const liveOnDevnet = /program is live on devnet/i.test(deployed);
+  if (liveOnDevnet) {
+    assert.ok(
+      !/has not been compiled|not been compiled, deployed, or audited/i.test(spoken),
+      "the script does not claim the program was never compiled or deployed while the README says it is live",
+    );
+  }
+
+  // The runtime is correct, so no spoken line may assert that the chain misprices.
+  for (const phrase of ["misprice positions", "quoting the wrong price", "the chain is wrong"]) {
+    assert.ok(!spoken.includes(phrase), `the script does not assert fault ("${phrase}")`);
+  }
+
+  // And it has to give the presenter the command that carries the argument, or the
+  // opening section is not reproducible by whoever is watching.
+  assert.ok(
+    spoken.includes("verify-rpc-mechanism.mjs"),
+    "the script names the command that proves the opening claim",
+  );
+
+  // The presenter must also be told the program is live, since that is the artifact
+  // the old wording undersold.
+  if (liveOnDevnet) {
+    assert.match(spoken, /devnet/i, "the script tells the presenter the program is on devnet");
+    assert.match(spoken, /not audited/i, "and that it is not audited, rather than omitting it");
+  }
+});
+
 test("the Integrate page is complete, not a stub", () => {
   const src = readFileSync(join(WEB, "integrate.html"), "utf8");
 
