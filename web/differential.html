@@ -359,6 +359,21 @@
   }
   .card-actions button.ghost:hover { background: #ecece6; border-color: #d8d8d2; color: var(--text); }
   .card-actions button.ghost:active { transform: scale(0.98); }
+  /* The manual fallback for the wallet read. Shapes here rather than inherited, for
+     the same reason as the button above: a class name is not a style. */
+  .wallet-rpc { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .wallet-rpc label { display: block; margin: 0 0 6px; font-size: 0.8125rem; font-weight: 500; color: var(--dim); }
+  .wallet-rpc-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .wallet-rpc input {
+    flex: 1 1 260px; min-width: 0; padding: 10px 14px; background: #fff;
+    border: 1px solid #d8d8d2; border-radius: 999px; font-size: 0.875rem;
+  }
+  .wallet-rpc input:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: var(--blue); }
+  .wallet-rpc button.ghost {
+    font-size: 0.8125rem; font-weight: 500; padding: 10px 16px; border-radius: 999px;
+    background: var(--panel2); color: var(--dim); border: 1px solid var(--line);
+  }
+  .wallet-rpc button.ghost:hover { background: #ecece6; border-color: #d8d8d2; color: var(--text); }
   .lede { margin: 14px 0 0; font-size: 14.5px; max-width: 68ch; }
   .lede b { font-variant-numeric: tabular-nums; }
   .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin: 16px 0 0; }
@@ -559,7 +574,7 @@
           <button type="submit">Check</button>
         </form>
         <datalist id="symbols"></datalist>
-        <!-- owed:hero-worst:start --><p class="hero-worst"><strong>385 of 933</strong> read a number the blockchain does not use.</p><!-- owed:hero-worst:end -->
+        <!-- owed:hero-worst:start --><p class="hero-worst"><strong>385 of 933</strong> read a number the blockchain does not use. For 5 of them the number an app shows is at least 2x too low.</p><!-- owed:hero-worst:end -->
         <div class="hero-links">
           <a href="#findings">See every affected stock</a>
           <button type="button" class="demo-btn" id="demoBtn">▶ 60-second guided tour</button>
@@ -616,6 +631,16 @@
       <p class="lede" id="walletLede">Reading your tokenized-equity balances from Solana.</p>
       <div class="facts" id="walletSummary"></div>
       <div id="walletRows"></div>
+      <!-- Hidden until a read actually fails, so the card a reader sees is only
+           ever their positions. -->
+      <div class="wallet-rpc" id="walletRpc" hidden>
+        <label for="walletRpcUrl">Your own RPC address</label>
+        <div class="wallet-rpc-row">
+          <input id="walletRpcUrl" spellcheck="false" autocomplete="off"
+            placeholder="https://your-rpc.example/your-key" />
+          <button class="ghost" type="button" id="walletRpcSave">Save and read</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -697,7 +722,7 @@
       </details>
       <details class="qa">
         <summary>Do I need a crypto wallet? Do I need an account?</summary>
-        <p>No. The checker, the holdings list and the findings all work with nothing connected. You can connect a wallet if you want Owed to read your positions, but it never asks for a signature, never moves anything, and never needs your keys.</p>
+        <p>No. The checker, the holdings list and the findings all work with nothing connected. A wallet read is optional and only reads your positions: no signature, no keys, nothing moved. That one read goes through this site's relay to a Solana node.</p>
       </details>
       <details class="qa">
         <summary>Where do the numbers come from?</summary>
@@ -1140,7 +1165,15 @@ if (RISK?.tokens?.length) {
 // present (Phantom, Solflare, Backpack all implement window.solana).
 
 const XSTOCK_MINTS = new Map(RISK.tokens.map((t) => [t.mint, t]));
-const RPC = RISK.source?.rpc || "https://api.mainnet-beta.solana.com";
+// The read goes through this site's own relay rather than the feed's node. Solana's
+// public endpoint answers a browser with `403 Access forbidden`, so connecting
+// against it could never succeed however often a reader retried, and every keyless
+// public endpoint either blocks this method or rate-limits it. A reader who has set
+// their own RPC on the board keeps it - same key, both pages.
+// Read on every call rather than once, so the reader's own endpoint takes effect
+// without a reload.
+const walletRpc = () => localStorage.getItem("owed_rpc") || "/api/rpc";
+let walletAddress = "";
 
 function provider() {
   return window.solana || window.phantom?.solana || window.solflare || null;
@@ -1206,13 +1239,21 @@ async function walletDisconnect() {
 }
 
 async function rpcCall(method, params) {
-  const r = await fetch(RPC, {
+  const r = await fetch(walletRpc(), {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ jsonrpc: "2.0", id: 1, method, params }),
   });
-  const j = await r.json();
-  if (j.error) throw new Error(j.error.message);
+  const text = await r.text();
+  let j = null;
+  try {
+    j = JSON.parse(text);
+  } catch {
+    // A relay or endpoint that answers with HTML rather than JSON-RPC is the
+    // failure this branch exists to name instead of blaming the reader's browser.
+    throw new Error(`HTTP ${r.status} from the RPC endpoint`);
+  }
+  if (j.error) throw new Error(j.error.message ?? `HTTP ${r.status}`);
   return j.result;
 }
 
@@ -1226,7 +1267,12 @@ async function scanWallet(addr) {
     state.textContent = "Scanning…";
     const out = await rpcCall("getTokenAccountsByOwner", [
       addr,
-      { programId: "TokenzQedR7fEUbYqkCU8D6nRdKZLT8ghho6YycUE2" },
+      // Token-2022, the program that owns every tokenized equity here. Checked
+      // against the one the rest of the repo uses: the version in this call used
+      // to differ by a character and decoded to 31 bytes, so the node rejected
+      // every read with "String is the wrong size" and the connect flow could not
+      // work however good the rest of it was.
+      { programId: "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb" },
       { encoding: "jsonParsed" },
     ]);
     const accounts = out?.value ?? [];
@@ -1242,9 +1288,16 @@ async function scanWallet(addr) {
     drawPortfolio(addr, held);
     if (firstRead) $("portfolio").scrollIntoView({ behavior: "smooth", block: "center" });
   } catch (err) {
-    state.textContent = "RPC error";
-    $("walletLede").textContent =
-      `Could not read balances (${String(err.message || err).slice(0, 120)}). The public RPC rate-limits; retry in a moment.`;
+    state.textContent = "Read failed";
+    // The old message blamed rate limiting and told the reader to retry, which was
+    // both untrue and useless: the default endpoint refuses browser origins, so no
+    // amount of retrying could work. Name the real condition and offer the way
+    // past it, which the board page has had all along.
+    $("walletLede").innerHTML =
+      `Could not read balances (${escapeHtml(String(err.message || err).slice(0, 120))}). ` +
+      `An RPC address that allows browser requests will work - your own Helius or ` +
+      `QuickNode endpoint does - and Owed uses it for this read only.`;
+    $("walletRpc").hidden = false;
   } finally {
     btn.classList.remove("busy");
     if (!btn.classList.contains("connected")) btn.textContent = "My positions";
@@ -1265,9 +1318,10 @@ function drawPortfolio(addr, held) {
   $("walletTitle").textContent = "Your positions";
   $("walletAddr").textContent = addr;
   $("walletAddr").title = addr;
+  walletAddress = addr;
 
   if (held.length === 0) {
-    $("walletState").textContent = "0 xStocks";
+    $("walletState").textContent = "None held";
     $("walletState").className = "state";
     $("walletLede").innerHTML =
       `This address holds none of the ${all.length} tokenized stocks Owed follows. Check any ticker above, or ` +
@@ -1310,6 +1364,15 @@ function drawPortfolio(addr, held) {
 
 $("walletBtn").addEventListener("click", walletConnect);
 $("walletDisconnect")?.addEventListener("click", walletDisconnect);
+// Saving an endpoint retries the read in place: the reader asked for their
+// positions, and a reload would make them connect a second time to get them.
+$("walletRpcSave")?.addEventListener("click", () => {
+  const url = $("walletRpcUrl").value.trim();
+  if (!url) return;
+  localStorage.setItem("owed_rpc", url);
+  $("walletRpc").hidden = true;
+  if (walletAddress) scanWallet(walletAddress);
+});
 
 // ---------------------------------------------------------------- wallet ---
 /**
@@ -1510,7 +1573,7 @@ function checkHoldings() {
   const head = !found.length
     ? `<p class="hold-warn">None of those lines matched a tokenized stock Owed follows. Check the ticker - the board lists every one.</p>`
     : affected.length
-      ? `<p class="hold-warn"><b>${affected.length} of ${found.length}</b> of the holdings below are valued with a number the blockchain does not use.` +
+      ? `<p class="hold-warn"><b>${affected.length} of the ${found.length}</b> holdings below are valued with a number the blockchain does not use.` +
         (worst
           ? ` Worst is <b>${escapeHtml(worst.row.t.symbol)}</b>: most apps show ` +
             `<b>${fmtMult(worst.row.c.stored)}x</b> and the blockchain uses ` +

@@ -127,6 +127,25 @@ if (existsSync(alertsPath)) {
   sizes["feed/alerts.json"] = write("feed/alerts.json", JSON.stringify(alerts, null, 2) + "\n");
 }
 
+// The wallet read on the front page needs a server in front of it: Solana's public
+// endpoint answers a browser with 403 Access forbidden, so a cross-origin read from
+// the page can never succeed. `api/` is a Vercel function directory, and the deploy
+// uploads `site/`, so the function has to be inside `site/` to be reachable at all -
+// copying it here keeps one source file (`api/rpc.mjs`) instead of two that drift.
+// A missing relay is a broken connect button, so it fails the build rather than
+// shipping a page whose main call to action cannot work.
+const relayPath = join(ROOT, "api", "rpc.mjs");
+if (!existsSync(relayPath)) {
+  throw new Error("api/rpc.mjs is missing - the wallet read has no relay to call");
+}
+const relay = readFileSync(relayPath);
+if (!/getTokenAccountsByOwner/.test(relay.toString("utf8"))) {
+  throw new Error("api/rpc.mjs no longer allows the accounts read the wallet scan makes");
+}
+mkdirSync(join(SITE, "api"), { recursive: true });
+writeFileSync(join(SITE, "api", "rpc.mjs"), relay);
+sizes["api/rpc.mjs"] = relay.length;
+
 // The feed is deliberately short-lived: its values are time-dependent, and a
 // cached copy past an activation boundary is exactly the bug this project exists
 // to catch. Five minutes of edge caching, then revalidate.
@@ -180,7 +199,7 @@ for (const [name, len] of Object.entries(sizes)) {
   console.log(`  ${name.padEnd(26)} ${(len / 1024).toFixed(0)}KB`);
 }
 console.log(
-  `  vercel.json + feed/index.json` +
+  `  vercel.json + api/rpc.mjs + feed/index.json` +
     (sizes["feed/alerts.json"] ? " + feed/alerts.json" : " (no alerts.json yet)") +
     ` + assets/ (og, favicon, logo, hero.mp4)`,
 );

@@ -247,6 +247,13 @@ if (!feed) {
   const genRows = genAll
     .filter((r) => r.c && r.c.stale)
     .sort((a, b) => b.c.gap - a.c.gap);
+  // The count alone flatters the finding. "385 of 933" reads like a rounding
+  // problem until a reader learns that some of them are wrong by a factor rather
+  // than a fraction - the worst reports a tenth of the position. The hero states
+  // that magnitude too, and it is computed here for the same reason every other
+  // number on the page is: a hand-typed one is wrong the first time a mint
+  // activates.
+  const genSevere = genRows.filter((r) => r.c.eff / r.c.stored >= 2);
   const genEscape = (s) =>
     String(s).replace(/[&<>"']/g, (ch) =>
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
@@ -344,11 +351,17 @@ if (!feed) {
   diff = swapStatic(
     diff,
     "hero-worst",
-    // One figure and one sentence. The worst offenders are named as clickable
-    // chips directly under the checker, so repeating them here only made the
-    // hero longer without telling a reader anything new.
+    // One figure, one sentence, plus the magnitude - because "385 of 933" and
+    // "five of them by a factor" are different claims, and only the second one
+    // tells a reader whether this is a rounding artefact or a real loss. The
+    // worst offenders are still named as clickable chips under the checker, so
+    // this does not repeat them.
     genRows.length
-      ? `<p class="hero-worst"><strong>${genRows.length} of ${genAll.length}</strong> read a number the blockchain does not use.</p>`
+      ? `<p class="hero-worst"><strong>${genRows.length} of ${genAll.length}</strong> read a number the blockchain does not use.` +
+        (genSevere.length
+          ? ` For ${genSevere.length} of them the number an app shows is at least 2x too low.`
+          : "") +
+        `</p>`
       : "",
   );
   // Two counts live outside marker blocks and are set by script only, which

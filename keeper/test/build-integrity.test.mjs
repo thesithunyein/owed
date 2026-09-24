@@ -956,3 +956,95 @@ test("no page joins metadata with a middle dot", () => {
     assert.equal(hits.length, 0, `${p} still joins text with a middle dot (${hits.length})`);
   }
 });
+
+/**
+ * The wallet read is the one thing on the front page that cannot work from the
+ * page alone, and it shipped broken once: the read went to Solana's public
+ * endpoint, which answers a browser origin with `403 Access forbidden`, so
+ * "Connect wallet" could never succeed however many times a reader retried - and
+ * the message blamed rate limiting and told them to retry, which was wrong.
+ *
+ * Three things now have to hold, and each one fails silently in a diff: the
+ * relay exists and is not an open proxy, the build actually ships it (the deploy
+ * uploads `site/`, so a function left at the repo root is never reachable), and
+ * the page points its read at the relay rather than at an endpoint that refuses
+ * browsers.
+ */
+test("the wallet read has a relay to call, and calls it", () => {
+  const relayPath = join(ROOT, "api", "rpc.mjs");
+  assert.ok(existsSync(relayPath), "api/rpc.mjs exists");
+  const relay = readFileSync(relayPath, "utf8");
+
+  // A relay that forwards whatever it is handed is an open proxy that someone
+  // else pays for. It forwards exactly the one method the scan makes.
+  const allowed = relay.match(/const ALLOWED = new Set\(\[([^\]]*)\]\)/);
+  assert.ok(allowed, "the relay declares what it will forward");
+  const methods = [...allowed[1].matchAll(/"([A-Za-z]+)"/g)].map((m) => m[1]);
+  assert.deepEqual(
+    methods,
+    ["getTokenAccountsByOwner"],
+    `the relay forwards exactly one method, not [${methods.join(", ")}]`,
+  );
+  assert.ok(/req\.method !== "POST"/.test(relay), "the relay refuses anything but POST");
+
+  // `site/` is gitignored build output, so the copy step is the only thing that
+  // puts the function where the deploy can see it.
+  const build = readFileSync(join(ROOT, "scripts", "build-site.mjs"), "utf8");
+  assert.ok(
+    /join\(SITE, "api"\)/.test(build),
+    "build-site.mjs copies the relay into site/, which is what gets deployed",
+  );
+
+  const page = readFileSync(join(WEB, "differential.html"), "utf8");
+  const read = page.match(/const walletRpc = \(\) => ([^;]+);/);
+  assert.ok(read, "the wallet scan states where it reads from");
+  assert.ok(
+    read[1].includes('"/api/rpc"'),
+    `the wallet scan falls back to its own relay, not ${read[1].trim()}`,
+  );
+  assert.ok(
+    !/RISK/.test(read[1]),
+    "the wallet scan does not fall back to the feed's node, which refuses browsers",
+  );
+  // The message a failed read shows used to blame rate limiting and tell the
+  // reader to retry in a moment, which was untrue: the endpoint was refusing the
+  // browser origin, so retrying could never have helped. Comments may still say
+  // so - that is where the reasoning lives - but nothing a reader sees may.
+  const visible = page
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/\/\*[\s\S]*?\*\//g, "")
+    .split("\n")
+    .filter((line) => !line.trim().startsWith("//"))
+    .join("\n");
+  assert.ok(visible.includes("My positions"), "the copy extractor keeps the page's own text");
+
+  // The read is a real RPC call, so a malformed constant stays invisible until it
+  // fails in front of a reader - and this one did. The program id in the page
+  // differed from the one the rest of the repo uses by a single character and
+  // decoded to 31 bytes, so the node rejected every read with "String is the
+  // wrong size" and the connect flow could never have worked, however good the
+  // relay was. Decoded here rather than string-compared, so any other typo of the
+  // same shape fails too.
+  const B58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+  const bytesOf = (s) => {
+    let n = 0n;
+    for (const ch of s) {
+      const i = B58.indexOf(ch);
+      assert.ok(i >= 0, `${s} is not base58`);
+      n = n * 58n + BigInt(i);
+    }
+    let len = 0;
+    for (let v = n; v > 0n; v /= 256n) len += 1;
+    return len;
+  };
+  const ids = [...new Set(page.match(/TokenzQ[A-Za-z0-9]+/g) ?? [])];
+  assert.equal(ids.length, 1, `the page names one Token-2022 program, not [${ids.join(", ")}]`);
+  assert.ok(
+    bytesOf(ids[0]) === 32,
+    `the program id decodes to ${bytesOf(ids[0])} bytes, not 32: ${ids[0]}`,
+  );
+  assert.ok(
+    !/rate.?limit|retry in a moment/i.test(visible),
+    "no copy a reader sees blames rate limiting for an endpoint that forbids browsers",
+  );
+});

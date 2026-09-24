@@ -101,7 +101,7 @@ flowchart TB
 Devnet program: `42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV` (split and
 dividend settled end-to-end; signatures in "Devnet deployment" below).
 
-CI runs the full verification spine on every push: Rust tests, 136 keeper tests,
+CI runs the full verification spine on every push: Rust tests, 137 keeper tests,
 925/925 conformance against the runtime, deterministic rebuild, program-id
 agreement across four sources, ELF e_flags, an on-chain settlement with
 receipts, and re-checking every page/README claim against committed records.
@@ -470,17 +470,19 @@ owed/
 │   │                      #   the alert rules (pure, so they test offline)
 │   ├── data/              #   both official mint lists, both scans, conformance,
 │   │                      #   and the committed runtime verdict for PreStocks
-│   └── test/              #   136 tests incl. build-integrity guards on the pages,
+│   └── test/              #   137 tests incl. build-integrity guards on the pages,
 │                          #   the PreStocks/Pyth lanes and the raw fixtures
 ├── feed/                  # owed-risk.json + schema.json - THE integration contract
 ├── web/                   # differential.html (the app) + board.html (risk table)
 │   └── assets/            #   logo, favicon, og card, hero video/poster
 ├── shared/vectors/        # cross-language golden vectors (generated, committed)
 │   └── scaled-raw/        #   real mainnet mint accounts, as bytes: the fixtures
-│                          #   the Rust reader and the on-chain path are pinned to
-├── scripts/               # scan/fetch/verify per issuer, risk-feed, conformance,
-│                          # gen-*, build-site, alert-digest (the alert lane),
-│                          # fetch-scaled-fixtures
+│                          #   the Rust reader and the on-chain path are pinned to├── scripts/               # scan/fetch/verify per issuer, risk-feed, conformance,
+│                          #   gen-*, build-site, alert-digest (the alert lane),
+│                          #   fetch-scaled-fixtures
+├── api/rpc.mjs            # the one server the site has: a POST-only relay that
+│                          #   forwards getTokenAccountsByOwner (browsers cannot
+│                          #   call a Solana node cross-origin; see 'The wallet read')
 ├── sdk/                   # copyable reader: getEffectiveMultiplier(mint),
 │   └── test/fixtures/     #   example.mjs, and a real mainnet account to test on
 ├── tests/                 # on-chain settlement suite (localnet in CI; devnet by hand)
@@ -504,7 +506,7 @@ site/                      # deploy output (gitignored) - built by build-site.mj
 | **Conformance** | ✅ **925/925 mints** - our reader equals the Token-2022 runtime at 1e-9 relative tolerance across the whole official set (`node scripts/conformance.mjs --all`) |
 | **Trap verification** | ✅ 8/8 sampled traps confirmed against `getTokenSupply`; 2 at exactly 10× |
 | **Risk feed** | ✅ 925 xStocks + 8 PreStocks tokens in one row shape; every published `effectiveMultiplier` reproducibly recomputed from published raw state (tested) |
-| `keeper/` TS | ✅ 136 tests - trap logic, scaled classifier pinned to real account shapes, feed contract, page build integrity (including the static-fallback, alert-strip, provenance, plain-language, hero-restraint, control-styling, middle-dot and word-budget guards), Merkle parity, RPC parsing, base58, Pyth lane, 500-holder stress |
+| `keeper/` TS | ✅ 137 tests - trap logic, scaled classifier pinned to real account shapes, feed contract, page build integrity (including the static-fallback, alert-strip, provenance, plain-language, hero-restraint, control-styling, middle-dot and word-budget guards), Merkle parity, RPC parsing, base58, Pyth lane, 500-holder stress |
 | `sdk/` | ✅ 7 offline tests against a committed mainnet account, plus an 8th that hits mainnet when `OWED_LIVE_SDK=1` - asserts PPLTx still reads stored 1 / effective 10 |
 | `core/` Rust | ✅ 35 tests - Merkle (exhaustive n=1..17 + 33, tamper rejection), supply conservation, split/dividend math, golden vectors, and the raw Token-2022 multiplier reader (including every truncation of every fixture, because a panic on-chain aborts the transaction) |
 | `shared/vectors/scaled-raw/` | ✅ 5 real mainnet mint accounts committed as raw bytes, chosen to cover every branch: a 10x split, a PreStocks mint whose scaled entry is **not** first in the TLV list, a reverse split, an inert config, and a legacy mint with no extensions. The Rust reader is pinned to them; the keeper test asserts the same bytes still yield the feed's published numbers |
@@ -742,6 +744,29 @@ node scripts/conformance.mjs --all   # every official mint (925 RPC calls)
 node scripts/build-site.mjs
 cd site && vercel deploy --prod --yes --project owed
 ```
+
+### The wallet read, and why a static site has one function
+
+Everything a reader does is client-side: the ticker checker re-classifies the
+embedded snapshot against their own clock, and a pasted holdings list never
+leaves the page. The one exception is `Connect wallet`, which has to ask a node
+what the address holds.
+
+That read cannot be made from the page. Solana's public endpoint answers a
+browser origin with `403 Access forbidden`, and every keyless public endpoint
+tested has the same problem in some form (one answers `getSlot` and refuses the
+indexed method, one rate-limits the method, one wants a paid plan, and a keyed
+endpoint would put a billable key in a public page). So it goes through
+`api/rpc.mjs`, a POST-only relay on the same origin that forwards exactly one
+method, `getTokenAccountsByOwner`, with an 8s timeout and a per-instance rate
+limit. It is not an open proxy, and the FAQ says the read is relayed rather than
+claiming a wallet read never leaves the browser.
+
+The relay is copied into `site/` by `build-site.mjs`, because the deploy uploads
+`site/` and a function left at the repository root is not reachable from there.
+It is also the reason the page no longer tells a reader to supply their own RPC
+URL: the button works without one, and the field appears only if the relay itself
+is unreachable.
 
 ### Deployment, and the way it went wrong
 
