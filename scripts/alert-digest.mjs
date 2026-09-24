@@ -88,6 +88,15 @@ const added = result.events
     kind: e.kind,
     symbol: e.symbol ?? null,
     mint: e.mint,
+    // The values behind the sentence, kept alongside it. The message is written
+    // for a log or a chat webhook; a surface that renders this history needs the
+    // numbers as numbers, or it ends up either parsing prose or printing the
+    // full-precision ratio at a reader. The exact value stays exact here.
+    stored: e.stored ?? null,
+    effective: e.effective ?? null,
+    gapPct: e.gapPct ?? null,
+    activatesAt: e.activatesAt ?? null,
+    secondsUntil: e.secondsUntil ?? null,
     message: e.message,
   }))
   // A refresh that re-derives the same event at the same clock is not news

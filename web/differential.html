@@ -48,6 +48,15 @@
     margin: 0; background: var(--bg); color: var(--text);
     font: 15px/1.55 ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
   }
+  /* Controls take their type and shape from this stylesheet, never from the
+     operating system. An unstyled <button> arrives with the platform's own font,
+     a 2px outset border and the platform's grey; sitting next to styled controls
+     it reads as an unfinished page. It is the one class of bug a screenshot shows
+     instantly and a diff does not, because the markup looks perfectly fine. The
+     holdings card shipped its primary action exactly that way. */
+  button, input, textarea, select { font: inherit; color: inherit; letter-spacing: inherit; }
+  button { cursor: pointer; }
+  button:disabled { cursor: not-allowed; opacity: 0.55; }
   .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 20px 72px; }
   h1 { font-size: 26px; margin: 0 0 6px; letter-spacing: -0.02em; }
   h2 { font-size: 17px; margin: 36px 0 4px; letter-spacing: -0.01em; }
@@ -117,7 +126,32 @@
   /* ---- hero ------------------------------------------------------------- */
   html { scroll-behavior: smooth; }
   .hero { position: relative; min-height: 100vh; min-height: 100svh; overflow: hidden; background: #f0f0ee; color: #111827; }
-  .hero video.hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  /* The footage is a hand holding a token, framed dead centre in a 3836x2160
+     source. Centre is the one place it cannot be, because the copy sits on the
+     left: the hand was reading as a smudge under the headline and its fingers
+     showed through the panel's right edge, which looks like a rendering fault
+     rather than a material. Scaling it and pushing it right moves it out of the
+     reading column and lets it bleed off the edge on purpose instead of being
+     clipped by it. 1.25 is the source's own headroom, so nothing is upscaled. */
+  .hero video.hero-bg {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    transform: scale(1.25) translateX(6%);
+    transform-origin: 50% 50%;
+  }
+  /* The scrim is what actually makes the copy readable over moving footage, and
+     it is why the panel can stay light instead of opaque: a wash that is nearly
+     solid under the panel and gone by the right third, so the left half of the
+     hero is background and the right half is still a photograph. */
+  .hero::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0.97) 0%,
+      rgba(255, 255, 255, 0.93) 30%,
+      rgba(255, 255, 255, 0.55) 54%,
+      rgba(255, 255, 255, 0) 76%
+    );
+  }
   .hero .hero-fg { position: relative; z-index: 10; display: flex; flex-direction: column; min-height: 100vh; min-height: 100svh; }
   .hero nav { display: flex; align-items: center; justify-content: center; padding: 16px 16px 0; gap: 8px; }
   @media (min-width: 640px) { .hero nav { padding: 24px 32px 0; gap: 12px; } }
@@ -140,19 +174,29 @@
     .hero-content { padding: 18px 16px 28px; }
     .hero-search { flex-wrap: wrap; }
     .hero-search input, .hero-search button { width: 100%; }
+    /* The panel is nearly full width here, so a directional wash has nothing to
+       fade towards. Uniform, so the footage becomes a texture and the copy keeps
+       the contrast it was designed against. */
+    .hero::after { background: rgba(255, 255, 255, 0.965); }
   }
   .nav-pill a { font-size: 12px; font-weight: 500; color: #374151;
     text-decoration: none; transition: color 0.2s; padding: 8px 2px; }
   .nav-pill a:hover { color: #111827; }
   @media (min-width: 640px) { .nav-pill a { font-size: 14px; } }
+  /* Reading a wallet is a side door, not the front door: the whole pitch is that
+     you do not need one. Filled near-black made it the heaviest thing on the
+     page, so the search has competition from a control most visitors should skip.
+     Quiet secondary instead - still findable, no longer the loudest object. */
   .wallet-btn {
-    border: 0; border-radius: 12px; padding: 12px 20px; background: #111827; color: #fff;
-    font-size: 12px; font-weight: 500; cursor: pointer; flex-shrink: 0;
+    border: 1px solid rgba(15, 23, 42, 0.14); border-radius: 999px;
+    padding: 10px 18px; background: rgba(255, 255, 255, 0.72); color: #374151;
+    font-size: 12.5px; font-weight: 500; cursor: pointer; flex-shrink: 0;
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    transition: background 120ms ease-out, border-color 120ms ease-out;
   }
-  @media (min-width: 640px) { .wallet-btn { font-size: 14px; } }
-  .wallet-btn:hover { background: #1f2937; }
+  .wallet-btn:hover { background: #fff; border-color: rgba(15, 23, 42, 0.2); color: #111827; }
   .wallet-btn.busy { opacity: 0.6; cursor: wait; }
-  .wallet-btn.connected { background: #10b981; }
+  .wallet-btn.connected { background: #ecfdf5; border-color: #a7f3d0; color: #065f46; }
   .wrow { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line, #e5e7eb); }
   .wrow .wsym { font-weight: 500; min-width: 72px; }
   .wrow .wstat { color: #6b7280; flex: 1; font-size: 13px; }
@@ -293,12 +337,22 @@
   .how li:last-child { padding-bottom: 0; }
   .how-note { margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--dim); max-width: 80ch; }
   .qa { border-top: 1px solid var(--line); }
-  .qa > summary { cursor: pointer; padding: 14px 0; font-weight: 600; font-size: 14.5px; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+  /* Questions read as one list, so the affordance has to be visible at a glance
+     rather than implied by a bare + floating in the margin. A small disc does that
+     without adding a second colour or a second weight to the row. */
+  .qa > summary { cursor: pointer; padding: 13px 0; font-weight: 600; font-size: 15px; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 14px; }
   .qa > summary::-webkit-details-marker { display: none; }
-  .qa > summary::after { content: "+"; color: var(--faint); font-weight: 400; font-size: 18px; }
-  .qa[open] > summary::after { content: "–"; }
+  .qa > summary::after {
+    content: "+"; flex-shrink: 0; width: 22px; height: 22px;
+    display: grid; place-items: center; border-radius: 50%;
+    background: var(--panel2); border: 1px solid var(--line);
+    color: var(--dim); font-weight: 500; font-size: 15px; line-height: 1;
+    transition: background 120ms ease-out, border-color 120ms ease-out;
+  }
+  .qa[open] > summary::after { content: "\2013"; background: #e8effd; border-color: #c7d8fb; color: var(--blue); }
   .qa > summary:hover { color: var(--blue); }
-  .qa > p { margin: -4px 0 16px; font-size: 14px; line-height: 1.65; color: var(--dim); max-width: 78ch; }
+  .qa[open] > summary { color: #0f172a; }
+  .qa > p { margin: 0 0 18px; padding-right: 36px; font-size: 14px; line-height: 1.65; color: var(--dim); max-width: 78ch; }
   .fold { border-top: 1px solid var(--line); margin-top: 34px; }
   #faq { margin-top: 30px; }
   .fold > summary {
@@ -316,13 +370,21 @@
   .fold-body { padding-bottom: 10px; }
   footer.site {
     margin-top: 46px; padding: 22px 0 0; border-top: 1px solid var(--line);
-    display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px;
     color: var(--faint); font-size: 12.5px;
   }
-  footer.site img { width: 20px; height: 20px; vertical-align: -5px; margin-right: 7px; }
+  /* Two rows: who this is, then where to go. One undifferentiated wrapping row
+     mixed pages a reader should open with endpoints a machine should fetch. */
+  footer.site .foot-top { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+  footer.site .brand { display: inline-flex; align-items: center; gap: 7px; color: #374151; font-weight: 600; font-size: 13px; }
+  footer.site .brand-note { color: var(--faint); }
+  footer.site img { width: 20px; height: 20px; }
+  footer.site .foot-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; margin-top: 14px; }
   footer.site a { color: var(--dim); text-decoration: none; }
   footer.site a:hover { color: var(--blue); text-decoration: underline; }
-  footer.site .sp { margin-left: auto; }  @media (max-width: 640px) { footer.site .sp { margin-left: 0; } }
+  footer.site .foot-group { display: inline-flex; align-items: center; gap: 10px; }
+  footer.site .foot-label { color: var(--faint); }
+  footer.site .sp { margin-left: auto; }
+  @media (max-width: 640px) { footer.site .sp { margin-left: 0; flex-basis: 100%; } }
   /* Alert lane: a strip, not a dashboard. Two rows at most, and it says so
      when there is nothing to say rather than inventing a standing warning. */
   .alert-row { display: flex; gap: 12px; align-items: baseline; padding: 9px 0; border-bottom: 1px solid #e7e7e1; font-size: 13.5px; }
@@ -331,7 +393,14 @@
   .alert-row .kind { color: var(--dim); font-size: 12px; white-space: nowrap; }
   .alert-row.now .kind { color: var(--amber); }
   .alert-none { color: var(--dim); font-size: 13.5px; margin: 0; }
-  .alerts-foot { color: var(--faint); font-size: 12px; margin: 12px 0 0; }  /* The two-endpoint demonstration: the code block is the argument, so it has to
+  /* History sits under its own label and its own weight, so a quiet lane cannot
+     be mistaken for a busy one - and the exact timestamp becomes a tooltip rather
+     than a column nobody reads. */
+  .alert-log { margin: 14px 0 0; font-size: 11.5px; color: var(--faint); }
+  .alert-row.log { padding: 7px 0; font-size: 12.5px; color: var(--dim); }
+  .alert-row.log .when { cursor: help; }
+  .alerts-foot { color: var(--faint); font-size: 12px; margin: 12px 0 0; }
+  /* The two-endpoint demonstration: the code block is the argument, so it has to
      be readable and copyable rather than decorative. */
   pre.cmd {
     background: #12161f; color: #e8edf5; border-radius: 10px; padding: 14px 16px;
@@ -342,14 +411,45 @@
   pre.cmd .k { color: #6aa7ff; }
   pre.cmd .s { color: #7fd6a4; }
   pre.cmd .w { color: #ffb454; }
-  /* The no-wallet holdings check. */
-  textarea {
-    width: 100%; background: var(--panel2); color: var(--text); border: 1px solid var(--line);
-    border-radius: 8px; padding: 9px 11px; resize: vertical;
-    font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  /* The no-wallet holdings check. The field is defined once, below, beside the
+     buttons it belongs to. A second `textarea` rule used to live here and it won
+     the cascade for font-family, so the page's own type was replaced by the
+     platform's monospace and the sample list in the placeholder read as terminal
+     output rather than as a list of holdings. */
+  .holdings-actions { display: flex; gap: 8px; margin: 12px 0 0; }
+  /* The primary action matches the search button exactly - same filled blue, same
+     radius, same 120ms press. Two primaries that do not agree is the fastest way
+     for a page to read as assembled rather than designed, and until now this one
+     had no rule at all and fell through to the browser's default button. */
+  .holdings-actions button {
+    font-size: 0.9375rem; font-weight: 600; color: #fff;
+    background: var(--blue); border: 1px solid var(--blue); border-radius: 11px;
+    padding: 12px 20px;
+    transition: background 120ms ease-out, transform 120ms ease-out;
   }
-  .holdings-actions { display: flex; gap: 8px; margin: 10px 0 0; }
-  button.ghost { background: var(--panel2); color: var(--dim); border: 1px solid var(--line); }
+  .holdings-actions button:hover { background: #1d4ed8; border-color: #1d4ed8; }
+  .holdings-actions button:active { transform: scale(0.98); }
+  button.ghost {
+    background: var(--panel2); color: var(--dim); border: 1px solid var(--line);
+    font-weight: 500;
+  }
+  button.ghost:hover { background: #ecece6; border-color: #d8d8d2; color: var(--text); }
+  /* The input inherits the page's type from the reset above and gets the same box
+     as the search field, so the two places you type into are visibly one product. */
+  #holdings label {
+    display: block; margin: 16px 0 6px;
+    font-size: 0.8125rem; font-weight: 500; color: var(--dim);
+  }
+  #holdingsIn {
+    width: 100%; min-height: 116px; resize: vertical;
+    background: #fff; border: 1px solid #d8d8d2; border-radius: 11px;
+    padding: 12px 14px; font-size: 0.9375rem; line-height: 1.65;
+    /* Tabular figures so the amounts in a pasted list line up, which is the one
+       thing the monospace was actually doing for the reader. */
+    font-variant-numeric: tabular-nums;
+  }
+  #holdingsIn:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: var(--blue); }
+  #holdingsIn::placeholder { color: var(--faint); }
   #holdingsOut { margin-top: 14px; }
   .hold-note { color: var(--dim); font-size: 13px; margin: 0 0 12px; }
   .hold-warn { background: #fef2f2; border: 1px solid #f3c1c1; color: #b91c1c; border-radius: 10px; padding: 11px 13px; font-size: 13.5px; margin: 0 0 12px; }
@@ -440,9 +540,9 @@
           <h3>Alerts</h3>
           <p class="who">The only reason Owed ever contacts you: a stock whose number just changed. Nothing else fires.</p>
         </div>
-        <span class="state" id="alertsState">nothing new</span>
+        <!-- owed:alerts-state:start --><span class="state ok" id="alertsState">No new changes</span><!-- owed:alerts-state:end -->
       </div>
-      <div id="alertsBody"><!-- owed:alerts:start --><div class="alert-row now"><span class="kind">newest</span><span><b>INVHx</b> changed 13h ago: most apps show 1x and the blockchain uses 1.0078x.</span></div><div class="alert-row"><span class="when">2026-09-24 01:49</span><span class="kind">changed</span><span>INVHx: apps showing this stock are now using an out-of-date number. The blockchain applies 1.007797994801x while most apps will still show 1x.</span></div><div class="alert-row"><span class="when">2026-09-24 01:49</span><span class="kind">changed</span><span>SREx: apps showing this stock are now using an out-of-date number. The blockchain applies 1.005825949367x while most apps will still show 1x.</span></div><!-- owed:alerts:end --></div>
+      <div id="alertsBody"><!-- owed:alerts:start --><div class="alert-row now"><span class="kind">newest</span><span><b>INVHx</b> has been wrong for 13h: most apps show 1x and the blockchain uses 1.0078x.</span></div><p class="alert-log">Earlier changes</p><div class="alert-row log"><span class="when" title="2026-09-24 01:49 UTC">12h ago</span><span class="kind">changed</span><span>INVHx: most apps show 1x and the blockchain uses 1.0078x.</span></div><div class="alert-row log"><span class="when" title="2026-09-24 01:49 UTC">12h ago</span><span class="kind">changed</span><span>SREx: most apps show 1x and the blockchain uses 1.0058x.</span></div><!-- owed:alerts:end --></div>
       <p class="alerts-foot">
         No wallet to connect. Read it as JSON at
         <a href="feed/alerts.json"><span class="mono">feed/alerts.json</span></a>,
@@ -567,14 +667,22 @@
   </section>
 
   <footer class="site">
-    <span><img src="assets/logo.png" alt="" />Owed - corporate-action risk for tokenized equities</span>
-    <a href="board.html">Risk board</a>
-    <a href="integrate.html">Integrate</a>
-    <a href="feed/owed-risk.json">Risk feed</a>
-    <a href="feed/alerts.json">Alerts feed</a>
-    <a href="feed/schema.json">Schema</a>
-    <a href="https://github.com/thesithunyein/owed" target="_blank" rel="noopener">GitHub</a>
-    <span class="sp">Snapshot data, refreshed on a schedule · not financial advice</span>
+    <div class="foot-top">
+      <span class="brand"><img src="assets/logo.png" alt="" />Owed</span>
+      <span class="brand-note">Corporate-action risk for tokenized equities</span>
+      <span class="sp">Data refreshed on a schedule. Not financial advice.</span>
+    </div>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="board.html">All stocks</a>
+      <a href="integrate.html">For developers</a>
+      <span class="foot-group">
+        <span class="foot-label">Data</span>
+        <a href="feed/owed-risk.json">owed-risk.json</a>
+        <a href="feed/alerts.json">alerts.json</a>
+        <a href="feed/schema.json">schema.json</a>
+      </span>
+      <a href="https://github.com/thesithunyein/owed" target="_blank" rel="noopener">GitHub</a>
+    </nav>
   </footer>
 </div>
 
@@ -805,11 +913,13 @@ function render(symbolRaw) {
   const clean = !c || !c.stale;
   const head =
     `<div class="card-head"><div><h3>${escapeHtml(t.symbol)}</h3>` +
-    `<p class="who">${t.name ? escapeHtml(t.name) + " · " : ""}` +
+    `<p class="who">${t.name ? escapeHtml(t.name) : t.issuer === "prestocks" ? "PreStocks" : "xStocks"}` +
     // Issuer-published names already carry the issuer ("SpaceX PreStocks"), so
-    // repeating it read as a rendering bug. The lane is named only when the
-    // name does not already do it.
-    `${t.name ? "" : t.issuer === "prestocks" ? "PreStocks · " : "xStocks · "}` +
+    // repeating it read as a rendering bug. The lane is named only when the name
+    // does not already do it. Joined with a comma rather than a middle dot: a
+    // dotted metadata tail is the house style of a generated page, and this is a
+    // sentence about a security.
+    `${t.name ? ", " : " token, tracking "}` +
     `${t.issuer === "prestocks" ? "a pre-IPO company" : "a public company"}</p></div>` +
     (clean
       ? `<span class="state ok">Up to date</span>`
@@ -1345,7 +1455,7 @@ function checkHoldings() {
       return (
         `<div class="card" style="margin:14px 0 0">` +
         `<div class="card-head"><div><h3>${escapeHtml(t.symbol)}</h3>` +
-        `<p class="who">${t.issuer === "prestocks" ? "PreStocks" : "xStocks"} · <span class="mono">${escapeHtml(t.mint.slice(0, 6))}…${escapeHtml(t.mint.slice(-4))}</span></p></div>` +
+        `<p class="who">${t.issuer === "prestocks" ? "PreStocks" : "xStocks"} token, <span class="mono">${escapeHtml(t.mint.slice(0, 6))}…${escapeHtml(t.mint.slice(-4))}</span></p></div>` +
         // Most divergent mints are divergent by a fraction of a percent, so a bare
         // rounded percentage reads "off by 0%" - which looks like no problem at all
         // next to a card that says the field and the runtime disagree. Name the

@@ -25,6 +25,23 @@
 /** Default look-ahead for scheduled activations: two days. */
 export const DEFAULT_IMMINENT_WINDOW_SEC = 48 * 60 * 60;
 
+/**
+ * A multiplier as prose.
+ *
+ * The stored ratio is a full-precision value and every document keeps it that
+ * way, because a reader integrating against this lane needs the exact number. In
+ * a sentence it is noise: `1.007797994801x` is twelve digits to parse before the
+ * reader learns anything, and it reads as machine output rather than as a
+ * statement about a stock. Five significant digits distinguishes every multiplier
+ * in the feed and still reads as a number.
+ */
+export function fmtX(value) {
+  const v = Number(value);
+  if (!Number.isFinite(v)) return String(value);
+  if (Number.isInteger(v)) return String(v);
+  return String(Number(v.toPrecision(5)));
+}
+
 /** The facts about one mint that both the events and the saved state need. */
 export function mintFacts(token) {
   const st = token?.scaled?.state;
@@ -113,9 +130,11 @@ export function classifyAlerts(
         effective: f.effective,
         gapPct: f.gapPct,
         daysStale: f.daysStale,
+        // Worded to match the standing line the front page shows, so the same
+        // fact reads identically whether it arrives as news or as history.
         message:
-          `${f.symbol}: apps showing this stock are now using an out-of-date number. The ` +
-          `blockchain applies ${f.effective}x while most apps will still show ${f.stored}x.`,
+          `${f.symbol}: most apps show ${fmtX(f.stored)}x and the blockchain uses ` +
+          `${fmtX(f.effective)}x.`,
       });
     }
 
@@ -133,8 +152,8 @@ export function classifyAlerts(
           secondsUntil: seconds,
           message:
             `${f.symbol}: a stock split takes effect in ` +
-            `${Math.max(1, Math.round(seconds / 3600))}h. Apps showing ${f.stored}x today will be ` +
-            `wrong from that moment, when the blockchain moves to ${f.next}x.`,
+            `${Math.max(1, Math.round(seconds / 3600))}h. Apps showing ${fmtX(f.stored)}x today ` +
+            `will be wrong from that moment, when the blockchain moves to ${fmtX(f.next)}x.`,
         });
       }
     }

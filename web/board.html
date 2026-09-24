@@ -36,13 +36,27 @@
      RGB negated and alpha untouched, for dark surfaces (the README under a dark
      colour scheme, share cards). */
   h1 .mark { vertical-align:-5px; margin-right:9px; }
+  /* Links separated by space, not by a middle dot: the dot is a metadata tell, and
+     on a page for people who do not work on chains it reads as one run-on label. */
+  .navline { display:flex; flex-wrap:wrap; align-items:center; gap:6px 18px; margin:0 0 16px; font-size:13px; }
+  .navline a { color:var(--blue); text-decoration:none; }
+  .navline a:hover { text-decoration:underline; }
   .sub { color:var(--dim); font-size:13px; max-width:880px; line-height:1.55; }
   .sub b { color:var(--text); }
   .bar { display:flex; gap:10px; align-items:center; padding:14px 22px; flex-wrap:wrap; }
   button { background:var(--panel); color:var(--text); border:1px solid var(--line);
-    padding:8px 14px; border-radius:8px; font-size:13px; cursor:pointer; }
+    padding:8px 14px; border-radius:8px; font-size:13px; cursor:pointer;
+    transition:border-color 120ms ease-out, background 120ms ease-out, transform 120ms ease-out; }
   @media (max-width:640px) { button { padding:10px 16px; } }
   button:hover { border-color:var(--blue); }
+  /* Feedback lands on press, at 120ms: any slower and a click feels queued behind
+     an animation. Same press as the front page's controls, so the two surfaces
+     feel like one product. */
+  button:active { transform:scale(0.98); }
+  button:disabled { cursor:not-allowed; opacity:.55; }
+  /* The dialog's commit action is the only primary control on this page. */
+  #rpc-save { background:var(--blue); border-color:var(--blue); color:#fff; font-weight:600; }
+  #rpc-save:hover { background:#1d4ed8; border-color:#1d4ed8; }
   select, input { background:var(--panel); color:var(--text); border:1px solid var(--line);
     border-radius:8px; padding:8px 10px; font-size:12px; }
   button, select, input { font-size:13px; }
@@ -51,13 +65,19 @@
   .kpis { display:flex; gap:10px; padding:0 22px 6px; flex-wrap:wrap; }
   .kpi { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:10px 14px; min-width:150px; }
   .kpi .n { font-size:20px; font-weight:700; font-variant-numeric:tabular-nums; }
-  .kpi .l { font-size:11px; color:var(--dim); text-transform:uppercase; letter-spacing:.5px; }
+  .kpi .l { font-size:12px; color:var(--dim); }
   .kpi.red .n { color:var(--red); } .kpi.amber .n { color:var(--amber); } .kpi.blue .n { color:var(--blue); }
   header, .bar, .kpis, .foot { max-width:1080px; margin-left:auto; margin-right:auto; }
   .tblwrap { width:min(calc(100% - 44px), 1036px); margin:8px auto 40px; overflow-x:auto; }
   table { width:100%; border-collapse:collapse; min-width:860px; }
   th,td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); font-size:12.5px; }
-  th { color:var(--dim); font-weight:500; text-transform:uppercase; font-size:10.5px; letter-spacing:.6px; }
+  /* Column headers and card labels are sentence case, like the rest of the site:
+     a page that sets every label in caps reads as a generated dashboard, and the
+     two surfaces should not disagree about something this basic. */
+  th { color:var(--dim); font-weight:500; font-size:11.5px; }
+  /* The mint address sits under the symbol rather than beside it: inline, it
+     wrapped mid-address and every row became a different height. */
+  td .addr { display:block; margin-top:1px; white-space:nowrap; }
   td.num,th.num { text-align:right; font-variant-numeric:tabular-nums; }
   .flag { padding:2px 8px; border-radius:999px; font-size:10.5px; font-weight:600; white-space:nowrap; }
   .flag.bad { background:rgba(255,93,93,.14); color:var(--red); }
@@ -75,22 +95,19 @@
 </head>
 <body>
 <header>
-  <h1><img class="mark" src="assets/logo.png" alt="" width="30" height="30" /><span class="brand">Owed</span> - every tokenized stock, checked</h1>
-  <p style="margin:0 0 14px;font-size:13px">
+  <h1><img class="mark" src="assets/logo.png" alt="" width="30" height="30" /><span class="brand">Owed</span> — every tokenized stock, checked</h1>
+  <nav class="navline" aria-label="Board">
     <a href="index.html">Check a ticker or a list of holdings</a>
-    <span style="opacity:.5"> · </span>
-    <a href="https://owed.sithunyein.com/feed/owed-risk.json">feed/owed-risk.json</a>
-    <span style="opacity:.5"> · </span>
-    <a href="https://github.com/thesithunyein/owed">source code</a>
-  </p>
+    <a href="https://owed.sithunyein.com/feed/owed-risk.json">The raw feed (owed-risk.json)</a>
+    <a href="https://github.com/thesithunyein/owed">Source code</a>
+  </nav>
   <p class="sub">
-    Every tokenized stock on Solana - xStocks (public companies) and PreStocks (private,
-    pre-IPO) - checked against the blockchain itself. When a company splits its shares or pays
-    a dividend, the price of one share has to change with it. The blockchain makes that
-    adjustment on its own; the number most apps read keeps the old value once the change has
-    taken effect, so the app reports a figure that is simply too low. The board works out which
-    number is really in force, and works it out again in your browser as the page loads, so a
-    row updates the moment a change takes effect - no server, no API key.
+    All 933 tokenized stocks on Solana, public companies and pre-IPO alike, checked against
+    the blockchain itself. When a company splits its shares, the price of one share has to
+    change with it. The blockchain does that on its own. Many apps keep showing the old price,
+    so the value they report for your holding is too low, and this board works out which number
+    is really in force. It checks again in your browser as the page loads, so a row updates the
+    moment a change takes effect.
   </p>
 </header>
 <div class="bar">
@@ -238,6 +255,28 @@ function kpis(rows) {
     <div class="kpi"><div class="n">${rows.length}</div><div class="l">Stocks checked (${xCount} xStocks + ${preCount} PreStocks)</div></div>`;
 }
 
+/**
+ * A ratio as a percentage a reader can scan.
+ *
+ * Four decimal places is machine output, not a table cell: `900.0000%` and `900%`
+ * are the same fact and only one of them can be read at a glance. Precision is
+ * kept where it is the whole story - a gap of 0.78% is a real finding - and
+ * dropped where it is noise on the way to the number.
+ */
+const pctLabel = (p) => `${p >= 100 ? p.toFixed(0) : p >= 1 ? p.toFixed(1) : p.toFixed(2)}%`;
+
+/**
+ * A multiplier as a table cell. The stored ratio carries full precision and the
+ * feed keeps it that way, but `1.4861347` in a column next to `1` is machine
+ * output; five significant digits is the number a reader needs and it is the same
+ * rule the alerts lane writes with (keeper/src/alerts.mjs, fmtX).
+ */
+const xLabel = (v) => {
+  const n = Number(v);
+  if (!Number.isFinite(n)) return String(v);
+  return String(Number(n.toPrecision(5)));
+};
+
 function render() {
   if (!ROWS.length) return;
   const f = $("filter").value;
@@ -260,18 +299,18 @@ function render() {
 
   $("rows").innerHTML = rows.slice(0, 300).map(r => {
     const { cls } = r;
-    const state = cls.readerTrap ? '<span class="flag bad">⚠ WRONG NUMBER</span>'
-      : cls.pending ? '<span class="flag warn">CHANGE SOON</span>'
-      : '<span class="flag ok">UP TO DATE</span>';
+    const state = cls.readerTrap ? '<span class="flag bad">⚠ Wrong number</span>'
+      : cls.pending ? '<span class="flag warn">Change soon</span>'
+      : '<span class="flag ok">Up to date</span>';
     const act = cls.effectiveTimestamp
       ? new Date(cls.effectiveTimestamp * 1000).toISOString().slice(0, 16).replace("T", " ") + " UTC"
       : "-";
     const past = cls.effectiveTimestamp && cls.effectiveTimestamp <= nowSec();
     const ctrls = [
-      cls.security.permanentDelegate ? '<span class="flag bad">CAN FREEZE</span>' : "",
-      cls.security.pausable ? '<span class="flag warn">CAN PAUSE</span>' : "",
-      cls.security.paused ? '<span class="flag bad">PAUSED</span>' : "",
-      cls.security.transferHook ? '<span class="flag warn">TRANSFER RULE</span>' : "",
+      cls.security.permanentDelegate ? '<span class="flag bad">Can freeze</span>' : "",
+      cls.security.pausable ? '<span class="flag warn">Can pause</span>' : "",
+      cls.security.paused ? '<span class="flag bad">Paused</span>' : "",
+      cls.security.transferHook ? '<span class="flag warn">Transfer rule</span>' : "",
       // A row-level marker, because "which of these has an independent price at
       // all" is the question the Pyth lane answers, and it is per mint. Where a
       // price exists the marker carries the gap; where none does it names the
@@ -279,13 +318,13 @@ function render() {
       pythFlag(r.mint),
     ].filter(Boolean).join(" ") || '<span class="mono">nothing extra</span>';
     return `<tr>
-      <td><b>${r.symbol || "?"}</b> <a class="mono" href="https://solscan.io/token/${r.mint}" target="_blank" rel="noopener">${short(r.mint)}</a></td>
+      <td><b>${r.symbol || "?"}</b><a class="mono addr" href="https://solscan.io/token/${r.mint}" target="_blank" rel="noopener">${short(r.mint)}</a></td>
       <td class="mono">${r.issuer === "prestocks" ? "PreStocks" : "xStocks"}</td>
-      <td class="num mono">${cls.multiplier}</td>
-      <td class="num mono"><b>${cls.effective}</b></td>
-      <td class="num">${cls.deltaPct == null ? "-" : cls.deltaPct.toFixed(4) + "%"}</td>
+      <td class="num mono">${xLabel(cls.multiplier)}</td>
+      <td class="num mono"><b>${xLabel(cls.effective)}</b></td>
+      <td class="num">${cls.deltaPct == null ? "-" : pctLabel(cls.deltaPct)}</td>
       <td>${state}</td>
-      <td class="mono">${act}${past ? ' <span class="flag bad">IN EFFECT</span>' : ""}</td>
+      <td class="mono">${act}${past ? ' <span class="flag bad">In effect</span>' : ""}</td>
       <td>${ctrls}</td>
     </tr>`;
   }).join("") || '<tr><td colspan="8" class="status">no rows match</td></tr>';
@@ -373,8 +412,11 @@ function init() {
   kpis(ROWS);
   render();
   const pending = ROWS.filter(r => r.cls.pending);
+  // One sentence per fact, and none of the pipeline's own vocabulary: "snapshot",
+  // "re-classified live at render" and "same-asset feeds" describe how the board
+  // is built, which is the maintainer's business, not the reader's.
   const next = pending.length
-    ? ` · next activation in ${Math.max(0, Math.round((Math.min(...pending.map(r => r.cls.effectiveTimestamp)) - nowSec()) / 3600))}h`
+    ? ` The next scheduled change lands in ${Math.max(0, Math.round((Math.min(...pending.map(r => r.cls.effectiveTimestamp)) - nowSec()) / 3600))}h.`
     : "";
   // The Pyth lane's state is stated, not implied. When it is not configured the
   // board says which condition it is in, because an absent column would read as
@@ -384,9 +426,9 @@ function init() {
   const pythNote = !PYTH
     ? ""
     : PYTH.status === "ok"
-      ? ` · Pyth: ${refs.length} same-asset feeds, ${flagged.length} flagged`
-      : ` · Pyth lane ${PYTH.status} (${refs.length} feeds resolved, no prices)`;
-  $("status").textContent = `snapshot ${meta}${next} · re-classified live at render${pythNote}`;
+      ? ` Pyth prices ${refs.length} of these assets; ${flagged.length} look wrong.`
+      : ` The Pyth lane is ${PYTH.status}: ${refs.length} assets have a feed, none has a price.`;
+  $("status").textContent = `Snapshot ${meta}. Checked again in your browser just now.${next}${pythNote}`;
 }
 
 $("rescan").onclick = () => {

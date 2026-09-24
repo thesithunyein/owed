@@ -755,3 +755,96 @@ test("README's surface-to-evidence table resolves to real artifacts", () => {
     assert.ok(existsSync(join(ROOT, p)), `README points at ${p}, which does not exist`);
   }
 });
+
+/**
+ * The bug this file had no guard for until now: the holdings card's primary button
+ * had no rule at all, so it rendered with the operating system's font, a 2px
+ * outset border and the platform's grey. Beside the styled `Clear` button next to
+ * it, the page read as unfinished. The markup was perfectly valid; the screenshot
+ * was not. That is the shape of defect a build check is for.
+ */
+test("every control is styled by the page, not by the operating system", () => {
+  for (const p of PAGES) {
+    const html = readFileSync(join(WEB, p), "utf8");
+    // Comments talk about buttons too - this very file's prose does - and a guard
+    // that trips over its own commentary is a guard someone eventually deletes.
+    const living = html.replace(/<!--[\s\S]*?-->/g, "").replace(/\/\*[\s\S]*?\*\//g, "");
+    const buttons = [...living.matchAll(/<button[^>]*>/g)].map((m) => ({ tag: m[0], index: m.index }));
+    if (!buttons.length) continue;
+    const css = (html.match(/<style>([\s\S]*?)<\/style>/) ?? [, ""])[1];
+    // The base rule's selector must begin with `button`, so a contextual rule like
+    // `.hero-search button` cannot pass itself off as the page's default.
+    assert.match(css, /^\s*button\s*[,{]/m, `${p} has a base button rule`);
+    // A base rule that is nothing but a font reset has not styled anything, so
+    // unclassed buttons must then name a container that does.
+    const baseFullyStyles = /^\s*button\s*\{[^}]*background[^}]*\}/m.test(css);
+    for (const b of buttons) {
+      const cls = ((b.tag.match(/class="([^"]*)"/) ?? [, ""])[1] || "").split(/\s+/).filter(Boolean);
+      const id = (b.tag.match(/id="([^"]*)"/) ?? [, ""])[1];
+      // The control group it is written inside, taken as the nearest preceding
+      // class attribute. A heuristic - it only has to be right about this markup.
+      const prior = [...living.slice(0, b.index).matchAll(/class="([^"]*)"/g)];
+      const group = prior.length ? prior[prior.length - 1][1] : "";
+      const addressed =
+        cls.some((c) => css.includes(`.${c}`)) ||
+        (id && css.includes(`#${id}`)) ||
+        (group && css.includes(`.${group} button`)) ||
+        baseFullyStyles;
+      assert.ok(addressed, `${p}: this button is styled somewhere - ${b.tag.trim()}`);
+    }
+  }
+});
+
+/**
+ * The alert strip renders a published document, and it used to render the stored
+ * event message verbatim: twelve digits of multiplier and an ISO timestamp, laid
+ * out exactly like the news rows above it. A quiet lane looked busy, and the card
+ * read as a log dump. These are the two tells, pinned so they cannot come back.
+ */
+test("the alert strip is written for a reader, and its chip agrees with it", () => {
+  const src = readFileSync(join(WEB, "differential.html"), "utf8");
+  const strip = (src.match(/<!-- owed:alerts:start -->([\s\S]*?)<!-- owed:alerts:end -->/) ?? [, ""])[1];
+  assert.ok(strip.trim().length > 0, "the alert strip is baked, not empty");
+  // Six decimals, not five: fmtX writes five significant digits, which reaches
+  // five decimals for ratios just under 1 - but only a ratio below 0.001 would
+  // need six, and a thousand-to-one reverse split is not a thing here.
+  assert.ok(
+    !/\d\.\d{6,}/.test(strip),
+    `the strip prints a full-precision ratio: ${(strip.match(/\d\.\d{6,}/) ?? [])[0]}`,
+  );
+  const stamps = [...strip.matchAll(/<span class="when"[^>]*>([^<]*)<\/span>/g)];
+  if (strip.includes('class="alert-row log"')) {
+    // Non-vacuous: if the log rows stop carrying a `when` span, this guard would
+    // otherwise pass by checking nothing at all.
+    assert.ok(stamps.length > 0, "the log rows still carry a timestamp");
+  }
+  for (const m of stamps) {
+    assert.ok(
+      !/^\d{4}-\d{2}-\d{2}/.test(m[1].trim()),
+      `timestamps in the strip are relative, not ISO: ${m[1].trim()}`,
+    );
+  }
+  // The chip is the lane's own claim about itself, so it is generated from the
+  // same document the rows are. It used to be hardcoded to "nothing new" and stay
+  // there while the strip underneath listed two changes.
+  const chip = (src.match(/<!-- owed:alerts-state:start -->([\s\S]*?)<!-- owed:alerts-state:end -->/) ?? [, null])[1];
+  assert.ok(chip && chip.trim().length > 0, "the alert chip is baked, not static markup");
+  const doc = JSON.parse(readFileSync(join(ROOT, "feed", "alerts.json"), "utf8"));
+  const fresh = (doc.summary?.becameOutOfDate ?? 0) + (doc.summary?.activationImminent ?? 0);
+  if (fresh) assert.match(chip, new RegExp(`${fresh} new`), `the chip counts ${fresh} new events`);
+  else if (doc.nextActivation) assert.match(chip, /Split scheduled/);
+  else assert.match(chip, /No new changes/);
+});
+
+/**
+ * A middle dot is the house style of a generated page - "xStocks · a public
+ * company" - and on these pages the text around it is a sentence about a
+ * security. Space, comma or a plain link group instead.
+ */
+test("no page joins metadata with a middle dot", () => {
+  for (const p of PAGES) {
+    const html = readFileSync(join(WEB, p), "utf8");
+    const hits = html.match(/·/g) ?? [];
+    assert.equal(hits.length, 0, `${p} still joins text with a middle dot (${hits.length})`);
+  }
+});

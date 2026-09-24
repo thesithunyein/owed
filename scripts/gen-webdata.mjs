@@ -16,6 +16,10 @@ import { readFileSync, readdirSync, writeFileSync, mkdirSync, existsSync } from 
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+// One definition of how a multiplier is written for a human, shared with the
+// alert messages so the page and the webhook cannot drift into two voices.
+import { fmtX } from "../keeper/src/alerts.mjs";
+
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const { assets } = JSON.parse(
   readFileSync(join(root, "keeper", "data", "xstocks-solana.json"), "utf8")
@@ -416,28 +420,58 @@ if (!feed) {
       `<div class="alert-row now"><span class="kind">upcoming</span><span>` +
         `<b>${genEscape(a.symbol)}</b>: a stock split takes effect in ${until(a.secondsUntil)} ` +
         `(${stamp(a.activatesAt)}). Most apps will still show ` +
-        `${Number(Number(a.stored).toPrecision(6))}x after that, when the blockchain has moved ` +
-        `to ${Number(Number(a.next).toPrecision(6))}x.</span></div>`,
+        `${fmtX(a.stored)}x after that, when the blockchain has moved ` +
+        `to ${fmtX(a.next)}x.</span></div>`,
     );
   }
   if (alertsDoc?.mostRecent) {
     const m = alertsDoc.mostRecent;
-    const ago =
+    // `daysAgo` is the age of the divergence; the log rows below are stamped with
+    // when the lane noticed it. That is two different instants, and printing both
+    // as "Nh ago" made them look like they contradicted each other by an hour.
+    // Saying which is which is the whole fix: "wrong for 13h" is a condition,
+    // "changed 12h ago" is an event.
+    const span =
       m.daysAgo < 1
-        ? `${Math.max(1, Math.round(m.daysAgo * 24))}h ago`
-        : `${Math.round(m.daysAgo)} days ago`;
+        ? `${Math.max(1, Math.round(m.daysAgo * 24))}h`
+        : `${Math.round(m.daysAgo)} days`;
     strip.push(
       `<div class="alert-row now"><span class="kind">newest</span><span>` +
-        `<b>${genEscape(m.symbol)}</b> changed ${ago}: most apps show ` +
-        `${Number(Number(m.stored).toPrecision(6))}x and the blockchain uses ` +
-        `${Number(Number(m.effective).toPrecision(6))}x.</span></div>`,
+        `<b>${genEscape(m.symbol)}</b> has been wrong for ${span}: most apps show ` +
+        `${fmtX(m.stored)}x and the blockchain uses ${fmtX(m.effective)}x.</span></div>`,
     );
   }
-  for (const h of (alertsDoc?.history ?? []).slice(0, 2)) {
+  // History is a log, not news, so it gets its own label and its own weight.
+  // It also used to print the stored event message verbatim - a twelve-digit
+  // multiplier and an ISO timestamp, laid out exactly like the live rows above
+  // it - which made a quiet lane look busy and made the card read as a log dump.
+  // Written here from the same fields the rest of the page uses.
+  const relTime = (iso) => {
+    const t = Date.parse(iso) / 1000;
+    if (!Number.isFinite(t) || !alertsDoc?.clock) {
+      return String(iso).replace("T", " ").slice(0, 16);
+    }
+    const mins = Math.max(1, Math.round((alertsDoc.clock - t) / 60));
+    if (mins < 60) return `${mins}m ago`;
+    const hours = Math.round(mins / 60);
+    return hours < 36 ? `${hours}h ago` : `${Math.round(hours / 24)} days ago`;
+  };
+  const historyLine = (h) =>
+    h.stored != null && h.effective != null
+      ? `${h.symbol}: most apps show ${fmtX(h.stored)}x and the blockchain uses ` +
+        `${fmtX(h.effective)}x.`
+      : // Entries published before the structured fields existed fall back to the
+        // recorded sentence, with its ratio rounded for reading.
+        String(h.message ?? "").replace(/\d+\.\d{5,}/g, (m) => fmtX(m));
+  const history = (alertsDoc?.history ?? []).slice(0, 2);
+  if (history.length) strip.push(`<p class="alert-log">Earlier changes</p>`);
+  for (const h of history) {
+    const abs = String(h.at).replace("T", " ").slice(0, 16);
     strip.push(
-      `<div class="alert-row"><span class="when">${genEscape(
-        String(h.at).replace("T", " ").slice(0, 16),
-      )}</span><span class="kind">${genEscape(ALERT_KIND[h.kind] ?? h.kind)}</span><span>${genEscape(h.message)}</span></div>`,
+      `<div class="alert-row log"><span class="when" title="${genEscape(`${abs} UTC`)}">` +
+        `${genEscape(relTime(h.at))}</span>` +
+        `<span class="kind">${genEscape(ALERT_KIND[h.kind] ?? h.kind)}</span>` +
+        `<span>${genEscape(historyLine(h))}</span></div>`,
     );
   }
   if (!strip.length) {
@@ -448,6 +482,20 @@ if (!feed) {
     );
   }
   diff = swapStatic(diff, "alerts", strip.join(""));
+  // The chip beside the heading states the lane's condition. It was hardcoded to
+  // "nothing new" and stayed there while the strip underneath listed two changes,
+  // which is the kind of contradiction a reader forgives once and never again.
+  const fresh =
+    (alertsDoc?.summary?.becameOutOfDate ?? 0) + (alertsDoc?.summary?.activationImminent ?? 0);
+  diff = swapStatic(
+    diff,
+    "alerts-state",
+    fresh
+      ? `<span class="state bad" id="alertsState">${fresh} new</span>`
+      : alertsDoc?.nextActivation
+        ? `<span class="state bad" id="alertsState">Split scheduled</span>`
+        : `<span class="state ok" id="alertsState">No new changes</span>`,
+  );
 
   // The fold's total is the one count still written here rather than baked once:
   // it sits inside a marker the generator already fills, so this rewrite is what

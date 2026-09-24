@@ -26,14 +26,24 @@
       "kind": "became-stale",
       "symbol": "INVHx",
       "mint": "XsQFmCYjvPGgqYYAth5zNhW8NSCabdamgM1kXMorJs7",
-      "message": "INVHx: apps showing this stock are now using an out-of-date number. The blockchain applies 1.007797994801x while most apps will still show 1x."
+      "stored": 1,
+      "effective": 1.007797994801,
+      "gapPct": 0.7797994801000074,
+      "activatesAt": null,
+      "secondsUntil": null,
+      "message": "INVHx: most apps show 1x and the blockchain uses 1.0078x."
     },
     {
       "at": "2026-09-24T01:49:17.000Z",
       "kind": "became-stale",
       "symbol": "SREx",
       "mint": "XsbicvsCUHE9ja8gTsjzruDxQTKeyij94i3phx3NuNf",
-      "message": "SREx: apps showing this stock are now using an out-of-date number. The blockchain applies 1.005825949367x while most apps will still show 1x."
+      "stored": 1,
+      "effective": 1.005825949367,
+      "gapPct": 0.5825949367000094,
+      "activatesAt": null,
+      "secondsUntil": null,
+      "message": "SREx: most apps show 1x and the blockchain uses 1.0058x."
     }
   ]
 }
