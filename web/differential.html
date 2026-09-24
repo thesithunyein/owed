@@ -124,7 +124,24 @@
   .nav-badge { display: flex; align-items: center; justify-content: center; border-radius: 9999px; width: 40px; height: 40px; flex-shrink: 0; background: #ededed; text-decoration: none; }
   @media (min-width: 640px) { .nav-badge { width: 44px; height: 44px; } }
   .nav-pill { display: flex; align-items: center; gap: 16px; border-radius: 12px; padding: 10px 16px; background: #ededed; flex-wrap: wrap; justify-content: center; }
-  @media (min-width: 640px) { .nav-pill { gap: 26px; padding: 12px 26px; flex-wrap: nowrap; } }  .nav-pill a { font-size: 12px; font-weight: 500; color: #374151;
+  @media (min-width: 640px) { .nav-pill { gap: 26px; padding: 12px 26px; flex-wrap: nowrap; } }
+  /* Narrow screens: the nav links become their own scrollable strip under the logo
+     and wallet button. Wrapping them instead turned the pill into a vertical column
+     that grew tall enough to overlap the hero copy, and an overflowing page is a
+     page that scrolls sideways on a phone. */
+  @media (max-width: 560px) {
+    .hero nav { flex-wrap: wrap; row-gap: 10px; justify-content: space-between; }
+    .nav-pill {
+      order: 3; flex-basis: 100%; flex-wrap: nowrap; justify-content: flex-start;
+      gap: 18px; overflow-x: auto; scrollbar-width: none;
+    }
+    .nav-pill::-webkit-scrollbar { display: none; }
+    .nav-pill a { white-space: nowrap; }
+    .hero-content { padding: 18px 16px 28px; }
+    .hero-search { flex-wrap: wrap; }
+    .hero-search input, .hero-search button { width: 100%; }
+  }
+  .nav-pill a { font-size: 12px; font-weight: 500; color: #374151;
     text-decoration: none; transition: color 0.2s; padding: 8px 2px; }
   .nav-pill a:hover { color: #111827; }
   @media (min-width: 640px) { .nav-pill a { font-size: 14px; } }
@@ -141,17 +158,27 @@
   .wrow .wstat { color: #6b7280; flex: 1; font-size: 13px; }
   .wrow a { font-size: 13px; color: var(--blue, #3b82f6); text-decoration: none; white-space: nowrap; }
   .wrow a:hover { text-decoration: underline; }
-  .hero-content { flex: 1; display: flex; align-items: flex-end; padding: 0 24px 40px; }
-  @media (min-width: 640px) { .hero-content { padding: 0 48px 64px; } }
-  @media (min-width: 1024px) { .hero-content { padding: 0 112px 80px; } }
-  .hero-copy { max-width: 340px; }
+  .hero-content { flex: 1; display: flex; align-items: center; padding: 24px 20px 40px; }
+  @media (min-width: 640px) { .hero-content { padding: 32px 48px 64px; } }
+  @media (min-width: 1024px) { .hero-content { padding: 32px 112px 80px; } }
+  /* One panel, and the only surface on the page that carries weight. It is also
+     the legibility fix: grey type floating directly on a video is unreadable over
+     the bright frames. A frosted material puts the copy on a known background
+     instead of hoping the footage cooperates. */
+  .hero-copy {
+    max-width: 32rem; padding: clamp(20px, 2.6vw, 30px);
+    border-radius: 18px; background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 14px 36px -20px rgba(15, 23, 42, 0.3);
+  }
   .hero-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 500; color: #3b82f6; text-decoration: none; margin-bottom: 12px; }
   .hero-badge:hover { color: #2563eb; }
   .hero-badge .arr, .hero-cta .arr { display: inline-block; transition: transform 0.2s; }
   .hero-badge:hover .arr, .hero-cta:hover .arr { transform: translateX(2px); }
-  .hero h1 { font-size: 1.5rem; line-height: 1.15; font-weight: 500; color: #111827; letter-spacing: -0.02em; margin: 0 0 12px; }
-  @media (min-width: 640px) { .hero h1 { font-size: 1.75rem; } }
-  .hero-sub { font-size: 13px; font-weight: 400; color: #9ca3af; margin: 0 0 12px; }
+  .hero h1 { font-size: clamp(1.75rem, 3.4vw, 2.4rem); line-height: 1.1; font-weight: 600; color: #0f172a; letter-spacing: -0.035em; margin: 0 0 12px; text-wrap: balance; }
+  .hero-sub { font-size: 1rem; line-height: 1.5; color: #475569; margin: 0 0 20px; max-width: 42ch; text-wrap: pretty; }
   .hero-cta { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: #3b82f6; border: 1px solid #60a5fa; border-radius: 9999px; padding: 10px 20px; text-decoration: none; transition: all 0.2s; }
   .hero-cta:hover { background: #3b82f6; color: #fff; border-color: #3b82f6; }
   a { color: var(--blue); }
@@ -161,39 +188,43 @@
   /* The landing page asks one question and answers it. Everything else - the
      full table, the method, the evidence - is one click away rather than in the
      reader's face, which is the difference between an app and a report. */
-  .hero-search { display: flex; gap: 8px; margin: 0 0 10px; max-width: 400px; }
+  /* The search is the product's front door, so it is the largest control on the
+     page. Feedback lands on press, not on release, and the motion is 120ms: any
+     longer and a keystroke feels queued behind an animation. */
+  .hero-search { display: flex; gap: 8px; margin: 0; }
   .hero-search input {
-    flex: 1; min-width: 0; background: rgba(255,255,255,.94); border: 1px solid #d8d8d2;
-    border-radius: 9999px; padding: 12px 16px; font: inherit; font-size: 14px;
+    flex: 1; min-width: 0; background: #fff; border: 1px solid #d8d8d2;
+    border-radius: 11px; padding: 14px 16px; font: inherit; font-size: 0.9375rem;
   }
   .hero-search input:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: var(--blue); }
   .hero-search button {
-    flex-shrink: 0; font: inherit; font-size: 13px; font-weight: 500; color: #fff;
-    background: var(--blue); border: 1px solid var(--blue); border-radius: 9999px;
-    padding: 12px 20px; cursor: pointer; transition: background .2s, border-color .2s;
+    flex-shrink: 0; font: inherit; font-size: 0.9375rem; font-weight: 600; color: #fff;
+    background: var(--blue); border: 1px solid var(--blue); border-radius: 11px;
+    padding: 14px 22px; cursor: pointer;
+    transition: background 120ms ease-out, transform 120ms ease-out;
   }
   .hero-search button:hover { background: #1d4ed8; border-color: #1d4ed8; }
-  .hero-note { font-size: 11.5px; color: #9ca3af; margin: 0 0 14px; }
-  .hero-note .dot { color: #10b981; }
+  .hero-search button:active { transform: scale(0.98); }
   /* The baked finding, shown before any script runs: names the worst mints
      and their error factors so the landing page states the case by itself. */
   /* The static-match flag rides inside the sub block but is machine data,
      not copy: hidden from view, read only by the script below. */
   #sub .static-match { display: none; }
-  .hero-worst { font-size: 12.5px; line-height: 1.5; color: #374151; margin: 0 0 14px; }
-  .hero-worst strong { color: #111827; font-weight: 600; }
-  .hero-links { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; font-size: 12.5px; }
-  .hero-links a { color: #3b82f6; text-decoration: none; }
+  /* The finding, as a readout rather than a paragraph: one figure, one sentence,
+     separated from the search by a hairline. The number the reader is meant to
+     take away is the only thing set in ink at display size. */
+  .hero-worst { margin: 0; padding-top: 16px; border-top: 1px solid rgba(15, 23, 42, 0.1); font-size: 0.9375rem; line-height: 1.5; color: #475569; }
+  .hero-worst strong { display: block; font-size: 1.125rem; font-weight: 600; color: #0f172a; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; margin-bottom: 2px; }
+  .hero-links { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; font-size: 0.875rem; margin-top: 16px; }
+  .hero-links a { color: #1d4ed8; text-decoration: none; font-weight: 500; }
   .hero-links a:hover { text-decoration: underline; }
+  .hero-links a:active, .demo-btn:active { opacity: 0.6; }
 
   /* Guided demo: a recording aid, not a product surface. It walks the page in
      one take so a demo video shows the product instead of a cursor hunting for
      the right fold. */
-  .demo-btn {
-    font: inherit; font-size: 12.5px; color: #1d4ed8; background: #eff6ff;
-    border: 1px solid #bfdbfe; border-radius: 999px; padding: 4px 12px; cursor: pointer;
-  }
-  .demo-btn:hover { background: #dbeafe; }
+  .demo-btn { font: inherit; font-size: 0.875rem; font-weight: 500; color: #1d4ed8; background: none; border: 0; padding: 0; cursor: pointer; }
+  .demo-btn:hover { text-decoration: underline; }
   .demo {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 80;
     background: rgba(9, 14, 26, .96); color: #f8fafc;
@@ -220,8 +251,15 @@
 
   .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
   .card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
-  .card-head h3 { margin: 0; font-size: 19px; letter-spacing: -0.02em; }
-  .card-head .who { margin: 2px 0 0; color: var(--faint); font-size: 12.5px; }
+  .card-head h3 { margin: 0; font-size: 17px; letter-spacing: -0.02em; }
+  .card-head .who { margin: 2px 0 0; color: var(--dim); font-size: 0.8125rem; }
+  /* Explanatory sections are prose with a rule above them, not another white box.
+     Sections that are all the same card is what makes a page read as a wall: the
+     eye has nothing to rank. Chrome is reserved for surfaces you operate. */
+  .block { border-top: 1px solid var(--line); padding: 26px 0 2px; }
+  .block h3 { margin: 0; font-size: 1.1875rem; letter-spacing: -0.02em; }
+  .block .who { margin: 4px 0 0; color: var(--dim); font-size: 0.875rem; }
+  .wrap > section + section { margin-top: 18px; }
   .state { flex-shrink: 0; font-size: 11.5px; font-weight: 500; padding: 4px 10px; border-radius: 999px; border: 1px solid; white-space: nowrap; }
   .state.bad { color: var(--red); border-color: #f3c1c1; background: #fef2f2; }
   .state.ok { color: var(--green); border-color: #bfe3d4; background: #f1faf6; }
@@ -229,7 +267,7 @@
   .lede b { font-variant-numeric: tabular-nums; }
   .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin: 16px 0 0; }
   .fact { background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
-  .fact .k { color: var(--faint); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+  .fact .k { color: var(--dim); font-size: 0.75rem; }
   .fact .v { font-size: 15px; margin-top: 3px; font-variant-numeric: tabular-nums; word-break: break-all; }
   .fact .v.hot { color: var(--red); }
   .fact .v.ok { color: var(--green); }
@@ -331,8 +369,8 @@
       <a class="nav-badge" href="#" aria-label="Owed - back to top">
         <img src="assets/logo.png" alt="Owed" width="26" height="26" />
       </a>
+      <!-- The search below is the front door, so the nav does not repeat it. -->
       <div class="nav-pill">
-        <a href="#check">Check a token</a>
         <a href="#how">How it works</a>
         <a href="#findings">Findings</a>
         <a href="board.html">All stocks</a>
@@ -342,14 +380,10 @@
       <button class="wallet-btn" id="walletBtn" type="button">Connect wallet</button>
     </nav>
     <div class="hero-content">
-      <div class="hero-copy">
-        <h1>Know what your tokenized stocks are really worth.</h1>
+      <div class="hero-copy">        <h1>Know what your tokenized stocks are really worth.</h1>
         <p class="hero-sub">
-          When a company splits its stock, apps that track it can fall behind and keep
-          showing the old price per share - so the value you see is simply too low.
-          Paste a ticker, or a whole list of holdings, and Owed shows you the number your
-          app shows, the number the blockchain uses, and what the gap is worth.
-          No wallet, no key, no signup.
+          A stock split changes the price per share. Apps can miss it.
+          The blockchain does not.
         </p>
         <form class="hero-search" id="search" role="search">
           <input id="q" list="symbols" autocomplete="off" spellcheck="false"
@@ -358,16 +392,9 @@
           <button type="submit">Check</button>
         </form>
         <datalist id="symbols"></datalist>
-        <p class="hero-note">
-          <span class="dot">●</span> Live from Solana · all
-          <span id="coverage">933</span> tokenized stocks, <span id="laneNote">both issuers</span>
-        </p>
-        <!-- owed:hero-worst:start --><p class="hero-worst"><strong>385 of 933 tokenized stocks</strong> show a number the blockchain does not use. Worst: PPLTx 900%, NFLXx 900%, PALLx 400%, SPACEX 400%.</p><!-- owed:hero-worst:end -->
+        <!-- owed:hero-worst:start --><p class="hero-worst"><strong>385 of 933 tokenized stocks</strong> show a number the blockchain does not use.</p><!-- owed:hero-worst:end -->
         <div class="hero-links">
-          <a href="#how">How it works</a>
           <a href="#findings">See every affected stock</a>
-          <a href="board.html">See all 933 →</a>
-          <a href="board.html?issuer=prestocks">PreStocks →</a>
           <button type="button" class="demo-btn" id="demoBtn">▶ 60-second guided tour</button>
         </div>
       </div>
@@ -387,7 +414,7 @@
 </div><div class="wrap">
 
   <section id="how" aria-label="How it works">
-    <div class="card">
+    <div class="block">
       <div class="card-head">
         <div>
           <h3>How it works</h3>
@@ -474,7 +501,7 @@
       <span>Everything Owed found across all <span id="foldTotal">933</span> tokenized stocks</span>
       <span class="n" id="foldCount"></span>
     </summary>
-    <div class="fold-body">      <p class="sub" id="sub" style="margin-bottom:14px"><!-- owed:sub:start --><span class="static-match">0</span>Snapshot taken <strong>Thu, 24 Sep 2026 13:00:29 GMT</strong> from <span class="mono">https://api.mainnet-beta.solana.com</span>, and rechecked in your browser just now.<!-- owed:sub:end --></p>
+    <div class="fold-body">      <p class="sub" id="sub" style="margin-bottom:14px"><!-- owed:sub:start --><span class="static-match">0</span>Snapshot taken <strong>Thu, 24 Sep 2026 13:00:29 GMT</strong> from <span class="mono">https://api.mainnet-beta.solana.com</span>, and rechecked in your browser just now. Covers <span id="laneNote">925 xStocks and 8 PreStocks</span>.<!-- owed:sub:end --></p>
       <div class="grid" id="stats"><!-- owed:stats:start --><div class="stat "><b>933</b><span>Tokenized stocks checked</span></div><div class="stat hot"><b>385</b><span>Showing the wrong number</span></div><div class="stat hot"><b>5</b><span>Off by 1% or more (the ones that hurt)</span></div><div class="stat hot"><b>900%</b><span>Biggest difference</span></div><div class="stat "><b>933 / 933</b><span>Stocks the issuer can freeze</span></div><div class="stat hot"><b>383 of 925 out of date</b><span>… on xStocks (public companies)</span></div><div class="stat hot"><b>2 of 8 out of date</b><span>… on PreStocks (private, pre-IPO)</span></div><!-- owed:stats:end --></div>
 
   <h2 id="registry">Every stock showing the wrong number, worst first <span class="n" id="tblCount"></span></h2>
@@ -501,7 +528,7 @@
 
 
   <section id="faq" aria-label="Questions">
-    <div class="card">
+    <div class="block">
       <div class="card-head">
         <div>
           <h3>Questions</h3>
@@ -629,20 +656,25 @@ function stats() {
         `<div class="stat ${cls}"><b>${v}</b><span>${k}</span></div>`,
     )
     .join("");
+  // This rewrite has to reproduce everything the baked block carried, because it
+  // replaces the whole element: the clock flag the page's own sanity check reads,
+  // and the `#laneNote` span further down writes to. Dropping either one is not a
+  // cosmetic loss - the second is a null dereference that kills the script before
+  // the checker is ever wired up, leaving a page that looks finished and answers
+  // nothing. One assignment, and the ids it owns stay inside it.
+  const laneNames = (RISK.issuers || []).map((i) => `${i.total} ${i.name}`).join(" and ");
   $("sub").innerHTML =
-    `Feed generated <strong>${new Date(RISK.generatedAt).toUTCString()}</strong> from ` +
-    `<span class="mono">${RISK.source.rpc || "mainnet RPC"}</span>, re-classified against your clock just now.`;
+    `<span class="static-match">0</span>Snapshot taken ` +
+    `<strong>${new Date(RISK.generatedAt).toUTCString()}</strong> from ` +
+    `<span class="mono">${RISK.source.rpc || "mainnet RPC"}</span>, and rechecked in your ` +
+    `browser just now. Covers <span id="laneNote">${laneNames}</span>.`;
   // Counts are derived from the same live classification the checker uses, so a
   // refresh that changes them can never leave the page asserting yesterday's number.
-  $("coverage").textContent = all.length.toLocaleString("en-US");
+  // The hero's finding is deliberately NOT rewritten here: it is the baked
+  // snapshot the title and the social card quote, and a hero that changes its
+  // number mid-read is worse than one that states its snapshot.
   $("foldTotal").textContent = all.length.toLocaleString("en-US");
   $("foldCount").textContent = `${rows.length} need attention`;
-  // The second lane is named, not implied: a reader who never opens the fold
-  // should still learn that this is measured across two independent issuers.
-  const laneNames = (RISK.issuers || [])
-    .map((i) => `${i.total} ${i.name}`)
-    .join(" + ");
-  if (laneNames) $("laneNote").textContent = laneNames;
 }
 
 /**

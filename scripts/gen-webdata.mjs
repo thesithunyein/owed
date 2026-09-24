@@ -303,9 +303,18 @@ if (!feed) {
         `<div class="stat ${cls}"><b>${v}</b><span>${k}</span></div>`,
     )
     .join("");
+  // The lane coverage is stated here, in the fold's own summary line, because this
+  // is where the per-issuer breakdown lives. The hero no longer carries it: a
+  // reader who never opens the fold still meets both names on the first screen the
+  // nav offers, and `#laneNote` stays the tested anchor for "the page says which
+  // issuers it covers".
+  const laneNames = (feed.issuers ?? [])
+    .map((i) => `${i.total} ${i.name}`)
+    .join(" and ");
   const genSub =
     `Snapshot taken <strong>${new Date(feed.generatedAt).toUTCString()}</strong> from ` +
-    `<span class="mono">${genEscape(feed.source?.rpc || "mainnet RPC")}</span>, and rechecked in your browser just now.`;
+    `<span class="mono">${genEscape(feed.source?.rpc || "mainnet RPC")}</span>, and rechecked in your browser just now. ` +
+    `Covers <span id="laneNote">${genEscape(laneNames)}</span>.`;
   // Clock-stability, honestly derived: the baked numbers survive the page's
   // live re-render check only when no activation timestamp sits within +/-48h
   // of the feed's clock - any reasonable viewer clock then classifies
@@ -331,14 +340,11 @@ if (!feed) {
   diff = swapStatic(
     diff,
     "hero-worst",
+    // One figure and one sentence. The worst offenders are named as clickable
+    // chips directly under the checker, so repeating them here only made the
+    // hero longer without telling a reader anything new.
     genRows.length
-      ? `<p class="hero-worst"><strong>${genRows.length} of ${genAll.length} tokenized stocks</strong> show a number the blockchain does not use. Worst: ` +
-        genRows
-          .filter((r) => r.c.gap >= 1)
-          .slice(0, 4)
-          .map((r) => `${genEscape(r.t.symbol)} ${(r.c.gap * 100).toFixed(0)}%`)
-          .join(", ") +
-        `.</p>`
+      ? `<p class="hero-worst"><strong>${genRows.length} of ${genAll.length} tokenized stocks</strong> show a number the blockchain does not use.</p>`
       : "",
   );
   // Two counts live outside marker blocks and are set by script only, which
@@ -443,9 +449,10 @@ if (!feed) {
   }
   diff = swapStatic(diff, "alerts", strip.join(""));
 
-  diff = diff
-    .replace(/(<span id="foldTotal">)[^<]*(<\/span>)/, `$1${totalStr}$2`)
-    .replace(/(<span id="coverage">)[^<]*(<\/span>)/, `$1${totalStr}$2`);
+  // The fold's total is the one count still written here rather than baked once:
+  // it sits inside a marker the generator already fills, so this rewrite is what
+  // keeps a closed fold from quoting last week's number.
+  diff = diff.replace(/(<span id="foldTotal">)[^<]*(<\/span>)/, `$1${totalStr}$2`);
 }
 
 // The conformance run is evidence, not product surface: it lives in the README

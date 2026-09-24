@@ -522,6 +522,69 @@ test("the front page explains itself to someone who has never used a wallet", ()
   }
 });
 
+test("the hero stays a front door, and every id its script writes to still exists", () => {
+  // Two failures, one cause: the hero was edited without checking what hangs off
+  // it. (a) Six stacked elements competed for the first screen, so the reader had
+  // to work before they could search. (b) The script wrote to `#coverage` and
+  // `#laneNote` after those spans were deleted, which throws and takes the whole
+  // page script with it - the checker goes dead and the page still looks fine.
+  const page = readFileSync(join(WEB, "differential.html"), "utf8");
+
+  // (b) is mechanical, so it is checked mechanically: every `$("id")` the script
+  // reaches for must exist as an id in the markup.
+  const script = page.slice(page.indexOf("<script>"));
+  const wanted = new Set([...script.matchAll(/\$\("([A-Za-z][\w-]*)"\)/g)].map((m) => m[1]));
+  assert.ok(wanted.size > 10, `the extractor found ${wanted.size} ids - it is not matching`);
+  const declared = new Set([...page.matchAll(/\bid="([^"\s]+)"/g)].map((m) => m[1]));
+  for (const id of wanted) {
+    assert.ok(
+      declared.has(id),
+      `the script writes to #${id}, which no element on the page defines`,
+    );
+  }
+
+  // Declaring the id is not enough when the script also rewrites the container it
+  // lives in: `$("sub").innerHTML = ...` deletes every element inside `#sub` first,
+  // so an id written afterwards must appear inside that same string or it is gone
+  // by the time it is used. Checked here because it fails as a null dereference
+  // that takes the rest of the page script down with it.
+  const subAt = page.indexOf('$("sub").innerHTML');
+  assert.ok(subAt > 0, "the script rewrites the snapshot line");
+  // The assignment is a multi-line template, so take a window rather than trying to
+  // parse JavaScript with a regular expression.
+  const subWrite = page.slice(subAt, subAt + 900);
+  assert.ok(
+    subWrite.includes('id="laneNote"') && subWrite.includes('class="static-match"'),
+    "the rewrite of #sub reproduces what lives inside it (#laneNote, .static-match)",
+  );
+
+  // (a) restraint: the hero is a headline, one sentence, the search, the finding
+  // and at most two links. The nav is the escape hatch for everything else.
+  // Slice the hero section itself, not everything above the page body: the guided
+  // tour's controls live between the two and are not part of the first screen.
+  const heroStart = page.indexOf('<section class="hero"');
+  const hero = page.slice(heroStart, page.indexOf("</section>", heroStart));
+  const heroAnchors = (hero.match(/<a\b/g) ?? []).length;
+  assert.ok(heroAnchors <= 9, `the hero links out ${heroAnchors} times - nav is not a menu`);
+  const heroLinkCount = (hero.match(/<div class="hero-links">[\s\S]*?<\/div>/)?.[0].match(/<a\b/g) ?? [])
+    .length;
+  assert.ok(
+    heroLinkCount <= 2,
+    `the hero ends with at most two links, not a link farm (found ${heroLinkCount})`,
+  );
+  assert.ok(
+    !/\u2192|&rarr;/.test(hero),
+    "no decorative arrows in the hero - they are a generated-page tell",
+  );
+  // The panel is what makes the copy legible over the video; a hero that drops it
+  // is back to grey text on moving footage.
+  assert.ok(page.includes(".hero-copy {"), "the hero still has its panel");
+  assert.ok(
+    !/\.hero-sub \{[^}]*#9ca3af/.test(page),
+    "hero body text is not the low-contrast grey it used to be",
+  );
+});
+
 test("the alert lane is published as a document the page agrees with", () => {
   const feed = JSON.parse(readFileSync(join(ROOT, "feed", "owed-risk.json"), "utf8"));
   const all = [...(feed.tokens ?? []), ...(feed.preStocks ?? [])];

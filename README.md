@@ -101,7 +101,7 @@ flowchart TB
 Devnet program: `42WwVtPQzKiQRtDvaiGM7yjMw8jPSN1hxam24FcFFCLV` (split and
 dividend settled end-to-end; signatures in "Devnet deployment" below).
 
-CI runs the full verification spine on every push: Rust tests, 131 keeper tests,
+CI runs the full verification spine on every push: Rust tests, 132 keeper tests,
 925/925 conformance against the runtime, deterministic rebuild, program-id
 agreement across four sources, ELF e_flags, an on-chain settlement with
 receipts, and re-checking every page/README claim against committed records.
@@ -370,7 +370,7 @@ cannot quietly rot into a list of files that no longer exist.
 <!-- owed:provenance:start -->
 | On the live site | What it claims | Where the proof lives |
 |---|---|---|
-| `/` hero counter | how many of the 933 official mints read a multiplier the runtime does not apply | `feed/owed-risk.json` - `summary` and `issuers`, scoped by `summaryScope`; recompute with `scripts/verify-trap.mjs` |
+| `/` hero readout | how many of the 933 official mints read a multiplier the runtime does not apply (baked once, and the same number the `<title>` and the social card quote) | `feed/owed-risk.json` - `summary` and `issuers`, scoped by `summaryScope`; recompute with `scripts/verify-trap.mjs` |
 | `/` - check a token | the stored value, the value the chain applies, and the error between them | `keeper/src/trap.mjs` for the rule; `keeper/data/conformance.json` for reader-vs-runtime agreement, produced by `scripts/conformance.mjs` |
 | `/` - check a list of holdings | the same error for a whole book, before any wallet connects | the same feed rows; the size-independence argument in `scripts/collateral-scenario.mjs` |
 | `/` - alert strip | exactly two events: a mint that just diverged, and an activation inside 48h | `feed/alerts.json` as the published document; rules in `keeper/src/alerts.mjs`, tests in `keeper/test/alerts.test.mjs` |
@@ -470,7 +470,7 @@ owed/
 │   │                      #   the alert rules (pure, so they test offline)
 │   ├── data/              #   both official mint lists, both scans, conformance,
 │   │                      #   and the committed runtime verdict for PreStocks
-│   └── test/              #   131 tests incl. build-integrity guards on the pages,
+│   └── test/              #   132 tests incl. build-integrity guards on the pages,
 │                          #   the PreStocks/Pyth lanes and the raw fixtures
 ├── feed/                  # owed-risk.json + schema.json - THE integration contract
 ├── web/                   # differential.html (the app) + board.html (risk table)
@@ -504,7 +504,7 @@ site/                      # deploy output (gitignored) - built by build-site.mj
 | **Conformance** | ✅ **925/925 mints** - our reader equals the Token-2022 runtime at 1e-9 relative tolerance across the whole official set (`node scripts/conformance.mjs --all`) |
 | **Trap verification** | ✅ 8/8 sampled traps confirmed against `getTokenSupply`; 2 at exactly 10× |
 | **Risk feed** | ✅ 925 xStocks + 8 PreStocks tokens in one row shape; every published `effectiveMultiplier` reproducibly recomputed from published raw state (tested) |
-| `keeper/` TS | ✅ 131 tests - trap logic, scaled classifier pinned to real account shapes, feed contract, page build integrity (including the static-fallback, alert-strip, provenance and plain-language guards), Merkle parity, RPC parsing, base58, Pyth lane, 500-holder stress |
+| `keeper/` TS | ✅ 132 tests - trap logic, scaled classifier pinned to real account shapes, feed contract, page build integrity (including the static-fallback, alert-strip, provenance, plain-language and hero-restraint guards), Merkle parity, RPC parsing, base58, Pyth lane, 500-holder stress |
 | `sdk/` | ✅ 7 offline tests against a committed mainnet account, plus an 8th that hits mainnet when `OWED_LIVE_SDK=1` - asserts PPLTx still reads stored 1 / effective 10 |
 | `core/` Rust | ✅ 35 tests - Merkle (exhaustive n=1..17 + 33, tamper rejection), supply conservation, split/dividend math, golden vectors, and the raw Token-2022 multiplier reader (including every truncation of every fixture, because a panic on-chain aborts the transaction) |
 | `shared/vectors/scaled-raw/` | ✅ 5 real mainnet mint accounts committed as raw bytes, chosen to cover every branch: a 10x split, a PreStocks mint whose scaled entry is **not** first in the TLV list, a reverse split, an inert config, and a legacy mint with no extensions. The Rust reader is pinned to them; the keeper test asserts the same bytes still yield the feed's published numbers |
