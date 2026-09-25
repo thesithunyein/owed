@@ -51,6 +51,40 @@
 > Not in theory: every mint was scanned and the effective value read from the chain.
 <!-- owed:stats:end -->
 
+## The problem
+
+When a tokenized stock splits, Token-2022's Scaled UI Amount extension applies
+the new multiplier at runtime, automatically, the moment its activation
+timestamp passes. The mint account also stores that multiplier as a plain
+field, and nothing updates it. Two reads of the same mint therefore diverge:
+
+- Read the stored `multiplier` field - the obvious integration - and you get
+  the pre-split value indefinitely, with no error and no failed transaction.
+- Call `getTokenSupply` and the runtime returns the correct, already-scaled
+  amount.
+
+Both responses are well-formed, and neither says which one is in force. The
+chain is right, the reader is wrong, and nothing anywhere announces it.
+
+## Why it matters
+
+**It misvalues real positions by the size of the split.** A balance priced
+from the stored field is wrong by exactly the multiplier ratio - on the worst
+live mints, an order of magnitude, for months at a time.
+
+**It turns a display bug into a solvency bug.** A lender valuing collateral
+from the stale field inflates its loan-to-value by that same ratio; a position
+that is genuinely at 10% LTV can read as fully borrowed and be liquidated
+while healthy.
+
+**It is systemic, not one vendor's mistake.** Two independent issuers use the
+same Token-2022 template, the same classifier finds the defect on both, and
+any future issuer that copies the template inherits it.
+
+**Nothing warns anyone.** The app keeps working, transactions keep succeeding,
+and the number stays quietly wrong. The fix is to compute the multiplier the
+way the runtime does - which is the one-line function Owed publishes.
+
 **What "stale" means here, exactly.** Token-2022's rule is that *before*
 `new_multiplier_effective_timestamp` conversions use `multiplier`, and *at or
 after* it they use `new_multiplier`
