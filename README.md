@@ -12,6 +12,10 @@
 </p>
 
 <p align="center">
+  <img src="docs/screenshot-hero.png" alt="Owed - the live checker, showing 388 of 933 tokenized stocks reading a number the blockchain does not use" width="800" />
+</p>
+
+<p align="center">
   <a href="https://owed.sithunyein.com">Live app</a> ·
   <a href="https://youtu.be/kjw0M-7p0D4">Demo video</a> ·
   <a href="https://owed.sithunyein.com/feed/owed-risk.json">Risk feed</a> ·
