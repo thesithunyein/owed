@@ -590,35 +590,35 @@ were unbuildable as written. The table, and the SBPF feature-gate trap that come
 next in the deploy path, are in [`docs/BUILD-NOTES.md`](docs/BUILD-NOTES.md).
 
 The settlement above is reproducible by anyone, with no keys and no funded
-account:
+account. Three things in the commands below are not obvious, so they are stated
+here rather than buried in script comments:
+
+- **The program's address is fixed by the committed keypair**, so the deploy
+  directory must be seeded with it and `keys sync` must not be run - syncing
+  would mint a new address and break the four-source id agreement CI checks.
+- **A test validator boots with every feature gate active**, so it accepts only
+  SBPFv3, while `anchor build` emits an SBPFv0 ELF (its `e_flags` say so;
+  Anchor's docs claim v3 defaults). The two `--deactivate-feature` flags below
+  disable the v0/v1/v2 gates - once via the execution range and again via the
+  deployment path - which is why the same artifact deploys locally, and why
+  devnet and mainnet need no flags at all. `TestFeature1111…` is the gate's
+  real address, not a placeholder: Anza leaves feature gates at `TestFeature…`
+  addresses until they are renamed for activation. It looks fake; it is not.
+- **The validator creates the ledger directory but not its parent**, which is
+  why the `mkdir -p .anchor` comes first.
 
 ```bash
 npm install
-# The program's address is fixed by the committed keypair; do not `keys sync`.
+
 mkdir -p target/deploy && cp programs/owed/owed-keypair.json target/deploy/
 anchor build
 
-# A throwaway validator, started and deployed to explicitly. `anchor test`
-# manages this itself, but it deploys silently (and not at all with
-# --skip-build), so the steps are spelled out.
-#
-# The `mkdir` matters: the validator creates the ledger directory but not its
-# parent. The TWO --deactivate-feature flags matter: a test-validator boots
-# with every feature gate active, so it accepts only SBPFv3 - once via the
-# execution range (disable_sbpf_v0_execution) and again via the deployment
-# path (disable_sbpf_v0_v1_v2_deployment). Devnet and mainnet have both gates
-# inactive, which is why the same artifact deploys there. `anchor build`
-# emits an SBPFv0 ELF (its e_flags say so; Anchor's docs claim v3 defaults).
-#
-# `TestFeature1111…` is the gate's real address, not a placeholder: Anza leaves
-# feature gates at TestFeature… addresses until they are renamed for activation,
-# and this one has not been. It looks fake; it is not.
 mkdir -p .anchor
 solana-test-validator --reset --ledger .anchor/test-ledger --quiet \
   --deactivate-feature TestFeature11111111111111111111111111111111 \
   --deactivate-feature B8JJXCy5amZyWG9r7EnUYLwzXSXTxG7GZ1qZ1qggo83g &
-# The settlement's fee payer is the CLI's default keypair; create it first on a
-# fresh machine. Local airdrops only - none of this touches a public cluster.
+
+# The settlement's fee payer is the CLI's default keypair; local airdrops only.
 solana-keygen new --no-bip39-passphrase -o "$HOME/.config/solana/id.json" --force
 solana --url http://127.0.0.1:8899 airdrop 500
 solana program deploy target/deploy/owed.so \
