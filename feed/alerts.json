@@ -1,8 +1,8 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-09-25T10:39:42.000Z",
-  "clock": 1790332782,
+  "generatedAt": "2026-09-25T15:59:49.000Z",
+  "clock": 1790351989,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 388,
@@ -14,7 +14,7 @@
   "mostRecent": {
     "symbol": "ELSx",
     "issuer": "xstocks",
-    "daysAgo": 0.4234027777777778,
+    "daysAgo": 0.6457060185185185,
     "stored": 1,
     "effective": 1.006376994123,
     "gapPct": 0.6376994123000079

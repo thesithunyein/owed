@@ -1,7 +1,7 @@
 {
- "fetchedAt": "2026-09-25T10:39:41.767Z",
+ "fetchedAt": "2026-09-25T15:59:49.117Z",
  "source": "https://hermes.pyth.network/v2/price_feeds (open, no key)",
- "catalogueSize": 1874,
+ "catalogueSize": 1878,
  "note": "Which official Pyth feed describes each mint. Feed existence and market hours are Pyth metadata; no price is stored here, because prices require a Bearer key. See keeper/data/pyth-divergence.json for the priced lane.",
  "coverage": {
   "xstocks": {
@@ -96,7 +96,7 @@
     "feedId": "35df6acc91ade17065f757233443edee7b5046a4cd65748641f48d1c78e031b3",
     "symbol": "Equity.US.QUBT/USD",
     "description": "QUANTUM COMPUTING INC.",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -119,7 +119,7 @@
     "feedId": "800415fb1fa6bac6bd13888d85843015a9cf35df23769314eb2ccad6b198ac4f",
     "symbol": "Equity.US.FLNC/USD",
     "description": "FLUENCE ENERGY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -178,7 +178,7 @@
     "feedId": "afb12c5ccf50495c7a7b04447410d7feb4b3218a663ecbd96aa82e676d3c4f1e",
     "symbol": "Equity.US.AI/USD",
     "description": "C3.AI INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -192,7 +192,7 @@
     "feedId": "92e03dac647ec6733f61f208a89115ecee4442653736a66008032f4ae588f304",
     "symbol": "Equity.US.MP/USD",
     "description": "MP MATERIALS CORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -251,7 +251,7 @@
     "feedId": "316c3f180861da3a9c8f0254d961dbebc2055491d469f459170337233de2e0e9",
     "symbol": "Equity.US.DVA/USD",
     "description": "DAVITA INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -319,7 +319,7 @@
     "feedId": "db81d5006b97f915f7f34bd396df8cc84c436e4e76f3849ae6e70ad2585fdf0d",
     "symbol": "Equity.US.GDDY/USD",
     "description": "GODADDY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -333,7 +333,7 @@
     "feedId": "294d4d287de3c867bffe0cfe548f44c9cbdea280906de0ba6074094e6558d87a",
     "symbol": "Equity.US.BXP/USD",
     "description": "BXP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -347,7 +347,7 @@
     "feedId": "433290e6c638d6fd364131518bf75369eddb24626a252e2d472652cb0720154b",
     "symbol": "Equity.US.DY/USD",
     "description": "DYCOM INDS INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -388,7 +388,7 @@
     "feedId": "ac8965f0ed1f9003909d9826d3fe783a45c5021bce71a40341d0ba06140c6431",
     "symbol": "Equity.US.DPZ/USD",
     "description": "DOMINO'S PIZZA INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -402,7 +402,7 @@
     "feedId": "071301c678e65e5e0530e6f8ff4eb655e23ff0252bb7f4112c89b2496329ab15",
     "symbol": "Equity.US.FDS/USD",
     "description": "FACTSET RESEARCH SYSTEMS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -443,7 +443,7 @@
     "feedId": "f645c9aa24431545d435746258771dde072dd9d63f71f876b9d2c4d0eb573f84",
     "symbol": "Equity.US.TTMI/USD",
     "description": "TTM TECHNOLOGIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -475,7 +475,7 @@
     "feedId": "cfb40f97941f8fdafea7ae631b75316b323297ce4ee04148f31ea7cc7974815d",
     "symbol": "Equity.US.KTOS/USD",
     "description": "KRATOS DEFENSE & SECURITY SOLUTIONS INC",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -516,7 +516,7 @@
     "feedId": "3600d9719b640ae821b323d2aecb55534136f5b4a8711245ac9a8e088ae3ae56",
     "symbol": "Equity.US.MGM/USD",
     "description": "MGM RESORTS INTERNATIONAL / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -539,7 +539,7 @@
     "feedId": "659c675091db659251f2077293bf9e71aef2c978dd729c2be66cec0d41c1d671",
     "symbol": "Equity.US.HII/USD",
     "description": "HUNTINGTON INGALLS INDUSTRIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -562,7 +562,7 @@
     "feedId": "b0dd9f829e915a1c103427394ff479da7f1de2b0e8fdad3d3b46012c37b05ac9",
     "symbol": "Equity.US.HRL/USD",
     "description": "HORMEL FOODS CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -594,7 +594,7 @@
     "feedId": "f8208ffb5822c912f596ac3df95514222eb1adaa0dd341408b41fed15821c414",
     "symbol": "Equity.US.AMKR/USD",
     "description": "AMKOR TECHNOLOGY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -644,7 +644,7 @@
     "feedId": "3d310eb22c99f72ed6f1bb5944a0c8d435a623e1c4ccbbb915128cfde728e83f",
     "symbol": "Equity.US.DOCU/USD",
     "description": "DOCUSIGN INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -667,7 +667,7 @@
     "feedId": "87ea4968e650693b61926526d4b3cb7ee32f4f71217b0e181732ba6e14f9d124",
     "symbol": "Equity.US.JKHY/USD",
     "description": "JACK HENRY & ASSOCIATES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -681,7 +681,7 @@
     "feedId": "c12cdf4c4a26f30ff25791b14cb62e2e8f3ddd4026ddde8221d231b6786a84cb",
     "symbol": "Equity.US.WTRG/USD",
     "description": "ESSENTIAL UTILS INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -704,7 +704,7 @@
     "feedId": "5a68b463343e82512e5ea36024037971bb44328de682711a671801dc31c22967",
     "symbol": "Equity.US.FIVE/USD",
     "description": "FIVE BELOW INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -718,7 +718,7 @@
     "feedId": "45b4d37b660364a2bf23a9bdc0ed53b12b84fb85a334b711ba77d6a6533a3bff",
     "symbol": "Equity.US.IVZ/USD",
     "description": "INVESCO LTD / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -777,7 +777,7 @@
     "feedId": "22eb56a8faa26639943a3f96ab2b0b5fee3fb9c888789da4107d56ffe0471503",
     "symbol": "Equity.US.IT/USD",
     "description": "GARTNER INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -800,7 +800,7 @@
     "feedId": "bd022edbd573a52f57b7e930b8b4c51db94407f3b6a99d08abed9c9a79a0a27d",
     "symbol": "Equity.US.TXRH/USD",
     "description": "TEXAS ROADHOUSE INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -814,7 +814,7 @@
     "feedId": "8e51b3631c219c252d264e068765dd54bd06e7e5d3120667a5be4a20de82cb49",
     "symbol": "Equity.US.STRL/USD",
     "description": "STERLING INFRASTRUCTURE INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -828,7 +828,7 @@
     "feedId": "91d942b363c77592a40d4590a96283e9ad95c55ec40a06f57d9a840229786715",
     "symbol": "Equity.US.AUR/USD",
     "description": "AURORA INNOVATION, INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -851,7 +851,7 @@
     "feedId": "843ea585a43ae9d0acff8176ab6e5090aaa214c37902404a66082eb5eb4267a9",
     "symbol": "Equity.US.NWS/USD",
     "description": "NEWS CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -865,7 +865,7 @@
     "feedId": "72c3b869b1188eaaacd19da9fac87253d8d4adfa651e5b1b4fd371168445a108",
     "symbol": "Equity.US.BAX/USD",
     "description": "BAXTER INTERNATIONAL INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -888,7 +888,7 @@
     "feedId": "e3a1aa2fe470ff336c23daa1184f79764a15ac3af2e99ac31ac05942f0befcde",
     "symbol": "Equity.US.NWSA/USD",
     "description": "NEWS CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -965,7 +965,7 @@
     "feedId": "2132dbe12a6d7520b29553bafb7c81c178bcc7583112dec25aacfcac99b9049f",
     "symbol": "Equity.US.FN/USD",
     "description": "FABRINET / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -988,7 +988,7 @@
     "feedId": "4da5b5fc2f6dfde7d47fac2370940217dd0ce5c37e650f770e6611a974aab96c",
     "symbol": "Equity.US.RVTY/USD",
     "description": "REVVITY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1047,7 +1047,7 @@
     "feedId": "b8b6c23723982492c9e893684e2686af4c38eef7f58dc74a030b49a7c07996b7",
     "symbol": "Equity.US.NVR/USD",
     "description": "NVR INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1061,7 +1061,7 @@
     "feedId": "da588e138c2bfac1d3961703edce382c431c77406a68427153b9ac08f5a1b9e4",
     "symbol": "Equity.US.BEN/USD",
     "description": "FRANKLIN RESOURCES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1093,7 +1093,7 @@
     "feedId": "a5a06eeb56f1f0002c2114c95d980f10e007dd0184c8f5683e0fcd6bd8229374",
     "symbol": "Equity.US.CCK/USD",
     "description": "CROWN HLDGS INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1107,7 +1107,7 @@
     "feedId": "f3b666a93ea3df7ad02b973c4a6a0921875cf3208ebc4909a642ad475849c9ef",
     "symbol": "Equity.US.CDE/USD",
     "description": "COEUR MNG INC COM NEW / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1139,7 +1139,7 @@
     "feedId": "137b11f6e570f46d5cbcf1ebe05ba1bbc677d419ba6eefb5e7f0786c11adae06",
     "symbol": "Equity.US.AFRM/USD",
     "description": "AFFIRM HOLDINGS INC",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1153,7 +1153,7 @@
     "feedId": "8cbec525dd085e025e7a4cb0fa5041a9db203ff0ed5919d9f14e61fff8bfe062",
     "symbol": "Equity.US.GFS/USD",
     "description": "GLOBALFOUNDRIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1167,7 +1167,7 @@
     "feedId": "d41eeeb414e39be931a2a49df678f11b6b4d5479d4e4dcb5b9b09c0b0a301480",
     "symbol": "Equity.US.TOST/USD",
     "description": "TOAST INC CL A / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1186,7 +1186,7 @@
     "feedId": "05b37d23cbccc22f3eb1a678e79ca9e10cf3d087225ebfaad0109491656e8bb7",
     "symbol": "Equity.US.IOT/USD",
     "description": "SAMSARA INC",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1218,7 +1218,7 @@
     "feedId": "6af68a227de372e5d19183679911e468e06d85c013f56c376a78a4d942f8f269",
     "symbol": "Equity.US.IONQ/USD",
     "description": "IONQ INC",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1241,7 +1241,7 @@
     "feedId": "56b6d6619fbd0b81ae09dbb8ccca77877b78aebf098b2fb95432a926af8e384c",
     "symbol": "Equity.US.AXTI/USD",
     "description": "AXT INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1255,7 +1255,7 @@
     "feedId": "50a5e2e32fc44f04f902be4d78b4188896f7560dd091e473b149c7dbf841c3ea",
     "symbol": "Equity.US.INTW/USD",
     "description": "GRANITESHARES 2X LONG INTC DAILY ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1269,7 +1269,7 @@
     "feedId": "71a19a2d91626d9d184ba85c4a9d21289640013a7dacc113d007847ea1a09ec8",
     "symbol": "Equity.US.DRAM/USD",
     "description": "ROUNDHILL MEMORY ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1283,7 +1283,7 @@
     "feedId": "7cf66aa378a88b0637d1e8dae8ca0d558ba997338af670399e984a995c496200",
     "symbol": "Equity.US.SOXS/USD",
     "description": "DIREXION DAILY SEMICONDUCTOR BEAR 3X SHARES / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1297,7 +1297,7 @@
     "feedId": "c0a283063e97741c59574f5eec33bc955857aefc5765e4b20229940c5be3cdd4",
     "symbol": "Equity.US.SNXX/USD",
     "description": "TRADR 2X LONG SNDK DAILY ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1311,7 +1311,7 @@
     "feedId": "a4114834f7378835fadccbf9d9c2f1d188ebe6befc67b9b0e52ae81123f48c7c",
     "symbol": "Equity.US.MUU/USD",
     "description": "DIREXION DAILY MU BULL 2X ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1325,7 +1325,7 @@
     "feedId": "25d29976104bc89f36ae1e37e564b5ed9f4a9bf32f32d488b16b9ca0bdbe49ef",
     "symbol": "Equity.US.MVLL/USD",
     "description": "GRANITESHARES 2X LONG MRVL DAILY ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1339,7 +1339,7 @@
     "feedId": "cabf6dfb723b12ac8a67e919379d177903580f8d3ae2fad3897198dc07a5a861",
     "symbol": "Equity.US.DJT/USD",
     "description": "TRUMP MEDIA & TECHNOLOGY GROUP CORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1353,7 +1353,7 @@
     "feedId": "c6ecfe57b188368c5dacfafdc4885ee8414d2f6aeb2eaddac30d1c61f1e1f5b7",
     "symbol": "Equity.US.KORU/USD",
     "description": "DIREXION DAILY MSCI SOUTH KOREA BULL 3X ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1385,7 +1385,7 @@
     "feedId": "7717b73c7f19ffb1e6e5da542836fa3464559ec971df475455471433a005e2a6",
     "symbol": "Equity.US.WULF/USD",
     "description": "TERAWULF INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1399,7 +1399,7 @@
     "feedId": "0cb5822ffa7443a58afb6f9d483a9c1a9a1f89737b4b851523ab2bf86d049755",
     "symbol": "Equity.US.WBD/USD",
     "description": "WARNER BROS DISCOVERY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1413,7 +1413,7 @@
     "feedId": "48a13d42218646bba8cc114cd394a283b11c0e07dd14a885efd5caec640c5289",
     "symbol": "Equity.US.VXUS/USD",
     "description": "VANGUARD TOTAL INTL STOCK ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1427,7 +1427,7 @@
     "feedId": "84dad6b760396a7904d04a3d83039a3fc18f10819fd97d023ac5535997d70108",
     "symbol": "Equity.US.VRT/USD",
     "description": "VERTIV HOLDINGS CO",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1450,7 +1450,7 @@
     "feedId": "58ab181e7512766728d2cc3581839bbb913e6cd24457ba422cbe2a33df64416e",
     "symbol": "Equity.US.TER/USD",
     "description": "TERADYNE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1464,7 +1464,7 @@
     "feedId": "fce02687a8a49f19f78f7f97bd686c779135221429206bbd8735d5ad4c782130",
     "symbol": "Equity.US.SPCE/USD",
     "description": "VIRGIN GALACTIC HOLDINGS, INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1478,7 +1478,7 @@
     "feedId": "69155365daba71df19c2c0416467b64581052cfa75f44b77f352a92698b81639",
     "symbol": "Equity.US.SMR/USD",
     "description": "NUSCALE POWER CORP",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1501,7 +1501,7 @@
     "feedId": "8d6a29bb5ed522931d711bb12c4bbf92af986936e52af582032913b5ffcbf4d5",
     "symbol": "Equity.US.SGOV/USD",
     "description": "ISHARES 0-3 MONTH TREASURY BOND ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1515,7 +1515,7 @@
     "feedId": "a189b9eee6d023e3b79a726804aeb748d54e52cf6ebcebe0f7d5c8dae4988357",
     "symbol": "Equity.US.PWR/USD",
     "description": "QUANTA SERVICES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1529,7 +1529,7 @@
     "feedId": "601671d8a16a9f456d9a16d0bf203dd80d5076cc95ddca29cb5c7f8024dbeba6",
     "symbol": "Equity.US.SCHF/USD",
     "description": "SCHWAB INTL EQUITY ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1543,7 +1543,7 @@
     "feedId": "562e632de00dd4ad4a70b024afc3e2a220c1b05116d58cf96089825303f94762",
     "symbol": "Equity.US.PL/USD",
     "description": "PLANET LABS PBC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1557,7 +1557,7 @@
     "feedId": "3b00df0661ccb3109d11ff301c1aa4e88b8d647cb477b089ba225149e6e1b7bb",
     "symbol": "Equity.US.PANW/USD",
     "description": "PALO ALTO NETWORKS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1571,7 +1571,7 @@
     "feedId": "b4ef19d348a726dad5a655bcac5fe6e09c83af142bf1006b45d0f9ca4d5a46b5",
     "symbol": "Equity.US.OPEN/USD",
     "description": "OPENDOOR TECHNOLOGIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1585,7 +1585,7 @@
     "feedId": "0d283a095e94dff4d4e607614ed686eb53e548238fb3af231148c276ecefe83e",
     "symbol": "Equity.US.OKLO/USD",
     "description": "OKLO INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1599,7 +1599,7 @@
     "feedId": "1d762c633d4166a8d061518e187047afda1868cc524990262d8144e39dbb815f",
     "symbol": "Equity.US.MDT/USD",
     "description": "MEDTRONIC PLC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1613,7 +1613,7 @@
     "feedId": "01a67883f58bd0f0e9cf8f52f21d7cf78c144d7e7ae32ce9256420834b33fb75",
     "symbol": "Equity.US.LRCX/USD",
     "description": "LAM RESEARCH CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1627,7 +1627,7 @@
     "feedId": "fd7141d35093fb93e84d82507cc6a97775fe263bd8ecd8b7e2b940a6ae487979",
     "symbol": "Equity.US.LITE/USD",
     "description": "LUMENTUM HLDGS INC COM",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1650,7 +1650,7 @@
     "feedId": "9c27675f282bfe54b5d0a7b187b29b09184d32d4462de7e3060629c7b8895aad",
     "symbol": "Equity.US.KLAC/USD",
     "description": "KLA CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1664,7 +1664,7 @@
     "feedId": "fb88ad7526f97f7ca6f43aaa7d3b620f412968db2cbcfac1e906362def8456f3",
     "symbol": "Equity.US.HUT/USD",
     "description": "HUT 8 CORP. / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1678,7 +1678,7 @@
     "feedId": "57e28b0f0ab18923f5c987629c0c714b9b46c87e729ed95ed6e23e466e8d1e0c",
     "symbol": "Equity.US.GEV/USD",
     "description": "GE VERNOVA INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1692,7 +1692,7 @@
     "feedId": "b1cf984febc32fbd98f0c5d31fed29d050d56a272406bae9de64dd94ba7e5e1e",
     "symbol": "Equity.US.ETN/USD",
     "description": "EATON CORPORATION PLC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1715,7 +1715,7 @@
     "feedId": "214fc87a8f0f5adc797fc1f7927e1040650366e8f943e20caf13ad0d6e806956",
     "symbol": "Equity.US.CORZ/USD",
     "description": "CORE SCIENTIFIC, INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1729,7 +1729,7 @@
     "feedId": "79e935bc10c55f2c36a08df1564afc5b33425c8dc80829dd954c67e63ed3374a",
     "symbol": "Equity.US.CLSK/USD",
     "description": "CLEANSPARK INC",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1743,7 +1743,7 @@
     "feedId": "17f979e1f6b7c429e4b9ecee96633dbecdc5378566ddfd3d220b0ef8d874e4bd",
     "symbol": "Equity.US.ASTS/USD",
     "description": "AST SPACEMOBILE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1757,7 +1757,7 @@
     "feedId": "7fc1e64946aff450748e8f60644d052ae787e5708dc48c6c73c546ee94218cc3",
     "symbol": "Equity.US.APLD/USD",
     "description": "APPLIED DIGITAL CORP",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1771,7 +1771,7 @@
     "feedId": "31cc7558642dc348a3e2894146a998031438de8ccc56b7af2171bcd5e5d83eda",
     "symbol": "Equity.US.ANET/USD",
     "description": "ARISTA NETWORKS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1794,7 +1794,7 @@
     "feedId": "b9bc74cc1243b706efacf664ed206d08ab1dda79e8b87752c7c44b3bdf1b9e08",
     "symbol": "Equity.US.AMAT/USD",
     "description": "APPLIED MATERIALS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -1808,7 +1808,7 @@
     "feedId": "68848984b74a7766ad23cdccd8e78e9ef339dcfb86b7e96990f27447c20967ed",
     "symbol": "Equity.US.ACN/USD",
     "description": "ACCENTURE PLC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -2641,7 +2641,7 @@
     "feedId": "7ba87b1995707e913adcad3c91a4fced0119a58a235d0cb76e3bef62d3e48dfc",
     "symbol": "Equity.US.VOD/USD",
     "description": "VODAFONE GROUP PLC ADR / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3357,7 +3357,7 @@
     "feedId": "957bf692b35cc62f222dbf4dc6929130df42fe17c9f03373f44c01f78b05391e",
     "symbol": "Equity.US.ARM/USD",
     "description": "ARM HOLDINGS PLC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3371,7 +3371,7 @@
     "feedId": "a2306f89235d8ffe1b4de0d310c15389bc94d668755a91df02629e846c4c31ee",
     "symbol": "Equity.US.SHAZ/USD",
     "description": "SHARONAI HOLDINGS INC",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3385,7 +3385,7 @@
     "feedId": "7b6809a00a53228f74622e4909750c0d86a2081032955e02c8e3503b1b93829a",
     "symbol": "Equity.US.CBRS/USD",
     "description": "CEREBRAS SYSTEMS / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3408,7 +3408,7 @@
     "feedId": "ff68be691d07c6513247fd4e93a6d52b31e0ef7e4899acc43e59cb5c95b3fa76",
     "symbol": "Equity.US.AAOI/USD",
     "description": "APPLIED OPTOELECTRONICS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3422,7 +3422,7 @@
     "feedId": "2a78b78189d6d6eff30a825e4698fd14a0b1ca659bb0079bb7e80521c0e8c75d",
     "symbol": "Equity.US.CRWV/USD",
     "description": "COREWEAVE INC",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3445,7 +3445,7 @@
     "feedId": "691630d65fbbc8d987717df10453c01907bee8caa60a4aaba4dafca64ea16dc4",
     "symbol": "Equity.US.NBIS/USD",
     "description": "NEBIUS GROUP NV",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3468,7 +3468,7 @@
     "feedId": "a955f59cec6006d55ac21ab009c92662f2d9250bc22b86fcce16e7962c129c4f",
     "symbol": "Equity.US.BE/USD",
     "description": "BLOOM ENERGY CORP",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3491,7 +3491,7 @@
     "feedId": "e5725db9661fa7df89131c9d7fd85c30122523a1e864d03986911342a43cd47c",
     "symbol": "Equity.US.SKHY/USD",
     "description": "SK HYNIX INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3505,7 +3505,7 @@
     "feedId": "2792f57bf9f228b8e0d12053938e5eb1002f00c4fd76e0f21679b0b5ea576428",
     "symbol": "Equity.US.BKR/USD",
     "description": "BAKER HUGHES COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3528,7 +3528,7 @@
     "feedId": "77f1eaace82a490f8850a81c6e4165e21769f1c0b6dde6327c5068527546d7bd",
     "symbol": "Equity.US.BJ/USD",
     "description": "BJS WHSL CLUB HLDGS INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3542,7 +3542,7 @@
     "feedId": "f84d53799267676ca75d07bae921233dcc9d856d1b7616a728fdad0a71ed6159",
     "symbol": "Equity.US.MKC/USD",
     "description": "MCCORMICK & COMPANY INCORPORATED / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3556,7 +3556,7 @@
     "feedId": "394f7b65d27e98ed9445327778fdf693f8a4dfcb539dd90287e198bd5062b932",
     "symbol": "Equity.US.FDXF/USD",
     "description": "FEDEX FREIGHT HOLDING COMPANY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3570,7 +3570,7 @@
     "feedId": "388d6ab5c18ec14b9339a718669dc6d5a366c159e21617498c97870d18aeb207",
     "symbol": "Equity.US.BNY/USD",
     "description": "THE BANK OF NEW YORK MELLON CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3593,7 +3593,7 @@
     "feedId": "05ff869230bb56bf2df26342880f6a2b9cab2f2eb4c1b59f00ec38e405d65db0",
     "symbol": "Equity.US.TLN/USD",
     "description": "TALEN ENERGY CORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3634,7 +3634,7 @@
     "feedId": "772e16ce4ffa670ed237b51edf04a153137998d06162517f75ad0baa45e118c4",
     "symbol": "Equity.US.CLX/USD",
     "description": "THE CLOROX COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3648,7 +3648,7 @@
     "feedId": "9794052f000f3bc2bfa29662035ca0fa65d316ab901e2b4d4238a2bc30637ee6",
     "symbol": "Equity.US.SJM/USD",
     "description": "THE J M SMUCKER COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3662,7 +3662,7 @@
     "feedId": "1ebf3dd05546ce87c5a2892404717bca81a7b191f893244ad27f6ced751ae38d",
     "symbol": "Equity.US.EG/USD",
     "description": "EVEREST GROUP LTD / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3676,7 +3676,7 @@
     "feedId": "2835749f2a5be8b3dbf9b60af35b5f5bb1f4ffab136ddfc8aa6b96773f26c811",
     "symbol": "Equity.US.QSR/USD",
     "description": "RESTAURANT BRANDS INTL INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3690,7 +3690,7 @@
     "feedId": "3cb1afe7c1f9633ec2245e2ae902d431989d86e67fe69a999ea4736365226049",
     "symbol": "Equity.US.CDW/USD",
     "description": "CDW CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3722,7 +3722,7 @@
     "feedId": "d5d2e23ef78e6c8601b8154c882af2f62b87cc18e38e1c3af04f7301d1b20977",
     "symbol": "Equity.US.VLTO/USD",
     "description": "VERALTO CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3754,7 +3754,7 @@
     "feedId": "ab3a0f9d8e8565e58225a4e8bbe6bdf0ae8894aa3a1081aec1cf728fa61d7e4f",
     "symbol": "Equity.US.HAS/USD",
     "description": "HASBRO INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3768,7 +3768,7 @@
     "feedId": "af03e147c86ba455ed54923df76d413b146268176fac303920468f961e30b195",
     "symbol": "Equity.US.TW/USD",
     "description": "TRADEWEB MKTS INC CL A / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3782,7 +3782,7 @@
     "feedId": "735a2411c6c532f7f871e5b7370e9e62bac91784a9a620992f5f9de8dcf366b2",
     "symbol": "Equity.US.PNW/USD",
     "description": "PINNACLE WEST CAPITAL CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3796,7 +3796,7 @@
     "feedId": "1585a2b6467e2bf7788d6c58ab4b0f2259610d5997f8aa7b6c160417250c71f8",
     "symbol": "Equity.US.CHTR/USD",
     "description": "CHARTER COMMUNICATIONS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3810,7 +3810,7 @@
     "feedId": "0444ad971cd20af326096da92fbcc3460e38d44dbbf54c5a71725767842f762f",
     "symbol": "Equity.US.AIT/USD",
     "description": "APPLIED INDL TECHNOLOGIES INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3824,7 +3824,7 @@
     "feedId": "9016be1a1eed6240724a40e2629a02c08ef6d87fafc772b856ebdbe3d174e6ba",
     "symbol": "Equity.US.TRMB/USD",
     "description": "TRIMBLE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3847,7 +3847,7 @@
     "feedId": "d71412c0ef13b400c49514108d5236f47c5c30906ac8ae7c65b40bca8a6a984b",
     "symbol": "Equity.US.CPT/USD",
     "description": "CAMDEN PROPERTY TRUST / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3861,7 +3861,7 @@
     "feedId": "bb118ccad2f8d1df2d4f173abacaed772b8443abfcf6eacee1207a5e5d9c105c",
     "symbol": "Equity.US.APA/USD",
     "description": "APA CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3875,7 +3875,7 @@
     "feedId": "546d3558fc917ae4265fe195fff4430b3e3b081e817a147ec6a99e3df27c113d",
     "symbol": "Equity.US.GGG/USD",
     "description": "GRACO INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3889,7 +3889,7 @@
     "feedId": "d78290ea68a7d23aa44291bf9075a7bdeda18f7aabb32b095cdf175ec5cee785",
     "symbol": "Equity.US.TYL/USD",
     "description": "TYLER TECHNOLOGIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3903,7 +3903,7 @@
     "feedId": "0d6c41f292267e021b5bebd48a9b4dd1697e10bb9b9a5b06411c74c570d1135c",
     "symbol": "Equity.US.ALLY/USD",
     "description": "ALLY FINL INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3926,7 +3926,7 @@
     "feedId": "c91931c99dbec8229481e54567f72931609411555e93faf59e09c4c1185c580f",
     "symbol": "Equity.US.CG/USD",
     "description": "CARLYLE GROUP INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3940,7 +3940,7 @@
     "feedId": "be758135d2cea02b8c821e609cdc84d9c5c0e9d82a81b9534d3444b39fbf70bd",
     "symbol": "Equity.US.ZBRA/USD",
     "description": "ZEBRA TECHNOLOGIES CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3954,7 +3954,7 @@
     "feedId": "d64f962c743e331b965269b9b01f88335600f0f005e43595a5acdf02dac548e2",
     "symbol": "Equity.US.DT/USD",
     "description": "DYNATRACE INC COM NEW / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -3977,7 +3977,7 @@
     "feedId": "973f5dc5c6c960f20c98c0d14d76c050fdf31b393059ca724fbfd746aa5b44dc",
     "symbol": "Equity.US.ALGN/USD",
     "description": "ALIGN TECHNOLOGY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4000,7 +4000,7 @@
     "feedId": "0807c53eeceb8d3cb15096905d94839971f34cb2cffcda0358c0a8294cfa72ff",
     "symbol": "Equity.US.AIZ/USD",
     "description": "ASSURANT INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4014,7 +4014,7 @@
     "feedId": "d302d0bf304b2a9a186d58733a2fd9d29a9f4ed7c91b74df44071c614f81363c",
     "symbol": "Equity.US.AVY/USD",
     "description": "AVERY DENNISON CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4028,7 +4028,7 @@
     "feedId": "32462ff5bcef4c30f6215ba45ebd819e9a18b057994eeeb3c9f14498cff43721",
     "symbol": "Equity.US.NTNX/USD",
     "description": "NUTANIX INC CL A / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4042,7 +4042,7 @@
     "feedId": "ee8d8be099589b377d1761699c311172d895be6d08e940226da5a4d0262d2fc7",
     "symbol": "Equity.US.PR/USD",
     "description": "PERMIAN RESOURCES CORPORATION",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4056,7 +4056,7 @@
     "feedId": "05b0a4d52786320f28d1389ed8f236c3eca5854376431cfdf7ce37b6326402d2",
     "symbol": "Equity.US.PINS/USD",
     "description": "PINTEREST, INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4070,7 +4070,7 @@
     "feedId": "1e59e3164331ce560683eae0c69efe9650ff1bc834225772ddb330aa808f72f0",
     "symbol": "Equity.US.RIVN/USD",
     "description": "RIVIAN AUTOMOTIVE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4084,7 +4084,7 @@
     "feedId": "279fb126e8c246e7a01441817e5701d7e9162b9081e81a82d3e375a5f1433354",
     "symbol": "Equity.US.GLPI/USD",
     "description": "GAMING & LEISURE P COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4098,7 +4098,7 @@
     "feedId": "16164a6568478238fc3102145ad51d973598850073ace86ceda7c89cb7b74598",
     "symbol": "Equity.US.ZS/USD",
     "description": "ZSCALER INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4112,7 +4112,7 @@
     "feedId": "1b44c70514a3e9633da7c856e59d6d8544682b1c7da6ae391a8fb574909ab42b",
     "symbol": "Equity.US.TRU/USD",
     "description": "TRANSUNION COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4126,7 +4126,7 @@
     "feedId": "22bc4962a6ab104d6e5f25665cabfca04730bfa959ebfc3def3ba43b19d0ba03",
     "symbol": "Equity.US.UDR/USD",
     "description": "UDR INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4140,7 +4140,7 @@
     "feedId": "cc7233f28c816dae39aa0bd524029f89e5951bd308523228ecac6891d7a18a7b",
     "symbol": "Equity.US.SWK/USD",
     "description": "STANLEY BLACK & DECKER INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4154,7 +4154,7 @@
     "feedId": "0adae539549d8495edc5cfc14dfed8974fe440a8c195df187d1a75bb3bb7b441",
     "symbol": "Equity.US.DOC/USD",
     "description": "HEALTHPEAK PROPERTIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4168,7 +4168,7 @@
     "feedId": "97903ff43fd357bc690d3a4c82d035b6588ed3aabe4d843783af0423f03e0e3b",
     "symbol": "Equity.US.SOLS/USD",
     "description": "SOLSTICE ADVANCED MATLS INC COM SHS / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4182,7 +4182,7 @@
     "feedId": "8890509a8bea0d0ec4791ea315042061eac7fbde3a77a91a2b33564d799348f5",
     "symbol": "Equity.US.PTC/USD",
     "description": "PTC INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4196,7 +4196,7 @@
     "feedId": "ce705b51db5f2fe826dfc3db186c1371ffd61a2a06f0529d732de288db04c222",
     "symbol": "Equity.US.JLL/USD",
     "description": "JONES LANG LASALLE INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4210,7 +4210,7 @@
     "feedId": "945c4b4ca2c3526335c4b559f7948620d54c80323a56db7b70f5333671fd2416",
     "symbol": "Equity.US.BR/USD",
     "description": "BROADRIDGE FINANCIAL SOLUTIONS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4224,7 +4224,7 @@
     "feedId": "ed5a005efa0f84a8acfab450ce4429c3dd57f7cd3284d04eb0c65820e062e85f",
     "symbol": "Equity.US.COO/USD",
     "description": "THE COOPER COMPANIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4238,7 +4238,7 @@
     "feedId": "30f0fb9ca84c9dfdbfdbcb57d59e7d4ef6a5c1581acea44577f9a89af396e1b7",
     "symbol": "Equity.US.WRB/USD",
     "description": "W R BERKLEY CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4252,7 +4252,7 @@
     "feedId": "a08f897997f4223014aea76709b4236f2d89c132e6f45373ed65e029805cd9fc",
     "symbol": "Equity.US.LECO/USD",
     "description": "LINCOLN ELEC HLDGS INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4266,7 +4266,7 @@
     "feedId": "8b624894cc6534a0442a22cce2324c3950fc74c848e7f10faf028ae160a762d6",
     "symbol": "Equity.US.MAA/USD",
     "description": "MID-AMERICA APARTMENT COMMUNITIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4280,7 +4280,7 @@
     "feedId": "a55bd574f61202f12e938c36b65360d36f4e5c893b2176f5c5928c27664562e6",
     "symbol": "Equity.US.WSO/USD",
     "description": "WATSCO INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4294,7 +4294,7 @@
     "feedId": "0991357d942869150d5d10750b3e066855a56b1459b25dca044b59b9a3fbc779",
     "symbol": "Equity.US.ROL/USD",
     "description": "ROLLINS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4317,7 +4317,7 @@
     "feedId": "c858b58bd00ea15770243cf7410c5fbcd09b4ff12775d6279464a2508d660932",
     "symbol": "Equity.US.CSGP/USD",
     "description": "COSTAR GROUP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4331,7 +4331,7 @@
     "feedId": "9d92af43235347f173a2da159664df0f88a5959d53aa9f407ed7e91ce935d0c2",
     "symbol": "Equity.US.THC/USD",
     "description": "TENET HEALTHCARE CORP COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4354,7 +4354,7 @@
     "feedId": "cfe5d0f979c1f6f181068d452ca7efe37e1401cd7a3c219e3f7eab7c8ed64134",
     "symbol": "Equity.US.SUI/USD",
     "description": "SUN CMNTYS INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4368,7 +4368,7 @@
     "feedId": "52d68368dbed5b504ced34d3db721e113f01b17b3e713749ee866ddb81df31ed",
     "symbol": "Equity.US.FNF/USD",
     "description": "FIDELITY NATL FINL INC COM SHS / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4382,7 +4382,7 @@
     "feedId": "eeaf2af62040777467525ee16af7447148e7c1f00654bb48f570be0a4a3afbaa",
     "symbol": "Equity.US.OHI/USD",
     "description": "OMEGA HEALTHCARE INVS INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4405,7 +4405,7 @@
     "feedId": "6ae7403d57a08b736dfa40ee8294e6d5108f69280cbd9fe452ed445eb45e08c0",
     "symbol": "Equity.US.REG/USD",
     "description": "REGENCY CENTERS CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4419,7 +4419,7 @@
     "feedId": "d7e307b27dd075c7296b0e75e14a481b3adb588be47ca032403e1d721e3e352c",
     "symbol": "Equity.US.GL/USD",
     "description": "GLOBE LIFE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4433,7 +4433,7 @@
     "feedId": "5603d723db34e83d86827f522750bffca5b35f137f02d5afda6329b9a37639fd",
     "symbol": "Equity.US.NBIX/USD",
     "description": "NEUROCRINE BIOSCIENCES INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4447,7 +4447,7 @@
     "feedId": "9a9a4bdba3051e7906d69b9a70c21550ebba9eb106d1f5821588595ca97dddc2",
     "symbol": "Equity.US.UNM/USD",
     "description": "UNUM GROUP COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4461,7 +4461,7 @@
     "feedId": "0960fc876589d92329305a38fd7165e7fe6f3b7ee88a5b4362135efa1ec7f5e1",
     "symbol": "Equity.US.DKS/USD",
     "description": "DICKS SPORTING GOODS INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4475,7 +4475,7 @@
     "feedId": "df36d39cf7b927c357284441fde4115922d0d6180d4813e525047ea3a3c57f4b",
     "symbol": "Equity.US.LDOS/USD",
     "description": "LEIDOS HOLDINGS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4498,7 +4498,7 @@
     "feedId": "d31cf7d2e7a6a971b74c72815830c642d10a3c4cb170163b30833db9fb1d3d60",
     "symbol": "Equity.US.DECK/USD",
     "description": "DECKERS OUTDOOR CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4512,7 +4512,7 @@
     "feedId": "04ac3a2e7287b5fe9733a415bc7c81d4d4ffdfebc3b7d726b9552623444f8036",
     "symbol": "Equity.US.J/USD",
     "description": "JACOBS SOLUTIONS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4526,7 +4526,7 @@
     "feedId": "8906541c889377cf6fcdd063a51508fb97fdf46eafeaca23ac85feec79b65462",
     "symbol": "Equity.US.EVR/USD",
     "description": "EVERCORE INC CLASS A / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4540,7 +4540,7 @@
     "feedId": "92cffb3f8b650ba9eb2c6e92d510bacf626f7161c08cadf4c7e472fe589c5e0f",
     "symbol": "Equity.US.PFGC/USD",
     "description": "PERFORMANCE FOOD GROUP CO COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4554,7 +4554,7 @@
     "feedId": "9fddfd8ebfa4b7e4e65d8fd4c3be30af8d5badad1d9f87b7ef1cee39f0f218f9",
     "symbol": "Equity.US.RPM/USD",
     "description": "RPM INTL INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4568,7 +4568,7 @@
     "feedId": "20e3150670edc7674cf130f844934de184fb497c271499d6c4b9ffad3c41ff0f",
     "symbol": "Equity.US.BWA/USD",
     "description": "BORGWARNER INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4582,7 +4582,7 @@
     "feedId": "e3f07d1ebe4bed7b2e6c12cff292d2850618d58c007700be5ca5d3d18415deae",
     "symbol": "Equity.US.LAMR/USD",
     "description": "LAMAR ADVERTISING CO CL A / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4596,7 +4596,7 @@
     "feedId": "b7113dfc953e2884fed9d8eef5154d696b8296bbf7267caf5ad218e49f97ea4e",
     "symbol": "Equity.US.ROKU/USD",
     "description": "ROKU INC",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4610,7 +4610,7 @@
     "feedId": "473f7d361e5f15bcfefde96849f7e52eebeb12d4f86b79d1db1fd5cda8ee72ff",
     "symbol": "Equity.US.PNFP/USD",
     "description": "PINNACLE FINL PARTNERS INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4624,7 +4624,7 @@
     "feedId": "5bf0c7847f64bed3e7ae092a8d3d0caeb6c14e4c1932dc51c3de0357005b24a6",
     "symbol": "Equity.US.RRX/USD",
     "description": "REGAL REXNORD CORPORATION COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4638,7 +4638,7 @@
     "feedId": "1112194b9abe505c202d243be6f5de5a9c80e40a09082e07f06b6805d04ae54d",
     "symbol": "Equity.US.GEN/USD",
     "description": "GEN DIGITAL INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4652,7 +4652,7 @@
     "feedId": "906e8ef631023ae858c46e558604401c827c69f503795b4603d29f69e57afbef",
     "symbol": "Equity.US.BALL/USD",
     "description": "BALL CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4666,7 +4666,7 @@
     "feedId": "6d64b1981512c242162d6ba54f6bda35c59f726f2e075a42994fc9a33c6c2d55",
     "symbol": "Equity.US.XYZ/USD",
     "description": "BLOCK INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4680,7 +4680,7 @@
     "feedId": "303e7652703ce22a29ad53ea4168094892c8c64b1dc4ce1d6854cbccfaeb9cc1",
     "symbol": "Equity.US.AA/USD",
     "description": "ALCOA CORP COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4694,7 +4694,7 @@
     "feedId": "f45f254631ba729fb9eee4cd73dd9814f080b7602a4c2ae992196588201a05ef",
     "symbol": "Equity.US.CLH/USD",
     "description": "CLEAN HARBORS INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4717,7 +4717,7 @@
     "feedId": "c153deece90e57f0c4b2bd1b693deed41e32a8117fd6eb8269a49e71d5080292",
     "symbol": "Equity.US.CBRE/USD",
     "description": "CBRE GROUP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4731,7 +4731,7 @@
     "feedId": "1264a9412304ec8774527efdf978521c3923702e45e66850ee89ff643d5d0b04",
     "symbol": "Equity.US.SSNC/USD",
     "description": "SS&C TECH HLDGS COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4745,7 +4745,7 @@
     "feedId": "c0ece6b9254797f4384bda1ba3f2c33259f552c7849a86b3029e811be5ea9227",
     "symbol": "Equity.US.RDDT/USD",
     "description": "REDDIT INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4759,7 +4759,7 @@
     "feedId": "c0713033a43355d99ca9bb3d77aaba2341efaded3a9518f201331a3f0c1c374c",
     "symbol": "Equity.US.DKNG/USD",
     "description": "DRAFTKINGS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4773,7 +4773,7 @@
     "feedId": "045d3f99bd576f475f195276d699ad1dbeedfcab92f29f1b8159f02bd9ee07d7",
     "symbol": "Equity.US.GPC/USD",
     "description": "GENUINE PARTS COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4787,7 +4787,7 @@
     "feedId": "80f271ae66ee740f4a8f2c2d33575592a6daf7f881133e4d8c0a4df0fc67315a",
     "symbol": "Equity.US.RL/USD",
     "description": "RALPH LAUREN CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4801,7 +4801,7 @@
     "feedId": "a00be224b07426d688475926b6a7a8b007f1420734629b596ae6132c75bc5976",
     "symbol": "Equity.US.SCCO/USD",
     "description": "SOUTHERN COPPER / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4815,7 +4815,7 @@
     "feedId": "2a894729720ceaef4fe038ee2a83491ae1247916dadc71f0659aabe61f7cd830",
     "symbol": "Equity.US.CSL/USD",
     "description": "CARLISLE COS INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4829,7 +4829,7 @@
     "feedId": "f709b8c2869054ca5c3cef0a3a1a97ff4960aff3f3b4eb611022079b1ff73e50",
     "symbol": "Equity.US.KMI/USD",
     "description": "KINDER MORGAN INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4843,7 +4843,7 @@
     "feedId": "1d4ad1c94a6828b41d3165abd4ee59491a9cc9194e2b8a672fc0aa2ad228ab47",
     "symbol": "Equity.US.NDAQ/USD",
     "description": "NASDAQ INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4857,7 +4857,7 @@
     "feedId": "8b6563adc2cb589407ea03c21c347bc564f899e37fa5ca8fad73b16fef609181",
     "symbol": "Equity.US.TOL/USD",
     "description": "TOLL BROTHERS INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4871,7 +4871,7 @@
     "feedId": "8cbd009149f28a8f19d01de7f31d85d48c7f2d35a9ae40c03930712d84fbd92a",
     "symbol": "Equity.US.CVNA/USD",
     "description": "CARVANA CO CL A / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4894,7 +4894,7 @@
     "feedId": "1de9dba93a2de170417a6e113204ec0a7fcb594643a14e590a3d6ba1adef0017",
     "symbol": "Equity.US.BBY/USD",
     "description": "BEST BUY CO INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4908,7 +4908,7 @@
     "feedId": "aa0eed91fe7b824ad9931f8601647bec51870c76f7a5d6ead18c3df9ecb3c553",
     "symbol": "Equity.US.LVS/USD",
     "description": "LAS VEGAS SANDS CORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4922,7 +4922,7 @@
     "feedId": "2bb7815db4d6081ddfda9befcacac28c63a3f4349fdd5b35accf47b52f35a746",
     "symbol": "Equity.US.TEAM/USD",
     "description": "ATLASSIAN CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4936,7 +4936,7 @@
     "feedId": "262c60f4eaf8d63eb8e3384d65be38820607e78f4cb6c50275ec3701b7413ccf",
     "symbol": "Equity.US.P/USD",
     "description": "EVERPURE, INC.",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4950,7 +4950,7 @@
     "feedId": "fb22e2de71b19330ea93a9e03b38ad3c321ab1951b87c4e55e8dbc795f57c3c5",
     "symbol": "Equity.US.WPC/USD",
     "description": "WP CAREY INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4964,7 +4964,7 @@
     "feedId": "aa34b179fb265cb7fcf068188f3f165e153dc34c07c7ed09d7793c756f5cab86",
     "symbol": "Equity.US.OKTA/USD",
     "description": "OKTA INC CL A / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4978,7 +4978,7 @@
     "feedId": "27514c8e57a0fad5e095546852c0903319b66ab07f7526b5ac1540886d6d944e",
     "symbol": "Equity.US.GNRC/USD",
     "description": "GENERAC HOLDINGS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -4992,7 +4992,7 @@
     "feedId": "40dc86c2c74546803ea869c71c0aebd332d83ca417e7c60f41b71919f8d8421e",
     "symbol": "Equity.US.MAS/USD",
     "description": "MASCO CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5015,7 +5015,7 @@
     "feedId": "e1548338663e981fde5c43aa16f21bbde73164994b790aed663fc4190fc6e9db",
     "symbol": "Equity.US.MLI/USD",
     "description": "MUELLER INDS INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5029,7 +5029,7 @@
     "feedId": "609bc314425a9446649f31e9d36ee6af05e5d445a020cc3674046fd28717bee3",
     "symbol": "Equity.US.ITT/USD",
     "description": "ITT INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5043,7 +5043,7 @@
     "feedId": "0e83585b37891c7ed22e02b3319c0dc85e1315eccc85deba649c86525c880b36",
     "symbol": "Equity.US.TSN/USD",
     "description": "TYSON FOODS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5057,7 +5057,7 @@
     "feedId": "764ee3e7d82087a6b8b32d1f19197af397884b7ec61abd6da14442a867096209",
     "symbol": "Equity.US.NLY/USD",
     "description": "ANNALY CAPITAL MANAGEMENT IN COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5071,7 +5071,7 @@
     "feedId": "c4db80e9a68aca4575714c9f5387368239d63965850a359b68b676355a799d7d",
     "symbol": "Equity.US.ONTO/USD",
     "description": "ONTO INNOVATION INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5085,7 +5085,7 @@
     "feedId": "ce8211e981a578b4ba9f2f7eb01c40643dc1d0860f57178d76c9bec95c88462f",
     "symbol": "Equity.US.EL/USD",
     "description": "THE ESTEE LAUDER COMPANIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5099,7 +5099,7 @@
     "feedId": "6727509d8f206c8615b61a01039caa23b45271196e603daebb0366d5e864666f",
     "symbol": "Equity.US.NDSN/USD",
     "description": "NORDSON CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5113,7 +5113,7 @@
     "feedId": "edc6fab3e6886d8b0fb6d74d149608988f684463d419773b7c71986a768fe799",
     "symbol": "Equity.US.ARES/USD",
     "description": "ARES MANAGEMENT CORPORATION CL A COM STK / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5136,7 +5136,7 @@
     "feedId": "5557d206aa0dd037fc082f03bbd78653f01465d280ea930bc93251f0eb60c707",
     "symbol": "Equity.US.CPNG/USD",
     "description": "COUPANG INC - CLASS A / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5150,7 +5150,7 @@
     "feedId": "cb179114c1a25a33def036ff8a3bf7260cd8035b7e3225e84754953f91e7e2f5",
     "symbol": "Equity.US.GPN/USD",
     "description": "GLOBAL PAYMENTS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5169,7 +5169,7 @@
     "feedId": "e2bad4d409637556216267dbb29fcb27d23e263ae12ab5acbb68b309ba17783d",
     "symbol": "Equity.US.CF/USD",
     "description": "CF INDUSTRIES HOLDINGS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5183,7 +5183,7 @@
     "feedId": "af9f76555c0147ec660100ff1639eb128e48c4f16b0aec229b736c04e082de23",
     "symbol": "Equity.US.DASH/USD",
     "description": "DOORDASH INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5197,7 +5197,7 @@
     "feedId": "7bc24437f08b048cd40716de5193f1aaaf4679040122d0b185841dc67f46781f",
     "symbol": "Equity.US.IBKR/USD",
     "description": "INTERACTIVE BROKERS GROUP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5211,7 +5211,7 @@
     "feedId": "91fc07facc1b1ec2e8336dfa66e2b5f0892af06f491c606f67690bf4c55aaee6",
     "symbol": "Equity.US.MDB/USD",
     "description": "MONGODB INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5225,7 +5225,7 @@
     "feedId": "bcbe7f4f918381ad7891595dabea1c1a0b662e48cc533d48f308aa4883a0802d",
     "symbol": "Equity.US.STZ/USD",
     "description": "CONSTELLATION BRANDS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5239,7 +5239,7 @@
     "feedId": "7815579f89646eef8d679057e84ffa69158e3f5f1bfa5b5cbd9a65e38a4c2a3a",
     "symbol": "Equity.US.INCY/USD",
     "description": "INCYTE CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5253,7 +5253,7 @@
     "feedId": "8cac856141272010adc7a18017523804afef935e0fb8b80f58cb120133c6ed34",
     "symbol": "Equity.US.LEN/USD",
     "description": "LENNAR CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5267,7 +5267,7 @@
     "feedId": "440045c78d204a0ec4aba5fdeebcc10a7eb9cd3a3df4a89e3aa917653db8ef04",
     "symbol": "Equity.US.CTSH/USD",
     "description": "COGNIZANT TECHNOLOGY SOLUTIONS CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5290,7 +5290,7 @@
     "feedId": "c79170bfddf87b4c4ef6f1cefbe92b23eaac21ce29cbffc2bb24cab51dcf10d6",
     "symbol": "Equity.US.ZTS/USD",
     "description": "ZOETIS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5304,7 +5304,7 @@
     "feedId": "ccab508da0999d36e1ac429391d67b3ac5abf1900978ea1a56dab6b1b932168e",
     "symbol": "Equity.US.ABNB/USD",
     "description": "AIRBNB INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5318,7 +5318,7 @@
     "feedId": "97ef77ead4c77fb95010b1361387272a6813de89cffe615aea7274f10f1bfcc5",
     "symbol": "Equity.US.FCNCA/USD",
     "description": "FIRST CITIZENS BANCSHARES INC DELAWARE CLASS A",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5332,7 +5332,7 @@
     "feedId": "c446b836e3e1bf1610f29c51f9102e1d5ea2db1da64c39fcdc797d99df097bcc",
     "symbol": "Equity.US.UPS/USD",
     "description": "UNITED PARCEL SERVICE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5346,7 +5346,7 @@
     "feedId": "17739c3c2b2888751a75bada52253281c29b5ec25b39a8aecdbe63e11283e219",
     "symbol": "Equity.US.TSCO/USD",
     "description": "TRACTOR SUPPLY COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5360,7 +5360,7 @@
     "feedId": "8773fef6b95d156416c3025d3a7b6f90b4a88b206038dde8000b1acddb714906",
     "symbol": "Equity.US.CME/USD",
     "description": "CME GROUP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5374,7 +5374,7 @@
     "feedId": "7eb28b4c9d6bb7c73016a43fe792225da33080555e665ce32faee80dc9a197a4",
     "symbol": "Equity.US.VEEV/USD",
     "description": "VEEVA SYS INC CL A COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5388,7 +5388,7 @@
     "feedId": "67af944e59c35746d41b15c061fa2552ea958accfc6169a69f1e05033c507fd2",
     "symbol": "Equity.US.MDLZ/USD",
     "description": "MONDELEZ INTERNATIONAL INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5402,7 +5402,7 @@
     "feedId": "5c49964b5e5420d84e445a2f5e9e3965cf3a82a275d83f8efc30cdeeaf2d062f",
     "symbol": "Equity.US.DDOG/USD",
     "description": "DATADOG INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5416,7 +5416,7 @@
     "feedId": "15d10cdf550966316121a3e07b86eec98be08afa1f3abc634818156d32094b31",
     "symbol": "Equity.US.SBAC/USD",
     "description": "SBA COMMUNICATIONS CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5430,7 +5430,7 @@
     "feedId": "67649450b4ca4bfff97cbaf96d2fd9e40f6db148cb65999140154415e4378e14",
     "symbol": "Equity.US.NKE/USD",
     "description": "NIKE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5444,7 +5444,7 @@
     "feedId": "b530350ede7b5d1876f37fe416799e8f15beaca77c82295a3857f02c913df0f2",
     "symbol": "Equity.US.MAR/USD",
     "description": "MARRIOTT INTERNATIONAL INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5458,7 +5458,7 @@
     "feedId": "2fc0a41f1d62126539e3b1ca29029e66d991724b2189f63059a5f5682129ab28",
     "symbol": "Equity.US.TXT/USD",
     "description": "TEXTRON INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5472,7 +5472,7 @@
     "feedId": "a3ae4e6fb2cef300b62c34b4611048dfd64e148faa08e912b31e17f1da61d875",
     "symbol": "Equity.US.WDAY/USD",
     "description": "WORKDAY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5486,7 +5486,7 @@
     "feedId": "d0723436221cd8ca5f2f11c38920271d77950e7ed0cec1a764459b465cb88651",
     "symbol": "Equity.US.APH/USD",
     "description": "AMPHENOL CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5500,7 +5500,7 @@
     "feedId": "1a6e324589a0e355919fb1c0389edc3fdf4c46034626bd82aad4e47714cfa94f",
     "symbol": "Equity.US.ASML/USD",
     "description": "ASML HOLDING NV / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5514,7 +5514,7 @@
     "feedId": "29f6892fec85377d66086b3c323e298c2a0bf133551e9a0a91c150b95517aec5",
     "symbol": "Equity.US.CHD/USD",
     "description": "CHURCH & DWIGHT CO INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5528,7 +5528,7 @@
     "feedId": "4db91e379e36addcdb1cc75dcb03022bd95d5d95148c41d268348d12cbd27c18",
     "symbol": "Equity.US.ALB/USD",
     "description": "ALBEMARLE CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5542,7 +5542,7 @@
     "feedId": "50e1734e9f300ebe0af038055c76c1495a3b7a6389edce24eedcb1df9061120d",
     "symbol": "Equity.US.FIS/USD",
     "description": "FIDELITY NATIONAL INFORMATION SERVICES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5556,7 +5556,7 @@
     "feedId": "19182efb2c0ed89266ee1db3a1e8d3e46c9af1542232ed168e88bcb38db3b64f",
     "symbol": "Equity.US.SYF/USD",
     "description": "SYNCHRONY FINANCIAL / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5570,7 +5570,7 @@
     "feedId": "f2be31eeb67f9e2bb7228aaab13fd3a7b836cfc3e6832b876d488363c21dd24a",
     "symbol": "Equity.US.PFG/USD",
     "description": "PRINCIPAL FINANCIAL GROUP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5584,7 +5584,7 @@
     "feedId": "2f7524ff6f342a9ee55328570d30a64eadd3ef6b8673fcb9015ed11845130e43",
     "symbol": "Equity.US.KEY/USD",
     "description": "KEYCORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5598,7 +5598,7 @@
     "feedId": "8872d930ce5c58a3a4dab23a34e4bcdb6b0793573723c9a1945bcdd6e097b83c",
     "symbol": "Equity.US.FTV/USD",
     "description": "FORTIVE CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5612,7 +5612,7 @@
     "feedId": "4ba8ac75eba39c9cc1851bc880d4274262e621df32284ab23064865b7dc5ab44",
     "symbol": "Equity.US.FISV/USD",
     "description": "FISERV INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5626,7 +5626,7 @@
     "feedId": "eccf190dca034f378b3b3051e70da93e882c08c665befbf01bacd866c1976fef",
     "symbol": "Equity.US.DGX/USD",
     "description": "QUEST DIAGNOSTICS INCORPORATED / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5640,7 +5640,7 @@
     "feedId": "f2f92d342955b934fa72137c7ed461dfd3e3112a7b962070440190b8184a7ab5",
     "symbol": "Equity.US.DRI/USD",
     "description": "DARDEN RESTAURANTS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5654,7 +5654,7 @@
     "feedId": "c58e1fe6b3a7df2a45f72bb291914f509d949951a76be1920b66fff1d1681f46",
     "symbol": "Equity.US.TROW/USD",
     "description": "T ROWE PRICE GROUP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5668,7 +5668,7 @@
     "feedId": "82c4e3354c0678b1ba00268963a99b30a403719f67ea63458aa6a97945da5374",
     "symbol": "Equity.US.WWD/USD",
     "description": "WOODWARD INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5682,7 +5682,7 @@
     "feedId": "5cd87e4354b4f48380de034a5dd934100368c9ffa7d7db096c113edba2ecbd94",
     "symbol": "Equity.US.UTHR/USD",
     "description": "UNITED THERAPEUTICS CORP DEL COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5696,7 +5696,7 @@
     "feedId": "14f4bd2b349f33dcc150c1874b863be7b1b39b190e508d9fc54a37397b29a1c4",
     "symbol": "Equity.US.RF/USD",
     "description": "REGIONS FINANCIAL CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5710,7 +5710,7 @@
     "feedId": "113967e03bb7a347e3669bcb49cf0c6cd27ddc38439c9f009dec0bf9f0edb137",
     "symbol": "Equity.US.OMC/USD",
     "description": "OMNICOM GROUP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5724,7 +5724,7 @@
     "feedId": "8d6c09c254828092b322966daafb6cadb58b697f696d37bdb53379e060b8974e",
     "symbol": "Equity.US.WST/USD",
     "description": "WEST PHARMACEUTICAL SERVICES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5738,7 +5738,7 @@
     "feedId": "df48fe2e8442694202366ab9de55554ecc68c9e0cfa385fc692c6905a3887d34",
     "symbol": "Equity.US.DG/USD",
     "description": "DOLLAR GENERAL CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5752,7 +5752,7 @@
     "feedId": "ab550fd8d8635e32090a5ed31d7e4fd182df26e479cfa679ac31e8b9578cad3b",
     "symbol": "Equity.US.WCC/USD",
     "description": "WESCO INTERNATIONAL INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5766,7 +5766,7 @@
     "feedId": "8fa90a86d593ae81e23fe16272b1d572d971d4f7a749e01841b91fec6d24e10e",
     "symbol": "Equity.US.EVRG/USD",
     "description": "EVERGY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5780,7 +5780,7 @@
     "feedId": "90874a0d960f6645924c10b58d7a857a608842f726861683363ef6195fcdf041",
     "symbol": "Equity.US.EWBC/USD",
     "description": "EAST WEST BANCORP INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5794,7 +5794,7 @@
     "feedId": "84ce9993f3e19e52be7d567c8bf7714407cab2afa0d3a752ac09bc49b0153663",
     "symbol": "Equity.US.PKG/USD",
     "description": "PACKAGING CORPORATION OF AMERICA / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5808,7 +5808,7 @@
     "feedId": "4133729094ce33b46a9f0ac2341333489282512991d786ce1e10ad270f3d9e31",
     "symbol": "Equity.US.EXE/USD",
     "description": "EXPAND ENERGY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5822,7 +5822,7 @@
     "feedId": "d7b753e70cea474508a2f0cd0ae5b7ac67662eb648a88afe68f04759464ccc8d",
     "symbol": "Equity.US.IP/USD",
     "description": "INTERNATIONAL PAPER COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5836,7 +5836,7 @@
     "feedId": "222e85396bf2545e6591fdfbbb326e5d334781ede02749dcf1b81472e4128807",
     "symbol": "Equity.US.ZBH/USD",
     "description": "ZIMMER BIOMET HOLDINGS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5850,7 +5850,7 @@
     "feedId": "ccf32dd36514b9028f6d5af01976fcf20e7a5d6a0adb040af5b6c84f1c76c600",
     "symbol": "Equity.US.BRO/USD",
     "description": "BROWN & BROWN INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5864,7 +5864,7 @@
     "feedId": "dbceeed2f816d22ae5371206fa28c8da7615537eced46373185f4bde8af54d27",
     "symbol": "Equity.US.L/USD",
     "description": "LOEWS CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5878,7 +5878,7 @@
     "feedId": "cac64835d33852ea56d0da42bc2057a1e5baa66360ba368630e0cabc1b9fa2bc",
     "symbol": "Equity.US.ESS/USD",
     "description": "ESSEX PROPERTY TRUST INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5892,7 +5892,7 @@
     "feedId": "27af75b9414384273378f90ccc53bec01dc8adf3662c4f7e6ec0645622af55bb",
     "symbol": "Equity.US.JBHT/USD",
     "description": "JB HUNT TRANSPORT SERVICES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5906,7 +5906,7 @@
     "feedId": "c551fb0a5cd283c228c101cbff99e07405361b814990f88e81befdb766b564c5",
     "symbol": "Equity.US.ILMN/USD",
     "description": "ILLUMINA INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5920,7 +5920,7 @@
     "feedId": "a90ed995725cb97c192837bc7d890d54908d65f38c087a03b1126ac482f85393",
     "symbol": "Equity.US.BURL/USD",
     "description": "BURLINGTON STORES INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5934,7 +5934,7 @@
     "feedId": "d1d6eb75702d0e80582c2d5a2df1849b9c83d7afbe99a2d474317f1f356e5659",
     "symbol": "Equity.US.HPQ/USD",
     "description": "HP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5948,7 +5948,7 @@
     "feedId": "3238d1e2df1760cacca8510e997cf6d45076a1b066e4e201d18881bf27aaf4ba",
     "symbol": "Equity.US.INVH/USD",
     "description": "INVITATION HOMES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5962,7 +5962,7 @@
     "feedId": "9e7c3edfc8ebb80bf14d7d9d2ffa589387859b20c401476bbcf69566512c097b",
     "symbol": "Equity.US.IEX/USD",
     "description": "IDEX CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5976,7 +5976,7 @@
     "feedId": "4083b0b1471123cf4d3e8edee7890940cafad866f06cadae638c23e555a1f4fc",
     "symbol": "Equity.US.MRNA/USD",
     "description": "MODERNA INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -5990,7 +5990,7 @@
     "feedId": "4e9e00488e093d440381d5cc21ac74da5d78f13d83665b7d140cbc84760cc95c",
     "symbol": "Equity.US.KHC/USD",
     "description": "THE KRAFT HEINZ COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6004,7 +6004,7 @@
     "feedId": "730aa1975c578f652b6f48667a8bc4ab1e499273cb4742198075b5494b47a29e",
     "symbol": "Equity.US.FFIV/USD",
     "description": "F5 INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6018,7 +6018,7 @@
     "feedId": "134837b42e99cde7e5b85cc795dd06a658326098c35bd298274763619b577121",
     "symbol": "Equity.US.LSCC/USD",
     "description": "LATTICE SEMICONDUCTOR CORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6032,7 +6032,7 @@
     "feedId": "f3b50961ff387a3d68217e2715637d0add6013e7ecb83c36ae8062f97c46929e",
     "symbol": "Equity.US.DOW/USD",
     "description": "DOW INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6046,7 +6046,7 @@
     "feedId": "6aae0b67e75b4ebd942e31b61020aa08489b33787256e66e63c7f5085eba47e6",
     "symbol": "Equity.US.EXPD/USD",
     "description": "EXPEDITORS INTERNATIONAL OF WASHINGTON INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6060,7 +6060,7 @@
     "feedId": "f8554a560dd9f59f36aff9ea5536d1c281141907ebc010b2fa94f411f912e30b",
     "symbol": "Equity.US.LUV/USD",
     "description": "SOUTHWEST AIRLINES CO / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6074,7 +6074,7 @@
     "feedId": "c9a4605e75ebd30b016e1ca23cc95b221c6b81be301ab100d6c4c623232b36e8",
     "symbol": "Equity.US.ZM/USD",
     "description": "ZOOM VIDEO COMMUNICATIONS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6088,7 +6088,7 @@
     "feedId": "e0b9598e00ab485a49941feceb653d02e7b50f8e0074d5fab1d561add4f8c125",
     "symbol": "Equity.US.ES/USD",
     "description": "EVERSOURCE ENERGY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6102,7 +6102,7 @@
     "feedId": "f2df0a854dc8f45e9c6f93bb7e4e2720c920b2a5208afba18075a87fb5a6f6ed",
     "symbol": "Equity.US.CHRW/USD",
     "description": "CH ROBINSON WORLDWIDE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6116,7 +6116,7 @@
     "feedId": "3d35ab79cabfe67134efe88b5526ff9340121f4641d3f33728fb6801afdb07f2",
     "symbol": "Equity.US.MTD/USD",
     "description": "METTLER-TOLEDO INTERNATIONAL INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6130,7 +6130,7 @@
     "feedId": "c7ae3c077945639c2e0ed7199d1e6655f8c76027e07bccea53d9b6f79d8075fd",
     "symbol": "Equity.US.VRSN/USD",
     "description": "VERISIGN INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6144,7 +6144,7 @@
     "feedId": "15681a80c2f4913251886bc5b5dd9f92aaf47b072e3eef68b5c618036067e06c",
     "symbol": "Equity.US.VRSK/USD",
     "description": "VERISK ANALYTICS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6158,7 +6158,7 @@
     "feedId": "31a7eea1e72a323373f41664f31078f51647cb481ef470ae05718cbd593579db",
     "symbol": "Equity.US.SNX/USD",
     "description": "TD SYNNEX CORP COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6172,7 +6172,7 @@
     "feedId": "e526b83aaac81d79736671ff6b948326194290a0c2f34a711df3e34b8afa6000",
     "symbol": "Equity.US.NI/USD",
     "description": "NISOURCE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6186,7 +6186,7 @@
     "feedId": "48a9a69fa2947734f12d1840c51d36fc30be106fc40c624054faec9783463831",
     "symbol": "Equity.US.INSM/USD",
     "description": "INSMED INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6200,7 +6200,7 @@
     "feedId": "43c438c61f1500581a1f05b5932548c9d8b7881e69d49b4b931e89d960af0601",
     "symbol": "Equity.US.MKSI/USD",
     "description": "MKS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6214,7 +6214,7 @@
     "feedId": "cd4cc4183c507a53e71bee4e905d97e5f97466246af412ffffe6eaef7a5686b2",
     "symbol": "Equity.US.BWXT/USD",
     "description": "BWX TECHNOLOGIES INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6228,7 +6228,7 @@
     "feedId": "2d485efba1b4fbf1643105dcaf55bcd645e2f89b5bd983705c6519ce71a41cc7",
     "symbol": "Equity.US.USFD/USD",
     "description": "US FOODS HLDG CORP COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6242,7 +6242,7 @@
     "feedId": "36f47f658e232e48e4d922d9cdb9d553f71795d05e2655312e11ab853189484c",
     "symbol": "Equity.US.AWK/USD",
     "description": "AMERICAN WATER WORKS COMPANY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6256,7 +6256,7 @@
     "feedId": "82d6544c7729f245a15798f5abdc407cebf1fd93bfcc811a76b26873a47fe004",
     "symbol": "Equity.US.MTZ/USD",
     "description": "MASTEC INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6270,7 +6270,7 @@
     "feedId": "42431247c835486c45f19e180981765e3e6cca8ff603a34fe7de85368c861639",
     "symbol": "Equity.US.VTRS/USD",
     "description": "VIATRIS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6284,7 +6284,7 @@
     "feedId": "221834e0bb6002d75833e2aa4dcc4fdd26b8300a40e4546978946c3dff272c29",
     "symbol": "Equity.US.CPAY/USD",
     "description": "CORPAY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6298,7 +6298,7 @@
     "feedId": "25be29dc1eae3448537076cf0d14ef2c43dbfd5de043256ead46fa01a19b425b",
     "symbol": "Equity.US.CMS/USD",
     "description": "CMS ENERGY CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6312,7 +6312,7 @@
     "feedId": "63e210492e75f690f90f6032f6ee7bd0fa5d763e64033d76d324f5760779e48e",
     "symbol": "Equity.US.MKL/USD",
     "description": "MARKEL GROUP INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6326,7 +6326,7 @@
     "feedId": "ae35d2d68b05a98d8041dae04fed0a3a6e5a3a1007a5d5d10d62169d208271b8",
     "symbol": "Equity.US.HST/USD",
     "description": "HOST HOTELS & RESORTS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6340,7 +6340,7 @@
     "feedId": "39a0b6de5c8fc5cd02bdf12ab1d8396393351672f209d32560a820a72cc17b8b",
     "symbol": "Equity.US.ATI/USD",
     "description": "ATI INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6354,7 +6354,7 @@
     "feedId": "2bdf663a6dacfbb4f986adc98d833cbdd206ab64d6f5fb0cd5470e91bb3985a0",
     "symbol": "Equity.US.CINF/USD",
     "description": "CINCINNATI FINANCIAL CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6368,7 +6368,7 @@
     "feedId": "efd52d85fdad1aec47798b6955efd22fccd1e88ec942d3dfb3cbddb8ea2a577b",
     "symbol": "Equity.US.EFX/USD",
     "description": "EQUIFAX INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6382,7 +6382,7 @@
     "feedId": "85cd26ce8d989a2e1648eb0463f2482303fe0dcc737d620d19247ae75e6d1189",
     "symbol": "Equity.US.FWONK/USD",
     "description": "LIBERTY MEDIA CORP DEL COM LBTY ONE S C / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6396,7 +6396,7 @@
     "feedId": "0cfd0022c6dce91015449034e1189551e6037a51b60b820ddc9a255e9782c3c0",
     "symbol": "Equity.US.LNT/USD",
     "description": "ALLIANT ENERGY CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6410,7 +6410,7 @@
     "feedId": "08717fe56db65c40f6b829d7dfa57c025f6435ada20c298da0b94f668e940b63",
     "symbol": "Equity.US.RS/USD",
     "description": "RELIANCE, INC. COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6424,7 +6424,7 @@
     "feedId": "f3d7864c65d3a6c00bd148c1daf95361de93ee36619180b194f656b053d6e80e",
     "symbol": "Equity.US.KIM/USD",
     "description": "KIMCO REALTY CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6438,7 +6438,7 @@
     "feedId": "5fbd1cf24b414fee1a0f112d82315f10fd0de1eb6c916831f6f2cfdc7a32a0a6",
     "symbol": "Equity.US.WY/USD",
     "description": "WEYERHAEUSER COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6452,7 +6452,7 @@
     "feedId": "72fae0e0683c186f5ce9444afac9909cf5d60b499f4f9569dd75442f19c625c8",
     "symbol": "Equity.US.SOFI/USD",
     "description": "SOFI TECHNOLOGIES INC",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6466,7 +6466,7 @@
     "feedId": "5b839599042f75b23fab4ced6a448aa6d1c367879e25a77b87f4a9dfa98bf4bd",
     "symbol": "Equity.US.TPL/USD",
     "description": "TEXAS PACIFIC LAND CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6480,7 +6480,7 @@
     "feedId": "5d9f295f1afeaa993f9e07600158a1b8566c27e003a929d123f9b6c97164da0e",
     "symbol": "Equity.US.DLTR/USD",
     "description": "DOLLAR TREE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6494,7 +6494,7 @@
     "feedId": "acaab0049c5381f27cec309af76efc0d6f375922183d2df23a20768780ee652d",
     "symbol": "Equity.US.AKAM/USD",
     "description": "AKAMAI TECHNOLOGIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6508,7 +6508,7 @@
     "feedId": "202820725ea1f2cdda32c4506e910e013bd3ee8489abd9539a5b6653abf63fa6",
     "symbol": "Equity.US.XPO/USD",
     "description": "XPO INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6522,7 +6522,7 @@
     "feedId": "6cd054335935b02c350ef188dd365e73c744f662da5aa001269366e908f2c807",
     "symbol": "Equity.US.RGLD/USD",
     "description": "ROYAL GOLD INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6536,7 +6536,7 @@
     "feedId": "fb22c42b25ae97f3c8cbca53b892684cbd7f48d44da6f8f411e134e5791b30f9",
     "symbol": "Equity.US.XYL/USD",
     "description": "XYLEM INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6550,7 +6550,7 @@
     "feedId": "1e8a3f5c885a4749a611ea8081185b6c3b614556ec2f5469ff031701c12ff319",
     "symbol": "Equity.US.WSM/USD",
     "description": "WILLIAMS SONOMA INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6564,7 +6564,7 @@
     "feedId": "771e3685ccdb5ea732fc6e562b72d9f9217823d7ab4884acb2d085c4ee0bc8a0",
     "symbol": "Equity.US.GIS/USD",
     "description": "GENERAL MILLS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6578,7 +6578,7 @@
     "feedId": "6187f28a5c56dfd380dfa2b718b4062f8c3ae8a0e32f7c11078e76b31269f49c",
     "symbol": "Equity.US.ULTA/USD",
     "description": "ULTA BEAUTY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6592,7 +6592,7 @@
     "feedId": "970222a3ff77f133b83c49989d8d8fcbad034fcc601f457e4a45cee6bfe5be36",
     "symbol": "Equity.US.IFF/USD",
     "description": "INTERNATIONAL FLAVORS & FRAGRANCES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6606,7 +6606,7 @@
     "feedId": "6d1085fb5e5bd8f830a47d6d2cf38af3ed0415e208a5d8f717b01d1674b89bea",
     "symbol": "Equity.US.MTSI/USD",
     "description": "MACOM TECH SOLUTIONS HLDGS INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6620,7 +6620,7 @@
     "feedId": "e552acc27d7d790ea13d79a37a1da3e9bdf52630f3056a97a15660653f3f50f7",
     "symbol": "Equity.US.ENTG/USD",
     "description": "ENTEGRIS INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6634,7 +6634,7 @@
     "feedId": "9bffd1e8d7b5f6c4890216b89d30393cf7284c540a9e0843c92490b58167302a",
     "symbol": "Equity.US.CPRT/USD",
     "description": "COPART INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6648,7 +6648,7 @@
     "feedId": "1542f78dd90dfacbc39b00223999d5b6790a2f976d251d11c47b4c06e39eb06c",
     "symbol": "Equity.US.PPL/USD",
     "description": "PPL CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6662,7 +6662,7 @@
     "feedId": "0c1b5aa4ee8447c6251ddf07225edf15d4e6b9796a59afc349a3a9c4575e2c1f",
     "symbol": "Equity.US.FE/USD",
     "description": "FIRSTENERGY CORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6676,7 +6676,7 @@
     "feedId": "824852f734257f78f21791d6082fa7d3380da95a16d248d50a6e9706d0a0fbec",
     "symbol": "Equity.US.HSY/USD",
     "description": "THE HERSHEY COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6690,7 +6690,7 @@
     "feedId": "40ee2e8a06ac2de84d6cea61c4519a35755d59c255c545db964c5e2ed840a1e8",
     "symbol": "Equity.US.SNA/USD",
     "description": "SNAP-ON INCORPORATED / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6704,7 +6704,7 @@
     "feedId": "96bccfb1661326a6a9717d248fa743762d65da0798656b24108ea48d4982758f",
     "symbol": "Equity.US.RJF/USD",
     "description": "RAYMOND JAMES FINANCIAL INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6718,7 +6718,7 @@
     "feedId": "1e71ac82ed3b9f57f46d0d7808724e4fa16a264a0e53e5aca0429f87bba71321",
     "symbol": "Equity.US.LPLA/USD",
     "description": "LPL FINL HLDGS INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6732,7 +6732,7 @@
     "feedId": "e045f185730daa0a656655aed1317710b047bda0a7e74d74b24f112d37bcde53",
     "symbol": "Equity.US.ATO/USD",
     "description": "ATMOS ENERGY CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6746,7 +6746,7 @@
     "feedId": "84df202649f46e6362e38abcf5cd6947bc7e4379e8e281f1d02b382355c13aa3",
     "symbol": "Equity.US.FICO/USD",
     "description": "FAIR ISAAC CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6760,7 +6760,7 @@
     "feedId": "0a2d049aa48d4b77c4db199ae38a10a1e3d5130abd27b5cab7db548409da74d5",
     "symbol": "Equity.US.PPG/USD",
     "description": "PPG INDUSTRIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6774,7 +6774,7 @@
     "feedId": "787a166618ea8831a100371b51be91328b0171d0ac57265007b30f10e03de4e6",
     "symbol": "Equity.US.FSLR/USD",
     "description": "FIRST SOLAR INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6788,7 +6788,7 @@
     "feedId": "ea444ab0d128898102e59ad785374bb37b93fc1e2ae232591de288474df84d07",
     "symbol": "Equity.US.LII/USD",
     "description": "LENNOX INTERNATIONAL INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6802,7 +6802,7 @@
     "feedId": "cd9cbe5cbbc95d5147b052b6e5a5e95fd3545b420a569baceef6a8554773d195",
     "symbol": "Equity.US.CRS/USD",
     "description": "CARPENTER TECHNOLOGY CORP COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6816,7 +6816,7 @@
     "feedId": "0c2b5fbdb3879bbd05d13175e61429dc1fa139c4c544e0165acf60bb22b85607",
     "symbol": "Equity.US.FTAI/USD",
     "description": "FTAI AVIATION LTD SHS / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6830,7 +6830,7 @@
     "feedId": "cbb7674d9eebacf3a81a54109dca655d805f04d902bc61b2157e8a2d95b00492",
     "symbol": "Equity.US.NRG/USD",
     "description": "NRG ENERGY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6844,7 +6844,7 @@
     "feedId": "920b1e06e2f2920c682534620a82c7991accd0637b1fb58a5631357ce42a4e29",
     "symbol": "Equity.US.EIX/USD",
     "description": "EDISON INTERNATIONAL / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6858,7 +6858,7 @@
     "feedId": "492f2b794efb3721b4243406d73cf68f34097b103ba690d0dbcafddb5a10cb7e",
     "symbol": "Equity.US.HUBB/USD",
     "description": "HUBBELL INCORPORATED / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6872,7 +6872,7 @@
     "feedId": "f75c8eea6033c8100271292fa6f77d50347a8cd010959116fa0ac3ba7315e9b8",
     "symbol": "Equity.US.LYV/USD",
     "description": "LIVE NATION ENTERTAINMENT INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6886,7 +6886,7 @@
     "feedId": "9a2f179e17bde86a48eea62eda885040a315bdaee2ea6c9ac7520eb48f4f9e40",
     "symbol": "Equity.US.BSP/USD",
     "description": "BENDING SPOONS S.P.A. / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6900,7 +6900,7 @@
     "feedId": "40589e289317e4fbd997b1a267606e20a1cc7c3e4689f9e5a5992957917816c8",
     "symbol": "Equity.US.RKLB/USD",
     "description": "ROCKET LAB USA INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6914,7 +6914,7 @@
     "feedId": "13a19eb6a936a8c7020fe675687979b44e991efbfb4d3d2ca91425ce57b9e6f8",
     "symbol": "Equity.US.LULU/USD",
     "description": "LULULEMON ATHLETICA INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6928,7 +6928,7 @@
     "feedId": "c6101ee4f14af5581a3995438bf0e80a574dd28fd497685988b526ae9ba34749",
     "symbol": "Equity.US.WEN/USD",
     "description": "WENDY'S CO / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6942,7 +6942,7 @@
     "feedId": "58dfd9c50639f1a6c7ea8a1a94d07d69989b51a4265801420895c292fd68e7d4",
     "symbol": "Equity.US.MLM/USD",
     "description": "MARTIN MARIETTA MATERIALS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6956,7 +6956,7 @@
     "feedId": "bf3a21d6b8dbb4df9e75df58c124be8248239c005d117fdb9e0f0ff434d1dfa8",
     "symbol": "Equity.US.CNP/USD",
     "description": "CENTERPOINT ENERGY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6970,7 +6970,7 @@
     "feedId": "ad81a87631f8ab7f09897d7001e46e206afa727c419d93f31591a8edefdf37cb",
     "symbol": "Equity.US.EQT/USD",
     "description": "EQT CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6984,7 +6984,7 @@
     "feedId": "f10492d0a522ca19f17cf8d54267abb2cca8ddb80d4bd528750223e3156a8aef",
     "symbol": "Equity.US.NTRS/USD",
     "description": "NORTHERN TRUST CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -6998,7 +6998,7 @@
     "feedId": "7afba60a06a553edc3339b53c2e46c2700b076b3f9c9067b88b93f0a12213fbf",
     "symbol": "Equity.US.DXCM/USD",
     "description": "DEXCOM INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7012,7 +7012,7 @@
     "feedId": "a31b64345bf1601d1cf1cfdb7a1f628982fab0a4365947b3c4fa2230faea971d",
     "symbol": "Equity.US.KVUE/USD",
     "description": "KENVUE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7026,7 +7026,7 @@
     "feedId": "95924710b36b19bdf82353dc921cb512a89b8213eecddf362a5212677d72a54c",
     "symbol": "Equity.US.A/USD",
     "description": "AGILENT TECHNOLOGIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7040,7 +7040,7 @@
     "feedId": "cb9be05a0205676c4959845ada37452d3b9613d6602addd0ec223bdb33d81c8b",
     "symbol": "Equity.US.MSCI/USD",
     "description": "MSCI INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7054,7 +7054,7 @@
     "feedId": "840dae98f316481c4438892b8bc5b5df09ba1e8befe2d529000c70aa2c8c324c",
     "symbol": "Equity.US.CASY/USD",
     "description": "CASEYS GENERAL STORES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7068,7 +7068,7 @@
     "feedId": "f4697df8967eb74851423fcae625f9dead9ecc4ed29f923da35952c39c097691",
     "symbol": "Equity.US.RVMD/USD",
     "description": "REVOLUTION MEDICINES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7082,7 +7082,7 @@
     "feedId": "cfcacb3755c77aec69ff8f89f4dfe735ca478ad7290766bd4f7bc04f5af1ab68",
     "symbol": "Equity.US.WEC/USD",
     "description": "WEC ENERGY GROUP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7096,7 +7096,7 @@
     "feedId": "ce974508b0d8eafcb71d4acca8df29adccc8af76844d7fa7f2e10d459d65b8fc",
     "symbol": "Equity.US.TDY/USD",
     "description": "TELEDYNE TECHNOLOGIES INCORPORATED / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7110,7 +7110,7 @@
     "feedId": "eab2a462fdee81002bc99e22cbaceb1b0fcbeceed8fa28a6d2f567880eb24e4d",
     "symbol": "Equity.US.IQV/USD",
     "description": "IQVIA HOLDINGS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7124,7 +7124,7 @@
     "feedId": "b21a229944b7008c9e0efeb591030198acd5a676e7c84c3a13927af9764456b0",
     "symbol": "Equity.US.NTRA/USD",
     "description": "NATERA INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7138,7 +7138,7 @@
     "feedId": "3ba9d201026abdc250a275d59f722abeef1bdcdc7364fedbaecef61c7da788b9",
     "symbol": "Equity.US.AEE/USD",
     "description": "AMEREN CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7152,7 +7152,7 @@
     "feedId": "31df914d63247bdda62c7c423c497729ef50d89eeab208eb1db42503271713fa",
     "symbol": "Equity.US.PAYX/USD",
     "description": "PAYCHEX INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7166,7 +7166,7 @@
     "feedId": "952cd0607b5624c28971ade6d2e6a26bbbbfcc857ba1d41b85945a425524f4cc",
     "symbol": "Equity.US.VICI/USD",
     "description": "VICI PROPERTIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7180,7 +7180,7 @@
     "feedId": "026e4a35b33c438e4c75b2bf8f5f8298b26165eff133b1da2b4559985ecab11e",
     "symbol": "Equity.US.PCG/USD",
     "description": "PG&E CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7194,7 +7194,7 @@
     "feedId": "34df4b686b9b9b24d6c2d149e3b6d73df825ae85933c1c74965cc48bb10943f2",
     "symbol": "Equity.US.OTIS/USD",
     "description": "OTIS WORLDWIDE CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7208,7 +7208,7 @@
     "feedId": "b9a51a477586da4fca62f1c20002b1f72d715733aa242cda5e99ca37beffdf0e",
     "symbol": "Equity.US.DOV/USD",
     "description": "DOVER CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7222,7 +7222,7 @@
     "feedId": "c7c24c987c84f7c76bde1a1d50ff04624422d9ac68bd8f039a57a30e24dc524b",
     "symbol": "Equity.US.CFG/USD",
     "description": "CITIZENS FINANCIAL GROUP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7236,7 +7236,7 @@
     "feedId": "89306a8e2a15a2a7b80b6c6f9b0a8ca2d3f4e1481e7883dc87566c175af1e315",
     "symbol": "Equity.US.EME/USD",
     "description": "EMCOR GROUP INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7250,7 +7250,7 @@
     "feedId": "786aad0d9069c3ffd1b80d006d5f586ddec1c2537ff7e96d7fc028218e82bc0a",
     "symbol": "Equity.US.Q/USD",
     "description": "QNITY ELECTRONICS INC COMMON STOCK / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7264,7 +7264,7 @@
     "feedId": "3bc436e6c024059b3493e4332b32d0cbdd2b8ecf84544261838137eb1f299525",
     "symbol": "Equity.US.STLD/USD",
     "description": "STEEL DYNAMICS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7278,7 +7278,7 @@
     "feedId": "e9f11baaade6cf979251d4c9e6c30657ed29275952a04b125915e475c31a5e63",
     "symbol": "Equity.US.RMD/USD",
     "description": "RESMED INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7292,7 +7292,7 @@
     "feedId": "0662e765a145ce6d7bfa0251da10c9d2c7125916ecd1e2174f65ffe50c4fa83c",
     "symbol": "Equity.US.FERG/USD",
     "description": "FERGUSON ENTERPRISES INC",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7306,7 +7306,7 @@
     "feedId": "d3d57d3634cff1c062a1b87cc93a92b8dacc6537f9f7d155e81ed48bb9fd75f9",
     "symbol": "Equity.US.FANG/USD",
     "description": "DIAMONDBACK ENERGY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7320,7 +7320,7 @@
     "feedId": "894f78037ec2465fbbd50c75abb95a5059d5d9ca5f092e2e6736685885569322",
     "symbol": "Equity.US.KMB/USD",
     "description": "KIMBERLY-CLARK CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7334,7 +7334,7 @@
     "feedId": "2abd60bfdf45bf74d29e1d4bcc815f0f1a81093cd51f49040e2856b1115fcd08",
     "symbol": "Equity.US.IR/USD",
     "description": "INGERSOLL RAND INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7348,7 +7348,7 @@
     "feedId": "b8a84e7acb92be6f24b60cec80e87b84ec46780774e15d9791fc018b7ad49492",
     "symbol": "Equity.US.HIG/USD",
     "description": "THE HARTFORD FINANCIAL SERVICES GROUP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7362,7 +7362,7 @@
     "feedId": "54ba7b095dfa286f556cd41d4bfefe956ebd4df3d9eec8fe0188d0727f07e344",
     "symbol": "Equity.US.OXY/USD",
     "description": "OCCIDENTAL PETROLEUM CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7376,7 +7376,7 @@
     "feedId": "9beecfa17137405edde62ca98241e24c86d217282f8e193ee6c8fc40aae01092",
     "symbol": "Equity.US.EXC/USD",
     "description": "EXELON CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7390,7 +7390,7 @@
     "feedId": "782a6a261306f01ab2ad004062a2832107360eefdcf8c83223e0ff7ca7ebde8d",
     "symbol": "Equity.US.TTWO/USD",
     "description": "TAKE-TWO INTERACTIVE SOFTWARE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7404,7 +7404,7 @@
     "feedId": "ff6a38e7adcdaf6d9e02c4c597defcdd328c1e4fe98977c8cc6b27a2673e4f8b",
     "symbol": "Equity.US.KR/USD",
     "description": "THE KROGER CO / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7418,7 +7418,7 @@
     "feedId": "dcc697370beafb46fade6467328cd2f268b4b4e41c23b2189e649e21d120d76d",
     "symbol": "Equity.US.IRM/USD",
     "description": "IRON MOUNTAIN INCORPORATED / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7432,7 +7432,7 @@
     "feedId": "a751259432cd627edc50b32f22010b355486a5743fff310ad8d9946d45c48d4b",
     "symbol": "Equity.US.DTE/USD",
     "description": "DTE ENERGY COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7446,7 +7446,7 @@
     "feedId": "673e1dd093b996eeec37946467e9ad79dc4a613ba8c1c9c06ce2a0ae605051f3",
     "symbol": "Equity.US.GEHC/USD",
     "description": "GE HEALTHCARE TECHNOLOGIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7460,7 +7460,7 @@
     "feedId": "0b47051e9531b81dc79bfdaa7f2483d23a7eb2f99b6816c815284a6fdef83346",
     "symbol": "Equity.US.EXR/USD",
     "description": "EXTRA SPACE STORAGE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7474,7 +7474,7 @@
     "feedId": "46c5fc6eefc5becf2f8dc3656357c21ef585feaf74bc94f0fc58f6f33fae1205",
     "symbol": "Equity.US.CNC/USD",
     "description": "CENTENE CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7488,7 +7488,7 @@
     "feedId": "04fefda6091b212f5445fd4286eacfa417f58c10e42fded88fabb17beb208fea",
     "symbol": "Equity.US.ED/USD",
     "description": "CONSOLIDATED EDISON INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7502,7 +7502,7 @@
     "feedId": "1fba752348cffe265d87fd24eb641664234a089ff11947ac8d1bcfaa9430c453",
     "symbol": "Equity.US.BIIB/USD",
     "description": "BIOGEN INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7516,7 +7516,7 @@
     "feedId": "5d929fdc829ffa55be5b1fd8b4d140ab555b1c71ec098c3ed5bce70d5911d753",
     "symbol": "Equity.US.NTAP/USD",
     "description": "NETAPP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7530,7 +7530,7 @@
     "feedId": "7e388b88e025d2b0eb8bcb72118ac8679890aa93e19e8e55e6784483796e4e64",
     "symbol": "Equity.US.WAT/USD",
     "description": "WATERS CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7544,7 +7544,7 @@
     "feedId": "6987f2cab2c2be6cb897220d99dd5665835e6d204f022d4b6d0701d9351b3138",
     "symbol": "Equity.US.PRU/USD",
     "description": "PRUDENTIAL FINANCIAL INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7558,7 +7558,7 @@
     "feedId": "8ecca7012d5cd82620c1222acd6296cb4a34fea7dae4bf93bc51ddc471830a53",
     "symbol": "Equity.US.HAL/USD",
     "description": "HALLIBURTON COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7572,7 +7572,7 @@
     "feedId": "65f91a39f65476a2bc5cbf915d2325bf22d55d97097e71f483407c0d85f3718d",
     "symbol": "Equity.US.CW/USD",
     "description": "CURTISS-WRIGHT CORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7586,7 +7586,7 @@
     "feedId": "b28cc2e71cd5b1638c7aeefae54ceed579be828e52a56de0431fd428cca67791",
     "symbol": "Equity.US.IDXX/USD",
     "description": "IDEXX LABORATORIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7600,7 +7600,7 @@
     "feedId": "9e2f2b1adb8ac673c4a8dd6f4e4bc7d289df5f1527efd593c69ffd866faaba44",
     "symbol": "Equity.US.AXON/USD",
     "description": "AXON ENTERPRISE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7614,7 +7614,7 @@
     "feedId": "c1046358a2b78d92a2ad45b9d3c271350ab9335b478df21a390b8924cad91563",
     "symbol": "Equity.US.CMG/USD",
     "description": "CHIPOTLE MEXICAN GRILL INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7628,7 +7628,7 @@
     "feedId": "564701856b900a263842e4d8b12cb312b9e4de0f2fb102c83fa07d1055c6d81b",
     "symbol": "Equity.US.VMC/USD",
     "description": "VULCAN MATERIALS COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7642,7 +7642,7 @@
     "feedId": "6469e80c4a4a3bed520e0882051c6f0dbc8d57c217b16662db6cfd3f6288de2c",
     "symbol": "Equity.US.HUM/USD",
     "description": "HUMANA INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7656,7 +7656,7 @@
     "feedId": "d346bf2b5a30cbcb8092c1eed6afe9e747bb5a6a63ed7c008164cb280c64754c",
     "symbol": "Equity.US.CCI/USD",
     "description": "CROWN CASTLE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7670,7 +7670,7 @@
     "feedId": "a2c9466d7558768573d83ad57735177d8448098d0a87aca9ca2ae9a9585bbdcc",
     "symbol": "Equity.US.DHI/USD",
     "description": "DR HORTON INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7684,7 +7684,7 @@
     "feedId": "8c1b15a29aa0f375297f685d8ab1feb7d035a559f77b0e475134551612ece7d4",
     "symbol": "Equity.US.ALNY/USD",
     "description": "ALNYLAM PHARMACEUTICALS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7698,7 +7698,7 @@
     "feedId": "4b0077352f8790088c9e9c76d8490b06b94f75501c0027783ef310e378348d95",
     "symbol": "Equity.US.PSA/USD",
     "description": "PUBLIC STORAGE / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7712,7 +7712,7 @@
     "feedId": "375d3fff7889b3bfdee5cfccdc5d4d3e67eed3b7d9599e29cea59b1baaa0b83a",
     "symbol": "Equity.US.ROP/USD",
     "description": "ROPER TECHNOLOGIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7726,7 +7726,7 @@
     "feedId": "97ee6da593bd5e1e73b1edccc05f901a89b698abcb56d31221e73bb9684a4ede",
     "symbol": "Equity.US.BDX/USD",
     "description": "BECTON DICKINSON AND COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7740,7 +7740,7 @@
     "feedId": "0c4659250a9acd91536227c64e4d8dd65074ec21c3537ca554ea2aaeee00dd95",
     "symbol": "Equity.US.ADM/USD",
     "description": "ARCHER-DANIELS-MIDLAND COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7754,7 +7754,7 @@
     "feedId": "f5d11dd2f66a2cc27fa25caf2c7fd45caa33045e8e3d55dc825ca830c68397b5",
     "symbol": "Equity.US.FAST/USD",
     "description": "FASTENAL COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7768,7 +7768,7 @@
     "feedId": "1525917fe1d100b6af40bb6f40f71059a6a4c52a1849c964ef33a06412bc9f46",
     "symbol": "Equity.US.MTB/USD",
     "description": "M&T BANK CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7782,7 +7782,7 @@
     "feedId": "86fcbb7f5166af4a0e298643e725f8af62e93b96891d478dd347165e3c7716a2",
     "symbol": "Equity.US.TPR/USD",
     "description": "TAPESTRY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7796,7 +7796,7 @@
     "feedId": "ec3594578eb750e3b9393433e983263baa18018db14e1d220c6845bf2fe480a3",
     "symbol": "Equity.US.COR/USD",
     "description": "CENCORA INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7810,7 +7810,7 @@
     "feedId": "da937ffe337d2111782ba3910b7b4191764724c3adc69e3074d5da7e25a7dfb4",
     "symbol": "Equity.US.SYY/USD",
     "description": "SYSCO CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7824,7 +7824,7 @@
     "feedId": "92594609a3d435e8e880e36f6ac87794edbe9d3ac3df18fbfdab3b5dd33425db",
     "symbol": "Equity.US.HBAN/USD",
     "description": "HUNTINGTON BANCSHARES INCORPORATED / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7838,7 +7838,7 @@
     "feedId": "5522f751cd656ddd88a22959a35dd63fe6dbf82aeba4fc9b8edef367b8c7e208",
     "symbol": "Equity.US.XEL/USD",
     "description": "XCEL ENERGY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7852,7 +7852,7 @@
     "feedId": "a63586143073186f23c7f8439ab75b558b9be60f37f395feae47d4329f509ee2",
     "symbol": "Equity.US.AMP/USD",
     "description": "AMERIPRISE FINANCIAL INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7866,7 +7866,7 @@
     "feedId": "c80a26da95814c361751e40849861cada3bd51641c57e1e89bb629c1cce92f1c",
     "symbol": "Equity.US.VTR/USD",
     "description": "VENTAS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7880,7 +7880,7 @@
     "feedId": "f8b4d7aa681488438f9e51351567f3977480736923a4b75d326625f36f025836",
     "symbol": "Equity.US.AFL/USD",
     "description": "AFLAC INCORPORATED / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7894,7 +7894,7 @@
     "feedId": "1f1a9da5ed94f81694aaf250155adc7c6cde842e4a3ee6e6b4cb6fc23c85667b",
     "symbol": "Equity.US.MCHP/USD",
     "description": "MICROCHIP TECHNOLOGY INCORPORATED / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7908,7 +7908,7 @@
     "feedId": "cba6d204bc8c77c733d1f1acc5288d00dc4361046fe4559f2f6fb750321b0afa",
     "symbol": "Equity.US.UAL/USD",
     "description": "UNITED AIRLINES HOLDINGS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7922,7 +7922,7 @@
     "feedId": "b0d68bb7055327a5ec773094129a00f6794ae064b9286a1b55eb2b975bc17dc0",
     "symbol": "Equity.US.PEG/USD",
     "description": "PUBLIC SERVICE ENTERPRISE GROUP INCORPORATED / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7936,7 +7936,7 @@
     "feedId": "d8226a5920c7fbfe9bf9b159ab25855fb07c66b28c0941c1d36b247e382add95",
     "symbol": "Equity.US.JBL/USD",
     "description": "JABIL INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7950,7 +7950,7 @@
     "feedId": "39763876ae1b3c2402f6d1e2f40d33fb4493ddd97d9edc42e64bd61f718b0eb7",
     "symbol": "Equity.US.YUM/USD",
     "description": "YUM! BRANDS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7964,7 +7964,7 @@
     "feedId": "4b8faa3f61c5764a6662179f8aa41c0cb36cb84d796be6d953944ecae87fdc94",
     "symbol": "Equity.US.ODFL/USD",
     "description": "OLD DOMINION FREIGHT LINE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7978,7 +7978,7 @@
     "feedId": "5fcafa59eadb26d764ed8de3d1ce071a4a9337dddf093ee8a7bace713aed7f22",
     "symbol": "Equity.US.CTVA/USD",
     "description": "CORTEVA INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -7992,7 +7992,7 @@
     "feedId": "dd3baa1ebafa53b0a8b1e208f2e8df9dfed597f8b93d0fead0e84d8f4a0336d9",
     "symbol": "Equity.US.ETR/USD",
     "description": "ENTERGY CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8006,7 +8006,7 @@
     "feedId": "35f08f92f05ab4fd2117f8d857238f5eb25213fefe95e7ba042babea512a0a5b",
     "symbol": "Equity.US.ON/USD",
     "description": "ON SEMICONDUCTOR CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8020,7 +8020,7 @@
     "feedId": "e3f0d3e53a6f645cd1d7e2927708a17d8bfb12b00c61b99d441f9ad590d2d8fe",
     "symbol": "Equity.US.RSG/USD",
     "description": "REPUBLIC SERVICES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8034,7 +8034,7 @@
     "feedId": "9140533c3a5bd8c00b087c2d6e3b396f2767910484e61349a643f2e32a69f753",
     "symbol": "Equity.US.AIG/USD",
     "description": "AMERICAN INTERNATIONAL GROUP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8048,7 +8048,7 @@
     "feedId": "970e53ff78966bd9cbd5c4fba2254484b2e7b5e117403b635b0ca482d7346ff0",
     "symbol": "Equity.US.CAH/USD",
     "description": "CARDINAL HEALTH INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8062,7 +8062,7 @@
     "feedId": "a1603db75317c40a21301cc11d58ffd69bea273f3473bfed479b4325300fc721",
     "symbol": "Equity.US.MET/USD",
     "description": "METLIFE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8076,7 +8076,7 @@
     "feedId": "878b4560531e95bf028235e52d0e7116a022d3529326adc99c2d3a20994eb733",
     "symbol": "Equity.US.OKE/USD",
     "description": "ONEOK INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8090,7 +8090,7 @@
     "feedId": "6168b785e90c735e2c546abe61198534877802f639f829dcba65ecb332d2a097",
     "symbol": "Equity.US.WAB/USD",
     "description": "WESTINGHOUSE AIR BRAKE TECHNOLOGIES CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8104,7 +8104,7 @@
     "feedId": "98057002daf66705e7542c2934f246bed459c2deeacc465f2f2b137649faa5be",
     "symbol": "Equity.US.CARR/USD",
     "description": "CARRIER GLOBAL CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8118,7 +8118,7 @@
     "feedId": "54a39d1072d96389f124055a1da65d20f3b130719a2b615009ef30afecc7146a",
     "symbol": "Equity.US.EW/USD",
     "description": "EDWARDS LIFESCIENCES CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8132,7 +8132,7 @@
     "feedId": "a72ff152372a1a9b75e40c7da828be1e53129bfb0338436afab007bad29aa42c",
     "symbol": "Equity.US.STT/USD",
     "description": "STATE STREET CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8146,7 +8146,7 @@
     "feedId": "7b4b63935159e95489a446817966b95798bf92730d5a2439a9b164022c55671b",
     "symbol": "Equity.US.KDP/USD",
     "description": "KEURIG DR PEPPER INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8160,7 +8160,7 @@
     "feedId": "46a08c0ec7e78c610b835e7e6268f1f6aea10788890b2d72057f7a62a646ab2d",
     "symbol": "Equity.US.FITB/USD",
     "description": "FIFTH THIRD BANCORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8174,7 +8174,7 @@
     "feedId": "8af4d43c43e35e6849f686e831f8201d3e868e921ac22de97d6acebde95d2829",
     "symbol": "Equity.US.DAL/USD",
     "description": "DELTA AIR LINES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8188,7 +8188,7 @@
     "feedId": "e26394da01c493bf0606d33395ad72c97a9d0e0cd68b31ace8832c6451a1f5ff",
     "symbol": "Equity.US.AJG/USD",
     "description": "ARTHUR J GALLAGHER & CO / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8202,7 +8202,7 @@
     "feedId": "e3fdb99fc6ce4b1b118b16abafb68242e7feef6e8e75f2ad435072ab83b5c3f7",
     "symbol": "Equity.US.TRGP/USD",
     "description": "TARGA RESOURCES CORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8216,7 +8216,7 @@
     "feedId": "a2c896238e03d8126369b445ed0157a9cfaccf095510a68b9100beb8885c0e47",
     "symbol": "Equity.US.ALAB/USD",
     "description": "ASTERA LABS INC",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8230,7 +8230,7 @@
     "feedId": "79adceba85771f08b71af57b027e0cf98a040738bca2a70ed3f89736a718f77c",
     "symbol": "Equity.US.AME/USD",
     "description": "AMETEK INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8244,7 +8244,7 @@
     "feedId": "3d3b04f0e32bd28246e6fd6d0e863e621827a6da9e979e7a7df5516aa28e9591",
     "symbol": "Equity.US.ADSK/USD",
     "description": "AUTODESK INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8258,7 +8258,7 @@
     "feedId": "3b9f8ee08c4dedaf70133256945518df1f037449c9d81cc678907694bdad3f0f",
     "symbol": "Equity.US.AZO/USD",
     "description": "AUTOZONE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8272,7 +8272,7 @@
     "feedId": "ba9e386c7cff73f68e17ee14f3f8a190afa842621527ec5f542968c516759df4",
     "symbol": "Equity.US.DVN/USD",
     "description": "DEVON ENERGY CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8286,7 +8286,7 @@
     "feedId": "c531c5d85ae89ad23e0f455be0a9170e2924a4b6922d62d5b1e076023f7b7235",
     "symbol": "Equity.US.ROK/USD",
     "description": "ROCKWELL AUTOMATION INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8300,7 +8300,7 @@
     "feedId": "d2f530f73cad1b04094adbc1ef8d4525f67f2c812bae70af63e8027a9787d75c",
     "symbol": "Equity.US.O/USD",
     "description": "REALTY INCOME CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8314,7 +8314,7 @@
     "feedId": "e5b009001bb93e2c5405c6c1f24a2ea178f378997cfd2e3fa8103bcc8df66985",
     "symbol": "Equity.US.SPG/USD",
     "description": "SIMON PROPERTY GROUP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8328,7 +8328,7 @@
     "feedId": "81ec776dd73898187779458dcd0c282a91322c7bd5fcb38b565f1b94bd8adff0",
     "symbol": "Equity.US.MCO/USD",
     "description": "MOODY'S CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8342,7 +8342,7 @@
     "feedId": "87039ec0fdfba15a4cfc68d257f509182baa1281bf9e79cbb6eca09dbe694e7a",
     "symbol": "Equity.US.LHX/USD",
     "description": "L3HARRIS TECHNOLOGIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8356,7 +8356,7 @@
     "feedId": "a1227a13d6b81354acdff9ae22a1878ee0dcdc2668e0a3f8c15700ddf5d50fbb",
     "symbol": "Equity.US.CIEN/USD",
     "description": "CIENA CORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8370,7 +8370,7 @@
     "feedId": "a4102a6d0a6a6e5bf66fa3599411d688f8b253d38db982a266c5eec6ba042c8a",
     "symbol": "Equity.US.D/USD",
     "description": "DOMINION ENERGY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8384,7 +8384,7 @@
     "feedId": "8a6a338e7cd256a83e4f27d7cf7ebe4983cae694a00762ef25c6c7da5607124e",
     "symbol": "Equity.US.EOG/USD",
     "description": "EOG RESOURCES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8398,7 +8398,7 @@
     "feedId": "d45392f678a1287b8412ed2aaa326def204a5c234df7cb5552d756c332283d81",
     "symbol": "Equity.US.TRV/USD",
     "description": "TRAVELERS COMPANIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8412,7 +8412,7 @@
     "feedId": "2b6b8daa571caf41933359e3fa3e1497db49fa39bb0964f02e4fee4e3035b22a",
     "symbol": "Equity.US.SRE/USD",
     "description": "SEMPRA / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8426,7 +8426,7 @@
     "feedId": "2a45d16204f3588259fddf5a81a1129efab873571a4cef38641e16bfeac364ef",
     "symbol": "Equity.US.REGN/USD",
     "description": "REGENERON PHARMACEUTICALS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8440,7 +8440,7 @@
     "feedId": "40176a5dd12a53bb1f31e848c9363863dd6f8e755f35ef56d2182fc7f1d03853",
     "symbol": "Equity.US.APO/USD",
     "description": "APOLLO GLOBAL MANAGEMENT INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8454,7 +8454,7 @@
     "feedId": "5418e711244ca3c599e0f6a2b3b217833e81f110ae53afadd4a0809808c7baae",
     "symbol": "Equity.US.SHW/USD",
     "description": "THE SHERWIN-WILLIAMS COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8468,7 +8468,7 @@
     "feedId": "5f848f61c44e1c9b21ddac0fcac5536344e80ad21df3271c2f069f57229fab81",
     "symbol": "Equity.US.NOC/USD",
     "description": "NORTHROP GRUMMAN CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8482,7 +8482,7 @@
     "feedId": "f324ae399346b21a3f40e9a07984750dfde9a9d7b40999fb1c6d98a4243f5eed",
     "symbol": "Equity.US.MPC/USD",
     "description": "MARATHON PETROLEUM CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8496,7 +8496,7 @@
     "feedId": "bf20e149c45ec15b78eb4a61d0bbae625acc0dadacf9c3b76c3bb8de9346d3ec",
     "symbol": "Equity.US.GWW/USD",
     "description": "WW GRAINGER INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8510,7 +8510,7 @@
     "feedId": "aef0db13545e411bfc9d17e7eba913b0a5376c6af415a33240b546f773b25105",
     "symbol": "Equity.US.KKR/USD",
     "description": "KKR & CO INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8524,7 +8524,7 @@
     "feedId": "cfa4ed85a85dd41326d017f21e8452af69c42790975c0c0c0132cf195fc45a6c",
     "symbol": "Equity.US.FIX/USD",
     "description": "COMFORT SYS USA INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8538,7 +8538,7 @@
     "feedId": "6c267962d46cec4a5baf6105de67ef08e1306f75973ce6eb8db8527f06e28f33",
     "symbol": "Equity.US.F/USD",
     "description": "FORD MOTOR COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8552,7 +8552,7 @@
     "feedId": "3a4d69933f6e8e251a730e1d04ae7fdd53a2b20a1d111bbccf263209375646a0",
     "symbol": "Equity.US.APD/USD",
     "description": "AIR PRODUCTS AND CHEMICALS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8566,7 +8566,7 @@
     "feedId": "e51d5a490b7ff684e72104f092096d33ad8f6d0bbc617fbe893e23358f8e1c72",
     "symbol": "Equity.US.MPWR/USD",
     "description": "MONOLITHIC POWER SYSTEMS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8580,7 +8580,7 @@
     "feedId": "d39e81603a92c5b911f9a46432c50de459c6ab6d854e53b00ad65354e14728d7",
     "symbol": "Equity.US.TFC/USD",
     "description": "TRUIST FINANCIAL CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8594,7 +8594,7 @@
     "feedId": "3aac822069ed803b272ade5510441f32b97501963cad9598ae61238bd8843aa5",
     "symbol": "Equity.US.CTAS/USD",
     "description": "CINTAS CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8608,7 +8608,7 @@
     "feedId": "5af7f961ea231d5f4bd19dc99d1fd43f6de67ab57b73779f9ebe65a6a4ab64d5",
     "symbol": "Equity.US.DLR/USD",
     "description": "DIGITAL REALTY TRUST INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8622,7 +8622,7 @@
     "feedId": "e99bb427a3e84a107c6e3108cd81608bfb1c54bba024374cae15da93da756c02",
     "symbol": "Equity.US.ALL/USD",
     "description": "THE ALLSTATE CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8636,7 +8636,7 @@
     "feedId": "dc85ae0ea74bb56972b162f1c9c48727015b774c25fd0e3c150cc18ce28bf2e5",
     "symbol": "Equity.US.HCA/USD",
     "description": "HCA HEALTHCARE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8650,7 +8650,7 @@
     "feedId": "ef333b80d26fb3630c870da74de7a52b4c5f40ead3cfd841a9d0fa6bb4186b5b",
     "symbol": "Equity.US.AEP/USD",
     "description": "AMERICAN ELECTRIC POWER COMPANY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8664,7 +8664,7 @@
     "feedId": "0a89d9c67435e8563fbf1bd1d3da9578fd07edfc2af55e92acf532cc9951a90a",
     "symbol": "Equity.US.KEYS/USD",
     "description": "KEYSIGHT TECHNOLOGIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8678,7 +8678,7 @@
     "feedId": "7e535de06269b98ea0dfd8b238b80254a41be0092acf72c4464b269cd500716e",
     "symbol": "Equity.US.NUE/USD",
     "description": "NUCOR CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8692,7 +8692,7 @@
     "feedId": "6262b2695c0ea3371d0a0a3fb3c34ff12fdbf7a61046ec94db3665d47bbaf829",
     "symbol": "Equity.US.PCAR/USD",
     "description": "PACCAR INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8706,7 +8706,7 @@
     "feedId": "fae9f16801d1249999bf7a9e6e57ae7b512f88cce663251da2dee9fadddfc31a",
     "symbol": "Equity.US.COHR/USD",
     "description": "COHERENT CORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8720,7 +8720,7 @@
     "feedId": "111dca3c1265a35337c6b2ed06245c5b504c255f92c5ba0c03a67d8913d3e83f",
     "symbol": "Equity.US.URI/USD",
     "description": "UNITED RENTALS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8734,7 +8734,7 @@
     "feedId": "d381a4fd877aab599ca1270f5a099d8583ee60159b66c6b6b1ad3018ae89c8fe",
     "symbol": "Equity.US.TDG/USD",
     "description": "TRANSDIGM GROUP INCORPORATED / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8748,7 +8748,7 @@
     "feedId": "337129e71cdd78ee403dcde32b49632c088baa665aac6302dce0f4d3d1339196",
     "symbol": "Equity.US.NSC/USD",
     "description": "NORFOLK SOUTHERN CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8762,7 +8762,7 @@
     "feedId": "89b83912f0fe0c5091de834750cac3de2ff16b74b6a99bab7cbae25dd6585f4c",
     "symbol": "Equity.US.CL/USD",
     "description": "COLGATE-PALMOLIVE COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8776,7 +8776,7 @@
     "feedId": "d699ec7e73369362480f83d2a6f6ec778fa2947a45f1e94309cf893689d35262",
     "symbol": "Equity.US.BSX/USD",
     "description": "BOSTON SCIENTIFIC CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8790,7 +8790,7 @@
     "feedId": "cc7851b525bd7f0d8ce00e409d59d6cd5ecdfbc5a2df1aaee3c4948426976100",
     "symbol": "Equity.US.MSI/USD",
     "description": "MOTOROLA SOLUTIONS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8804,7 +8804,7 @@
     "feedId": "1d36f0faa0688b4250f12560718e9989138e20a3a8a77c0b4144792e363a6cb0",
     "symbol": "Equity.US.FDX/USD",
     "description": "FEDEX CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8818,7 +8818,7 @@
     "feedId": "216f728010a42b2b21bbd9c5971ea682d3424c88b1449b405ba6cbf7b7ebcab5",
     "symbol": "Equity.US.VLO/USD",
     "description": "VALERO ENERGY CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8832,7 +8832,7 @@
     "feedId": "60bd1ddb5b55fc99af50cba723ceeecc68067a8e23cc2df420df5b36873744e2",
     "symbol": "Equity.US.ECL/USD",
     "description": "ECOLAB INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8846,7 +8846,7 @@
     "feedId": "069b87074893c37fd250990df7409d7e19cd649bea8e28904a0fd49915f4e53a",
     "symbol": "Equity.US.HPE/USD",
     "description": "HEWLETT PACKARD ENTERPRISE COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8860,7 +8860,7 @@
     "feedId": "02e83f2c834b9f2e495066b17da13c7caa5551a8378c6dff7f217166d9194588",
     "symbol": "Equity.US.HLT/USD",
     "description": "HILTON WORLDWIDE HOLDINGS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8874,7 +8874,7 @@
     "feedId": "16b28b05e3491528ff9ece996c65075c3d2af3027131b11da425c6930b1e5932",
     "symbol": "Equity.US.PSX/USD",
     "description": "PHILLIPS 66 / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8888,7 +8888,7 @@
     "feedId": "2b610a0d95397c20582741b53d61d5e79bab7bebbd5793546e90662f8f6ce0b9",
     "symbol": "Equity.US.ITW/USD",
     "description": "ILLINOIS TOOL WORKS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8902,7 +8902,7 @@
     "feedId": "14291d2651ecf1f9105729bdc59553c1ce73fb3d6c931dd98a9d2adddc37e00f",
     "symbol": "Equity.US.SNOW/USD",
     "description": "SNOWFLAKE INC",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8916,7 +8916,7 @@
     "feedId": "43ef64ff6af44e0648f0328ee56e88fee57943b0aa077c24ef175bb9ecd37133",
     "symbol": "Equity.US.INTU/USD",
     "description": "INTUIT INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8930,7 +8930,7 @@
     "feedId": "d06528b28300de3b1a83a3acb383096ecad3e25c320f6d4a6a2745b70f7b1462",
     "symbol": "Equity.US.ORLY/USD",
     "description": "O'REILLY AUTOMOTIVE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8944,7 +8944,7 @@
     "feedId": "093d0ce5cbf3150e271db36706a0cf42b9dd7e62b1bc70fef09c0e2ee80434d5",
     "symbol": "Equity.US.ROST/USD",
     "description": "ROSS STORES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8963,7 +8963,7 @@
     "feedId": "df8109bbec79e2b24ce326c3be5ca0036a88ed20800ec0aa54ccc2bc7811bd3b",
     "symbol": "Equity.US.GM/USD",
     "description": "GENERAL MOTORS COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8977,7 +8977,7 @@
     "feedId": "50792163ea9ceb6e4142a4ae35845e4ca4c559b89bbf6cb3d426f79534717401",
     "symbol": "Equity.US.CI/USD",
     "description": "THE CIGNA GROUP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -8991,7 +8991,7 @@
     "feedId": "b2e33e4daa44d9b0c0783ededd335520a0f7eeed7608ff60c93c7c2294b2d813",
     "symbol": "Equity.US.ICE/USD",
     "description": "INTERCONTINENTAL EXCHANGE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9005,7 +9005,7 @@
     "feedId": "7f78c101ca799a5b63f5e5c1e56a43b3a361233900160c172e2ec2980e91b4eb",
     "symbol": "Equity.US.WM/USD",
     "description": "WASTE MANAGEMENT INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9019,7 +9019,7 @@
     "feedId": "e1c0e5aaf1842d3efb806d14a7cd21160d4b7c0f96746e0fa1227ae961bf3929",
     "symbol": "Equity.US.EMR/USD",
     "description": "EMERSON ELECTRIC CO / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9033,7 +9033,7 @@
     "feedId": "5fc195aa6556b6b2ce09bd3308c6b872bf9b85682d54ec92ed910172b319a9f0",
     "symbol": "Equity.US.ELV/USD",
     "description": "ELEVANCE HEALTH INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9047,7 +9047,7 @@
     "feedId": "fd05a384ba19863cbdfc6575bed584f041ef50554bab3ab482eabe4ea58d9f81",
     "symbol": "Equity.US.MMM/USD",
     "description": "3M CO / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9061,7 +9061,7 @@
     "feedId": "74f3621e920f9a9d78595ed957c9090007d19e82f7c0edbe89a392bafec62c64",
     "symbol": "Equity.US.CSX/USD",
     "description": "CSX CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9075,7 +9075,7 @@
     "feedId": "7c09a3b332c3efc8c9a90da4ab26bb9eca53e1f147a0960cf458980d1aba97ef",
     "symbol": "Equity.US.FTNT/USD",
     "description": "FORTINET INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9089,7 +9089,7 @@
     "feedId": "9b25e42163e85658664651dac0915b2e0474fe6f5e19541e48ba2356f11a9f32",
     "symbol": "Equity.US.BX/USD",
     "description": "BLACKSTONE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9103,7 +9103,7 @@
     "feedId": "6921035babdc51587962f9a1350a2c2ca5840b64bbf9057ab75a20cc663b32c3",
     "symbol": "Equity.US.WMB/USD",
     "description": "THE WILLIAMS COMPANIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9117,7 +9117,7 @@
     "feedId": "069463ea9b6c8741e39498539365f385d4fdf0acea213d1efdb6ddc30101d0dd",
     "symbol": "Equity.US.CMI/USD",
     "description": "CUMMINS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9131,7 +9131,7 @@
     "feedId": "8a80397a6e962b6e260d620e3c68d08ab94bdc82fd27d2c506d41b8a52280364",
     "symbol": "Equity.US.AMT/USD",
     "description": "AMERICAN TOWER CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9145,7 +9145,7 @@
     "feedId": "af00c68cb77107c1f4e8ff5c7e8a28892931fd2790ff9ca54969625d27b66e63",
     "symbol": "Equity.US.SNPS/USD",
     "description": "SYNOPSYS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9159,7 +9159,7 @@
     "feedId": "34ddb500764d81234b278361d67657792187f9d0bc3e7ce05f07196a47983f40",
     "symbol": "Equity.US.MRSH/USD",
     "description": "MARSH & MCLENNAN COS INC COM / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9173,7 +9173,7 @@
     "feedId": "2b5735ead9b057b3fb96a422740ab26bdfcb1f2b5d4cd9d052f45311ef0f2952",
     "symbol": "Equity.US.FCX/USD",
     "description": "FREEPORT-MCMORAN INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9187,7 +9187,7 @@
     "feedId": "147e4b877552f9832b87f04038b21da4a3054fd2ae654bed4cb92548bb33f4b4",
     "symbol": "Equity.US.ADP/USD",
     "description": "AUTOMATIC DATA PROCESSING INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9201,7 +9201,7 @@
     "feedId": "424c3c551dcb2c25f9a9de69ebb83586ccd6dd2a79fd2c62650803b1acac3105",
     "symbol": "Equity.US.PNC/USD",
     "description": "THE PNC FINANCIAL SERVICES GROUP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9215,7 +9215,7 @@
     "feedId": "3490a2ca9b5db045ea37d86c2d5dd69f893417fb3b9937b4bcd61d17f0bf0c20",
     "symbol": "Equity.US.USB/USD",
     "description": "US BANCORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9229,7 +9229,7 @@
     "feedId": "374c080d60c3d055199df45e3c54accd5f04f190f61cd050dae28dd2519871a6",
     "symbol": "Equity.US.MCK/USD",
     "description": "MCKESSON CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9243,7 +9243,7 @@
     "feedId": "1e2fea8c5028e09489fbcb31014e9e7833e08eea78922eaa69d96cf1b37206c2",
     "symbol": "Equity.US.SYK/USD",
     "description": "STRYKER CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9257,7 +9257,7 @@
     "feedId": "650293cd51d63cac28ecb03823af05d8192dad724156af6ed4a90b1708057bf2",
     "symbol": "Equity.US.SO/USD",
     "description": "THE SOUTHERN COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9271,7 +9271,7 @@
     "feedId": "a2168b2c613dcd4b8c0f50e255b61a1c5dfdf750eddaf09bade719b9ceb573a0",
     "symbol": "Equity.US.CDNS/USD",
     "description": "CADENCE DESIGN SYSTEMS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9285,7 +9285,7 @@
     "feedId": "69d2eebcc3c62889f1c0105ff347f296eb435cba8d2e4705a486fd47a8fe1a1b",
     "symbol": "Equity.US.NOW/USD",
     "description": "SERVICENOW INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9299,7 +9299,7 @@
     "feedId": "914c7f24178681e916139175ca651271ea14c340c4ba5e0c7787162020a9e79b",
     "symbol": "Equity.US.DUK/USD",
     "description": "DUKE ENERGY CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9313,7 +9313,7 @@
     "feedId": "66eb6cfa3a28e8e7cad538a55872ac0e41a2741ca66a29c1dc5540f2b1fb6fb6",
     "symbol": "Equity.US.EQIX/USD",
     "description": "EQUINIX INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9327,7 +9327,7 @@
     "feedId": "894e9c429f83fe4f35fda679568348418bafe5a0a68e1cccc8e51a137e879ce9",
     "symbol": "Equity.US.GD/USD",
     "description": "GENERAL DYNAMICS CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9341,7 +9341,7 @@
     "feedId": "b8f2bb034ab00c83a9a4e4bc4f8254c139631f56f11deb6f99f00c34ce032478",
     "symbol": "Equity.US.HWM/USD",
     "description": "HOWMET AEROSPACE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9355,7 +9355,7 @@
     "feedId": "880d96a272d5ccbb3cd6f6aacb881a996cb4976b3f252b58c595cd2a418b6ea9",
     "symbol": "Equity.US.LMT/USD",
     "description": "LOCKHEED MARTIN CORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9369,7 +9369,7 @@
     "feedId": "29caf4d900d3080e56306ac41a9856735b89cb4df6813dd7b83e9eb96c04700d",
     "symbol": "Equity.US.NEM/USD",
     "description": "NEWMONT CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9383,7 +9383,7 @@
     "feedId": "ac9de86ae3dcff03514bde733f5793f1446b2cd31f1539a1c449acc3e76cacc1",
     "symbol": "Equity.US.VRTX/USD",
     "description": "VERTEX PHARMACEUTICALS INCORPORATED / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9397,7 +9397,7 @@
     "feedId": "857c3a552953250d5b19db7341f3deaed12ff623f2db451e30581c266b23ab58",
     "symbol": "Equity.US.COF/USD",
     "description": "CAPITAL ONE FINANCIAL CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9411,7 +9411,7 @@
     "feedId": "86cd9abb315081b136afc72829058cf3aaf1100d4650acb2edb6a8e39f03ef75",
     "symbol": "Equity.US.SBUX/USD",
     "description": "STARBUCKS CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9425,7 +9425,7 @@
     "feedId": "ad17639d5c5f937b0069f09a455c613c5b6feb8cf0ffb725de3942af96c0434b",
     "symbol": "Equity.US.MO/USD",
     "description": "ALTRIA GROUP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9439,7 +9439,7 @@
     "feedId": "b80f709aba6c306d3c61b6b9f9dc652d61d8a9a458580f7d4b5195b4f4a674c5",
     "symbol": "Equity.US.WELL/USD",
     "description": "WELLTOWER INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9453,7 +9453,7 @@
     "feedId": "9c86a3b6d84699fcc4c0f2e76f34d4b70c6c8230803cb35ae89278de9c6932a9",
     "symbol": "Equity.US.PH/USD",
     "description": "PARKER-HANNIFIN CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9467,7 +9467,7 @@
     "feedId": "1ab9bd7ed68a12736e9feb89044e6ab23b1abfa7b66e06f85653752ec0a890e1",
     "symbol": "Equity.US.PGR/USD",
     "description": "THE PROGRESSIVE CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9481,7 +9481,7 @@
     "feedId": "01d1d77d2d98cb38f163ecb6c1c0e3b8d60bbd5aa23c915b282f0228ac7d9967",
     "symbol": "Equity.US.BMY/USD",
     "description": "BRISTOL-MYERS SQUIBB COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9495,7 +9495,7 @@
     "feedId": "627b06aefb92e6b71c4a92f867c7df2718f73c25de2da7b3be1089cc1fe0e9b8",
     "symbol": "Equity.US.PLD/USD",
     "description": "PROLOGIS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9509,7 +9509,7 @@
     "feedId": "c2d23f236142a519929b147c4dbe8720475724918c8b8473db0283f8cf044184",
     "symbol": "Equity.US.DE/USD",
     "description": "DEERE & COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9523,7 +9523,7 @@
     "feedId": "ab31ec9dbcacacfb26e5ea6c249d69f5ae8b9c691aac6ccc5919b6107efa1c3a",
     "symbol": "Equity.US.LOW/USD",
     "description": "LOWE'S COMPANIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9537,7 +9537,7 @@
     "feedId": "d54d8d4e3774ea53660e660ecd03aa9daa31eed9b7e67d1a2aed3095b3e6720d",
     "symbol": "Equity.US.COP/USD",
     "description": "CONOCOPHILLIPS / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9551,7 +9551,7 @@
     "feedId": "016eb8866d4455bcce669bc745835fd1f00be9c9205602abb3a2b3cc31e993ff",
     "symbol": "Equity.US.CVS/USD",
     "description": "CVS HEALTH CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9565,7 +9565,7 @@
     "feedId": "b095647f688415d4102a858e1b25c1af15750f0e516a0d561cb35ebe30deb183",
     "symbol": "Equity.US.UNP/USD",
     "description": "UNION PACIFIC CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9579,7 +9579,7 @@
     "feedId": "d437b2f1470d5f007f18a5565eaab1ed182d97204d80b7dd3dac29839f61c9e6",
     "symbol": "Equity.US.SCHW/USD",
     "description": "THE CHARLES SCHWAB CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9593,7 +9593,7 @@
     "feedId": "ad4dc1db82c47e0822afef9d9eca7bf693cdad20dd61fcd5aa1b6895b1b90190",
     "symbol": "Equity.US.ISRG/USD",
     "description": "INTUITIVE SURGICAL INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9607,7 +9607,7 @@
     "feedId": "6ef62b860055ef6819af274064e5aa597aa9d0963ce3109c51d996264844776e",
     "symbol": "Equity.US.GLW/USD",
     "description": "CORNING INCORPORATED / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9621,7 +9621,7 @@
     "feedId": "b058f7874b57f820aa7ff6034a8515add8095b5831e83fc8d02c1dccd4ac099c",
     "symbol": "Equity.US.NEE/USD",
     "description": "NEXTERA ENERGY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9635,7 +9635,7 @@
     "feedId": "1e0192ac474db72a6937c45460929dcef6efebf4d4b493685d020d1bc3b265a2",
     "symbol": "Equity.US.TJX/USD",
     "description": "THE TJX COMPANIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9649,7 +9649,7 @@
     "feedId": "8419416ba640c8bbbcf2d464561ed7dd860db1e38e51cec9baf1e34c4be839ae",
     "symbol": "Equity.US.BA/USD",
     "description": "BOEING CO / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9663,7 +9663,7 @@
     "feedId": "703e36203020ae6761e6298975764e266fb869210db9b35dd4e4225fa68217d0",
     "symbol": "Equity.US.DIS/USD",
     "description": "WALT DISNEY CO / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9677,7 +9677,7 @@
     "feedId": "29148f7de5819fe7467e99f5f0b22e8fb124d958d8f668c3c17e607d7ed1eb09",
     "symbol": "Equity.US.GILD/USD",
     "description": "GILEAD SCIENCES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9691,7 +9691,7 @@
     "feedId": "10946973bfcc936b423d52ee2c5a538d96427626fe6d1a7dae14b1c401d1e794",
     "symbol": "Equity.US.AMGN/USD",
     "description": "AMGEN, INC. / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9705,7 +9705,7 @@
     "feedId": "6672325a220c0ee1166add709d5ba2e51c185888360c01edc76293257ef68b58",
     "symbol": "Equity.US.VZ/USD",
     "description": "VERIZON COMMUNICATIONS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9719,7 +9719,7 @@
     "feedId": "54350ebf587c3f14857efcfec50e5c4f6e10220770c2266e9fe85bd5e42e4022",
     "symbol": "Equity.US.QCOM/USD",
     "description": "QUALCOMM INCORPORATED / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9733,7 +9733,7 @@
     "feedId": "37a782cf9bb6061d4cca34a419fb1ae5a8edf71ae8843206ea88b4ba696d4706",
     "symbol": "Equity.US.WDC/USD",
     "description": "WESTERN DIGITAL CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9747,7 +9747,7 @@
     "feedId": "97c483cc4172de7ac1a3cc0814f442e4747e64008723f2705d6e9fdff3ba4d3d",
     "symbol": "Equity.US.RTX/USD",
     "description": "RTX CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9761,7 +9761,7 @@
     "feedId": "67ac585d05128c7b6a88660be04acd18b2bddd6308e98b71b9f3ba0f0e781296",
     "symbol": "Equity.US.WFC/USD",
     "description": "WELLS FARGO & COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9775,7 +9775,7 @@
     "feedId": "97b55381ff94c6c0a22f3e0c8cdc2186a3561bf3dfe3cfaebf4786c9318b770f",
     "symbol": "Equity.US.MS/USD",
     "description": "MORGAN STANLEY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9789,7 +9789,7 @@
     "feedId": "e1d3115c6e7ac649faca875b3102f1000ab5e06b03f6903e0d699f0f5315ba86",
     "symbol": "Equity.US.GE/USD",
     "description": "GENERAL ELECTRIC COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9803,7 +9803,7 @@
     "feedId": "a388977cbd7b063e456a31267919d86395af058a7558e892dde3c6b38c6240bb",
     "symbol": "Equity.US.ADI/USD",
     "description": "ANALOG DEVICES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9817,7 +9817,7 @@
     "feedId": "e7e7aac1ac0524cd3666fae4ecafae5e1fee880c11f3a7b4b7ea61bd6e434a63",
     "symbol": "Equity.US.C/USD",
     "description": "CITIGROUP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9831,7 +9831,7 @@
     "feedId": "c5b94c7ece9c3ac984e1439a8fac86270d0f988bbbcc838b456e2d7311754bdc",
     "symbol": "Equity.US.TXN/USD",
     "description": "TEXAS INSTRUMENTS INCORPORATED / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9845,7 +9845,7 @@
     "feedId": "ad04597ba688c350a97265fcb60585d6a80ebd37e147b817c94f101a32e58b4c",
     "symbol": "Equity.US.CAT/USD",
     "description": "CATERPILLAR INC. / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9859,7 +9859,7 @@
     "feedId": "0aa20f6c96a0f30e7c78e4c4f45a0db36ee9126b1ae34851a2c37720e075a500",
     "symbol": "Equity.US.BOT/USD",
     "description": "ROBOSTRATEGY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9878,7 +9878,7 @@
     "feedId": "8a593d6edde7a3095213c88116d8840d01e93c2ddeb800bc891772eb8b93bb94",
     "symbol": "Equity.US.SPCX/USD",
     "description": "SPACE EXPLORATION TECHNOLOGY CORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": {
     "feedId": "3bd917356e64e4eb1355adefd2caf09cf0716bbdb58012907bdcad63ab21064e",
@@ -9897,7 +9897,7 @@
     "feedId": "289673297719d8fa31d959e4151c9a0c5c92fce8e4c195351f6339217f0eb4b1",
     "symbol": "Equity.US.MDLN/USD",
     "description": "MEDLINE INC COM CL A / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9911,7 +9911,7 @@
     "feedId": "236b30dd09a9c00dfeec156c7b1efd646c0f01825a1758e3e4a0679e3bdff179",
     "symbol": "Equity.US.VOO/USD",
     "description": "VANGUARD S&P 500 ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9925,7 +9925,7 @@
     "feedId": "01ce9758cabc32e7344032cc921433cdf194a31c2e4b11e42d6fc3217cc94871",
     "symbol": "Equity.US.JAAA/USD",
     "description": "JANUS HENDERSON AAA CLO ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9939,7 +9939,7 @@
     "feedId": "6acec4867e7c4b0610d0422ff34cdd368552e846ea9df4fc2bbb4681126f724f",
     "symbol": "Equity.US.BITX/USD",
     "description": "2X BITCOIN STRATEGY ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9962,7 +9962,7 @@
     "feedId": "bd4cb54e777668772c77d2824b44262580ed6efa000f612405a13b3c515584bb",
     "symbol": "Equity.US.RCAT/USD",
     "description": "RED CAT HOLDINGS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -9976,7 +9976,7 @@
     "feedId": "f27e75730773262e85a7f11c835664478755098b815c0b03856c4be6e3332ad6",
     "symbol": "Equity.US.LNG/USD",
     "description": "CHENIERE ENERGY INC COM NEW / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10008,7 +10008,7 @@
     "feedId": "2373578c1c42c6a46f39e1cd7c5e37204b9394027415333891d2cb85ca842041",
     "symbol": "Equity.US.ONDS/USD",
     "description": "ONDAS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10058,7 +10058,7 @@
     "feedId": "d3a9e76862950b2f21a7037fd64df913794b14d0e2938a9d383b0b7387ca0081",
     "symbol": "Equity.US.NET/USD",
     "description": "CLOUDFLARE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10072,7 +10072,7 @@
     "feedId": "ba20f6d5532c07da494da803db2523719d339226e69ade6436e7d2f1047138a5",
     "symbol": "Equity.US.IREN/USD",
     "description": "IREN LTD / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10095,7 +10095,7 @@
     "feedId": "2132cbc333161e94b91da745ed73b1450410fdc870f2235bf628c28da358b652",
     "symbol": "Equity.US.HIMS/USD",
     "description": "HIMS & HERS HEALTH INC",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10118,7 +10118,7 @@
     "feedId": "52734824218d0361974ca000862f511aefdb51d608b762f16d59e372754b8909",
     "symbol": "Equity.US.JPST/USD",
     "description": "JPMORGAN ULTRA-SHORT INCOME ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10150,7 +10150,7 @@
     "feedId": "7be2b3f9f9d02b1ffcf61fc26ad5cc6aff4dd02044f9abc22ee57f37b3b5d2e5",
     "symbol": "Equity.US.EWY/USD",
     "description": "ISHARES MSCI SOUTH KOREA ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10173,7 +10173,7 @@
     "feedId": "f48942b892fcb708b680b9c0b3911d12c9025b047296f5f24e217f659cacd143",
     "symbol": "Equity.US.EWG/USD",
     "description": "ISHARES MSCI GERMANY ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10187,7 +10187,7 @@
     "feedId": "be25a3ca6904edff6de0a1c3ad5a9eaf12a87bced4d1c7823d7afe16160001f6",
     "symbol": "Equity.US.GDX/USD",
     "description": "VANECK GOLD MINERS ETF",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10201,7 +10201,7 @@
     "feedId": "53008e9cb71db278f91d7ee0011434af626548018b5f9d4c11000c387eac46fb",
     "symbol": "Equity.US.SOXL/USD",
     "description": "DIREXION DAILY SEMICONDUCTOR BULL 3X SHARES",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10224,7 +10224,7 @@
     "feedId": "3c3973e95c24fab3808a8fd9f25fb06ee92422fea20d814c1a850b307cbf31b9",
     "symbol": "Equity.US.SOXX/USD",
     "description": "ISHARES SEMICONDUCTOR ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10238,7 +10238,7 @@
     "feedId": "7c95b744797b88e94ddfc81e1f6833c18c78b9e086285b7bc778b4ef840f372e",
     "symbol": "Equity.US.NLR/USD",
     "description": "VANECK URANIUM & NUCLEAR ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10252,7 +10252,7 @@
     "feedId": "b89885277fd07887353cb63d641afe432a5231256f844b3b993f8fe1764fdfca",
     "symbol": "Equity.US.SATA/USD",
     "description": "STRIVE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10266,7 +10266,7 @@
     "feedId": "8bbaca50510ba7108093fd89100523a01d4eee8087de21c9ca807292933e5479",
     "symbol": "Equity.US.COPX/USD",
     "description": "GLOBAL X COPPER MINERS ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10280,7 +10280,7 @@
     "feedId": "8f34132a42f8bb7a47568d77a910f97174a30719e16904e9f2915d5b2c6c2d52",
     "symbol": "Equity.US.SMCI/USD",
     "description": "SUPER MICRO COMPUTER INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10294,7 +10294,7 @@
     "feedId": "79f7f0b79a6b7fdc0d7d9e8b6337fd709b8eea9dc6f57b6174c84816cae88bfd",
     "symbol": "Equity.US.ITA/USD",
     "description": "ISHARES US AEROSPACE & DEFENSE ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10317,7 +10317,7 @@
     "feedId": "1d27fb8230f11104a8bd4ed3ae44d0d61559261512c6508863d7af2c3f2059af",
     "symbol": "Equity.US.UUUU/USD",
     "description": "ENERGY FUELS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10340,7 +10340,7 @@
     "feedId": "a2950270a22ce39a22cb3488ba91e60474cd93c6d01da2ecc5a97c1dd40f4995",
     "symbol": "Equity.US.DELL/USD",
     "description": "DELL TECHNOLOGIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10354,7 +10354,7 @@
     "feedId": "773c3b11f6be58e8151966a9f5832696d8cd08884ccc43ac8965a7ebea911533",
     "symbol": "Equity.US.PYPL/USD",
     "description": "PAYPAL HOLDINGS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10368,7 +10368,7 @@
     "feedId": "8c64b089d95170429ba39ec229a0a6fc36b267e09c3210fbb9d9eb2d4c203bc5",
     "symbol": "Equity.US.VUG/USD",
     "description": "VANGUARD GROWTH ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10382,7 +10382,7 @@
     "feedId": "c04665f62a0eabf427a834bb5da5f27773ef7422e462d40c7468ef3e4d39d8f1",
     "symbol": "Equity.US.UBER/USD",
     "description": "UBER TECHNOLOGIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10396,7 +10396,7 @@
     "feedId": "2487b620e66468404ba251bfaa6b8382774010cbb5d504ac48ec263e0b1934aa",
     "symbol": "Equity.US.SMH/USD",
     "description": "VANECK SEMICONDUCTOR UCITS ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10410,7 +10410,7 @@
     "feedId": "a541bc5c4b69961442e45e9198c7cce151ff9c2a1003f620c6d4a9785c77a4d9",
     "symbol": "Equity.US.CEG/USD",
     "description": "CONSTELLATION ENERGY CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10424,7 +10424,7 @@
     "feedId": "0b231ca4307d25e4600067bfb06f576474bcabd74fb50eeaa0906ac1b457f365",
     "symbol": "Equity.US.TMUS/USD",
     "description": "T-MOBILE US INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10438,7 +10438,7 @@
     "feedId": "d62134a195739141d0649991f11fe0f9cd9eb83fd890bc3ba41dfdd18c1a49f4",
     "symbol": "Equity.US.RBLX/USD",
     "description": "ROBLOX CORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10452,7 +10452,7 @@
     "feedId": "782410278b6c8aa2d437812281526012808404aa14c243f73fb9939eeb88d430",
     "symbol": "Equity.US.PPLT/USD",
     "description": "ABERDEEN PHYSICAL PLATINUM SHARES ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10466,7 +10466,7 @@
     "feedId": "6b5bedda9e9d6354c5b93659cba6747d21b527437022da6e5f32e3b53e485a04",
     "symbol": "Equity.US.SBET/USD",
     "description": "SHARPLINK GAMING INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10480,7 +10480,7 @@
     "feedId": "e722560a66e4ab00522ef20a38fa2ba5d1b41f1c5404723ed895d202a7af7cc4",
     "symbol": "Equity.US.TSM/USD",
     "description": "TAIWAN SEMICONDUCTOR MANUFACTURING CO LIMITED / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10494,7 +10494,7 @@
     "feedId": "c86a1f20cd7d5d07932baea30bcd8e479b775c4f51f82526bf1de6dc79fa3f76",
     "symbol": "Equity.US.SNDK/USD",
     "description": "SANDISK CORP",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10508,7 +10508,7 @@
     "feedId": "6540ed0004047d446b252bc49bff9e23e667c5c7d0437ad0db8e120e7b19c311",
     "symbol": "Equity.US.BTGO/USD",
     "description": "BITGO HOLDINGS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10522,7 +10522,7 @@
     "feedId": "c22a2dd9ebde1ca2658926fc2579e9e4086c14cb63c789337c86295f09e68de5",
     "symbol": "Equity.US.URA/USD",
     "description": "GLOBAL X URANIUM ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10536,7 +10536,7 @@
     "feedId": "c706cce81639eed699bf23a427ea8742ac6e7cc775b2a8a8e70cba8a49393e42",
     "symbol": "Equity.US.XOP/USD",
     "description": "SPDR S&P OIL & GAS EXPLORATION & PRODUCTION ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10550,7 +10550,7 @@
     "feedId": "46417522a59b245c5af35c33c13426d991b36514c4c85aaefe1cf787e7daad90",
     "symbol": "Equity.US.RIOT/USD",
     "description": "RIOT PLATFORMS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10564,7 +10564,7 @@
     "feedId": "feeb371f721e75853604c47104967f0ab3fa92b988837013f5004f749a8a0599",
     "symbol": "Equity.US.PALL/USD",
     "description": "ABERDEEN PHYSICAL PALLADIUM SHARES ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10578,7 +10578,7 @@
     "feedId": "1bf5216f1a4ec4beb87e22110dbca2a62825bb1216d24a17e913164e4f8ec602",
     "symbol": "Equity.US.USAR/USD",
     "description": "USA RARE EARTH INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10592,7 +10592,7 @@
     "feedId": "8bf649e08e5a86129c57990556c8eec30e296069b524f4639549282bc5c07bb4",
     "symbol": "Equity.US.XLE/USD",
     "description": "SPDR SELECT SECTOR FUND - ENERGY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10606,7 +10606,7 @@
     "feedId": "0648195b6826d833f3c4eb261c81223a90ceb3a26e86e9b18f6e11f0212cad18",
     "symbol": "Equity.US.VGK/USD",
     "description": "VANGUARD FTSE EUROPEAN ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10625,7 +10625,7 @@
     "feedId": "152244dc24665ca7dd3f257b8f442dc449b6346f48235b7b229268cb770dda2d",
     "symbol": "Equity.US.MU/USD",
     "description": "MICRON TECHNOLOGY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10639,7 +10639,7 @@
     "feedId": "0fc2ad77a9ab75bcbc3ebd7a9ff60facd08c517309e2d684baa979c910a0e43e",
     "symbol": "Equity.US.MARA/USD",
     "description": "MARATHON DIGITAL HOLDINGS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10653,7 +10653,7 @@
     "feedId": "67e031d1723e5c89e4a826d80b2f3b41a91b05ef6122d523b8829a02e0f563aa",
     "symbol": "Equity.US.GLXY/USD",
     "description": "GALAXY DIGITAL / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10667,7 +10667,7 @@
     "feedId": "df82dc88ea742bb42bdb845e5fc3ca4eef2354c67357d338221e8a696891b4ca",
     "symbol": "Equity.US.ADBE/USD",
     "description": "ADOBE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10681,7 +10681,7 @@
     "feedId": "b3a83dbe70b62241b0f916212e097465a1b31085fa30da3342dd35468ca17ca5",
     "symbol": "Equity.US.HD/USD",
     "description": "HOME DEPOT INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10695,7 +10695,7 @@
     "feedId": "54e2e127c93950de5a710100fd1cd387aba1ec8920850efdb05da5fee57d2e32",
     "symbol": "Equity.US.BMNR/USD",
     "description": "BITMINE IMMERSION TECHNOLOGIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10709,7 +10709,7 @@
     "feedId": "244fdf268ed7ecfad2cf84529c46d0fcef7a643428ff4ef8b16e8dbb63e0f2d9",
     "symbol": "Equity.US.TMO/USD",
     "description": "THERMO FISHER SCIENTIFIC INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10723,7 +10723,7 @@
     "feedId": "eff690a187797aa225723345d4612abec0bf0cec1ae62347c0e7b1905d730879",
     "symbol": "Equity.US.IWM/USD",
     "description": "ISHARES RUSSELL 2000 ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10737,7 +10737,7 @@
     "feedId": "ca0bac9d1826b4a222320f58d47ed66bdc95722124578ed50803674ccd99a775",
     "symbol": "Equity.US.IJR/USD",
     "description": "ISHARES CORE S&P SMALL-CAP ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10751,7 +10751,7 @@
     "feedId": "cdea273301806de445b481e91a8dbe292ba23fcff8f7dec2053311555a0656c3",
     "symbol": "Equity.US.STRK/USD",
     "description": "MICROSTRATEGY INCORPORATED / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10765,7 +10765,7 @@
     "feedId": "6f9cd89ef1b7fd39f667101a91ad578b6c6ace4579d5f7f285a4b06aa4504be6",
     "symbol": "Equity.US.GME/USD",
     "description": "GAMESTOP CORP. / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10779,7 +10779,7 @@
     "feedId": "7fb3b27d9039f8ca0a435fe0fdf724a3a5a2309ab62ad07ca775e5ab2100c1be",
     "symbol": "Equity.US.AZN/USD",
     "description": "ASTRAZENECA PLC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10793,7 +10793,7 @@
     "feedId": "3622e381dbca2efd1859253763b1adc63f7f9abb8e76da1aa8e638a57ccde93e",
     "symbol": "Equity.US.AMD/USD",
     "description": "ADVANCED MICRO DEVICES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10807,7 +10807,7 @@
     "feedId": "639db3fe6951d2465bd722768242e68eb0285f279cb4fa97f677ee8f80f1f1c0",
     "symbol": "Equity.US.MA/USD",
     "description": "MASTERCARD INCORPORATED / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10821,7 +10821,7 @@
     "feedId": "4aac40f432e039ab06236eb9bd3c58347f953d8f05b29aaac295b99cc47ee429",
     "symbol": "Equity.US.ABT/USD",
     "description": "ABBOTT LABORATORIES / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10835,7 +10835,7 @@
     "feedId": "725ae6c67201359f9601d6ee8228c821f0abc93fef5cc509acfcee3f7bc2a388",
     "symbol": "Equity.US.DHR/USD",
     "description": "DANAHER CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10849,7 +10849,7 @@
     "feedId": "feff234600320f4d6bb5a01d02570a9725c1e424977f2b823f7231e6857bdae8",
     "symbol": "Equity.US.CRM/USD",
     "description": "SALESFORCE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10863,7 +10863,7 @@
     "feedId": "9146c5c900d9aea9579819cf50d1ae18b54dea58eea3c9a198102e4e458e652b",
     "symbol": "Equity.US.LIN/USD",
     "description": "LINDE PLC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10877,7 +10877,7 @@
     "feedId": "96b1207c795f31283f5e44c527a1db18cacfb68de745a0de326611b0b5af3fc3",
     "symbol": "Equity.US.IEMG/USD",
     "description": "ISHARES CORE MSCI EMERGING MKTS ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10891,7 +10891,7 @@
     "feedId": "baed936d3c6c2e34104e92c6b015b97ce96adc5ab4f04230c1270e1162e7a270",
     "symbol": "Equity.US.CRWD/USD",
     "description": "CROWDSTRIKE HOLDINGS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10905,7 +10905,7 @@
     "feedId": "cfd44471407f4da89d469242546bb56f5c626d5bef9bd8b9327783065b43c3ef",
     "symbol": "Equity.US.IBM/USD",
     "description": "INTERNATIONAL BUSINESS MACHINES CORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10919,7 +10919,7 @@
     "feedId": "327ae981719058e6fb44e132fb4adbf1bd5978b43db0661bfdaefd9bea0c82dc",
     "symbol": "Equity.US.WMT/USD",
     "description": "WALMART INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10933,7 +10933,7 @@
     "feedId": "7aef4e90557add5289266340ccd1e1aa7a225f1220206b07aaf98e53101ce116",
     "symbol": "Equity.US.MRVL/USD",
     "description": "MARVELL TECHNOLOGY INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10947,7 +10947,7 @@
     "feedId": "21debc1718a4b76ff74dadf801c261d76c46afaafb74d9645b65e00b80f5ee3e",
     "symbol": "Equity.US.BAC/USD",
     "description": "BANK OF AMERICA CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10961,7 +10961,7 @@
     "feedId": "019ae7cb58ee716ebdd1288b057373d60224fc98a9a43ee373c6b0df1f3ffdf5",
     "symbol": "Equity.US.ABBV/USD",
     "description": "ABBVIE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10975,7 +10975,7 @@
     "feedId": "a32f875eb39e23f087ea0db141b00857630c2c5011bfbe53a2a4d186f37cb583",
     "symbol": "Equity.US.PM/USD",
     "description": "PHILIP MORRIS INTERNATIONAL INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -10989,7 +10989,7 @@
     "feedId": "107918baaaafb79cd9df1c8369e44ac21136d95f3ca33f2373b78f24ba1e3e6a",
     "symbol": "Equity.US.HON/USD",
     "description": "HONEYWELL INTERNATIONAL INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11003,7 +11003,7 @@
     "feedId": "c81114e16ec3cbcdf20197ac974aed5a254b941773971260ce09e7caebd6af46",
     "symbol": "Equity.US.MRK/USD",
     "description": "MERCK & CO INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11017,7 +11017,7 @@
     "feedId": "1bd6720eea4df323c076c9bbc1e98e8f5fe4bd16584e56468c5fb6b1a6072725",
     "symbol": "Equity.US.CMCSA/USD",
     "description": "COMCAST CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11031,7 +11031,7 @@
     "feedId": "c719eb7bab9b2bc060167f1d1680eb34a29c490919072513b545b9785b73ee90",
     "symbol": "Equity.US.V/USD",
     "description": "VISA INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11045,7 +11045,7 @@
     "feedId": "be230eddb16aad5ad273a85e581e74eb615ebf67d378f885768d9b047df0c843",
     "symbol": "Equity.US.PEP/USD",
     "description": "PEPSICO INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11059,7 +11059,7 @@
     "feedId": "7f4f157e57bfcccd934c566df536f34933e74338fe241a5425ce561acdab164e",
     "symbol": "Equity.US.JPM/USD",
     "description": "JPMORGAN CHASE & CO / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11073,7 +11073,7 @@
     "feedId": "12848738d5db3aef52f51d78d98fc8b8b8450ffb19fb3aeeb67d38f8c147ff63",
     "symbol": "Equity.US.JNJ/USD",
     "description": "JOHNSON & JOHNSON / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11087,7 +11087,7 @@
     "feedId": "9c68c0c6999765cf6e27adf75ed551b34403126d3b0d5b686a2addb147ed4554",
     "symbol": "Equity.US.GS/USD",
     "description": "GOLDMAN SACHS GROUP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11101,7 +11101,7 @@
     "feedId": "54f128939505878cf4412abc5a533255ce07e85833849170deb67deff0533aa7",
     "symbol": "Equity.US.APP/USD",
     "description": "APPLOVIN CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11115,7 +11115,7 @@
     "feedId": "70dcf5fd56553d0023693e4b590336a8c9bcfd0d98dd9f093b1f697820d98325",
     "symbol": "Equity.US.LLY/USD",
     "description": "ELI LILLY AND COMPANY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11129,7 +11129,7 @@
     "feedId": "9aa471dccea36b90703325225ac76189baf7e0cc286b8843de1de4f31f9caa7d",
     "symbol": "Equity.US.KO/USD",
     "description": "COCA-COLA CO / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11143,7 +11143,7 @@
     "feedId": "ad2fda41998f4e7be99a2a7b27273bd16f183d9adfc014a4f5e5d3d6cd519bf4",
     "symbol": "Equity.US.PG/USD",
     "description": "PROCTER & GAMBLE CO / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11157,7 +11157,7 @@
     "feedId": "05380f8817eb1316c0b35ac19c3caa92c9aa9ea6be1555986c46dce97fed6afd",
     "symbol": "Equity.US.UNH/USD",
     "description": "UNITEDHEALTH GROUP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11171,7 +11171,7 @@
     "feedId": "4a1a12070192e8db9a89ac235bb032342a390dde39389b4ee1ba8e41e7eae5d8",
     "symbol": "Equity.US.XOM/USD",
     "description": "EXXON MOBIL CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11185,7 +11185,7 @@
     "feedId": "0704ad7547b3dfee329266ee53276349d48e4587cb08264a2818288f356efd1d",
     "symbol": "Equity.US.PFE/USD",
     "description": "PFIZER INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11204,7 +11204,7 @@
     "feedId": "8376cfd7ca8bcdf372ced05307b24dced1f15b1afafdeff715664598f15a3dd2",
     "symbol": "Equity.US.NFLX/USD",
     "description": "NETFLIX INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": {
     "feedId": "55d490cd3adfcd28eb51eb6505dc84d9e2f8318bf430e070c5e174adf35043a6",
@@ -11223,7 +11223,7 @@
     "feedId": "d0c9aef79b28308b256db7742a0a9b08aaa5009db67a52ea7fa30ed6853f243b",
     "symbol": "Equity.US.AVGO/USD",
     "description": "BROADCOM INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11237,7 +11237,7 @@
     "feedId": "8dde322496e031d942b9eee8ca769d618cd2e69b18196644369379f5a1e7c23d",
     "symbol": "Equity.US.NVO/USD",
     "description": "NOVO NORDISK AS / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11265,7 +11265,7 @@
     "feedId": "d3178156b7c0f6ce10d6da7d347952a672467b51708baaf1a57ffe1fb005824a",
     "symbol": "Equity.US.MCD/USD",
     "description": "MCDONALD'S CORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": {
     "feedId": "9da35621c6b18f310a83e9ac6cefa12d72208612b444acf68ba706416dcb47a8",
@@ -11284,7 +11284,7 @@
     "feedId": "11a70634863ddffb71f2b11f2cff29f73f3db8f6d0b78c49f2b5f4ad36e885f0",
     "symbol": "Equity.US.PLTR/USD",
     "description": "PALANTIR TECHNOLOGIES INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11303,7 +11303,7 @@
     "feedId": "27c7bbc9755d847f7fc63620c2edcc6a91d2c0c67a28c7999907b59c505b3c17",
     "symbol": "Equity.US.STRC/USD",
     "description": "STRATEGY INC VARIABLE RATE SERIES A PERPETUAL STRETCH PREFERRED STOCK / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": {
     "feedId": "a8b410b2a5f5f49a9da69a1e3a99d9c71ca6807d08cc4a6711f8fc6dd7d06202",
@@ -11322,7 +11322,7 @@
     "feedId": "e47ff732eaeb6b4163902bdee61572659ddf326511917b1423bae93fcdf3153c",
     "symbol": "Equity.US.ORCL/USD",
     "description": "ORACLE CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11345,7 +11345,7 @@
     "feedId": "f464e36fd4ef2f1c3dc30801a9ab470dcdaaa0af14dd3cf6ae17a7fca9e051c5",
     "symbol": "Equity.US.CVX/USD",
     "description": "CHEVRON CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11359,7 +11359,7 @@
     "feedId": "c1751e085ee292b8b3b9dd122a135614485a201c35dfc653553f0e28c1baf3ff",
     "symbol": "Equity.US.INTC/USD",
     "description": "INTEL CORPORATION / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11373,7 +11373,7 @@
     "feedId": "5aa9f82dc2e0f5f8271fd163e980010101517da59f4b72b71c7056a5950b2f9d",
     "symbol": "Equity.US.TQQQ/USD",
     "description": "PROSHARES ULTRAPRO QQQ / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11392,7 +11392,7 @@
     "feedId": "fee33f2a978bf32dd6b662b65ba8083c6773b494f8401194ec1870c640860245",
     "symbol": "Equity.US.COIN/USD",
     "description": "COINBASE GLOBAL INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": {
     "feedId": "b663e208031820ed2ea373346501ceb897f230623439482f0e2a13150af08549",
@@ -11411,7 +11411,7 @@
     "feedId": "3f4b77dd904e849f70e1e812b7811de57202b49bc47c56391275c0f45f2ec481",
     "symbol": "Equity.US.CSCO/USD",
     "description": "CISCO SYSTEMS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11430,7 +11430,7 @@
     "feedId": "5a48c03e9b9cb337801073ed9d166817473697efff0d138874e0f6a33d6d5aa6",
     "symbol": "Equity.US.GOOGL/USD",
     "description": "ALPHABET INC CLASS A / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": {
     "feedId": "d54f066daee8cfbee2ecbefc8faa351c7c38b2c2a7cd8b704af20875974e3c68",
@@ -11454,7 +11454,7 @@
     "feedId": "49f6b65cb1de6b10eaf75e7c03ca029c306d0357e91b5311b175084a5ad55688",
     "symbol": "Equity.US.AAPL/USD",
     "description": "APPLE INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": {
     "feedId": "25babb83691a056fd65f879bfd7197eabd840aae741f69c87ccb31e204a979b2",
@@ -11478,7 +11478,7 @@
     "feedId": "e1e80251e5f5184f2195008382538e847fafc36f751896889dd3d1b1f6111f09",
     "symbol": "Equity.US.MSTR/USD",
     "description": "MICROSTRATEGY INC. - CLASS A / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": {
     "feedId": "342df7ea9b8db28630933d55d0c9c1119525eb5be58d499ecc4e88faf061083a",
@@ -11502,7 +11502,7 @@
     "feedId": "d0ca23c1cc005e004ccf1db5bf76aeb6a49218f43dac3d4b275e92de12ded4d1",
     "symbol": "Equity.US.MSFT/USD",
     "description": "MICROSOFT CORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": {
     "feedId": "fbc60d2549711c0fc72da0c9f6971170d4592c2fbd1e9780dc52464316225acc",
@@ -11521,7 +11521,7 @@
     "feedId": "b167b163565d841b1477cb942bf3b2d28214f3eedf343de7536d6e5b6250d45b",
     "symbol": "Equity.US.VT/USD",
     "description": "VANGUARD TOTAL WORLD STOCK INDEX ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11535,7 +11535,7 @@
     "feedId": "26c67e91769aeba33a09469c705a1863794014dac416e4270661f489309ae862",
     "symbol": "Equity.US.VTI/USD",
     "description": "VANGUARD TOTAL STOCK MKT ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11549,7 +11549,7 @@
     "feedId": "6fc08c9963d266069cbd9780d98383dabf2668322a5bef0b9491e11d67e5d7e7",
     "symbol": "Equity.US.SLV/USD",
     "description": "ISHARES SILVER TRUST",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11568,7 +11568,7 @@
     "feedId": "306736a4035846ba15a3496eed57225b64cc19230a50d14f3ed20fd7219b7849",
     "symbol": "Equity.US.HOOD/USD",
     "description": "ROBINHOOD MARKETS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": {
     "feedId": "d88c382daa11f3a377796bc3f9318e7fbffd69c5bbceb5e58548670a7ad23e7f",
@@ -11592,7 +11592,7 @@
     "feedId": "78a3e3b8e676a8f73c439f5d749737034b139bbbe899ba5775216fba596607fe",
     "symbol": "Equity.US.META/USD",
     "description": "META PLATFORMS INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": {
     "feedId": "dfeda47e0d3ed1db00062c9ae8b82f5d0d9699f772e7fee1bfd4e9b1dd168574",
@@ -11616,7 +11616,7 @@
     "feedId": "e190f467043db04548200354889dfe0d9d314c08b8d4e62fabf4d5a3140fecca",
     "symbol": "Equity.US.GLD/USD",
     "description": "SPDR GOLD SHARES ETF / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
@@ -11635,7 +11635,7 @@
     "feedId": "9695e2b96ea7b3859da9ed25b7a46a920a776e2fdae19a7bcfdf2b219230452d",
     "symbol": "Equity.US.QQQ/USD",
     "description": "INVESCO QQQ TRUST SERIES 1 / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": {
     "feedId": "5fe0ad9fd9bd888bbdfb609dbe8a6233248fa3dee25755f986f473c43938c7ca",
@@ -11659,7 +11659,7 @@
     "feedId": "92b8527aabe59ea2b12230f7b532769b133ffb118dfbd48ff676f14b273f1365",
     "symbol": "Equity.US.CRCL/USD",
     "description": "CIRCLE INTERNET GROUP INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": {
     "feedId": "381f301f3aabddfa8605be298e704bf7c40738a5f7aeb07dd0b023f993ce7638",
@@ -11683,7 +11683,7 @@
     "feedId": "b5d0e0fa58a1f8b81498ae670ce93c872d14434b72c364885d4fa1b257cbb07a",
     "symbol": "Equity.US.AMZN/USD",
     "description": "AMAZON.COM, INC. / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": {
     "feedId": "0ed9040c3fcdadf6ab2f1815f6b252e4c1ca5fd55108390f4acd52a7efac13dd",
@@ -11707,7 +11707,7 @@
     "feedId": "19e09bb805456ada3979a7d1cbb4b6d63babc3a0f8e8a9509f68afa5c4c11cd5",
     "symbol": "Equity.US.SPY/USD",
     "description": "SPY / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": {
     "feedId": "9e916cc00d292da2367646ffd6537d6b8d0c3f15e2d5891ac44aed31291811a9",
@@ -11731,7 +11731,7 @@
     "feedId": "b1073854ed24cbc755dc527418f52b7d271f6cc967bbf8d8129112b18860a593",
     "symbol": "Equity.US.NVDA/USD",
     "description": "NVIDIA CORP / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": {
     "feedId": "b675c4e9f46d94afa9174a7df09966b77a2950970bb50a77ec8ad4fcfd8266f4",
@@ -11755,7 +11755,7 @@
     "feedId": "16dad506d7db8da01c87581c87ca897a012a153557d4d578c3b9c9e1bc0632f1",
     "symbol": "Equity.US.TSLA/USD",
     "description": "TESLA INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": {
     "feedId": "997362625415627e9e3177f6c0d32f200d4a221ccadb3dddab80d6079d03ea24",
@@ -11774,7 +11774,7 @@
     "feedId": "ff62267568a8f48ec7b1805eb989a8c96da713b335caf20275def485da7984c9",
     "symbol": "Equity.US.BTBT/USD",
     "description": "BIT DIGITAL INC / US DOLLAR",
-    "marketOpen": false
+    "marketOpen": true
    },
    "redemptionRate": null
   },
