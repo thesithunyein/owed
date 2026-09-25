@@ -5,10 +5,15 @@
   </picture>
 </p>
 
-# Owed - corporate-actions risk for tokenized equities on Solana
+<h1 align="center">Owed</h1>
+
+<p align="center">
+  Corporate-actions risk for tokenized equities on Solana.
+</p>
 
 <p align="center">
   <a href="https://owed.sithunyein.com">Live app</a> ·
+  <a href="https://youtu.be/kjw0M-7p0D4">Demo video</a> ·
   <a href="https://owed.sithunyein.com/feed/owed-risk.json">Risk feed</a> ·
   <a href="https://owed.sithunyein.com/board.html">Risk board</a> ·
   <a href="https://github.com/thesithunyein/owed/actions/workflows/ci.yml">CI</a> ·
@@ -23,7 +28,7 @@
   <img alt="mints scanned" src="https://img.shields.io/badge/mints%20scanned-925%20xStocks%20%2B%208%20PreStocks-2563eb?style=flat-square" />
   <img alt="license" src="https://img.shields.io/badge/license-MIT-6b7280?style=flat-square" />
   <img alt="keeper deps" src="https://img.shields.io/badge/keeper%20runtime%20deps-0-059669?style=flat-square" />
-  <a href="SECURITY.md"><img alt="audits" src="https://img.shields.io/badge/audited-no%20-%20devnet%20only-d97706?style=flat-square" /></a>
+  <a href="SECURITY.md"><img alt="audits" src="https://img.shields.io/badge/audited-no%20--%20devnet%20only-d97706?style=flat-square" /></a>
 </p>
 
 <p align="center">
