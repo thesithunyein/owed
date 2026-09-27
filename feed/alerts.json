@@ -1,8 +1,8 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-09-26T20:15:51.000Z",
-  "clock": 1790453751,
+  "generatedAt": "2026-09-27T02:04:15.000Z",
+  "clock": 1790474655,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 389,
@@ -14,7 +14,7 @@
   "mostRecent": {
     "symbol": "KDPx",
     "issuer": "xstocks",
-    "daysAgo": 0.8235069444444445,
+    "daysAgo": 1.0654513888888888,
     "stored": 1,
     "effective": 1.005039123631,
     "gapPct": 0.5039123630999898
