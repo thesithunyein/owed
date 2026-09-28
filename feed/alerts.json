@@ -1,26 +1,56 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-09-28T12:07:48.000Z",
-  "clock": 1790597268,
+  "generatedAt": "2026-09-28T22:40:52.000Z",
+  "clock": 1790635252,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
-    "current": 389,
+    "current": 388,
     "total": 933,
     "becameOutOfDate": 0,
-    "activationImminent": 0
+    "activationImminent": 1
   },
-  "nextActivation": null,
+  "nextActivation": {
+    "symbol": "SATAx",
+    "stored": 1.0502085324974586,
+    "next": 1.050750385914718,
+    "activatesAt": 1790641800,
+    "secondsUntil": 6548
+  },
   "mostRecent": {
     "symbol": "KDPx",
     "issuer": "xstocks",
-    "daysAgo": 2.484583333333333,
+    "daysAgo": 2.924212962962963,
     "stored": 1,
     "effective": 1.005039123631,
     "gapPct": 0.5039123630999898
   },
-  "events": [],
+  "events": [
+    {
+      "kind": "activation-imminent",
+      "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
+      "symbol": "SATAx",
+      "issuer": "xstocks",
+      "stored": 1.0502085324974586,
+      "effective": 1.050750385914718,
+      "activatesAt": 1790641800,
+      "secondsUntil": 6548,
+      "message": "SATAx: a stock split takes effect in 2h. Apps showing 1.0502x today will be wrong from that moment, when the blockchain moves to 1.0508x."
+    }
+  ],
   "history": [
+    {
+      "at": "2026-09-28T22:40:52.000Z",
+      "kind": "activation-imminent",
+      "symbol": "SATAx",
+      "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
+      "stored": 1.0502085324974586,
+      "effective": 1.050750385914718,
+      "gapPct": null,
+      "activatesAt": 1790641800,
+      "secondsUntil": 6548,
+      "message": "SATAx: a stock split takes effect in 2h. Apps showing 1.0502x today will be wrong from that moment, when the blockchain moves to 1.0508x."
+    },
     {
       "at": "2026-09-26T02:11:32.000Z",
       "kind": "became-stale",
@@ -248,18 +278,6 @@
       "activatesAt": 1790296200,
       "secondsUntil": 13147,
       "message": "MDTx: a stock split takes effect in 4h. Apps showing 1.0294x today will be wrong from that moment, when the blockchain moves to 1.0357x."
-    },
-    {
-      "at": "2026-09-24T20:50:53.000Z",
-      "kind": "activation-imminent",
-      "symbol": "ELSx",
-      "mint": "XsMPKfVuLeJ4mSahPcSgVGHEVGt41QU41CfgfvRzvBG",
-      "stored": 1,
-      "effective": 1.006376994123,
-      "gapPct": null,
-      "activatesAt": 1790296200,
-      "secondsUntil": 13147,
-      "message": "ELSx: a stock split takes effect in 4h. Apps showing 1x today will be wrong from that moment, when the blockchain moves to 1.0064x."
     }
   ]
 }
