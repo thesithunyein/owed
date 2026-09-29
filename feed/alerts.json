@@ -1,37 +1,25 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-09-29T02:55:29.000Z",
-  "clock": 1790650529,
+  "generatedAt": "2026-09-29T11:40:02.000Z",
+  "clock": 1790682002,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 389,
     "total": 933,
-    "becameOutOfDate": 1,
+    "becameOutOfDate": 0,
     "activationImminent": 0
   },
   "nextActivation": null,
   "mostRecent": {
     "symbol": "SATAx",
     "issuer": "xstocks",
-    "daysAgo": 0.10103009259259259,
+    "daysAgo": 0.4653009259259259,
     "stored": 1.0502085324974586,
     "effective": 1.050750385914718,
     "gapPct": 0.05159484049999108
   },
-  "events": [
-    {
-      "kind": "became-stale",
-      "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
-      "symbol": "SATAx",
-      "issuer": "xstocks",
-      "stored": 1.0502085324974586,
-      "effective": 1.050750385914718,
-      "gapPct": 0.05159484049999108,
-      "daysStale": 0.10103009259259259,
-      "message": "SATAx: most apps show 1.0502x and the blockchain uses 1.0508x."
-    }
-  ],
+  "events": [],
   "history": [
     {
       "at": "2026-09-29T02:55:29.000Z",
