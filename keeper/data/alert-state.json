@@ -1,5 +1,5 @@
 {
- "clock": 1790682002,
+ "clock": 1790701591,
  "mints": [
   {
    "mint": "Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme",
@@ -1778,14 +1778,6 @@
    "effectiveTimestamp": 1788222600
   },
   {
-   "mint": "Xs8rb8QG9mEuQ41g2cUzuJLZt3xEPQFhvgb9s4obXSn",
-   "symbol": "FAAAx",
-   "stale": true,
-   "stored": 1.0069245220314107,
-   "next": 1.009604175864922,
-   "effectiveTimestamp": 1788136200
-  },
-  {
    "mint": "XsqFzD9CqfpnmTiFH631bcvQcDReVTMFZMSjk5aXQZL",
    "symbol": "XYLx",
    "stale": true,
@@ -1896,6 +1888,14 @@
    "stored": 1.0068751347045037,
    "next": 1.009318667481834,
    "effectiveTimestamp": 1783643400
+  },
+  {
+   "mint": "Xs8rb8QG9mEuQ41g2cUzuJLZt3xEPQFhvgb9s4obXSn",
+   "symbol": "FAAAx",
+   "stale": true,
+   "stored": 1.009604175864922,
+   "next": 1.0120440526232621,
+   "effectiveTimestamp": 1790699400
   },
   {
    "mint": "Xsxd1sqLaPsmmmYTZHr2GnNufXXiH5rZcahP99TyeDr",
