@@ -1,5 +1,5 @@
 {
- "clock": 1790787881,
+ "clock": 1790804095,
  "mints": [
   {
    "mint": "Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme",
@@ -1850,14 +1850,6 @@
    "effectiveTimestamp": 1789432200
   },
   {
-   "mint": "XsEYQJtVa51Ww3y28jV1FwheMgmDj8BpxYiCPThcLWW",
-   "symbol": "JAAAx",
-   "stale": true,
-   "stored": 1.008294917627727,
-   "next": 1.0111858841100714,
-   "effectiveTimestamp": 1788136200
-  },
-  {
    "mint": "XsFvsyP8i3Qpat1BK78Yjq3PsTNhD3SV5FHryJrWbHs",
    "symbol": "RGAx",
    "stale": true,
@@ -3300,10 +3292,66 @@
   {
    "mint": "XsLR2VCGNzYVLfJGEwwNZsRYDZBGyBnoQH5rPGvwodA",
    "symbol": "PWRx",
-   "stale": true,
-   "stored": 1.000137470542,
-   "next": 1.0002444237463104,
-   "effectiveTimestamp": 1782865800
+   "stale": false,
+   "stored": 1.0002444237463104,
+   "next": 1.0003642955316614,
+   "effectiveTimestamp": 1790814600
+  },
+  {
+   "mint": "XsgQwodongKCYRux621fuQzxQRv3fyXQKyPzc2CJ7Ys",
+   "symbol": "RJFx",
+   "stale": false,
+   "stored": 1,
+   "next": 1.002392102266,
+   "effectiveTimestamp": 1790814600
+  },
+  {
+   "mint": "XsrstNGy7STAR22txNru2ahbEwdBadFJwYRCBNEQYBS",
+   "symbol": "CAHx",
+   "stale": false,
+   "stored": 1,
+   "next": 1.001622741573,
+   "effectiveTimestamp": 1790814600
+  },
+  {
+   "mint": "Xs6QWdM8Lgdf3gUfmhZfZDu8DKcoMyxjgyU46R28RUR",
+   "symbol": "STTx",
+   "stale": false,
+   "stored": 1,
+   "next": 1.003688641961,
+   "effectiveTimestamp": 1790814600
+  },
+  {
+   "mint": "XsdeDQyocwoXYq4rvm3eAxN4uDUqww78i9nKLABhp6h",
+   "symbol": "APDx",
+   "stale": false,
+   "stored": 1,
+   "next": 1.004553786436,
+   "effectiveTimestamp": 1790814600
+  },
+  {
+   "mint": "Xso2JLSTXQjpDXw1r7ZxbC2JCbB6iLGw65kUzQvgTwH",
+   "symbol": "MRSHx",
+   "stale": false,
+   "stored": 1,
+   "next": 1.00405904059,
+   "effectiveTimestamp": 1790814600
+  },
+  {
+   "mint": "XsGDHfnSNxofQ2qXzcty9r4HB5HFszUCrQhjN7mbEcw",
+   "symbol": "PGRx",
+   "stale": false,
+   "stored": 1,
+   "next": 1.000337658579,
+   "effectiveTimestamp": 1790814600
+  },
+  {
+   "mint": "XsEYQJtVa51Ww3y28jV1FwheMgmDj8BpxYiCPThcLWW",
+   "symbol": "JAAAx",
+   "stale": false,
+   "stored": 1.0111858841100714,
+   "next": 1.0140041736956642,
+   "effectiveTimestamp": 1790812500
   },
   {
    "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
