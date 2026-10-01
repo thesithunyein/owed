@@ -1,5 +1,5 @@
 {
- "scannedAt": "2026-10-01T11:54:52.000Z",
+ "scannedAt": "2026-10-01T17:35:01.000Z",
  "rpc": "https://api.mainnet-beta.solana.com",
  "totalOfficial": 925,
  "totalRead": 925,
@@ -2341,7 +2341,7 @@
    "symbol": "OWLx",
    "mint": "Xsnb4PjGtFsvTyp7HJNWfJLEbK6MoSZV8o7xMo3PuBn",
    "decimals": 8,
-   "supply": "41831471243741",
+   "supply": "53201567889562",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",
@@ -3194,9 +3194,9 @@
    "supply": "5199181111516",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
-    "multiplier": "1.0104210925243085",
-    "newMultiplier": "1.012578295897736",
-    "newMultiplierEffectiveTimestamp": 1788309000
+    "multiplier": "1.012578295897736",
+    "newMultiplier": "1.0146941993380223",
+    "newMultiplierEffectiveTimestamp": 1790870400
    },
    "security": {
     "permanentDelegate": {
@@ -3566,7 +3566,7 @@
    "symbol": "DFDVx",
    "mint": "Xs2yquAgsHByNzx68WJC55WHjHBvG9JsMB7CWjTLyPy",
    "decimals": 8,
-   "supply": "198317350764844",
+   "supply": "198317344814632",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",
@@ -3741,7 +3741,7 @@
    "symbol": "AMATx",
    "mint": "XsQZdaWUAGC4R3fgD2N1fupKvJfJq6YM51ccnsLUWFA",
    "decimals": 8,
-   "supply": "1499999984914",
+   "supply": "1499999977490",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.000869157784",
@@ -14441,7 +14441,7 @@
    "symbol": "FTAIx",
    "mint": "XsX857TxHhoS3CbRt58me2xx8zcAn6n5kMJScZKrHJa",
    "decimals": 8,
-   "supply": "2230483271375",
+   "supply": "3442238726524",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",
@@ -16516,7 +16516,7 @@
    "symbol": "CTVAx",
    "mint": "XsJXYLby91CWhGhTXds9oxjoc8EdsLy2iuxmq55U1Y3",
    "decimals": 8,
-   "supply": "11298601128044",
+   "supply": "18384527960415",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",
@@ -19891,7 +19891,7 @@
    "symbol": "SPCXx",
    "mint": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
    "decimals": 8,
-   "supply": "55998298541557",
+   "supply": "55998273025834",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",
@@ -20019,9 +20019,9 @@
    "supply": "52012312494580",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
-    "multiplier": "1.0131896217148004",
-    "newMultiplier": "1.0171047698353655",
-    "newMultiplierEffectiveTimestamp": 1788309000
+    "multiplier": "1.0171047698353655",
+    "newMultiplier": "1.0215145819549059",
+    "newMultiplierEffectiveTimestamp": 1790870400
    },
    "security": {
     "permanentDelegate": {
@@ -20241,7 +20241,7 @@
    "symbol": "VIDAx",
    "mint": "XsfCC9VL4DamVGNgdJpfLXB3sBVa158Gbx8sh7NzmTk",
    "decimals": 8,
-   "supply": "433157709862097",
+   "supply": "433157709408085",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",
@@ -20394,9 +20394,9 @@
    "supply": "23880011880011",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
-    "multiplier": "1.0070636829957968",
-    "newMultiplier": "1.0094580396692463",
-    "newMultiplierEffectiveTimestamp": 1788309000
+    "multiplier": "1.0094580396692463",
+    "newMultiplier": "1.011907854245923",
+    "newMultiplierEffectiveTimestamp": 1790870400
    },
    "security": {
     "permanentDelegate": {
@@ -20916,7 +20916,7 @@
    "symbol": "UBERx",
    "mint": "XsAsZLF4MmsvS1sDxRMrUz7REjHfwbC9UAMXSRBqgEB",
    "decimals": 8,
-   "supply": "19399999545907",
+   "supply": "19399999543531",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",
@@ -21591,7 +21591,7 @@
    "symbol": "GMEx",
    "mint": "Xsf9mBktVB9BSU5kf4nHxPq5hCBJ2j2ui3ecFGxPRGc",
    "decimals": 8,
-   "supply": "71986607071882",
+   "supply": "71986599439113",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",
@@ -21641,7 +21641,7 @@
    "symbol": "AMDx",
    "mint": "XsXcJ6GZ9kVnjqGsjBnktRcuwMBmvKWh8S93RefZ1rF",
    "decimals": 8,
-   "supply": "7148082363678",
+   "supply": "7148082282645",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",
@@ -21841,7 +21841,7 @@
    "symbol": "IBMx",
    "mint": "XspwhyYPdWVM8XBHZnpS9hgyag9MKjLRyE3tVfmCbSr",
    "decimals": 8,
-   "supply": "5442776641823",
+   "supply": "5442776634518",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.015340763856885",
@@ -21866,7 +21866,7 @@
    "symbol": "WMTx",
    "mint": "Xs151QeqTCiuKtinzfRATnUESM2xTU6V9Wy8Vy538ci",
    "decimals": 8,
-   "supply": "13294788794461",
+   "supply": "13294788669148",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.0055069408636728",
@@ -22116,7 +22116,7 @@
    "symbol": "JPMx",
    "mint": "XsMAqkcKsUewDrzVkait4e5u4y8REgtyS7jWgCpLV2C",
    "decimals": 8,
-   "supply": "4897713903183",
+   "supply": "4897713843019",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.0107444463984723",
@@ -22141,7 +22141,7 @@
    "symbol": "JNJx",
    "mint": "XsGVi5eo1Dh2zUpic4qACcjuWGjNv8GCt3dm5XcX6Dn",
    "decimals": 8,
-   "supply": "7160318735490",
+   "supply": "7160318735489",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.0160617811948927",
@@ -22216,7 +22216,7 @@
    "symbol": "LLYx",
    "mint": "Xsnuv4omNoHozR6EEW5mXkw8Nrny5rB3jVfLqi6gKMH",
    "decimals": 8,
-   "supply": "1477995309997",
+   "supply": "1477995309122",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.0042886247952578",
@@ -22241,7 +22241,7 @@
    "symbol": "KOx",
    "mint": "XsaBXg8dU5cPM6ehmVctMkVqoiRG2ZjMo1cyBJ3AykQ",
    "decimals": 8,
-   "supply": "21122287280860",
+   "supply": "21122287280855",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.0183317967386898",
@@ -22291,7 +22291,7 @@
    "symbol": "UNHx",
    "mint": "XszvaiXGPwvk2nwb3o9C1CX4K6zH8sez11E6uyup6fe",
    "decimals": 8,
-   "supply": "4939094734169",
+   "supply": "4939094640365",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.0229655423325776",
@@ -22316,7 +22316,7 @@
    "symbol": "XOMx",
    "mint": "XsaHND8sHyfMfsWPj6kSdd5VwvCayZvjYgKmmcNL5qh",
    "decimals": 8,
-   "supply": "11974777422029",
+   "supply": "11974777328189",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.0130866005227463",
@@ -22341,7 +22341,7 @@
    "symbol": "PFEx",
    "mint": "XsAtbqkAP1HJxy7hFDeq7ok6yM43DQ9mQ1Rh861X8rw",
    "decimals": 8,
-   "supply": "60970389420258",
+   "supply": "60970389310678",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.0411821501505005",
@@ -22366,7 +22366,7 @@
    "symbol": "NFLXx",
    "mint": "XsEH7wWfJJu2ZT3UCFeVfALnVA6CP5ur7Ee11KmzVpL",
    "decimals": 8,
-   "supply": "15505684668736",
+   "supply": "15505684609113",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",
@@ -22391,7 +22391,7 @@
    "symbol": "AVGOx",
    "mint": "XsgSaSvNSqLTtFuyWPBhK9196Xb9Bbdyjj4fH3cPJGo",
    "decimals": 8,
-   "supply": "4558098375743",
+   "supply": "4558098241476",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.0048837684862768",
@@ -22441,7 +22441,7 @@
    "symbol": "BRK.Bx",
    "mint": "Xs6B6zawENwAbWVi7w92rjazLuAr5Az59qgWKcNb45x",
    "decimals": 8,
-   "supply": "3223566238700",
+   "supply": "3223566142842",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",
@@ -22466,7 +22466,7 @@
    "symbol": "MCDx",
    "mint": "XsqE9cRRpzxcGKDXj1BJ7Xmg4GRhZoyY1KpmGSxAWT2",
    "decimals": 8,
-   "supply": "5463870119672",
+   "supply": "5463861765414",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.0161604345481776",
@@ -22491,7 +22491,7 @@
    "symbol": "PLTRx",
    "mint": "XsoBhf2ufR8fTyNSjqfU71DYGaE6Z3SUGAidpzriAA4",
    "decimals": 8,
-   "supply": "14686894966715",
+   "supply": "14686893459721",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",
@@ -22516,7 +22516,7 @@
    "symbol": "STRCx",
    "mint": "Xs78JED6PFZxWc2wCEPspZW9kL3Se5J7L5TChKgsidH",
    "decimals": 8,
-   "supply": "46991937948976",
+   "supply": "46991937944528",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.0863570205637327",
@@ -22541,7 +22541,7 @@
    "symbol": "ORCLx",
    "mint": "XsjFwUPiLofddX5cWFHW35GCbXcSu1BCUGfxoQAQjeL",
    "decimals": 8,
-   "supply": "9046594090728",
+   "supply": "9046594052408",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.0068751347045037",
@@ -22666,7 +22666,7 @@
    "symbol": "COINx",
    "mint": "Xs7ZdzSHLU9ftNJsii5fCeJhoRWSC32SQGzGQtePxNu",
    "decimals": 8,
-   "supply": "13617776191976",
+   "supply": "13617775968094",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",
@@ -22716,7 +22716,7 @@
    "symbol": "GOOGLx",
    "mint": "XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN",
    "decimals": 8,
-   "supply": "16040580931485",
+   "supply": "16040573523452",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.001926722393864",
@@ -22741,7 +22741,7 @@
    "symbol": "AAPLx",
    "mint": "XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp",
    "decimals": 8,
-   "supply": "15376254638050",
+   "supply": "15376253781227",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.0026642075893797",
@@ -22766,7 +22766,7 @@
    "symbol": "MSTRx",
    "mint": "XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ",
    "decimals": 8,
-   "supply": "48631568494087",
+   "supply": "48631568494079",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",
@@ -22791,7 +22791,7 @@
    "symbol": "MSFTx",
    "mint": "XspzcW1PRtgf6Wj92HCiZdjzKCyFekVD8P5Ueh3dRMX",
    "decimals": 8,
-   "supply": "10497008007951",
+   "supply": "10497006079028",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.0045820905025638",
@@ -22866,7 +22866,7 @@
    "symbol": "SLVx",
    "mint": "XsxAd6okt8y1RRK6gNg7iJaqiWNiq5Md5EDf3ZrF2dm",
    "decimals": 8,
-   "supply": "16355556600835",
+   "supply": "16355556589315",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",
@@ -22891,7 +22891,7 @@
    "symbol": "HOODx",
    "mint": "XsvNBAYkrDRNhA7wPHQfX3ZUXZyZLdnCQDfHZ56bzpg",
    "decimals": 8,
-   "supply": "59738854346572",
+   "supply": "59738854346556",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",
@@ -22916,7 +22916,7 @@
    "symbol": "METAx",
    "mint": "Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu",
    "decimals": 8,
-   "supply": "7237698099976",
+   "supply": "7237697231501",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.002298265651938",
@@ -22941,7 +22941,7 @@
    "symbol": "GLDx",
    "mint": "Xsv9hRk1z5ystj9MhnA7Lq4vjSsLwzL2nxrwmwtD3re",
    "decimals": 8,
-   "supply": "11626684649894",
+   "supply": "11626684404934",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",
@@ -22966,7 +22966,7 @@
    "symbol": "QQQx",
    "mint": "Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ",
    "decimals": 8,
-   "supply": "8436012529829",
+   "supply": "8436010972146",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.0027250296551051",
@@ -22991,7 +22991,7 @@
    "symbol": "CRCLx",
    "mint": "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1",
    "decimals": 8,
-   "supply": "82107760705993",
+   "supply": "82107760510895",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",
@@ -23016,7 +23016,7 @@
    "symbol": "AMZNx",
    "mint": "Xs3eBt7uRfJX8QUs4suhyU8p2M6DoUDrJyWBa8LLZsg",
    "decimals": 8,
-   "supply": "17229466589080",
+   "supply": "17229466373918",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",
@@ -23041,7 +23041,7 @@
    "symbol": "SPYx",
    "mint": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
    "decimals": 8,
-   "supply": "9523091815869",
+   "supply": "9523091394182",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.003909240011759",
@@ -23066,7 +23066,7 @@
    "symbol": "NVDAx",
    "mint": "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh",
    "decimals": 8,
-   "supply": "32126888246627",
+   "supply": "32126868659276",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1.0009180758490996",
@@ -23091,7 +23091,7 @@
    "symbol": "TSLAx",
    "mint": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB",
    "decimals": 8,
-   "supply": "22963619770540",
+   "supply": "22963619081887",
    "scaledState": {
     "authority": "S7vYFFWH6BjJyEsdrPQpqpYTqLTrPRK6KW3VwsJuRaS",
     "multiplier": "1",

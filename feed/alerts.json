@@ -1,8 +1,8 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-10-01T11:54:56.000Z",
-  "clock": 1790855696,
+  "generatedAt": "2026-10-01T17:35:05.000Z",
+  "clock": 1790876105,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 421,
@@ -12,12 +12,12 @@
   },
   "nextActivation": null,
   "mostRecent": {
-    "symbol": "APDx",
+    "symbol": "FLBLx",
     "issuer": "xstocks",
-    "daysAgo": 0.47564814814814815,
-    "stored": 1,
-    "effective": 1.004553786436,
-    "gapPct": 0.4553786435999907
+    "daysAgo": 0.0660300925925926,
+    "stored": 1.0171047698353655,
+    "effective": 1.0215145819549059,
+    "gapPct": 0.43356517935257965
   },
   "events": [],
   "history": [
