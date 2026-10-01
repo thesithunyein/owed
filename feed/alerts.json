@@ -1,114 +1,25 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-10-01T02:40:36.000Z",
-  "clock": 1790822436,
+  "generatedAt": "2026-10-01T11:54:56.000Z",
+  "clock": 1790855696,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 421,
     "total": 933,
-    "becameOutOfDate": 8,
+    "becameOutOfDate": 0,
     "activationImminent": 0
   },
   "nextActivation": null,
   "mostRecent": {
     "symbol": "APDx",
     "issuer": "xstocks",
-    "daysAgo": 0.09069444444444444,
+    "daysAgo": 0.47564814814814815,
     "stored": 1,
     "effective": 1.004553786436,
     "gapPct": 0.4553786435999907
   },
-  "events": [
-    {
-      "kind": "became-stale",
-      "mint": "XsdeDQyocwoXYq4rvm3eAxN4uDUqww78i9nKLABhp6h",
-      "symbol": "APDx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.004553786436,
-      "gapPct": 0.4553786435999907,
-      "daysStale": 0.09069444444444444,
-      "message": "APDx: most apps show 1x and the blockchain uses 1.0046x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "Xso2JLSTXQjpDXw1r7ZxbC2JCbB6iLGw65kUzQvgTwH",
-      "symbol": "MRSHx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.00405904059,
-      "gapPct": 0.40590405900000626,
-      "daysStale": 0.09069444444444444,
-      "message": "MRSHx: most apps show 1x and the blockchain uses 1.0041x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "Xs6QWdM8Lgdf3gUfmhZfZDu8DKcoMyxjgyU46R28RUR",
-      "symbol": "STTx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.003688641961,
-      "gapPct": 0.368864196100005,
-      "daysStale": 0.09069444444444444,
-      "message": "STTx: most apps show 1x and the blockchain uses 1.0037x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsEYQJtVa51Ww3y28jV1FwheMgmDj8BpxYiCPThcLWW",
-      "symbol": "JAAAx",
-      "issuer": "xstocks",
-      "stored": 1.0111858841100714,
-      "effective": 1.0140041736956642,
-      "gapPct": 0.27871132596686277,
-      "daysStale": 0.115,
-      "message": "JAAAx: most apps show 1.0112x and the blockchain uses 1.014x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsgQwodongKCYRux621fuQzxQRv3fyXQKyPzc2CJ7Ys",
-      "symbol": "RJFx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.002392102266,
-      "gapPct": 0.23921022660000624,
-      "daysStale": 0.09069444444444444,
-      "message": "RJFx: most apps show 1x and the blockchain uses 1.0024x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsrstNGy7STAR22txNru2ahbEwdBadFJwYRCBNEQYBS",
-      "symbol": "CAHx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.001622741573,
-      "gapPct": 0.16227415729999084,
-      "daysStale": 0.09069444444444444,
-      "message": "CAHx: most apps show 1x and the blockchain uses 1.0016x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsGDHfnSNxofQ2qXzcty9r4HB5HFszUCrQhjN7mbEcw",
-      "symbol": "PGRx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.000337658579,
-      "gapPct": 0.033765857900003304,
-      "daysStale": 0.09069444444444444,
-      "message": "PGRx: most apps show 1x and the blockchain uses 1.0003x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsLR2VCGNzYVLfJGEwwNZsRYDZBGyBnoQH5rPGvwodA",
-      "symbol": "PWRx",
-      "issuer": "xstocks",
-      "stored": 1.0002444237463104,
-      "effective": 1.0003642955316614,
-      "gapPct": 0.011984249299978877,
-      "daysStale": 0.09069444444444444,
-      "message": "PWRx: most apps show 1.0002x and the blockchain uses 1.0004x."
-    }
-  ],
+  "events": [],
   "history": [
     {
       "at": "2026-10-01T02:40:36.000Z",
