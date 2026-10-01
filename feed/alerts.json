@@ -1,121 +1,211 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-09-30T21:34:55.000Z",
-  "clock": 1790804095,
+  "generatedAt": "2026-10-01T02:40:36.000Z",
+  "clock": 1790822436,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
-    "current": 413,
+    "current": 421,
     "total": 933,
-    "becameOutOfDate": 0,
-    "activationImminent": 8
+    "becameOutOfDate": 8,
+    "activationImminent": 0
   },
-  "nextActivation": {
-    "symbol": "JAAAx",
-    "stored": 1.0111858841100714,
-    "next": 1.0140041736956642,
-    "activatesAt": 1790812500,
-    "secondsUntil": 8405
-  },
+  "nextActivation": null,
   "mostRecent": {
-    "symbol": "NLYx",
+    "symbol": "APDx",
     "issuer": "xstocks",
-    "daysAgo": 0.8784143518518519,
+    "daysAgo": 0.09069444444444444,
     "stored": 1,
-    "effective": 1.025836614173,
-    "gapPct": 2.5836614172999983
+    "effective": 1.004553786436,
+    "gapPct": 0.4553786435999907
   },
   "events": [
     {
-      "kind": "activation-imminent",
-      "mint": "XsLR2VCGNzYVLfJGEwwNZsRYDZBGyBnoQH5rPGvwodA",
-      "symbol": "PWRx",
-      "issuer": "xstocks",
-      "stored": 1.0002444237463104,
-      "effective": 1.0003642955316614,
-      "activatesAt": 1790814600,
-      "secondsUntil": 10505,
-      "message": "PWRx: a stock split takes effect in 3h. Apps showing 1.0002x today will be wrong from that moment, when the blockchain moves to 1.0004x."
-    },
-    {
-      "kind": "activation-imminent",
-      "mint": "XsgQwodongKCYRux621fuQzxQRv3fyXQKyPzc2CJ7Ys",
-      "symbol": "RJFx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.002392102266,
-      "activatesAt": 1790814600,
-      "secondsUntil": 10505,
-      "message": "RJFx: a stock split takes effect in 3h. Apps showing 1x today will be wrong from that moment, when the blockchain moves to 1.0024x."
-    },
-    {
-      "kind": "activation-imminent",
-      "mint": "XsrstNGy7STAR22txNru2ahbEwdBadFJwYRCBNEQYBS",
-      "symbol": "CAHx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.001622741573,
-      "activatesAt": 1790814600,
-      "secondsUntil": 10505,
-      "message": "CAHx: a stock split takes effect in 3h. Apps showing 1x today will be wrong from that moment, when the blockchain moves to 1.0016x."
-    },
-    {
-      "kind": "activation-imminent",
-      "mint": "Xs6QWdM8Lgdf3gUfmhZfZDu8DKcoMyxjgyU46R28RUR",
-      "symbol": "STTx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.003688641961,
-      "activatesAt": 1790814600,
-      "secondsUntil": 10505,
-      "message": "STTx: a stock split takes effect in 3h. Apps showing 1x today will be wrong from that moment, when the blockchain moves to 1.0037x."
-    },
-    {
-      "kind": "activation-imminent",
+      "kind": "became-stale",
       "mint": "XsdeDQyocwoXYq4rvm3eAxN4uDUqww78i9nKLABhp6h",
       "symbol": "APDx",
       "issuer": "xstocks",
       "stored": 1,
       "effective": 1.004553786436,
-      "activatesAt": 1790814600,
-      "secondsUntil": 10505,
-      "message": "APDx: a stock split takes effect in 3h. Apps showing 1x today will be wrong from that moment, when the blockchain moves to 1.0046x."
+      "gapPct": 0.4553786435999907,
+      "daysStale": 0.09069444444444444,
+      "message": "APDx: most apps show 1x and the blockchain uses 1.0046x."
     },
     {
-      "kind": "activation-imminent",
+      "kind": "became-stale",
       "mint": "Xso2JLSTXQjpDXw1r7ZxbC2JCbB6iLGw65kUzQvgTwH",
       "symbol": "MRSHx",
       "issuer": "xstocks",
       "stored": 1,
       "effective": 1.00405904059,
-      "activatesAt": 1790814600,
-      "secondsUntil": 10505,
-      "message": "MRSHx: a stock split takes effect in 3h. Apps showing 1x today will be wrong from that moment, when the blockchain moves to 1.0041x."
+      "gapPct": 0.40590405900000626,
+      "daysStale": 0.09069444444444444,
+      "message": "MRSHx: most apps show 1x and the blockchain uses 1.0041x."
     },
     {
-      "kind": "activation-imminent",
-      "mint": "XsGDHfnSNxofQ2qXzcty9r4HB5HFszUCrQhjN7mbEcw",
-      "symbol": "PGRx",
+      "kind": "became-stale",
+      "mint": "Xs6QWdM8Lgdf3gUfmhZfZDu8DKcoMyxjgyU46R28RUR",
+      "symbol": "STTx",
       "issuer": "xstocks",
       "stored": 1,
-      "effective": 1.000337658579,
-      "activatesAt": 1790814600,
-      "secondsUntil": 10505,
-      "message": "PGRx: a stock split takes effect in 3h. Apps showing 1x today will be wrong from that moment, when the blockchain moves to 1.0003x."
+      "effective": 1.003688641961,
+      "gapPct": 0.368864196100005,
+      "daysStale": 0.09069444444444444,
+      "message": "STTx: most apps show 1x and the blockchain uses 1.0037x."
     },
     {
-      "kind": "activation-imminent",
+      "kind": "became-stale",
       "mint": "XsEYQJtVa51Ww3y28jV1FwheMgmDj8BpxYiCPThcLWW",
       "symbol": "JAAAx",
       "issuer": "xstocks",
       "stored": 1.0111858841100714,
       "effective": 1.0140041736956642,
-      "activatesAt": 1790812500,
-      "secondsUntil": 8405,
-      "message": "JAAAx: a stock split takes effect in 2h. Apps showing 1.0112x today will be wrong from that moment, when the blockchain moves to 1.014x."
+      "gapPct": 0.27871132596686277,
+      "daysStale": 0.115,
+      "message": "JAAAx: most apps show 1.0112x and the blockchain uses 1.014x."
+    },
+    {
+      "kind": "became-stale",
+      "mint": "XsgQwodongKCYRux621fuQzxQRv3fyXQKyPzc2CJ7Ys",
+      "symbol": "RJFx",
+      "issuer": "xstocks",
+      "stored": 1,
+      "effective": 1.002392102266,
+      "gapPct": 0.23921022660000624,
+      "daysStale": 0.09069444444444444,
+      "message": "RJFx: most apps show 1x and the blockchain uses 1.0024x."
+    },
+    {
+      "kind": "became-stale",
+      "mint": "XsrstNGy7STAR22txNru2ahbEwdBadFJwYRCBNEQYBS",
+      "symbol": "CAHx",
+      "issuer": "xstocks",
+      "stored": 1,
+      "effective": 1.001622741573,
+      "gapPct": 0.16227415729999084,
+      "daysStale": 0.09069444444444444,
+      "message": "CAHx: most apps show 1x and the blockchain uses 1.0016x."
+    },
+    {
+      "kind": "became-stale",
+      "mint": "XsGDHfnSNxofQ2qXzcty9r4HB5HFszUCrQhjN7mbEcw",
+      "symbol": "PGRx",
+      "issuer": "xstocks",
+      "stored": 1,
+      "effective": 1.000337658579,
+      "gapPct": 0.033765857900003304,
+      "daysStale": 0.09069444444444444,
+      "message": "PGRx: most apps show 1x and the blockchain uses 1.0003x."
+    },
+    {
+      "kind": "became-stale",
+      "mint": "XsLR2VCGNzYVLfJGEwwNZsRYDZBGyBnoQH5rPGvwodA",
+      "symbol": "PWRx",
+      "issuer": "xstocks",
+      "stored": 1.0002444237463104,
+      "effective": 1.0003642955316614,
+      "gapPct": 0.011984249299978877,
+      "daysStale": 0.09069444444444444,
+      "message": "PWRx: most apps show 1.0002x and the blockchain uses 1.0004x."
     }
   ],
   "history": [
+    {
+      "at": "2026-10-01T02:40:36.000Z",
+      "kind": "became-stale",
+      "symbol": "APDx",
+      "mint": "XsdeDQyocwoXYq4rvm3eAxN4uDUqww78i9nKLABhp6h",
+      "stored": 1,
+      "effective": 1.004553786436,
+      "gapPct": 0.4553786435999907,
+      "activatesAt": null,
+      "secondsUntil": null,
+      "message": "APDx: most apps show 1x and the blockchain uses 1.0046x."
+    },
+    {
+      "at": "2026-10-01T02:40:36.000Z",
+      "kind": "became-stale",
+      "symbol": "MRSHx",
+      "mint": "Xso2JLSTXQjpDXw1r7ZxbC2JCbB6iLGw65kUzQvgTwH",
+      "stored": 1,
+      "effective": 1.00405904059,
+      "gapPct": 0.40590405900000626,
+      "activatesAt": null,
+      "secondsUntil": null,
+      "message": "MRSHx: most apps show 1x and the blockchain uses 1.0041x."
+    },
+    {
+      "at": "2026-10-01T02:40:36.000Z",
+      "kind": "became-stale",
+      "symbol": "STTx",
+      "mint": "Xs6QWdM8Lgdf3gUfmhZfZDu8DKcoMyxjgyU46R28RUR",
+      "stored": 1,
+      "effective": 1.003688641961,
+      "gapPct": 0.368864196100005,
+      "activatesAt": null,
+      "secondsUntil": null,
+      "message": "STTx: most apps show 1x and the blockchain uses 1.0037x."
+    },
+    {
+      "at": "2026-10-01T02:40:36.000Z",
+      "kind": "became-stale",
+      "symbol": "JAAAx",
+      "mint": "XsEYQJtVa51Ww3y28jV1FwheMgmDj8BpxYiCPThcLWW",
+      "stored": 1.0111858841100714,
+      "effective": 1.0140041736956642,
+      "gapPct": 0.27871132596686277,
+      "activatesAt": null,
+      "secondsUntil": null,
+      "message": "JAAAx: most apps show 1.0112x and the blockchain uses 1.014x."
+    },
+    {
+      "at": "2026-10-01T02:40:36.000Z",
+      "kind": "became-stale",
+      "symbol": "RJFx",
+      "mint": "XsgQwodongKCYRux621fuQzxQRv3fyXQKyPzc2CJ7Ys",
+      "stored": 1,
+      "effective": 1.002392102266,
+      "gapPct": 0.23921022660000624,
+      "activatesAt": null,
+      "secondsUntil": null,
+      "message": "RJFx: most apps show 1x and the blockchain uses 1.0024x."
+    },
+    {
+      "at": "2026-10-01T02:40:36.000Z",
+      "kind": "became-stale",
+      "symbol": "CAHx",
+      "mint": "XsrstNGy7STAR22txNru2ahbEwdBadFJwYRCBNEQYBS",
+      "stored": 1,
+      "effective": 1.001622741573,
+      "gapPct": 0.16227415729999084,
+      "activatesAt": null,
+      "secondsUntil": null,
+      "message": "CAHx: most apps show 1x and the blockchain uses 1.0016x."
+    },
+    {
+      "at": "2026-10-01T02:40:36.000Z",
+      "kind": "became-stale",
+      "symbol": "PGRx",
+      "mint": "XsGDHfnSNxofQ2qXzcty9r4HB5HFszUCrQhjN7mbEcw",
+      "stored": 1,
+      "effective": 1.000337658579,
+      "gapPct": 0.033765857900003304,
+      "activatesAt": null,
+      "secondsUntil": null,
+      "message": "PGRx: most apps show 1x and the blockchain uses 1.0003x."
+    },
+    {
+      "at": "2026-10-01T02:40:36.000Z",
+      "kind": "became-stale",
+      "symbol": "PWRx",
+      "mint": "XsLR2VCGNzYVLfJGEwwNZsRYDZBGyBnoQH5rPGvwodA",
+      "stored": 1.0002444237463104,
+      "effective": 1.0003642955316614,
+      "gapPct": 0.011984249299978877,
+      "activatesAt": null,
+      "secondsUntil": null,
+      "message": "PWRx: most apps show 1.0002x and the blockchain uses 1.0004x."
+    },
     {
       "at": "2026-09-30T21:34:55.000Z",
       "kind": "activation-imminent",
@@ -259,102 +349,6 @@
       "activatesAt": null,
       "secondsUntil": null,
       "message": "AGNCx: most apps show 1.0077x and the blockchain uses 1.0167x."
-    },
-    {
-      "at": "2026-09-30T02:36:53.000Z",
-      "kind": "became-stale",
-      "symbol": "CPTx",
-      "mint": "XsvoRXtZZfwvkLhp4qKPR9B9mcbuWakDUWnPszYw2BT",
-      "stored": 1,
-      "effective": 1.007536055251,
-      "gapPct": 0.7536055250999985,
-      "activatesAt": null,
-      "secondsUntil": null,
-      "message": "CPTx: most apps show 1x and the blockchain uses 1.0075x."
-    },
-    {
-      "at": "2026-09-30T02:36:53.000Z",
-      "kind": "became-stale",
-      "symbol": "AMTx",
-      "mint": "XsvYPZkrDDg7259oDv5E76HSmeLWgHPgNEQ44KVbJJU",
-      "stored": 1,
-      "effective": 1.007487302062,
-      "gapPct": 0.7487302062000101,
-      "activatesAt": null,
-      "secondsUntil": null,
-      "message": "AMTx: most apps show 1x and the blockchain uses 1.0075x."
-    },
-    {
-      "at": "2026-09-30T02:36:53.000Z",
-      "kind": "became-stale",
-      "symbol": "SUIx",
-      "mint": "XsWaSDd1S6YhQfsnTquL5ht2TGHe3mabeZ2Kvfpjsnc",
-      "stored": 1,
-      "effective": 1.007006881759,
-      "gapPct": 0.7006881759000105,
-      "activatesAt": null,
-      "secondsUntil": null,
-      "message": "SUIx: most apps show 1x and the blockchain uses 1.007x."
-    },
-    {
-      "at": "2026-09-30T02:36:53.000Z",
-      "kind": "became-stale",
-      "symbol": "ESSx",
-      "mint": "XsZsYW1U5exCzHqwsxwjTDABR2SW9MzKccXSkAgx47N",
-      "stored": 1,
-      "effective": 1.006618479174,
-      "gapPct": 0.6618479174000047,
-      "activatesAt": null,
-      "secondsUntil": null,
-      "message": "ESSx: most apps show 1x and the blockchain uses 1.0066x."
-    },
-    {
-      "at": "2026-09-30T02:36:53.000Z",
-      "kind": "became-stale",
-      "symbol": "USBx",
-      "mint": "Xsieiissncd7uzAW2kwNJPDKBfWcyvdibgxSMQindKF",
-      "stored": 1,
-      "effective": 1.006501547988,
-      "gapPct": 0.6501547987999956,
-      "activatesAt": null,
-      "secondsUntil": null,
-      "message": "USBx: most apps show 1x and the blockchain uses 1.0065x."
-    },
-    {
-      "at": "2026-09-30T02:36:53.000Z",
-      "kind": "became-stale",
-      "symbol": "HSTx",
-      "mint": "XsYbh3CsZ4qCMcfPKEtHAYbePTywhwCkFvdN7Hx3bHA",
-      "stored": 1,
-      "effective": 1.00623885918,
-      "gapPct": 0.623885918,
-      "activatesAt": null,
-      "secondsUntil": null,
-      "message": "HSTx: most apps show 1x and the blockchain uses 1.0062x."
-    },
-    {
-      "at": "2026-09-30T02:36:53.000Z",
-      "kind": "became-stale",
-      "symbol": "MDLZx",
-      "mint": "Xs3hGRD2NSyUUC1fjK5gKe8hXQgLoqxjR5WtYL1NBbg",
-      "stored": 1,
-      "effective": 1.006136210384,
-      "gapPct": 0.6136210383999918,
-      "activatesAt": null,
-      "secondsUntil": null,
-      "message": "MDLZx: most apps show 1x and the blockchain uses 1.0061x."
-    },
-    {
-      "at": "2026-09-30T02:36:53.000Z",
-      "kind": "became-stale",
-      "symbol": "FITBx",
-      "mint": "XsVsC5yPcJKdeuZDejjymo2KJTuE3zdXZoSVuTXA7qv",
-      "stored": 1,
-      "effective": 1.005768098882,
-      "gapPct": 0.5768098881999917,
-      "activatesAt": null,
-      "secondsUntil": null,
-      "message": "FITBx: most apps show 1x and the blockchain uses 1.0058x."
     }
   ]
 }
