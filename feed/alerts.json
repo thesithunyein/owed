@@ -1,8 +1,8 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-10-02T11:26:51.000Z",
-  "clock": 1790940411,
+  "generatedAt": "2026-10-02T16:53:58.000Z",
+  "clock": 1790960038,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 427,
@@ -14,7 +14,7 @@
   "mostRecent": {
     "symbol": "BMYx",
     "issuer": "xstocks",
-    "daysAgo": 0.4561458333333333,
+    "daysAgo": 0.6833101851851852,
     "stored": 1,
     "effective": 1.007175398633,
     "gapPct": 0.7175398633000096
