@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-10-03T10:43:05.000Z",
+ "checkedAt": "2026-10-03T15:17:40.000Z",
  "rpc": "https://api.mainnet-beta.solana.com",
  "issuer": "prestocks",
  "method": "getTokenSupply: uiAmountString / (amount / 10^decimals)",
@@ -66,7 +66,7 @@
    "storedMultiplier": 1,
    "pendingMultiplier": 1.4861347,
    "activation": 1784305800,
-   "measuredRatio": 1.4861346999996472,
+   "measuredRatio": 1.4861346999997544,
    "rulePredicts": 1.4861347,
    "verdict": "STALE_CONFIRMED"
   },
