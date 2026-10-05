@@ -1,5 +1,5 @@
 {
- "clock": 1791204502,
+ "clock": 1791242643,
  "mints": [
   {
    "mint": "Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme",
@@ -1770,14 +1770,6 @@
    "effectiveTimestamp": 1787963400
   },
   {
-   "mint": "XsMAqkcKsUewDrzVkait4e5u4y8REgtyS7jWgCpLV2C",
-   "symbol": "JPMx",
-   "stale": true,
-   "stored": 1.0107444463984723,
-   "next": 1.0139174713894084,
-   "effectiveTimestamp": 1783295700
-  },
-  {
    "mint": "XsLT5v4DAd1kwViPQh3SZiT5kzJfNLxzJxJN1dySZTe",
    "symbol": "VXUSx",
    "stale": true,
@@ -3242,14 +3234,6 @@
    "effectiveTimestamp": 1785457800
   },
   {
-   "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
-   "symbol": "SATAx",
-   "stale": true,
-   "stored": 1.0523776241539806,
-   "next": 1.0529205967106205,
-   "effectiveTimestamp": 1790987400
-  },
-  {
    "mint": "XsXoAR52Q2NYFkYiNqhCq4FauvyA1tdRsrmEYNf9fuh",
    "symbol": "ITAx",
    "stale": true,
@@ -3432,6 +3416,46 @@
    "stored": 1.0002939365097,
    "next": 1.0004015986353854,
    "effectiveTimestamp": 1783295700
+  },
+  {
+   "mint": "XsFyCPFNa7os3PvzuYQJcpws9WQS6bci2W8zqesHwPN",
+   "symbol": "DGXx",
+   "stale": false,
+   "stored": 1,
+   "next": 1.002592369305,
+   "effectiveTimestamp": 1791246600
+  },
+  {
+   "mint": "Xsuex5gGigmPKMs6hsYpHbcg8HwBbBdWkGKub9MQbea",
+   "symbol": "DGx",
+   "stale": false,
+   "stored": 1,
+   "next": 1.00346128059,
+   "effectiveTimestamp": 1791246600
+  },
+  {
+   "mint": "Xs5drDwMFxkcChq5cU49EX2oTQUVWQ64qsSL5bVQoS3",
+   "symbol": "Ax",
+   "stale": false,
+   "stored": 1,
+   "next": 1.001042092358,
+   "effectiveTimestamp": 1791246600
+  },
+  {
+   "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
+   "symbol": "SATAx",
+   "stale": false,
+   "stored": 1.0529205967106205,
+   "next": 1.053463849413085,
+   "effectiveTimestamp": 1791246600
+  },
+  {
+   "mint": "XsMAqkcKsUewDrzVkait4e5u4y8REgtyS7jWgCpLV2C",
+   "symbol": "JPMx",
+   "stale": false,
+   "stored": 1.0139174713894084,
+   "next": 1.0174407720681127,
+   "effectiveTimestamp": 1791246600
   },
   {
    "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
