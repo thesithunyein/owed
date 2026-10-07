@@ -1,26 +1,125 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-10-07T12:09:06.000Z",
-  "clock": 1791374946,
+  "generatedAt": "2026-10-07T22:20:20.000Z",
+  "clock": 1791411620,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
-    "current": 439,
+    "current": 438,
     "total": 933,
     "becameOutOfDate": 0,
-    "activationImminent": 0
+    "activationImminent": 4
   },
-  "nextActivation": null,
+  "nextActivation": {
+    "symbol": "CSHEEx",
+    "stored": 1,
+    "next": 1.0237072155411655,
+    "activatesAt": 1791419400,
+    "secondsUntil": 7780
+  },
   "mostRecent": {
     "symbol": "PICCx",
     "issuer": "xstocks",
-    "daysAgo": 0.4854861111111111,
+    "daysAgo": 0.9099537037037037,
     "stored": 1,
     "effective": 1.0221987078651684,
     "gapPct": 2.219870786516842
   },
-  "events": [],
+  "events": [
+    {
+      "kind": "activation-imminent",
+      "mint": "XspgPmoq1m39tGMLmourzxXgGmSLbjfxiytABBwGA2u",
+      "symbol": "CSHEEx",
+      "issuer": "xstocks",
+      "stored": 1,
+      "effective": 1.0237072155411655,
+      "activatesAt": 1791419400,
+      "secondsUntil": 7780,
+      "message": "CSHEEx: a stock split takes effect in 2h. Apps showing 1x today will be wrong from that moment, when the blockchain moves to 1.0237x."
+    },
+    {
+      "kind": "activation-imminent",
+      "mint": "XsoHpcJS91HhgMCe9ApwgpXbXFjV4ZoYATsZ5WQM4RB",
+      "symbol": "CLINSx",
+      "issuer": "xstocks",
+      "stored": 1,
+      "effective": 1.0137393617021278,
+      "activatesAt": 1791419400,
+      "secondsUntil": 7780,
+      "message": "CLINSx: a stock split takes effect in 2h. Apps showing 1x today will be wrong from that moment, when the blockchain moves to 1.0137x."
+    },
+    {
+      "kind": "activation-imminent",
+      "mint": "XsfodJMz7SyMNsSgATVDcbuMiQDqQoAiRTL1xuyHNUn",
+      "symbol": "INTUx",
+      "issuer": "xstocks",
+      "stored": 1,
+      "effective": 1.003249899071,
+      "activatesAt": 1791419400,
+      "secondsUntil": 7780,
+      "message": "INTUx: a stock split takes effect in 2h. Apps showing 1x today will be wrong from that moment, when the blockchain moves to 1.0032x."
+    },
+    {
+      "kind": "activation-imminent",
+      "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
+      "symbol": "SATAx",
+      "issuer": "xstocks",
+      "stored": 1.0540073824059148,
+      "effective": 1.0545544230514992,
+      "activatesAt": 1791419400,
+      "secondsUntil": 7780,
+      "message": "SATAx: a stock split takes effect in 2h. Apps showing 1.054x today will be wrong from that moment, when the blockchain moves to 1.0546x."
+    }
+  ],
   "history": [
+    {
+      "at": "2026-10-07T22:20:20.000Z",
+      "kind": "activation-imminent",
+      "symbol": "CSHEEx",
+      "mint": "XspgPmoq1m39tGMLmourzxXgGmSLbjfxiytABBwGA2u",
+      "stored": 1,
+      "effective": 1.0237072155411655,
+      "gapPct": null,
+      "activatesAt": 1791419400,
+      "secondsUntil": 7780,
+      "message": "CSHEEx: a stock split takes effect in 2h. Apps showing 1x today will be wrong from that moment, when the blockchain moves to 1.0237x."
+    },
+    {
+      "at": "2026-10-07T22:20:20.000Z",
+      "kind": "activation-imminent",
+      "symbol": "CLINSx",
+      "mint": "XsoHpcJS91HhgMCe9ApwgpXbXFjV4ZoYATsZ5WQM4RB",
+      "stored": 1,
+      "effective": 1.0137393617021278,
+      "gapPct": null,
+      "activatesAt": 1791419400,
+      "secondsUntil": 7780,
+      "message": "CLINSx: a stock split takes effect in 2h. Apps showing 1x today will be wrong from that moment, when the blockchain moves to 1.0137x."
+    },
+    {
+      "at": "2026-10-07T22:20:20.000Z",
+      "kind": "activation-imminent",
+      "symbol": "INTUx",
+      "mint": "XsfodJMz7SyMNsSgATVDcbuMiQDqQoAiRTL1xuyHNUn",
+      "stored": 1,
+      "effective": 1.003249899071,
+      "gapPct": null,
+      "activatesAt": 1791419400,
+      "secondsUntil": 7780,
+      "message": "INTUx: a stock split takes effect in 2h. Apps showing 1x today will be wrong from that moment, when the blockchain moves to 1.0032x."
+    },
+    {
+      "at": "2026-10-07T22:20:20.000Z",
+      "kind": "activation-imminent",
+      "symbol": "SATAx",
+      "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
+      "stored": 1.0540073824059148,
+      "effective": 1.0545544230514992,
+      "gapPct": null,
+      "activatesAt": 1791419400,
+      "secondsUntil": 7780,
+      "message": "SATAx: a stock split takes effect in 2h. Apps showing 1.054x today will be wrong from that moment, when the blockchain moves to 1.0546x."
+    },
     {
       "at": "2026-10-07T02:53:46.000Z",
       "kind": "became-stale",
@@ -212,54 +311,6 @@
       "activatesAt": 1791333000,
       "secondsUntil": 9221,
       "message": "CMCSAx: a stock split takes effect in 3h. Apps showing 1.0877x today will be wrong from that moment, when the blockchain moves to 1.0993x."
-    },
-    {
-      "at": "2026-10-06T03:29:13.000Z",
-      "kind": "became-stale",
-      "symbol": "JPMx",
-      "mint": "XsMAqkcKsUewDrzVkait4e5u4y8REgtyS7jWgCpLV2C",
-      "stored": 1.0139174713894084,
-      "effective": 1.0174407720681127,
-      "gapPct": 0.3474938324000032,
-      "activatesAt": null,
-      "secondsUntil": null,
-      "message": "JPMx: most apps show 1.0139x and the blockchain uses 1.0174x."
-    },
-    {
-      "at": "2026-10-06T03:29:13.000Z",
-      "kind": "became-stale",
-      "symbol": "DGx",
-      "mint": "Xsuex5gGigmPKMs6hsYpHbcg8HwBbBdWkGKub9MQbea",
-      "stored": 1,
-      "effective": 1.00346128059,
-      "gapPct": 0.346128059000006,
-      "activatesAt": null,
-      "secondsUntil": null,
-      "message": "DGx: most apps show 1x and the blockchain uses 1.0035x."
-    },
-    {
-      "at": "2026-10-06T03:29:13.000Z",
-      "kind": "became-stale",
-      "symbol": "DGXx",
-      "mint": "XsFyCPFNa7os3PvzuYQJcpws9WQS6bci2W8zqesHwPN",
-      "stored": 1,
-      "effective": 1.002592369305,
-      "gapPct": 0.2592369305000064,
-      "activatesAt": null,
-      "secondsUntil": null,
-      "message": "DGXx: most apps show 1x and the blockchain uses 1.0026x."
-    },
-    {
-      "at": "2026-10-06T03:29:13.000Z",
-      "kind": "became-stale",
-      "symbol": "Ax",
-      "mint": "Xs5drDwMFxkcChq5cU49EX2oTQUVWQ64qsSL5bVQoS3",
-      "stored": 1,
-      "effective": 1.001042092358,
-      "gapPct": 0.1042092357999902,
-      "activatesAt": null,
-      "secondsUntil": null,
-      "message": "Ax: most apps show 1x and the blockchain uses 1.001x."
     }
   ]
 }
