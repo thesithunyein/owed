@@ -1,114 +1,25 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-10-07T02:53:46.000Z",
-  "clock": 1791341626,
+  "generatedAt": "2026-10-07T12:09:06.000Z",
+  "clock": 1791374946,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 439,
     "total": 933,
-    "becameOutOfDate": 8,
+    "becameOutOfDate": 0,
     "activationImminent": 0
   },
   "nextActivation": null,
   "mostRecent": {
     "symbol": "PICCx",
     "issuer": "xstocks",
-    "daysAgo": 0.09983796296296296,
+    "daysAgo": 0.4854861111111111,
     "stored": 1,
     "effective": 1.0221987078651684,
     "gapPct": 2.219870786516842
   },
-  "events": [
-    {
-      "kind": "became-stale",
-      "mint": "XsFRjWSNaDPz9nVYUsSky5dJKjN6W5JupHCHbNwg4mE",
-      "symbol": "PICCx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.0221987078651684,
-      "gapPct": 2.219870786516842,
-      "daysStale": 0.09983796296296296,
-      "message": "PICCx: most apps show 1x and the blockchain uses 1.0222x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "Xsm4TwT5UtCCjkcrj2eMZDPNCTdBeJacMmRCrxoXpZ8",
-      "symbol": "EIXx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.011322580645,
-      "gapPct": 1.1322580644999913,
-      "daysStale": 0.09983796296296296,
-      "message": "EIXx: most apps show 1x and the blockchain uses 1.0113x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsvKCaNsxg2GN8jjUmq71qukMJr7Q1c5R2Mk9P8kcS8",
-      "symbol": "CMCSAx",
-      "issuer": "xstocks",
-      "stored": 1.0876797409606038,
-      "effective": 1.0993334524705851,
-      "gapPct": 1.0714285713999905,
-      "daysStale": 0.09983796296296296,
-      "message": "CMCSAx: most apps show 1.0877x and the blockchain uses 1.0993x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsHjfVcciZyPmujpSYXKGyQZ3k4yyzxnUXE6CYdZ3AD",
-      "symbol": "LENx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.004521379667,
-      "gapPct": 0.45213796670000583,
-      "daysStale": 0.09983796296296296,
-      "message": "LENx: most apps show 1x and the blockchain uses 1.0045x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "Xs4uZnG2mzZQKgnmuYboj1PRBtascAvWh5NdVMfz2aW",
-      "symbol": "YLDEx",
-      "issuer": "xstocks",
-      "stored": 1.0194749276580042,
-      "effective": 1.0234903547430638,
-      "gapPct": 0.3938720782750593,
-      "daysStale": 0.12414351851851851,
-      "message": "YLDEx: most apps show 1.0195x and the blockchain uses 1.0235x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "Xsfyi9JrpUDKaBZxgAAFS7wWV5xeTUkYoQLs3SUiYdg",
-      "symbol": "NYTx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.002512876541,
-      "gapPct": 0.25128765410000753,
-      "daysStale": 0.09983796296296296,
-      "message": "NYTx: most apps show 1x and the blockchain uses 1.0025x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
-      "symbol": "SATAx",
-      "issuer": "xstocks",
-      "stored": 1.053463849413085,
-      "effective": 1.0540073824059148,
-      "gapPct": 0.05159484049999108,
-      "daysStale": 0.09983796296296296,
-      "message": "SATAx: most apps show 1.0535x and the blockchain uses 1.054x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsnhgGRQwhExfS2bmWzR6EYddKGPRGDEjeJsatkmKqU",
-      "symbol": "SKHYx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.0000876478965819,
-      "gapPct": 0.008764789658188832,
-      "daysStale": 0.09983796296296296,
-      "message": "SKHYx: most apps show 1x and the blockchain uses 1.0001x."
-    }
-  ],
+  "events": [],
   "history": [
     {
       "at": "2026-10-07T02:53:46.000Z",
