@@ -43,8 +43,8 @@
 <!-- owed:stats:start -->
 > **440 of 925 official xStocks carry a stored multiplier field that is not the
 > value the Token-2022 runtime applies**
-> (classified at 2026-10-08 03:11 UTC); 4 are off by 100% or more, and 2 by a full 10x.
-> The same defect is live on a second issuer: **2 of 8 PreStocks mints**,
+> (classified at 2026-10-08 12:19 UTC); 4 are off by 100% or more, and 2 by a full 10x.
+> The same defect is live on a second issuer: **1 of 8 PreStocks mints**,
 > which are tokenized pre-IPO equity rather than public equity. Same Token-2022 extension,
 > same classifier, different issuer - so this is a property of how the assets are issued,
 > not one vendor's mistake.
@@ -182,13 +182,13 @@ second one is what makes the finding systemic rather than a single vendor's bug:
 | … off by **≥0.5%** | **132** |
 | Median magnitude of the gap | **0.33%** |
 | Median time since the stored field diverged | **37 days** |
-| Longest divergence | **364 days** (`GMEx`) |
+| Longest divergence | **365 days** (`GMEx`) |
 | Mints with a **permanent delegate** (issuer can move anyone's tokens) | **925 / 925** |
 | Mints with a **pause authority** (issuer can freeze all transfers) | **925 / 925** |
 | Currently paused | 0 |
 | **PreStocks mints scanned** (tokenized pre-IPO equity) | **8** |
-| … of those, carrying the same stale multiplier field | **2** (`SPACEX`, `OPENAI`) |
-| … largest PreStocks gap | **400%** |
+| … of those, carrying the same stale multiplier field | **1** (`OPENAI`) |
+| … largest PreStocks gap | **49%** |
 | PreStocks mints with a **permanent delegate** | **8 / 8** |
 <!-- owed:table:end -->
 

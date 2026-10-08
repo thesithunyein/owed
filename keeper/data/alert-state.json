@@ -1,5 +1,5 @@
 {
- "clock": 1791429071,
+ "clock": 1791461978,
  "mints": [
   {
    "mint": "Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme",
@@ -3520,14 +3520,6 @@
    "stored": 1,
    "next": 1.0000876478965819,
    "effectiveTimestamp": 1791333000
-  },
-  {
-   "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
-   "symbol": "SPACEX",
-   "stale": true,
-   "stored": 1,
-   "next": 5,
-   "effectiveTimestamp": 1781065800
   },
   {
    "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",

@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-10-08T03:11:10.411Z",
+ "fetchedAt": "2026-10-08T12:19:37.676Z",
  "source": "https://hermes.pyth.network/v2/price_feeds (open, no key)",
  "catalogueSize": 1882,
  "note": "Which official Pyth feed describes each mint. Feed existence and market hours are Pyth metadata; no price is stored here, because prices require a Bearer key. See keeper/data/pyth-divergence.json for the priced lane.",
@@ -62,8 +62,8 @@
     "FIGUREAI",
     "KALSHI",
     "NEURALINK",
-    "POLYMARKET",
-    "SPACEX"
+    "OURA",
+    "POLYMARKET"
    ]
   }
  },
@@ -11844,18 +11844,18 @@
   },
   {
    "issuer": "prestocks",
-   "symbol": "POLYMARKET",
-   "mint": "Pre8AREmFPtoJFT8mQSXQLh56cwJmM7CFDRuoGBZiUP",
-   "base": "POLYMARKET",
+   "symbol": "OURA",
+   "mint": "Pre9atBqkocK1QngFy7Q7zvyQictEFpXdLi6bZ2qnYy",
+   "base": "OURA",
    "xstock": null,
    "equity": null,
    "redemptionRate": null
   },
   {
    "issuer": "prestocks",
-   "symbol": "SPACEX",
-   "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
-   "base": "SPACEX",
+   "symbol": "POLYMARKET",
+   "mint": "Pre8AREmFPtoJFT8mQSXQLh56cwJmM7CFDRuoGBZiUP",
+   "base": "POLYMARKET",
    "xstock": null,
    "equity": null,
    "redemptionRate": null
