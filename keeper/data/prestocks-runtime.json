@@ -1,14 +1,13 @@
 {
- "checkedAt": "2026-10-08T12:19:36.000Z",
+ "checkedAt": "2026-10-08T22:32:43.000Z",
  "rpc": "https://api.mainnet-beta.solana.com",
  "issuer": "prestocks",
  "method": "getTokenSupply: uiAmountString / (amount / 10^decimals)",
  "tolerance": 0.0001,
  "note": "Ground-truth corroboration that the classifier agrees with the runtime for every official PreStocks mint, not only for the xStocks roster. Committed so CI can assert the verdicts without network access.",
  "verdicts": {
-  "AMBIGUOUS_EQUAL": 6,
-  "STALE_CONFIRMED": 1,
-  "NEITHER_MATCHES": 1
+  "AMBIGUOUS_EQUAL": 7,
+  "STALE_CONFIRMED": 1
  },
  "mints": [
   {
@@ -67,7 +66,7 @@
    "storedMultiplier": 1,
    "pendingMultiplier": 1.4861347,
    "activation": 1784305800,
-   "measuredRatio": 1.4861346999994896,
+   "measuredRatio": 1.4861346999997709,
    "rulePredicts": 1.4861347,
    "verdict": "STALE_CONFIRMED"
   },
@@ -77,9 +76,9 @@
    "storedMultiplier": 1,
    "pendingMultiplier": 1,
    "activation": 0,
-   "measuredRatio": null,
+   "measuredRatio": 1,
    "rulePredicts": 1,
-   "verdict": "NEITHER_MATCHES"
+   "verdict": "AMBIGUOUS_EQUAL"
   },
   {
    "symbol": "POLYMARKET",
