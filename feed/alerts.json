@@ -1,8 +1,8 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-10-11T11:41:11.000Z",
-  "clock": 1791718871,
+  "generatedAt": "2026-10-11T16:51:24.000Z",
+  "clock": 1791737484,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 446,
@@ -14,7 +14,7 @@
   "mostRecent": {
     "symbol": "ICBCx",
     "issuer": "xstocks",
-    "daysAgo": 2.466099537037037,
+    "daysAgo": 2.6815277777777777,
     "stored": 1,
     "effective": 1.0179762062128221,
     "gapPct": 1.7976206212822143
