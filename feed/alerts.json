@@ -1,81 +1,25 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-10-13T04:06:50.000Z",
-  "clock": 1791864410,
+  "generatedAt": "2026-10-13T13:01:45.000Z",
+  "clock": 1791896505,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 449,
     "total": 933,
-    "becameOutOfDate": 5,
+    "becameOutOfDate": 0,
     "activationImminent": 0
   },
   "nextActivation": null,
   "mostRecent": {
     "symbol": "GISx",
     "issuer": "xstocks",
-    "daysAgo": 0.15057870370370371,
+    "daysAgo": 0.5220486111111111,
     "stored": 1,
     "effective": 1.013058103976,
     "gapPct": 1.3058103976000046
   },
-  "events": [
-    {
-      "kind": "became-stale",
-      "mint": "XsKfQxVh7wasRmzPQEs4qvnmayt5KTX1CqvQdJ8XcSJ",
-      "symbol": "GISx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.013058103976,
-      "gapPct": 1.3058103976000046,
-      "daysStale": 0.15057870370370371,
-      "message": "GISx: most apps show 1x and the blockchain uses 1.0131x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "Xs4VKGG8TTan8UN3mC1ufsDMamBtBLE4Ahfkyv2tfuy",
-      "symbol": "VZx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.0106850053937433,
-      "gapPct": 1.0685005393743285,
-      "daysStale": 0.15057870370370371,
-      "message": "VZx: most apps show 1x and the blockchain uses 1.0107x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XscRMWo5xvLxenVLxmodRqZC3UJwACXoxAEEGQzrzKd",
-      "symbol": "MKCx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.007371654234,
-      "gapPct": 0.7371654234000102,
-      "daysStale": 0.15057870370370371,
-      "message": "MKCx: most apps show 1x and the blockchain uses 1.0074x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "Xs5UJzmCRQ8DWZjskExdSQDnbE6iLkRu2jjrRAB1JSU",
-      "symbol": "ACNx",
-      "issuer": "xstocks",
-      "stored": 1.0282231285426122,
-      "effective": 1.0343603099190533,
-      "gapPct": 0.5968725275748099,
-      "daysStale": 0.15057870370370371,
-      "message": "ACNx: most apps show 1.0282x and the blockchain uses 1.0344x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
-      "symbol": "SATAx",
-      "issuer": "xstocks",
-      "stored": 1.0551050707771987,
-      "effective": 1.0556527913168223,
-      "gapPct": 0.0519114687999922,
-      "daysStale": 0.15057870370370371,
-      "message": "SATAx: most apps show 1.0551x and the blockchain uses 1.0557x."
-    }
-  ],
+  "events": [],
   "history": [
     {
       "at": "2026-10-13T04:06:50.000Z",
