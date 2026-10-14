@@ -1,59 +1,25 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-10-14T02:20:40.000Z",
-  "clock": 1791944440,
+  "generatedAt": "2026-10-14T10:43:10.000Z",
+  "clock": 1791974590,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 450,
     "total": 933,
-    "becameOutOfDate": 3,
+    "becameOutOfDate": 0,
     "activationImminent": 0
   },
   "nextActivation": null,
   "mostRecent": {
     "symbol": "PNCx",
     "issuer": "xstocks",
-    "daysAgo": 0.07685185185185185,
+    "daysAgo": 0.4258101851851852,
     "stored": 1,
     "effective": 1.006378713322,
     "gapPct": 0.6378713321999907
   },
-  "events": [
-    {
-      "kind": "became-stale",
-      "mint": "Xss1A59GFZcvyuTXLXMyYdJ7e9kpHq6AFKNjcVZ1rjA",
-      "symbol": "PNCx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.006378713322,
-      "gapPct": 0.6378713321999907,
-      "daysStale": 0.07685185185185185,
-      "message": "PNCx: most apps show 1x and the blockchain uses 1.0064x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
-      "symbol": "SATAx",
-      "issuer": "xstocks",
-      "stored": 1.0556527913168223,
-      "effective": 1.0562041799598456,
-      "gapPct": 0.05223200730000155,
-      "daysStale": 0.07685185185185185,
-      "message": "SATAx: most apps show 1.0557x and the blockchain uses 1.0562x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsQLZycSZ7QnBBdBXQaTbQdiUcbRqjNJgyBGAMzhHav",
-      "symbol": "MUx",
-      "issuer": "xstocks",
-      "stored": 1.0004015986353854,
-      "effective": 1.0005117992960542,
-      "gapPct": 0.011015642200007392,
-      "daysStale": 0.07685185185185185,
-      "message": "MUx: most apps show 1.0004x and the blockchain uses 1.0005x."
-    }
-  ],
+  "events": [],
   "history": [
     {
       "at": "2026-10-14T02:20:40.000Z",
