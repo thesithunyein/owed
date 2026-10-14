@@ -1,5 +1,5 @@
 {
- "scannedAt": "2026-10-14T10:43:07.000Z",
+ "scannedAt": "2026-10-14T16:01:54.000Z",
  "rpc": "https://api.mainnet-beta.solana.com",
  "totalOfficial": 8,
  "totalRead": 8,
@@ -17,13 +17,13 @@
    "mint": "PresTj4Yc2bAR197Er7wz4UUKSfqt6FryBEdAriBoQB",
    "meta": {
     "name": "Anduril PreStocks",
-    "markPrice": 142.7152855,
-    "tokenPrice": 153.35188908123916,
-    "issuerSupply": 11805.383942787,
+    "markPrice": 142.83168769,
+    "tokenPrice": 149.44323116026166,
+    "issuerSupply": 11805.383659509,
     "externalUrl": "https://www.prestocks.com/anduril"
    },
    "decimals": 9,
-   "supply": "11805383942787",
+   "supply": "11805383659509",
    "scaledState": {
     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
     "multiplier": "1",
@@ -49,13 +49,13 @@
    "mint": "Pren1FvFX6J3E4kXhJuCiAD5aDmGEb7qJRncwA8Lkhw",
    "meta": {
     "name": "Anthropic PreStocks",
-    "markPrice": 1051.4370779,
-    "tokenPrice": 1041.4617426562772,
-    "issuerSupply": 7681.210047284,
+    "markPrice": 1051.91289318,
+    "tokenPrice": 1041.7380700109838,
+    "issuerSupply": null,
     "externalUrl": "https://www.prestocks.com/anthropic"
    },
    "decimals": 9,
-   "supply": "7681210047284",
+   "supply": "7681207758651",
    "scaledState": {
     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
     "multiplier": "1",
@@ -81,8 +81,8 @@
    "mint": "PreZad18qfPtbxNpMtMuAuX2zVpvkEU8DnJx56faCWd",
    "meta": {
     "name": "Figure AI PreStocks",
-    "markPrice": 178.82642433,
-    "tokenPrice": 157.2435504726999,
+    "markPrice": 178.97040714,
+    "tokenPrice": 157.0124337299705,
     "issuerSupply": 3012.69675824,
     "externalUrl": "https://www.prestocks.com/figureai"
    },
@@ -113,9 +113,9 @@
    "mint": "PreLWGkkeqG1s4HEfFZSy9moCrJ7btsHuUtfcCeoRua",
    "meta": {
     "name": "Kalshi PreStocks",
-    "markPrice": 981.0629335,
-    "tokenPrice": 927.1418515346552,
-    "issuerSupply": null,
+    "markPrice": 980.06074768,
+    "tokenPrice": 910.3554520937136,
+    "issuerSupply": 904.841909866,
     "externalUrl": "https://www.prestocks.com/kalshi"
    },
    "decimals": 9,
@@ -145,9 +145,9 @@
    "mint": "PrekqLJvJ3qVdXmBGDiexvwUTF4rLFDa6HWS4HJbw9S",
    "meta": {
     "name": "Neuralink PreStocks",
-    "markPrice": 316.45470385,
-    "tokenPrice": 348.65332379568315,
-    "issuerSupply": null,
+    "markPrice": 316.41999227,
+    "tokenPrice": 347.7170605252437,
+    "issuerSupply": 2595.121096231,
     "externalUrl": "https://www.prestocks.com/neuralink"
    },
    "decimals": 9,
@@ -177,13 +177,13 @@
    "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
    "meta": {
     "name": "OpenAI PreStocks",
-    "markPrice": 1061.3800783670551,
-    "tokenPrice": 1445.267142328172,
-    "issuerSupply": null,
+    "markPrice": 1060.6042141334833,
+    "tokenPrice": 1424.8785663099245,
+    "issuerSupply": 2825.9858304626277,
     "externalUrl": "https://www.prestocks.com/openai"
    },
    "decimals": 9,
-   "supply": "1901570162807",
+   "supply": "1901567758604",
    "scaledState": {
     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
     "multiplier": "1",
@@ -209,8 +209,8 @@
    "mint": "Pre9atBqkocK1QngFy7Q7zvyQictEFpXdLi6bZ2qnYy",
    "meta": {
     "name": "Oura PreStocks",
-    "markPrice": 71.11941789,
-    "tokenPrice": 69.80323625166055,
+    "markPrice": 71.13912713,
+    "tokenPrice": 69.79877171995338,
     "issuerSupply": 1499.908253346,
     "externalUrl": "https://www.prestocks.com/oura"
    },
@@ -241,9 +241,9 @@
    "mint": "Pre8AREmFPtoJFT8mQSXQLh56cwJmM7CFDRuoGBZiUP",
    "meta": {
     "name": "Polymarket PreStocks",
-    "markPrice": 142.42028785,
-    "tokenPrice": 138.2604744141722,
-    "issuerSupply": null,
+    "markPrice": 142.2347853,
+    "tokenPrice": 137.92109670728564,
+    "issuerSupply": 4816.45367557,
     "externalUrl": "https://www.prestocks.com/polymarket"
    },
    "decimals": 9,
@@ -271,5 +271,5 @@
  ],
  "issuer": "prestocks",
  "listSource": "https://prestocks.com/api/prestocks",
- "listFetchedAt": "2026-10-14T10:43:07.927Z"
+ "listFetchedAt": "2026-10-14T16:01:54.283Z"
 }
