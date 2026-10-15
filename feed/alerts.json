@@ -1,8 +1,8 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-10-15T10:26:39.000Z",
-  "clock": 1792059999,
+  "generatedAt": "2026-10-15T15:50:29.000Z",
+  "clock": 1792079429,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 455,
@@ -14,7 +14,7 @@
   "mostRecent": {
     "symbol": "MAAx",
     "issuer": "xstocks",
-    "daysAgo": 0.41434027777777777,
+    "daysAgo": 0.6392245370370371,
     "stored": 1,
     "effective": 1.009263103269,
     "gapPct": 0.9263103269000039
