@@ -1,8 +1,8 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-10-16T10:13:50.000Z",
-  "clock": 1792145630,
+  "generatedAt": "2026-10-16T15:39:13.000Z",
+  "clock": 1792165153,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 459,
@@ -14,7 +14,7 @@
   "mostRecent": {
     "symbol": "WSOx",
     "issuer": "xstocks",
-    "daysAgo": 0.40543981481481484,
+    "daysAgo": 0.6314004629629629,
     "stored": 1,
     "effective": 1.007712854758,
     "gapPct": 0.7712854758000098
