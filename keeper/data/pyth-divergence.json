@@ -5,7 +5,7 @@
   "xstocks",
   "prestocks"
  ],
- "checkedAt": "2026-10-16T20:09:01.000Z",
+ "checkedAt": "2026-10-17T01:46:28.000Z",
  "rule": "basisPct = (issuerQuoteMid / pythPrice - 1) * 100, where issuerQuoteMid is (bid + ask) / 2 from the issuer's own list (xStocks quotes in cents, divided by 100; PreStocks quotes in dollars) and pythPrice is the latest value of the Pyth feed named in xstock.feedId, read from its push-oracle account on Solana.",
  "tolerancePct": 1,
  "referenceOnly": "equity and redemptionRate feed ids are published as reference. Only the xstock comparison (same asset, two sources) becomes a basis percentage.",
@@ -74,7 +74,7 @@
   }
  },
  "catalogueSize": 1911,
- "catalogueFetchedAt": "2026-10-16T20:09:01.881Z",
+ "catalogueFetchedAt": "2026-10-17T01:46:28.125Z",
  "sources": {
   "onchain": "push-oracle accounts via getMultipleAccounts, keyless",
   "hermes": "not configured (no PYTH_API_KEY)"
@@ -91,7 +91,7 @@
   "staleReference": 9,
   "withEquityReference": 640,
   "withRedemptionRate": 17,
-  "worstBasisPct": 4.426286
+  "worstBasisPct": 4.881928
  },
  "rows": [
   {
@@ -8765,7 +8765,7 @@
     "symbol": "Equity.US.RKLB/USD",
     "price": 127.85544999999999,
     "publishTime": 1779214452,
-    "ageSec": 12966890
+    "ageSec": 12987136
    },
    "redemptionRate": null
   },
@@ -11961,7 +11961,7 @@
     "symbol": "Equity.US.VRTX/USD",
     "price": 439.65011999999996,
     "publishTime": 1779214452,
-    "ageSec": 12966890
+    "ageSec": 12987136
    },
    "redemptionRate": null
   },
@@ -12590,7 +12590,7 @@
     "symbol": "Crypto.SPCXX/USD",
     "price": 149.665,
     "publishTime": 1790882784,
-    "ageSec": 1298558,
+    "ageSec": 1318804,
     "basisPct": null,
     "flagged": null,
     "direction": null,
@@ -12601,7 +12601,7 @@
     "symbol": "Equity.US.SPCX/USD",
     "price": 148.96499999999997,
     "publishTime": 1790576624,
-    "ageSec": 1604718
+    "ageSec": 1624964
    },
    "redemptionRate": {
     "feedId": "3bd917356e64e4eb1355adefd2caf09cf0716bbdb58012907bdcad63ab21064e",
@@ -12643,7 +12643,7 @@
     "symbol": "Equity.US.VOO/USD",
     "price": 683.20853,
     "publishTime": 1783021487,
-    "ageSec": 9159855
+    "ageSec": 9180101
    },
    "redemptionRate": null
   },
@@ -12883,7 +12883,7 @@
     "symbol": "Equity.US.HIMS/USD",
     "price": 22.61115,
     "publishTime": 1779214452,
-    "ageSec": 12966890
+    "ageSec": 12987136
    },
    "redemptionRate": null
   },
@@ -13399,7 +13399,7 @@
     "symbol": "Equity.US.SNDK/USD",
     "price": 1757.7899999999997,
     "publishTime": 1783358271,
-    "ageSec": 8823071
+    "ageSec": 8843317
    },
    "redemptionRate": null
   },
@@ -13571,7 +13571,7 @@
     "symbol": "Equity.US.MU/USD",
     "price": 1058.7894,
     "publishTime": 1790576624,
-    "ageSec": 1604718
+    "ageSec": 1624964
    },
    "redemptionRate": null
   },
@@ -13605,9 +13605,9 @@
    "equity": {
     "feedId": "67e031d1723e5c89e4a826d80b2f3b41a91b05ef6122d523b8829a02e0f563aa",
     "symbol": "Equity.US.GLXY/USD",
-    "price": 16.264979999999998,
-    "publishTime": 1792181325,
-    "ageSec": 17
+    "price": 16.259999999999998,
+    "publishTime": 1792195175,
+    "ageSec": 6413
    },
    "redemptionRate": null
   },
@@ -13679,7 +13679,7 @@
     "symbol": "Equity.US.TMO/USD",
     "price": 472.72238999999996,
     "publishTime": 1778090334,
-    "ageSec": 14091008
+    "ageSec": 14111254
    },
    "redemptionRate": null
   },
@@ -13697,7 +13697,7 @@
     "symbol": "Equity.US.IWM/USD",
     "price": 295.10008,
     "publishTime": 1783020135,
-    "ageSec": 9161207
+    "ageSec": 9181453
    },
    "redemptionRate": null
   },
@@ -13751,7 +13751,7 @@
     "symbol": "Equity.US.GME/USD",
     "price": 18.645,
     "publishTime": 1786737621,
-    "ageSec": 5443721
+    "ageSec": 5463967
    },
    "redemptionRate": null
   },
@@ -13841,7 +13841,7 @@
     "symbol": "Equity.US.DHR/USD",
     "price": 174.37508,
     "publishTime": 1778090345,
-    "ageSec": 14090997
+    "ageSec": 14111243
    },
    "redemptionRate": null
   },
@@ -13913,7 +13913,7 @@
     "symbol": "Equity.US.CRWD/USD",
     "price": 629.1327699999999,
     "publishTime": 1779201318,
-    "ageSec": 12980024
+    "ageSec": 13000270
    },
    "redemptionRate": null
   },
@@ -14111,7 +14111,7 @@
     "symbol": "Equity.US.PEP/USD",
     "price": 140.80499999999998,
     "publishTime": 1786737620,
-    "ageSec": 5443722
+    "ageSec": 5463968
    },
    "redemptionRate": null
   },
@@ -14201,7 +14201,7 @@
     "symbol": "Equity.US.LLY/USD",
     "price": 991.0108499999999,
     "publishTime": 1778090320,
-    "ageSec": 14091022
+    "ageSec": 14111268
    },
    "redemptionRate": null
   },
@@ -14219,7 +14219,7 @@
     "symbol": "Equity.US.KO/USD",
     "price": 87.69505,
     "publishTime": 1786737617,
-    "ageSec": 5443725
+    "ageSec": 5463971
    },
    "redemptionRate": null
   },
@@ -14255,7 +14255,7 @@
     "symbol": "Equity.US.UNH/USD",
     "price": 392.83698,
     "publishTime": 1779214452,
-    "ageSec": 12966890
+    "ageSec": 12987136
    },
    "redemptionRate": null
   },
@@ -14273,7 +14273,7 @@
     "symbol": "Equity.US.XOM/USD",
     "price": 160.01998999999998,
     "publishTime": 1786737619,
-    "ageSec": 5443723
+    "ageSec": 5463969
    },
    "redemptionRate": null
   },
@@ -14308,7 +14308,7 @@
     "symbol": "Crypto.NFLXX/USD",
     "price": 77.98365991,
     "publishTime": 1789215509,
-    "ageSec": 2965833,
+    "ageSec": 2986079,
     "basisPct": null,
     "flagged": null,
     "direction": null,
@@ -14343,7 +14343,7 @@
     "symbol": "Equity.US.AVGO/USD",
     "price": 406.74501,
     "publishTime": 1779201318,
-    "ageSec": 12980024
+    "ageSec": 13000270
    },
    "redemptionRate": null
   },
@@ -14361,7 +14361,7 @@
     "symbol": "Equity.US.NVO/USD",
     "price": 45.926309999999994,
     "publishTime": 1778090329,
-    "ageSec": 14091013
+    "ageSec": 14111259
    },
    "redemptionRate": null
   },
@@ -14390,7 +14390,7 @@
     "symbol": "Crypto.MCDX/USD",
     "price": 258.95483569,
     "publishTime": 1789215418,
-    "ageSec": 2965924,
+    "ageSec": 2986170,
     "basisPct": null,
     "flagged": null,
     "direction": null,
@@ -14401,7 +14401,7 @@
     "symbol": "Equity.US.MCD/USD",
     "price": 272.83326999999997,
     "publishTime": 1786737620,
-    "ageSec": 5443722
+    "ageSec": 5463968
    },
    "redemptionRate": {
     "feedId": "9da35621c6b18f310a83e9ac6cefa12d72208612b444acf68ba706416dcb47a8",
@@ -14425,7 +14425,7 @@
     "symbol": "Equity.US.PLTR/USD",
     "price": 129.32245999999998,
     "publishTime": 1783022418,
-    "ageSec": 9158924
+    "ageSec": 9179170
    },
    "redemptionRate": null
   },
@@ -14453,7 +14453,7 @@
     "symbol": "Equity.US.STRC/USD",
     "price": 94.76763999999999,
     "publishTime": 1786737617,
-    "ageSec": 5443725
+    "ageSec": 5463971
    },
    "redemptionRate": {
     "feedId": "a8b410b2a5f5f49a9da69a1e3a99d9c71ca6807d08cc4a6711f8fc6dd7d06202",
@@ -14560,7 +14560,7 @@
     "symbol": "Crypto.COINX/USD",
     "price": 176.18741655,
     "publishTime": 1789215509,
-    "ageSec": 2965833,
+    "ageSec": 2986079,
     "basisPct": null,
     "flagged": null,
     "direction": null,
@@ -14571,7 +14571,7 @@
     "symbol": "Equity.US.COIN/USD",
     "price": 148.445,
     "publishTime": 1786737621,
-    "ageSec": 5443721
+    "ageSec": 5463967
    },
    "redemptionRate": {
     "feedId": "b663e208031820ed2ea373346501ceb897f230623439482f0e2a13150af08549",
@@ -14610,10 +14610,10 @@
    "xstock": {
     "feedId": "b911b0329028cd0283e4259c33809d62942bd2716a58084e5f31d64c00b5424e",
     "symbol": "Crypto.GOOGLX/USD",
-    "price": 341.6051502,
-    "publishTime": 1792181317,
-    "ageSec": 25,
-    "basisPct": 3.064334,
+    "price": 340.03514003,
+    "publishTime": 1792201511,
+    "ageSec": 77,
+    "basisPct": 3.540203,
     "flagged": true,
     "direction": "PREMIUM",
     "staleReference": false
@@ -14623,7 +14623,7 @@
     "symbol": "Equity.US.GOOGL/USD",
     "price": 346.006,
     "publishTime": 1786737620,
-    "ageSec": 5443722
+    "ageSec": 5463968
    },
    "redemptionRate": {
     "feedId": "d54f066daee8cfbee2ecbefc8faa351c7c38b2c2a7cd8b704af20875974e3c68",
@@ -14644,10 +14644,10 @@
    "xstock": {
     "feedId": "978e6cc68a119ce066aa830017318563a9ed04ec3a0a6439010fc11296a58675",
     "symbol": "Crypto.AAPLX/USD",
-    "price": 344.36955028,
-    "publishTime": 1792181328,
-    "ageSec": 14,
-    "basisPct": -2.597351,
+    "price": 343.81950615,
+    "publishTime": 1792201533,
+    "ageSec": 55,
+    "basisPct": -2.441526,
     "flagged": true,
     "direction": "DISCOUNT",
     "staleReference": false
@@ -14657,7 +14657,7 @@
     "symbol": "Equity.US.AAPL/USD",
     "price": 305.91999999999996,
     "publishTime": 1786737619,
-    "ageSec": 5443723
+    "ageSec": 5463969
    },
    "redemptionRate": {
     "feedId": "25babb83691a056fd65f879bfd7197eabd840aae741f69c87ccb31e204a979b2",
@@ -14680,7 +14680,7 @@
     "symbol": "Crypto.MSTRX/USD",
     "price": 168.21862643,
     "publishTime": 1789998816,
-    "ageSec": 2182526,
+    "ageSec": 2202772,
     "basisPct": null,
     "flagged": null,
     "direction": null,
@@ -14691,7 +14691,7 @@
     "symbol": "Equity.US.MSTR/USD",
     "price": 93.04496999999999,
     "publishTime": 1786737621,
-    "ageSec": 5443721
+    "ageSec": 5463967
    },
    "redemptionRate": {
     "feedId": "342df7ea9b8db28630933d55d0c9c1119525eb5be58d499ecc4e88faf061083a",
@@ -14714,7 +14714,7 @@
     "symbol": "Crypto.MSFTX/USD",
     "price": 494.20749499,
     "publishTime": 1789215509,
-    "ageSec": 2965833,
+    "ageSec": 2986079,
     "basisPct": null,
     "flagged": null,
     "direction": null,
@@ -14725,7 +14725,7 @@
     "symbol": "Equity.US.MSFT/USD",
     "price": 495.17691999999994,
     "publishTime": 1786737620,
-    "ageSec": 5443722
+    "ageSec": 5463968
    },
    "redemptionRate": {
     "feedId": "fbc60d2549711c0fc72da0c9f6971170d4592c2fbd1e9780dc52464316225acc",
@@ -14802,7 +14802,7 @@
     "symbol": "Crypto.HOODX/USD",
     "price": 112.30519393,
     "publishTime": 1789215509,
-    "ageSec": 2965833,
+    "ageSec": 2986079,
     "basisPct": null,
     "flagged": null,
     "direction": null,
@@ -14813,7 +14813,7 @@
     "symbol": "Equity.US.HOOD/USD",
     "price": 95.53625,
     "publishTime": 1786737620,
-    "ageSec": 5443722
+    "ageSec": 5463968
    },
    "redemptionRate": {
     "feedId": "d88c382daa11f3a377796bc3f9318e7fbffd69c5bbceb5e58548670a7ad23e7f",
@@ -14834,10 +14834,10 @@
    "xstock": {
     "feedId": "bf3e5871be3f80ab7a4d1f1fd039145179fb58569e159aee1ccd472868ea5900",
     "symbol": "Crypto.METAX/USD",
-    "price": 711.39735447,
-    "publishTime": 1792181332,
-    "ageSec": 10,
-    "basisPct": -4.028299,
+    "price": 708.10334446,
+    "publishTime": 1792201467,
+    "ageSec": 121,
+    "basisPct": -3.581851,
     "flagged": true,
     "direction": "DISCOUNT",
     "staleReference": false
@@ -14847,7 +14847,7 @@
     "symbol": "Equity.US.META/USD",
     "price": 589.78572,
     "publishTime": 1786737620,
-    "ageSec": 5443722
+    "ageSec": 5463968
    },
    "redemptionRate": {
     "feedId": "dfeda47e0d3ed1db00062c9ae8b82f5d0d9699f772e7fee1bfd4e9b1dd168574",
@@ -14870,7 +14870,7 @@
     "symbol": "Crypto.GLDX/USD",
     "price": 398.6280297,
     "publishTime": 1789215509,
-    "ageSec": 2965833,
+    "ageSec": 2986079,
     "basisPct": null,
     "flagged": null,
     "direction": null,
@@ -14881,7 +14881,7 @@
     "symbol": "Equity.US.GLD/USD",
     "price": 405.46419,
     "publishTime": 1786996199,
-    "ageSec": 5185143
+    "ageSec": 5205389
    },
    "redemptionRate": null
   },
@@ -14896,10 +14896,10 @@
    "xstock": {
     "feedId": "178a6f73a5aede9d0d682e86b0047c9f333ed0efe5c6537ca937565219c4054d",
     "symbol": "Crypto.QQQX/USD",
-    "price": 712.34,
-    "publishTime": 1792181331,
-    "ageSec": 11,
-    "basisPct": 2.233847,
+    "price": 712.32312552,
+    "publishTime": 1792201519,
+    "ageSec": 69,
+    "basisPct": 2.236268,
     "flagged": true,
     "direction": "PREMIUM",
     "staleReference": false
@@ -14909,7 +14909,7 @@
     "symbol": "Equity.US.QQQ/USD",
     "price": 714.8199999999999,
     "publishTime": 1789171199,
-    "ageSec": 3010143
+    "ageSec": 3030389
    },
    "redemptionRate": {
     "feedId": "5fe0ad9fd9bd888bbdfb609dbe8a6233248fa3dee25755f986f473c43938c7ca",
@@ -14932,7 +14932,7 @@
     "symbol": "Crypto.CRCLX/USD",
     "price": 94.17978551,
     "publishTime": 1790020756,
-    "ageSec": 2160586,
+    "ageSec": 2180832,
     "basisPct": null,
     "flagged": null,
     "direction": null,
@@ -14943,7 +14943,7 @@
     "symbol": "Equity.US.CRCL/USD",
     "price": 88.77502,
     "publishTime": 1787759686,
-    "ageSec": 4421656
+    "ageSec": 4441902
    },
    "redemptionRate": {
     "feedId": "381f301f3aabddfa8605be298e704bf7c40738a5f7aeb07dd0b023f993ce7638",
@@ -14964,10 +14964,10 @@
    "xstock": {
     "feedId": "7148fbe6e493ff2580305c92a8d7f8628c9943b11b9b253aebc24863fec290e8",
     "symbol": "Crypto.AMZNX/USD",
-    "price": 250.25756875000002,
-    "publishTime": 1792181206,
-    "ageSec": 136,
-    "basisPct": 2.182752,
+    "price": 249.19629375,
+    "publishTime": 1792201513,
+    "ageSec": 75,
+    "basisPct": 2.617927,
     "flagged": true,
     "direction": "PREMIUM",
     "staleReference": false
@@ -14977,7 +14977,7 @@
     "symbol": "Equity.US.AMZN/USD",
     "price": 261.21763,
     "publishTime": 1787254500,
-    "ageSec": 4926842
+    "ageSec": 4947088
    },
    "redemptionRate": {
     "feedId": "0ed9040c3fcdadf6ab2f1815f6b252e4c1ca5fd55108390f4acd52a7efac13dd",
@@ -14998,10 +14998,10 @@
    "xstock": {
     "feedId": "2817b78438c769357182c04346fddaad1178c82f4048828fe0997c3c64624e14",
     "symbol": "Crypto.SPYX/USD",
-    "price": 765.46499998,
-    "publishTime": 1792181329,
-    "ageSec": 13,
-    "basisPct": 0.16703,
+    "price": 766.32749998,
+    "publishTime": 1792201530,
+    "ageSec": 58,
+    "basisPct": 0.054292,
     "flagged": false,
     "direction": "PREMIUM",
     "staleReference": false
@@ -15011,7 +15011,7 @@
     "symbol": "Equity.US.SPY/USD",
     "price": 765.47926,
     "publishTime": 1787759686,
-    "ageSec": 4421656
+    "ageSec": 4441902
    },
    "redemptionRate": {
     "feedId": "9e916cc00d292da2367646ffd6537d6b8d0c3f15e2d5891ac44aed31291811a9",
@@ -15032,10 +15032,10 @@
    "xstock": {
     "feedId": "4244d07890e4610f46bbde67de8f43a4bf8b569eebe904f136b469f148503b7f",
     "symbol": "Crypto.NVDAX/USD",
-    "price": 214.50398922,
-    "publishTime": 1792181285,
-    "ageSec": 57,
-    "basisPct": 4.426286,
+    "price": 215.02470715,
+    "publishTime": 1792201550,
+    "ageSec": 38,
+    "basisPct": 4.1734,
     "flagged": true,
     "direction": "PREMIUM",
     "staleReference": false
@@ -15045,7 +15045,7 @@
     "symbol": "Equity.US.NVDA/USD",
     "price": 211.01502999999997,
     "publishTime": 1787759686,
-    "ageSec": 4421656
+    "ageSec": 4441902
    },
    "redemptionRate": {
     "feedId": "b675c4e9f46d94afa9174a7df09966b77a2950970bb50a77ec8ad4fcfd8266f4",
@@ -15066,10 +15066,10 @@
    "xstock": {
     "feedId": "47a156470288850a440df3a6ce85a55917b813a19bb5b31128a33a986566a362",
     "symbol": "Crypto.TSLAX/USD",
-    "price": 354.39499992000003,
-    "publishTime": 1792181327,
-    "ageSec": 15,
-    "basisPct": 4.080217,
+    "price": 351.68602682,
+    "publishTime": 1792201572,
+    "ageSec": 16,
+    "basisPct": 4.881928,
     "flagged": true,
     "direction": "PREMIUM",
     "staleReference": false
@@ -15079,7 +15079,7 @@
     "symbol": "Equity.US.TSLA/USD",
     "price": 365.275,
     "publishTime": 1789171199,
-    "ageSec": 3010143
+    "ageSec": 3030389
    },
    "redemptionRate": {
     "feedId": "997362625415627e9e3177f6c0d32f200d4a221ccadb3dddab80d6079d03ea24",
@@ -15112,7 +15112,7 @@
    "symbol": "ANDURIL",
    "mint": "PresTj4Yc2bAR197Er7wz4UUKSfqt6FryBEdAriBoQB",
    "quote": {
-    "mid": 145.37238257851305,
+    "mid": 146.53186539094622,
     "source": "issuer token price"
    },
    "xstock": null,
@@ -15124,7 +15124,7 @@
    "symbol": "ANTHROPIC",
    "mint": "Pren1FvFX6J3E4kXhJuCiAD5aDmGEb7qJRncwA8Lkhw",
    "quote": {
-    "mid": 1007.3041559318805,
+    "mid": 991.3020300159086,
     "source": "issuer token price"
    },
    "xstock": null,
@@ -15142,7 +15142,7 @@
    "symbol": "FIGUREAI",
    "mint": "PreZad18qfPtbxNpMtMuAuX2zVpvkEU8DnJx56faCWd",
    "quote": {
-    "mid": 174.50677844060968,
+    "mid": 173.92348639807167,
     "source": "issuer token price"
    },
    "xstock": null,
@@ -15154,7 +15154,7 @@
    "symbol": "KALSHI",
    "mint": "PreLWGkkeqG1s4HEfFZSy9moCrJ7btsHuUtfcCeoRua",
    "quote": {
-    "mid": 917.9361596634411,
+    "mid": 917.6402693470746,
     "source": "issuer token price"
    },
    "xstock": null,
@@ -15166,7 +15166,7 @@
    "symbol": "NEURALINK",
    "mint": "PrekqLJvJ3qVdXmBGDiexvwUTF4rLFDa6HWS4HJbw9S",
    "quote": {
-    "mid": 354.86402262240375,
+    "mid": 356.9070558639069,
     "source": "issuer token price"
    },
    "xstock": null,
@@ -15178,7 +15178,7 @@
    "symbol": "OPENAI",
    "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
    "quote": {
-    "mid": 1424.1948685399532,
+    "mid": 1447.3972369593826,
     "source": "issuer token price"
    },
    "xstock": null,
@@ -15196,7 +15196,7 @@
    "symbol": "OURA",
    "mint": "Pre9atBqkocK1QngFy7Q7zvyQictEFpXdLi6bZ2qnYy",
    "quote": {
-    "mid": 70.40556753770139,
+    "mid": 69.81707797571701,
     "source": "issuer token price"
    },
    "xstock": null,
@@ -15208,7 +15208,7 @@
    "symbol": "POLYMARKET",
    "mint": "Pre8AREmFPtoJFT8mQSXQLh56cwJmM7CFDRuoGBZiUP",
    "quote": {
-    "mid": 142.42620584043306,
+    "mid": 142.51559303639652,
     "source": "issuer token price"
    },
    "xstock": null,
