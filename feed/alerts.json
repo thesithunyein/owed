@@ -1,48 +1,25 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-10-17T01:46:28.000Z",
-  "clock": 1792201588,
+  "generatedAt": "2026-10-17T09:47:28.000Z",
+  "clock": 1792230448,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 461,
     "total": 933,
-    "becameOutOfDate": 2,
+    "becameOutOfDate": 0,
     "activationImminent": 0
   },
   "nextActivation": null,
   "mostRecent": {
     "symbol": "OCx",
     "issuer": "xstocks",
-    "daysAgo": 0.05310185185185185,
+    "daysAgo": 0.38712962962962966,
     "stored": 1,
     "effective": 1.0049024822695036,
     "gapPct": 0.49024822695036274
   },
-  "events": [
-    {
-      "kind": "became-stale",
-      "mint": "XseGSSi5kLz8eR539iXZ6tLz6r75UaHTQ6CHYkPjs9F",
-      "symbol": "OCx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.0049024822695036,
-      "gapPct": 0.49024822695036274,
-      "daysStale": 0.05310185185185185,
-      "message": "OCx: most apps show 1x and the blockchain uses 1.0049x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XseQK4PEeLfxY7HgvuSiawFUL5gfveK2maPMV9Ma8qv",
-      "symbol": "GGGx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.002518599829,
-      "gapPct": 0.25185998290000455,
-      "daysStale": 0.05310185185185185,
-      "message": "GGGx: most apps show 1x and the blockchain uses 1.0025x."
-    }
-  ],
+  "events": [],
   "history": [
     {
       "at": "2026-10-17T01:46:28.000Z",
