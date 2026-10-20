@@ -1,92 +1,25 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-10-20T02:18:18.000Z",
-  "clock": 1792462698,
+  "generatedAt": "2026-10-20T10:30:16.000Z",
+  "clock": 1792492216,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 464,
     "total": 933,
-    "becameOutOfDate": 6,
+    "becameOutOfDate": 0,
     "activationImminent": 0
   },
   "nextActivation": null,
   "mostRecent": {
     "symbol": "CSPCx",
     "issuer": "xstocks",
-    "daysAgo": 0.07520833333333334,
+    "daysAgo": 0.41685185185185186,
     "stored": 1,
     "effective": 1.0202702702702702,
     "gapPct": 2.0270270270270174
   },
-  "events": [
-    {
-      "kind": "became-stale",
-      "mint": "Xs5hnQoLHnA2xeHaaxYGkCV2Kp12SwCEeCKBK7BW3gr",
-      "symbol": "CSPCx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.0202702702702702,
-      "gapPct": 2.0270270270270174,
-      "daysStale": 0.07520833333333334,
-      "message": "CSPCx: most apps show 1x and the blockchain uses 1.0203x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsBGGtLnNqa87iTENkgtBV4itt6LNxz7osKS1nmnqTD",
-      "symbol": "RPMx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.004010856454,
-      "gapPct": 0.40108564540000113,
-      "daysStale": 0.07520833333333334,
-      "message": "RPMx: most apps show 1x and the blockchain uses 1.004x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsWzjAeMsR9pMX1aKkq7uDKpr11daUHkmjXya15yCqd",
-      "symbol": "CLx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.003972588072,
-      "gapPct": 0.39725880720000717,
-      "daysStale": 0.07520833333333334,
-      "message": "CLx: most apps show 1x and the blockchain uses 1.004x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "Xsu7Tc5J2fVUE4H5vYAiSr34cvLJeCsYPMjAYnayQn6",
-      "symbol": "DELLx",
-      "issuer": "xstocks",
-      "stored": 1.0033165309725203,
-      "effective": 1.0042880367478784,
-      "gapPct": 0.09682943969999691,
-      "daysStale": 0.07520833333333334,
-      "message": "DELLx: most apps show 1.0033x and the blockchain uses 1.0043x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
-      "symbol": "SATAx",
-      "issuer": "xstocks",
-      "stored": 1.0578825713491262,
-      "effective": 1.0584406609175998,
-      "gapPct": 0.05275534199999932,
-      "daysStale": 0.07520833333333334,
-      "message": "SATAx: most apps show 1.0579x and the blockchain uses 1.0584x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "Xs8FjYWcxTREaUj5hv77f4M2UCreGfP7HegLvqzX56X",
-      "symbol": "CRSx",
-      "issuer": "xstocks",
-      "stored": 1.000284333239,
-      "effective": 1.0006543097437155,
-      "gapPct": 0.036987133800003846,
-      "daysStale": 0.07520833333333334,
-      "message": "CRSx: most apps show 1.0003x and the blockchain uses 1.0007x."
-    }
-  ],
+  "events": [],
   "history": [
     {
       "at": "2026-10-20T02:18:18.000Z",
