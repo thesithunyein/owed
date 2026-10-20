@@ -1,26 +1,79 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-10-20T15:54:11.000Z",
-  "clock": 1792511651,
+  "generatedAt": "2026-10-20T20:56:59.000Z",
+  "clock": 1792529819,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
-    "current": 464,
+    "current": 463,
     "total": 933,
     "becameOutOfDate": 0,
-    "activationImminent": 0
+    "activationImminent": 2
   },
-  "nextActivation": null,
+  "nextActivation": {
+    "symbol": "LOWx",
+    "stored": 1,
+    "next": 1.004407394348,
+    "activatesAt": 1792542600,
+    "secondsUntil": 12781
+  },
   "mostRecent": {
     "symbol": "CSPCx",
     "issuer": "xstocks",
-    "daysAgo": 0.6417939814814815,
+    "daysAgo": 0.8520717592592593,
     "stored": 1,
     "effective": 1.0202702702702702,
     "gapPct": 2.0270270270270174
   },
-  "events": [],
+  "events": [
+    {
+      "kind": "activation-imminent",
+      "mint": "XsixDLxXcKZBcRBddYiPZjB9FJcKMTLd4B7VBeKo3pB",
+      "symbol": "LOWx",
+      "issuer": "xstocks",
+      "stored": 1,
+      "effective": 1.004407394348,
+      "activatesAt": 1792542600,
+      "secondsUntil": 12781,
+      "message": "LOWx: a stock split takes effect in 4h. Apps showing 1x today will be wrong from that moment, when the blockchain moves to 1.0044x."
+    },
+    {
+      "kind": "activation-imminent",
+      "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
+      "symbol": "SATAx",
+      "issuer": "xstocks",
+      "stored": 1.0584406609175998,
+      "effective": 1.0589937296583425,
+      "activatesAt": 1792542600,
+      "secondsUntil": 12781,
+      "message": "SATAx: a stock split takes effect in 4h. Apps showing 1.0584x today will be wrong from that moment, when the blockchain moves to 1.059x."
+    }
+  ],
   "history": [
+    {
+      "at": "2026-10-20T20:56:59.000Z",
+      "kind": "activation-imminent",
+      "symbol": "LOWx",
+      "mint": "XsixDLxXcKZBcRBddYiPZjB9FJcKMTLd4B7VBeKo3pB",
+      "stored": 1,
+      "effective": 1.004407394348,
+      "gapPct": null,
+      "activatesAt": 1792542600,
+      "secondsUntil": 12781,
+      "message": "LOWx: a stock split takes effect in 4h. Apps showing 1x today will be wrong from that moment, when the blockchain moves to 1.0044x."
+    },
+    {
+      "at": "2026-10-20T20:56:59.000Z",
+      "kind": "activation-imminent",
+      "symbol": "SATAx",
+      "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
+      "stored": 1.0584406609175998,
+      "effective": 1.0589937296583425,
+      "gapPct": null,
+      "activatesAt": 1792542600,
+      "secondsUntil": 12781,
+      "message": "SATAx: a stock split takes effect in 4h. Apps showing 1.0584x today will be wrong from that moment, when the blockchain moves to 1.059x."
+    },
     {
       "at": "2026-10-20T02:18:18.000Z",
       "kind": "became-stale",
@@ -236,30 +289,6 @@
       "activatesAt": null,
       "secondsUntil": null,
       "message": "SATAx: most apps show 1.0568x and the blockchain uses 1.0573x."
-    },
-    {
-      "at": "2026-10-15T20:35:49.000Z",
-      "kind": "activation-imminent",
-      "symbol": "WSOx",
-      "mint": "Xsgefxs1R4c5pYqhijeA3QLT42i38J7QpBtnt4GGk1f",
-      "stored": 1,
-      "effective": 1.007712854758,
-      "gapPct": null,
-      "activatesAt": 1792110600,
-      "secondsUntil": 14051,
-      "message": "WSOx: a stock split takes effect in 4h. Apps showing 1x today will be wrong from that moment, when the blockchain moves to 1.0077x."
-    },
-    {
-      "at": "2026-10-15T20:35:49.000Z",
-      "kind": "activation-imminent",
-      "symbol": "SNXx",
-      "mint": "Xsh64eWgeLab2YtKPRy15Zj7tXrUncjVwszGW9F5tWG",
-      "stored": 1,
-      "effective": 1.001316924042,
-      "gapPct": null,
-      "activatesAt": 1792110600,
-      "secondsUntil": 14051,
-      "message": "SNXx: a stock split takes effect in 4h. Apps showing 1x today will be wrong from that moment, when the blockchain moves to 1.0013x."
     }
   ]
 }
