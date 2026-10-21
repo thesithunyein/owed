@@ -1,48 +1,25 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-10-21T02:11:39.000Z",
-  "clock": 1792548699,
+  "generatedAt": "2026-10-21T10:42:07.000Z",
+  "clock": 1792579327,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 465,
     "total": 933,
-    "becameOutOfDate": 2,
+    "becameOutOfDate": 0,
     "activationImminent": 0
   },
   "nextActivation": null,
   "mostRecent": {
     "symbol": "LOWx",
     "issuer": "xstocks",
-    "daysAgo": 0.07059027777777778,
+    "daysAgo": 0.42508101851851854,
     "stored": 1,
     "effective": 1.004407394348,
     "gapPct": 0.4407394348000082
   },
-  "events": [
-    {
-      "kind": "became-stale",
-      "mint": "XsixDLxXcKZBcRBddYiPZjB9FJcKMTLd4B7VBeKo3pB",
-      "symbol": "LOWx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.004407394348,
-      "gapPct": 0.4407394348000082,
-      "daysStale": 0.07059027777777778,
-      "message": "LOWx: most apps show 1x and the blockchain uses 1.0044x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
-      "symbol": "SATAx",
-      "issuer": "xstocks",
-      "stored": 1.0584406609175998,
-      "effective": 1.0589937296583425,
-      "gapPct": 0.0522531646000024,
-      "daysStale": 0.07059027777777778,
-      "message": "SATAx: most apps show 1.0584x and the blockchain uses 1.059x."
-    }
-  ],
+  "events": [],
   "history": [
     {
       "at": "2026-10-21T02:11:39.000Z",
