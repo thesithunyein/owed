@@ -1,8 +1,8 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-10-22T10:44:10.000Z",
-  "clock": 1792665850,
+  "generatedAt": "2026-10-22T16:09:21.000Z",
+  "clock": 1792685361,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 467,
@@ -14,7 +14,7 @@
   "mostRecent": {
     "symbol": "CVSx",
     "issuer": "xstocks",
-    "daysAgo": 0.42650462962962965,
+    "daysAgo": 0.6523263888888889,
     "stored": 1,
     "effective": 1.004981273408,
     "gapPct": 0.498127340799992
