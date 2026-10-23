@@ -1,70 +1,25 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-10-23T02:10:57.000Z",
-  "clock": 1792721457,
+  "generatedAt": "2026-10-23T10:35:52.000Z",
+  "clock": 1792751752,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 469,
     "total": 933,
-    "becameOutOfDate": 4,
+    "becameOutOfDate": 0,
     "activationImminent": 0
   },
   "nextActivation": null,
   "mostRecent": {
     "symbol": "PGx",
     "issuer": "xstocks",
-    "daysAgo": 0.07010416666666666,
+    "daysAgo": 0.42074074074074075,
     "stored": 1.021558909374661,
     "effective": 1.026259536290693,
     "gapPct": 0.46014252069999095
   },
-  "events": [
-    {
-      "kind": "became-stale",
-      "mint": "XsYdjDjNUygZ7yGKfQaB6TxLh2gC6RRjzLtLAGJrhzV",
-      "symbol": "PGx",
-      "issuer": "xstocks",
-      "stored": 1.021558909374661,
-      "effective": 1.026259536290693,
-      "gapPct": 0.46014252069999095,
-      "daysStale": 0.07010416666666666,
-      "message": "PGx: most apps show 1.0216x and the blockchain uses 1.0263x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
-      "symbol": "SATAx",
-      "issuer": "xstocks",
-      "stored": 1.0595504134041451,
-      "effective": 1.0601085269329795,
-      "gapPct": 0.05267456099999901,
-      "daysStale": 0.07010416666666666,
-      "message": "SATAx: most apps show 1.0596x and the blockchain uses 1.0601x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsQoxoLVogLGYRRRcFwjdcFQVLxFpCuYfDtvh3vJ2Ft",
-      "symbol": "GEHCx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.000392047046,
-      "gapPct": 0.039204704599993256,
-      "daysStale": 0.07010416666666666,
-      "message": "GEHCx: most apps show 1x and the blockchain uses 1.0004x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsVbwfq869bWTKpW95shx8woTpzVSmsbCEE7xsMqWQ6",
-      "symbol": "RVTYx",
-      "issuer": "xstocks",
-      "stored": 1,
-      "effective": 1.0003113879003558,
-      "gapPct": 0.031138790035578623,
-      "daysStale": 0.07010416666666666,
-      "message": "RVTYx: most apps show 1x and the blockchain uses 1.0003x."
-    }
-  ],
+  "events": [],
   "history": [
     {
       "at": "2026-10-23T02:10:57.000Z",
