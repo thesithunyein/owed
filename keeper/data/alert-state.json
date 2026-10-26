@@ -1,5 +1,5 @@
 {
- "clock": 1793036629,
+ "clock": 1793051905,
  "mints": [
   {
    "mint": "Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme",
@@ -2994,14 +2994,6 @@
    "effectiveTimestamp": 1786149000
   },
   {
-   "mint": "Xs2XDRGh6AhivmYgaVa8woDGKGccR1WnnGnw9vqSWD9",
-   "symbol": "AAx",
-   "stale": true,
-   "stored": 1,
-   "next": 1.001355800891,
-   "effectiveTimestamp": 1786408200
-  },
-  {
    "mint": "Xsst4VThLi3nvYTsNCVwJi1z23LfXrdyKmhArkrSn1n",
    "symbol": "CORx",
    "stale": true,
@@ -3184,14 +3176,6 @@
    "stored": 1,
    "next": 1.001121974675,
    "effectiveTimestamp": 1788222600
-  },
-  {
-   "mint": "XshuHQ6o6SVpUNawvnnTMxsZ4tacZsNgVCLorv7TkFq",
-   "symbol": "ASMLx",
-   "stale": true,
-   "stored": 1.001759964773,
-   "next": 1.0028663344146624,
-   "effectiveTimestamp": 1785198600
   },
   {
    "mint": "XsVpsBVdjW8SWAu4jAjqJ9qnGYzBmUzNDRcG6uiZ9xo",
@@ -3530,14 +3514,6 @@
    "effectiveTimestamp": 1789432200
   },
   {
-   "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
-   "symbol": "SATAx",
-   "stale": true,
-   "stored": 1.0601085269329795,
-   "next": 1.0606665926338126,
-   "effectiveTimestamp": 1792801800
-  },
-  {
    "mint": "XsDBYWqoxayY5cqFWs6jNJn4wv5vbP3RkTNqceEQRGW",
    "symbol": "CASYx",
    "stale": true,
@@ -3624,14 +3600,6 @@
    "stored": 1,
    "next": 1.000362314673,
    "effectiveTimestamp": 1786581000
-  },
-  {
-   "mint": "XswXzAsMV9kebQjCVtr1btvrQgQ7C4C9kKgH4QYAVzw",
-   "symbol": "GEVx",
-   "stale": true,
-   "stored": 1,
-   "next": 1.0003574821,
-   "effectiveTimestamp": 1781569800
   },
   {
    "mint": "XsCX8NnXq3qx6zUxXxWwjV2yQnGc9C5y6UyXvE6RG7r",
@@ -3760,6 +3728,38 @@
    "stored": 1,
    "next": 1.0000876478965819,
    "effectiveTimestamp": 1791333000
+  },
+  {
+   "mint": "XswXzAsMV9kebQjCVtr1btvrQgQ7C4C9kKgH4QYAVzw",
+   "symbol": "GEVx",
+   "stale": false,
+   "stored": 1.0003574821,
+   "next": 1.0007669276971662,
+   "effectiveTimestamp": 1793061000
+  },
+  {
+   "mint": "Xs2XDRGh6AhivmYgaVa8woDGKGccR1WnnGnw9vqSWD9",
+   "symbol": "AAx",
+   "stale": false,
+   "stored": 1.001355800891,
+   "next": 1.0031670387740332,
+   "effectiveTimestamp": 1793061000
+  },
+  {
+   "mint": "XshuHQ6o6SVpUNawvnnTMxsZ4tacZsNgVCLorv7TkFq",
+   "symbol": "ASMLx",
+   "stale": false,
+   "stored": 1.0028663344146624,
+   "next": 1.0039956656667728,
+   "effectiveTimestamp": 1793061000
+  },
+  {
+   "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
+   "symbol": "SATAx",
+   "stale": false,
+   "stored": 1.0606665926338126,
+   "next": 1.0612230220374594,
+   "effectiveTimestamp": 1793061000
   },
   {
    "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
