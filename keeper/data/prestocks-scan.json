@@ -1,5 +1,5 @@
 {
- "scannedAt": "2026-10-28T17:29:21.000Z",
+ "scannedAt": "2026-10-28T21:56:18.000Z",
  "rpc": "https://api.mainnet-beta.solana.com",
  "totalOfficial": 8,
  "totalRead": 8,
@@ -17,13 +17,13 @@
    "mint": "PresTj4Yc2bAR197Er7wz4UUKSfqt6FryBEdAriBoQB",
    "meta": {
     "name": "Anduril PreStocks",
-    "markPrice": 142.96207564,
-    "tokenPrice": 160.1766611560033,
+    "markPrice": 142.68179927,
+    "tokenPrice": null,
     "issuerSupply": null,
     "externalUrl": "https://www.prestocks.com/anduril"
    },
    "decimals": 9,
-   "supply": "11805157366871",
+   "supply": "11805156732187",
    "scaledState": {
     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
     "multiplier": "1",
@@ -49,13 +49,13 @@
    "mint": "Pren1FvFX6J3E4kXhJuCiAD5aDmGEb7qJRncwA8Lkhw",
    "meta": {
     "name": "Anthropic PreStocks",
-    "markPrice": 977.63334434,
-    "tokenPrice": 1001.4526475453496,
+    "markPrice": 979.25650809,
+    "tokenPrice": null,
     "issuerSupply": null,
     "externalUrl": "https://www.prestocks.com/anthropic"
    },
    "decimals": 9,
-   "supply": "7680812999997",
+   "supply": "7680811357226",
    "scaledState": {
     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
     "multiplier": "1",
@@ -81,8 +81,8 @@
    "mint": "PreZad18qfPtbxNpMtMuAuX2zVpvkEU8DnJx56faCWd",
    "meta": {
     "name": "Figure AI PreStocks",
-    "markPrice": 187.18174671,
-    "tokenPrice": 172.26729659274085,
+    "markPrice": 187.25653612,
+    "tokenPrice": null,
     "issuerSupply": null,
     "externalUrl": "https://www.prestocks.com/figureai"
    },
@@ -113,8 +113,8 @@
    "mint": "PreLWGkkeqG1s4HEfFZSy9moCrJ7btsHuUtfcCeoRua",
    "meta": {
     "name": "Kalshi PreStocks",
-    "markPrice": 961.67122047,
-    "tokenPrice": 906.7548663803185,
+    "markPrice": 962.03584662,
+    "tokenPrice": null,
     "issuerSupply": null,
     "externalUrl": "https://www.prestocks.com/kalshi"
    },
@@ -145,13 +145,13 @@
    "mint": "PrekqLJvJ3qVdXmBGDiexvwUTF4rLFDa6HWS4HJbw9S",
    "meta": {
     "name": "Neuralink PreStocks",
-    "markPrice": 330.37480324,
-    "tokenPrice": 401.9128139556418,
+    "markPrice": 329.29424272,
+    "tokenPrice": null,
     "issuerSupply": null,
     "externalUrl": "https://www.prestocks.com/neuralink"
    },
    "decimals": 9,
-   "supply": "2594998942875",
+   "supply": "2594998344487",
    "scaledState": {
     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
     "multiplier": "1",
@@ -177,13 +177,13 @@
    "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
    "meta": {
     "name": "OpenAI PreStocks",
-    "markPrice": 1092.3896231277015,
-    "tokenPrice": 1488.099383714922,
+    "markPrice": 1095.3738729066752,
+    "tokenPrice": null,
     "issuerSupply": null,
     "externalUrl": "https://www.prestocks.com/openai"
    },
    "decimals": 9,
-   "supply": "1901472069970",
+   "supply": "1901470595941",
    "scaledState": {
     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
     "multiplier": "1",
@@ -209,8 +209,8 @@
    "mint": "Pre9atBqkocK1QngFy7Q7zvyQictEFpXdLi6bZ2qnYy",
    "meta": {
     "name": "Oura PreStocks",
-    "markPrice": 73.60156299,
-    "tokenPrice": 72.64406445369099,
+    "markPrice": 73.60382786,
+    "tokenPrice": null,
     "issuerSupply": null,
     "externalUrl": "https://www.prestocks.com/oura"
    },
@@ -241,13 +241,13 @@
    "mint": "Pre8AREmFPtoJFT8mQSXQLh56cwJmM7CFDRuoGBZiUP",
    "meta": {
     "name": "Polymarket PreStocks",
-    "markPrice": 139.40044029,
-    "tokenPrice": 140.33838156592392,
+    "markPrice": 139.41242875,
+    "tokenPrice": null,
     "issuerSupply": null,
     "externalUrl": "https://www.prestocks.com/polymarket"
    },
    "decimals": 9,
-   "supply": "4816215728775",
+   "supply": "4816215693373",
    "scaledState": {
     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
     "multiplier": "1",
@@ -271,5 +271,5 @@
  ],
  "issuer": "prestocks",
  "listSource": "https://prestocks.com/api/prestocks",
- "listFetchedAt": "2026-10-28T17:29:21.218Z"
+ "listFetchedAt": "2026-10-28T21:56:18.061Z"
 }
