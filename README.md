@@ -43,7 +43,7 @@
 <!-- owed:stats:start -->
 > **476 of 925 official xStocks carry a stored multiplier field that is not the
 > value the Token-2022 runtime applies**
-> (classified at 2026-10-31 02:54 UTC); 4 are off by 100% or more, and 2 by a full 10x.
+> (classified at 2026-10-31 11:18 UTC); 4 are off by 100% or more, and 2 by a full 10x.
 > The same defect is live on a second issuer: **1 of 8 PreStocks mints**,
 > which are tokenized pre-IPO equity rather than public equity. Same Token-2022 extension,
 > same classifier, different issuer - so this is a property of how the assets are issued,
