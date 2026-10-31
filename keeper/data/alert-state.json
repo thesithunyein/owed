@@ -1,5 +1,5 @@
 {
- "clock": 1793445486,
+ "clock": 1793463846,
  "mints": [
   {
    "mint": "Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme",
@@ -2338,14 +2338,6 @@
    "effectiveTimestamp": 1787099400
   },
   {
-   "mint": "XsCAXu7xTaZMG9b9KJhNWYapuvNjxPuE4SysZq8uvMq",
-   "symbol": "JPSTx",
-   "stale": true,
-   "stored": 1.0094580396692463,
-   "next": 1.011907854245923,
-   "effectiveTimestamp": 1790870400
-  },
-  {
    "mint": "XsgQwodongKCYRux621fuQzxQRv3fyXQKyPzc2CJ7Ys",
    "symbol": "RJFx",
    "stale": true,
@@ -2568,14 +2560,6 @@
    "stored": 0.9990655067370947,
    "next": 1.0011576563945983,
    "effectiveTimestamp": 1786667400
-  },
-  {
-   "mint": "XsYD72ntjj7ZwoFDZCDmN2gamTcLpnywqvG7PQN5vCN",
-   "symbol": "SGOVx",
-   "stale": true,
-   "stored": 1.012578295897736,
-   "next": 1.0146941993380223,
-   "effectiveTimestamp": 1790870400
   },
   {
    "mint": "XsiNAvTHpvygKjMqb8Hz5Nqeo8NTAsWzT6DYLH287FA",
@@ -2832,6 +2816,14 @@
    "stored": 1.009406813852,
    "next": 1.0111651718333792,
    "effectiveTimestamp": 1789691400
+  },
+  {
+   "mint": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
+   "symbol": "SPYx",
+   "stale": true,
+   "stored": 1.0057321559499792,
+   "next": 1.007474126658766,
+   "effectiveTimestamp": 1793454300
   },
   {
    "mint": "XshWQWYVp5ff8CrAEsGmLVKD47nBWi3Ygn5v8wXK27G",
@@ -3802,12 +3794,12 @@
    "effectiveTimestamp": 1791333000
   },
   {
-   "mint": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
-   "symbol": "SPYx",
-   "stale": true,
-   "stored": 1.005714560286254,
-   "next": 1.0057321559499792,
-   "effectiveTimestamp": 1793404500
+   "mint": "XsYD72ntjj7ZwoFDZCDmN2gamTcLpnywqvG7PQN5vCN",
+   "symbol": "SGOVx",
+   "stale": false,
+   "stored": 1.0146941993380223,
+   "next": 1.0170111502394308,
+   "effectiveTimestamp": 1793490900
   },
   {
    "mint": "XsGAnis8BY5TLxEGdPY1LeeqY1DHPcUkkBQWRyQaJya",
@@ -3816,6 +3808,14 @@
    "stored": 1,
    "next": 0.1,
    "effectiveTimestamp": 1793233800
+  },
+  {
+   "mint": "XsCAXu7xTaZMG9b9KJhNWYapuvNjxPuE4SysZq8uvMq",
+   "symbol": "JPSTx",
+   "stale": false,
+   "stored": 1.011907854245923,
+   "next": 1.0144299387594244,
+   "effectiveTimestamp": 1793490900
   },
   {
    "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
