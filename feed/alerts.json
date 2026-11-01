@@ -1,48 +1,25 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-11-01T02:48:19.000Z",
-  "clock": 1793501299,
+  "generatedAt": "2026-11-01T12:08:35.000Z",
+  "clock": 1793534915,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 477,
     "total": 933,
-    "becameOutOfDate": 2,
+    "becameOutOfDate": 0,
     "activationImminent": 0
   },
   "nextActivation": null,
   "mostRecent": {
     "symbol": "JPSTx",
     "issuer": "xstocks",
-    "daysAgo": 0.1203587962962963,
+    "daysAgo": 0.5094328703703703,
     "stored": 1.011907854245923,
     "effective": 1.0144299387594244,
     "gapPct": 0.24924053142969527
   },
-  "events": [
-    {
-      "kind": "became-stale",
-      "mint": "XsCAXu7xTaZMG9b9KJhNWYapuvNjxPuE4SysZq8uvMq",
-      "symbol": "JPSTx",
-      "issuer": "xstocks",
-      "stored": 1.011907854245923,
-      "effective": 1.0144299387594244,
-      "gapPct": 0.24924053142969527,
-      "daysStale": 0.1203587962962963,
-      "message": "JPSTx: most apps show 1.0119x and the blockchain uses 1.0144x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsYD72ntjj7ZwoFDZCDmN2gamTcLpnywqvG7PQN5vCN",
-      "symbol": "SGOVx",
-      "issuer": "xstocks",
-      "stored": 1.0146941993380223,
-      "effective": 1.0170111502394308,
-      "gapPct": 0.22833981931897895,
-      "daysStale": 0.1203587962962963,
-      "message": "SGOVx: most apps show 1.0147x and the blockchain uses 1.017x."
-    }
-  ],
+  "events": [],
   "history": [
     {
       "at": "2026-11-01T02:48:19.000Z",
