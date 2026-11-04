@@ -1,13 +1,13 @@
 {
- "fetchedAt": "2026-11-04T13:21:24.385Z",
+ "fetchedAt": "2026-11-04T22:56:45.804Z",
  "source": "https://hermes.pyth.network/v2/price_feeds (open, no key)",
- "catalogueSize": 1937,
+ "catalogueSize": 1944,
  "note": "Which official Pyth feed describes each mint. Feed existence and market hours are Pyth metadata; no price is stored here, because prices require a Bearer key. See keeper/data/pyth-divergence.json for the priced lane.",
  "coverage": {
   "xstocks": {
    "total": 925,
    "xstockFeed": 22,
-   "equityFeed": 638,
+   "equityFeed": 639,
    "redemptionRate": 17,
    "unresolved": [
     "PCTx",
@@ -29,7 +29,6 @@
     "AMx",
     "ALSNx",
     "GSATx",
-    "FRHCx",
     "SFx",
     "SMTCx",
     "PAGx",
@@ -49,7 +48,8 @@
     "AFGx",
     "AMHx",
     "OCx",
-    "VNOMx"
+    "VNOMx",
+    "MDGLx"
    ]
   },
   "prestocks": {
@@ -358,7 +358,12 @@
    "mint": "XsCKGVtLBwZ4Z264jSPgPxzm3w6Sm3UkKv5WgHd3ike",
    "base": "FRHC",
    "xstock": null,
-   "equity": null,
+   "equity": {
+    "feedId": "e9cb9b3c808e6769223427d47ff513c19fed15218ece48ba6ba6fa91aadde458",
+    "symbol": "Equity.US.FRHC/USD",
+    "description": "FREEDOM HOLDING CORP / US DOLLAR",
+    "marketOpen": false
+   },
    "redemptionRate": null
   },
   {
