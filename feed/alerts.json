@@ -1,70 +1,25 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-11-04T03:31:50.000Z",
-  "clock": 1793763110,
+  "generatedAt": "2026-11-04T13:21:25.000Z",
+  "clock": 1793798485,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 477,
     "total": 933,
-    "becameOutOfDate": 4,
+    "becameOutOfDate": 0,
     "activationImminent": 0
   },
   "nextActivation": null,
   "mostRecent": {
     "symbol": "EQTx",
     "issuer": "xstocks",
-    "daysAgo": 0.08460648148148148,
+    "daysAgo": 0.4940393518518518,
     "stored": 1.002188743604,
     "effective": 1.0043870931060022,
     "gapPct": 0.21935483870001438
   },
-  "events": [
-    {
-      "kind": "became-stale",
-      "mint": "XsvS1ZY358vAjNJ7s3fz13s64ZqYF36rgUDR8yVJkuA",
-      "symbol": "EQTx",
-      "issuer": "xstocks",
-      "stored": 1.002188743604,
-      "effective": 1.0043870931060022,
-      "gapPct": 0.21935483870001438,
-      "daysStale": 0.08460648148148148,
-      "message": "EQTx: most apps show 1.0022x and the blockchain uses 1.0044x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "Xs9hw3a4acJr629NUzDbEC376rv3AhfmwvXm9BNnD9G",
-      "symbol": "BROx",
-      "issuer": "xstocks",
-      "stored": 1.001616741321,
-      "effective": 1.0033962634500573,
-      "gapPct": 0.1776649745999892,
-      "daysStale": 0.08460648148148148,
-      "message": "BROx: most apps show 1.0016x and the blockchain uses 1.0034x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
-      "symbol": "SATAx",
-      "issuer": "xstocks",
-      "stored": 1.0636155522950481,
-      "effective": 1.0642511613793477,
-      "gapPct": 0.05975928829999866,
-      "daysStale": 0.08460648148148148,
-      "message": "SATAx: most apps show 1.0636x and the blockchain uses 1.0643x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "Xs78JED6PFZxWc2wCEPspZW9kL3Se5J7L5TChKgsidH",
-      "symbol": "STRCx",
-      "issuer": "xstocks",
-      "stored": 1.0983898630560314,
-      "effective": 1.0987196108382828,
-      "gapPct": 0.030021014700021276,
-      "daysStale": 0.08460648148148148,
-      "message": "STRCx: most apps show 1.0984x and the blockchain uses 1.0987x."
-    }
-  ],
+  "events": [],
   "history": [
     {
       "at": "2026-11-04T03:31:50.000Z",
