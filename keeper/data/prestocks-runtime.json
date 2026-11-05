@@ -1,12 +1,13 @@
 {
- "checkedAt": "2026-11-04T22:56:44.000Z",
+ "checkedAt": "2026-11-05T03:53:07.000Z",
  "rpc": "https://api.mainnet-beta.solana.com",
  "issuer": "prestocks",
  "method": "getTokenSupply: uiAmountString / (amount / 10^decimals)",
  "tolerance": 0.0001,
  "note": "Ground-truth corroboration that the classifier agrees with the runtime for every official PreStocks mint, not only for the xStocks roster. Committed so CI can assert the verdicts without network access.",
  "verdicts": {
-  "AMBIGUOUS_EQUAL": 7,
+  "AMBIGUOUS_EQUAL": 5,
+  "STALE_THESIS_WRONG": 2,
   "STALE_CONFIRMED": 1
  },
  "mints": [
@@ -24,11 +25,11 @@
    "symbol": "ANTHROPIC",
    "mint": "Pren1FvFX6J3E4kXhJuCiAD5aDmGEb7qJRncwA8Lkhw",
    "storedMultiplier": 1,
-   "pendingMultiplier": 1,
-   "activation": 0,
+   "pendingMultiplier": 10,
+   "activation": 1793851320,
    "measuredRatio": 1,
    "rulePredicts": 1,
-   "verdict": "AMBIGUOUS_EQUAL"
+   "verdict": "STALE_THESIS_WRONG"
   },
   {
    "symbol": "FIGUREAI",
@@ -66,7 +67,7 @@
    "storedMultiplier": 1,
    "pendingMultiplier": 1.4861347,
    "activation": 1784305800,
-   "measuredRatio": 1.4861346999998581,
+   "measuredRatio": 1.4861346999998548,
    "rulePredicts": 1.4861347,
    "verdict": "STALE_CONFIRMED"
   },
@@ -74,11 +75,11 @@
    "symbol": "OURA",
    "mint": "Pre9atBqkocK1QngFy7Q7zvyQictEFpXdLi6bZ2qnYy",
    "storedMultiplier": 1,
-   "pendingMultiplier": 1,
-   "activation": 0,
+   "pendingMultiplier": 2,
+   "activation": 1793851320,
    "measuredRatio": 1,
    "rulePredicts": 1,
-   "verdict": "AMBIGUOUS_EQUAL"
+   "verdict": "STALE_THESIS_WRONG"
   },
   {
    "symbol": "POLYMARKET",
