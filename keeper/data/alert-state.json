@@ -1,5 +1,5 @@
 {
- "clock": 1793850788,
+ "clock": 1793885715,
  "mints": [
   {
    "mint": "Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme",
@@ -3594,14 +3594,6 @@
    "effectiveTimestamp": 1789432200
   },
   {
-   "mint": "XsXoAR52Q2NYFkYiNqhCq4FauvyA1tdRsrmEYNf9fuh",
-   "symbol": "ITAx",
-   "stale": true,
-   "stored": 1,
-   "next": 1.0004897814278,
-   "effectiveTimestamp": 1781481300
-  },
-  {
    "mint": "XsD6kFBZCYumf4awQ9tgFFh8m2HGJBtTFdLYt7HcwRr",
    "symbol": "ENTGx",
    "stale": true,
@@ -3712,14 +3704,6 @@
    "stored": 1,
    "next": 1.000334429724,
    "effectiveTimestamp": 1790296200
-  },
-  {
-   "mint": "XsEsHeiNZf88sABxu74TPuXbQThdaQGdzPVZUBicjtQ",
-   "symbol": "SOXXx",
-   "stale": true,
-   "stored": 1,
-   "next": 1.0003319215094,
-   "effectiveTimestamp": 1781481300
   },
   {
    "mint": "Xs66hB4NftAJmu73aeBc6RXQC4DX4LwU4xvnfsz581r",
@@ -3834,17 +3818,25 @@
    "effectiveTimestamp": 1793233800
   },
   {
-   "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
-   "symbol": "OPENAI",
-   "stale": true,
-   "stored": 1,
-   "next": 1.4861347,
-   "effectiveTimestamp": 1784305800
+   "mint": "XsEsHeiNZf88sABxu74TPuXbQThdaQGdzPVZUBicjtQ",
+   "symbol": "SOXXx",
+   "stale": false,
+   "stored": 1.0003319215094,
+   "next": 3.0009957645282,
+   "effectiveTimestamp": 1793887200
+  },
+  {
+   "mint": "XsXoAR52Q2NYFkYiNqhCq4FauvyA1tdRsrmEYNf9fuh",
+   "symbol": "ITAx",
+   "stale": false,
+   "stored": 1.0004897814278,
+   "next": 3.0014693442834,
+   "effectiveTimestamp": 1793887200
   },
   {
    "mint": "Pren1FvFX6J3E4kXhJuCiAD5aDmGEb7qJRncwA8Lkhw",
    "symbol": "ANTHROPIC",
-   "stale": false,
+   "stale": true,
    "stored": 1,
    "next": 10,
    "effectiveTimestamp": 1793851320
@@ -3852,10 +3844,18 @@
   {
    "mint": "Pre9atBqkocK1QngFy7Q7zvyQictEFpXdLi6bZ2qnYy",
    "symbol": "OURA",
-   "stale": false,
+   "stale": true,
    "stored": 1,
    "next": 2,
    "effectiveTimestamp": 1793851320
+  },
+  {
+   "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+   "symbol": "OPENAI",
+   "stale": true,
+   "stored": 1,
+   "next": 1.4861347,
+   "effectiveTimestamp": 1784305800
   }
  ]
 }

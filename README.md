@@ -41,10 +41,10 @@
 </p>
 
 <!-- owed:stats:start -->
-> **478 of 925 official xStocks carry a stored multiplier field that is not the
+> **476 of 925 official xStocks carry a stored multiplier field that is not the
 > value the Token-2022 runtime applies**
-> (classified at 2026-11-05 03:53 UTC); 4 are off by 100% or more, and 2 by a full 10x.
-> The same defect is live on a second issuer: **1 of 8 PreStocks mints**,
+> (classified at 2026-11-05 13:35 UTC); 4 are off by 100% or more, and 2 by a full 10x.
+> The same defect is live on a second issuer: **3 of 8 PreStocks mints**,
 > which are tokenized pre-IPO equity rather than public equity. Same Token-2022 extension,
 > same classifier, different issuer - so this is a property of how the assets are issued,
 > not one vendor's mistake.
@@ -175,20 +175,20 @@ second one is what makes the finding systemic rather than a single vendor's bug:
 |---|---|
 <!-- owed:table:start -->
 | Official xStocks Solana mints scanned | **925** |
-| **Reader traps** (activation passed, stored field no longer what applies) | **478** |
+| **Reader traps** (activation passed, stored field no longer what applies) | **476** |
 | … off by **10x** (10-for-1 splits) | **2** (`PPLTx`, `NFLXx`) |
 | … off by **≥100%** | **4** |
 | … off by **≥1%** | **43** |
 | … off by **≥0.5%** | **146** |
 | Median magnitude of the gap | **0.33%** |
-| Median time since the stored field diverged | **55 days** |
-| Longest divergence | **392 days** (`GMEx`) |
+| Median time since the stored field diverged | **56 days** |
+| Longest divergence | **393 days** (`GMEx`) |
 | Mints with a **permanent delegate** (issuer can move anyone's tokens) | **925 / 925** |
 | Mints with a **pause authority** (issuer can freeze all transfers) | **925 / 925** |
 | Currently paused | 0 |
 | **PreStocks mints scanned** (tokenized pre-IPO equity) | **8** |
-| … of those, carrying the same stale multiplier field | **1** (`OPENAI`) |
-| … largest PreStocks gap | **49%** |
+| … of those, carrying the same stale multiplier field | **3** (`ANTHROPIC`, `OURA`, `OPENAI`) |
+| … largest PreStocks gap | **900%** |
 | PreStocks mints with a **permanent delegate** | **8 / 8** |
 <!-- owed:table:end -->
 
