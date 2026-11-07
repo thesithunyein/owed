@@ -1,81 +1,25 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-11-07T03:25:46.000Z",
-  "clock": 1794021946,
+  "generatedAt": "2026-11-07T11:58:26.000Z",
+  "clock": 1794052706,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 481,
     "total": 933,
-    "becameOutOfDate": 5,
+    "becameOutOfDate": 0,
     "activationImminent": 0
   },
   "nextActivation": null,
   "mostRecent": {
     "symbol": "AMPx",
     "issuer": "xstocks",
-    "daysAgo": 0.08039351851851852,
+    "daysAgo": 0.436412037037037,
     "stored": 1.002180126044,
     "effective": 1.0045574884668311,
     "gapPct": 0.23721907480001025
   },
-  "events": [
-    {
-      "kind": "became-stale",
-      "mint": "XsqWwT9y8ajA8LXQEy7msQmM6ExkP8Va3XYcr7oVhXg",
-      "symbol": "AMPx",
-      "issuer": "xstocks",
-      "stored": 1.002180126044,
-      "effective": 1.0045574884668311,
-      "gapPct": 0.23721907480001025,
-      "daysStale": 0.08039351851851852,
-      "message": "AMPx: most apps show 1.0022x and the blockchain uses 1.0046x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsYLZdcMYST418xZhTV6KaHqr8BWqaKS3J45ywqigF9",
-      "symbol": "LNGx",
-      "issuer": "xstocks",
-      "stored": 1.001516748653,
-      "effective": 1.0030928539522088,
-      "gapPct": 0.15737183639998875,
-      "daysStale": 0.08039351851851852,
-      "message": "LNGx: most apps show 1.0015x and the blockchain uses 1.0031x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsAtnoftgxL6kJErDeCL8m2e364mAYgEbSfSKxi4ctJ",
-      "symbol": "VMCx",
-      "issuer": "xstocks",
-      "stored": 1.001298238105,
-      "effective": 1.002587192783463,
-      "gapPct": 0.1287283478000001,
-      "daysStale": 0.08039351851851852,
-      "message": "VMCx: most apps show 1.0013x and the blockchain uses 1.0026x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "XsSuZjygy7yrbyZJNzBj78ysrKDFMv11HrPPwBUE2Dn",
-      "symbol": "GWWx",
-      "issuer": "xstocks",
-      "stored": 1.001364330163,
-      "effective": 1.0025760633276628,
-      "gapPct": 0.12100822129998967,
-      "daysStale": 0.08039351851851852,
-      "message": "GWWx: most apps show 1.0014x and the blockchain uses 1.0026x."
-    },
-    {
-      "kind": "became-stale",
-      "mint": "Xs78JED6PFZxWc2wCEPspZW9kL3Se5J7L5TChKgsidH",
-      "symbol": "STRCx",
-      "issuer": "xstocks",
-      "stored": 1.1001532866627186,
-      "effective": 1.1005940664478897,
-      "gapPct": 0.040065306399994505,
-      "daysStale": 0.08039351851851852,
-      "message": "STRCx: most apps show 1.1002x and the blockchain uses 1.1006x."
-    }
-  ],
+  "events": [],
   "history": [
     {
       "at": "2026-11-07T03:25:46.000Z",
