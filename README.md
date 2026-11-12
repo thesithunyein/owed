@@ -41,9 +41,9 @@
 </p>
 
 <!-- owed:stats:start -->
-> **470 of 925 official xStocks carry a stored multiplier field that is not the
+> **486 of 925 official xStocks carry a stored multiplier field that is not the
 > value the Token-2022 runtime applies**
-> (classified at 2026-11-11 23:45 UTC); 6 are off by 100% or more, and 2 by a full 10x.
+> (classified at 2026-11-12 04:31 UTC); 6 are off by 100% or more, and 2 by a full 10x.
 > The same defect is live on a second issuer: **3 of 8 PreStocks mints**,
 > which are tokenized pre-IPO equity rather than public equity. Same Token-2022 extension,
 > same classifier, different issuer - so this is a property of how the assets are issued,
@@ -175,13 +175,13 @@ second one is what makes the finding systemic rather than a single vendor's bug:
 |---|---|
 <!-- owed:table:start -->
 | Official xStocks Solana mints scanned | **925** |
-| **Reader traps** (activation passed, stored field no longer what applies) | **470** |
+| **Reader traps** (activation passed, stored field no longer what applies) | **486** |
 | … off by **10x** (10-for-1 splits) | **2** (`PPLTx`, `NFLXx`) |
 | … off by **≥100%** | **6** |
 | … off by **≥1%** | **46** |
-| … off by **≥0.5%** | **150** |
-| Median magnitude of the gap | **0.34%** |
-| Median time since the stored field diverged | **58 days** |
+| … off by **≥0.5%** | **151** |
+| Median magnitude of the gap | **0.33%** |
+| Median time since the stored field diverged | **57 days** |
 | Longest divergence | **399 days** (`GMEx`) |
 | Mints with a **permanent delegate** (issuer can move anyone's tokens) | **925 / 925** |
 | Mints with a **pause authority** (issuer can freeze all transfers) | **925 / 925** |
