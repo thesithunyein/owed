@@ -1,5 +1,5 @@
 {
- "clock": 1794524113,
+ "clock": 1794541602,
  "mints": [
   {
    "mint": "Xst6eFD4YT6sz9RLMysN9SyvaZWtraSdVJQGu5ZkAme",
@@ -570,6 +570,14 @@
    "effectiveTimestamp": 1789000200
   },
   {
+   "mint": "XsM5qDSyGiTVyHoi2VixmaEacByd3UCUoWtNhEqsyoH",
+   "symbol": "IVZx",
+   "stale": true,
+   "stored": 1,
+   "next": 1.007551808921672,
+   "effectiveTimestamp": 1794533400
+  },
+  {
    "mint": "XsvoRXtZZfwvkLhp4qKPR9B9mcbuWakDUWnPszYw2BT",
    "symbol": "CPTx",
    "stale": true,
@@ -632,6 +640,14 @@
    "stored": 1,
    "next": 1.007319907049,
    "effectiveTimestamp": 1789518600
+  },
+  {
+   "mint": "XspgPjzWCN6w4b8xHyfN8NRXrgdNMYx5nsWgiGGeK4R",
+   "symbol": "TFCx",
+   "stale": true,
+   "stored": 1.006869220608,
+   "next": 1.0142148011650642,
+   "effectiveTimestamp": 1794533400
   },
   {
    "mint": "Xsac5qkc4B254kpnb2qneeu6qsNX1fPtACeuNEiXWMR",
@@ -922,12 +938,28 @@
    "effectiveTimestamp": 1791851400
   },
   {
+   "mint": "XsqtzaHCKV2zsgRYitGJtcecfmBkdJsdrpSXZgQryHE",
+   "symbol": "SJMx",
+   "stale": true,
+   "stored": 1.006499212468,
+   "next": 1.0124897334252412,
+   "effectiveTimestamp": 1794533400
+  },
+  {
    "mint": "Xsba6tUnSjDae2VcopDB6FGGDaxRrewFCDa5hKn5vT3",
    "symbol": "PMx",
    "stale": true,
    "stored": 1.0323117557839803,
    "next": 1.0384558155483776,
    "effectiveTimestamp": 1790901000
+  },
+  {
+   "mint": "XswU7kXY6dGgMqpiWW2jKSYVZMsCWv5LKcLaFBgYzPv",
+   "symbol": "DUKx",
+   "stale": true,
+   "stored": 1.006100891638,
+   "next": 1.0120427403433467,
+   "effectiveTimestamp": 1794533400
   },
   {
    "mint": "Xs4uNhvBDAcp2mz3g9XR5q3vzLgmF1ANWxJgWk2d5u3",
@@ -992,6 +1024,14 @@
    "stored": 1.004441624365,
    "next": 1.0101471353498621,
    "effectiveTimestamp": 1793406600
+  },
+  {
+   "mint": "Xsxq7WqXpiNFrdWSd6CA27LXmCsCrGyC9C3uaebmaqU",
+   "symbol": "WECx",
+   "stale": true,
+   "stored": 1.006045973885,
+   "next": 1.011756499263364,
+   "effectiveTimestamp": 1794533400
   },
   {
    "mint": "XsTNaRrDQtFJi56TAQbmk6tHzWQvihWGoafKSJzbJdY",
@@ -1226,6 +1266,14 @@
    "effectiveTimestamp": 1792197000
   },
   {
+   "mint": "Xs75Z8HFGHFnTubABp1CZSLvzCPepWsYhtHYLAFYEa7",
+   "symbol": "BPOPx",
+   "stale": true,
+   "stored": 1,
+   "next": 1.0048264984227129,
+   "effectiveTimestamp": 1794533400
+  },
+  {
    "mint": "XspwhyYPdWVM8XBHZnpS9hgyag9MKjLRyE3tVfmCbSr",
    "symbol": "IBMx",
    "stale": true,
@@ -1248,6 +1296,14 @@
    "stored": 1,
    "next": 1.004802744425,
    "effectiveTimestamp": 1787358600
+  },
+  {
+   "mint": "Xs7waUdcn1ZQDsuFmHRerWEEazRHoWWzWSa6aB7QjHG",
+   "symbol": "PAGx",
+   "stale": true,
+   "stored": 1,
+   "next": 1.0047924970691677,
+   "effectiveTimestamp": 1794533400
   },
   {
    "mint": "XsHyXCSuYHca6SxpSLb2taKiWkoJA48pVcnqyFguHf5",
@@ -1498,6 +1554,14 @@
    "effectiveTimestamp": 1792024200
   },
   {
+   "mint": "XssZsJPrzg7n9Sc1stfPcB4vygcVeMfz5uZK2gPwNdv",
+   "symbol": "ETRx",
+   "stale": true,
+   "stored": 1.004153917478,
+   "next": 1.0084240879777535,
+   "effectiveTimestamp": 1794533400
+  },
+  {
    "mint": "XsUucbjDLYbER4WNNffn1eQ9cDnAcFVfLgSZeLHPDZS",
    "symbol": "MSx",
    "stale": true,
@@ -1586,6 +1650,14 @@
    "effectiveTimestamp": 1793928600
   },
   {
+   "mint": "Xs9gd8SGbYQn9kkUYQayn46BdqQbvvUshEF6ZpRAzM7",
+   "symbol": "SBUXx",
+   "stale": true,
+   "stored": 1.003998157531,
+   "next": 1.008125908311445,
+   "effectiveTimestamp": 1794533400
+  },
+  {
    "mint": "XsGhGG2TNXuJLFL5q7pAomKtMVc2YvVqs4G1hyBZLfw",
    "symbol": "METx",
    "stale": true,
@@ -1648,6 +1720,14 @@
    "stored": 1,
    "next": 1.004010856454,
    "effectiveTimestamp": 1792456200
+  },
+  {
+   "mint": "XszGT2Jo6bZz2SZBmhPstvo2xSs37q67nUJS7gtAfvx",
+   "symbol": "OTISx",
+   "stale": true,
+   "stored": 1.004217444886,
+   "next": 1.0082270764991796,
+   "effectiveTimestamp": 1794533400
   },
   {
    "mint": "XsWzjAeMsR9pMX1aKkq7uDKpr11daUHkmjXya15yCqd",
@@ -1738,6 +1818,14 @@
    "effectiveTimestamp": 1790814600
   },
   {
+   "mint": "XsMNmV7wVizphwXgMtXTVhLDpqmKPdfoYPK3JTXXnYW",
+   "symbol": "CTSHx",
+   "stale": true,
+   "stored": 1.004080551139,
+   "next": 1.0077186953412904,
+   "effectiveTimestamp": 1794533400
+  },
+  {
    "mint": "XsY112rrZJhJE1J1Z8BTSk135spPGHuGRCfnvr5pSdQ",
    "symbol": "ROLx",
    "stale": true,
@@ -1768,6 +1856,14 @@
    "stored": 1.014331044782208,
    "next": 1.0179352667683526,
    "effectiveTimestamp": 1788481800
+  },
+  {
+   "mint": "XsgtMhyQgTevrWQNyLpHxwQeRAeaxQEtoiV1pNyxmfy",
+   "symbol": "DOCx",
+   "stale": true,
+   "stored": 1.0107168065652679,
+   "next": 1.0142912303581095,
+   "effectiveTimestamp": 1794533400
   },
   {
    "mint": "Xs58AdBQTkqkejRvfMrGMQMML1m5xMQKVfKgPmqNhwg",
@@ -2098,6 +2194,14 @@
    "effectiveTimestamp": 1787099400
   },
   {
+   "mint": "XsTEo8W2L8JprN57bmJgatDT84z57ReJYizr5f32BfP",
+   "symbol": "MMMx",
+   "stale": true,
+   "stored": 1.003050961109,
+   "next": 1.0059894766009114,
+   "effectiveTimestamp": 1794533400
+  },
+  {
    "mint": "XsAk6BoV4kBXUM6WXodKyM21CN92G9jArwAzFvbh3LX",
    "symbol": "XOPx",
    "stale": true,
@@ -2290,6 +2394,14 @@
    "effectiveTimestamp": 1791333000
   },
   {
+   "mint": "Xskqq9tKh2gc1PBJHf2q6jMgBpt3AojT3HVkWhjoY5h",
+   "symbol": "EMRx",
+   "stale": true,
+   "stored": 1.002365872968,
+   "next": 1.00486626457637,
+   "effectiveTimestamp": 1794533400
+  },
+  {
    "mint": "XsCAXu7xTaZMG9b9KJhNWYapuvNjxPuE4SysZq8uvMq",
    "symbol": "JPSTx",
    "stale": true,
@@ -2320,6 +2432,14 @@
    "stored": 1,
    "next": 1.002455382198,
    "effectiveTimestamp": 1787099400
+  },
+  {
+   "mint": "XsK5U9qwT9ErPXnpgDzV9voTGASZbZnNTYTGVxCqPii",
+   "symbol": "SCHWx",
+   "stale": true,
+   "stored": 1.002035253498,
+   "next": 1.0044824928269005,
+   "effectiveTimestamp": 1794533400
   },
   {
    "mint": "XsuKHFvcZLWvhk8XcprK4tiAZRefQ4nfTyNs6b9BArz",
@@ -2482,12 +2602,28 @@
    "effectiveTimestamp": 1790728200
   },
   {
+   "mint": "Xs4BPW5YU7RsXMmCt6CyDphWH3YLtyaXDXEzZDmj33G",
+   "symbol": "MSCIx",
+   "stale": true,
+   "stored": 1.002494610945,
+   "next": 1.0047021829756293,
+   "effectiveTimestamp": 1794533400
+  },
+  {
    "mint": "XsvS1ZY358vAjNJ7s3fz13s64ZqYF36rgUDR8yVJkuA",
    "symbol": "EQTx",
    "stale": true,
    "stored": 1.002188743604,
    "next": 1.0043870931060022,
    "effectiveTimestamp": 1793755800
+  },
+  {
+   "mint": "XsRbLZthfABAPAfumWNEJhPyiKDW6TvDVeAeW7oKqA2",
+   "symbol": "HONx",
+   "stale": true,
+   "stored": 1.0011576563945983,
+   "next": 1.0033530694897859,
+   "effectiveTimestamp": 1794533400
   },
   {
    "mint": "XsCz2AUyFUuadE9zxfs7ywkbMvaQNeVTeNBK15L43Qc",
@@ -2648,6 +2784,14 @@
    "stored": 1,
    "next": 1.0019316493313521,
    "effectiveTimestamp": 1794274200
+  },
+  {
+   "mint": "Xs712gQLCYkFSYJwdu3pE5itNfyKwsXQ1HEGZF8Esc5",
+   "symbol": "CHDx",
+   "stale": true,
+   "stored": 1.002124457165,
+   "next": 1.0040551902231396,
+   "effectiveTimestamp": 1794533400
   },
   {
    "mint": "XsyqGLaBLmGCZstuUrvo7iWhJkZgg4KEBtcxVFBsYSg",
@@ -2874,12 +3018,36 @@
    "effectiveTimestamp": 1790728200
   },
   {
+   "mint": "Xsg3UgvjxpUgV3WZx9Wt9deLx7qvKYp6ZLY6xMY2Dfq",
+   "symbol": "GLWx",
+   "stale": true,
+   "stored": 1.001315612834,
+   "next": 1.0029564550858259,
+   "effectiveTimestamp": 1794533400
+  },
+  {
    "mint": "XsrstNGy7STAR22txNru2ahbEwdBadFJwYRCBNEQYBS",
    "symbol": "CAHx",
    "stale": true,
    "stored": 1,
    "next": 1.001622741573,
    "effectiveTimestamp": 1790814600
+  },
+  {
+   "mint": "XszBTLtg8oMmEWsZHbJJwViiB6unNh2ei1e6miArqps",
+   "symbol": "CTASx",
+   "stale": true,
+   "stored": 1.001813652217,
+   "next": 1.0034166245211067,
+   "effectiveTimestamp": 1794533400
+  },
+  {
+   "mint": "XsfgitU15HiJX9UJN2fhcpbfRr5P8XJXvC1nuJs3jAr",
+   "symbol": "SHWx",
+   "stale": true,
+   "stored": 1.001614251535,
+   "next": 1.003210245164015,
+   "effectiveTimestamp": 1794533400
   },
   {
    "mint": "XsjLc87ewHkMhsxhNRLy4TZFG64ycoZb23hLc2WW7iZ",
@@ -2936,6 +3104,14 @@
    "stored": 1,
    "next": 1.001476188526,
    "effectiveTimestamp": 1786667400
+  },
+  {
+   "mint": "XskVc7XiWmSqvzbjhA2LqGHQhvBdBNfatfeTpNru6KP",
+   "symbol": "PHx",
+   "stale": true,
+   "stored": 1.001407006894,
+   "next": 1.0028710216486612,
+   "effectiveTimestamp": 1794533400
   },
   {
    "mint": "XssuE11NLek5vAeHNS2Jm8PFvT4PE7dtnpZwasWTGDT",
@@ -3024,6 +3200,14 @@
    "stored": 1,
    "next": 1.001327691859,
    "effectiveTimestamp": 1786149000
+  },
+  {
+   "mint": "Xsst4VThLi3nvYTsNCVwJi1z23LfXrdyKmhArkrSn1n",
+   "symbol": "CORx",
+   "stale": true,
+   "stored": 1.001354795007,
+   "next": 1.0026790502350293,
+   "effectiveTimestamp": 1794533400
   },
   {
    "mint": "Xsva3qbt1TDUgQPnU3vVDasaPoUHXPU9FjYXzEUYY8G",
@@ -3128,6 +3312,14 @@
    "stored": 1,
    "next": 1.0012057416267943,
    "effectiveTimestamp": 1788222600
+  },
+  {
+   "mint": "XsvJzDTuRrc3cWVwPXVcaXaFJFVtGcpDsfCA56z868Q",
+   "symbol": "AITx",
+   "stale": true,
+   "stored": 1.000998266316,
+   "next": 1.002190475578454,
+   "effectiveTimestamp": 1794533400
   },
   {
    "mint": "XsLzbFA47Tm3Bs7MnSJrGbi6RnfbtCGA6pD3NHSzp6P",
@@ -3274,6 +3466,14 @@
    "effectiveTimestamp": 1787963400
   },
   {
+   "mint": "Xs78JED6PFZxWc2wCEPspZW9kL3Se5J7L5TChKgsidH",
+   "symbol": "STRCx",
+   "stale": true,
+   "stored": 1.1016952506899182,
+   "next": 1.1027972765483358,
+   "effectiveTimestamp": 1794533400
+  },
+  {
    "mint": "XsnARtma2bEi2x1JuKuznZa1QzQkLaedxHW6KeUCz8J",
    "symbol": "WRBx",
    "stale": true,
@@ -3336,6 +3536,14 @@
    "stored": 1,
    "next": 1.000851137745,
    "effectiveTimestamp": 1788481800
+  },
+  {
+   "mint": "Xsnuv4omNoHozR6EEW5mXkw8Nrny5rB3jVfLqi6gKMH",
+   "symbol": "LLYx",
+   "stale": true,
+   "stored": 1.0052945747745534,
+   "next": 1.006145990835917,
+   "effectiveTimestamp": 1794533400
   },
   {
    "mint": "XsWkTtvUXJgrvxvgGuHRRqk6iwDuviEQZw4uJFUUGgX",
@@ -3474,6 +3682,14 @@
    "effectiveTimestamp": 1787790600
   },
   {
+   "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
+   "symbol": "SATAx",
+   "stale": true,
+   "stored": 1.066755088780693,
+   "next": 1.0673768589595813,
+   "effectiveTimestamp": 1794533400
+  },
+  {
    "mint": "Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu",
    "symbol": "METAx",
    "stale": true,
@@ -3552,14 +3768,6 @@
    "stored": 1.0003574821,
    "next": 1.0007669276971662,
    "effectiveTimestamp": 1793061000
-  },
-  {
-   "mint": "Xs78JED6PFZxWc2wCEPspZW9kL3Se5J7L5TChKgsidH",
-   "symbol": "STRCx",
-   "stale": true,
-   "stored": 1.1012546871359914,
-   "next": 1.1016952506899182,
-   "effectiveTimestamp": 1794447000
   },
   {
    "mint": "XsQoxoLVogLGYRRRcFwjdcFQVLxFpCuYfDtvh3vJ2Ft",
@@ -3706,196 +3914,12 @@
    "effectiveTimestamp": 1791333000
   },
   {
-   "mint": "XsqtzaHCKV2zsgRYitGJtcecfmBkdJsdrpSXZgQryHE",
-   "symbol": "SJMx",
-   "stale": false,
-   "stored": 1.006499212468,
-   "next": 1.0124897334252412,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "XsvJzDTuRrc3cWVwPXVcaXaFJFVtGcpDsfCA56z868Q",
-   "symbol": "AITx",
-   "stale": false,
-   "stored": 1.000998266316,
-   "next": 1.002190475578454,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "XsgtMhyQgTevrWQNyLpHxwQeRAeaxQEtoiV1pNyxmfy",
-   "symbol": "DOCx",
-   "stale": false,
-   "stored": 1.0107168065652679,
-   "next": 1.0142912303581095,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "XsMNmV7wVizphwXgMtXTVhLDpqmKPdfoYPK3JTXXnYW",
-   "symbol": "CTSHx",
-   "stale": false,
-   "stored": 1.004080551139,
-   "next": 1.0077186953412904,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "Xs712gQLCYkFSYJwdu3pE5itNfyKwsXQ1HEGZF8Esc5",
-   "symbol": "CHDx",
-   "stale": false,
-   "stored": 1.002124457165,
-   "next": 1.0040551902231396,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "Xs4BPW5YU7RsXMmCt6CyDphWH3YLtyaXDXEzZDmj33G",
-   "symbol": "MSCIx",
-   "stale": false,
-   "stored": 1.002494610945,
-   "next": 1.0047021829756293,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "Xsxq7WqXpiNFrdWSd6CA27LXmCsCrGyC9C3uaebmaqU",
-   "symbol": "WECx",
-   "stale": false,
-   "stored": 1.006045973885,
-   "next": 1.011756499263364,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "XszGT2Jo6bZz2SZBmhPstvo2xSs37q67nUJS7gtAfvx",
-   "symbol": "OTISx",
-   "stale": false,
-   "stored": 1.004217444886,
-   "next": 1.0082270764991796,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "Xsst4VThLi3nvYTsNCVwJi1z23LfXrdyKmhArkrSn1n",
-   "symbol": "CORx",
-   "stale": false,
-   "stored": 1.001354795007,
-   "next": 1.0026790502350293,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "XssZsJPrzg7n9Sc1stfPcB4vygcVeMfz5uZK2gPwNdv",
-   "symbol": "ETRx",
-   "stale": false,
-   "stored": 1.004153917478,
-   "next": 1.0084240879777535,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "XsfgitU15HiJX9UJN2fhcpbfRr5P8XJXvC1nuJs3jAr",
-   "symbol": "SHWx",
-   "stale": false,
-   "stored": 1.001614251535,
-   "next": 1.003210245164015,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "XspgPjzWCN6w4b8xHyfN8NRXrgdNMYx5nsWgiGGeK4R",
-   "symbol": "TFCx",
-   "stale": false,
-   "stored": 1.006869220608,
-   "next": 1.0142148011650642,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "XszBTLtg8oMmEWsZHbJJwViiB6unNh2ei1e6miArqps",
-   "symbol": "CTASx",
-   "stale": false,
-   "stored": 1.001813652217,
-   "next": 1.0034166245211067,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "Xskqq9tKh2gc1PBJHf2q6jMgBpt3AojT3HVkWhjoY5h",
-   "symbol": "EMRx",
-   "stale": false,
-   "stored": 1.002365872968,
-   "next": 1.00486626457637,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "XsTEo8W2L8JprN57bmJgatDT84z57ReJYizr5f32BfP",
-   "symbol": "MMMx",
-   "stale": false,
-   "stored": 1.003050961109,
-   "next": 1.0059894766009114,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "XswU7kXY6dGgMqpiWW2jKSYVZMsCWv5LKcLaFBgYzPv",
-   "symbol": "DUKx",
-   "stale": false,
-   "stored": 1.006100891638,
-   "next": 1.0120427403433467,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "Xs9gd8SGbYQn9kkUYQayn46BdqQbvvUshEF6ZpRAzM7",
-   "symbol": "SBUXx",
-   "stale": false,
-   "stored": 1.003998157531,
-   "next": 1.008125908311445,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "XskVc7XiWmSqvzbjhA2LqGHQhvBdBNfatfeTpNru6KP",
-   "symbol": "PHx",
-   "stale": false,
-   "stored": 1.001407006894,
-   "next": 1.0028710216486612,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "XsK5U9qwT9ErPXnpgDzV9voTGASZbZnNTYTGVxCqPii",
-   "symbol": "SCHWx",
-   "stale": false,
-   "stored": 1.002035253498,
-   "next": 1.0044824928269005,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "Xsg3UgvjxpUgV3WZx9Wt9deLx7qvKYp6ZLY6xMY2Dfq",
-   "symbol": "GLWx",
-   "stale": false,
-   "stored": 1.001315612834,
-   "next": 1.0029564550858259,
-   "effectiveTimestamp": 1794533400
-  },
-  {
    "mint": "XsGAnis8BY5TLxEGdPY1LeeqY1DHPcUkkBQWRyQaJya",
    "symbol": "ENHAx",
    "stale": false,
    "stored": 1,
    "next": 0.1,
    "effectiveTimestamp": 1793233800
-  },
-  {
-   "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
-   "symbol": "SATAx",
-   "stale": false,
-   "stored": 1.066755088780693,
-   "next": 1.0673768589595813,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "XsRbLZthfABAPAfumWNEJhPyiKDW6TvDVeAeW7oKqA2",
-   "symbol": "HONx",
-   "stale": false,
-   "stored": 1.0011576563945983,
-   "next": 1.0033530694897859,
-   "effectiveTimestamp": 1794533400
-  },
-  {
-   "mint": "Xsnuv4omNoHozR6EEW5mXkw8Nrny5rB3jVfLqi6gKMH",
-   "symbol": "LLYx",
-   "stale": false,
-   "stored": 1.0052945747745534,
-   "next": 1.006145990835917,
-   "effectiveTimestamp": 1794533400
   },
   {
    "mint": "Pren1FvFX6J3E4kXhJuCiAD5aDmGEb7qJRncwA8Lkhw",
