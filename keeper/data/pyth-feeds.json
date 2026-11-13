@@ -1,13 +1,13 @@
 {
- "fetchedAt": "2026-11-13T13:29:51.264Z",
+ "fetchedAt": "2026-11-13T22:57:10.871Z",
  "source": "https://hermes.pyth.network/v2/price_feeds (open, no key)",
- "catalogueSize": 1947,
+ "catalogueSize": 1945,
  "note": "Which official Pyth feed describes each mint. Feed existence and market hours are Pyth metadata; no price is stored here, because prices require a Bearer key. See keeper/data/pyth-divergence.json for the priced lane.",
  "coverage": {
   "xstocks": {
    "total": 925,
    "xstockFeed": 22,
-   "equityFeed": 639,
+   "equityFeed": 637,
    "redemptionRate": 17,
    "unresolved": [
     "PCTx",
@@ -4598,12 +4598,7 @@
    "mint": "Xss4k5HDz8CwyNnbZixMs3XgaXvnMoWtpxeqzFK6wvA",
    "base": "ROKU",
    "xstock": null,
-   "equity": {
-    "feedId": "b7113dfc953e2884fed9d8eef5154d696b8296bbf7267caf5ad218e49f97ea4e",
-    "symbol": "Equity.US.ROKU/USD",
-    "description": "ROKU INC",
-    "marketOpen": false
-   },
+   "equity": null,
    "redemptionRate": null
   },
   {
@@ -7014,12 +7009,7 @@
    "mint": "XsDDkXqF1sr1ixW4Y93Geqfd2LbrWxokCjQf9poGN3c",
    "base": "KVUE",
    "xstock": null,
-   "equity": {
-    "feedId": "a31b64345bf1601d1cf1cfdb7a1f628982fab0a4365947b3c4fa2230faea971d",
-    "symbol": "Equity.US.KVUE/USD",
-    "description": "KENVUE INC / US DOLLAR",
-    "marketOpen": false
-   },
+   "equity": null,
    "redemptionRate": null
   },
   {
