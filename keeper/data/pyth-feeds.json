@@ -1,7 +1,7 @@
 {
- "fetchedAt": "2026-11-16T03:24:28.909Z",
+ "fetchedAt": "2026-11-16T14:05:39.823Z",
  "source": "https://hermes.pyth.network/v2/price_feeds (open, no key)",
- "catalogueSize": 1945,
+ "catalogueSize": 1951,
  "note": "Which official Pyth feed describes each mint. Feed existence and market hours are Pyth metadata; no price is stored here, because prices require a Bearer key. See keeper/data/pyth-divergence.json for the priced lane.",
  "coverage": {
   "xstocks": {
