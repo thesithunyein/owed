@@ -1,8 +1,8 @@
 {
   "feed": "owed/xstocks-risk",
   "version": "1.2.0",
-  "generatedAt": "2026-11-17T01:10:39.000Z",
-  "clock": 1794877839,
+  "generatedAt": "2026-11-17T14:59:11.000Z",
+  "clock": 1794927551,
   "source": {
     "rpc": "https://api.mainnet-beta.solana.com",
     "assetList": "xstocks-solana.json (official xStocks Solana list)",
@@ -16,7 +16,7 @@
   "summaryScopeNote": "`summary` and `tokens` cover the xStocks lane only. The PreStocks lane is `preStocks`; all-issuer totals are the sum over `issuers[]`.",
   "summary": {
     "total": 925,
-    "trap": 485,
+    "trap": 491,
     "ge10x": 2,
     "ge100": 6,
     "ge1": 47,
@@ -32,7 +32,7 @@
       "name": "xStocks",
       "kind": "tokenized public equity",
       "total": 925,
-      "trap": 485,
+      "trap": 491,
       "ge10x": 2,
       "ge100": 6,
       "maxGapPct": 900,
@@ -66,7 +66,7 @@
   "pyth": {
     "status": "ok",
     "reason": null,
-    "checkedAt": "2026-11-17T01:10:38.000Z",
+    "checkedAt": "2026-11-17T14:59:10.000Z",
     "rule": "basisPct = (issuerQuoteMid / pythPrice - 1) * 100, where issuerQuoteMid is (bid + ask) / 2 from the issuer's own list (xStocks quotes in cents, divided by 100; PreStocks quotes in dollars) and pythPrice is the latest value of the Pyth feed named in xstock.feedId, read from its push-oracle account on Solana.",
     "tolerancePct": 1,
     "freshnessBoundSec": 86400,
@@ -76,7 +76,7 @@
     },
     "referenceOnly": "equity and redemptionRate feed ids are published as reference. Only the xstock comparison (same asset, two sources) becomes a basis percentage.",
     "catalogueSize": 1951,
-    "catalogueFetchedAt": "2026-11-17T01:10:38.395Z",
+    "catalogueFetchedAt": "2026-11-17T14:59:10.342Z",
     "coverage": {
       "xstocks": {
         "total": 925,
@@ -174,7 +174,7 @@
       "trap": {
         "stale": true,
         "gapPct": 900,
-        "daysStale": 183.94489583333333
+        "daysStale": 184.5202662037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -213,7 +213,7 @@
       "trap": {
         "stale": true,
         "gapPct": 900,
-        "daysStale": 365.0525347222222
+        "daysStale": 365.6279050925926
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -227,7 +227,7 @@
           "symbol": "Crypto.NFLXX/USD",
           "price": 77.98365991,
           "publishTime": 1789215509,
-          "ageSec": 5662330,
+          "ageSec": 5712042,
           "basisPct": null,
           "flagged": null,
           "direction": null,
@@ -268,7 +268,7 @@
       "trap": {
         "stale": true,
         "gapPct": 400,
-        "daysStale": 183.94489583333333
+        "daysStale": 184.5202662037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -307,7 +307,7 @@
       "trap": {
         "stale": true,
         "gapPct": 300,
-        "daysStale": 137.4865625
+        "daysStale": 138.06193287037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -322,7 +322,7 @@
           "symbol": "Equity.US.CRWD/USD",
           "price": 629.1327699999999,
           "publishTime": 1779201318,
-          "ageSec": 15676521
+          "ageSec": 15726233
         },
         "redemptionRate": null
       }
@@ -346,7 +346,7 @@
       "trap": {
         "stale": true,
         "gapPct": 200,
-        "daysStale": 11.465729166666666
+        "daysStale": 12.041099537037036
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -385,7 +385,7 @@
       "trap": {
         "stale": true,
         "gapPct": 200,
-        "daysStale": 11.465729166666666
+        "daysStale": 12.041099537037036
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -424,7 +424,7 @@
       "trap": {
         "stale": true,
         "gapPct": 3.90625,
-        "daysStale": 62.02822916666667
+        "daysStale": 62.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -457,7 +457,7 @@
       "trap": {
         "stale": true,
         "gapPct": 2.9261155816000084,
-        "daysStale": 67.02822916666666
+        "daysStale": 67.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -490,7 +490,7 @@
       "trap": {
         "stale": true,
         "gapPct": 2.9058591178406923,
-        "daysStale": 45.02822916666667
+        "daysStale": 45.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -523,7 +523,7 @@
       "trap": {
         "stale": true,
         "gapPct": 2.7835305720000036,
-        "daysStale": 68.02822916666666
+        "daysStale": 68.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -556,7 +556,7 @@
       "trap": {
         "stale": true,
         "gapPct": 2.6433691755999966,
-        "daysStale": 68.02822916666666
+        "daysStale": 68.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -589,7 +589,7 @@
       "trap": {
         "stale": true,
         "gapPct": 2.6430553720000027,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -628,7 +628,7 @@
       "trap": {
         "stale": true,
         "gapPct": 2.6229167155425115,
-        "daysStale": 55.02822916666667
+        "daysStale": 55.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -661,7 +661,7 @@
       "trap": {
         "stale": true,
         "gapPct": 2.5836614172999983,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -700,7 +700,7 @@
       "trap": {
         "stale": true,
         "gapPct": 2.440576496674063,
-        "daysStale": 59.02822916666667
+        "daysStale": 59.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -733,7 +733,7 @@
       "trap": {
         "stale": true,
         "gapPct": 2.3707215541165505,
-        "daysStale": 40.02822916666667
+        "daysStale": 40.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -766,7 +766,7 @@
       "trap": {
         "stale": true,
         "gapPct": 2.219870786516842,
-        "daysStale": 41.02822916666667
+        "daysStale": 41.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -799,7 +799,7 @@
       "trap": {
         "stale": true,
         "gapPct": 2.0815619059999957,
-        "daysStale": 357.0525347222222
+        "daysStale": 357.6279050925926
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -838,7 +838,7 @@
       "trap": {
         "stale": true,
         "gapPct": 2.0270270270270174,
-        "daysStale": 28.028229166666666
+        "daysStale": 28.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -871,7 +871,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.8976897689769068,
-        "daysStale": 62.02822916666667
+        "daysStale": 62.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -904,7 +904,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.7976206212822143,
-        "daysStale": 39.02822916666667
+        "daysStale": 39.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -937,7 +937,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.767579024034971,
-        "daysStale": 64.05253472222222
+        "daysStale": 64.6279050925926
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -970,7 +970,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.6326366369999956,
-        "daysStale": 155.05253472222222
+        "daysStale": 155.62790509259258
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1003,7 +1003,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.5544739495798376,
-        "daysStale": 45.02822916666667
+        "daysStale": 45.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1036,7 +1036,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.5525554484088655,
-        "daysStale": 6.9865625
+        "daysStale": 7.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1069,7 +1069,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.5215501179977498,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1089,7 +1089,7 @@
       "mint": "Xs2yquAgsHByNzx68WJC55WHjHBvG9JsMB7CWjTLyPy",
       "decimals": 8,
       "supply": {
-        "raw": "382157537641750"
+        "raw": "382157390699040"
       },
       "scaled": {
         "state": {
@@ -1102,7 +1102,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.472895117999995,
-        "daysStale": 374.0525347222222
+        "daysStale": 374.6279050925926
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1135,7 +1135,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.4090343970161623,
-        "daysStale": 18.028229166666666
+        "daysStale": 18.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1168,7 +1168,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.4006832601000108,
-        "daysStale": 67.02822916666666
+        "daysStale": 67.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1207,7 +1207,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.3759097369999918,
-        "daysStale": 235.05253472222222
+        "daysStale": 235.62790509259258
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1240,7 +1240,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.375813519000002,
-        "daysStale": 155.05253472222222
+        "daysStale": 155.62790509259258
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1279,7 +1279,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.373936170212775,
-        "daysStale": 40.02822916666667
+        "daysStale": 40.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1312,7 +1312,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.3533965244999946,
-        "daysStale": 141.05253472222222
+        "daysStale": 141.62790509259258
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1345,7 +1345,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.3126783529999964,
-        "daysStale": 61.02822916666667
+        "daysStale": 61.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1384,7 +1384,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.3058103976000046,
-        "daysStale": 35.02822916666667
+        "daysStale": 35.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1423,7 +1423,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.1661113755354613,
-        "daysStale": 11.9865625
+        "daysStale": 12.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1456,7 +1456,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.1322580644999913,
-        "daysStale": 41.02822916666667
+        "daysStale": 41.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1495,7 +1495,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.1014948858999896,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1534,7 +1534,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.1004107066999946,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1573,7 +1573,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.0827886710239598,
-        "daysStale": 64.05253472222222
+        "daysStale": 64.6279050925926
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1606,7 +1606,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.0714285713999905,
-        "daysStale": 41.02822916666667
+        "daysStale": 41.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1645,7 +1645,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.0685005393743285,
-        "daysStale": 35.02822916666667
+        "daysStale": 35.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1684,7 +1684,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.0213523131999969,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1723,7 +1723,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.0078811761000006,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1762,7 +1762,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.0071605433999986,
-        "daysStale": 10.9865625
+        "daysStale": 11.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1801,7 +1801,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.0027639207000005,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1840,7 +1840,7 @@
       "trap": {
         "stale": true,
         "gapPct": 1.0016025641000015,
-        "daysStale": 20.028229166666666
+        "daysStale": 20.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1879,7 +1879,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.9889236640999943,
-        "daysStale": 155.05253472222222
+        "daysStale": 155.62790509259258
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1912,7 +1912,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.9677944046999842,
-        "daysStale": 11.9865625
+        "daysStale": 12.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1951,7 +1951,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.9403136799000178,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -1990,7 +1990,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.9385474860335252,
-        "daysStale": 18.028229166666666
+        "daysStale": 18.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2023,7 +2023,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.9263103269000039,
-        "daysStale": 33.02822916666667
+        "daysStale": 33.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2062,7 +2062,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.9184816596512269,
-        "daysStale": 48.05253472222222
+        "daysStale": 48.62790509259259
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2101,7 +2101,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.9086196319018525,
-        "daysStale": 14.465729166666666
+        "daysStale": 15.041099537037036
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2134,7 +2134,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.860113421599995,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2173,7 +2173,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.8563074352547995,
-        "daysStale": 64.05253472222222
+        "daysStale": 64.6279050925926
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2206,7 +2206,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.8509603695599388,
-        "daysStale": 4.9865625
+        "daysStale": 5.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2239,7 +2239,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.837921953599996,
-        "daysStale": 6.9865625
+        "daysStale": 7.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2278,7 +2278,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.834479596500004,
-        "daysStale": 62.02822916666667
+        "daysStale": 62.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2317,7 +2317,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.8300138952999969,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2356,7 +2356,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.8253790006000017,
-        "daysStale": 59.02822916666667
+        "daysStale": 59.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2389,7 +2389,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.8193979932999973,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2428,7 +2428,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.8140135854000086,
-        "daysStale": 59.02822916666667
+        "daysStale": 59.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2467,7 +2467,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.8134863702000006,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2506,7 +2506,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.8089145687000032,
-        "daysStale": 84.02822916666666
+        "daysStale": 84.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2545,7 +2545,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.8030154047999893,
-        "daysStale": 80.02822916666666
+        "daysStale": 80.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2584,7 +2584,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7995846313999966,
-        "daysStale": 67.02822916666666
+        "daysStale": 67.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2623,7 +2623,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7867311490999951,
-        "daysStale": 59.02822916666667
+        "daysStale": 59.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2662,7 +2662,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7797994801000074,
-        "daysStale": 54.02822916666667
+        "daysStale": 54.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2701,7 +2701,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7716081179000023,
-        "daysStale": 17.028229166666666
+        "daysStale": 17.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2740,7 +2740,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7712854758000098,
-        "daysStale": 32.02822916666667
+        "daysStale": 32.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2779,7 +2779,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7684630738999942,
-        "daysStale": 68.02822916666666
+        "daysStale": 68.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2812,7 +2812,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7551808921671954,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2851,7 +2851,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7536055250999985,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2890,7 +2890,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7487302062000101,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2929,7 +2929,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7464454976303214,
-        "daysStale": 20.028229166666666
+        "daysStale": 20.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -2962,7 +2962,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7433452898000015,
-        "daysStale": 69.02822916666666
+        "daysStale": 69.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3001,7 +3001,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7398943007999925,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3016,7 +3016,7 @@
           "symbol": "Equity.US.PEP/USD",
           "price": 140.80499999999998,
           "publishTime": 1786737620,
-          "ageSec": 8140219
+          "ageSec": 8189931
         },
         "redemptionRate": null
       }
@@ -3040,7 +3040,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7371654234000102,
-        "daysStale": 35.02822916666667
+        "daysStale": 35.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3079,7 +3079,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7347670251000027,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3118,7 +3118,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7319907048999985,
-        "daysStale": 62.02822916666667
+        "daysStale": 62.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3157,7 +3157,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7295466388999916,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3196,7 +3196,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7268793943000063,
-        "daysStale": 61.02822916666667
+        "daysStale": 61.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3235,7 +3235,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7230909439754463,
-        "daysStale": 80.02822916666666
+        "daysStale": 80.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3268,7 +3268,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7175398633000096,
-        "daysStale": 46.02822916666667
+        "daysStale": 46.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3307,7 +3307,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7124681934000066,
-        "daysStale": 60.02822916666667
+        "daysStale": 60.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3346,7 +3346,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7109004738999891,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3385,7 +3385,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7056929854000193,
-        "daysStale": 24.028229166666666
+        "daysStale": 24.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3424,7 +3424,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7028112450000013,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3463,7 +3463,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.701766033700002,
-        "daysStale": 67.02822916666666
+        "daysStale": 67.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3502,7 +3502,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.7006881759000105,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3541,7 +3541,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.699580775599995,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3580,7 +3580,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6920700308959749,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3613,7 +3613,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6909067753000153,
-        "daysStale": 10.9865625
+        "daysStale": 11.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3652,7 +3652,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6858407079999962,
-        "daysStale": 61.02822916666667
+        "daysStale": 61.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3691,7 +3691,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6737247353000075,
-        "daysStale": 69.02822916666666
+        "daysStale": 69.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3730,7 +3730,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6651657797789534,
-        "daysStale": 60.02822916666667
+        "daysStale": 60.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3769,7 +3769,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.664044423900001,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3808,7 +3808,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6618479174000047,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3847,7 +3847,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6615475486999811,
-        "daysStale": 17.028229166666666
+        "daysStale": 17.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3886,7 +3886,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6602290590999926,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3925,7 +3925,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.657202944300006,
-        "daysStale": 67.02822916666666
+        "daysStale": 67.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -3964,7 +3964,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6501547987999956,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4003,7 +4003,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6474428726999992,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4042,7 +4042,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6418653392999962,
-        "daysStale": 17.028229166666666
+        "daysStale": 17.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4081,7 +4081,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6380208333000015,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4120,7 +4120,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6378713321999907,
-        "daysStale": 34.02822916666667
+        "daysStale": 34.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4159,7 +4159,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6376994123000079,
-        "daysStale": 53.02822916666667
+        "daysStale": 53.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4192,7 +4192,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6345315903999893,
-        "daysStale": 59.02822916666667
+        "daysStale": 59.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4231,7 +4231,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6317349137999972,
-        "daysStale": 69.02822916666666
+        "daysStale": 69.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4270,7 +4270,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.623885918,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4309,7 +4309,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6213846154000002,
-        "daysStale": 94.02822916666666
+        "daysStale": 94.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4324,7 +4324,7 @@
           "symbol": "Equity.US.NVO/USD",
           "price": 45.926309999999994,
           "publishTime": 1778090329,
-          "ageSec": 16787510
+          "ageSec": 16837222
         },
         "redemptionRate": null
       }
@@ -4348,7 +4348,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6160422428999945,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4387,7 +4387,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6148509004999969,
-        "daysStale": 17.028229166666666
+        "daysStale": 17.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4426,7 +4426,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6136210383999918,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4465,7 +4465,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6128255635806434,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4498,7 +4498,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6101005536097714,
-        "daysStale": 53.02822916666667
+        "daysStale": 53.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4537,7 +4537,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6092397440999875,
-        "daysStale": 17.028229166666666
+        "daysStale": 17.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4576,7 +4576,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.6056187421000114,
-        "daysStale": 90.02822916666666
+        "daysStale": 90.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4615,7 +4615,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.603944124899991,
-        "daysStale": 73.02822916666666
+        "daysStale": 73.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4654,7 +4654,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5968725275748099,
-        "daysStale": 35.02822916666667
+        "daysStale": 35.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4693,7 +4693,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.59518386930002,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4732,7 +4732,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5951748325999873,
-        "daysStale": 46.02822916666667
+        "daysStale": 46.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4771,7 +4771,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5905817950000003,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4797,7 +4797,7 @@
       "mint": "Xs4uNhvBDAcp2mz3g9XR5q3vzLgmF1ANWxJgWk2d5u3",
       "decimals": 8,
       "supply": {
-        "raw": "188259385665501"
+        "raw": "188259385665489"
       },
       "scaled": {
         "state": {
@@ -4810,7 +4810,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5903614458000028,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4849,7 +4849,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5832329143999893,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4888,7 +4888,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5825949367000094,
-        "daysStale": 54.02822916666667
+        "daysStale": 54.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4927,7 +4927,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5796497081000052,
-        "daysStale": 91.02822916666666
+        "daysStale": 91.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -4966,7 +4966,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5774240232000016,
-        "daysStale": 68.02822916666666
+        "daysStale": 68.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5005,7 +5005,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5768098881999917,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5044,7 +5044,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5691187248000107,
-        "daysStale": 90.02822916666666
+        "daysStale": 90.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5083,7 +5083,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5684367987999872,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5122,7 +5122,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5680281309000001,
-        "daysStale": 17.028229166666666
+        "daysStale": 17.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5161,7 +5161,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5676207177999881,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5200,7 +5200,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5655296230000051,
-        "daysStale": 39.02822916666667
+        "daysStale": 39.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5239,7 +5239,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5644841831000003,
-        "daysStale": 10.9865625
+        "daysStale": 11.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5278,7 +5278,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5596895787139733,
-        "daysStale": 6.9865625
+        "daysStale": 7.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5317,7 +5317,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5592637539999945,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5356,7 +5356,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5582018893000029,
-        "daysStale": 155.05253472222222
+        "daysStale": 155.62790509259258
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5395,7 +5395,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5535279805000126,
-        "daysStale": 18.028229166666666
+        "daysStale": 18.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5434,7 +5434,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5531261986999825,
-        "daysStale": 18.028229166666666
+        "daysStale": 18.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5473,7 +5473,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5513839812000043,
-        "daysStale": 62.02822916666667
+        "daysStale": 62.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5512,7 +5512,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5407890111672975,
-        "daysStale": 69.02822916666666
+        "daysStale": 69.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5551,7 +5551,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5404374363999986,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5590,7 +5590,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5397108691999941,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5616,7 +5616,7 @@
       "mint": "Xsf9mBktVB9BSU5kf4nHxPq5hCBJ2j2ui3ecFGxPRGc",
       "decimals": 8,
       "supply": {
-        "raw": "71984815842420"
+        "raw": "71984815387694"
       },
       "scaled": {
         "state": {
@@ -5629,7 +5629,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5309167384000002,
-        "daysStale": 404.0525347222222
+        "daysStale": 404.6279050925926
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5644,7 +5644,7 @@
           "symbol": "Equity.US.GME/USD",
           "price": 18.645,
           "publishTime": 1786737621,
-          "ageSec": 8140218
+          "ageSec": 8189930
         },
         "redemptionRate": null
       }
@@ -5668,7 +5668,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5298528580000017,
-        "daysStale": 18.028229166666666
+        "daysStale": 18.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5707,7 +5707,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5291788764999916,
-        "daysStale": 6.9865625
+        "daysStale": 7.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5746,7 +5746,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5282544246000054,
-        "daysStale": 75.02822916666666
+        "daysStale": 75.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5785,7 +5785,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5226308853000017,
-        "daysStale": 81.02822916666666
+        "daysStale": 81.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5824,7 +5824,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5213320566000101,
-        "daysStale": 90.02822916666666
+        "daysStale": 90.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5863,7 +5863,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5210918114000096,
-        "daysStale": 88.02822916666666
+        "daysStale": 88.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5902,7 +5902,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5120718344999942,
-        "daysStale": 75.02822916666666
+        "daysStale": 75.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5941,7 +5941,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5073595003999953,
-        "daysStale": 13.9865625
+        "daysStale": 14.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -5980,7 +5980,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5046690469999948,
-        "daysStale": 67.02822916666666
+        "daysStale": 67.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6019,7 +6019,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.5039123630999898,
-        "daysStale": 52.02822916666667
+        "daysStale": 52.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6058,7 +6058,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.498127340799992,
-        "daysStale": 26.028229166666666
+        "daysStale": 26.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6097,7 +6097,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.49504950499998923,
-        "daysStale": 46.02822916666667
+        "daysStale": 46.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6123,7 +6123,7 @@
       "mint": "XsqE9cRRpzxcGKDXj1BJ7Xmg4GRhZoyY1KpmGSxAWT2",
       "decimals": 8,
       "supply": {
-        "raw": "5463701155424"
+        "raw": "5463700860626"
       },
       "scaled": {
         "state": {
@@ -6136,7 +6136,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4940426501000017,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6150,7 +6150,7 @@
           "symbol": "Crypto.MCDX/USD",
           "price": 258.95483569,
           "publishTime": 1789215418,
-          "ageSec": 5662421,
+          "ageSec": 5712133,
           "basisPct": null,
           "flagged": null,
           "direction": null,
@@ -6161,7 +6161,7 @@
           "symbol": "Equity.US.MCD/USD",
           "price": 272.83326999999997,
           "publishTime": 1786737620,
-          "ageSec": 8140219
+          "ageSec": 8189931
         },
         "redemptionRate": {
           "feedId": "9da35621c6b18f310a83e9ac6cefa12d72208612b444acf68ba706416dcb47a8",
@@ -6191,7 +6191,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4930966469000042,
-        "daysStale": 73.02822916666666
+        "daysStale": 73.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6230,7 +6230,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.49024822695036274,
-        "daysStale": 31.028229166666666
+        "daysStale": 31.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6263,7 +6263,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4826498422712877,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6296,7 +6296,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4806520290999927,
-        "daysStale": 6.9865625
+        "daysStale": 7.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6335,7 +6335,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.48061389339999483,
-        "daysStale": 67.02822916666666
+        "daysStale": 67.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6368,7 +6368,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.48027444250000606,
-        "daysStale": 87.02822916666666
+        "daysStale": 87.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6394,7 +6394,7 @@
       "mint": "Xs7waUdcn1ZQDsuFmHRerWEEazRHoWWzWSa6aB7QjHG",
       "decimals": 8,
       "supply": {
-        "raw": "3506244470133"
+        "raw": "4848429718157"
       },
       "scaled": {
         "state": {
@@ -6407,7 +6407,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4792497069167734,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6440,7 +6440,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4767221168000102,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6479,7 +6479,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4708121826999978,
-        "daysStale": 18.028229166666666
+        "daysStale": 18.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6518,7 +6518,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.46927374299998714,
-        "daysStale": 18.028229166666666
+        "daysStale": 18.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6557,7 +6557,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4678285938999993,
-        "daysStale": 32.02822916666667
+        "daysStale": 32.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6596,7 +6596,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4606475387999964,
-        "daysStale": 62.02822916666667
+        "daysStale": 62.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6635,7 +6635,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4605384351999975,
-        "daysStale": 4.9865625
+        "daysStale": 5.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6661,7 +6661,7 @@
       "mint": "XsYdjDjNUygZ7yGKfQaB6TxLh2gC6RRjzLtLAGJrhzV",
       "decimals": 8,
       "supply": {
-        "raw": "10658387902667"
+        "raw": "10658387902666"
       },
       "scaled": {
         "state": {
@@ -6674,7 +6674,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.46014252069999095,
-        "daysStale": 25.028229166666666
+        "daysStale": 25.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6713,7 +6713,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.45754849589998425,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6752,7 +6752,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.45732952229999846,
-        "daysStale": 62.02822916666667
+        "daysStale": 62.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6791,7 +6791,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4564645548999824,
-        "daysStale": 4.9865625
+        "daysStale": 5.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6830,7 +6830,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4553786435999907,
-        "daysStale": 47.02822916666667
+        "daysStale": 47.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6869,7 +6869,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.45402759129999914,
-        "daysStale": 4.9865625
+        "daysStale": 5.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6908,7 +6908,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.45213796670000583,
-        "daysStale": 41.02822916666667
+        "daysStale": 41.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6947,7 +6947,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.45081813759999534,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -6986,7 +6986,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.45043233460000387,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7025,7 +7025,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4501414729999986,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7064,7 +7064,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.44883303409999353,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7103,7 +7103,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4451427075000014,
-        "daysStale": 67.02822916666666
+        "daysStale": 67.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7142,7 +7142,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.441479684700008,
-        "daysStale": 90.02822916666666
+        "daysStale": 90.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7181,7 +7181,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4407394348000082,
-        "daysStale": 27.028229166666666
+        "daysStale": 27.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7220,7 +7220,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4407135362000103,
-        "daysStale": 108.02822916666666
+        "daysStale": 108.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7240,7 +7240,7 @@
       "mint": "XsaHND8sHyfMfsWPj6kSdd5VwvCayZvjYgKmmcNL5qh",
       "decimals": 8,
       "supply": {
-        "raw": "11974765532889"
+        "raw": "11974765532771"
       },
       "scaled": {
         "state": {
@@ -7253,7 +7253,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.43906442349999075,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7268,7 +7268,7 @@
           "symbol": "Equity.US.XOM/USD",
           "price": 160.01998999999998,
           "publishTime": 1786737619,
-          "ageSec": 8140220
+          "ageSec": 8189932
         },
         "redemptionRate": null
       }
@@ -7292,7 +7292,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.43162922340000964,
-        "daysStale": 90.02822916666666
+        "daysStale": 90.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7331,7 +7331,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4303048661000064,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7370,7 +7370,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4285072447000049,
-        "daysStale": 75.02822916666666
+        "daysStale": 75.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7409,7 +7409,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.42839431270000894,
-        "daysStale": 66.02822916666666
+        "daysStale": 66.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7424,7 +7424,7 @@
           "symbol": "Equity.US.UNH/USD",
           "price": 392.83698,
           "publishTime": 1779214452,
-          "ageSec": 15663387
+          "ageSec": 15713099
         },
         "redemptionRate": null
       }
@@ -7448,7 +7448,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.42828008160000763,
-        "daysStale": 33.02822916666667
+        "daysStale": 33.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7487,7 +7487,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.42810182710000255,
-        "daysStale": 17.028229166666666
+        "daysStale": 17.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7526,7 +7526,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.42719063070000285,
-        "daysStale": 33.02822916666667
+        "daysStale": 33.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7565,7 +7565,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.42525059409999066,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7604,7 +7604,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.42368421049998606,
-        "daysStale": 18.028229166666666
+        "daysStale": 18.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7643,7 +7643,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.42153284669999014,
-        "daysStale": 146.02822916666668
+        "daysStale": 146.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7682,7 +7682,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.41953850759999245,
-        "daysStale": 87.02822916666666
+        "daysStale": 87.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7721,7 +7721,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4188240708999924,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7760,7 +7760,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.41874983290000056,
-        "daysStale": 4.9865625
+        "daysStale": 5.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7799,7 +7799,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.418638275499994,
-        "daysStale": 87.02822916666666
+        "daysStale": 87.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7838,7 +7838,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.41584158420000517,
-        "daysStale": 89.02822916666666
+        "daysStale": 89.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7864,7 +7864,7 @@
       "mint": "XsaBXg8dU5cPM6ehmVctMkVqoiRG2ZjMo1cyBJ3AykQ",
       "decimals": 8,
       "supply": {
-        "raw": "21122241596496"
+        "raw": "21122241596495"
       },
       "scaled": {
         "state": {
@@ -7877,7 +7877,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.41522104089999345,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7892,7 +7892,7 @@
           "symbol": "Equity.US.KO/USD",
           "price": 87.69505,
           "publishTime": 1786737617,
-          "ageSec": 8140222
+          "ageSec": 8189934
         },
         "redemptionRate": null
       }
@@ -7916,7 +7916,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.41392302907787837,
-        "daysStale": 57.069895833333334
+        "daysStale": 57.645266203703706
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7955,7 +7955,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4134210189999932,
-        "daysStale": 6.9865625
+        "daysStale": 7.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -7994,7 +7994,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4127115146999927,
-        "daysStale": 10.9865625
+        "daysStale": 11.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8033,7 +8033,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.41113131030001693,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8072,7 +8072,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4108876559999919,
-        "daysStale": 13.9865625
+        "daysStale": 14.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8111,7 +8111,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.4107697618000117,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8150,7 +8150,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.41038525959999905,
-        "daysStale": 69.02822916666666
+        "daysStale": 69.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8189,7 +8189,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.40670463190000117,
-        "daysStale": 88.02822916666666
+        "daysStale": 88.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8228,7 +8228,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.40590405900000626,
-        "daysStale": 47.02822916666667
+        "daysStale": 47.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8267,7 +8267,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.40446062290000473,
-        "daysStale": 76.02822916666666
+        "daysStale": 76.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8306,7 +8306,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.40168776369999826,
-        "daysStale": 81.02822916666666
+        "daysStale": 81.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8345,7 +8345,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.40108564540000113,
-        "daysStale": 28.028229166666666
+        "daysStale": 28.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8384,7 +8384,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.39927922319999976,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8423,7 +8423,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.39725880720000717,
-        "daysStale": 28.028229166666666
+        "daysStale": 28.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8462,7 +8462,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.39679189529999714,
-        "daysStale": 55.02822916666667
+        "daysStale": 55.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8501,7 +8501,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3920497233999898,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8540,7 +8540,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3875320775320823,
-        "daysStale": 48.05253472222222
+        "daysStale": 48.62790509259259
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8579,7 +8579,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3865213082000052,
-        "daysStale": 73.02822916666666
+        "daysStale": 73.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8618,7 +8618,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.38595916579999834,
-        "daysStale": 18.028229166666666
+        "daysStale": 18.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8657,7 +8657,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.38559322030000676,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8696,7 +8696,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.38242009130002863,
-        "daysStale": 17.028229166666666
+        "daysStale": 17.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8735,7 +8735,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.37891268529999245,
-        "daysStale": 75.02822916666666
+        "daysStale": 75.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8774,7 +8774,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3704232712071098,
-        "daysStale": 14.465729166666666
+        "daysStale": 15.041099537037036
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8807,7 +8807,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.368864196100005,
-        "daysStale": 47.02822916666667
+        "daysStale": 47.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8846,7 +8846,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3623358900999962,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8885,7 +8885,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.36162628510001404,
-        "daysStale": 6.9865625
+        "daysStale": 7.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8924,7 +8924,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.361250368622823,
-        "daysStale": 4.9865625
+        "daysStale": 5.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8935,6 +8935,45 @@
       "pyth": {
         "xstock": null,
         "equity": null,
+        "redemptionRate": null
+      }
+    },
+    {
+      "issuer": "xstocks",
+      "symbol": "PSXx",
+      "mint": "XsYvZVxiNdjuHQQzdCmf4TMSTBgvarV2gLi2akooV8V",
+      "decimals": 8,
+      "supply": {
+        "raw": "3550295857988"
+      },
+      "scaled": {
+        "state": {
+          "multiplier": "1.00369569736",
+          "newMultiplier": "1.0072811501048027",
+          "newMultiplierEffectiveTimestamp": 1794879000
+        },
+        "effectiveMultiplier": 1.0072811501048027
+      },
+      "trap": {
+        "stale": true,
+        "gapPct": 0.3572250786999964,
+        "daysStale": 0.5619328703703703
+      },
+      "security": {
+        "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
+        "pauseAuthority": "JDq14BWvqCRFNu1krb12bcRpbGtJZ1FLEakMw6FdxJNs",
+        "paused": false,
+        "transferHookAuthority": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq"
+      },
+      "pyth": {
+        "xstock": null,
+        "equity": {
+          "feedId": "16b28b05e3491528ff9ece996c65075c3d2af3027131b11da425c6930b1e5932",
+          "symbol": "Equity.US.PSX/USD",
+          "price": null,
+          "publishTime": null,
+          "ageSec": null
+        },
         "redemptionRate": null
       }
     },
@@ -8957,7 +8996,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3553299492000006,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -8996,7 +9035,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3536523553999915,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9035,7 +9074,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.35305528610001247,
-        "daysStale": 20.028229166666666
+        "daysStale": 20.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9074,7 +9113,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3526093088999982,
-        "daysStale": 26.028229166666666
+        "daysStale": 26.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9113,7 +9152,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.35114708049999166,
-        "daysStale": 69.02822916666666
+        "daysStale": 69.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9152,7 +9191,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.35077630819999595,
-        "daysStale": 90.02822916666666
+        "daysStale": 90.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9191,7 +9230,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3474938324000032,
-        "daysStale": 42.02822916666667
+        "daysStale": 42.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9230,7 +9269,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3470988751000048,
-        "daysStale": 84.02822916666666
+        "daysStale": 84.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9269,7 +9308,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3461378305000151,
-        "daysStale": 17.028229166666666
+        "daysStale": 17.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9308,7 +9347,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.346128059000006,
-        "daysStale": 42.02822916666667
+        "daysStale": 42.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9347,7 +9386,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3449975356999868,
-        "daysStale": 10.9865625
+        "daysStale": 11.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9386,7 +9425,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3411638560999908,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9425,7 +9464,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.34000127819999726,
-        "daysStale": 18.028229166666666
+        "daysStale": 18.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9464,7 +9503,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.33737496210000106,
-        "daysStale": 39.02822916666667
+        "daysStale": 39.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9503,7 +9542,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3357582540999937,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9552,7 +9591,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.333791104000003,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9591,7 +9630,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.33287561399999444,
-        "daysStale": 90.02822916666666
+        "daysStale": 90.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9630,7 +9669,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3323082004,
-        "daysStale": 6.9865625
+        "daysStale": 7.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9669,7 +9708,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3322552447999838,
-        "daysStale": 18.028229166666666
+        "daysStale": 18.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9708,7 +9747,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3297609232999932,
-        "daysStale": 60.02822916666667
+        "daysStale": 60.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9747,7 +9786,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3286297313999986,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9786,7 +9825,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.32823879372243514,
-        "daysStale": 75.02822916666666
+        "daysStale": 75.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9825,7 +9864,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.32706753409998957,
-        "daysStale": 69.02822916666666
+        "daysStale": 69.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9864,7 +9903,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.32634032629998977,
-        "daysStale": 75.02822916666666
+        "daysStale": 75.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9903,7 +9942,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.32498990709999287,
-        "daysStale": 40.02822916666667
+        "daysStale": 40.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9942,7 +9981,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3233695652000046,
-        "daysStale": 76.02822916666666
+        "daysStale": 76.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -9981,7 +10020,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.323346670600011,
-        "daysStale": 80.02822916666666
+        "daysStale": 80.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10020,7 +10059,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.32131147539999905,
-        "daysStale": 84.02822916666666
+        "daysStale": 84.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10059,7 +10098,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3212974296000093,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10092,7 +10131,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3197389886000046,
-        "daysStale": 68.02822916666666
+        "daysStale": 68.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10131,7 +10170,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.31729102789999075,
-        "daysStale": 11.9865625
+        "daysStale": 12.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10170,7 +10209,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3169162527000058,
-        "daysStale": 80.02822916666666
+        "daysStale": 80.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10209,7 +10248,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.31372025539999626,
-        "daysStale": 151.88239583333333
+        "daysStale": 152.4577662037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10248,7 +10287,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3080039112000055,
-        "daysStale": 67.02822916666666
+        "daysStale": 67.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10287,7 +10326,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3057213568000039,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10326,7 +10365,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.30357265780001086,
-        "daysStale": 24.028229166666666
+        "daysStale": 24.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10365,7 +10404,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.30335097000000477,
-        "daysStale": 68.02822916666666
+        "daysStale": 68.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10404,7 +10443,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.3006442376999985,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10443,7 +10482,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.29856051179999454,
-        "daysStale": 19.028229166666666
+        "daysStale": 19.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10482,7 +10521,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2946273830155999,
-        "daysStale": 77.0490625
+        "daysStale": 77.62443287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10515,7 +10554,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.29439752587130386,
-        "daysStale": 84.02822916666666
+        "daysStale": 84.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10548,7 +10587,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2941725811999918,
-        "daysStale": 90.02822916666666
+        "daysStale": 90.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10587,7 +10626,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.29295774649999995,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10626,7 +10665,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.29029745414728136,
-        "daysStale": 54.05253472222222
+        "daysStale": 54.62790509259259
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10665,7 +10704,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2901220355000067,
-        "daysStale": 80.02822916666666
+        "daysStale": 80.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10704,7 +10743,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.287828947400004,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10743,7 +10782,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.28735632179999193,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10782,7 +10821,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.28711535660002063,
-        "daysStale": 10.9865625
+        "daysStale": 11.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10821,7 +10860,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2870617182999968,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10860,7 +10899,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2845099743235213,
-        "daysStale": 17.882395833333334
+        "daysStale": 18.457766203703702
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10899,7 +10938,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.28011652850001845,
-        "daysStale": 18.028229166666666
+        "daysStale": 18.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10938,7 +10977,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.27854006590002367,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -10977,7 +11016,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2737267219999895,
-        "daysStale": 66.02822916666666
+        "daysStale": 66.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11016,7 +11055,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2703199706000081,
-        "daysStale": 46.02822916666667
+        "daysStale": 46.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11055,7 +11094,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2694812486000009,
-        "daysStale": 109.02822916666666
+        "daysStale": 109.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11094,7 +11133,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.26840490797546135,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11133,7 +11172,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2671500811000094,
-        "daysStale": 10.9865625
+        "daysStale": 11.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11172,7 +11211,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.26538529360000673,
-        "daysStale": 82.02822916666666
+        "daysStale": 82.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11211,7 +11250,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.26432696580001025,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11250,7 +11289,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2640701468000106,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11289,7 +11328,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.26280018124149596,
-        "daysStale": 80.02822916666666
+        "daysStale": 80.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11328,7 +11367,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.26019044439999917,
-        "daysStale": 88.02822916666666
+        "daysStale": 88.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11367,7 +11406,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.25959139639999407,
-        "daysStale": 88.02822916666666
+        "daysStale": 88.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11406,7 +11445,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2592369305000064,
-        "daysStale": 42.02822916666667
+        "daysStale": 42.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11445,7 +11484,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.257940894700015,
-        "daysStale": 39.02822916666667
+        "daysStale": 39.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11484,7 +11523,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.25310353140000075,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11501,6 +11540,39 @@
           "publishTime": null,
           "ageSec": null
         },
+        "redemptionRate": null
+      }
+    },
+    {
+      "issuer": "xstocks",
+      "symbol": "RGAx",
+      "mint": "XsFvsyP8i3Qpat1BK78Yjq3PsTNhD3SV5FHryJrWbHs",
+      "decimals": 8,
+      "supply": {
+        "raw": "3561316873339"
+      },
+      "scaled": {
+        "state": {
+          "multiplier": "1.002777552838",
+          "newMultiplier": "1.0053079192080938",
+          "newMultiplierEffectiveTimestamp": 1794879000
+        },
+        "effectiveMultiplier": 1.0053079192080938
+      },
+      "trap": {
+        "stale": true,
+        "gapPct": 0.25233576109999767,
+        "daysStale": 0.5619328703703703
+      },
+      "security": {
+        "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
+        "pauseAuthority": "JDq14BWvqCRFNu1krb12bcRpbGtJZ1FLEakMw6FdxJNs",
+        "paused": false,
+        "transferHookAuthority": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq"
+      },
+      "pyth": {
+        "xstock": null,
+        "equity": null,
         "redemptionRate": null
       }
     },
@@ -11523,7 +11595,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2521989762999999,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11562,7 +11634,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.25185998290000455,
-        "daysStale": 31.028229166666666
+        "daysStale": 31.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11601,7 +11673,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.25147110596992484,
-        "daysStale": 6.9865625
+        "daysStale": 7.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11640,7 +11712,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.25128765410000753,
-        "daysStale": 41.02822916666667
+        "daysStale": 41.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11673,7 +11745,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.24944899619998573,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11712,7 +11784,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.24924053142969527,
-        "daysStale": 16.052534722222223
+        "daysStale": 16.62790509259259
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11751,7 +11823,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.24629458589999764,
-        "daysStale": 4.9865625
+        "daysStale": 5.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11790,7 +11862,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.24553821980000112,
-        "daysStale": 90.02822916666666
+        "daysStale": 90.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11829,7 +11901,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2442268693000127,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11868,7 +11940,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2405478832000041,
-        "daysStale": 6.9865625
+        "daysStale": 7.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11907,7 +11979,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.23921022660000624,
-        "daysStale": 47.02822916666667
+        "daysStale": 47.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11946,7 +12018,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.23851710509998902,
-        "daysStale": 68.02822916666666
+        "daysStale": 68.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -11985,7 +12057,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.23742817800000982,
-        "daysStale": 4.9865625
+        "daysStale": 5.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12024,7 +12096,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.23721907480001025,
-        "daysStale": 9.9865625
+        "daysStale": 10.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12063,7 +12135,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2370480441000078,
-        "daysStale": 141.05253472222222
+        "daysStale": 141.62790509259258
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12102,7 +12174,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2369668245999934,
-        "daysStale": 80.02822916666666
+        "daysStale": 80.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12141,7 +12213,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.23584393000000148,
-        "daysStale": 67.02822916666666
+        "daysStale": 67.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12180,7 +12252,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2350339858000039,
-        "daysStale": 67.02822916666666
+        "daysStale": 67.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12219,7 +12291,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.23199490120000554,
-        "daysStale": 62.02822916666667
+        "daysStale": 62.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12258,7 +12330,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.23176705370000494,
-        "daysStale": 95.02822916666666
+        "daysStale": 95.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12297,7 +12369,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.23172231150001554,
-        "daysStale": 6.9865625
+        "daysStale": 7.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12336,7 +12408,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.22961313665459393,
-        "daysStale": 6.9865625
+        "daysStale": 7.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12375,7 +12447,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.22833981931897895,
-        "daysStale": 16.052534722222223
+        "daysStale": 16.62790509259259
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12414,7 +12486,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.22660543549999357,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12453,7 +12525,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.22659194129999172,
-        "daysStale": 46.02822916666667
+        "daysStale": 46.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12492,7 +12564,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.22310266591039074,
-        "daysStale": 28.5178125
+        "daysStale": 29.09318287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12525,7 +12597,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2223280926999971,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12564,7 +12636,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.22231890360000506,
-        "daysStale": 46.02822916666667
+        "daysStale": 46.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12603,7 +12675,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.22097069269999547,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12642,7 +12714,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.22020787010001985,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12681,7 +12753,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.21935483870001438,
-        "daysStale": 12.9865625
+        "daysStale": 13.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12720,7 +12792,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.21928745000001637,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12759,7 +12831,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.21624679109999434,
-        "daysStale": 80.02822916666666
+        "daysStale": 80.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12798,7 +12870,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.21564852089999142,
-        "daysStale": 80.02822916666666
+        "daysStale": 80.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12837,7 +12909,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.21326851979999173,
-        "daysStale": 81.02822916666666
+        "daysStale": 81.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12876,7 +12948,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.21262495170000228,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12915,7 +12987,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.21138200971273502,
-        "daysStale": 62.02822916666667
+        "daysStale": 62.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12954,7 +13026,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2110859817999966,
-        "daysStale": 32.02822916666667
+        "daysStale": 32.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -12993,7 +13065,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.20959418999999535,
-        "daysStale": 68.02822916666666
+        "daysStale": 68.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13032,7 +13104,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.20580971419998928,
-        "daysStale": 95.02822916666666
+        "daysStale": 95.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13071,7 +13143,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.20420220820001056,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13110,7 +13182,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.2016979675999897,
-        "daysStale": 80.02822916666666
+        "daysStale": 80.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13149,7 +13221,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.20123616500000718,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13182,7 +13254,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.19894276129999167,
-        "daysStale": 53.02822916666667
+        "daysStale": 53.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13221,7 +13293,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.19762845849999877,
-        "daysStale": 67.02822916666666
+        "daysStale": 67.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13260,7 +13332,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.19634703199999937,
-        "daysStale": 33.02822916666667
+        "daysStale": 33.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13299,7 +13371,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.19634556820002924,
-        "daysStale": 11.9865625
+        "daysStale": 12.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13338,7 +13410,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.19456797970001105,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13377,7 +13449,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.19369120089998138,
-        "daysStale": 4.9865625
+        "daysStale": 5.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13416,7 +13488,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.19316493313521477,
-        "daysStale": 6.9865625
+        "daysStale": 7.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13449,7 +13521,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.19266399939998902,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13488,7 +13560,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.19114715599999332,
-        "daysStale": 90.02822916666666
+        "daysStale": 90.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13527,7 +13599,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1911076442999926,
-        "daysStale": 80.02822916666666
+        "daysStale": 80.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13566,7 +13638,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.18713575360000956,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13605,7 +13677,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.18653165330000387,
-        "daysStale": 73.02822916666666
+        "daysStale": 73.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13644,7 +13716,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.18547421149999188,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13683,7 +13755,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.18547381550000352,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13722,7 +13794,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.18497080730000004,
-        "daysStale": 80.02822916666666
+        "daysStale": 80.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13761,7 +13833,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.18392818040000591,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13774,6 +13846,45 @@
         "equity": {
           "feedId": "222e85396bf2545e6591fdfbbb326e5d334781ede02749dcf1b81472e4128807",
           "symbol": "Equity.US.ZBH/USD",
+          "price": null,
+          "publishTime": null,
+          "ageSec": null
+        },
+        "redemptionRate": null
+      }
+    },
+    {
+      "issuer": "xstocks",
+      "symbol": "VRSNx",
+      "mint": "Xsy4NX4cCf4YjN6iwypnQ8crXtNkyA2K3jypAX5NfQ6",
+      "decimals": 8,
+      "supply": {
+        "raw": "2997179247406"
+      },
+      "scaled": {
+        "state": {
+          "multiplier": "1.00204885452",
+          "newMultiplier": "1.003890963590492",
+          "newMultiplierEffectiveTimestamp": 1794879000
+        },
+        "effectiveMultiplier": 1.003890963590492
+      },
+      "trap": {
+        "stale": true,
+        "gapPct": 0.18383425740000625,
+        "daysStale": 0.5619328703703703
+      },
+      "security": {
+        "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
+        "pauseAuthority": "JDq14BWvqCRFNu1krb12bcRpbGtJZ1FLEakMw6FdxJNs",
+        "paused": false,
+        "transferHookAuthority": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq"
+      },
+      "pyth": {
+        "xstock": null,
+        "equity": {
+          "feedId": "c7ae3c077945639c2e0ed7199d1e6655f8c76027e07bccea53d9b6f79d8075fd",
+          "symbol": "Equity.US.VRSN/USD",
           "price": null,
           "publishTime": null,
           "ageSec": null
@@ -13800,7 +13911,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.18326061086868517,
-        "daysStale": 18.507395833333334
+        "daysStale": 19.082766203703702
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13833,7 +13944,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.18087855299999678,
-        "daysStale": 21.028229166666666
+        "daysStale": 21.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13872,7 +13983,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.18054312149999863,
-        "daysStale": 62.02822916666667
+        "daysStale": 62.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13898,7 +14009,7 @@
       "mint": "XsU3RZd5ufTcCJneLjDhTrU47ma9ypnhXyvJACRZrTv",
       "decimals": 8,
       "supply": {
-        "raw": "14592566197811"
+        "raw": "19150560531177"
       },
       "scaled": {
         "state": {
@@ -13911,7 +14022,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.18024840960000343,
-        "daysStale": 89.02822916666666
+        "daysStale": 89.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13944,7 +14055,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1795503077999916,
-        "daysStale": 60.02822916666667
+        "daysStale": 60.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13983,7 +14094,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.179493239899986,
-        "daysStale": 52.02822916666667
+        "daysStale": 52.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -13998,7 +14109,7 @@
           "symbol": "Equity.US.VOO/USD",
           "price": 683.20853,
           "publishTime": 1783021487,
-          "ageSec": 11856352
+          "ageSec": 11906064
         },
         "redemptionRate": null
       }
@@ -14022,7 +14133,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1776649745999892,
-        "daysStale": 12.9865625
+        "daysStale": 13.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14061,7 +14172,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.17611975669997726,
-        "daysStale": 52.02822916666667
+        "daysStale": 52.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14100,7 +14211,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.17598800280000937,
-        "daysStale": 61.02822916666667
+        "daysStale": 61.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14139,7 +14250,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.17568052070000562,
-        "daysStale": 46.02822916666667
+        "daysStale": 46.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14178,7 +14289,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.17419715789999124,
-        "daysStale": 60.02822916666667
+        "daysStale": 60.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14204,7 +14315,7 @@
       "mint": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
       "decimals": 8,
       "supply": {
-        "raw": "9523034629417"
+        "raw": "9523034061496"
       },
       "scaled": {
         "state": {
@@ -14217,7 +14328,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.17320423717994693,
-        "daysStale": 16.476145833333334
+        "daysStale": 17.051516203703702
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14231,7 +14342,7 @@
           "symbol": "Crypto.SPYX/USD",
           "price": 755.70848675,
           "publishTime": 1794388350,
-          "ageSec": 489489,
+          "ageSec": 539201,
           "basisPct": null,
           "flagged": null,
           "direction": null,
@@ -14242,7 +14353,7 @@
           "symbol": "Equity.US.SPY/USD",
           "price": 765.47926,
           "publishTime": 1787759686,
-          "ageSec": 7118153
+          "ageSec": 7167865
         },
         "redemptionRate": {
           "feedId": "9e916cc00d292da2367646ffd6537d6b8d0c3f15e2d5891ac44aed31291811a9",
@@ -14272,7 +14383,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.17247448080000005,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14311,7 +14422,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.17194323144105184,
-        "daysStale": 4.9865625
+        "daysStale": 5.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14344,7 +14455,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1703393267999953,
-        "daysStale": 88.02822916666666
+        "daysStale": 88.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14383,7 +14494,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.16719242900000708,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14422,7 +14533,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.16684322029998366,
-        "daysStale": 88.02822916666666
+        "daysStale": 88.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14461,7 +14572,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.16664217489998912,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14500,7 +14611,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.16608442500001264,
-        "daysStale": 24.028229166666666
+        "daysStale": 24.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14539,7 +14650,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1659329495000028,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14578,7 +14689,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.16386863749999758,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14617,7 +14728,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.16227415729999084,
-        "daysStale": 47.02822916666667
+        "daysStale": 47.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14656,7 +14767,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.16000703329999144,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14695,7 +14806,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1593421446000054,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14734,7 +14845,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.15754165760000216,
-        "daysStale": 39.02822916666667
+        "daysStale": 39.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14773,7 +14884,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.15737183639998875,
-        "daysStale": 9.9865625
+        "daysStale": 10.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14812,7 +14923,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.15716210150000798,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14851,7 +14962,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.15081873019999747,
-        "daysStale": 33.02822916666667
+        "daysStale": 33.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14890,7 +15001,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.148883374700004,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14929,7 +15040,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1483619120999924,
-        "daysStale": 18.028229166666666
+        "daysStale": 18.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -14968,7 +15079,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.14761885259999552,
-        "daysStale": 95.02822916666666
+        "daysStale": 95.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15007,7 +15118,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1461957770000133,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15046,7 +15157,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1454138701999952,
-        "daysStale": 75.02822916666666
+        "daysStale": 75.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15085,7 +15196,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1444622793000061,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15134,7 +15245,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.14390329699998095,
-        "daysStale": 10.9865625
+        "daysStale": 11.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15173,7 +15284,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1431153961999998,
-        "daysStale": 46.02822916666667
+        "daysStale": 46.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15212,7 +15323,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.14196416170000337,
-        "daysStale": 89.02822916666666
+        "daysStale": 89.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15251,7 +15362,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1394253983999949,
-        "daysStale": 45.02822916666667
+        "daysStale": 45.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15290,7 +15401,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1388429751999931,
-        "daysStale": 90.02822916666666
+        "daysStale": 90.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15323,7 +15434,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.13510874675244366,
-        "daysStale": 54.882395833333334
+        "daysStale": 55.457766203703706
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15362,7 +15473,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1350296935000106,
-        "daysStale": 73.02822916666666
+        "daysStale": 73.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15401,7 +15512,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.13498479569999944,
-        "daysStale": 39.02822916666667
+        "daysStale": 39.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15440,7 +15551,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.13276918589999465,
-        "daysStale": 101.02822916666666
+        "daysStale": 101.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15479,7 +15590,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.13224635609998536,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15505,7 +15616,7 @@
       "mint": "Xsva3qbt1TDUgQPnU3vVDasaPoUHXPU9FjYXzEUYY8G",
       "decimals": 8,
       "supply": {
-        "raw": "5010532930743"
+        "raw": "6261932436638"
       },
       "scaled": {
         "state": {
@@ -15518,7 +15629,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1322370675000073,
-        "daysStale": 73.02822916666666
+        "daysStale": 73.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15557,7 +15668,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.13169240419999007,
-        "daysStale": 32.02822916666667
+        "daysStale": 32.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15583,7 +15694,7 @@
       "mint": "XspzcW1PRtgf6Wj92HCiZdjzKCyFekVD8P5Ueh3dRMX",
       "decimals": 8,
       "supply": {
-        "raw": "10496857008974"
+        "raw": "10496855581569"
       },
       "scaled": {
         "state": {
@@ -15596,7 +15707,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.13152732750001395,
-        "daysStale": 89.02822916666666
+        "daysStale": 89.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15610,7 +15721,7 @@
           "symbol": "Crypto.MSFTX/USD",
           "price": 494.20749499,
           "publishTime": 1789215509,
-          "ageSec": 5662330,
+          "ageSec": 5712042,
           "basisPct": null,
           "flagged": null,
           "direction": null,
@@ -15621,7 +15732,7 @@
           "symbol": "Equity.US.MSFT/USD",
           "price": 495.17691999999994,
           "publishTime": 1786737620,
-          "ageSec": 8140219
+          "ageSec": 8189931
         },
         "redemptionRate": {
           "feedId": "fbc60d2549711c0fc72da0c9f6971170d4592c2fbd1e9780dc52464316225acc",
@@ -15638,7 +15749,7 @@
       "mint": "XsqgsbXwWogGJsNcVZ3TyVouy2MbTkfCFhCGGGcQZ2p",
       "decimals": 8,
       "supply": {
-        "raw": "4599128279949"
+        "raw": "4599127859506"
       },
       "scaled": {
         "state": {
@@ -15651,7 +15762,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1292680963000059,
-        "daysStale": 6.9865625
+        "daysStale": 7.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15690,7 +15801,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.12882827619999926,
-        "daysStale": 62.02822916666667
+        "daysStale": 62.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15729,7 +15840,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1287283478000001,
-        "daysStale": 9.9865625
+        "daysStale": 10.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15755,7 +15866,7 @@
       "mint": "XsgSaSvNSqLTtFuyWPBhK9196Xb9Bbdyjj4fH3cPJGo",
       "decimals": 8,
       "supply": {
-        "raw": "4558037945728"
+        "raw": "4558035317392"
       },
       "scaled": {
         "state": {
@@ -15768,7 +15879,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.12723357849999672,
-        "daysStale": 59.02822916666667
+        "daysStale": 59.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15783,7 +15894,7 @@
           "symbol": "Equity.US.AVGO/USD",
           "price": 406.74501,
           "publishTime": 1779201318,
-          "ageSec": 15676521
+          "ageSec": 15726233
         },
         "redemptionRate": null
       }
@@ -15807,7 +15918,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.12400943681567522,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15840,7 +15951,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.12383353239999728,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15855,7 +15966,7 @@
           "symbol": "Equity.US.DHR/USD",
           "price": 174.37508,
           "publishTime": 1778090345,
-          "ageSec": 16787494
+          "ageSec": 16837206
         },
         "redemptionRate": null
       }
@@ -15879,7 +15990,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.12293446160001054,
-        "daysStale": 61.02822916666667
+        "daysStale": 61.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15918,7 +16029,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.12226412950000487,
-        "daysStale": 6.9865625
+        "daysStale": 7.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15957,7 +16068,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.12100822129998967,
-        "daysStale": 9.9865625
+        "daysStale": 10.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -15996,7 +16107,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1205741626794321,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16029,7 +16140,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.11910203070000236,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16068,7 +16179,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.11397022587267269,
-        "daysStale": 54.05253472222222
+        "daysStale": 54.62790509259259
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16101,7 +16212,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.11369378469998637,
-        "daysStale": 6.9865625
+        "daysStale": 7.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16140,7 +16251,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1133603238999914,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16179,7 +16290,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.11261034629999056,
-        "daysStale": 21.028229166666666
+        "daysStale": 21.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16218,7 +16329,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.11219746749999704,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16257,7 +16368,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.11017838409999037,
-        "daysStale": 91.02822916666666
+        "daysStale": 91.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16296,7 +16407,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1085503449000047,
-        "daysStale": 76.02822916666666
+        "daysStale": 76.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16335,7 +16446,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.10839940539999482,
-        "daysStale": 56.02822916666667
+        "daysStale": 56.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16374,7 +16485,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1065488936000003,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16413,7 +16524,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.10627988109999098,
-        "daysStale": 45.02822916666667
+        "daysStale": 45.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16452,7 +16563,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1059572690999877,
-        "daysStale": 39.02822916666667
+        "daysStale": 39.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16491,7 +16602,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.10569852940001123,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16530,7 +16641,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.10451505016721985,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16563,7 +16674,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1042092357999902,
-        "daysStale": 42.02822916666667
+        "daysStale": 42.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16602,7 +16713,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.10324559920000809,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16641,7 +16752,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1031459515214106,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16674,7 +16785,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.10186175899999927,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16713,7 +16824,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.1017441859999968,
-        "daysStale": 67.02822916666666
+        "daysStale": 67.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16752,7 +16863,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.10149999999999881,
-        "daysStale": 80.02822916666666
+        "daysStale": 80.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16785,7 +16896,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.10001428779999877,
-        "daysStale": 59.02822916666667
+        "daysStale": 59.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16824,7 +16935,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.09682943969999691,
-        "daysStale": 28.028229166666666
+        "daysStale": 28.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16863,7 +16974,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.09415416450000436,
-        "daysStale": 48.02822916666667
+        "daysStale": 48.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16902,7 +17013,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.09313464609999045,
-        "daysStale": 82.02822916666666
+        "daysStale": 82.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16941,7 +17052,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.09099350049999178,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -16980,7 +17091,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.09096671949286872,
-        "daysStale": 26.090729166666666
+        "daysStale": 26.666099537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17019,7 +17130,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.08623188405796345,
-        "daysStale": 80.02822916666666
+        "daysStale": 80.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17052,7 +17163,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.0851137745000008,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17078,7 +17189,7 @@
       "mint": "Xsnuv4omNoHozR6EEW5mXkw8Nrny5rB3jVfLqi6gKMH",
       "decimals": 8,
       "supply": {
-        "raw": "1477993873188"
+        "raw": "1477993873187"
       },
       "scaled": {
         "state": {
@@ -17091,7 +17202,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.08469319169999157,
-        "daysStale": 3.9865625
+        "daysStale": 4.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17106,7 +17217,7 @@
           "symbol": "Equity.US.LLY/USD",
           "price": 991.0108499999999,
           "publishTime": 1778090320,
-          "ageSec": 16787519
+          "ageSec": 16837231
         },
         "redemptionRate": null
       }
@@ -17130,7 +17241,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.08164480790000539,
-        "daysStale": 91.02822916666666
+        "daysStale": 91.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17156,7 +17267,7 @@
       "mint": "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh",
       "decimals": 8,
       "supply": {
-        "raw": "44385724458102"
+        "raw": "44385708457687"
       },
       "scaled": {
         "state": {
@@ -17169,7 +17280,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.07824026470000245,
-        "daysStale": 68.02822916666666
+        "daysStale": 68.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17183,7 +17294,7 @@
           "symbol": "Crypto.NVDAX/USD",
           "price": 174.97155969,
           "publishTime": 1794388351,
-          "ageSec": 489488,
+          "ageSec": 539200,
           "basisPct": null,
           "flagged": null,
           "direction": null,
@@ -17194,7 +17305,7 @@
           "symbol": "Equity.US.NVDA/USD",
           "price": 211.01502999999997,
           "publishTime": 1787759686,
-          "ageSec": 7118153
+          "ageSec": 7167865
         },
         "redemptionRate": {
           "feedId": "b675c4e9f46d94afa9174a7df09966b77a2950970bb50a77ec8ad4fcfd8266f4",
@@ -17224,7 +17335,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.07477275929999028,
-        "daysStale": 89.02822916666666
+        "daysStale": 89.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17237,6 +17348,45 @@
         "equity": {
           "feedId": "b9bc74cc1243b706efacf664ed206d08ab1dda79e8b87752c7c44b3bdf1b9e08",
           "symbol": "Equity.US.AMAT/USD",
+          "price": null,
+          "publishTime": null,
+          "ageSec": null
+        },
+        "redemptionRate": null
+      }
+    },
+    {
+      "issuer": "xstocks",
+      "symbol": "WABx",
+      "mint": "XsGFoZFgiRxDk49QCAQUArX84V88t7Bz3fsExp7HLuX",
+      "decimals": 8,
+      "supply": {
+        "raw": "4087341593993"
+      },
+      "scaled": {
+        "state": {
+          "multiplier": "1.000721769499",
+          "newMultiplier": "1.001466119344525",
+          "newMultiplierEffectiveTimestamp": 1794879000
+        },
+        "effectiveMultiplier": 1.001466119344525
+      },
+      "trap": {
+        "stale": true,
+        "gapPct": 0.07438129840000585,
+        "daysStale": 0.5619328703703703
+      },
+      "security": {
+        "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
+        "pauseAuthority": "JDq14BWvqCRFNu1krb12bcRpbGtJZ1FLEakMw6FdxJNs",
+        "paused": false,
+        "transferHookAuthority": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq"
+      },
+      "pyth": {
+        "xstock": null,
+        "equity": {
+          "feedId": "6168b785e90c735e2c546abe61198534877802f639f829dcba65ecb332d2a097",
+          "symbol": "Equity.US.WAB/USD",
           "price": null,
           "publishTime": null,
           "ageSec": null
@@ -17263,7 +17413,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.07432340849999886,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17302,7 +17452,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.07428608180000129,
-        "daysStale": 55.02822916666667
+        "daysStale": 55.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17328,7 +17478,7 @@
       "mint": "Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ",
       "decimals": 8,
       "supply": {
-        "raw": "8435957724988"
+        "raw": "8435956833220"
       },
       "scaled": {
         "state": {
@@ -17341,7 +17491,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.07290595328850458,
-        "daysStale": 58.09072916666667
+        "daysStale": 58.666099537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17355,7 +17505,7 @@
           "symbol": "Crypto.QQQX/USD",
           "price": 713.68309144,
           "publishTime": 1792231968,
-          "ageSec": 2645871,
+          "ageSec": 2695583,
           "basisPct": null,
           "flagged": null,
           "direction": null,
@@ -17366,7 +17516,7 @@
           "symbol": "Equity.US.QQQ/USD",
           "price": 714.8199999999999,
           "publishTime": 1789171199,
-          "ageSec": 5706640
+          "ageSec": 5756352
         },
         "redemptionRate": {
           "feedId": "5fe0ad9fd9bd888bbdfb609dbe8a6233248fa3dee25755f986f473c43938c7ca",
@@ -17396,7 +17546,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.07004618429999887,
-        "daysStale": 52.02822916666667
+        "daysStale": 52.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17435,7 +17585,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.06963441930001313,
-        "daysStale": 4.9865625
+        "daysStale": 5.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17474,7 +17624,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.0671348894999868,
-        "daysStale": 18.028229166666666
+        "daysStale": 18.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17513,7 +17663,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.06699877400000442,
-        "daysStale": 80.02822916666666
+        "daysStale": 80.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17552,7 +17702,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.06295611060000983,
-        "daysStale": 77.02822916666666
+        "daysStale": 77.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17591,7 +17741,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.06269929419999709,
-        "daysStale": 84.02822916666666
+        "daysStale": 84.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17630,7 +17780,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.062230865400003665,
-        "daysStale": 89.02822916666666
+        "daysStale": 89.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17643,6 +17793,45 @@
         "equity": {
           "feedId": "82c4e3354c0678b1ba00268963a99b30a403719f67ea63458aa6a97945da5374",
           "symbol": "Equity.US.WWD/USD",
+          "price": null,
+          "publishTime": null,
+          "ageSec": null
+        },
+        "redemptionRate": null
+      }
+    },
+    {
+      "issuer": "xstocks",
+      "symbol": "SATAx",
+      "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
+      "decimals": 8,
+      "supply": {
+        "raw": "12000599571333"
+      },
+      "scaled": {
+        "state": {
+          "multiplier": "1.068000487514494",
+          "newMultiplier": "1.068646971431121",
+          "newMultiplierEffectiveTimestamp": 1794879000
+        },
+        "effectiveMultiplier": 1.068646971431121
+      },
+      "trap": {
+        "stale": true,
+        "gapPct": 0.06053217429999869,
+        "daysStale": 0.5619328703703703
+      },
+      "security": {
+        "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
+        "pauseAuthority": "JDq14BWvqCRFNu1krb12bcRpbGtJZ1FLEakMw6FdxJNs",
+        "paused": false,
+        "transferHookAuthority": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq"
+      },
+      "pyth": {
+        "xstock": null,
+        "equity": {
+          "feedId": "b89885277fd07887353cb63d641afe432a5231256f844b3b993f8fe1764fdfca",
+          "symbol": "Equity.US.SATA/USD",
           "price": null,
           "publishTime": null,
           "ageSec": null
@@ -17669,7 +17858,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.060240186199989054,
-        "daysStale": 4.9865625
+        "daysStale": 5.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17708,7 +17897,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.05913161006927403,
-        "daysStale": 82.02822916666666
+        "daysStale": 82.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17728,7 +17917,7 @@
       "mint": "Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu",
       "decimals": 8,
       "supply": {
-        "raw": "7237617292133"
+        "raw": "7237617251131"
       },
       "scaled": {
         "state": {
@@ -17741,7 +17930,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.0552009011999921,
-        "daysStale": 59.02822916666667
+        "daysStale": 59.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17755,7 +17944,7 @@
           "symbol": "Crypto.METAX/USD",
           "price": 709.79058659,
           "publishTime": 1792231935,
-          "ageSec": 2645904,
+          "ageSec": 2695616,
           "basisPct": null,
           "flagged": null,
           "direction": null,
@@ -17766,7 +17955,7 @@
           "symbol": "Equity.US.META/USD",
           "price": 589.78572,
           "publishTime": 1786737620,
-          "ageSec": 8140219
+          "ageSec": 8189931
         },
         "redemptionRate": {
           "feedId": "dfeda47e0d3ed1db00062c9ae8b82f5d0d9699f772e7fee1bfd4e9b1dd168574",
@@ -17796,7 +17985,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.05361624460000769,
-        "daysStale": 63.02822916666667
+        "daysStale": 63.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17811,7 +18000,7 @@
           "symbol": "Equity.US.TMO/USD",
           "price": 472.72238999999996,
           "publishTime": 1778090334,
-          "ageSec": 16787505
+          "ageSec": 16837217
         },
         "redemptionRate": null
       }
@@ -17822,7 +18011,7 @@
       "mint": "XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp",
       "decimals": 8,
       "supply": {
-        "raw": "15376060785570"
+        "raw": "15376058648872"
       },
       "scaled": {
         "state": {
@@ -17835,7 +18024,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.05315528659999291,
-        "daysStale": 4.9865625
+        "daysStale": 5.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17849,7 +18038,7 @@
           "symbol": "Crypto.AAPLX/USD",
           "price": 359.32790398000003,
           "publishTime": 1794788610,
-          "ageSec": 89229,
+          "ageSec": 138941,
           "basisPct": null,
           "flagged": null,
           "direction": null,
@@ -17860,7 +18049,7 @@
           "symbol": "Equity.US.AAPL/USD",
           "price": 305.91999999999996,
           "publishTime": 1786737619,
-          "ageSec": 8140220
+          "ageSec": 8189932
         },
         "redemptionRate": {
           "feedId": "25babb83691a056fd65f879bfd7197eabd840aae741f69c87ccb31e204a979b2",
@@ -17890,7 +18079,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.048786315899995714,
-        "daysStale": 10.9865625
+        "daysStale": 11.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17929,7 +18118,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.04663557630000259,
-        "daysStale": 20.028229166666666
+        "daysStale": 20.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17968,7 +18157,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.04656577419999142,
-        "daysStale": 80.02822916666666
+        "daysStale": 80.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -17994,7 +18183,7 @@
       "mint": "XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN",
       "decimals": 8,
       "supply": {
-        "raw": "16040254134239"
+        "raw": "16040254116057"
       },
       "scaled": {
         "state": {
@@ -18007,7 +18196,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.04496612939999256,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18021,7 +18210,7 @@
           "symbol": "Crypto.GOOGLX/USD",
           "price": 340.88923806,
           "publishTime": 1792232052,
-          "ageSec": 2645787,
+          "ageSec": 2695499,
           "basisPct": null,
           "flagged": null,
           "direction": null,
@@ -18032,7 +18221,7 @@
           "symbol": "Equity.US.GOOGL/USD",
           "price": 346.006,
           "publishTime": 1786737620,
-          "ageSec": 8140219
+          "ageSec": 8189931
         },
         "redemptionRate": {
           "feedId": "d54f066daee8cfbee2ecbefc8faa351c7c38b2c2a7cd8b704af20875974e3c68",
@@ -18062,7 +18251,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.044223053383207755,
-        "daysStale": 48.069895833333334
+        "daysStale": 48.645266203703706
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18101,7 +18290,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.04404710620000696,
-        "daysStale": 6.9865625
+        "daysStale": 7.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18140,7 +18329,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.04092992799999973,
-        "daysStale": 21.028229166666666
+        "daysStale": 21.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18179,7 +18368,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.039204704599993256,
-        "daysStale": 25.028229166666666
+        "daysStale": 25.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18218,7 +18407,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.038906180499997944,
-        "daysStale": 90.02822916666666
+        "daysStale": 90.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18257,7 +18446,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.03756624399999797,
-        "daysStale": 33.02822916666667
+        "daysStale": 33.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18296,7 +18485,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.036987133800003846,
-        "daysStale": 28.028229166666666
+        "daysStale": 28.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18335,7 +18524,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.033765857900003304,
-        "daysStale": 47.02822916666667
+        "daysStale": 47.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18374,7 +18563,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.033442972399999604,
-        "daysStale": 53.02822916666667
+        "daysStale": 53.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18413,7 +18602,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.03185582959999156,
-        "daysStale": 88.02822916666666
+        "daysStale": 88.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18452,7 +18641,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.031138790035578623,
-        "daysStale": 25.028229166666666
+        "daysStale": 25.603599537037038
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18474,6 +18663,61 @@
     },
     {
       "issuer": "xstocks",
+      "symbol": "STRCx",
+      "mint": "Xs78JED6PFZxWc2wCEPspZW9kL3Se5J7L5TChKgsidH",
+      "decimals": 8,
+      "supply": {
+        "raw": "46991915751999"
+      },
+      "scaled": {
+        "state": {
+          "multiplier": "1.1031284137545447",
+          "newMultiplier": "1.103462290392807",
+          "newMultiplierEffectiveTimestamp": 1794879000
+        },
+        "effectiveMultiplier": 1.103462290392807
+      },
+      "trap": {
+        "stale": true,
+        "gapPct": 0.030266343799989492,
+        "daysStale": 0.5619328703703703
+      },
+      "security": {
+        "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
+        "pauseAuthority": "JDq14BWvqCRFNu1krb12bcRpbGtJZ1FLEakMw6FdxJNs",
+        "paused": false,
+        "transferHookAuthority": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq"
+      },
+      "pyth": {
+        "xstock": {
+          "feedId": "5f5193ed44dd1f4b0732dbffa2e27caf953e16a2d911854c8c3766d8bc609a47",
+          "symbol": "Crypto.STRCX/USD",
+          "price": null,
+          "publishTime": null,
+          "ageSec": null,
+          "basisPct": null,
+          "flagged": null,
+          "direction": null,
+          "staleReference": false
+        },
+        "equity": {
+          "feedId": "27c7bbc9755d847f7fc63620c2edcc6a91d2c0c67a28c7999907b59c505b3c17",
+          "symbol": "Equity.US.STRC/USD",
+          "price": 94.76763999999999,
+          "publishTime": 1786737617,
+          "ageSec": 8189934
+        },
+        "redemptionRate": {
+          "feedId": "a8b410b2a5f5f49a9da69a1e3a99d9c71ca6807d08cc4a6711f8fc6dd7d06202",
+          "symbol": "Crypto.STRCX/STRC.RR",
+          "price": null,
+          "publishTime": null,
+          "ageSec": null
+        }
+      }
+    },
+    {
+      "issuer": "xstocks",
       "symbol": "TERx",
       "mint": "Xsbe4fwmjVQEWEPkzfyxqNdPUUK7X9dKfTJrZdDbNgx",
       "decimals": 8,
@@ -18491,7 +18735,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.026876162900002498,
-        "daysStale": 74.02822916666666
+        "daysStale": 74.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18530,7 +18774,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.022461814899998878,
-        "daysStale": 73.02822916666666
+        "daysStale": 73.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18569,7 +18813,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.022025565400007885,
-        "daysStale": 2.9865625
+        "daysStale": 3.5619328703703705
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18608,7 +18852,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.01767676769999227,
-        "daysStale": 67.02822916666666
+        "daysStale": 67.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18647,7 +18891,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.01701937290001787,
-        "daysStale": 66.02822916666666
+        "daysStale": 66.60359953703704
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18686,7 +18930,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.01645606819999923,
-        "daysStale": 4.9865625
+        "daysStale": 5.56193287037037
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18725,7 +18969,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.01529163330000749,
-        "daysStale": 39.02822916666667
+        "daysStale": 39.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18764,7 +19008,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.011984249299978877,
-        "daysStale": 47.02822916666667
+        "daysStale": 47.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18803,7 +19047,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.011015642200007392,
-        "daysStale": 34.02822916666667
+        "daysStale": 34.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -18828,7 +19072,7 @@
           "symbol": "Equity.US.MU/USD",
           "price": 1058.7894,
           "publishTime": 1790576624,
-          "ageSec": 4301215
+          "ageSec": 4350927
         },
         "redemptionRate": null
       }
@@ -18852,7 +19096,7 @@
       "trap": {
         "stale": true,
         "gapPct": 0.008764789658188832,
-        "daysStale": 41.02822916666667
+        "daysStale": 41.603599537037034
       },
       "security": {
         "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
@@ -29039,39 +29283,6 @@
     },
     {
       "issuer": "xstocks",
-      "symbol": "RGAx",
-      "mint": "XsFvsyP8i3Qpat1BK78Yjq3PsTNhD3SV5FHryJrWbHs",
-      "decimals": 8,
-      "supply": {
-        "raw": "3561316873339"
-      },
-      "scaled": {
-        "state": {
-          "multiplier": "1.002777552838",
-          "newMultiplier": "1.0053079192080938",
-          "newMultiplierEffectiveTimestamp": 1794879000
-        },
-        "effectiveMultiplier": 1.002777552838
-      },
-      "trap": {
-        "stale": false,
-        "gapPct": null,
-        "daysStale": null
-      },
-      "security": {
-        "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
-        "pauseAuthority": "JDq14BWvqCRFNu1krb12bcRpbGtJZ1FLEakMw6FdxJNs",
-        "paused": false,
-        "transferHookAuthority": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq"
-      },
-      "pyth": {
-        "xstock": null,
-        "equity": null,
-        "redemptionRate": null
-      }
-    },
-    {
-      "issuer": "xstocks",
       "symbol": "EXELx",
       "mint": "XsAPSDzHwPr2UX83cY4KCHSdyvfighyeTPLaPXq1m3o",
       "decimals": 8,
@@ -30452,45 +30663,6 @@
     },
     {
       "issuer": "xstocks",
-      "symbol": "VRSNx",
-      "mint": "Xsy4NX4cCf4YjN6iwypnQ8crXtNkyA2K3jypAX5NfQ6",
-      "decimals": 8,
-      "supply": {
-        "raw": "2997179247406"
-      },
-      "scaled": {
-        "state": {
-          "multiplier": "1.00204885452",
-          "newMultiplier": "1.003890963590492",
-          "newMultiplierEffectiveTimestamp": 1794879000
-        },
-        "effectiveMultiplier": 1.00204885452
-      },
-      "trap": {
-        "stale": false,
-        "gapPct": null,
-        "daysStale": null
-      },
-      "security": {
-        "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
-        "pauseAuthority": "JDq14BWvqCRFNu1krb12bcRpbGtJZ1FLEakMw6FdxJNs",
-        "paused": false,
-        "transferHookAuthority": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq"
-      },
-      "pyth": {
-        "xstock": null,
-        "equity": {
-          "feedId": "c7ae3c077945639c2e0ed7199d1e6655f8c76027e07bccea53d9b6f79d8075fd",
-          "symbol": "Equity.US.VRSN/USD",
-          "price": null,
-          "publishTime": null,
-          "ageSec": null
-        },
-        "redemptionRate": null
-      }
-    },
-    {
-      "issuer": "xstocks",
       "symbol": "INSMx",
       "mint": "XsR6i1PnDGCbiV1KHsiMBdKz4MuDgpWHr3QSwC7zNMz",
       "decimals": 8,
@@ -31225,7 +31397,7 @@
           "symbol": "Equity.US.RKLB/USD",
           "price": 127.85544999999999,
           "publishTime": 1779214452,
-          "ageSec": 15663387
+          "ageSec": 15713099
         },
         "redemptionRate": null
       }
@@ -31470,7 +31642,7 @@
       "mint": "XssvmC28hqLgtT5kf8R8eAv3mejy4XftJ6MXB8QywTa",
       "decimals": 8,
       "supply": {
-        "raw": "4880187673120"
+        "raw": "4880187671928"
       },
       "scaled": {
         "state": {
@@ -31856,45 +32028,6 @@
     },
     {
       "issuer": "xstocks",
-      "symbol": "WABx",
-      "mint": "XsGFoZFgiRxDk49QCAQUArX84V88t7Bz3fsExp7HLuX",
-      "decimals": 8,
-      "supply": {
-        "raw": "4087341593993"
-      },
-      "scaled": {
-        "state": {
-          "multiplier": "1.000721769499",
-          "newMultiplier": "1.001466119344525",
-          "newMultiplierEffectiveTimestamp": 1794879000
-        },
-        "effectiveMultiplier": 1.000721769499
-      },
-      "trap": {
-        "stale": false,
-        "gapPct": null,
-        "daysStale": null
-      },
-      "security": {
-        "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
-        "pauseAuthority": "JDq14BWvqCRFNu1krb12bcRpbGtJZ1FLEakMw6FdxJNs",
-        "paused": false,
-        "transferHookAuthority": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq"
-      },
-      "pyth": {
-        "xstock": null,
-        "equity": {
-          "feedId": "6168b785e90c735e2c546abe61198534877802f639f829dcba65ecb332d2a097",
-          "symbol": "Equity.US.WAB/USD",
-          "price": null,
-          "publishTime": null,
-          "ageSec": null
-        },
-        "redemptionRate": null
-      }
-    },
-    {
-      "issuer": "xstocks",
       "symbol": "EWx",
       "mint": "XsSfT8eYeR2NqYFwCNLRNfDARHUTXvLeSnGbw2UKqrA",
       "decimals": 8,
@@ -32246,45 +32379,6 @@
     },
     {
       "issuer": "xstocks",
-      "symbol": "PSXx",
-      "mint": "XsYvZVxiNdjuHQQzdCmf4TMSTBgvarV2gLi2akooV8V",
-      "decimals": 8,
-      "supply": {
-        "raw": "3550295857988"
-      },
-      "scaled": {
-        "state": {
-          "multiplier": "1.00369569736",
-          "newMultiplier": "1.0072811501048027",
-          "newMultiplierEffectiveTimestamp": 1794879000
-        },
-        "effectiveMultiplier": 1.00369569736
-      },
-      "trap": {
-        "stale": false,
-        "gapPct": null,
-        "daysStale": null
-      },
-      "security": {
-        "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
-        "pauseAuthority": "JDq14BWvqCRFNu1krb12bcRpbGtJZ1FLEakMw6FdxJNs",
-        "paused": false,
-        "transferHookAuthority": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq"
-      },
-      "pyth": {
-        "xstock": null,
-        "equity": {
-          "feedId": "16b28b05e3491528ff9ece996c65075c3d2af3027131b11da425c6930b1e5932",
-          "symbol": "Equity.US.PSX/USD",
-          "price": null,
-          "publishTime": null,
-          "ageSec": null
-        },
-        "redemptionRate": null
-      }
-    },
-    {
-      "issuer": "xstocks",
       "symbol": "SNOWx",
       "mint": "Xs3QCTNpPWTFYRQ9yPv9gsvWKNJGk45UQ1bb1w7xznc",
       "decimals": 8,
@@ -32551,7 +32645,7 @@
           "symbol": "Equity.US.VRTX/USD",
           "price": 439.65011999999996,
           "publishTime": 1779214452,
-          "ageSec": 15663387
+          "ageSec": 15713099
         },
         "redemptionRate": null
       }
@@ -32718,7 +32812,7 @@
       "mint": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
       "decimals": 8,
       "supply": {
-        "raw": "55996788008787"
+        "raw": "55996787944929"
       },
       "scaled": {
         "state": {
@@ -32745,7 +32839,7 @@
           "symbol": "Crypto.SPCXX/USD",
           "price": 149.665,
           "publishTime": 1790882784,
-          "ageSec": 3995055,
+          "ageSec": 4044767,
           "basisPct": null,
           "flagged": null,
           "direction": null,
@@ -32756,7 +32850,7 @@
           "symbol": "Equity.US.SPCX/USD",
           "price": 148.96499999999997,
           "publishTime": 1790576624,
-          "ageSec": 4301215
+          "ageSec": 4350927
         },
         "redemptionRate": {
           "feedId": "3bd917356e64e4eb1355adefd2caf09cf0716bbdb58012907bdcad63ab21064e",
@@ -33128,7 +33222,7 @@
           "symbol": "Equity.US.HIMS/USD",
           "price": 22.61115,
           "publishTime": 1779214452,
-          "ageSec": 15663387
+          "ageSec": 15713099
         },
         "redemptionRate": null
       }
@@ -33309,45 +33403,6 @@
         "equity": {
           "feedId": "7c95b744797b88e94ddfc81e1f6833c18c78b9e086285b7bc778b4ef840f372e",
           "symbol": "Equity.US.NLR/USD",
-          "price": null,
-          "publishTime": null,
-          "ageSec": null
-        },
-        "redemptionRate": null
-      }
-    },
-    {
-      "issuer": "xstocks",
-      "symbol": "SATAx",
-      "mint": "XsAxB3xLnt7xto5ChiSbVNHBoXcXzKuzS7FieiNYwtY",
-      "decimals": 8,
-      "supply": {
-        "raw": "12000599571333"
-      },
-      "scaled": {
-        "state": {
-          "multiplier": "1.068000487514494",
-          "newMultiplier": "1.068646971431121",
-          "newMultiplierEffectiveTimestamp": 1794879000
-        },
-        "effectiveMultiplier": 1.068000487514494
-      },
-      "trap": {
-        "stale": false,
-        "gapPct": null,
-        "daysStale": null
-      },
-      "security": {
-        "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
-        "pauseAuthority": "JDq14BWvqCRFNu1krb12bcRpbGtJZ1FLEakMw6FdxJNs",
-        "paused": false,
-        "transferHookAuthority": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq"
-      },
-      "pyth": {
-        "xstock": null,
-        "equity": {
-          "feedId": "b89885277fd07887353cb63d641afe432a5231256f844b3b993f8fe1764fdfca",
-          "symbol": "Equity.US.SATA/USD",
           "price": null,
           "publishTime": null,
           "ageSec": null
@@ -33689,7 +33744,7 @@
           "symbol": "Equity.US.SNDK/USD",
           "price": 1757.7899999999997,
           "publishTime": 1783358271,
-          "ageSec": 11519568
+          "ageSec": 11569280
         },
         "redemptionRate": null
       }
@@ -33921,9 +33976,9 @@
         "equity": {
           "feedId": "67e031d1723e5c89e4a826d80b2f3b41a91b05ef6122d523b8829a02e0f563aa",
           "symbol": "Equity.US.GLXY/USD",
-          "price": 13.194999999999999,
-          "publishTime": 1794877155,
-          "ageSec": 684
+          "price": 13.44,
+          "publishTime": 1794927539,
+          "ageSec": 12
         },
         "redemptionRate": null
       }
@@ -34040,7 +34095,7 @@
           "symbol": "Equity.US.IWM/USD",
           "price": 295.10008,
           "publishTime": 1783020135,
-          "ageSec": 11857704
+          "ageSec": 11907416
         },
         "redemptionRate": null
       }
@@ -34129,7 +34184,7 @@
       "mint": "XsXcJ6GZ9kVnjqGsjBnktRcuwMBmvKWh8S93RefZ1rF",
       "decimals": 8,
       "supply": {
-        "raw": "7148078866975"
+        "raw": "7148078823855"
       },
       "scaled": {
         "state": {
@@ -34207,7 +34262,7 @@
       "mint": "Xs6B6zawENwAbWVi7w92rjazLuAr5Az59qgWKcNb45x",
       "decimals": 8,
       "supply": {
-        "raw": "3223551859486"
+        "raw": "3223547566776"
       },
       "scaled": {
         "state": {
@@ -34240,7 +34295,7 @@
       "mint": "XsoBhf2ufR8fTyNSjqfU71DYGaE6Z3SUGAidpzriAA4",
       "decimals": 8,
       "supply": {
-        "raw": "14686824308925"
+        "raw": "14686824137743"
       },
       "scaled": {
         "state": {
@@ -34268,64 +34323,9 @@
           "symbol": "Equity.US.PLTR/USD",
           "price": 129.32245999999998,
           "publishTime": 1783022418,
-          "ageSec": 11855421
+          "ageSec": 11905133
         },
         "redemptionRate": null
-      }
-    },
-    {
-      "issuer": "xstocks",
-      "symbol": "STRCx",
-      "mint": "Xs78JED6PFZxWc2wCEPspZW9kL3Se5J7L5TChKgsidH",
-      "decimals": 8,
-      "supply": {
-        "raw": "46991915751999"
-      },
-      "scaled": {
-        "state": {
-          "multiplier": "1.1031284137545447",
-          "newMultiplier": "1.103462290392807",
-          "newMultiplierEffectiveTimestamp": 1794879000
-        },
-        "effectiveMultiplier": 1.1031284137545447
-      },
-      "trap": {
-        "stale": false,
-        "gapPct": null,
-        "daysStale": null
-      },
-      "security": {
-        "permanentDelegate": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq",
-        "pauseAuthority": "JDq14BWvqCRFNu1krb12bcRpbGtJZ1FLEakMw6FdxJNs",
-        "paused": false,
-        "transferHookAuthority": "5aMNNLQJwAEeoemTEMkv5NVjqKwvvefRYCQ5Z67HFvEq"
-      },
-      "pyth": {
-        "xstock": {
-          "feedId": "5f5193ed44dd1f4b0732dbffa2e27caf953e16a2d911854c8c3766d8bc609a47",
-          "symbol": "Crypto.STRCX/USD",
-          "price": null,
-          "publishTime": null,
-          "ageSec": null,
-          "basisPct": null,
-          "flagged": null,
-          "direction": null,
-          "staleReference": false
-        },
-        "equity": {
-          "feedId": "27c7bbc9755d847f7fc63620c2edcc6a91d2c0c67a28c7999907b59c505b3c17",
-          "symbol": "Equity.US.STRC/USD",
-          "price": 94.76763999999999,
-          "publishTime": 1786737617,
-          "ageSec": 8140222
-        },
-        "redemptionRate": {
-          "feedId": "a8b410b2a5f5f49a9da69a1e3a99d9c71ca6807d08cc4a6711f8fc6dd7d06202",
-          "symbol": "Crypto.STRCX/STRC.RR",
-          "price": null,
-          "publishTime": null,
-          "ageSec": null
-        }
       }
     },
     {
@@ -34334,7 +34334,7 @@
       "mint": "XshPgPdXFRWB8tP1j82rebb2Q9rPgGX37RuqzohmArM",
       "decimals": 8,
       "supply": {
-        "raw": "41635115446149"
+        "raw": "41635114741006"
       },
       "scaled": {
         "state": {
@@ -34373,7 +34373,7 @@
       "mint": "Xs7ZdzSHLU9ftNJsii5fCeJhoRWSC32SQGzGQtePxNu",
       "decimals": 8,
       "supply": {
-        "raw": "15125872192991"
+        "raw": "15125870917533"
       },
       "scaled": {
         "state": {
@@ -34400,7 +34400,7 @@
           "symbol": "Crypto.COINX/USD",
           "price": 176.18741655,
           "publishTime": 1789215509,
-          "ageSec": 5662330,
+          "ageSec": 5712042,
           "basisPct": null,
           "flagged": null,
           "direction": null,
@@ -34411,7 +34411,7 @@
           "symbol": "Equity.US.COIN/USD",
           "price": 148.445,
           "publishTime": 1786737621,
-          "ageSec": 8140218
+          "ageSec": 8189930
         },
         "redemptionRate": {
           "feedId": "b663e208031820ed2ea373346501ceb897f230623439482f0e2a13150af08549",
@@ -34428,7 +34428,7 @@
       "mint": "XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ",
       "decimals": 8,
       "supply": {
-        "raw": "60120066108119"
+        "raw": "60120065839102"
       },
       "scaled": {
         "state": {
@@ -34455,7 +34455,7 @@
           "symbol": "Crypto.MSTRX/USD",
           "price": 122.70138999,
           "publishTime": 1794388366,
-          "ageSec": 489473,
+          "ageSec": 539185,
           "basisPct": null,
           "flagged": null,
           "direction": null,
@@ -34466,7 +34466,7 @@
           "symbol": "Equity.US.MSTR/USD",
           "price": 93.04496999999999,
           "publishTime": 1786737621,
-          "ageSec": 8140218
+          "ageSec": 8189930
         },
         "redemptionRate": {
           "feedId": "342df7ea9b8db28630933d55d0c9c1119525eb5be58d499ecc4e88faf061083a",
@@ -34483,7 +34483,7 @@
       "mint": "XsxAd6okt8y1RRK6gNg7iJaqiWNiq5Md5EDf3ZrF2dm",
       "decimals": 8,
       "supply": {
-        "raw": "22754939084185"
+        "raw": "22754939010761"
       },
       "scaled": {
         "state": {
@@ -34522,7 +34522,7 @@
       "mint": "XsvNBAYkrDRNhA7wPHQfX3ZUXZyZLdnCQDfHZ56bzpg",
       "decimals": 8,
       "supply": {
-        "raw": "59738775779093"
+        "raw": "59738774840393"
       },
       "scaled": {
         "state": {
@@ -34549,7 +34549,7 @@
           "symbol": "Crypto.HOODX/USD",
           "price": 112.30519393,
           "publishTime": 1789215509,
-          "ageSec": 5662330,
+          "ageSec": 5712042,
           "basisPct": null,
           "flagged": null,
           "direction": null,
@@ -34560,7 +34560,7 @@
           "symbol": "Equity.US.HOOD/USD",
           "price": 95.53625,
           "publishTime": 1786737620,
-          "ageSec": 8140219
+          "ageSec": 8189931
         },
         "redemptionRate": {
           "feedId": "d88c382daa11f3a377796bc3f9318e7fbffd69c5bbceb5e58548670a7ad23e7f",
@@ -34577,7 +34577,7 @@
       "mint": "Xsv9hRk1z5ystj9MhnA7Lq4vjSsLwzL2nxrwmwtD3re",
       "decimals": 8,
       "supply": {
-        "raw": "11626580459970"
+        "raw": "11626580141936"
       },
       "scaled": {
         "state": {
@@ -34604,7 +34604,7 @@
           "symbol": "Crypto.GLDX/USD",
           "price": 398.6280297,
           "publishTime": 1789215509,
-          "ageSec": 5662330,
+          "ageSec": 5712042,
           "basisPct": null,
           "flagged": null,
           "direction": null,
@@ -34615,7 +34615,7 @@
           "symbol": "Equity.US.GLD/USD",
           "price": 405.46419,
           "publishTime": 1786996199,
-          "ageSec": 7881640
+          "ageSec": 7931352
         },
         "redemptionRate": null
       }
@@ -34626,7 +34626,7 @@
       "mint": "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1",
       "decimals": 8,
       "supply": {
-        "raw": "87107712102290"
+        "raw": "87107712098371"
       },
       "scaled": {
         "state": {
@@ -34653,7 +34653,7 @@
           "symbol": "Crypto.CRCLX/USD",
           "price": 65.64347293,
           "publishTime": 1794388357,
-          "ageSec": 489482,
+          "ageSec": 539194,
           "basisPct": null,
           "flagged": null,
           "direction": null,
@@ -34664,7 +34664,7 @@
           "symbol": "Equity.US.CRCL/USD",
           "price": 88.77502,
           "publishTime": 1787759686,
-          "ageSec": 7118153
+          "ageSec": 7167865
         },
         "redemptionRate": {
           "feedId": "381f301f3aabddfa8605be298e704bf7c40738a5f7aeb07dd0b023f993ce7638",
@@ -34681,7 +34681,7 @@
       "mint": "Xs3eBt7uRfJX8QUs4suhyU8p2M6DoUDrJyWBa8LLZsg",
       "decimals": 8,
       "supply": {
-        "raw": "17229410999349"
+        "raw": "17229410751131"
       },
       "scaled": {
         "state": {
@@ -34708,7 +34708,7 @@
           "symbol": "Crypto.AMZNX/USD",
           "price": 249.88,
           "publishTime": 1792232062,
-          "ageSec": 2645777,
+          "ageSec": 2695489,
           "basisPct": null,
           "flagged": null,
           "direction": null,
@@ -34719,7 +34719,7 @@
           "symbol": "Equity.US.AMZN/USD",
           "price": 261.21763,
           "publishTime": 1787254500,
-          "ageSec": 7623339
+          "ageSec": 7673051
         },
         "redemptionRate": {
           "feedId": "0ed9040c3fcdadf6ab2f1815f6b252e4c1ca5fd55108390f4acd52a7efac13dd",
@@ -34736,7 +34736,7 @@
       "mint": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB",
       "decimals": 8,
       "supply": {
-        "raw": "22963344186134"
+        "raw": "22963344043285"
       },
       "scaled": {
         "state": {
@@ -34763,7 +34763,7 @@
           "symbol": "Crypto.TSLAX/USD",
           "price": 386.96927186,
           "publishTime": 1794388359,
-          "ageSec": 489480,
+          "ageSec": 539192,
           "basisPct": null,
           "flagged": null,
           "direction": null,
@@ -34774,7 +34774,7 @@
           "symbol": "Equity.US.TSLA/USD",
           "price": 365.275,
           "publishTime": 1789171199,
-          "ageSec": 5706640
+          "ageSec": 5756352
         },
         "redemptionRate": {
           "feedId": "997362625415627e9e3177f6c0d32f200d4a221ccadb3dddab80d6079d03ea24",
@@ -34832,14 +34832,14 @@
       "mint": "Pren1FvFX6J3E4kXhJuCiAD5aDmGEb7qJRncwA8Lkhw",
       "meta": {
         "name": "Anthropic PreStocks",
-        "markPrice": 89.481962142,
-        "tokenPrice": 95.06686703236566,
-        "issuerSupply": 76801.14251291999,
+        "markPrice": 88.830402789,
+        "tokenPrice": null,
+        "issuerSupply": null,
         "externalUrl": "https://www.prestocks.com/anthropic"
       },
       "decimals": 9,
       "supply": {
-        "raw": "7680114251292"
+        "raw": "7680109355490"
       },
       "scaled": {
         "state": {
@@ -34852,7 +34852,7 @@
       "trap": {
         "stale": true,
         "gapPct": 900,
-        "daysStale": 11.881006944444444
+        "daysStale": 12.456377314814814
       },
       "security": {
         "permanentDelegate": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
@@ -34872,9 +34872,9 @@
       "mint": "Pre9atBqkocK1QngFy7Q7zvyQictEFpXdLi6bZ2qnYy",
       "meta": {
         "name": "Oura PreStocks",
-        "markPrice": 35.873329155,
-        "tokenPrice": 31.437730667877254,
-        "issuerSupply": 2999.576943554,
+        "markPrice": 35.850327355,
+        "tokenPrice": null,
+        "issuerSupply": null,
         "externalUrl": "https://www.prestocks.com/oura"
       },
       "decimals": 9,
@@ -34892,7 +34892,7 @@
       "trap": {
         "stale": true,
         "gapPct": 100,
-        "daysStale": 11.881006944444444
+        "daysStale": 12.456377314814814
       },
       "security": {
         "permanentDelegate": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
@@ -34912,14 +34912,14 @@
       "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
       "meta": {
         "name": "OpenAI PreStocks",
-        "markPrice": 1004.7448736241741,
-        "tokenPrice": 1159.5836978251973,
+        "markPrice": 1004.5514997732035,
+        "tokenPrice": null,
         "issuerSupply": null,
         "externalUrl": "https://www.prestocks.com/openai"
       },
       "decimals": 9,
       "supply": {
-        "raw": "1584118943930"
+        "raw": "1584118012604"
       },
       "scaled": {
         "state": {
@@ -34932,7 +34932,7 @@
       "trap": {
         "stale": true,
         "gapPct": 48.61347000000001,
-        "daysStale": 122.3615625
+        "daysStale": 122.93693287037037
       },
       "security": {
         "permanentDelegate": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
@@ -34958,14 +34958,14 @@
       "mint": "PresTj4Yc2bAR197Er7wz4UUKSfqt6FryBEdAriBoQB",
       "meta": {
         "name": "Anduril PreStocks",
-        "markPrice": 138.55572837,
-        "tokenPrice": 141.60230743473264,
-        "issuerSupply": 11054.941095077,
+        "markPrice": 138.47189533,
+        "tokenPrice": null,
+        "issuerSupply": null,
         "externalUrl": "https://www.prestocks.com/anduril"
       },
       "decimals": 9,
       "supply": {
-        "raw": "11054941095077"
+        "raw": "11054939424577"
       },
       "scaled": {
         "state": {
@@ -34998,9 +34998,9 @@
       "mint": "PreZad18qfPtbxNpMtMuAuX2zVpvkEU8DnJx56faCWd",
       "meta": {
         "name": "Figure AI PreStocks",
-        "markPrice": 175.9650807,
-        "tokenPrice": 155.17506018550839,
-        "issuerSupply": 3012.648520068,
+        "markPrice": 175.6919315,
+        "tokenPrice": null,
+        "issuerSupply": null,
         "externalUrl": "https://www.prestocks.com/figureai"
       },
       "decimals": 9,
@@ -35038,14 +35038,14 @@
       "mint": "PreLWGkkeqG1s4HEfFZSy9moCrJ7btsHuUtfcCeoRua",
       "meta": {
         "name": "Kalshi PreStocks",
-        "markPrice": 997.33790733,
-        "tokenPrice": 918.4718291878542,
-        "issuerSupply": 904.829311118,
+        "markPrice": 999.55305724,
+        "tokenPrice": null,
+        "issuerSupply": null,
         "externalUrl": "https://www.prestocks.com/kalshi"
       },
       "decimals": 9,
       "supply": {
-        "raw": "904829311118"
+        "raw": "904829309025"
       },
       "scaled": {
         "state": {
@@ -35078,14 +35078,14 @@
       "mint": "PrekqLJvJ3qVdXmBGDiexvwUTF4rLFDa6HWS4HJbw9S",
       "meta": {
         "name": "Neuralink PreStocks",
-        "markPrice": 342.0457599,
-        "tokenPrice": 369.4827714220473,
-        "issuerSupply": 2294.683821654,
+        "markPrice": 342.67010242,
+        "tokenPrice": null,
+        "issuerSupply": null,
         "externalUrl": "https://www.prestocks.com/neuralink"
       },
       "decimals": 9,
       "supply": {
-        "raw": "2294683821654"
+        "raw": "2294683716709"
       },
       "scaled": {
         "state": {
@@ -35118,14 +35118,14 @@
       "mint": "Pre8AREmFPtoJFT8mQSXQLh56cwJmM7CFDRuoGBZiUP",
       "meta": {
         "name": "Polymarket PreStocks",
-        "markPrice": 150.92855677,
-        "tokenPrice": 164.42423744093162,
-        "issuerSupply": 4814.890645613,
+        "markPrice": 155.32975113,
+        "tokenPrice": null,
+        "issuerSupply": null,
         "externalUrl": "https://www.prestocks.com/polymarket"
       },
       "decimals": 9,
       "supply": {
-        "raw": "4814890645613"
+        "raw": "4814849881666"
       },
       "scaled": {
         "state": {
