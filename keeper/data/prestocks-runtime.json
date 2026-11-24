@@ -1,12 +1,12 @@
 {
- "checkedAt": "2026-11-24T03:31:24.000Z",
+ "checkedAt": "2026-11-24T16:34:24.000Z",
  "rpc": "https://api.mainnet-beta.solana.com",
  "issuer": "prestocks",
  "method": "getTokenSupply: uiAmountString / (amount / 10^decimals)",
  "tolerance": 0.0001,
  "note": "Ground-truth corroboration that the classifier agrees with the runtime for every official PreStocks mint, not only for the xStocks roster. Committed so CI can assert the verdicts without network access.",
  "verdicts": {
-  "AMBIGUOUS_EQUAL": 5,
+  "AMBIGUOUS_EQUAL": 11,
   "STALE_CONFIRMED": 3
  },
  "mints": [
@@ -26,13 +26,53 @@
    "storedMultiplier": 1,
    "pendingMultiplier": 10,
    "activation": 1793851320,
-   "measuredRatio": 10,
+   "measuredRatio": 10.000000000000002,
    "rulePredicts": 10,
    "verdict": "STALE_CONFIRMED"
   },
   {
+   "symbol": "CRUSOE",
+   "mint": "PrefHVWKEPEPjWTb2PtLoTuhyXXA8sfPqM4pXeCcb9v",
+   "storedMultiplier": 1,
+   "pendingMultiplier": 1,
+   "activation": 0,
+   "measuredRatio": 1,
+   "rulePredicts": 1,
+   "verdict": "AMBIGUOUS_EQUAL"
+  },
+  {
+   "symbol": "DATABRICKS",
+   "mint": "PreDc2cmtrna6MC8z6pYMoQJbbJGAuimCK3AxQ81ZpQ",
+   "storedMultiplier": 1,
+   "pendingMultiplier": 1,
+   "activation": 0,
+   "measuredRatio": 1,
+   "rulePredicts": 1,
+   "verdict": "AMBIGUOUS_EQUAL"
+  },
+  {
+   "symbol": "ELEVENLABS",
+   "mint": "Preyed6v4a4aEdqssFTHqVWmTKgrWG8Yi33KSztpJU1",
+   "storedMultiplier": 1,
+   "pendingMultiplier": 1,
+   "activation": 0,
+   "measuredRatio": 1,
+   "rulePredicts": 1,
+   "verdict": "AMBIGUOUS_EQUAL"
+  },
+  {
    "symbol": "FIGUREAI",
    "mint": "PreZad18qfPtbxNpMtMuAuX2zVpvkEU8DnJx56faCWd",
+   "storedMultiplier": 1,
+   "pendingMultiplier": 1,
+   "activation": 0,
+   "measuredRatio": 1,
+   "rulePredicts": 1,
+   "verdict": "AMBIGUOUS_EQUAL"
+  },
+  {
+   "symbol": "HIGGSFIELD",
+   "mint": "Pre2ce4UVGe12icCHmg8Q1DLg2pYoQ6688ewYB1dnFZ",
    "storedMultiplier": 1,
    "pendingMultiplier": 1,
    "activation": 0,
@@ -66,7 +106,7 @@
    "storedMultiplier": 1,
    "pendingMultiplier": 1.4861347,
    "activation": 1784305800,
-   "measuredRatio": 1.486134699999513,
+   "measuredRatio": 1.4861346999993854,
    "rulePredicts": 1.4861347,
    "verdict": "STALE_CONFIRMED"
   },
@@ -83,6 +123,26 @@
   {
    "symbol": "POLYMARKET",
    "mint": "Pre8AREmFPtoJFT8mQSXQLh56cwJmM7CFDRuoGBZiUP",
+   "storedMultiplier": 1,
+   "pendingMultiplier": 1,
+   "activation": 0,
+   "measuredRatio": 1,
+   "rulePredicts": 1,
+   "verdict": "AMBIGUOUS_EQUAL"
+  },
+  {
+   "symbol": "RAMP",
+   "mint": "Pre5Ygpr1i66wM2Jgx22KSXfqG1nzbu6MidxjWkDWht",
+   "storedMultiplier": 1,
+   "pendingMultiplier": 1,
+   "activation": 0,
+   "measuredRatio": 1,
+   "rulePredicts": 1,
+   "verdict": "AMBIGUOUS_EQUAL"
+  },
+  {
+   "symbol": "ZIPLINE",
+   "mint": "PreZb5ymo1x6fUf3pgXQWd3oBNWYDwmTa6PJ17dQqng",
    "storedMultiplier": 1,
    "pendingMultiplier": 1,
    "activation": 0,

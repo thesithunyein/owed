@@ -1,14 +1,14 @@
 {
- "scannedAt": "2026-11-24T03:31:24.000Z",
+ "scannedAt": "2026-11-24T16:34:24.000Z",
  "rpc": "https://api.mainnet-beta.solana.com",
- "totalOfficial": 8,
- "totalRead": 8,
+ "totalOfficial": 14,
+ "totalRead": 14,
  "failed": 0,
  "stats": {
   "readerTrap": 3,
   "pending": 0,
-  "pausable": 8,
-  "permanentDelegate": 8,
+  "pausable": 14,
+  "permanentDelegate": 14,
   "paused": 0
  },
  "results": [
@@ -17,13 +17,13 @@
    "mint": "PresTj4Yc2bAR197Er7wz4UUKSfqt6FryBEdAriBoQB",
    "meta": {
     "name": "Anduril PreStocks",
-    "markPrice": 134.04821378,
-    "tokenPrice": 133.91395454866057,
-    "issuerSupply": 11054.857171409,
+    "markPrice": 133.72065713,
+    "tokenPrice": 133.2848025872359,
+    "issuerSupply": 11054.857170459,
     "externalUrl": "https://www.prestocks.com/anduril"
    },
    "decimals": 9,
-   "supply": "11054857171409",
+   "supply": "11054857170459",
    "scaledState": {
     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
     "multiplier": "1",
@@ -49,13 +49,13 @@
    "mint": "Pren1FvFX6J3E4kXhJuCiAD5aDmGEb7qJRncwA8Lkhw",
    "meta": {
     "name": "Anthropic PreStocks",
-    "markPrice": 57.198,
-    "tokenPrice": 61.39760324433536,
-    "issuerSupply": 51963.16925823,
+    "markPrice": 51.416,
+    "tokenPrice": 55.95892322221292,
+    "issuerSupply": null,
     "externalUrl": "https://www.prestocks.com/anthropic"
    },
    "decimals": 9,
-   "supply": "5196316925823",
+   "supply": "5196300260235",
    "scaledState": {
     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
     "multiplier": "1",
@@ -77,13 +77,109 @@
    }
   },
   {
+   "symbol": "CRUSOE",
+   "mint": "PrefHVWKEPEPjWTb2PtLoTuhyXXA8sfPqM4pXeCcb9v",
+   "meta": {
+    "name": "Crusoe PreStocks",
+    "markPrice": 208.92370792,
+    "tokenPrice": null,
+    "issuerSupply": null,
+    "externalUrl": "https://www.prestocks.com/crusoe"
+   },
+   "decimals": 9,
+   "supply": "1425000000000",
+   "scaledState": {
+    "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+    "multiplier": "1",
+    "newMultiplier": "1",
+    "newMultiplierEffectiveTimestamp": 0
+   },
+   "security": {
+    "permanentDelegate": {
+     "delegate": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc"
+    },
+    "pausable": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "paused": false
+    },
+    "transferHook": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "programId": null
+    }
+   }
+  },
+  {
+   "symbol": "DATABRICKS",
+   "mint": "PreDc2cmtrna6MC8z6pYMoQJbbJGAuimCK3AxQ81ZpQ",
+   "meta": {
+    "name": "Databricks PreStocks",
+    "markPrice": 283.3791599,
+    "tokenPrice": null,
+    "issuerSupply": null,
+    "externalUrl": "https://www.prestocks.com/databricks"
+   },
+   "decimals": 9,
+   "supply": "950000000000",
+   "scaledState": {
+    "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+    "multiplier": "1",
+    "newMultiplier": "1",
+    "newMultiplierEffectiveTimestamp": 0
+   },
+   "security": {
+    "permanentDelegate": {
+     "delegate": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc"
+    },
+    "pausable": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "paused": false
+    },
+    "transferHook": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "programId": null
+    }
+   }
+  },
+  {
+   "symbol": "ELEVENLABS",
+   "mint": "Preyed6v4a4aEdqssFTHqVWmTKgrWG8Yi33KSztpJU1",
+   "meta": {
+    "name": "ElevenLabs PreStocks",
+    "markPrice": 123.054619,
+    "tokenPrice": null,
+    "issuerSupply": null,
+    "externalUrl": "https://www.prestocks.com/elevenlabs"
+   },
+   "decimals": 9,
+   "supply": "800000000000",
+   "scaledState": {
+    "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+    "multiplier": "1",
+    "newMultiplier": "1",
+    "newMultiplierEffectiveTimestamp": 0
+   },
+   "security": {
+    "permanentDelegate": {
+     "delegate": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc"
+    },
+    "pausable": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "paused": false
+    },
+    "transferHook": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "programId": null
+    }
+   }
+  },
+  {
    "symbol": "FIGUREAI",
    "mint": "PreZad18qfPtbxNpMtMuAuX2zVpvkEU8DnJx56faCWd",
    "meta": {
     "name": "Figure AI PreStocks",
-    "markPrice": 172.07451804,
-    "tokenPrice": 154.25551520231429,
-    "issuerSupply": 3012.597378619,
+    "markPrice": 172.62926278,
+    "tokenPrice": 155.2499405964304,
+    "issuerSupply": null,
     "externalUrl": "https://www.prestocks.com/figureai"
    },
    "decimals": 9,
@@ -109,17 +205,49 @@
    }
   },
   {
+   "symbol": "HIGGSFIELD",
+   "mint": "Pre2ce4UVGe12icCHmg8Q1DLg2pYoQ6688ewYB1dnFZ",
+   "meta": {
+    "name": "Higgsfield PreStocks",
+    "markPrice": 273.2165034,
+    "tokenPrice": null,
+    "issuerSupply": null,
+    "externalUrl": "https://www.prestocks.com/higgsfield"
+   },
+   "decimals": 9,
+   "supply": "720000000000",
+   "scaledState": {
+    "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+    "multiplier": "1",
+    "newMultiplier": "1",
+    "newMultiplierEffectiveTimestamp": 0
+   },
+   "security": {
+    "permanentDelegate": {
+     "delegate": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc"
+    },
+    "pausable": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "paused": false
+    },
+    "transferHook": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "programId": null
+    }
+   }
+  },
+  {
    "symbol": "KALSHI",
    "mint": "PreLWGkkeqG1s4HEfFZSy9moCrJ7btsHuUtfcCeoRua",
    "meta": {
     "name": "Kalshi PreStocks",
-    "markPrice": 975.06574951,
-    "tokenPrice": 881.7448431197058,
-    "issuerSupply": 904.82857045,
+    "markPrice": 986.5044572,
+    "tokenPrice": 882.2964351729706,
+    "issuerSupply": null,
     "externalUrl": "https://www.prestocks.com/kalshi"
    },
    "decimals": 9,
-   "supply": "904828570450",
+   "supply": "904828527216",
    "scaledState": {
     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
     "multiplier": "1",
@@ -145,13 +273,13 @@
    "mint": "PrekqLJvJ3qVdXmBGDiexvwUTF4rLFDa6HWS4HJbw9S",
    "meta": {
     "name": "Neuralink PreStocks",
-    "markPrice": 355.38010589,
-    "tokenPrice": 377.5986342769613,
-    "issuerSupply": 2294.647919321,
+    "markPrice": 346.45226546,
+    "tokenPrice": 376.4162436930955,
+    "issuerSupply": null,
     "externalUrl": "https://www.prestocks.com/neuralink"
    },
    "decimals": 9,
-   "supply": "2294647919321",
+   "supply": "2294645969343",
    "scaledState": {
     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
     "multiplier": "1",
@@ -177,13 +305,13 @@
    "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
    "meta": {
     "name": "OpenAI PreStocks",
-    "markPrice": 906.8044742041217,
-    "tokenPrice": 783.4840857209335,
-    "issuerSupply": 2354.1802272437717,
+    "markPrice": 907.5355271766415,
+    "tokenPrice": 767.8596273550934,
+    "issuerSupply": null,
     "externalUrl": "https://www.prestocks.com/openai"
    },
    "decimals": 9,
-   "supply": "1584096130212",
+   "supply": "1584094652083",
    "scaledState": {
     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
     "multiplier": "1",
@@ -209,9 +337,9 @@
    "mint": "Pre9atBqkocK1QngFy7Q7zvyQictEFpXdLi6bZ2qnYy",
    "meta": {
     "name": "Oura PreStocks",
-    "markPrice": 33.26091115,
-    "tokenPrice": 30.841805448515366,
-    "issuerSupply": 2999.566326592,
+    "markPrice": 33.11191371,
+    "tokenPrice": 31.19471703152444,
+    "issuerSupply": null,
     "externalUrl": "https://www.prestocks.com/oura"
    },
    "decimals": 9,
@@ -241,13 +369,77 @@
    "mint": "Pre8AREmFPtoJFT8mQSXQLh56cwJmM7CFDRuoGBZiUP",
    "meta": {
     "name": "Polymarket PreStocks",
-    "markPrice": 133.81585276,
-    "tokenPrice": 116.19862085331681,
+    "markPrice": 133.53459911,
+    "tokenPrice": 115.8405122300716,
     "issuerSupply": null,
     "externalUrl": "https://www.prestocks.com/polymarket"
    },
    "decimals": 9,
-   "supply": "4814749039080",
+   "supply": "4814748283127",
+   "scaledState": {
+    "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+    "multiplier": "1",
+    "newMultiplier": "1",
+    "newMultiplierEffectiveTimestamp": 0
+   },
+   "security": {
+    "permanentDelegate": {
+     "delegate": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc"
+    },
+    "pausable": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "paused": false
+    },
+    "transferHook": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "programId": null
+    }
+   }
+  },
+  {
+   "symbol": "RAMP",
+   "mint": "Pre5Ygpr1i66wM2Jgx22KSXfqG1nzbu6MidxjWkDWht",
+   "meta": {
+    "name": "Ramp PreStocks",
+    "markPrice": 187.63748523,
+    "tokenPrice": null,
+    "issuerSupply": null,
+    "externalUrl": "https://www.prestocks.com/ramp"
+   },
+   "decimals": 9,
+   "supply": "550000000000",
+   "scaledState": {
+    "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+    "multiplier": "1",
+    "newMultiplier": "1",
+    "newMultiplierEffectiveTimestamp": 0
+   },
+   "security": {
+    "permanentDelegate": {
+     "delegate": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc"
+    },
+    "pausable": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "paused": false
+    },
+    "transferHook": {
+     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+     "programId": null
+    }
+   }
+  },
+  {
+   "symbol": "ZIPLINE",
+   "mint": "PreZb5ymo1x6fUf3pgXQWd3oBNWYDwmTa6PJ17dQqng",
+   "meta": {
+    "name": "Zipline PreStocks",
+    "markPrice": 131.33245295,
+    "tokenPrice": null,
+    "issuerSupply": null,
+    "externalUrl": "https://www.prestocks.com/zipline"
+   },
+   "decimals": 9,
+   "supply": "2380000000000",
    "scaledState": {
     "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
     "multiplier": "1",
@@ -271,5 +463,5 @@
  ],
  "issuer": "prestocks",
  "listSource": "https://prestocks.com/api/prestocks",
- "listFetchedAt": "2026-11-24T03:31:24.280Z"
+ "listFetchedAt": "2026-11-24T16:34:24.114Z"
 }
