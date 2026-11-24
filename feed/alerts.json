@@ -1,8 +1,8 @@
 {
   "feed": "owed-alerts",
   "version": "1.0.0",
-  "generatedAt": "2026-11-23T16:38:03.000Z",
-  "clock": 1795451883,
+  "generatedAt": "2026-11-24T03:31:26.000Z",
+  "clock": 1795491086,
   "rule": "Two events only. became-stale: a mint's stored field matched the runtime at the previous refresh and does not now. activation-imminent: a scheduled multiplier change is inside the 48h window and has not landed yet. No 'still divergent' event is ever emitted, because 383 mints are divergent at any moment and a channel that repeats that teaches its readers to ignore it.",
   "summary": {
     "current": 498,
@@ -12,12 +12,12 @@
   },
   "nextActivation": null,
   "mostRecent": {
-    "symbol": "TBLLx",
+    "symbol": "PRUx",
     "issuer": "xstocks",
-    "daysAgo": 0.10975694444444445,
-    "stored": 1.023177159704267,
-    "effective": 1.0255189631955848,
-    "gapPct": 0.2288756613756604
+    "daysAgo": 0.0843287037037037,
+    "stored": 1.008089145687,
+    "effective": 1.0163590884523357,
+    "gapPct": 0.820358278900013
   },
   "events": [],
   "history": [
