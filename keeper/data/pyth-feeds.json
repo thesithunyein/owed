@@ -1,7 +1,7 @@
 {
- "fetchedAt": "2026-11-26T01:13:28.429Z",
+ "fetchedAt": "2026-11-26T15:53:31.077Z",
  "source": "https://hermes.pyth.network/v2/price_feeds (open, no key)",
- "catalogueSize": 1994,
+ "catalogueSize": 1996,
  "note": "Which official Pyth feed describes each mint. Feed existence and market hours are Pyth metadata; no price is stored here, because prices require a Bearer key. See keeper/data/pyth-divergence.json for the priced lane.",
  "coverage": {
   "xstocks": {
@@ -58,8 +58,8 @@
    "equityFeed": 1,
    "redemptionRate": 0,
    "unresolved": [
-    "ANDURIL",
     "ANTHROPIC",
+    "ANDURIL",
     "CRUSOE",
     "DATABRICKS",
     "ELEVENLABS",
@@ -11782,18 +11782,18 @@
   },
   {
    "issuer": "prestocks",
-   "symbol": "ANDURIL",
-   "mint": "PresTj4Yc2bAR197Er7wz4UUKSfqt6FryBEdAriBoQB",
-   "base": "ANDURIL",
+   "symbol": "ANTHROPIC",
+   "mint": "Pren1FvFX6J3E4kXhJuCiAD5aDmGEb7qJRncwA8Lkhw",
+   "base": "ANTHROPIC",
    "xstock": null,
    "equity": null,
    "redemptionRate": null
   },
   {
    "issuer": "prestocks",
-   "symbol": "ANTHROPIC",
-   "mint": "Pren1FvFX6J3E4kXhJuCiAD5aDmGEb7qJRncwA8Lkhw",
-   "base": "ANTHROPIC",
+   "symbol": "ANDURIL",
+   "mint": "PresTj4Yc2bAR197Er7wz4UUKSfqt6FryBEdAriBoQB",
+   "base": "ANDURIL",
    "xstock": null,
    "equity": null,
    "redemptionRate": null
